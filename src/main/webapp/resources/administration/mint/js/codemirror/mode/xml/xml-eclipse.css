@@ -1,0 +1,28 @@
+span.xml-tag {
+	color: #008787;
+}
+
+span.xml-attribute {
+	color: #2A00FF;
+	font-style: italic;
+}
+
+span.xml-attname {
+	color: #8E008E;
+}
+
+span.xml-comment {
+	color: #385FD2;
+}
+
+span.xml-cdata {
+	color: #48a;
+}
+
+span.xml-processing {
+	color: #000000;
+}
+
+span.xml-entity {
+	color: #2A00FF;
+}

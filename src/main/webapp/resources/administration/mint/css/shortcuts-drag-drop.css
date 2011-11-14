@@ -1,0 +1,69 @@
+/* the configure form is hidden when the page loads. */
+#shortcut-configure-container {
+	display: none;
+}
+
+/* the clone you're moving */
+.dragClone {
+	opacity: 0.35;
+	background-color: #3D6A91;
+	border: 1px solid #000;
+	-moz-border-radius: 8px;
+	border-radius: 8px;	
+}
+
+/* the shortcut you're draggin */
+dl.maxiButton.dragged {
+	color: #000;
+	opacity: 0.35;
+	/*background-color: #fafafa;*/
+}
+
+/* the shortcut you're dropping in */
+dl.maxiButton.dropping {
+	opacity: 0;
+	-webkit-transform: scale(1.025);
+	-moz-transform: scale(1.025);
+	-o-transform: scale(1.025);
+	transform: scale(1.025);
+}
+
+/* shortcuts while loading */
+dl.maxiButton.dragLoading,
+dl.maxiButton.dropLoading {
+	opacity: 1;
+}
+
+dl.maxiButton.dragLoading dt.name,
+dl.maxiButton.dropLoading dt.name {
+	background-image: url(../img/maxibutton-background-loading.gif);
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+dl.maxiButton.dragLoading dt.name span.up,
+dl.maxiButton.dropLoading dt.name span.up {
+	color: transparent;
+	text-shadow: none;
+}
+
+dl.maxiButton.dragLoading dt.name span.down,
+dl.maxiButton.dropLoading dt.name span.down {
+	color: #000;
+	text-shadow: none;
+}
+
+dl.maxiButton.dragLoading span.shortcut-toolbar,
+dl.maxiButton.dropLoading span.shortcut-toolbar {
+	opacity: 0;
+}
+
+
+dl.maxiButton.dragLoading dt.name:hover,
+dl.maxiButton.dropLoading dt.name:hover {
+	opacity: 1;
+	-webkit-transform: none;
+	-moz-transform: none;
+	-o-transform: none;
+	transform: none;
+}

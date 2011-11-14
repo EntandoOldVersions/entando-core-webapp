@@ -1,0 +1,96 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.entando.entando</groupId>
+	<artifactId>entando-core-webapp</artifactId>
+	<packaging>war</packaging>
+	<version>2.4.0-SNAPSHOT</version>
+	<name>Entando: Core Webapp</name>
+	<description>Core webapp of Entando: an agile, modern and user-centric open source Portal platform.</description>
+	<url>http://www.entando.com/</url>
+	<developers>
+		<developer>
+			<id>e.santoboni</id>
+			<name>Eugenio Santoboni</name>
+			<email>e.santoboni@agiletec.it</email>
+		</developer>
+		<developer>
+			<id>w.ghelfi</id>
+			<name>William Ghelfi</name>
+			<email>w.ghelfi@tzente.it</email>		
+		</developer>
+	</developers>
+	<organization>
+		<name>Tzente S.r.l.</name>
+		<url>http://www.tzente.com/</url>
+	</organization>	
+	<distributionManagement>
+		<snapshotRepository>
+			<id>entando-snapshots</id>
+			<url>dav:http://localhost/nexus/content/repositories/entando-snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>entando-releases</id>
+			<url>dav:http://localhost/nexus/content/repositories/entando-releases</url>
+		</repository>
+	</distributionManagement>
+	<dependencies>
+		<dependency>
+			<groupId>org.entando.entando</groupId>
+			<artifactId>entando-core-engine</artifactId>
+			<version>2.4.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>${project.artifactId}-${project.version}</finalName>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-webdav-jackrabbit</artifactId>
+				<version>1.0</version>
+			</extension>
+		</extensions>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<target>1.6</target>
+					<source>1.6</source>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>1.0-beta-1</version>
+				<executions>
+					<execution>
+						<id>enforce-versions</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<requireMavenVersion>
+									<version>2.2.1</version>
+								</requireMavenVersion>
+								<requireJavaVersion>
+									<version>1.6</version>
+								</requireJavaVersion>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

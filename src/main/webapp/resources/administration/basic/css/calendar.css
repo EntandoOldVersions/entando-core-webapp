@@ -1,0 +1,111 @@
+/* Calendar: a Javascript class for Mootools that adds accessible and unobtrusive date pickers to your form elements <http://electricprism.com/aeron/calendar> */
+	/* Default CSS for Calendar (navigation: 1), Copyright (c) 2007 Aeron Glemann <http://electricprism.com/aeron> */
+.calendarContainer {
+	padding: 0;
+}
+
+.calendarContainer .hidden {
+	opacity: 0;
+	visibility: hidden;
+	/*position: absolute;*/
+}
+
+.calendarContainer .visible {
+	visibility: visible;
+	opacity: 1;
+}
+
+input.calendarContainer {
+	width: 8.3em;
+	text-align: right;
+}
+
+button.calendarContainer {
+	background-image: url("../../common/img/calendar_button.png");
+	background-position: 0 50%;
+	background-repeat: no-repeat;
+	border: none;
+	cursor: pointer;
+	height: 24px;
+	vertical-align: middle;
+	width: 24px;
+	margin: 0 0 0 0.2em;
+	padding: 0;
+}
+
+div.calendarContainer {
+	padding: 0 0.5em;
+	text-align: center;
+}
+
+div.calendarContainer div {
+	cursor: move;
+	padding: 1em;
+}
+
+table.calendar {
+	width: 20em;
+	cursor: default;
+	padding: 0;
+}
+
+table.calendar td {
+	color: #e2e2e2;
+	padding: 0.5em;
+	margin: 0;
+	border: 1px solid #fff;
+}
+
+table.calendar td.valid {
+	color: #000;
+	cursor: pointer;
+	
+}
+table.calendar td.today {
+	color: #545454;
+	border: 1px solid #545454;
+}
+table.calendar td.active {
+	background-color: #E2E2E2;
+	color: #1B2D3E;
+}
+table.calendar td.hover {
+	border: 1px solid black;
+}
+
+table.calendar caption {
+	text-align: center;
+	width: 100%; /* working with ff, gc, ie7 | no ie8 */
+	padding: 0;
+	cursor: move;
+}
+
+div.calendarContainer caption span.month {
+	margin-right: 0.5em;
+}
+
+div.calendarContainer caption a {
+	cursor: pointer;
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	height: 24px;
+	width: 24px;
+	display: block;
+	position: absolute;
+	top: 3em;
+}
+
+div.calendarContainer caption a.prev {
+	background-image: url("../img/calendar_previous.png");
+	left: 9%;
+	background-position: left center;
+}
+
+div.calendarContainer caption a.next {
+	background-image: url("../img/calendar_next.png");
+	background-position: left center;
+	left: 85%;
+}

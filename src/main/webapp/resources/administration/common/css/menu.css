@@ -1,0 +1,155 @@
+/* common */
+
+#menubar h3 {
+	text-transform: uppercase;
+	font-weight: bold;
+	margin: 0;
+}
+
+ul.menu {
+	margin: 0;
+	padding: 0;
+	line-height: 1.2em;
+}
+
+ul.menu li {
+	padding: 0;
+	list-style-type: none;
+}
+
+ul.menu a:link, ul.menu a:visited {
+	border-bottom: none;
+	text-decoration: none;
+}
+
+#header ul.menu {
+	background-color: #c4cbd3;
+	color: #0d253c;
+	position: absolute;
+	margin-top: -1.6em;
+	z-index: 10000;
+}
+
+#header ul.menu li {
+	padding: 2px;
+	margin: 0;
+	background-image: url("../img/header-usermenu-separator.png");
+	background-position: 50% 0; 
+	background-repeat: no-repeat;
+}
+
+#header ul.menu a {
+	text-transform: uppercase;
+	color: #0d253c;
+	font-size: 0.8em;
+	padding: 5px 38px;
+	display: block;
+	z-index: 200;
+}
+
+#header ul.menu a:link, #header ul.menu a:visited {
+	background-position: 5% 50%; 
+	background-repeat: no-repeat;
+}
+
+#header ul.menu a:hover, #header ul.menu a:active {
+	background-color: #ffffff;
+}
+
+a#userbar-start:link, a#userbar-start:visited {
+	background-image: url("../img/icons/userbar-start-normal.png");
+}
+
+a#userbar-start:hover, a#userbar-start:active {
+	background-image: url("../img/icons/userbar-start-hover.png");
+}
+
+a#userbar-myprofile:link, a#userbar-myprofile:visited {
+	background-image: url("../img/icons/userbar-myprofile-normal.png");
+}
+
+a#userbar-myprofile:hover, a#userbar-myprofile:active {
+	background-image: url("../img/icons/userbar-myprofile-hover.png");
+}
+
+a#userbar-portal:link, a#userbar-portal:visited {
+	background-image: url("../img/icons/userbar-portal-normal.png");
+}
+
+a#userbar-portal:hover, a#userbar-portal:active {
+	background-image: url("../img/icons/userbar-portal-hover.png");
+}
+
+a#userbar-signout:link, a#userbar-signout:visited {
+	background-image: url("../img/icons/userbar-signout-normal.png");
+}
+
+a#userbar-signout:hover, a#userbar-signout:active {
+	background-image: url("../img/icons/userbar-signout-hover.png");
+}
+
+#menubar ul.menu {
+	padding: 3px;
+}
+
+#menubar ul.menu a {
+	display: block;
+}
+
+#menubar ul.menu a:hover, #menubar ul.menu a:active {
+	color: #0d253c;
+}
+
+ul.horizontal li {
+	display: inline;
+}
+
+ul.vertical li {
+	line-height: 22px;
+	min-height: 22px;	
+}
+
+ul.vertical li.openmenu {
+	position: relative;
+	background-repeat: no-repeat;	
+}
+
+ul.vertical li.closedmenu {
+	position: relative;
+	background-repeat: no-repeat;	
+}	
+
+ul.vertical a:focus {
+	outline: none;
+}
+
+ul.vertical li.openmenu div.menuToggler {
+	position: absolute;
+	width: 100%;
+	padding: 0;
+	background-color: #1c2d3f;	
+}
+
+ul.tab-toggle-bar {
+	margin: 0 0 1px 0;
+	padding: 0;
+}
+
+ul.tab-toggle-bar li {
+	margin: 0 0.25em;
+	padding: 0;
+}
+
+ul.tab-toggle-bar li a {
+	border-top: 1px solid #dedede;
+	border-left: 1px solid #dedede;
+	border-right: 1px solid #dedede;
+	padding: 0.2em 0.5em;
+	font-weight: normal;
+}
+
+ul.tab-toggle-bar li a.tab-current {
+	background-color: #ffffff;
+	outline: none;
+	font-weight: bold;
+}

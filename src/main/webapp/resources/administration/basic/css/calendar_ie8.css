@@ -1,0 +1,3 @@
+table.calendar caption {
+	width: auto; /* working with ff, ie7, ie8 | no gc */
+}

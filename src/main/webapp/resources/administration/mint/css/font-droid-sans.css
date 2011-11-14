@@ -1,0 +1,15 @@
+/*** Droid Sans - bold ***/
+@font-face {
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Droid Sans Bold'), local('DroidSans-Bold'), url('../fonts/DroidSans-Bold.ttf') format('truetype');
+}
+
+/*** Droid Sans - normal ***/
+@font-face {
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Droid Sans'), local('DroidSans'), url('../fonts/DroidSans.ttf') format('truetype');
+}

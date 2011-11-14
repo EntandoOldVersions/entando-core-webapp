@@ -1,0 +1,23 @@
+fieldset {
+	margin: 0 0 35px 0;
+	padding-top: 0;
+	padding-bottom: 20px;	
+}
+
+legend {
+	margin-top: -14px;
+	margin-bottom: 20px;
+}
+
+table.generic .contentListToolbar td {
+	border-top: 1px solid #50677e;
+}
+
+table.generic .contentListToolbar .multipleActions {
+	background-color: #50677e;
+}
+
+/* WebFont Loader */
+.wf-loading * {
+	visibility: visible;
+}

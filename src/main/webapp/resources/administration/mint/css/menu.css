@@ -1,0 +1,196 @@
+/* mint */
+
+ul.menu li {
+	margin: 4px 0;
+}
+
+ul.menu li li {
+	margin: 0;	
+}
+
+#header ul.menu {
+	width: 242px;
+	margin-top: -36px;
+	padding-top: 10px;
+	padding-bottom: 8px;
+	margin-left: 4px;
+	background-color: rgba(196, 203, 211, 0.5);
+	border: 2px double rgba(150, 150, 150, 0.5);
+	border-top: none;
+}
+
+#header ul.menu li {
+	background-color: rgba(196, 203, 211, 1);
+	line-height: 20px;
+	height: 28px;	
+	width: 231px;
+	margin: 1px auto;
+	padding: 2px 0 0 0;
+}
+
+#header ul.menu a:link, #header ul.menu a:visited {
+	text-shadow: 1px 1px 0 #ffffff;
+}
+
+#menubar h3, #menubar ul.menu a:link, ul.menu a:visited {
+	text-shadow: 1px 1px 2px #000000;		
+}
+
+ul.menu li a.tab-toggle:visited {
+	text-shadow: none;		
+}
+
+#menubar ul.menu a:hover {
+	text-shadow: none;		
+}
+
+#menubar h3 {
+	font-size: 16px;
+	padding-top: 22px;
+	padding-bottom: 11px;
+	padding-left: 0;
+	background-image: url("../img/menubar-heading-background.png");
+	background-position: 2px 10px; 
+	background-repeat: no-repeat;
+}
+
+#menubar h3 span {
+	padding-left: 58px;
+	background-position: 22px 50%; 
+	background-repeat: no-repeat;	
+}
+
+#menubar h3#menubar-components span {
+	background-image: url("../img/icons/24x24/menu-components.png");
+}
+
+#menubar h3#menubar-portal span {
+	background-image: url("../img/icons/24x24/menu-portal.png");
+}
+
+#menubar h3#menubar-cms span {
+	background-image: url("../img/icons/24x24/menu-cms.png");
+}
+
+#menubar h3#menubar-tools span {
+	background-image: url("../img/icons/24x24/menu-tools.png");
+}
+
+#menubar ul.menu {
+	margin-bottom: 8px;
+	font-size: 13px;
+}
+
+#menubar ul.menu {
+	background-image: url("../img/menubar-background-main-ul-top.png");
+	background-position: 50% 0; 
+	background-repeat: no-repeat;
+}
+
+#menubar ul.menu a {
+	padding-left: 56px;
+	background-image: url("../img/dot-orange.png");
+	background-position: 33px 50%; 
+	background-repeat: no-repeat;	
+}
+
+#menubar ul.menu li:hover {
+	background-image: url("../img/menubar-hover-main.png");
+	background-position: 0 0; 
+	background-repeat: no-repeat;
+}
+
+#menubar ul.menu ul a {
+	padding-left: 44px;
+	background-image: url("../img/dot-blue.png");
+	background-position: 22px 50%;
+}
+
+#menubar ul.menu li li:hover {
+	background-image: url("../img/menubar-hover-sub.png");
+	background-position: 4px 50%; 
+	background-repeat: no-repeat;
+}
+
+ul.vertical li.openmenu, #menubar ul.menu li.closedmenu:hover, #menubar ul.menu li.openmenu:hover, #menubar ul.menu li.openmenu:active, #menubar ul.menu li.openmenu:focus {
+	background-position: 0 0;
+	background-image: url("../img/menubar-hover-main-arrow-sprite.png");
+}
+
+ul.vertical li.closedmenu {
+	background-position: 0 -25px;
+	background-image: url("../img/menubar-hover-main-arrow-sprite.png");
+}
+
+#menubar ul.menu li.openmenu:hover a,  #menubar ul.menu li.closedmenu:hover a {
+	color: #e9e9e9;
+}
+
+#menubar ul.menu li.openmenu li a:hover,  #menubar ul.menu li.closedmenu li a:hover {
+	color: #0d253c;
+}
+
+#menubar ul.vertical li.openmenu li.closedmenu {
+	background-image: url("../img/menubar-hover-main-arrow-sprite-sub.png");
+	background-position: center -25px;
+}
+
+#menubar ul.vertical li.openmenu li.closedmenu:hover,
+#menubar ul.vertical li.openmenu li.openmenu {
+	color: #fff;
+	background-image: url("../img/menubar-hover-main-arrow-sprite-sub.png");
+	background-position: center 0;
+}
+
+#menubar ul.vertical li.openmenu li.closedmenu:hover a,
+#menubar ul.vertical li.openmenu li.openmenu a.subMenuToggler {
+	color: #fff;
+}
+
+ul.vertical li.openmenu ul {
+	margin: 0;
+	padding: 8px 0;
+}
+	
+ul.vertical li.openmenu div.menuToggler {
+	left: 258px;
+	width: 185px;
+	margin-top: -22px;
+}
+
+ul.vertical li.openmenu div.menuToggler {
+	background-image: url("../img/menubar-background-sub-border.png");
+	background-position: 0 0;
+	background-repeat: repeat-y;
+}
+
+ul.vertical li.openmenu div.menuToggler-1 {
+	background-image: url("../img/menubar-background-sub-bottom.png");
+	background-position: 0 100%;
+	background-repeat: no-repeat;
+}
+
+ul.vertical li.openmenu div.menuToggler-2 {
+	background-image: url("../img/menubar-background-sub-top.png");
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	min-height: 68px;
+}
+
+ul.vertical li.openmenu div.menuToggler-2 div.menuToggler {
+	left: 185px; 
+}
+
+/* flickering fixes */ 
+body.client-advanced #menubar #menubar_content {
+	overflow: hidden; 
+	visibility: hidden; 
+	opacity: 0;
+	width: 0px;
+}
+
+body.client-advanced #header #header-3 div.accordion_element-menu {
+	overflow: hidden; 
+	visibility: hidden; 
+	opacity: 0;
+}

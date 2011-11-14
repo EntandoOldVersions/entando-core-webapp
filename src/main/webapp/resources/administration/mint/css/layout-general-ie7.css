@@ -1,0 +1,12 @@
+#header-2 {
+	width: 604px;
+}
+
+#header-3 p.welcome {
+	display: inline;
+	margin-top: 29px;
+}
+
+#header-3 p.welcome span {
+	display: inline;
+}

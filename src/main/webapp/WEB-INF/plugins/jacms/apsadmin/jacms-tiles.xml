@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC 
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	
+    <!-- ********* INIZIO Area Gestione Contenuti ********* -->
+    
+    <definition extends="main.layout" name="admin.jacms.content.intro">
+		<put-attribute name="title" value="title.contentManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/content-intro.jsp" />
+	</definition>   
+    <definition extends="main.layout" name="admin.jacms.content.list">
+		<put-attribute name="title" value="title.contentManagement" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/template/extraresources/content_contentFinding.jsp" />		
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/contentFinding.jsp" />
+	</definition>
+	<definition extends="main.layout" name="admin.jacms.content.trash">
+		<put-attribute name="title" value="title.contentManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/trashContent.jsp" />
+	</definition>
+	<definition extends="main.layout" name="admin.jacms.content.inspect">
+		<put-attribute name="title" value="title.contentManagement" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/template/extraresources/content.jsp" />	
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/contentDetails.jsp" />
+	</definition>
+	<definition extends="main.layout" name="admin.jacms.content.new">
+		<put-attribute name="title" value="title.contentManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/newContent.jsp" />
+	</definition>
+	<definition extends="main.layout" name="admin.jacms.content.entry">
+		<put-attribute name="title" value="title.contentManagement" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/template/extraresources/content.jsp" />		
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/entryContent.jsp" />
+	</definition>
+	<definition extends="main.layout" name="admin.jacms.content.references">
+		<put-attribute name="title" value="title.contentManagement" />		
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/contentReferences.jsp" />
+	</definition>
+	
+	<!-- *** Inizio Area Gestione Risorse Contenuti *** -->
+	<definition extends="main.layout" name="admin.jacms.content.findResource.Image">
+		<put-attribute name="title" value="title.contentManagement" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/template/extraresources/resource.jsp" />		
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/resource/imageArchive.jsp" />
+	</definition>
+	<definition extends="main.layout" name="admin.jacms.content.findResource.Attach">
+		<put-attribute name="title" value="title.contentManagement" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/template/extraresources/resource.jsp" />		
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/resource/attachArchive.jsp" />
+	</definition>
+	<!-- *** Fine Area Gestione Risorse Contenuti *** -->
+	
+	<!-- *** Inizio Area Gestione LINK *** -->
+	<definition extends="main.layout" name="admin.jacms.content.chooseLinkType">
+		<put-attribute name="title" value="title.contentManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/linkAttribute/chooseLink.jsp" />
+	</definition>
+	<definition extends="main.layout" name="admin.jacms.content.link.configUrlLinkType">
+		<put-attribute name="title" value="title.contentManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/linkAttribute/configUrlLinkType.jsp" />
+	</definition>
+	<definition extends="main.layout" name="admin.jacms.content.link.configPageLinkType">
+		<put-attribute name="title" value="title.contentManagement" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/template/extraresources/pageTree.jsp" />			
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/linkAttribute/configPageLinkType.jsp" />
+	</definition>
+	<definition extends="main.layout" name="admin.jacms.content.link.configContentLinkType">
+		<put-attribute name="title" value="title.contentManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/linkAttribute/configContentLinkType.jsp" />
+	</definition>
+	<!-- *** Fine Area Gestione LINK *** -->
+    
+    <!-- ********* FINE Area Gestione Contenuti ********* -->
+    
+    <!-- ********* INIZIO Area Gestione Modelli di Contenuto ********* -->
+    <definition extends="main.layout" name="admin.jacms.contentModel.intro">
+		<put-attribute name="title" value="title.generalSettings.contentModels" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/model/model-intro.jsp" />
+	</definition>    
+    <definition extends="main.layout" name="admin.jacms.contentModel.list">
+		<put-attribute name="title" value="title.generalSettings.contentModels" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/model/modelFinding.jsp" />
+	</definition>
+    <definition extends="main.layout" name="admin.jacms.contentModel.entry">
+		<put-attribute name="title" value="title.generalSettings.contentModels" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/template/extraresources/content_entryModel.jsp" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/model/entryModel.jsp" />
+	</definition>
+    <definition extends="main.layout" name="admin.jacms.contentModel.reference">
+		<put-attribute name="title" value="title.generalSettings.contentModels" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/model/modelReferences.jsp" />
+	</definition>
+    <definition extends="main.layout" name="admin.jacms.contentModel.trash">
+		<put-attribute name="title" value="title.generalSettings.contentModels" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/model/trashModel.jsp" />
+	</definition>
+	
+    <!-- ********* INIZIO Area Gestione Modelli di Contenuto ********* -->  
+    
+    <!-- ********* INIZIO Area Gestione Risorse ********* -->
+	
+    <definition extends="main.layout" name="admin.jacms.resource.Image.intro">
+		<put-attribute name="title" value="title.resourceManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/resource/resource-intro.jsp" />
+	</definition>
+    <definition extends="main.layout" name="admin.jacms.resource.Attach.intro">
+		<put-attribute name="title" value="title.resourceManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/resource/resource-intro.jsp" />
+	</definition>
+    <definition extends="main.layout" name="admin.jacms.resource.Image.list">
+		<put-attribute name="title" value="title.resourceManagement" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/template/extraresources/resource.jsp" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/resource/imageArchive.jsp" />
+	</definition>
+	<definition extends="main.layout" name="admin.jacms.resource.Attach.list">
+		<put-attribute name="title" value="title.resourceManagement" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/template/extraresources/resource.jsp" />		
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/resource/attachArchive.jsp" />
+	</definition>
+	<definition extends="main.layout" name="admin.jacms.resource.entry">
+		<put-attribute name="title" value="title.resourceManagement" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/template/extraresources/resource.jsp" />		
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/resource/entryResource.jsp" />
+	</definition>
+	<definition extends="main.layout" name="admin.jacms.resource.references">
+		<put-attribute name="title" value="title.resourceManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/resource/resourceReferences.jsp" />
+	</definition>
+	<definition extends="main.layout" name="admin.jacms.resource.trash">
+		<put-attribute name="title" value="title.resourceManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/resource/trashResource.jsp" />
+	</definition>
+	
+	<definition extends="main.layout" name="admin.jacms.resource.porting22.intro">
+		<put-attribute name="title" value="title.resourceManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/resource/introPorting22.jsp" />
+	</definition>
+	<definition extends="main.layout" name="admin.jacms.resource.porting22.execute">
+		<put-attribute name="title" value="title.resourceManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/resource/executePorting22.jsp" />
+	</definition>
+	
+	<!-- ********* FINE Area Gestione Risorse ********* -->
+    
+    <!-- ********* INIZIO Area Amministrazione Contenuti ********* -->
+    
+    <definition extends="main.layout" name="admin.jacms.content.contentIndexFunctions">
+		<put-attribute name="title" value="menu.reload.contents" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/contentIndexFunctions.jsp" />
+	</definition>
+	
+	<!-- ********* FINE Area Amministrazione Contenuti ********* -->
+	
+	<!-- INIZIO Area Gestione Configurazione Showlet Speciali -->
+	
+	<definition extends="main.layout" name="admin.jacms.page.showlet.contentViewer.config">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/specialshowlet/contentViewer/configContentViewer.jsp" />
+	</definition>
+	<definition extends="main.layout" name="admin.jacms.page.showlet.contentListViewer.config">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/specialshowlet/contentListViewer/configContentListViewer.jsp" />
+	</definition>
+	<definition extends="main.layout" name="admin.jacms.page.showlet.contentViewer.searchContents">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/specialshowlet/contentViewer/contentFinding.jsp" />
+	</definition>
+	<definition extends="main.layout" name="admin.jacms.page.showlet.contentListViewer.entryFilter">
+		<put-attribute name="title" value="title.pageManagement" />
+		<put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/template/extraresources/entryFilter.jsp" />		
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/specialshowlet/contentListViewer/entryFilter.jsp" />
+	</definition>	
+	
+	<!-- FINE Area Gestione Configurazione Showlet Speciali -->
+	
+	<!-- ********* INIZIO Area Gestione Entità ********* -->
+	<definition extends="main.layout" name="admin.jacms.entityManagement.viewEntityTypes">
+		<put-attribute name="title" value="title.entityManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/entity/entity-type-list.jsp" />
+	</definition>
+	
+    <definition extends="main.layout" name="admin.jacms.entityManagement.viewEntityType">
+		<put-attribute name="title" value="title.entityManagement" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/entity/content-type-entry.jsp" />
+	</definition>
+    <!-- ********* FINE Area Gestione Entità ********* -->
+	
+</tiles-definitions>
