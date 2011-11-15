@@ -3,7 +3,7 @@
 
 <h1><a href="<s:url action="viewTree" namespace="/do/Page" />" title="<s:text name="note.goToSomewhere" />: <s:text name="title.pageManagement" />"><s:text name="title.pageManagement" /></a></h1>
 
-<div id="main">POBA
+<div id="main">
 
 <h2><s:text name="title.configPage" /></h2>
 
