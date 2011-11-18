@@ -148,7 +148,7 @@
 					<s:if test="!onEditContent">
 						<s:if test="#myClient == 'advanced'">
 							<%//TODO insert icon and i18n label for "permalink" --%>
-							<a class="imageInfoToggler" href="<s:property value="URLoriginal" />" >[P]</a>
+							<a class="imageInfoToggler" href="<s:property value="URLoriginal" />" ><img src="<wp:resourceURL />administration/common/img/icons/22x22/detail.png" alt="<s:text name="label.view" />" title="<s:text name="label.view" />" /></a>
 						</s:if>
 						<s:else>
 							<a href="<s:property value="%{#resource.getImagePath(0)}" />" ><s:text name="label.size.original" /></a><br />
@@ -177,41 +177,28 @@
 					</span>
 				</dt>
 				<s:if test="!onEditContent">
-					<dd class="imageInfo">
-						<table>
-							<tr>
-								<td align="right" colspan="3">
-									<%//TODO insert i18n label close  %>
-									<span class="slidecrab-closer">close</span>
-								</td>
-							</tr>
+					<dd class="imageInfo monospace">
+						<span class="slidecrab-closer"><s:text name="label.close" /></span>
+						<ul>
 							<s:set var="dimensionId" value="0" />
 							<s:set var="resourceInstance" value='%{#resource.getInstance(#dimensionId,null)}' />
-							<tr>
-								<td align="right">
-										<span class="monospace">Original File</span>
-								</td>
-								<%//TODO check if reaplaceAll of spaces with &nbsp; is a good thing  %>
-								<td align="right"><s:property value='#resourceInstance.fileLength.replaceAll(" ", "&nbsp;")' escapeXml="false" escapeHtml="false" escapeJavaScript="false" /></td>
-								<td><a href="<s:property value="%{#resource.getImagePath(#dimensionId)}" />"><s:property value="#resourceInstance.fileName" /></a></td>
-							</tr>
+							<%//TODO check if reaplaceAll of spaces with &nbsp; is a good thing  %>
+							<li>
+								<a href="<s:property value="%{#resource.getImagePath(#dimensionId)}" />"><span class="filehandler"><s:text name="label.size.original" /></span><span class="filesize"><s:property value='#resourceInstance.fileLength.replaceAll(" ", "&nbsp;")' escapeXml="false" escapeHtml="false" escapeJavaScript="false" /></span></a>
+							</li>
 							<s:set var="dimensionId" value="null" />
 							<s:set var="resourceInstance" value="null" />
 							<s:iterator value="#imageDimensionsVar" var="dimInfo">
 								<s:set var="dimensionId" value="#dimInfo.idDim" />
 								<s:set var="resourceInstance" value='%{#resource.getInstance(#dimensionId,null)}' />
 								<s:if test="#resourceInstance != null">
-									<tr>
-										<td align="right">
-												<span class="monospace"><s:property value="#dimInfo.dimx" />x<s:property value="#dimInfo.dimy" />&nbsp;px</span>
-										</td>
-										<%//TODO check if reaplaceAll of spaces with &nbsp; is a good thing  %>
-										<td align="right"><s:property value='#resourceInstance.fileLength.replaceAll(" ", "&nbsp;")' escapeXml="false" escapeHtml="false" escapeJavaScript="false" /></td>
-										<td><a href="<s:property value="%{#resource.getImagePath(#dimensionId)}" />"><s:property value="#resourceInstance.fileName" /></a></td>
-									</tr>
+							<li>
+									<a href="<s:property value="%{#resource.getImagePath(#dimensionId)}" />"><span class="filehandler"><s:property value="#dimInfo.dimx" />x<s:property value="#dimInfo.dimy" />&nbsp;px</span><span class="filesize"><s:property value='#resourceInstance.fileLength.replaceAll(" ", "&nbsp;")' escapeXml="false" escapeHtml="false" escapeJavaScript="false" /></span></a>
+									<%//TODO check if reaplaceAll of spaces with &nbsp; is a good thing  %>				
+							</li>
 								</s:if>
 							</s:iterator>
-						</table>
+						</ul>
 					</dd>
 				</s:if>
 			</s:if>
