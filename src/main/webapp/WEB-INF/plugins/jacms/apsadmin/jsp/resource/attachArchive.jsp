@@ -137,7 +137,7 @@
 		<span>
 			<s:if test="!onEditContent">
 				<s:if test="#myClient == 'advanced'">
-					<a href="<s:property value="%{#resource.documentPath}" />" title="<s:text name="label.download" />: <s:property value="#resource.descr" />">[D]</a>
+					<a href="<s:property value="%{#resource.documentPath}" />" title="<s:text name="label.download" />: <s:property value="#resource.descr" />"><img src="<wp:resourceURL />administration/common/img/icons/go-down.png" alt="<s:text name="label.download" />" title="<s:text name="label.download" />" /></a>
 				</s:if>
 				<s:else>
 					<a href="<s:property value="%{#resource.documentPath}" />" title="<s:text name="label.download" />: <s:property value="#resource.descr" />"><s:text name="label.download" /></a><br />
