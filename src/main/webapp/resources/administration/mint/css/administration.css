@@ -684,16 +684,16 @@ dl.gallery-left {
 dl.gallery .image {
 	float: left;
 	width: 110px;
-	border-top: 1px solid #252525;
-	border-left: 1px solid #252525;
-	border-bottom: 1px solid #545454;
-	border-right: 1px solid #252525;
+	border-top: 1px solid #1A2C3D;
+	border-left: 1px solid #1A2C3D;
+	border-bottom: 1px solid #1A2C3D;
+	border-right: 1px solid #1A2C3D;
 	margin: 0;
 	padding: 0;
 	text-align: center;
 	height: 83px;
 	overflow: hidden;
-	background-color: #7D7D7D;
+	background-color: #C1C8D0;
 
 	-webkit-box-shadow: 1px 1px 1px 1px #868686;
 	-moz-box-shadow: 1px 1px 1px 1px #868686;
@@ -739,7 +739,7 @@ dl.gallery .options {
 	clear: left;
 	margin: 0;
 	padding: 0;
-	background-color: #545454;
+	background-color: #1A2C3D;
 	color: #fff;
 	position: relative;
 	min-height: 30px;
@@ -787,7 +787,7 @@ dl.gallery .options a:visited {
 dl.gallery .options a:hover,
 dl.gallery .options a:active,
 dl.gallery .options a:focus {
-	background-color: #3D3D3D;
+	background-color: #C1C8D0;
 	/*border: 1px solid #545454;*/
 }
 
@@ -800,7 +800,7 @@ dl.gallery dt.fileinfo {
 	/*clear: left;*/
 	margin: 0;
 	padding: 0;
-	background-color: #545454;
+	background-color: #1A2C3D;
 	color: #fff;
 	position: relative;
 	min-height: 30px;
@@ -857,7 +857,8 @@ dl.gallery dd {
 
 dl.gallery dd.imageInfo {
 	/*overflow: hidden;*/
-	background-color: #7D7D7D;
+	font-weight: bold;
+	background-color: rgba(159, 99, 4, 0.9);
 	z-index: 1000;
 	left: 115px;
 	height: auto;
@@ -874,18 +875,62 @@ dl.gallery dd.imageInfo {
 	box-shadow: 1px 1px 1px 1px rgba(0,0,0 0.5);
 }
 
-dl.gallery dd.imageInfo table {
+dl.gallery dd.imageInfo ul {
 	width: 100%;
 	border: 0;
 	padding: 0;
-	margin: 0;
+	margin: 4px;
+	list-style-type: none;
 }
 
-dl.gallery dd.imageInfo a:link,
-dl.gallery dd.imageInfo a:visited {
-	color: #fff;
-	border-bottom-color: #fff;
+dl.gallery dd.imageInfo li a {
+	display: block;
+	width: 90%;
+	padding: 4px;
+	margin: 0 auto;
 }
+
+dl.gallery dd.imageInfo li {
+	position: relative;
+}
+
+dl.gallery dd.imageInfo li .filehandler {
+	display: inline-block;
+	text-align: right;
+	width: 120px;
+}
+
+dl.gallery dd.imageInfo li .filesize {
+	position: absolute;
+	right: 10px;
+}
+
+dl.gallery dd.imageInfo .slidecrab-closer {
+	display: block;
+	text-align: right;
+	margin: 4px 0 0 0;
+	padding: 0 4px;
+	border-bottom: 1px solid #ffffff;
+}
+
+dl.gallery dd.imageInfo li a:link,
+dl.gallery dd.imageInfo li a:visited {
+	text-decoration: none;
+	border-bottom: none;
+	color: #ffffff;
+	-webkit-transition: all 100ms ease-in-out;
+	-moz-transition: all 100ms ease-in-out;
+	-o-transition: all 100ms ease-in-out;
+	transition: all 100ms ease-in-out;	
+}
+
+dl.gallery dd.imageInfo li a:hover,
+dl.gallery dd.imageInfo li a:active,
+dl.gallery dd.imageInfo li a:focus {
+	background-color: #f1f2f3;
+	color: #383838;
+}
+
 dl.gallery dd.imageInfo .slidecrab-closer {
 	cursor: pointer;
 }
