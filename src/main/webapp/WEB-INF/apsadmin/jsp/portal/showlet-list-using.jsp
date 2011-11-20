@@ -14,14 +14,10 @@
 <s:set var="showletTypeApiMappingsVar" value="showletTypeApiMappings" />
 <s:set var="showletUtilizers" value="showletUtilizers"></s:set>
 <s:if test="!#showletTypeVar.isLogic()">
-<s:set var="relatedApiMethodVar" value="#showletTypeApiMappingsVar[#showletTypeVar.code]" />
+	<s:set var="relatedApiMethodVar" value="#showletTypeApiMappingsVar[#showletTypeVar.code]" />
 </s:if>
 <s:else>
-<s:set var="relatedApiMethodVar" value="#showletTypeApiMappingsVar[#showletTypeVar.parentType.code]" />
-<a href="<s:url action="newService" namespace="/do/Api/Service">
-	<s:param name="showletTypeCode" value="showletTypeCode" />
-	<s:param name="apiMethodName" value="#relatedApiMethodVar.methodName" />
-</s:url>" title="** CREA SERVIZIO DA API : <s:property value="#relatedApiMethodVar.methodName" /> **">** API SERVICE <s:property value="#relatedApiMethodVar.methodName" /> FROM THIS LOGIC SHOWLET **</a>
+	<s:set var="relatedApiMethodVar" value="#showletTypeApiMappingsVar[#showletTypeVar.parentType.code]" />
 </s:else>
 <s:if test="#showletUtilizers != null && #showletUtilizers.size() > 0">
 
@@ -71,6 +67,14 @@
 						<s:param name="framePos" value="#rowstatus.index" />
 						<s:param name="apiMethodName" value="#relatedApiMethodVar.methodName" />
 					</s:url>" title="<s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#relatedApiMethodVar.methodName" />"><img src="<wp:resourceURL />administration/common/img/icons/16x16/api-service-new.png" alt="<s:text name="label.new" />" /></a>
+				</wp:ifauthorized>
+				</s:if>
+				<s:if test="null != #relatedApiMethodVar && #showletTypeVar.isLogic()">
+				<wp:ifauthorized permission="superuser">				
+				<a class="noborder" href="<s:url action="newService" namespace="/do/Api/Service">
+						<s:param name="showletTypeCode" value="showletTypeCode" />
+						<s:param name="apiMethodName" value="#relatedApiMethodVar.methodName" />
+				</s:url>" title="<s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#relatedApiMethodVar.methodName" />"><img src="<wp:resourceURL />administration/common/img/icons/16x16/api-service-new.png" alt="<s:text name="label.new" />" /></a>				
 				</wp:ifauthorized>
 				</s:if>
 				<a class="noborder" href="<s:url action="trashShowletFromPage" namespace="/do/Portal/ShowletType">
