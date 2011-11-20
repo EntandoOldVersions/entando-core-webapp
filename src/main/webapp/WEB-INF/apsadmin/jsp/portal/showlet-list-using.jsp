@@ -18,8 +18,8 @@
 </s:if>
 <s:else>
 <s:set var="relatedApiMethodVar" value="#showletTypeApiMappingsVar[#showletTypeVar.parentType.code]" />
-<a href="<s:url action="newServiceFromLogicType" namespace="/do/Api/Service">
-	<s:param name="logicShowletTypeCode" value="#concreteShowletTypeVar.code" />
+<a href="<s:url action="newService" namespace="/do/Api/Service">
+	<s:param name="showletTypeCode" value="showletTypeCode" />
 	<s:param name="apiMethodName" value="#relatedApiMethodVar.methodName" />
 </s:url>" title="** CREA SERVIZIO DA API : <s:property value="#relatedApiMethodVar.methodName" /> **">** API SERVICE <s:property value="#relatedApiMethodVar.methodName" /> FROM THIS LOGIC SHOWLET **</a>
 </s:else>

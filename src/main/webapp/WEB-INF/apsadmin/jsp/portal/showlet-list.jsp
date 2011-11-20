@@ -119,8 +119,8 @@
 		</s:elseif>
 		<s:if test="null != #relatedApiMethodVar">
 			<s:if test="#concreteShowletTypeVar.isLogic()">
-				<s:url action="newServiceFromLogicType" namespace="/do/Api/Service" var="newServiceUrlVar">
-					<s:param name="apiMethodName" value="#relatedApiMethodVar.methodName" /><s:param name="logicShowletTypeCode" value="#concreteShowletTypeVar.code" />
+				<s:url action="newService" namespace="/do/Api/Service" var="newServiceUrlVar">
+					<s:param name="apiMethodName" value="#relatedApiMethodVar.methodName" /><s:param name="showletTypeCode" value="#concreteShowletTypeVar.code" />
 				</s:url>
 			</s:if>
 			<s:else>
