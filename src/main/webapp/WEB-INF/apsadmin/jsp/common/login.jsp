@@ -115,9 +115,7 @@
 	<%-- OPZIONE PER INTERFACCIA ALL MENTA --%>
 	<p class="centerText">
 		<s:submit cssClass="button uppercase" name="backend_client_gui" value="normal" />
-		<s:submit cssClass="button uppercase" name="backend_client_gui" value="advanced" />		
-		<!-- <wpsf:radio useTabindexAutoIncrement="true" name="backend_client_gui" id="client-normal" value="normal" checked="true" /><label for="client-normal" class="right"><s:text name="name.client.basic" /></label><br />
-		<wpsf:radio useTabindexAutoIncrement="true" name="backend_client_gui" id="client-advanced" value="advanced" /><label for="client-advanced" class="right"><s:text name="name.client.mint" /></label> -->
+		<s:submit cssClass="button uppercase" name="backend_client_gui" value="advanced" />
 	</p>
 
 </div>
