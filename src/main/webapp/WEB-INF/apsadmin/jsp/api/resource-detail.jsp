@@ -145,4 +145,16 @@ AVAILABLE
 
 <br />
 <br />
+-----------------------------------
 <br />
+UPDATE ALL METHOD STATUS
+<br />
+
+<s:form namespace="/do/Api/Resource" action="updateAllMethodStatus">
+<wpsf:hidden name="resourceName" value="%{#apiResourceVar.resourceName}" />
+ACTIVE? <wpsf:checkbox name="active" value="true" />
+<br />
+<s:select name="methodAuthority" list="methodAuthorityOptions" listKey="key" listValue="value" />
+<wpsf:submit action="updateAllMethodStatus" useTabindexAutoIncrement="true" value="%{getText('label.update')}" cssClass="button" />
+<wpsf:submit action="resetAllMethodStatus" useTabindexAutoIncrement="true" value="%{getText('label.reset')}" cssClass="button" />
+</s:form>
