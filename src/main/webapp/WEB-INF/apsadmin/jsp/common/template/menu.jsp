@@ -67,7 +67,7 @@
 	<li class="openmenu"><a href="#" rel="fagiano_apis" class="subMenuToggler" id="menu_apis"><s:text name="menu.apisAdmin" /></a>
 		<div class="menuToggler" id="fagiano_apis"><div class="menuToggler-1"><div class="menuToggler-2">
 		<ul>
-			<li><a href="<s:url action="list" namespace="/do/Api/Method" />" ><s:text name="menu.apisAdmin.methods" /></a></li>
+			<li><a href="<s:url action="list" namespace="/do/Api/Resource" />" ><s:text name="menu.apisAdmin.resources" /></a></li>
 			<li><a href="<s:url action="list" namespace="/do/Api/Service" />" ><s:text name="menu.apisAdmin.services" /></a></li>
 		</ul>
 		</div></div></div>
