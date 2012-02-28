@@ -3,6 +3,9 @@
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 
+Description: <s:property value="#methodVar.description" />
+<br />
+
 Requires Authentication? <s:property value="#methodVar.requiredAuth || (null != #methodVar.requiredPermission)" /> (DEFAULT <s:property value="#methodVar.defaultRequiredAuth || (null != #methodVar.defaultRequiredPermission)" />)
 <s:if test="null != #methodVar.requiredPermission" >
 <br />
