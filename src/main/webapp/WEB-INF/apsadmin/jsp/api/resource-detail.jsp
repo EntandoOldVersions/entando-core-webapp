@@ -15,9 +15,12 @@
 	</a>
 </h1>
 <div id="main">
+
+	<h2><s:text name="title.apiResourceEdit" /></h2>
+
 	<s:if test="hasActionMessages()">
 		<div class="message message_confirm">
-		<h2><s:text name="messages.confirm" /></h2>
+		<h3><s:text name="messages.confirm" /><<h3>
 		<ul>
 			<s:iterator value="actionMessages">
 				<li><s:property escape="false" /></li>
@@ -25,6 +28,12 @@
 		</ul>
 		</div>
 	</s:if>
+
+	<p>
+		<s:text name="note.workingOn" />: <em><s:property value="#apiResourceVar.resourceName" />&#32;(<s:property value="#apiResourceVar.source" />&#32;/&#32;<s:property value="#apiResourceVar.pluginCode" />)</em>
+
+	</em>
+
 
 	<ul class="menu horizontal tab-toggle-bar">
 		<li>
@@ -134,3 +143,4 @@
 		</div>
 	</div>
 </div>
+
