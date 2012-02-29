@@ -20,7 +20,7 @@
 
 	<s:if test="hasActionMessages()">
 		<div class="message message_confirm">
-		<h3><s:text name="messages.confirm" /><<h3>
+		<h3><s:text name="messages.confirm" /><h3>
 		<ul>
 			<s:iterator value="actionMessages">
 				<li><s:property escape="false" /></li>
@@ -30,15 +30,13 @@
 	</s:if>
 
 	<p>
-		<s:text name="note.workingOn" />: <em><s:property value="#apiResourceVar.resourceName" />&#32;(<s:property value="#apiResourceVar.source" />&#32;/&#32;<s:property value="#apiResourceVar.pluginCode" />)</em>
-
-	</em>
-
+		<s:text name="note.workingOn" />: <em><s:property value="#apiResourceVar.resourceName" />&#32;(<s:property value="#apiResourceVar.source" /><s:if test="%{#apiResourceVar.pluginCode != null && #apiResourceVar.pluginCode.length() > 0}">&#32;/&#32;<s:property value="#apiResourceVar.pluginCode" /></s:if>)</em>
+	</p>
 
 	<ul class="menu horizontal tab-toggle-bar">
 		<li>
-			<a href="#info" id="info_tab_quickmenu" class="tab-toggle">
-				<abbr title="<s:text name="title.contentInfo" />"><s:text name="label.general" /></abbr>
+			<a href="#general" id="info_tab_quickmenu" class="tab-toggle">
+				<s:text name="label.general" />
 			</a>
 		</li>
 		<li>
@@ -64,30 +62,30 @@
 	</ul>
 
 	<div class="tab-container">
-		<div id="info" class="tab">
+		<div id="general" class="tab">
 			<dl class="table-display">
 				<dt>
-					Name
+					<s:text name="label.api.resource.name" />
 				</dt>
 					<dd><s:property value="#apiResourceVar.resourceName" /></dd>
 				<dt>
-					Description
+					<s:text name="label.api.resource.description" />
 				</dt>
 					<dd><s:property value="#apiResourceVar.description" /></dd>
 				<dt>
-					Source
+					<s:text name="label.api.resource.source" />
 				</dt>
 					<dd><s:property value="#apiResourceVar.source" /></dd>
 				<dt>
-					Plugin
+					<s:text name="label.api.resource.plugin" />
 				</dt>
 					<dd><s:property value="#apiResourceVar.pluginCode" /><s:if test="#apiResourceVar.pluginCode == null||#apiResourceVar.pluginCode.length == 0"><abbr title="none">&ndash;</abbr></s:if></dd>
 				<dt>
-					Resoure URI
+					<s:text name="label.api.resource.uri" />
 				</dt>
 					<dd><wp:info key="systemParam" paramName="applicationBaseURL" />api/rs/<wp:info key="defaultLang" />/<s:property value="#apiResourceVar.resourceName" /></dd>
 				<dt>
-					Extension
+					<s:text name="label.api.resource.extensions" />
 				</dt>
 					<dd>
 						".xml" for xml response format (default)
@@ -98,22 +96,22 @@
 			<div class="subsection margin-more-top">
 				<s:form namespace="/do/Api/Resource" action="updateAllMethodStatus">
 					<fieldset>
-						<legend>All Methods Options</legend>
+						<legend><s:text name="label.api.options.for.all" /></legend>
 						<p>
 							<wpsf:hidden name="resourceName" value="%{#apiResourceVar.resourceName}" />
 							<wpsf:checkbox name="active" value="true" id="all_active" cssClass="radiocheck" />
-							<label for="all_active" class="">
-								Active
+							<label for="all_active">
+								<s:text name="label.active" />
 							</label>
 						</p>
 						<p>
-							<label for="all_auth" class="basic-mint-label">Authorization:</label>
-							<s:select name="methodAuthority" list="methodAuthorityOptions" listKey="key" listValue="value" id="all_auth" />
+							<label for="all_auth" class="basic-mint-label"><s:text name="label.api.authorization" />:</label>
+							<s:select name="methodAuthority" list="methodAuthorityOptions" listKey="key" listValue="value" id="all_auth"  />
 						</p>
 						<p class="centerText">
-							<wpsf:submit action="updateAllMethodStatus" useTabindexAutoIncrement="true" value="%{getText('Update')}" cssClass="button" />
+							<wpsf:submit action="updateAllMethodStatus" useTabindexAutoIncrement="true" value="%{getText('label.update')}" cssClass="button" />
 							&#32;
-							<wpsf:submit action="resetAllMethodStatus" useTabindexAutoIncrement="true" value="%{getText('Reset to Default')}" cssClass="button" />
+							<wpsf:submit action="resetAllMethodStatus" useTabindexAutoIncrement="true" value="%{getText('label.reset.default')}" cssClass="button" />
 						</p>
 					</fieldset>
 				</s:form>

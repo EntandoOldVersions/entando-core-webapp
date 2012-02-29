@@ -29,15 +29,15 @@
 	<s:set var="resourceFlavoursVar" value="resourceFlavours" />
 	<s:if test="#resourceFlavoursVar.size() > 0">
 		<table class="generic" summary="<s:text name="note.api.apiResourceList.summary" />">
-			<caption><span><s:text name="title.api.apiResourceList" /></span></caption>
+			<caption><span><s:text name="title.api.apiResourcesList" /></span></caption>
 			<tr>
 				<th><s:text name="name.api.resource" /></th>
 				<th><s:text name="label.description" /></th>
 				<th><s:text name="label.flavour" /></th>
-				<th class="icon">GET</th>
-				<th class="icon">POST</th>
-				<th class="icon">PUT</th>
-				<th class="icon">DELETE</th>
+				<th class="icon"><abbr title="GET">G</abbr></th>
+				<th class="icon"><abbr title="POST">P</abbr></th>
+				<th class="icon"><abbr title="PUT">P</abbr></th>
+				<th class="icon"><abbr title="DELETE">D</abbr></th>
 			</tr>
 			<s:iterator var="resourceFlavourVar" value="#resourceFlavoursVar">
 				<s:iterator var="resourceVar" value="#resourceFlavourVar" >
@@ -46,34 +46,31 @@
 							<s:url var="detailActionURL" action="detail" namespace="/do/Api/Resource"><s:param name="resourceName" value="#resourceVar.resourceName" /></s:url>
 							<a href="<s:url action="detail" namespace="/do/Api/Resource"><s:param name="resourceName" value="#resourceVar.resourceName" /></s:url>" ><s:property value="#resourceVar.resourceName" /></a>
 							<s:if test="#resourceVar.getMethod != null" >
-								<s:if test="#resourceVar.getMethod.canSpawnOthers">&emsp;<a class="icon noBorder noborder no-border" href="<s:url action="newService" namespace="/do/Api/Service"><s:param name="apiMethodName" value="#resourceVar.resourceName" /></s:url>" title="<s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#resourceVar.resourceName" />"><img src="<wp:resourceURL />administration/common/img/icons/22x22/api-service-new.png" alt="<s:text name="label.new" />" /></a></s:if>
+								<s:if test="#resourceVar.getMethod.canSpawnOthers">&emsp;<a class="icon noborder" href="<s:url action="newService" namespace="/do/Api/Service"><s:param name="apiMethodName" value="#resourceVar.resourceName" /></s:url>" title="<s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#resourceVar.resourceName" />"><img src="<wp:resourceURL />administration/common/img/icons/22x22/api-service-new.png" alt="<s:text name="label.new" />" /></a></s:if>
 							</s:if>
 						</td>
-						<td>
-							<s:property value="#resourceVar.description" />
-						</td>
-						<td class="monospace">
-							<s:property value="#resourceVar.source" />/<s:property value="#resourceVar.sectionCode" />
-						</td>
 
-						<s:set var="icon_off"><img src="<wp:resourceURL />administration/common/img/icons/generic-status-ko.png" alt="Disabled" title="Disabled" /></s:set>
-						<s:set var="icon_free"><img src="<wp:resourceURL />administration/common/img/icons/generic-status-ok.png" alt="Free" title="Active, Free Access" /></s:set>
-						<s:set var="icon_auth"><img src="<wp:resourceURL />administration/common/img/icons/22x22/api-authentication.png" alt="Active, Authentication Required" title="Active, requires Authentication" /></s:set>
-						<s:set var="icon_lock"><img src="<wp:resourceURL />administration/common/img/icons/22x22/api-authorization.png"  alt="Active, Authorization Required" title="Active, requires Authorization" /></s:set>
+						<td><s:property value="#resourceVar.description" /></td>
+
+						<td class="monospace"><s:property value="#resourceVar.source" />&#32;/&#32;<s:property value="%{#resourceVar.sectionCode}" /></td>
+
+						<s:set var="icon_off"><img src="<wp:resourceURL />administration/common/img/icons/generic-status-ko.png" alt="<s:text name="api.resource.status.off" />" title="<s:text name="api.resource.status.off" />" /></s:set>
+						<s:set var="icon_free"><img src="<wp:resourceURL />administration/common/img/icons/generic-status-ok.png" alt="<s:text name="api.resource.status.free" />" title="<s:text name="api.resource.status.free" />" /></s:set>
+						<s:set var="icon_auth"><img src="<wp:resourceURL />administration/common/img/icons/22x22/api-authentication.png" alt="<s:text name="api.resource.status.auth.alt" />" title="<s:text name="api.resource.status.auth" />" /></s:set>
+						<s:set var="icon_lock"><img src="<wp:resourceURL />administration/common/img/icons/22x22/api-authorization.png"  alt="<s:text name="api.resource.status.lock.alt" />" title="<s:text name="api.resource.status.lock" />" /></s:set>
+						<%-- GET --%>
 						<td class="icon">
 							<s:if test="#resourceVar.getMethod != null" >
 								<a href="<s:property value="#detailActionURL" escapeHtml="false" />#GET_tab">
-								<s:if test="!#resourceVar.getMethod.active" ><s:property value="#icon_off" escapeHtml="false" /></s:if>
-								<s:elseif test="#resourceVar.getMethod.requiredPermission != null" ><s:property value="#icon_lock" escapeHtml="false" /></s:elseif>
-								<s:elseif test="#resourceVar.getMethod.requiredAuth" ><s:property value="#icon_auth" escapeHtml="false" /></s:elseif>
-								<s:else><s:property value="#icon_free" escapeHtml="false" /></s:else>
-								<%--
-								<s:if test="#resourceVar.getMethod.canSpawnOthers"><a href="<s:url action="newService" namespace="/do/Api/Service"><s:param name="apiMethodName" value="#resourceVar.resourceName" /></s:url>" title="<s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#resourceVar.resourceName" />"><img src="<wp:resourceURL />administration/common/img/icons/22x22/api-service-new.png" alt="<s:text name="label.new" />" /></a></s:if>
-								--%>
+									<s:if test="!#resourceVar.getMethod.active" ><s:property value="#icon_off" escapeHtml="false" /></s:if>
+									<s:elseif test="#resourceVar.getMethod.requiredPermission != null" ><s:property value="#icon_lock" escapeHtml="false" /></s:elseif>
+									<s:elseif test="#resourceVar.getMethod.requiredAuth" ><s:property value="#icon_auth" escapeHtml="false" /></s:elseif>
+									<s:else><s:property value="#icon_free" escapeHtml="false" /></s:else>
 								</a>
 							</s:if>
-							<s:else><abbr title="Not Available">&ndash;</abbr></s:else>
+							<s:else><abbr title="<s:text name="api.resource.status.na" />">&ndash;</abbr></s:else>
 						</td>
+						<%-- POST --%>
 						<td class="icon">
 							<s:if test="#resourceVar.postMethod != null" >
 								<a href="<s:property value="#detailActionURL" escapeHtml="false" />#POST_tab">
@@ -83,8 +80,9 @@
 									<s:else><s:property value="#icon_free" escapeHtml="false" /></s:else>
 								</a>
 							</s:if>
-							<s:else><abbr title="Not Available">&ndash;</abbr></s:else>
+							<s:else><abbr title="<s:text name="api.resource.status.na" />">&ndash;</abbr></s:else>
 						</td>
+						<%-- PUT --%>
 						<td class="icon">
 							<s:if test="#resourceVar.putMethod != null" >
 								<a href="<s:property value="#detailActionURL" escapeHtml="false" />#PUT_tab">
@@ -94,8 +92,9 @@
 									<s:else><s:property value="#icon_free" escapeHtml="false" /></s:else>
 								</a>
 							</s:if>
-							<s:else><abbr title="Not Available">&ndash;</abbr></s:else>
+							<s:else><abbr title="<s:text name="api.resource.status.na" />">&ndash;</abbr></s:else>
 						</td>
+						<%-- DELETE --%>
 						<td class="icon">
 							<s:if test="#resourceVar.deleteMethod != null" >
 								<a href="<s:property value="#detailActionURL" escapeHtml="false" />#DELETE_tab">
@@ -105,7 +104,7 @@
 									<s:else><s:property value="#icon_free" escapeHtml="false" /></s:else>
 								</a>
 							</s:if>
-							<s:else><abbr title="Not Available">&ndash;</abbr></s:else>
+							<s:else><abbr title="<s:text name="api.resource.status.na" />">&ndash;</abbr></s:else>
 						</td>
 						<%--
 						<td class="monospace">
