@@ -35,23 +35,23 @@
 			<s:text name="label.api.resource.method.schemas" />
 		</dt>
 			<dd class="schemas">
-				<s:if test='%{!#methodVar.httpMethod.toString().equalsIgnoreCase("GET")}'>
+				<s:if test='%{#methodVar.httpMethod.toString().equalsIgnoreCase("POST") || #methodVar.httpMethod.toString().equalsIgnoreCase("PUT")}'>
 					<p class="schema-get">
-						<s:url action="requestSchema" namespace="/do/Api/Resource" var="requestSchemaURL">
+						<s:url action="requestSchema" namespace="/do/Api/Resource" var="requestSchemaURLVar">
 							<s:param name="resourceName" value="#methodVar.resourceName" />
 							<s:param name="httpMethod" value="#methodVar.httpMethod" />
 						</s:url>
-						<a title="<s:property value="#requestSchemaURL" escapeHtml="false" />" href="<s:property value="#requestSchemaURL" escapeHtml="false" />" >
+						<a title="<s:property value="#requestSchemaURL" escapeHtml="false" />" href="<s:property value="#requestSchemaURLVar" escapeHtml="false" />" >
 							<s:text name="label.api.resource.method.schemas.req" />
 						</a>
 					</p>
 				</s:if>
 				<p class="schema-post">
-					<s:url action="responseSchema" namespace="/do/Api/Resource" var="responseSchema">
+					<s:url action="responseSchema" namespace="/do/Api/Resource" var="responseSchemaURLVar">
 						<s:param name="resourceName" value="#methodVar.resourceName" />
 						<s:param name="httpMethod" value="#methodVar.httpMethod" />
 					</s:url>
-					<a title="<s:property value="#responseSchemaURL" escapeHtml="false" />" href="<s:property value="#responseSchemaURL" escapeHtml="false" />" >
+					<a title="<s:property value="#responseSchemaURL" escapeHtml="false" />" href="<s:property value="#responseSchemaURLVar" escapeHtml="false" />" >
 						<s:text name="label.api.resource.method.schemas.resp" />
 					</a>
 				</p>
