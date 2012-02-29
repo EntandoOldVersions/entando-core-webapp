@@ -2,159 +2,135 @@
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
-
-<h1><s:text name="title.apiResourceManagement" /></h1>
-
-<s:if test="hasActionMessages()">
-<div class="message message_confirm">
-<h2><s:text name="messages.confirm" /></h2>	
-<ul>
-	<s:iterator value="actionMessages">
-		<li><s:property escape="false" /></li>
-	</s:iterator>
-</ul>
-</div>
-</s:if>
-
 <s:set var="apiResourceVar" value="apiResource" />
-
-NAME <s:property value="#apiResourceVar.resourceName" />
-<br />
-DESCRIPTION <s:property value="#apiResourceVar.description" />
-<br />
-SOURCE <s:property value="#apiResourceVar.source" />
-<br />
-PLUGIN <s:property value="#apiResourceVar.pluginCode" />
-<br />
-RESOURE URI
-<br />
-<wp:info key="systemParam" paramName="applicationBaseURL" />api/rs/<wp:info key="defaultLang" />/<s:property value="#apiResourceVar.resourceName" />
-<br />
-EXTENSION:
-<br />
-".xml" FOR XML RESPONSE FORMAT (DEFAULT)
-<br />
-".json" FOR JSON RESPONSE FORMAT
-<br />
------------------------------------
 <s:set var="GETMethodVar" value="#apiResourceVar.getMethod" />
-<s:set name="methodVar" value="#GETMethodVar" />
-<br />
-HTTP GET METHOD
-<s:if test="null == #GETMethodVar" >
-<br />
-NOT AVAILABLE
-</s:if>
-<s:else> 
-<br />
-AVAILABLE
-<br />
-<s:include value="/WEB-INF/apsadmin/jsp/api/include/resource-method-detail.jsp" />
-
-<br />
-<a href="<s:url action="responseSchema" namespace="/do/Api/Resource">
-       <s:param name="resourceName" value="#GETMethodVar.resourceName" />
-       <s:param name="httpMethod" value="#GETMethodVar.httpMethod" />
-   </s:url>" >RESPONSE BODY SCHEMA</a>
-
-</s:else>
-
-<br />
------------------------------------
 <s:set var="POSTMethodVar" value="#apiResourceVar.postMethod" />
-<s:set name="methodVar" value="#POSTMethodVar" />
-<br />
-HTTP POST METHOD
-<s:if test="null == #POSTMethodVar" >
-<br />
-NOT AVAILABLE
-</s:if>
-<s:else> 
-<br /> 
-AVAILABLE
-<br />
-<s:include value="/WEB-INF/apsadmin/jsp/api/include/resource-method-detail.jsp" />
-
-<br />
-<a href="<s:url action="requestSchema" namespace="/do/Api/Resource">
-       <s:param name="resourceName" value="#POSTMethodVar.resourceName" />
-       <s:param name="httpMethod" value="#POSTMethodVar.httpMethod" />
-   </s:url>" >REQUEST BODY SCHEMA</a>
-
-<br />
-<a href="<s:url action="responseSchema" namespace="/do/Api/Resource">
-       <s:param name="resourceName" value="#POSTMethodVar.resourceName" />
-       <s:param name="httpMethod" value="#POSTMethodVar.httpMethod" />
-   </s:url>" >RESPONSE BODY SCHEMA</a>
-
-</s:else>
-
-<br />
------------------------------------
 <s:set var="PUTMethodVar" value="#apiResourceVar.putMethod" />
-<s:set name="methodVar" value="#PUTMethodVar" />
-<br />
-HTTP PUT METHOD
-<s:if test="null == #PUTMethodVar" >
-<br />
-NOT AVAILABLE
-</s:if>
-<s:else> 
-<br /> 
-AVAILABLE
-<br />
-<s:include value="/WEB-INF/apsadmin/jsp/api/include/resource-method-detail.jsp" />
-
-<br />
-<a href="<s:url action="requestSchema" namespace="/do/Api/Resource">
-       <s:param name="resourceName" value="#PUTMethodVar.resourceName" />
-       <s:param name="httpMethod" value="#PUTMethodVar.httpMethod" />
-   </s:url>" >REQUEST BODY SCHEMA</a>
-
-<br />
-<a href="<s:url action="responseSchema" namespace="/do/Api/Resource">
-       <s:param name="resourceName" value="#PUTMethodVar.resourceName" />
-       <s:param name="httpMethod" value="#PUTMethodVar.httpMethod" />
-   </s:url>" >RESPONSE BODY SCHEMA</a>
-
-</s:else>
-
-<br />
------------------------------------
 <s:set var="DELETEMethodVar" value="#apiResourceVar.deleteMethod" />
-<s:set name="methodVar" value="#DELETEMethodVar" />
-<br />
-HTTP DELETE METHOD
-<s:if test="null == #DELETEMethodVar" >
-<br />
-NOT AVAILABLE
-</s:if>
-<s:else> 
-<br /> 
-AVAILABLE
-<br />
-<s:include value="/WEB-INF/apsadmin/jsp/api/include/resource-method-detail.jsp" />
+<h1>
+	<s:text name="title.apiResourceManagement" />
+	<%-- anchor print --%>
+	<a href="<s:url action="list" />" title="<s:text name="label.list" />">
+		<img src="<wp:resourceURL/>administration/common/img/icons/32x32/general-list.png" alt="<s:text name="label.list" />" />
+	</a>
+</h1>
+<div id="main">
+	<s:if test="hasActionMessages()">
+		<div class="message message_confirm">
+		<h2><s:text name="messages.confirm" /></h2>
+		<ul>
+			<s:iterator value="actionMessages">
+				<li><s:property escape="false" /></li>
+			</s:iterator>
+		</ul>
+		</div>
+	</s:if>
 
-<br />
-<a href="<s:url action="responseSchema" namespace="/do/Api/Resource">
-       <s:param name="resourceName" value="#DELETEMethodVar.resourceName" />
-       <s:param name="httpMethod" value="#DELETEMethodVar.httpMethod" />
-   </s:url>" >RESPONSE BODY SCHEMA</a>
+	<ul class="menu horizontal tab-toggle-bar">
+		<li>
+			<a href="#info" id="info_tab_quickmenu" class="tab-toggle">
+				<abbr title="<s:text name="title.contentInfo" />"><s:text name="label.general" /></abbr>
+			</a>
+		</li>
+		<li>
+			<a href="#get_tab" id="get_tab_quickmenu" class="tab-toggle">
+				GET
+			</a>
+		</li>
+		<li>
+			<a href="#post_tab" id="post_tab_quickmenu" class="tab-toggle">
+				POST
+			</a>
+		</li>
+		<li>
+			<a href="#put_tab" id="put_tab_quickmenu" class="tab-toggle">
+				PUT
+			</a>
+		</li>
+		<li>
+			<a href="#delete_tab" id="delete_tab_quickmenu" class="tab-toggle">
+				DELETE
+			</a>
+		</li>
+	</ul>
 
-</s:else>
+	<div class="tab-container">
+		<div id="info" class="tab">
+			<dl class="table-display">
+				<dt>
+					Name
+				</dt>
+					<dd><s:property value="#apiResourceVar.resourceName" /></dd>
+				<dt>
+					Description
+				</dt>
+					<dd><s:property value="#apiResourceVar.description" /></dd>
+				<dt>
+					Source
+				</dt>
+					<dd><s:property value="#apiResourceVar.source" /></dd>
+				<dt>
+					Plugin
+				</dt>
+					<dd><s:property value="#apiResourceVar.pluginCode" /><s:if test="#apiResourceVar.pluginCode == null||#apiResourceVar.pluginCode.length == 0"><abbr title="none">&ndash;</abbr></s:if></dd>
+				<dt>
+					Resoure URI
+				</dt>
+					<dd><wp:info key="systemParam" paramName="applicationBaseURL" />api/rs/<wp:info key="defaultLang" />/<s:property value="#apiResourceVar.resourceName" /></dd>
+				<dt>
+					Extension
+				</dt>
+					<dd>
+						".xml" for xml response format (default)
+						<br />
+						".json" for json response format
+					</dd>
+			</dl>
+			<div class="subsection margin-more-top">
+				<s:form namespace="/do/Api/Resource" action="updateAllMethodStatus">
+					<fieldset>
+						<legend>All Methods Options</legend>
+						<p>
+							<wpsf:hidden name="resourceName" value="%{#apiResourceVar.resourceName}" />
+							<wpsf:checkbox name="active" value="true" id="all_active" cssClass="radiocheck" />
+							<label for="all_active" class="">
+								Active
+							</label>
+						</p>
+						<p>
+							<label for="all_auth" class="basic-mint-label">Authorization:</label>
+							<s:select name="methodAuthority" list="methodAuthorityOptions" listKey="key" listValue="value" id="all_auth" />
+						</p>
+						<p class="centerText">
+							<wpsf:submit action="updateAllMethodStatus" useTabindexAutoIncrement="true" value="%{getText('Update')}" cssClass="button" />
+							&#32;
+							<wpsf:submit action="resetAllMethodStatus" useTabindexAutoIncrement="true" value="%{getText('Reset to Default')}" cssClass="button" />
+						</p>
+					</fieldset>
+				</s:form>
+			</div>
 
-<br />
-<br />
------------------------------------
-<br />
-UPDATE ALL METHOD STATUS
-<br />
+		</div>
 
-<s:form namespace="/do/Api/Resource" action="updateAllMethodStatus">
-<wpsf:hidden name="resourceName" value="%{#apiResourceVar.resourceName}" />
-ACTIVE? <wpsf:checkbox name="active" value="true" />
-<br />
-<s:select name="methodAuthority" list="methodAuthorityOptions" listKey="key" listValue="value" />
-<wpsf:submit action="updateAllMethodStatus" useTabindexAutoIncrement="true" value="%{getText('label.update')}" cssClass="button" />
-<wpsf:submit action="resetAllMethodStatus" useTabindexAutoIncrement="true" value="%{getText('label.reset')}" cssClass="button" />
-</s:form>
+<%-- GET --%>
+		<div id="GET_tab" class="tab">
+			<s:set name="methodVar" value="#GETMethodVar" />
+			<s:include value="/WEB-INF/apsadmin/jsp/api/include/resource-method-detail.jsp" />
+		</div>
+<%-- POST --%>
+		<div id="POST_tab" class="tab">
+			<s:set name="methodVar" value="#POSTMethodVar" />
+			<s:include value="/WEB-INF/apsadmin/jsp/api/include/resource-method-detail.jsp" />
+		</div>
+<%-- PUT --%>
+		<div id="PUT_tab" class="tab">
+			<s:set name="methodVar" value="#PUTMethodVar" />
+			<s:include value="/WEB-INF/apsadmin/jsp/api/include/resource-method-detail.jsp" />
+		</div>
+<%-- DELETE --%>
+		<div id="DELETE_tab" class="tab">
+			<s:set name="methodVar" value="#DELETEMethodVar" />
+			<s:include value="/WEB-INF/apsadmin/jsp/api/include/resource-method-detail.jsp" />
+		</div>
+	</div>
+</div>
