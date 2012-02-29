@@ -56,10 +56,10 @@
 							<s:property value="#resourceVar.source" />/<s:property value="#resourceVar.sectionCode" />
 						</td>
 
-						<s:set var="icon_off"><img src="<wp:resourceURL />administration/common/img/icons/generic-status-ko.png" alt="Disabled" title="Disabled, edit it" /></s:set>
-						<s:set var="icon_free"><img src="<wp:resourceURL />administration/common/img/icons/generic-status-ok.png" alt="Free" title="Active with Free Access, edit it" /></s:set>
-						<s:set var="icon_auth"><img src="<wp:resourceURL />administration/common/img/icons/22x22/roles.png" alt="Permission Required" title="Requires Authentication, edit it" /></s:set>
-						<s:set var="icon_lock"><img src="<wp:resourceURL />administration/common/img/icons/users.png"  alt="Authorization Required" title="Requires Authorization with permission, edit it" /></s:set>
+						<s:set var="icon_off"><img src="<wp:resourceURL />administration/common/img/icons/generic-status-ko.png" alt="Disabled" title="Disabled" /></s:set>
+						<s:set var="icon_free"><img src="<wp:resourceURL />administration/common/img/icons/generic-status-ok.png" alt="Free" title="Active, Free Access" /></s:set>
+						<s:set var="icon_auth"><img src="<wp:resourceURL />administration/common/img/icons/22x22/api-authentication.png" alt="Active, Authentication Required" title="Active, requires Authentication" /></s:set>
+						<s:set var="icon_lock"><img src="<wp:resourceURL />administration/common/img/icons/22x22/api-authorization.png"  alt="Active, Authorization Required" title="Active, requires Authorization" /></s:set>
 						<td class="icon">
 							<s:if test="#resourceVar.getMethod != null" >
 								<a href="<s:property value="#detailActionURL" escapeHtml="false" />#GET_tab">
