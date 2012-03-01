@@ -1,5 +1,6 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
+<s:set var="targetNS" value="%{'/do/Api/Consumer'}" />
 <h1><s:text name="title.apiConsumerManagement" /><s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></h1>
 <div id="main">
 	<h2><s:text name="title.apiConsumerManagement.trash" /></h2>
