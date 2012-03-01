@@ -52,7 +52,7 @@
 			</p>
 			<p>
 				<label for="description" class="basic-mint-label"><s:text name="label.description" />:</label>
-				<wpsf:textfield useTabindexAutoIncrement="true" name="description" id="description" cssClass="text" />
+				<wpsf:textarea useTabindexAutoIncrement="true"  cols="50" rows="3" name="description" id="description"cssClass="text" />
 			</p>
 			<p>
 				<label for="callbackUrl" class="basic-mint-label"><s:text name="label.callbackUrl" />:</label>
