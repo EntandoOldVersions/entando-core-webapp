@@ -30,15 +30,15 @@
 		<p>
 			<wpsf:hidden name="insertedKey" />
 			<wpsf:hidden name="insertedDescription" />
-			<label for="insertedDescription" class="basic-mint-label  label-search"><s:text name="label.search.by"/>&#32;<s:text name="label.consumer.description"/>:</label>
-			<wpsf:textfield useTabindexAutoIncrement="insertedDescription" name="insertedDescription" id="text" cssClass="text" />
+			<label for="search_consumer_description" class="basic-mint-label  label-search"><s:text name="label.search.by"/>&#32;<s:text name="label.consumer.description"/>:</label>
+			<wpsf:textfield useTabindexAutoIncrement="insertedDescription" name="insertedDescription" id="search_consumer_description" cssClass="text" />
 		</p>
 		<fieldset>
 			<legend class="accordion_toggler"><s:text name="title.searchFilters" /></legend>
 			<div class="accordion_element">
 				<p>
-					<label for="insertedKey" class="basic-mint-label"><s:text name="label.consumerKey"/>:</label>
-					<wpsf:textfield useTabindexAutoIncrement="true" name="insertedKey" id="insertedKey" cssClass="text" />
+					<label for="search_consumer_key" class="basic-mint-label"><s:text name="label.consumerKey"/>:</label>
+					<wpsf:textfield useTabindexAutoIncrement="true" name="insertedKey" id="search_consumer_key" cssClass="text" />
 				</p>
 			</div>
 		</fieldset>
