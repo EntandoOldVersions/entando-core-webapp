@@ -88,9 +88,9 @@
 					<s:text name="label.api.resource.extensions" />
 				</dt>
 					<dd>
-						".xml" for xml response format (default)
+						<s:text name="note.extensions.xml" />
 						<br />
-						".json" for json response format
+						<s:text name="note.extensions.json" />
 					</dd>
 			</dl>
 			<div class="subsection margin-more-top">
