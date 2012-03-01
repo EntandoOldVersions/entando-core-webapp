@@ -19,17 +19,44 @@
 			<s:text name="label.api.resource.method.description" />
 		</dt>
 			<dd><s:property value="#methodVar.description" /></dd>
+		<%--
 		<dt>
 			<s:text name="label.api.resource.method.required.authentication" />
 		</dt>
 			<dd><s:property value="#methodVar.requiredAuth || (null != #methodVar.requiredPermission)" /> (<s:text name="label.default" />&#32;<s:property value="#methodVar.defaultRequiredAuth || (null != #methodVar.defaultRequiredPermission)" />)</dd>
-		<s:if test="null != #methodVar.requiredPermission" >
-		<dt>
-			<s:text name="label.api.resource.method.required." />
-			<s:text name="label.api.resource.method.required.authorization" />
-		</dt>
-			<dd><s:property value="#methodVar.requiredPermission" /> (<s:text name="label.default" />&#32;<s:property value="#methodVar.defaultRequiredPermission" />)</dd>
+
+		<s:if test="null != #methodVar.requiredPermission">
+				<dt>
+					<s:text name="label.api.resource.method.required.authorization" />
+				</dt>
+					<dd><s:property value="#methodVar.requiredPermission" /> (<s:text name="label.default" />&#32;<s:property value="#methodVar.defaultRequiredPermission" />)</dd>
 		</s:if>
+		--%>
+			<dt>
+				<s:text name="label.api.authorization" />
+			</dt>
+				<dd>
+					<s:if test="%{null != #methodVar.requiredPermission}">
+						<s:text name="label.method.authority.permission" />&#32;<s:property value="#methodVar.requiredPermission" />
+					</s:if>
+					<s:elseif test="%{#methodVar.requiredAuth}">
+						<s:text name="label.method.authority.autenticationRequired" />
+					</s:elseif>
+					<s:else>
+						<s:text name="label.none" />
+					</s:else>
+					(<s:text name="label.default" />&#32;
+						<s:if test="%{#methodVar.defaultRequiredPermission!=null}">
+							<s:text name="label.method.authority.permission" />&#32;<s:property value="#methodVar.defaultRequiredPermission" />
+						</s:if>
+						<s:elseif test="#methodVar.defaultRequiredAuth!=null && #methodVar.defaultRequiredAuth">
+							<s:text name="label.method.authority.autenticationRequired" />
+						</s:elseif>
+						<s:else>
+							<s:text name="label.none" />
+						</s:else>)
+				</dd>
+
 
 		<dt>
 			<s:text name="label.api.resource.method.schemas" />
