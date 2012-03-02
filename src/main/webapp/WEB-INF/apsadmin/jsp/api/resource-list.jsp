@@ -57,7 +57,12 @@
 						<td class="monospace"><s:property value="#resourceVar.source" />&#32;/&#32;<s:property value="%{#resourceVar.sectionCode}" /></td>
 						--%>
 						<s:if test="#statusVar.first">
-							<s:set var="captionVar"><s:property value="#resourceVar.source" escapeHtml="false" />  / <s:property value="%{#resourceVar.sectionCode}"  escapeHtml="false" /></s:set>
+							<s:if test="#resourceVar.source=='core'">
+								<s:set var="captionVar"><s:property value="#resourceVar.source" escapeHtml="false" /></s:set>
+							</s:if>
+							<s:else>
+								<s:set var="captionVar"><s:property value="%{getText(#resourceVar.sectionCode+'.name')}"  escapeHtml="false" /></s:set>
+							</s:else>
 						</s:if>
 
 						<s:set var="icon_off"><img src="<wp:resourceURL />administration/common/img/icons/generic-status-ko.png" alt="<s:text name="api.resource.status.off" />" title="<s:text name="api.resource.status.off" />" /></s:set>

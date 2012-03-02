@@ -79,7 +79,14 @@
 				<dt>
 					<s:text name="label.api.resource.plugin" />
 				</dt>
-					<dd><s:property value="#apiResourceVar.pluginCode" /><s:if test="#apiResourceVar.pluginCode == null||#apiResourceVar.pluginCode.length == 0"><abbr title="none">&ndash;</abbr></s:if></dd>
+					<dd>
+						<s:if test="#apiResourceVar.pluginCode == null||#apiResourceVar.pluginCode.length == 0">
+							<abbr title="none">&ndash;</abbr>
+						</s:if>
+						<s:else>
+							<s:property value="%{getText(#apiResourceVar.pluginCode+'.name')}" />&#32;(<s:property value="%{#apiResourceVar.pluginCode}" />)
+						</s:else>
+					</dd>
 				<dt>
 					<s:text name="label.api.resource.uri" />
 				</dt>

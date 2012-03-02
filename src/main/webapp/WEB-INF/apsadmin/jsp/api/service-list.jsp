@@ -58,7 +58,10 @@
 					 --%>
 					<s:if test="null != #servicesByGroupVar && #servicesByGroupVar.size() > 0">
 						<table class="generic">
-							<caption id="<s:property value="#serviceGroupVar" />"><span><s:property value="#serviceGroupVar" /></span></caption>
+							<caption id="<s:property value="#serviceGroupVar" />"><span>
+								<%-- <s:property value="#serviceGroupVar" /> --%>
+								<s:text name="%{#serviceGroupVar}.name" />
+							</span></caption>
 							<tr>
 								<th><s:text name="name.api.service" /></th>
 								<th><s:text name="label.description" /></th>
@@ -89,7 +92,7 @@
 							</s:iterator>
 						</table>
 						<p class="centerText">
-							<wpsf:submit useTabindexAutoIncrement="true" cssClass="button" value="%{getText('label.refresh') + ' ' + #serviceGroupVar}" />
+							<wpsf:submit useTabindexAutoIncrement="true" cssClass="button" value="%{getText('label.refresh') + ' ' + getText(#serviceGroupVar+ '.name')}" />
 						</p>
 					</s:if>
 					<s:else>
