@@ -45,7 +45,6 @@
 		<s:iterator var="methodFlavour" value="#methodFlavoursVar">
 			<s:set var="serviceGroupVar" value="#methodFlavour.get(0).optgroup" />
 			<s:set var="servicesByGroupVar" value="#serviceFlavoursVar[#serviceGroupVar]" />
-
 			<s:form action="updateAllStatusOfGroup">
 				<p class="noscreen">
 					<wpsf:hidden name="serviceGroup" value="%{#serviceGroupVar}" />
@@ -70,14 +69,14 @@
 								<tr>
 									<td class="monospace">
 										<wpsf:hidden name="%{#service.key + '_checkField'}" value="true" />
-										<a href="<s:url action="edit"><s:param name="serviceKey"><s:property value="#service.key" /></s:param></s:url>"><s:property value="#service.key" /></a>
+										<a title="<s:text name="label.edit" />: <s:property value="#service.key" />" href="<s:url action="edit"><s:param name="serviceKey"><s:property value="#service.key" /></s:param></s:url>"><s:property value="#service.key" /></a>
 								 	</td>
 									<td>
 								 		<s:property value="#service.value" />
 								 	</td>
 									<td class="monospace">
 										<wpsf:checkbox useTabindexAutoIncrement="true" id="%{#service.key + '_active'}" name="%{#service.key + '_active'}" value="%{#service.activeItem}" />
-										<label for="<s:property value="%{#service.key + '_active'}" />"><s:if test="#service.activeItem"><s:text name="label.yes" /></s:if><s:else><s:text name="label.no" /></s:else></label> 
+										<label for="<s:property value="%{#service.key + '_active'}" />"><s:if test="#service.activeItem"><s:text name="label.yes" /></s:if><s:else><s:text name="label.no" /></s:else></label>
 									</td>
 									<td class="monospace">
 										<wpsf:checkbox useTabindexAutoIncrement="true" id="%{#service.key + '_public'}" name="%{#service.key + '_public'}" value="%{#service.publicItem}" />

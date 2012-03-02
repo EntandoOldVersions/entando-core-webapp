@@ -28,23 +28,24 @@
 
 	<s:set var="resourceFlavoursVar" value="resourceFlavours" />
 	<s:if test="#resourceFlavoursVar.size() > 0">
-		<table class="generic" summary="<s:text name="note.api.apiResourceList.summary" />">
-			<caption><span><s:text name="title.api.apiResourcesList" /></span></caption>
-			<tr>
-				<th><s:text name="name.api.resource" /></th>
-				<th><s:text name="label.description" /></th>
-				<th><s:text name="label.flavour" /></th>
-				<th class="icon"><abbr title="GET">G</abbr></th>
-				<th class="icon">POST</th>
-				<th class="icon">PUT</th>
-				<th class="icon"><abbr title="DELETE">D</abbr></th>
-			</tr>
-			<s:iterator var="resourceFlavourVar" value="#resourceFlavoursVar">
-				<s:iterator var="resourceVar" value="#resourceFlavourVar" >
+		<s:iterator var="resourceFlavourVar" value="#resourceFlavoursVar">
+			<table class="generic" summary="<s:text name="note.api.apiResourceList.summary" />">
+				<tr>
+					<th><s:text name="name.api.resource" /></th>
+					<th><s:text name="label.description" /></th>
+					<%--
+					<th><s:text name="label.flavour" /></th>
+					--%>
+					<th class="icon"><abbr title="GET">G</abbr></th>
+					<th class="icon">POST</th>
+					<th class="icon">PUT</th>
+					<th class="icon"><abbr title="DELETE">D</abbr></th>
+				</tr>
+				<s:iterator var="resourceVar" value="#resourceFlavourVar" status="statusVar" >
 					<tr>
 						<td class="monospace">
 							<s:url var="detailActionURL" action="detail" namespace="/do/Api/Resource"><s:param name="resourceName" value="#resourceVar.resourceName" /></s:url>
-							<a href="<s:url action="detail" namespace="/do/Api/Resource"><s:param name="resourceName" value="#resourceVar.resourceName" /></s:url>" ><s:property value="#resourceVar.resourceName" /></a>
+							<a title="<s:text name="label.edit" />: <s:property value="#resourceVar.resourceName" />" href="<s:url action="detail" namespace="/do/Api/Resource"><s:param name="resourceName" value="#resourceVar.resourceName" /></s:url>" ><s:property value="#resourceVar.resourceName" /></a>
 							<s:if test="#resourceVar.getMethod != null" >
 								<s:if test="#resourceVar.getMethod.canSpawnOthers">&emsp;<a class="icon noborder" href="<s:url action="newService" namespace="/do/Api/Service"><s:param name="apiMethodName" value="#resourceVar.resourceName" /></s:url>" title="<s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#resourceVar.resourceName" />"><img src="<wp:resourceURL />administration/common/img/icons/22x22/api-service-new.png" alt="<s:text name="label.new" />" /></a></s:if>
 							</s:if>
@@ -52,7 +53,12 @@
 
 						<td><s:property value="#resourceVar.description" /></td>
 
+						<%--
 						<td class="monospace"><s:property value="#resourceVar.source" />&#32;/&#32;<s:property value="%{#resourceVar.sectionCode}" /></td>
+						--%>
+						<s:if test="#statusVar.first">
+							<s:set var="captionVar"><s:property value="#resourceVar.source" escapeHtml="false" />  / <s:property value="%{#resourceVar.sectionCode}"  escapeHtml="false" /></s:set>
+						</s:if>
 
 						<s:set var="icon_off"><img src="<wp:resourceURL />administration/common/img/icons/generic-status-ko.png" alt="<s:text name="api.resource.status.off" />" title="<s:text name="api.resource.status.off" />" /></s:set>
 						<s:set var="icon_free"><img src="<wp:resourceURL />administration/common/img/icons/generic-status-ok.png" alt="<s:text name="api.resource.status.free" />" title="<s:text name="api.resource.status.free" />" /></s:set>
@@ -119,8 +125,9 @@
 						--%>
 					<tr>
 				</s:iterator>
-			</s:iterator>
-		</table>
+				<caption><span title="<s:text name="label.flavour" />&#32;<s:property value="#captionVar" />"><s:property value="#captionVar" /></span></caption>
+			</table>
+		</s:iterator>
 	</s:if>
 	<s:else>
 		<p><s:text name="note.api.noResources" /></p>

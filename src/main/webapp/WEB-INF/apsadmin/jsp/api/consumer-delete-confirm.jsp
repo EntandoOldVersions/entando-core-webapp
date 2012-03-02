@@ -7,12 +7,10 @@
 	<s:form action="delete">
 		<p>
 			<wpsf:hidden name="consumerKey" />
-                        <s:set var="consumerVar" value="%{getConsumer(consumerKey)}" />
-                        <s:text name="note.api.consumer.trash" />&#32;<em class="important"><s:property value="#consumerVar.description" /> (<s:property value="consumerKey" />)</em> **AND ITS TOKENS**?
+			<s:set var="consumerVar" value="%{getConsumer(consumerKey)}" />
+			<s:text name="note.api.consumer.trash" />&#32;<em class="important"><s:property value="#consumerVar.description" /> (<s:property value="consumerKey" />)</em>?
 			<wpsf:submit useTabindexAutoIncrement="true" value="%{getText('label.remove')}" cssClass="button" />
 		</p>
-
 		<p><s:text name="note.api.consumer.trash.goBack" />&#32;<a href="<s:url action="list" namespace="/do/Api/Consumer" />" ><s:text name="menu.apisAdmin.consumers" /></a></p>
-
 	</s:form>
 </div>
