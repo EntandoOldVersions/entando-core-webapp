@@ -119,7 +119,7 @@
     <!-- ********* INIZIO Area Gestione Servizi Portale ********* -->
 
     <!-- ********* START API MANAGEMENT ********* -->
-    
+
     <definition extends="main.layout" name="admin.api.resource.list">
         <put-attribute name="title" value="title.apiManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/api/resource-list.jsp" />
@@ -145,17 +145,18 @@
         <put-attribute name="title" value="title.apiManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/api/service-delete-confirm.jsp" />
     </definition>
-    
+
     <definition extends="main.layout" name="admin.api.consumer.list">
         <put-attribute name="title" value="title.apiManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/api/consumer-list.jsp" />
     </definition>
-    
+
     <definition extends="main.layout" name="admin.api.consumer.entry">
         <put-attribute name="title" value="title.apiManagement" />
+        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/template/extraresources/calendar.jsp" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/api/consumer-entry.jsp" />
     </definition>
-    
+
     <definition extends="main.layout" name="admin.api.consumer.trash">
         <put-attribute name="title" value="title.apiManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/api/consumer-delete-confirm.jsp" />

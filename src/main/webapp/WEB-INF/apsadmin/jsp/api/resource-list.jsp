@@ -35,8 +35,8 @@
 				<th><s:text name="label.description" /></th>
 				<th><s:text name="label.flavour" /></th>
 				<th class="icon"><abbr title="GET">G</abbr></th>
-				<th class="icon"><abbr title="POST">P</abbr></th>
-				<th class="icon"><abbr title="PUT">P</abbr></th>
+				<th class="icon">POST</th>
+				<th class="icon">PUT</th>
 				<th class="icon"><abbr title="DELETE">D</abbr></th>
 			</tr>
 			<s:iterator var="resourceFlavourVar" value="#resourceFlavoursVar">

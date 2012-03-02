@@ -49,7 +49,7 @@
 			<wpsa:subset source="searchResult" count="10" objectName="groupSearchResult" advanced="true" offset="5">
 				<s:set name="group" value="#groupSearchResult" />
 				<s:set name="tokenOccurrencesVar" value="tokenOccurrencesByConsumer" />
-                                <div class="pager">
+				<div class="pager">
 					<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
 					<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 				</div>
@@ -66,9 +66,14 @@
 					<s:iterator var="consumerKeyVar" status="status">
 						<s:set var="consumerVar" value="%{getConsumer(#consumerKeyVar)}" />
 						<tr>
-							<td><a href="<s:url action="edit"><s:param name="consumerKey" value="#consumerKeyVar" /></s:url>" title="<s:text name="label.edit" />: <s:property value="#consumerKeyVar" />" ><s:property value="#consumerKeyVar" /></a></td>
-							<td class="centerText monospace">
-								<s:property value="#consumerVar.description" />
+							<td class="monospace"><a href="<s:url action="edit"><s:param name="consumerKey" value="#consumerKeyVar" /></s:url>" title="<s:text name="label.edit" />: <s:property value="#consumerKeyVar" />" ><s:property value="#consumerKeyVar" /></a></td>
+							<td>
+								<s:if test="%{#consumerVar.description.length()>200}">
+									<s:property value="%{#consumerVar.description.substring(0,200)}" />&#133;
+								</s:if>
+								<s:else>
+									<s:property value="#consumerVar.description" />
+								</s:else>
 							</td>
 							<td class="centerText monospace">
 								<s:if test="#consumerVar.expirationDate != null">
@@ -77,9 +82,10 @@
 								<s:else><abbr title="<s:text name="label.none" />">&ndash;</abbr></s:else>
 							</td>
 							<td class="monospace icon">
-                                                            <s:if test="null == #tokenOccurrencesVar[#consumerKeyVar]" >0</s:if>
-                                                            <s:else><s:property value="#tokenOccurrencesVar[#consumerKeyVar]" /></s:else>
-                                                        </td>
+								<s:property value="#tokenOccurrencesVar.class"/>
+								<s:if test="null == #tokenOccurrencesVar[#consumerKeyVar]" >0</s:if>
+								<s:else><s:property value="#tokenOccurrencesVar[#consumerKeyVar]" /></s:else>
+							</td>
 							<td class="icon"><a href="<s:url action="trash"><s:param name="consumerKey" value="#consumerKeyVar"/></s:url>" title="<s:text name="label.remove" />: <s:property value="#consumerKeyVar" />"><img src="<wp:resourceURL />administration/common/img/icons/delete.png" alt="<s:text name="label.alt.clear" />" /></a></td>
 						</tr>
 					</s:iterator>

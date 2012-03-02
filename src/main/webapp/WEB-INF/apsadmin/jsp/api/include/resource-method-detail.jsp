@@ -4,7 +4,7 @@
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <dl class="table-display">
 	<dt>
-		<s:text name="label.api.resource.method.status" />
+		<s:text name="label.api.resource.method" />
 	</dt>
 		<dd>
 			<s:if test="#methodVar != null">

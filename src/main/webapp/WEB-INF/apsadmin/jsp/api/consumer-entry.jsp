@@ -51,16 +51,17 @@
 				<wpsf:textfield useTabindexAutoIncrement="true" name="secret" id="secret" cssClass="text" />
 			</p>
 			<p>
-				<label for="description" class="basic-mint-label"><s:text name="label.description" />:</label>
-				<wpsf:textarea useTabindexAutoIncrement="true"  cols="50" rows="3" name="description" id="description"cssClass="text" />
+				<label for="description" class="basic-mint-label alignTop"><s:text name="label.description" />:</label>
+				<wpsf:textarea useTabindexAutoIncrement="true"  cols="50" rows="3" name="description" id="description"cssClass="text"  />
 			</p>
 			<p>
 				<label for="callbackUrl" class="basic-mint-label"><s:text name="label.callbackUrl" />:</label>
 				<wpsf:textfield useTabindexAutoIncrement="true" name="callbackUrl" id="callbackUrl" cssClass="text" />
 			</p>
 			<p>
-				<label for="expirationDate" class="basic-mint-label"><s:text name="label.expirationDate" />:</label>
-				<wpsf:textfield useTabindexAutoIncrement="true" name="expirationDate" id="expirationDate" cssClass="text" />
+				<label for="expirationDate_cal" class="basic-mint-label"><s:text name="label.expirationDate" />:</label>
+				<wpsf:textfield useTabindexAutoIncrement="true" name="expirationDate" id="expirationDate_cal" cssClass="text" />
+				<span class="inlineNote">dd/mm/yyyy</span>
 			</p>
 		</fieldset>
 
