@@ -28,8 +28,6 @@
 
 	<s:form action="search">
 		<p>
-			<wpsf:hidden name="insertedKey" />
-			<wpsf:hidden name="insertedDescription" />
 			<label for="search_consumer_description" class="basic-mint-label  label-search"><s:text name="label.search.by"/>&#32;<s:text name="label.consumer.description"/>:</label>
 			<wpsf:textfield useTabindexAutoIncrement="insertedDescription" name="insertedDescription" id="search_consumer_description" cssClass="text" />
 		</p>
@@ -45,6 +43,11 @@
 		<p>
 			<wpsf:submit useTabindexAutoIncrement="true" value="%{getText('label.search')}" cssClass="button" />
 		</p>
+        </s:form>
+                
+	<s:form action="search">
+		<wpsf:hidden name="insertedKey" />
+                <wpsf:hidden name="insertedDescription" />
 		<div class="subsection-light">
 			<wpsa:subset source="searchResult" count="10" objectName="groupSearchResult" advanced="true" offset="5">
 				<s:set name="group" value="#groupSearchResult" />
