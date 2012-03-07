@@ -8,7 +8,7 @@
 
 <s:if test="hasActionMessages()">
 <div class="message message_confirm">
-<h2><s:text name="messages.confirm" /></h2>	
+<h2><s:text name="messages.confirm" /></h2>
 <ul>
 	<s:iterator value="actionMessages">
 		<li><s:property escape="false" /></li>
@@ -50,13 +50,13 @@
 <s:set name="paramName" value="'urlStyle'" />
 <ul class="noBullet">
 	<li><input type="radio" class="radiocheck" id="urlStyle_classic" name="urlStyle" value="classic" <s:if test="systemParams['urlStyle'] == 'classic'">checked="checked"</s:if> /><label for="urlStyle_classic"><s:text name="URLstyle.classic" /></label></li>
-	<li><input type="radio" class="radiocheck" id="urlStyle_breadcrumbs" name="urlStyle" value="breadcrumbs" <s:if test="systemParams['urlStyle'] == 'breadcrumbs'">checked="checked"</s:if> /><label for="urlStyle_breadcrumbs"><s:text name="URLstyle.breadcrumbs" /></label></li>	
+	<li><input type="radio" class="radiocheck" id="urlStyle_breadcrumbs" name="urlStyle" value="breadcrumbs" <s:if test="systemParams['urlStyle'] == 'breadcrumbs'">checked="checked"</s:if> /><label for="urlStyle_breadcrumbs"><s:text name="URLstyle.breadcrumbs" /></label></li>
 </ul>
 
 <p class="important"><s:text name="sysconfig.lang.browser" />:</p>
 <s:set name="paramName" value="'startLangFromBrowser'" />
 	<s:include value="/WEB-INF/apsadmin/jsp/admin/booleanParamBlock.jsp" />
-	
+
 </div>
 </fieldset>
 
@@ -86,7 +86,7 @@
 <p class="important"><s:text name="sysconfig.chooseYourEditor" />:</p>
 <ul class="noBullet radiocheck">
 	<li><input type="radio" id="hypertextEditor_none" name="hypertextEditor" value="none" <s:if test="systemParams['hypertextEditor'] == 'none'">checked="checked"</s:if> /><label for="hypertextEditor_none"><s:text name="label.none" /></label></li>
-	<li><input type="radio" id="hypertextEditor_fckeditor" name="hypertextEditor" value="fckeditor" <s:if test="systemParams['hypertextEditor'] == 'fckeditor'">checked="checked"</s:if> /><label for="hypertextEditor_fckeditor"><s:text name="name.editor.fckeditor" /></label></li>
+	<li><input type="radio" id="hypertextEditor_fckeditor" name="hypertextEditor" value="fckeditor" <s:if test="systemParams['hypertextEditor'] == 'fckeditor'">checked="checked"</s:if> /><label for="hypertextEditor_fckeditor"><s:text name="name.editor.ckeditor" /></label></li>
 	<li><input type="radio" id="hypertextEditor_hoofed" name="hypertextEditor" value="hoofed" <s:if test="systemParams['hypertextEditor'] == 'hoofed'">checked="checked"</s:if> /><label for="hypertextEditor_hoofed"><s:text name="name.editor.hoofed" /></label></li>
 </ul>
 </div>
