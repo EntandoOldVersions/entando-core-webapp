@@ -41,6 +41,7 @@
 <p class="noscreen">
 	<wpsf:hidden name="contentType" />
 	<wpsf:hidden name="categories" value="%{#parameters['categories']}" />
+	<wpsf:hidden name="orClauseCategoryFilter" value="%{#parameters['orClauseCategoryFilter']}" />
 	<wpsf:hidden name="userFilters" value="%{#parameters['userFilters']}" />
 	<wpsf:hidden name="filters" />
 	<wpsf:hidden name="modelId" />
