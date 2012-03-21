@@ -169,14 +169,14 @@
 <fieldset><legend><s:text name="label.settings"/></legend>
 <p>
 	<label for="filterOptionId" class="basic-mint-label"><s:text name="label.option"/>:</label>
-	<wpsf:select useTabindexAutoIncrement="true" name="filterOptionId" id="filterOptionId" headerKey="-1" headerValue="%{getText('label.none')}" list="#{1:getText('label.valueOptionFilter'),2:getText('label.rangeOptionFilter')}" disabled="filterOptionId>-1" cssClass="text" />
+	<wpsf:select useTabindexAutoIncrement="true" name="filterOptionId" id="filterOptionId" headerKey="-1" headerValue="%{getText('label.presenceOptionFilter')}" list="#{1:getText('label.valueOptionFilter'),2:getText('label.rangeOptionFilter'),3:getText('label.absenceOptionFilter')}" disabled="filterOptionId>-1" cssClass="text" />
 	<s:if test="filterOptionId>-1"><wpsf:hidden name="filterOptionId" /></s:if>
 	<s:else><wpsf:submit useTabindexAutoIncrement="true" action="setFilterOption" value="%{getText('label.continue')}" cssClass="button" /></s:else>	
 </p>
 
 <s:if test="filterOptionId==1">
 <ul class="noBullet radiocheck">
-	<li><input type="radio" name="dateValueType" id="dateValueType_today" value="2" <s:if test="(2 == dateValueType)">checked="checked"</s:if> /> <label for="dateValueType_today"><s:text name="label.today" /></label></li>
+	<li><input type="radio" name="dateValueType" id="dateValueType_today" value="2" <s:if test="(2 == dateValueType)">checked="checked"</s:if> /> <label for="dateValueType_today"><s:text name="label.today" /></label>&nbsp;&nbsp;&nbsp;<label for="valueDateDelay"><s:text name="label.delay" /></label> <wpsf:textfield useTabindexAutoIncrement="true" name="valueDateDelay" id="valueDateDelay" cssClass="text" /></li>
 	<li><input type="radio" name="dateValueType" id="dateValueType_chosen" value="3" <s:if test="(3 == dateValueType)">checked="checked"</s:if> /> <label for="dateValueType_chosen"><s:text name="label.chosenDate" /></label>, 
 		<label for="dateValue_cal"><s:text name="label.filterValue.exact" />:</label> <wpsf:textfield useTabindexAutoIncrement="true" name="dateValue" id="dateValue_cal" cssClass="text" /></li>
 </ul>
@@ -187,7 +187,7 @@
 <fieldset><legend><s:text name="label.filterFrom" /></legend>
 <ul class="noBullet radiocheck">
 	<li><input type="radio" name="dateStartType" id="dateStartType_none" value="1" <s:if test="(1 == dateStartType)">checked="checked"</s:if> /> <label for="dateStartType_none"><s:text name="label.none" /></label></li>
-	<li><input type="radio" name="dateStartType" id="dateStartType_today" value="2" <s:if test="(2 == dateStartType)">checked="checked"</s:if> /> <label for="dateStartType_today"><s:text name="label.today" /></label></li>
+	<li><input type="radio" name="dateStartType" id="dateStartType_today" value="2" <s:if test="(2 == dateStartType)">checked="checked"</s:if> /> <label for="dateStartType_today"><s:text name="label.today" /></label>&nbsp;&nbsp;&nbsp;<label for="startDateDelay"><s:text name="label.delay" /></label> <wpsf:textfield useTabindexAutoIncrement="true" name="startDateDelay" id="startDateDelay" cssClass="text" /></li>
 	<li><input type="radio" name="dateStartType" id="dateStartType_chosen" value="3" <s:if test="(3 == dateStartType)">checked="checked"</s:if> /> <label for="dateStartType_chosen"><s:text name="label.chosenDate" /></label>, 
 		<label for="dateStart_cal"><s:text name="label.filterValue.exact" />:</label> <wpsf:textfield useTabindexAutoIncrement="true" name="dateStart" id="dateStart_cal" cssClass="text" /><span class="inlineNote">dd/MM/yyyy</span></li>
 </ul>
@@ -195,7 +195,7 @@
 <fieldset><legend><s:text name="label.filterTo" /></legend>
 <ul class="noBullet radiocheck">
 	<li><input type="radio" name="dateEndType" id="dateEndType_none" value="1" <s:if test="(1 == dateEndType)">checked="checked"</s:if> /> <label for="dateEndType_none"><s:text name="label.none" /></label></li>
-	<li><input type="radio" name="dateEndType" id="dateEndType_today" value="2" <s:if test="(2 == dateEndType)">checked="checked"</s:if> /> <label for="dateEndType_today"><s:text name="label.today" /></label></li>
+	<li><input type="radio" name="dateEndType" id="dateEndType_today" value="2" <s:if test="(2 == dateEndType)">checked="checked"</s:if> /> <label for="dateEndType_today"><s:text name="label.today" /></label>&nbsp;&nbsp;&nbsp;<label for="endDateDelay"><s:text name="label.delay" /></label> <wpsf:textfield useTabindexAutoIncrement="true" name="endDateDelay" id="endDateDelay" cssClass="text" /></li>
 	<li><input type="radio" name="dateEndType" id="dateEndType_chosen" value="3" <s:if test="(3 == dateEndType)">checked="checked"</s:if> /> <label for="dateEndType_chosen"><s:text name="label.chosenDate" /></label>, 
 		<label for="dateEnd_cal"><s:text name="label.filterValue.exact" />:</label> <wpsf:textfield useTabindexAutoIncrement="true" name="dateEnd" id="dateEnd_cal" cssClass="text" /><span class="inlineNote">dd/MM/yyyy</span></li>
 </ul>
