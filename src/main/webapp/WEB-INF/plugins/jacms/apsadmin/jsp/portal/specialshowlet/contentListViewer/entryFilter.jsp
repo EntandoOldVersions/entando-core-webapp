@@ -41,6 +41,7 @@
 <p class="noscreen">
 	<wpsf:hidden name="contentType" />
 	<wpsf:hidden name="categories" value="%{#parameters['categories']}" />
+	<wpsf:hidden name="orClauseCategoryFilter" value="%{#parameters['orClauseCategoryFilter']}" />
 	<wpsf:hidden name="userFilters" value="%{#parameters['userFilters']}" />
 	<wpsf:hidden name="filters" />
 	<wpsf:hidden name="modelId" />
@@ -88,7 +89,7 @@
 <fieldset><legend><s:text name="label.settings"/></legend>
 <p>
 	<label for="filterOptionId" class="basic-mint-label"><s:text name="label.option"/>:</label>
-	<wpsf:select useTabindexAutoIncrement="true" id="filterOptionId" name="filterOptionId" headerKey="-1" headerValue="%{getText('label.none')}" list="#{1:getText('label.valueLikeOptionFilter'),2:getText('label.rangeOptionFilter')}" disabled="filterOptionId>-1" cssClass="text" />
+	<wpsf:select useTabindexAutoIncrement="true" id="filterOptionId" name="filterOptionId" list="#{-1:getText('label.presenceOptionFilter'),3:getText('label.absenceOptionFilter'),1:getText('label.valueLikeOptionFilter'),2:getText('label.rangeOptionFilter')}" disabled="filterOptionId>-1" cssClass="text" />
 	<s:if test="filterOptionId>-1"><wpsf:hidden name="filterOptionId" /></s:if>
 	<s:else><wpsf:submit useTabindexAutoIncrement="true" action="setFilterOption" value="%{getText('label.continue')}" cssClass="button" /></s:else>	
 </p>
@@ -123,7 +124,7 @@
 <fieldset><legend><s:text name="label.settings"/></legend>
 <p>
 	<label for="filterOptionId" class="basic-mint-label"><s:text name="label.option"/>:</label>
-	<wpsf:select useTabindexAutoIncrement="true" name="filterOptionId" id="filterOptionId" headerKey="-1" headerValue="%{getText('label.none')}" list="#{1:getText('label.valueOptionFilter'),2:getText('label.rangeOptionFilter')}" disabled="filterOptionId>-1" cssClass="text" />
+	<wpsf:select useTabindexAutoIncrement="true" name="filterOptionId" id="filterOptionId" list="#{-1:getText('label.presenceOptionFilter'),3:getText('label.absenceOptionFilter'),1:getText('label.valueOptionFilter'),2:getText('label.rangeOptionFilter')}" disabled="filterOptionId>-1" cssClass="text" />
 	<s:if test="filterOptionId>-1"><wpsf:hidden name="filterOptionId" /></s:if>
 	<s:else><wpsf:submit useTabindexAutoIncrement="true" action="setFilterOption" value="%{getText('label.continue')}" cssClass="button" /></s:else>	
 </p>
@@ -169,7 +170,7 @@
 <fieldset><legend><s:text name="label.settings"/></legend>
 <p>
 	<label for="filterOptionId" class="basic-mint-label"><s:text name="label.option"/>:</label>
-	<wpsf:select useTabindexAutoIncrement="true" name="filterOptionId" id="filterOptionId" headerKey="-1" headerValue="%{getText('label.none')}" list="#{1:getText('label.valueOptionFilter'),2:getText('label.rangeOptionFilter')}" disabled="filterOptionId>-1" cssClass="text" />
+	<wpsf:select useTabindexAutoIncrement="true" name="filterOptionId" id="filterOptionId" list="#{-1:getText('label.presenceOptionFilter'),3:getText('label.absenceOptionFilter'),1:getText('label.valueOptionFilter'),2:getText('label.rangeOptionFilter')}" disabled="filterOptionId>-1" cssClass="text" />
 	<s:if test="filterOptionId>-1"><wpsf:hidden name="filterOptionId" /></s:if>
 	<s:else><wpsf:submit useTabindexAutoIncrement="true" action="setFilterOption" value="%{getText('label.continue')}" cssClass="button" /></s:else>	
 </p>

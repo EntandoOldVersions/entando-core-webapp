@@ -91,6 +91,13 @@
 		</tr>
 		</s:iterator>
 		</table>
+		<s:if test="categoryCodes.size() > 1">
+			<p>
+			<wpsf:checkbox name="orClauseCategoryFilter" 
+				value="%{getShowlet().getConfig().get('orClauseCategoryFilter')}" id="orClauseCategoryFilter" cssClass="radiocheck" />
+			<label for="orClauseCategoryFilter"><s:text name="label.orClauseCategoryFilter" /></label>
+			</p>
+		</s:if>
 	</s:if>
 	<s:else>
 		<p><s:text name="note.categories.none" /></p>		
@@ -135,29 +142,41 @@
 		<s:if test="#filter['start'] != null">
 			<s:text name="label.filterFrom" /><strong>
 				<s:if test="#filter['start'] == 'today'">
-					<s:text name="label.today" />				
+					<s:text name="label.today" />
 				</s:if>
 				<s:else>
 					<s:property value="#filter['start']" />
 				</s:else>
 			</strong>
+			<s:if test="#filter['startDateDelay'] != null" >
+				<s:text name="label.filterValueDateDelay" />:<strong> <s:property value="#filter['startDateDelay']" /></strong>&nbsp;<s:text name="label.filterDateDelay.gg" />&nbsp;
+			</s:if>		
 		</s:if>
 		<s:if test="#filter['end'] != null">
 			<s:text name="label.filterTo" /><strong>
 				<s:if test="#filter['end'] == 'today'">
-					<s:text name="label.today" />				
+					<s:text name="label.today" />
 				</s:if>
 				<s:else>
 					<s:property value="#filter['end']" />
 				</s:else>
 			</strong>
+			<s:if test="#filter['endDateDelay'] != null" >
+				<s:text name="label.filterValueDateDelay" />:<strong> <s:property value="#filter['endDateDelay']" /></strong>&nbsp;<s:text name="label.filterDateDelay.gg" />
+			</s:if>
 		</s:if>
 		<s:if test="#filter['value'] != null">
-			<s:text name="label.filterValue" />:<strong> <s:property value="#filter['value']" /></strong>
+			<s:text name="label.filterValue" />:<strong> <s:property value="#filter['value']" /></strong> 
 				<s:if test="#filter['likeOption'] == 'true'">
-					<em>(<s:text name="label.filterValue.isLike" />)</em>
+					<em>(<s:text name="label.filterValue.isLike" />)</em> 
 				</s:if>
 		</s:if>
+		<s:if test="#filter['valueDateDelay'] != null" >
+			<s:text name="label.filterValueDateDelay" />:<strong> <s:property value="#filter['valueDateDelay']" /></strong>&nbsp;<s:text name="label.filterDateDelay.gg" />
+		</s:if>
+		</s:if>
+		<s:if test="#filter['nullValue'] != null" >
+			&nbsp;<s:text name="label.filterNoValue" />
 		</s:if>
 	</td>
 	<td>
