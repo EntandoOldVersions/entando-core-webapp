@@ -87,7 +87,7 @@
 						</s:iterator>
 					</table>
 					<p class="centerText">
-						<wpsf:submit useTabindexAutoIncrement="true" cssClass="button" value="%{getText('label.refresh') + ' ' + getText(#serviceGroupVar+ '.name')}" />
+						<wpsf:submit useTabindexAutoIncrement="true" cssClass="button" value="%{getText('label.update') + ' ' + getText(#serviceGroupVar+ '.name')}" />
 					</p>
 				</s:form>
 			</s:if>
