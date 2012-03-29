@@ -44,10 +44,11 @@
 				<s:iterator var="resourceVar" value="#resourceFlavourVar" status="statusVar" >
 					<tr>
 						<td class="monospace">
-							<s:url var="detailActionURL" action="detail" namespace="/do/Api/Resource"><s:param name="resourceName" value="#resourceVar.resourceName" /></s:url>
-							<a title="<s:text name="label.edit" />: <s:property value="#resourceVar.resourceName" />" href="<s:url action="detail" namespace="/do/Api/Resource"><s:param name="resourceName" value="#resourceVar.resourceName" /></s:url>" ><s:property value="#resourceVar.resourceName" /></a>
+							namespace XX<s:property value="#resourceVar.namespace" />XX
+							<s:url var="detailActionURL" action="detail" namespace="/do/Api/Resource"><s:param name="resourceName" value="#resourceVar.resourceName" /><s:param name="namespace" value="#resourceVar.namespace" /></s:url>
+							<a title="<s:text name="label.edit" />: <s:property value="#resourceVar.resourceName" />" href="<s:url action="detail" namespace="/do/Api/Resource"><s:param name="resourceName" value="#resourceVar.resourceName" /><s:param name="namespace" value="#resourceVar.namespace" /></s:url>" ><s:property value="#resourceVar.resourceName" /></a>
 							<s:if test="#resourceVar.getMethod != null" >
-								<s:if test="#resourceVar.getMethod.canSpawnOthers">&emsp;<a class="icon noborder" href="<s:url action="newService" namespace="/do/Api/Service"><s:param name="apiMethodName" value="#resourceVar.resourceName" /></s:url>" title="<s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#resourceVar.resourceName" />"><img src="<wp:resourceURL />administration/common/img/icons/22x22/api-service-new.png" alt="<s:text name="label.new" />" /></a></s:if>
+								<s:if test="#resourceVar.getMethod.canSpawnOthers">&emsp;<a class="icon noborder" href="<s:url action="newService" namespace="/do/Api/Service"><s:param name="apiMethodName" value="#resourceVar.resourceName" /><s:param name="namespace" value="#resourceVar.namespace" /></s:url>" title="<s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#resourceVar.resourceName" />"><img src="<wp:resourceURL />administration/common/img/icons/22x22/api-service-new.png" alt="<s:text name="label.new" />" /></a></s:if>
 							</s:if>
 						</td>
 

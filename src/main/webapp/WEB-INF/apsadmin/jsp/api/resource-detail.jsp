@@ -30,7 +30,7 @@
 	</s:if>
 
 	<p>
-		<s:text name="note.workingOn" />: <em><s:property value="#apiResourceVar.resourceName" />&#32;(<s:property value="#apiResourceVar.source" /><s:if test="%{#apiResourceVar.pluginCode != null && #apiResourceVar.pluginCode.length() > 0}">&#32;/&#32;<s:property value="#apiResourceVar.pluginCode" /></s:if>)</em>
+		<s:text name="note.workingOn" />: <em><s:property value="#apiResourceVar.resourceName" />&#32;**NAMESPACE**&#32;<s:property value="#apiResourceVar.namespace" />&#32;(<s:property value="#apiResourceVar.source" /><s:if test="%{#apiResourceVar.pluginCode != null && #apiResourceVar.pluginCode.length() > 0}">&#32;/&#32;<s:property value="#apiResourceVar.pluginCode" /></s:if>)</em>
 	</p>
 
 	<ul class="menu horizontal tab-toggle-bar">
@@ -90,7 +90,7 @@
 				<dt>
 					<s:text name="label.api.resource.uri" />
 				</dt>
-					<dd><wp:info key="systemParam" paramName="applicationBaseURL" />api/rs/<wp:info key="defaultLang" />/<s:property value="#apiResourceVar.resourceName" /></dd>
+					<dd><wp:info key="systemParam" paramName="applicationBaseURL" />api/rs/<wp:info key="defaultLang" /><s:if test="null != #apiResourceVar.namespace">/<s:property value="#apiResourceVar.namespace" /></s:if>/<s:property value="#apiResourceVar.resourceName" /></dd>
 				<dt>
 					<s:text name="label.api.resource.extensions" />
 				</dt>
@@ -106,6 +106,7 @@
 						<legend><s:text name="label.api.options.for.all" /></legend>
 						<p>
 							<wpsf:hidden name="resourceName" value="%{#apiResourceVar.resourceName}" />
+							<wpsf:hidden name="namespace" value="%{#apiResourceVar.namespace}" />
 							<wpsf:checkbox name="active" value="true" id="all_active" cssClass="radiocheck" />
 							<label for="all_active">
 								<s:text name="label.active" />
