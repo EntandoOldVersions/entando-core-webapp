@@ -2,7 +2,6 @@
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
-
 <h1><s:text name="title.apiServiceManagement" /></h1>
 <div id="main">
 	<s:if test="hasActionErrors()">
@@ -37,10 +36,9 @@
 			</ul>
 		</div>
 	</s:if>
-
 	<s:set var="methodFlavoursVar" value="methodFlavours" />
 	<s:set var="serviceFlavoursVar" value="serviceFlavours" />
-	<s:if test="#methodFlavoursVar.size() > 0">
+	<s:if test="%{#methodFlavoursVar!=null}">
 		<s:set var="servicesEmptyVar" value="true" />
 		<s:iterator var="methodFlavour" value="#methodFlavoursVar" status="varStatus">
 			<s:set var="serviceGroupVar" value="#methodFlavour.get(0).optgroup" />
@@ -99,8 +97,8 @@
 			</s:else>
 		</s:iterator>
 	</s:if>
-	<s:if test="#servicesEmptyVar">
+	<s:else>
 		<p><s:text name="note.api.noServices" /></p>
 		<p><a href="<s:url action="list" namespace="/do/Api/Resource" />"><s:text name="note.goToSomewhere" />&#32;<s:text name="menu.apisAdmin.resources" /></a> <s:text name="note.api.noServices.createOne" /></p>
-	</s:if>
+	</s:else>
 </div>
