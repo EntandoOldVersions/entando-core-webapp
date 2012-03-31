@@ -31,7 +31,7 @@
 	</s:if>
 
 	<p>
-		<s:text name="note.workingOn" />: <em> <s:property value="#apiResourceVar.namespace!=null && #apiResourceVar.namespace.length()>0 ? '/'+#apiResourceVar.namespace.length(): ''" />/<s:property value="#apiResourceVar.resourceName" />&#32;</em>
+		<s:text name="note.workingOn" />: <em> <s:property value="#apiResourceVar.namespace!=null && #apiResourceVar.namespace.length()>0 ? '/' + #apiResourceVar.namespace : ''" />/<s:property value="#apiResourceVar.resourceName" />&#32;</em>
 	</p>
 
 	<ul class="menu horizontal tab-toggle-bar">

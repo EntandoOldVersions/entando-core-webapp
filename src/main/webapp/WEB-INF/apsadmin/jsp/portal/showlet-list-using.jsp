@@ -65,7 +65,8 @@
 				<a class="noborder" href="<s:url action="copyFromShowlet" namespace="/do/Api/Service">
 						<s:param name="pageCode" value="#singlePage.code" />
 						<s:param name="framePos" value="#rowstatus.index" />
-						<s:param name="apiMethodName" value="#relatedApiMethodVar.methodName" />
+						<s:param name="resourceName" value="#relatedApiMethodVar.resourceName" />
+						<s:param name="namespace" value="#relatedApiMethodVar.namespace" />
 					</s:url>" title="<s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#relatedApiMethodVar.methodName" />"><img src="<wp:resourceURL />administration/common/img/icons/16x16/api-service-new.png" alt="<s:text name="label.new" />" /></a>
 				</wp:ifauthorized>
 				</s:if>
@@ -73,7 +74,8 @@
 				<wp:ifauthorized permission="superuser">				
 				<a class="noborder" href="<s:url action="newService" namespace="/do/Api/Service">
 						<s:param name="showletTypeCode" value="showletTypeCode" />
-						<s:param name="apiMethodName" value="#relatedApiMethodVar.methodName" />
+						<s:param name="resourceName" value="#relatedApiMethodVar.resourceName" />
+						<s:param name="namespace" value="#relatedApiMethodVar.namespace" />
 				</s:url>" title="<s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#relatedApiMethodVar.methodName" />"><img src="<wp:resourceURL />administration/common/img/icons/16x16/api-service-new.png" alt="<s:text name="label.new" />" /></a>				
 				</wp:ifauthorized>
 				</s:if>

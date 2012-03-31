@@ -36,12 +36,21 @@
 			</ul>
 		</div>
 	</s:if>
-	<s:set var="methodFlavoursVar" value="methodFlavours" />
+	<s:set var="resourceFlavoursVar" value="resourceFlavours" />
 	<s:set var="serviceFlavoursVar" value="serviceFlavours" />
-	<s:if test="%{#methodFlavoursVar!=null}">
+	<s:if test="%{#resourceFlavoursVar != null}">
 		<s:set var="servicesEmptyVar" value="true" />
-		<s:iterator var="methodFlavour" value="#methodFlavoursVar" status="varStatus">
-			<s:set var="serviceGroupVar" value="#methodFlavour.get(0).optgroup" />
+		<s:iterator var="resourceFlavour" value="#resourceFlavoursVar" status="varStatus">
+			<s:set var="serviceGroupVar" value="#resourceFlavour.get(0).getSectionCode()" />
+			<%--
+			<s:form action="newService" cssClass="margin-more-bottom">
+			<p>
+				<label>Create new service from:</label><br />
+				<wpsf:select useTabindexAutoIncrement="true" list="#resourceFlavour" name="resourceCode" listKey="code" listValue="%{code + ' - ' + description}" />
+				&#32;<wpsf:submit useTabindexAutoIncrement="true" cssClass="button" value="Create" action="newService" />
+			</p>
+			</s:form>
+			--%>
 			<s:set var="servicesByGroupVar" value="#serviceFlavoursVar[#serviceGroupVar]" />
 			<s:if test="null != #servicesByGroupVar && #servicesByGroupVar.size() > 0">
 				<s:set var="servicesEmptyVar" value="false" />
