@@ -28,6 +28,16 @@
 		</ul>
 	</div>
 </s:if>
+<s:if test="hasActionErrors()">
+	<div class="message message_error">
+		<h2><s:text name="message.title.ActionErrors" /></h2>
+		<ul>
+			<s:iterator value="actionErrors">
+				<li><s:property escape="false" /></li>
+			</s:iterator>
+		</ul>
+	</div>
+</s:if>
 
 <p>
 	<s:text name="note.workingOn" />: <em> <s:property value="#apiResourceVar.namespace!=null && #apiResourceVar.namespace.length()>0 ? '/' + #apiResourceVar.namespace : ''" />/<s:property value="#apiResourceVar.resourceName" />&#32;</em>

@@ -1,6 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
-<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <dl class="table-display">
 	<dt>
@@ -39,23 +39,23 @@
 			<dd class="schemas">
 				<s:if test='%{#methodVar.httpMethod.toString().equalsIgnoreCase("POST") || #methodVar.httpMethod.toString().equalsIgnoreCase("PUT")}'>
 					<p class="schema-get">
-						<s:url action="requestSchema" namespace="/do/Front/Api/Resource" var="requestSchemaURLVar">
-							<s:param name="resourceName" value="#methodVar.resourceName" />
-							<s:param name="namespace" value="#methodVar.namespace" />
-							<s:param name="httpMethod" value="#methodVar.httpMethod" />
-						</s:url>
-						<a title="<s:property value="#requestSchemaURL" escapeHtml="false" />" href="<s:property value="#requestSchemaURLVar" escapeHtml="false" />" >
+						<wp:action path="/ExtStr2/do/Front/Api/Resource/requestSchema.action" var="requestSchemaURLVar" >
+							<wp:parameter name="resourceName"><s:property value="#methodVar.resourceName" /></wp:parameter>
+							<wp:parameter name="namespace"><s:property value="#methodVar.namespace" /></wp:parameter>
+							<wp:parameter name="httpMethod"><s:property value="#methodVar.httpMethod" /></wp:parameter>
+						</wp:action>
+						<a title="" href="<c:out value="${requestSchemaURLVar}" escapeXml="false" />" >
 							<s:text name="label.api.resource.method.schemas.req" />
 						</a>
 					</p>
 				</s:if>
 				<p class="schema-post">
-					<s:url action="responseSchema" namespace="/do/Front/Api/Resource" var="responseSchemaURLVar">
-						<s:param name="resourceName" value="#methodVar.resourceName" />
-						<s:param name="namespace" value="#methodVar.namespace" />
-						<s:param name="httpMethod" value="#methodVar.httpMethod" />
-					</s:url>
-					<a title="<s:property value="#responseSchemaURL" escapeHtml="false" />" href="<s:property value="#responseSchemaURLVar" escapeHtml="false" />" >
+					<wp:action path="/ExtStr2/do/Front/Api/Resource/responseSchema.action" var="responseSchemaURLVar" >
+						<wp:parameter name="resourceName"><s:property value="#methodVar.resourceName" /></wp:parameter>
+						<wp:parameter name="namespace"><s:property value="#methodVar.namespace" /></wp:parameter>
+						<wp:parameter name="httpMethod"><s:property value="#methodVar.httpMethod" /></wp:parameter>
+					</wp:action>
+					<a title="" href="<c:out value="${responseSchemaURLVar}" escapeXml="false" />" >
 						<s:text name="label.api.resource.method.schemas.resp" />
 					</a>
 				</p>
@@ -84,4 +84,3 @@
 	</s:if>
 	<s:set name="selectFieldValue" />
 </s:if>
-
