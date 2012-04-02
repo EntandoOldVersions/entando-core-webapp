@@ -41,22 +41,22 @@
 			</a>
 		</li>
 		<li>
-			<a href="#get_tab" id="get_tab_quickmenu" class="tab-toggle">
+			<a href="#GET_tab" id="get_tab_quickmenu" class="tab-toggle">
 				<span class="en">GET</span>
 			</a>
 		</li>
 		<li>
-			<a href="#post_tab" id="post_tab_quickmenu" class="tab-toggle">
+			<a href="#POST_tab" id="post_tab_quickmenu" class="tab-toggle">
 				<span class="en">POST</span>
 			</a>
 		</li>
 		<li>
-			<a href="#put_tab" id="put_tab_quickmenu" class="tab-toggle">
+			<a href="#PUT_tab" id="put_tab_quickmenu" class="tab-toggle">
 				<span class="en">PUT</span>
 			</a>
 		</li>
 		<li>
-			<a href="#delete_tab" id="delete_tab_quickmenu" class="tab-toggle">
+			<a href="#DELETE_tab" id="delete_tab_quickmenu" class="tab-toggle">
 				<span class="en">DELETE</span>
 			</a>
 		</li>
