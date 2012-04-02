@@ -34,6 +34,7 @@
 		<s:text name="note.workingOn" />: <em> <s:property value="#apiResourceVar.namespace!=null && #apiResourceVar.namespace.length()>0 ? '/' + #apiResourceVar.namespace : ''" />/<s:property value="#apiResourceVar.resourceName" />&#32;</em>
 	</p>
 
+	<h3 class="noscreen" id="quickmenu"><s:text name="title.quickMenu" /></h3>
 	<ul class="menu horizontal tab-toggle-bar">
 		<li>
 			<a href="#general" id="info_tab_quickmenu" class="tab-toggle">

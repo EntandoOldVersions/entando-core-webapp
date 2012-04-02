@@ -8,19 +8,11 @@
 <s:set var="POSTMethodVar" value="#apiResourceVar.postMethod" />
 <s:set var="PUTMethodVar" value="#apiResourceVar.putMethod" />
 <s:set var="DELETEMethodVar" value="#apiResourceVar.deleteMethod" />
-<h1>
-	<s:text name="title.apiResourceManagement" />
-	<%-- anchor print
-	<a href="<s:url action="list" />" title="<s:text name="label.list" />">
-		<img src="<wp:resourceURL/>administration/common/img/icons/32x32/general-list.png" alt="<s:text name="label.list" />" />
-	</a>
-	--%>
-</h1>
-
-	
+<s:set var="apiNameVar" value="(#apiResourceVar.namespace!=null && #apiResourceVar.namespace.length()>0 ? '/' + #apiResourceVar.namespace : '')+'/'+#apiResourceVar.resourceName" />
+<h2><wp:i18n key="ENTANDO_API_RESOURCE" />&#32;<s:property value="#apiNameVar" /></h2>
 <s:if test="hasActionMessages()">
 	<div class="message message_confirm">
-		<h3><s:text name="messages.confirm" /></h3>
+		<h3><wp:i18n key="ENTANDO_API_ERROR" /></h3>
 		<ul>
 			<s:iterator value="actionMessages">
 				<li><s:property escape="false" /></li>
@@ -30,7 +22,7 @@
 </s:if>
 <s:if test="hasActionErrors()">
 	<div class="message message_error">
-		<h2><s:text name="message.title.ActionErrors" /></h2>
+		<h3><wp:i18n key="ENTANDO_API_ERROR" /></h3>
 		<ul>
 			<s:iterator value="actionErrors">
 				<li><s:property escape="false" /></li>
@@ -38,95 +30,49 @@
 		</ul>
 	</div>
 </s:if>
-
-<p>
-	<s:text name="note.workingOn" />: <em> <s:property value="#apiResourceVar.namespace!=null && #apiResourceVar.namespace.length()>0 ? '/' + #apiResourceVar.namespace : ''" />/<s:property value="#apiResourceVar.resourceName" />&#32;</em>
-</p>
-
-<ul class="menu horizontal tab-toggle-bar">
-	<li>
-		<a href="#general" id="info_tab_quickmenu" class="tab-toggle">
-			<s:text name="label.general" />
-		</a>
-	</li>
-	<li>
-		<a href="#get_tab" id="get_tab_quickmenu" class="tab-toggle">
-			<span class="en">GET</span>
-		</a>
-	</li>
-	<li>
-		<a href="#post_tab" id="post_tab_quickmenu" class="tab-toggle">
-			<span class="en">POST</span>
-		</a>
-	</li>
-	<li>
-		<a href="#put_tab" id="put_tab_quickmenu" class="tab-toggle">
-			<span class="en">PUT</span>
-		</a>
-	</li>
-	<li>
-		<a href="#delete_tab" id="delete_tab_quickmenu" class="tab-toggle">
-			<span class="en">DELETE</span>
-		</a>
-	</li>
-</ul>
-
-<div class="tab-container">
-	<div id="general" class="tab">
-		<dl class="table-display">
-			<dt><s:text name="label.api.resource.name" /></dt>
-				<dd><s:property value="#apiResourceVar.resourceName" /></dd>
-			<dt><span lang="en"><s:text name="label.api.resource.namespace" /></span></dt>
-				<dd>/<s:property value="#apiResourceVar.namespace" /></dd>
-			<dt><s:text name="label.api.resource.description" /></dt>
-				<dd><s:property value="#apiResourceVar.description" /></dd>
-			<dt><s:text name="label.api.resource.source" /></dt>
-				<dd><s:property value="#apiResourceVar.source" /></dd>
-			<dt><s:text name="label.api.resource.plugin" /></dt>
-				<dd>
-					<s:if test="#apiResourceVar.pluginCode == null||#apiResourceVar.pluginCode.length == 0">
-						<abbr title="<s:text name="label.none" />">&ndash;</abbr>
-					</s:if>
-					<s:else>
-						<s:property value="%{getText(#apiResourceVar.pluginCode+'.name')}" />&#32;(<s:property value="%{#apiResourceVar.pluginCode}" />)
-					</s:else>
-				</dd>
-			<dt>
-				<s:text name="label.api.resource.uri" />
-			</dt>
-				<dd>
-					<wp:info key="systemParam" paramName="applicationBaseURL" />api/rs/<wp:info key="currentLang" /><s:if test="null != #apiResourceVar.namespace">/<s:property value="#apiResourceVar.namespace" /></s:if>/<s:property value="#apiResourceVar.resourceName" />
-				</dd>
-			<dt>
-				<s:text name="label.api.resource.extensions" />
-			</dt>
-				<dd>
-					<s:text name="note.extensions.xml" />
-					<br />
-					<s:text name="note.extensions.json" />
-				</dd>
-		</dl>
-
-	</div>
-
+<!-- DESCRIPTION -->
+<p><s:property value="#apiResourceVar.description" /></p>
+<!-- INFO -->
+<dl class="table-display">
+	<dt><wp:i18n key="ENTANDO_API_RESOURCE_NAME" /></dt>
+		<dd><s:property value="#apiResourceVar.resourceName" /></dd>
+	<dt><span lang="en"><wp:i18n key="ENTANDO_API_RESOURCE_NAMESPACE" /></span></dt>
+		<dd>/<s:property value="#apiResourceVar.namespace" /></dd>
+	<dt><wp:i18n key="ENTANDO_API_RESOURCE_SOURCE" /></dt>
+		<dd>
+			<s:property value="#apiResourceVar.source" /><s:if test="%{#apiResourceVar.pluginCode != null && #apiResourceVar.pluginCode.length() > 0}">,&#32;<s:property value="%{getText(#apiResourceVar.pluginCode+'.name')}" />&#32;(<s:property value="%{#apiResourceVar.pluginCode}" />)</s:if>
+		</dd>
+	<dt><wp:i18n key="ENTANDO_API_RESOURCE_URI" /></dt>
+		<dd>
+			<a href="<wp:info key="systemParam" paramName="applicationBaseURL" />api/rs/<wp:info key="currentLang" /><s:if test="null != #apiResourceVar.namespace">/<s:property value="#apiResourceVar.namespace" /></s:if>/<s:property value="#apiResourceVar.resourceName" />"><wp:info key="systemParam" paramName="applicationBaseURL" />api/rs/<wp:info key="currentLang" /><s:if test="null != #apiResourceVar.namespace">/<s:property value="#apiResourceVar.namespace" /></s:if>/<s:property value="#apiResourceVar.resourceName" /></a>
+		</dd>
+	<dt>
+		<wp:i18n key="ENTANDO_API_EXTENSION" />
+	</dt>
+		<dd>
+			<wp:i18n key="ENTANDO_API_EXTENSION_NOTE" />
+		</dd>
+</dl>
 <%-- GET --%>
-	<div id="GET_tab" class="tab">
-		<s:set name="methodVar" value="#GETMethodVar" />
-		<s:include value="/WEB-INF/aps/jsp/internalservlet/api/include/resource-method-detail.jsp" />
-	</div>
+	<s:set var="methodVar" value="#GETMethodVar" />
+	<s:set var="currentMethodNameVar" value="%{'GET'}" />
+	<h3 id="api_method_GET">GET</h3>
+	<s:include value="/WEB-INF/aps/jsp/internalservlet/api/include/resource-method-detail.jsp" />
 <%-- POST --%>
-	<div id="POST_tab" class="tab">
-		<s:set name="methodVar" value="#POSTMethodVar" />
-		<s:include value="/WEB-INF/aps/jsp/internalservlet/api/include/resource-method-detail.jsp" />
-	</div>
+	<s:set var="methodVar" value="#POSTMethodVar" />
+	<s:set var="currentMethodNameVar" value="%{'POST'}" />
+	<h3 id="api_method_POST">POST</h3>
+	<s:include value="/WEB-INF/aps/jsp/internalservlet/api/include/resource-method-detail.jsp" />
 <%-- PUT --%>
-	<div id="PUT_tab" class="tab">
-		<s:set name="methodVar" value="#PUTMethodVar" />
-		<s:include value="/WEB-INF/aps/jsp/internalservlet/api/include/resource-method-detail.jsp" />
-	</div>
+	<s:set var="methodVar" value="#PUTMethodVar" />
+	<s:set var="currentMethodNameVar" value="%{'PUT'}" />
+	<h3 id="api_method_PUT">PUT</h3>
+	<s:include value="/WEB-INF/aps/jsp/internalservlet/api/include/resource-method-detail.jsp" />
 <%-- DELETE --%>
-	<div id="DELETE_tab" class="tab">
-		<s:set name="methodVar" value="#DELETEMethodVar" />
-		<s:include value="/WEB-INF/aps/jsp/internalservlet/api/include/resource-method-detail.jsp" />
-	</div>
-</div>
+	<s:set var="methodVar" value="#DELETEMethodVar" />
+	<s:set var="currentMethodNameVar" value="%{'DELETE'}" />
+	<h3 id="api_method_DELETE">DELETE</h3>
+	<s:include value="/WEB-INF/aps/jsp/internalservlet/api/include/resource-method-detail.jsp" />
+<p>
+	<a href="<wp:action path="/ExtStr2/do/Front/Api/Resource/list.action" />"><wp:i18n key="ENTANDO_API_GOTO_LIST" /></a>
+</p>
