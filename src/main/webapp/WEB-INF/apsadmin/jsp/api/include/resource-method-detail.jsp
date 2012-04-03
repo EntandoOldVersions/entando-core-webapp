@@ -37,7 +37,7 @@
 			</dt>
 				<dd>
 					<s:if test="%{null != #methodVar.requiredPermission}">
-						<s:text name="label.method.authority.permission" />&#32;<s:property value="#methodVar.requiredPermission" />
+						<s:iterator value="methodAuthorityOptions" var="permission"><s:if test="#permission.key==#methodVar.requiredPermission"><s:property value="#permission.value" /></s:if></s:iterator>
 					</s:if>
 					<s:elseif test="%{#methodVar.requiredAuth}">
 						<s:text name="label.method.authority.autenticationRequired" />
@@ -139,4 +139,3 @@
 	</div>
 	<s:set name="selectFieldValue" />
 </s:if>
-
