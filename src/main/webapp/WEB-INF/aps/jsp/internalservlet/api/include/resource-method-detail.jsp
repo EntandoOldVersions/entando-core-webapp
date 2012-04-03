@@ -25,7 +25,8 @@
 			</dt>
 				<dd>
 					<s:if test="%{null != #methodVar.requiredPermission}">
-						<wp:i18n key="ENTANDO_API_METHOD_AUTH_WITH_PERM" />&#32;<s:property value="#methodVar.requiredPermission" />
+						<%-- <wp:i18n key="ENTANDO_API_METHOD_AUTH_WITH_PERM" /> --%>
+						<s:iterator value="methodAuthorityOptions" var="permission"><s:if test="#permission.key==#methodVar.requiredPermission"><s:property value="#permission.value" /></s:if></s:iterator>
 					</s:if>
 					<s:elseif test="%{#methodVar.requiredAuth}">
 						<wp:i18n key="ENTANDO_API_METHOD_AUTH_SIMPLE" />
