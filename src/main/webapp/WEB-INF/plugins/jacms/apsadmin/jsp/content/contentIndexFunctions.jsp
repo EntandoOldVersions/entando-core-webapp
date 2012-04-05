@@ -2,10 +2,9 @@
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
-
 <s:set var="targetNS" value="%{'/do/jacms/Content'}" />
 <h1><s:text name="jacms.menu.contentAdmin" /><s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></h1>
-
+<div id="main">
 <h2><s:text name="title.reload.contentReferences" /></h2>
 <s:if test="contentManagerStatus == 1">
 <p class="message message_error">
@@ -55,5 +54,5 @@
 </s:elseif>
 	( <a href="<s:url action="reloadContentsIndex" namespace="/do/jacms/Content/Admin" />"><s:text name="note.reload.contentIndexes.start" /></a> )
 </p>
-
 </s:else>
+</div>
