@@ -37,7 +37,7 @@
 			</dt>
 				<dd>
 					<s:if test="%{null != #methodVar.requiredPermission}">
-						<s:text name="label.method.authority.permission" />&#32;<s:property value="#methodVar.requiredPermission" />
+						<s:iterator value="methodAuthorityOptions" var="permission"><s:if test="#permission.key==#methodVar.requiredPermission"><s:property value="#permission.value" /></s:if></s:iterator>
 					</s:if>
 					<s:elseif test="%{#methodVar.requiredAuth}">
 						<s:text name="label.method.authority.autenticationRequired" />
@@ -66,6 +66,7 @@
 					<p class="schema-get">
 						<s:url action="requestSchema" namespace="/do/Api/Resource" var="requestSchemaURLVar">
 							<s:param name="resourceName" value="#methodVar.resourceName" />
+							<s:param name="namespace" value="#methodVar.namespace" />
 							<s:param name="httpMethod" value="#methodVar.httpMethod" />
 						</s:url>
 						<a title="<s:property value="#requestSchemaURL" escapeHtml="false" />" href="<s:property value="#requestSchemaURLVar" escapeHtml="false" />" >
@@ -76,6 +77,7 @@
 				<p class="schema-post">
 					<s:url action="responseSchema" namespace="/do/Api/Resource" var="responseSchemaURLVar">
 						<s:param name="resourceName" value="#methodVar.resourceName" />
+						<s:param name="namespace" value="#methodVar.namespace" />
 						<s:param name="httpMethod" value="#methodVar.httpMethod" />
 					</s:url>
 					<a title="<s:property value="#responseSchemaURL" escapeHtml="false" />" href="<s:property value="#responseSchemaURLVar" escapeHtml="false" />" >
@@ -117,6 +119,7 @@
 				<p>
 					<s:set name="activeFieldValue" value="#methodVar.active" />
 					<wpsf:hidden name="resourceName" value="%{#methodVar.resourceName}" />
+					<wpsf:hidden name="namespace" value="%{#methodVar.namespace}" />
 					<wpsf:hidden name="httpMethod" value="%{#methodVar.httpMethod}" />
 					<wpsf:checkbox name="%{#methodVar.httpMethod}_active" value="%{#activeFieldValue}" cssClass="radiocheck" id="active_%{#methodVar.httpMethod}"/>
 					&#32;
@@ -136,4 +139,3 @@
 	</div>
 	<s:set name="selectFieldValue" />
 </s:if>
-

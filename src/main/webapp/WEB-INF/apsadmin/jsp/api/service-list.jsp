@@ -2,7 +2,6 @@
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
-
 <h1><s:text name="title.apiServiceManagement" /></h1>
 <div id="main">
 	<s:if test="hasActionErrors()">
@@ -37,13 +36,21 @@
 			</ul>
 		</div>
 	</s:if>
-
-	<s:set var="methodFlavoursVar" value="methodFlavours" />
+	<s:set var="resourceFlavoursVar" value="resourceFlavours" />
 	<s:set var="serviceFlavoursVar" value="serviceFlavours" />
-	<s:if test="#methodFlavoursVar.size() > 0">
+	<s:if test="%{#serviceFlavoursVar != null && #serviceFlavoursVar.size() > 0}">
 		<s:set var="servicesEmptyVar" value="true" />
-		<s:iterator var="methodFlavour" value="#methodFlavoursVar" status="varStatus">
-			<s:set var="serviceGroupVar" value="#methodFlavour.get(0).optgroup" />
+		<s:iterator var="resourceFlavour" value="#resourceFlavoursVar" status="varStatus">
+			<s:set var="serviceGroupVar" value="#resourceFlavour.get(0).getSectionCode()" />
+			<%--
+			<s:form action="newService" cssClass="margin-more-bottom">
+			<p>
+				<label>Create new service from:</label><br />
+				<wpsf:select useTabindexAutoIncrement="true" list="#resourceFlavour" name="resourceCode" listKey="code" listValue="%{code + ' - ' + description}" />
+				&#32;<wpsf:submit useTabindexAutoIncrement="true" cssClass="button" value="Create" action="newService" />
+			</p>
+			</s:form>
+			--%>
 			<s:set var="servicesByGroupVar" value="#serviceFlavoursVar[#serviceGroupVar]" />
 			<s:if test="null != #servicesByGroupVar && #servicesByGroupVar.size() > 0">
 				<s:set var="servicesEmptyVar" value="false" />
@@ -87,20 +94,18 @@
 						</s:iterator>
 					</table>
 					<p class="centerText">
-						<wpsf:submit useTabindexAutoIncrement="true" cssClass="button" value="%{getText('label.refresh') + ' ' + getText(#serviceGroupVar+ '.name')}" />
+						<wpsf:submit useTabindexAutoIncrement="true" cssClass="button" value="%{getText('label.api.service.update') + ' ' + getText(#serviceGroupVar+ '.name')}" />
 					</p>
 				</s:form>
 			</s:if>
 			<s:else>
-				<%--
 				<p><s:text name="note.api.noServiceFromFlavour" />: <span class="monospace"><s:property value="#serviceGroupVar" /></span></p>
-				<p><a href="<s:url action="list" namespace="/do/Api/Method" />"><s:text name="note.goToSomewhere" /> <s:text name="menu.apisAdmin.methods" /></a> <s:text name="note.api.noServiceFromFlavour.createOne" />.</p>
-				--%>
+				<p><a href="<s:url action="list" namespace="/do/Api/Resource" />"><s:text name="note.goToSomewhere" />&#32;<s:text name="menu.apisAdmin.resources" /></a>&#32;<s:text name="note.api.noServices.createOne" /></p>
 			</s:else>
 		</s:iterator>
 	</s:if>
-	<s:if test="#servicesEmptyVar">
+	<s:else>
 		<p><s:text name="note.api.noServices" /></p>
-		<p><a href="<s:url action="list" namespace="/do/Api/Resource" />"><s:text name="note.goToSomewhere" />&#32;<s:text name="menu.apisAdmin.resources" /></a> <s:text name="note.api.noServices.createOne" /></p>
-	</s:if>
+		<p><a href="<s:url action="list" namespace="/do/Api/Resource" />"><s:text name="note.goToSomewhere" />&#32;<s:text name="menu.apisAdmin.resources" /></a>&#32;<s:text name="note.api.noServices.createOne" /></p>
+	</s:else>
 </div>

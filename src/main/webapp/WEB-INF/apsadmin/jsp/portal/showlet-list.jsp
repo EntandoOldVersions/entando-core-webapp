@@ -120,12 +120,15 @@
 		<s:if test="null != #relatedApiMethodVar">
 			<s:if test="#concreteShowletTypeVar.isLogic()">
 				<s:url action="newService" namespace="/do/Api/Service" var="newServiceUrlVar">
-					<s:param name="apiMethodName" value="#relatedApiMethodVar.methodName" /><s:param name="showletTypeCode" value="#concreteShowletTypeVar.code" />
+					<s:param name="resourceName" value="#relatedApiMethodVar.resourceName" />
+					<s:param name="namespace" value="#relatedApiMethodVar.namespace" />
+					<s:param name="showletTypeCode" value="#concreteShowletTypeVar.code" />
 				</s:url>
 			</s:if>
 			<s:else>
 				<s:url action="newService" namespace="/do/Api/Service" var="newServiceUrlVar">
-					<s:param name="apiMethodName" value="#relatedApiMethodVar.methodName" />
+					<s:param name="resourceName" value="#relatedApiMethodVar.resourceName" />
+					<s:param name="namespace" value="#relatedApiMethodVar.namespace" />
 				</s:url>
 			</s:else>
 			<a href="<s:property value="#newServiceUrlVar" escape="false" />" title="<s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#relatedApiMethodVar.methodName" />"><img src="<wp:resourceURL />administration/common/img/icons/22x22/api-service-new.png" alt="<s:text name="label.new" />" /></a>

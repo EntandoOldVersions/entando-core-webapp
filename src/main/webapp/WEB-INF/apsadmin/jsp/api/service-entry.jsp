@@ -6,7 +6,7 @@
 <h1><s:text name="title.apiServiceManagement" /></h1>
 <div id="main">
 	<s:if test="strutsAction == 1 || strutsAction == 3">
-		<s:set var="masterApiMethodVar" value="%{getMethod(apiMethodName)}" />
+		<s:set var="masterApiMethodVar" value="%{getMethod(namespace, resourceName)}" />
 	</s:if>
 
 	<s:if test="strutsAction == 2">
@@ -43,7 +43,8 @@
 			<wpsf:hidden name="pageCode" />
 			<wpsf:hidden name="framePos" />
 			</s:if>
-			<wpsf:hidden name="apiMethodName" />
+			<wpsf:hidden name="resourceName" />
+			<wpsf:hidden name="namespace" />
 		</p>
 
 		<fieldset>

@@ -25,7 +25,7 @@
 				days: ["<s:text name="calendar.week.sun" />","<s:text name="calendar.week.mon" />","<s:text name="calendar.week.tue" />","<s:text name="calendar.week.wen" />","<s:text name="calendar.week.thu" />","<s:text name="calendar.week.fri" />","<s:text name="calendar.week.sat" />"],
 				prevText: "<s:text name="calendar.label.prevText" />",	//Mese precedente 
 				nextText: "<s:text name="calendar.label.nextText" />",	//Mese successivo
-				introText: "<s:text name="calendar.label.introText" />",	//Benvenuto nel calendario
+				introText: "<s:text name="calendar.label.introText" />"	//Benvenuto nel calendario
 			};
 			for (var i = 0;i<calendars.length;i++) {
 				var istanceSetup = {};

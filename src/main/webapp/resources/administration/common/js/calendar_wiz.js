@@ -3,6 +3,7 @@
 
 /*
  * Edit: 
+ *		- 20120330 toggle function, IE compatibility: fixed a remove event issue when the mousedown event was undefined
  *		- 20101202 added event "change" propagation | added a class for the calendar table
  *		- 20100511 added a event.preventDefault(); on event click to element toggler "button" for ie7/8 strange behaviour
  *		- 20090401 calendar reads every time the value of the date from input field
@@ -839,7 +840,9 @@ var Calendar = new Class({
 	// @param cal (obj)
  
 	toggle: function(cal) {
-		document.removeEvent('mousedown', this.fn); // always remove the current mousedown script first
+		if (this.fn !== undefined) { //ie issues here
+			document.removeEvent('mousedown', this.fn); // always remove the current mousedown script first
+		}		
  
  
  

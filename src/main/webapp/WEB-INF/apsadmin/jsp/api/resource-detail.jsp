@@ -2,6 +2,7 @@
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <s:set var="apiResourceVar" value="apiResource" />
 <s:set var="GETMethodVar" value="#apiResourceVar.getMethod" />
 <s:set var="POSTMethodVar" value="#apiResourceVar.postMethod" />
@@ -20,19 +21,20 @@
 
 	<s:if test="hasActionMessages()">
 		<div class="message message_confirm">
-		<h3><s:text name="messages.confirm" /><h3>
-		<ul>
-			<s:iterator value="actionMessages">
-				<li><s:property escape="false" /></li>
-			</s:iterator>
-		</ul>
+			<h3><s:text name="messages.confirm" /></h3>
+			<ul>
+				<s:iterator value="actionMessages">
+					<li><s:property escape="false" /></li>
+				</s:iterator>
+			</ul>
 		</div>
 	</s:if>
 
 	<p>
-		<s:text name="note.workingOn" />: <em><s:property value="#apiResourceVar.resourceName" />&#32;(<s:property value="#apiResourceVar.source" /><s:if test="%{#apiResourceVar.pluginCode != null && #apiResourceVar.pluginCode.length() > 0}">&#32;/&#32;<s:property value="#apiResourceVar.pluginCode" /></s:if>)</em>
+		<s:text name="note.workingOn" />: <em> <s:property value="#apiResourceVar.namespace!=null && #apiResourceVar.namespace.length()>0 ? '/' + #apiResourceVar.namespace : ''" />/<s:property value="#apiResourceVar.resourceName" />&#32;</em>
 	</p>
 
+	<h3 class="noscreen" id="quickmenu"><s:text name="title.quickMenu" /></h3>
 	<ul class="menu horizontal tab-toggle-bar">
 		<li>
 			<a href="#general" id="info_tab_quickmenu" class="tab-toggle">
@@ -40,23 +42,23 @@
 			</a>
 		</li>
 		<li>
-			<a href="#get_tab" id="get_tab_quickmenu" class="tab-toggle">
-				GET
+			<a href="#GET_tab" id="get_tab_quickmenu" class="tab-toggle">
+				<span class="en">GET</span>
 			</a>
 		</li>
 		<li>
-			<a href="#post_tab" id="post_tab_quickmenu" class="tab-toggle">
-				POST
+			<a href="#POST_tab" id="post_tab_quickmenu" class="tab-toggle">
+				<span class="en">POST</span>
 			</a>
 		</li>
 		<li>
-			<a href="#put_tab" id="put_tab_quickmenu" class="tab-toggle">
-				PUT
+			<a href="#PUT_tab" id="put_tab_quickmenu" class="tab-toggle">
+				<span class="en">PUT</span>
 			</a>
 		</li>
 		<li>
-			<a href="#delete_tab" id="delete_tab_quickmenu" class="tab-toggle">
-				DELETE
+			<a href="#DELETE_tab" id="delete_tab_quickmenu" class="tab-toggle">
+				<span class="en">DELETE</span>
 			</a>
 		</li>
 	</ul>
@@ -64,24 +66,18 @@
 	<div class="tab-container">
 		<div id="general" class="tab">
 			<dl class="table-display">
-				<dt>
-					<s:text name="label.api.resource.name" />
-				</dt>
+				<dt><s:text name="label.api.resource.name" /></dt>
 					<dd><s:property value="#apiResourceVar.resourceName" /></dd>
-				<dt>
-					<s:text name="label.api.resource.description" />
-				</dt>
+				<dt><span lang="en"><s:text name="label.api.resource.namespace" /></span></dt>
+					<dd>/<s:property value="#apiResourceVar.namespace" /></dd>
+				<dt><s:text name="label.api.resource.description" /></dt>
 					<dd><s:property value="#apiResourceVar.description" /></dd>
-				<dt>
-					<s:text name="label.api.resource.source" />
-				</dt>
+				<dt><s:text name="label.api.resource.source" /></dt>
 					<dd><s:property value="#apiResourceVar.source" /></dd>
-				<dt>
-					<s:text name="label.api.resource.plugin" />
-				</dt>
+				<dt><s:text name="label.api.resource.plugin" /></dt>
 					<dd>
 						<s:if test="#apiResourceVar.pluginCode == null||#apiResourceVar.pluginCode.length == 0">
-							<abbr title="none">&ndash;</abbr>
+							<abbr title="<s:text name="label.none" />">&ndash;</abbr>
 						</s:if>
 						<s:else>
 							<s:property value="%{getText(#apiResourceVar.pluginCode+'.name')}" />&#32;(<s:property value="%{#apiResourceVar.pluginCode}" />)
@@ -90,7 +86,9 @@
 				<dt>
 					<s:text name="label.api.resource.uri" />
 				</dt>
-					<dd><wp:info key="systemParam" paramName="applicationBaseURL" />api/rs/<wp:info key="defaultLang" />/<s:property value="#apiResourceVar.resourceName" /></dd>
+					<dd>
+						<wp:info key="systemParam" paramName="applicationBaseURL" />api/rs/<wp:info key="defaultLang" /><s:if test="null != #apiResourceVar.namespace">/<s:property value="#apiResourceVar.namespace" /></s:if>/<s:property value="#apiResourceVar.resourceName" />
+					</dd>
 				<dt>
 					<s:text name="label.api.resource.extensions" />
 				</dt>
@@ -106,6 +104,7 @@
 						<legend><s:text name="label.api.options.for.all" /></legend>
 						<p>
 							<wpsf:hidden name="resourceName" value="%{#apiResourceVar.resourceName}" />
+							<wpsf:hidden name="namespace" value="%{#apiResourceVar.namespace}" />
 							<wpsf:checkbox name="active" value="true" id="all_active" cssClass="radiocheck" />
 							<label for="all_active">
 								<s:text name="label.active" />
@@ -148,4 +147,3 @@
 		</div>
 	</div>
 </div>
-
