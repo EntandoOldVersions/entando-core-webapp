@@ -274,7 +274,11 @@
 						<s:text name="label.fulltext" />			
 					</s:if>
 					<s:elseif test="#userFilter['key'] == 'category'">
-						<s:text name="label.category" />			
+						<s:text name="label.category" />
+						<s:if test="null != #userFilter['categoryCode']">
+							<s:set name="userFilterCategoryRoot" value="%{getCategory(#userFilter['categoryCode'])}"></s:set>
+							(<s:property value="#userFilterCategoryRoot.getFullTitle(currentLang.code)"/>)
+						</s:if>
 					</s:elseif>
 				</s:if>
 				<s:elseif test="#userFilter['attributeFilter'] == 'true'">
