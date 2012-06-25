@@ -38,7 +38,7 @@
 </c:choose>
 
 <c:if test="${null != pageLinkVar && null != pageLinkDescriptionVar}">
-	<p><a href="<wp:url page="${pageLinkVar}"/>"><c:out value="${pageLinkDescriptionVar}" /></a></p>
+	<p class="text-right"><a class="btn btn-primary" href="<wp:url page="${pageLinkVar}"/>"><c:out value="${pageLinkDescriptionVar}" /></a></p>
 </c:if>
 
 <%-- Important: reset variables --%>
