@@ -13,7 +13,7 @@
 				</c:if>
 			</c:if>
 			<li><a href="<wp:url paramRepeat="true" ><wp:parameter name="${group.paramItemName}" ><c:out value="${group.prevItem}"/></wp:parameter></wp:url>"><wp:i18n key="PREV" /></a></li>
-		</c:if>A
+		</c:if>
 		<c:forEach var="item" items="${group.items}" begin="${group.beginItemAnchor-1}" end="${group.endItemAnchor-1}">
 			<c:choose>
 			<c:when test="${item == group.currItem}"><li class="active"><a href="#"><c:out value="${item}"/></a></li></c:when>

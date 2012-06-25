@@ -1,6 +1,9 @@
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<div class="row-fluid"><div class="span12 padding-medium-top">
+
+
 <c:if test="${null != userFilterOptionsVar && !empty userFilterOptionsVar}">
 
 <c:set var="hasUserFilterError" value="${false}" />
@@ -9,7 +12,9 @@
 </c:forEach>
 
 <c:if test="${hasUserFilterError}">
-	<h3><wp:i18n key="ERRORS" /></h3>
+<div class="alert alert-error">
+	<a class="close" data-dismiss="alert" href="#"><i class="icon-remove"></i></a>
+	<h2 class="alert-heading"><wp:i18n key="ERRORS" /></h2>
 	<ul>
 		<c:forEach var="userFilterOptionVar" items="${userFilterOptionsVar}">
 			<c:if test="${null != userFilterOptionVar.formFieldErrors}">
@@ -21,11 +26,12 @@
 			</c:if>
 		</c:forEach>
 	</ul>
+</div>
 </c:if>
 <c:set var="hasUserFilterError" value="${false}" />
 
 <%-- search form with user filters --%>
-<form action="<wp:url />" method="post">
+<form action="<wp:url />" method="post" class="form-horizontal">
 	<c:forEach var="userFilterOptionVar" items="${userFilterOptionsVar}">
 		<c:set var="userFilterOptionVar" value="${userFilterOptionVar}" scope="request" />
 		<c:choose>
@@ -59,8 +65,9 @@
 			</c:when>
 		</c:choose>
 	</c:forEach>
-	<p>
-		<input type="submit" value="<wp:i18n key="SEARCH" />" class="button" />
+	<p class="form-actions">
+		<input type="submit" value="<wp:i18n key="SEARCH" />" class="btn btn-primary" />
 	</p>
 </form>
 </c:if>
+</div></div>
