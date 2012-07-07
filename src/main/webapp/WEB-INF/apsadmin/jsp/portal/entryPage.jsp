@@ -63,6 +63,8 @@
 		<wpsf:hidden name="defaultShowlet" />
 		<wpsf:hidden name="showable" />
 		<wpsf:hidden name="useExtraTitles" />
+		<wpsf:hidden name="charset" />
+		<wpsf:hidden name="mimeType" />
 	</s:if>
 </p>
 <fieldset><legend><s:text name="label.info" /></legend>
@@ -125,6 +127,19 @@
 	<li><wpsf:checkbox useTabindexAutoIncrement="true" name="showable" id="showable" cssClass="radiocheck" /><label for="showable"><s:text name="name.isShowablePage" /></label></li>
 	<li><wpsf:checkbox useTabindexAutoIncrement="true" name="useExtraTitles" id="useExtraTitles" cssClass="radiocheck" /> <label for="useExtraTitles"><abbr lang="en" title="<s:text name="name.SEO.full" />"><s:text name="name.SEO.short" /></abbr>:&#32;<s:text name="name.useBetterTitles" /></label></li>
 </ul>
+
+<p>
+	<label for="charset" class="basic-mint-label"><s:text name="name.charset" />:</label>
+	<wpsf:select useTabindexAutoIncrement="true" name="charset" id="charset" 
+				 headerKey="" headerValue="%{getText('label.default')}" list="allowedCharsets" cssClass="text" />
+</p>
+
+<p>
+	<label for="mimeType" class="basic-mint-label"><s:text name="name.mimeType" />:</label>
+	<wpsf:select useTabindexAutoIncrement="true" name="mimeType" id="mimeType" 
+				 headerKey="" headerValue="%{getText('label.default')}" list="allowedMimeTypes" cssClass="text" />
+</p>
+
 </fieldset>
 
 </s:if>
