@@ -21,7 +21,7 @@
 </div>
 </s:if>
 
-<p class="noscreen"><s:text name="note.jAPS.intro" />.</p>
+<p class="noscreen"><s:text name="note.Entando.intro" />.</p>
 <p class="noscreen"><s:text name="note.maxiButtons.intro" />:</p>
 
 <s:set var="userConfigVar" value="userConfig" />

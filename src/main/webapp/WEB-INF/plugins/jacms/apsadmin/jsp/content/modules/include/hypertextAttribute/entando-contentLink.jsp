@@ -65,7 +65,7 @@
 			</div>
 
 			<s:if test="%{getContents().size() > 0}">
-				<table class="generic" id="contentListTable" summary="<s:text name="note.content.fck_japslink.summary" />">
+				<table class="generic" id="contentListTable" summary="<s:text name="note.content.fck_entandolink.summary" />">
 				<caption><span><s:text name="title.contentList" /></span></caption>
 				<tr>
 					<th><a href="<s:url action="entandoInternalLink" includeParams="all" >
