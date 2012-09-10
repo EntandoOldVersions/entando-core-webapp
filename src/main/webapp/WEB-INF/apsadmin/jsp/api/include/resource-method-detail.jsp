@@ -9,6 +9,7 @@
 		<dd>
 			<s:if test="#methodVar != null">
 				<s:text name="label.api.resource.method.status.ok" />
+				&#32;(<s:if test="#methodVar.active" ><s:text name="label.active" /></s:if><s:else><s:text name="label.disabled" /></s:else>)
 			</s:if>
 			<s:else>
 				<s:text name="label.api.resource.method.status.ko" />
@@ -19,43 +20,30 @@
 			<s:text name="label.api.resource.method.description" />
 		</dt>
 			<dd><s:property value="#methodVar.description" /></dd>
-		<%--
 		<dt>
-			<s:text name="label.api.resource.method.required.authentication" />
+			<s:text name="label.api.authorization" />
 		</dt>
-			<dd><s:property value="#methodVar.requiredAuth || (null != #methodVar.requiredPermission)" /> (<s:text name="label.default" />&#32;<s:property value="#methodVar.defaultRequiredAuth || (null != #methodVar.defaultRequiredPermission)" />)</dd>
-
-		<s:if test="null != #methodVar.requiredPermission">
-				<dt>
-					<s:text name="label.api.resource.method.required.authorization" />
-				</dt>
-					<dd><s:property value="#methodVar.requiredPermission" /> (<s:text name="label.default" />&#32;<s:property value="#methodVar.defaultRequiredPermission" />)</dd>
-		</s:if>
-		--%>
-			<dt>
-				<s:text name="label.api.authorization" />
-			</dt>
-				<dd>
-					<s:if test="%{null != #methodVar.requiredPermission}">
-						<s:iterator value="methodAuthorityOptions" var="permission"><s:if test="#permission.key==#methodVar.requiredPermission"><s:property value="#permission.value" /></s:if></s:iterator>
+			<dd>
+				<s:if test="%{null != #methodVar.requiredPermission}">
+					<s:iterator value="methodAuthorityOptions" var="permission"><s:if test="#permission.key==#methodVar.requiredPermission"><s:property value="#permission.value" /></s:if></s:iterator>
+				</s:if>
+				<s:elseif test="%{#methodVar.requiredAuth}">
+					<s:text name="label.api.authority.autenticationRequired" />
+				</s:elseif>
+				<s:else>
+					<s:text name="label.none" />
+				</s:else>
+				(<s:text name="label.default" />&#32;
+					<s:if test="%{#methodVar.defaultRequiredPermission!=null}">
+						<s:text name="label.api.authority.permission" />&#32;<s:property value="#methodVar.defaultRequiredPermission" />
 					</s:if>
-					<s:elseif test="%{#methodVar.requiredAuth}">
-						<s:text name="label.method.authority.autenticationRequired" />
+					<s:elseif test="#methodVar.defaultRequiredAuth!=null && #methodVar.defaultRequiredAuth">
+						<s:text name="label.api.authority.autenticationRequired" />
 					</s:elseif>
 					<s:else>
 						<s:text name="label.none" />
-					</s:else>
-					(<s:text name="label.default" />&#32;
-						<s:if test="%{#methodVar.defaultRequiredPermission!=null}">
-							<s:text name="label.method.authority.permission" />&#32;<s:property value="#methodVar.defaultRequiredPermission" />
-						</s:if>
-						<s:elseif test="#methodVar.defaultRequiredAuth!=null && #methodVar.defaultRequiredAuth">
-							<s:text name="label.method.authority.autenticationRequired" />
-						</s:elseif>
-						<s:else>
-							<s:text name="label.none" />
-						</s:else>)
-				</dd>
+					</s:else>)
+			</dd>
 
 
 		<dt>
@@ -114,13 +102,13 @@
 
 		<s:url namespace="/do/Api/Resource" action="updateMethodStatus" var="updateMethodStatusURL" />
 		<form action="<s:url namespace="/do/Api/Resource" action="updateMethodStatus" />#<s:property value="#methodVar.httpMethod" />_tab" >
+			<wpsf:hidden name="resourceName" value="%{#methodVar.resourceName}" />
+			<wpsf:hidden name="namespace" value="%{#methodVar.namespace}" />
+			<wpsf:hidden name="httpMethod" value="%{#methodVar.httpMethod}" />
 			<fieldset>
 				<legend><s:text name="label.options" /></legend>
 				<p>
 					<s:set name="activeFieldValue" value="#methodVar.active" />
-					<wpsf:hidden name="resourceName" value="%{#methodVar.resourceName}" />
-					<wpsf:hidden name="namespace" value="%{#methodVar.namespace}" />
-					<wpsf:hidden name="httpMethod" value="%{#methodVar.httpMethod}" />
 					<wpsf:checkbox name="%{#methodVar.httpMethod}_active" value="%{#activeFieldValue}" cssClass="radiocheck" id="active_%{#methodVar.httpMethod}"/>
 					&#32;
 					<label for="active_<s:property value="%{#methodVar.httpMethod}" />"><s:text name="label.active" /></label>

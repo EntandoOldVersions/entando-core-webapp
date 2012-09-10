@@ -18,7 +18,10 @@
 	<s:elseif test="strutsAction == 3">
 		<h2 class="margin-more-bottom"><s:text name="title.api.apiService.copyFrom" />: <span class="monospace"><s:property value="#masterApiMethodVar.methodName" /></span> in <span class="monospace"><s:property value="pageCode" /></span></h2>
 	</s:elseif>
-
+	<p>
+		<s:set var="masterMethodVar" value="%{getMethod(namespace, resourceName)}" />
+		<s:text name="label.service.parentApi" />: <em><s:property value="#masterMethodVar.description" />&#32;(/<s:if test="namespace!=null && namespace.length()>0"><s:property value="namespace" />/</s:if><s:property value="resourceName" />)</em>
+	</p>
 	<s:form action="save" >
 
 		<s:if test="hasFieldErrors()">
@@ -69,6 +72,21 @@
 				<wpsf:textfield useTabindexAutoIncrement="true" id="tag" name="tag" cssClass="text" />
 			</p>
 		</fieldset>
+		<fieldset>
+			<legend><s:text name="label.api.authorities" /></legend>
+			<ul class="noBullet">
+				<li><wpsf:checkbox useTabindexAutoIncrement="true" name="requiredAuth" id="requiredAuth" cssClass="radiocheck" /><label for="requiredAuth"><s:text name="label.api.authority.autenticationRequired" /></label></li>
+			</ul>
+			<p>
+				<label class="basic-mint-label" for="requiredPermission"><s:text name="label.api.authority.permission" />:</label>
+				<wpsf:select useTabindexAutoIncrement="true" headerKey="" headerValue="%{getText('label.none')}" name="requiredPermission" list="permissionAutorityOptions" listKey="key" listValue="value" id="requiredPermission" />
+			</p>
+			<p>
+				<label class="basic-mint-label" for="requiredGroup"><s:text name="label.api.authority.group" />:</label>
+				<wpsf:select useTabindexAutoIncrement="true" headerKey="" headerValue="%{getText('label.none')}" name="requiredGroup" list="groups" listKey="name" listValue="descr" id="requiredPermission" />
+			</p>
+		</fieldset>
+		
 		<table class="generic" summary="<s:text name="note.api.apiServiceEntryParameters.summary" />">
 			<caption><span><s:text name="label.parameters" /></span></caption>
 			<tr>
