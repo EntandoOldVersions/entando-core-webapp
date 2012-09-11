@@ -21,6 +21,15 @@
 		</dt>
 			<dd><s:property value="#methodVar.description" /></dd>
 		<dt>
+			<s:text name="label.api.resource.method.visibility" />
+		</dt>
+			<dd>
+				<s:if test="#methodVar.hidden" ><s:text name="label.hidden" /></s:if><s:else><s:text name="label.public" /></s:else>
+				(<s:text name="label.default" />&#32;
+					<s:if test="#methodVar.defaultHidden" ><s:text name="label.hidden" /></s:if>
+					<s:else><s:text name="label.public" /></s:else>)
+			</dd>
+		<dt>
 			<s:text name="label.api.authorization" />
 		</dt>
 			<dd>
@@ -112,6 +121,12 @@
 					<wpsf:checkbox name="%{#methodVar.httpMethod}_active" value="%{#activeFieldValue}" cssClass="radiocheck" id="active_%{#methodVar.httpMethod}"/>
 					&#32;
 					<label for="active_<s:property value="%{#methodVar.httpMethod}" />"><s:text name="label.active" /></label>
+				</p>
+				<p>
+					<s:set name="hiddenFieldValue" value="#methodVar.hidden" />
+					<wpsf:checkbox name="%{#methodVar.httpMethod}_hidden" value="%{#hiddenFieldValue}" cssClass="radiocheck" id="hidden_%{#methodVar.httpMethod}"/>
+					&#32;
+					<label for="hidden_<s:property value="%{#methodVar.httpMethod}" />"><s:text name="label.hidden" /></label>
 				</p>
 				<p>
 					<label class="basic-mint-label" for="methodAuthority_<s:property value="%{#methodVar.httpMethod}" />"><s:text name="label.api.authorization" />:</label>

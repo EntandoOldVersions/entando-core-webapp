@@ -61,6 +61,7 @@
 						<%-- GET --%>
 						<td class="icon">
 							<s:if test="#resourceVar.getMethod != null" >
+								<s:if test="#resourceVar.getMethod.hidden" ><abbr title="hidden">H</abbr></s:if>
 								<a href="<s:property value="#detailActionURL" escapeHtml="false" />#GET_tab">
 									<s:if test="!#resourceVar.getMethod.active" ><s:property value="#icon_off" escapeHtml="false" /></s:if>
 									<s:elseif test="#resourceVar.getMethod.requiredPermission != null" ><s:property value="#icon_lock" escapeHtml="false" /></s:elseif>
@@ -73,6 +74,7 @@
 						<%-- POST --%>
 						<td class="icon">
 							<s:if test="#resourceVar.postMethod != null" >
+								<s:if test="#resourceVar.postMethod.hidden" ><abbr title="hidden">H</abbr></s:if>
 								<a href="<s:property value="#detailActionURL" escapeHtml="false" />#POST_tab">
 									<s:if test="!#resourceVar.postMethod.active" ><s:property value="#icon_off" escapeHtml="false" /></s:if>
 									<s:elseif test="#resourceVar.postMethod.requiredPermission != null" ><s:property value="#icon_lock" escapeHtml="false" /></s:elseif>
@@ -85,6 +87,7 @@
 						<%-- PUT --%>
 						<td class="icon">
 							<s:if test="#resourceVar.putMethod != null" >
+								<s:if test="#resourceVar.putMethod.hidden" ><abbr title="hidden">H</abbr></s:if>
 								<a href="<s:property value="#detailActionURL" escapeHtml="false" />#PUT_tab">
 									<s:if test="!#resourceVar.putMethod.active" ><s:property value="#icon_off" escapeHtml="false" /></s:if>
 									<s:elseif test="#resourceVar.putMethod.requiredPermission != null" ><s:property value="#icon_lock" escapeHtml="false" /></s:elseif>
@@ -97,6 +100,7 @@
 						<%-- DELETE --%>
 						<td class="icon">
 							<s:if test="#resourceVar.deleteMethod != null" >
+								<s:if test="#resourceVar.deleteMethod.hidden" ><abbr title="hidden">H</abbr></s:if>
 								<a href="<s:property value="#detailActionURL" escapeHtml="false" />#DELETE_tab">
 									<s:if test="!#resourceVar.deleteMethod.active" ><s:property value="#icon_off" escapeHtml="false" /></s:if>
 									<s:elseif test="#resourceVar.deleteMethod.requiredPermission != null" ><s:property value="#icon_lock" escapeHtml="false" /></s:elseif>
