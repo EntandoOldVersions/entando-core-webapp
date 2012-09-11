@@ -100,15 +100,17 @@
 			</dl>
 			<div class="subsection margin-more-top">
 				<s:form namespace="/do/Api/Resource" action="updateAllMethodStatus">
+					<wpsf:hidden name="resourceName" value="%{#apiResourceVar.resourceName}" />
+					<wpsf:hidden name="namespace" value="%{#apiResourceVar.namespace}" />
 					<fieldset>
 						<legend><s:text name="label.api.options.for.all" /></legend>
 						<p>
-							<wpsf:hidden name="resourceName" value="%{#apiResourceVar.resourceName}" />
-							<wpsf:hidden name="namespace" value="%{#apiResourceVar.namespace}" />
 							<wpsf:checkbox name="active" value="true" id="all_active" cssClass="radiocheck" />
-							<label for="all_active">
-								<s:text name="label.active" />
-							</label>
+							<label for="all_active"><s:text name="label.active" /></label>
+						</p>
+						<p>
+							<wpsf:checkbox name="hidden" id="all_hidden" cssClass="radiocheck" />
+							<label for="all_hidden"><s:text name="label.hidden" /></label>
 						</p>
 						<p>
 							<label for="all_auth" class="basic-mint-label"><s:text name="label.api.authorization" />:</label>
