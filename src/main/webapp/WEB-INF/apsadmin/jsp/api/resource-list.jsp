@@ -58,9 +58,9 @@
 						<s:set var="icon_free"><img src="<wp:resourceURL />administration/common/img/icons/generic-status-ok.png" alt="<s:text name="api.resource.status.free" />" title="<s:text name="api.resource.status.free" />" /></s:set>
 						<s:set var="icon_auth"><img src="<wp:resourceURL />administration/common/img/icons/22x22/api-authentication.png" alt="<s:text name="api.resource.status.auth.alt" />" title="<s:text name="api.resource.status.auth" />" /></s:set>
 						<s:set var="icon_lock"><img src="<wp:resourceURL />administration/common/img/icons/22x22/api-authorization.png"  alt="<s:text name="api.resource.status.lock.alt" />" title="<s:text name="api.resource.status.lock" />" /></s:set>
-						<s:set var="icon_free_hidden"><img src="<wp:resourceURL />administration/common/img/icons/generic-status-ok-bn.png" alt="<s:text name="api.resource.status.free" />" title="<s:text name="api.resource.status.free" /> (hidden)" /></s:set>
-						<s:set var="icon_auth_hidden"><img src="<wp:resourceURL />administration/common/img/icons/22x22/api-authentication-bn.png" alt="<s:text name="api.resource.status.auth.alt" />" title="<s:text name="api.resource.status.auth" /> (hidden)" /></s:set>
-						<s:set var="icon_lock_hidden"><img src="<wp:resourceURL />administration/common/img/icons/22x22/api-authorization-bn.png"  alt="<s:text name="api.resource.status.lock.alt" />" title="<s:text name="api.resource.status.lock" /> (hidden)" /></s:set>
+						<s:set var="icon_free_hidden"><img src="<wp:resourceURL />administration/common/img/icons/generic-status-ok-bn.png" alt="<s:text name="api.resource.status.free" />" title="<s:text name="api.resource.status.free" /> (<s:text name="label.hidden" />)" /></s:set>
+						<s:set var="icon_auth_hidden"><img src="<wp:resourceURL />administration/common/img/icons/22x22/api-authentication-bn.png" alt="<s:text name="api.resource.status.auth.alt" />" title="<s:text name="api.resource.status.auth" /> (<s:text name="label.hidden" />)" /></s:set>
+						<s:set var="icon_lock_hidden"><img src="<wp:resourceURL />administration/common/img/icons/22x22/api-authorization-bn.png"  alt="<s:text name="api.resource.status.lock.alt" />" title="<s:text name="api.resource.status.lock" /> (<s:text name="label.hidden" />)" /></s:set>
 						<%-- GET --%>
 						<td class="icon">
 							<s:if test="#resourceVar.getMethod != null" >
