@@ -2,7 +2,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
-<s:if test="#methodVar == null">
+<s:if test="#methodVar == null || #methodVar.hidden">
 	<p>
 		<s:property value="#currentMethodNameVar" />,&#32;<wp:i18n key="ENTANDO_API_METHOD_KO" />
 	</p>
