@@ -58,14 +58,17 @@
 						<s:set var="icon_free"><img src="<wp:resourceURL />administration/common/img/icons/generic-status-ok.png" alt="<s:text name="api.resource.status.free" />" title="<s:text name="api.resource.status.free" />" /></s:set>
 						<s:set var="icon_auth"><img src="<wp:resourceURL />administration/common/img/icons/22x22/api-authentication.png" alt="<s:text name="api.resource.status.auth.alt" />" title="<s:text name="api.resource.status.auth" />" /></s:set>
 						<s:set var="icon_lock"><img src="<wp:resourceURL />administration/common/img/icons/22x22/api-authorization.png"  alt="<s:text name="api.resource.status.lock.alt" />" title="<s:text name="api.resource.status.lock" />" /></s:set>
+						<s:set var="icon_free_hidden"><img src="<wp:resourceURL />administration/common/img/icons/generic-status-ok-bn.png" alt="<s:text name="api.resource.status.free" />" title="<s:text name="api.resource.status.free" /> (<s:text name="label.hidden" />)" /></s:set>
+						<s:set var="icon_auth_hidden"><img src="<wp:resourceURL />administration/common/img/icons/22x22/api-authentication-bn.png" alt="<s:text name="api.resource.status.auth.alt" />" title="<s:text name="api.resource.status.auth" /> (<s:text name="label.hidden" />)" /></s:set>
+						<s:set var="icon_lock_hidden"><img src="<wp:resourceURL />administration/common/img/icons/22x22/api-authorization-bn.png"  alt="<s:text name="api.resource.status.lock.alt" />" title="<s:text name="api.resource.status.lock" /> (<s:text name="label.hidden" />)" /></s:set>
 						<%-- GET --%>
 						<td class="icon">
 							<s:if test="#resourceVar.getMethod != null" >
 								<a href="<s:property value="#detailActionURL" escapeHtml="false" />#GET_tab">
 									<s:if test="!#resourceVar.getMethod.active" ><s:property value="#icon_off" escapeHtml="false" /></s:if>
-									<s:elseif test="#resourceVar.getMethod.requiredPermission != null" ><s:property value="#icon_lock" escapeHtml="false" /></s:elseif>
-									<s:elseif test="#resourceVar.getMethod.requiredAuth" ><s:property value="#icon_auth" escapeHtml="false" /></s:elseif>
-									<s:else><s:property value="#icon_free" escapeHtml="false" /></s:else>
+									<s:elseif test="#resourceVar.getMethod.requiredPermission != null" ><s:if test="#resourceVar.getMethod.hidden" ><s:property value="#icon_lock_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_lock" escapeHtml="false" /></s:else></s:elseif>
+									<s:elseif test="#resourceVar.getMethod.requiredAuth" ><s:if test="#resourceVar.getMethod.hidden" ><s:property value="#icon_auth_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_auth" escapeHtml="false" /></s:else></s:elseif>
+									<s:else><s:if test="#resourceVar.getMethod.hidden" ><s:property value="#icon_free_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_free" escapeHtml="false" /></s:else></s:else>
 								</a>
 							</s:if>
 							<s:else><abbr title="<s:text name="api.resource.status.na" />">&ndash;</abbr></s:else>
@@ -75,9 +78,9 @@
 							<s:if test="#resourceVar.postMethod != null" >
 								<a href="<s:property value="#detailActionURL" escapeHtml="false" />#POST_tab">
 									<s:if test="!#resourceVar.postMethod.active" ><s:property value="#icon_off" escapeHtml="false" /></s:if>
-									<s:elseif test="#resourceVar.postMethod.requiredPermission != null" ><s:property value="#icon_lock" escapeHtml="false" /></s:elseif>
-									<s:elseif test="#resourceVar.postMethod.requiredAuth" ><s:property value="#icon_auth" escapeHtml="false" /></s:elseif>
-									<s:else><s:property value="#icon_free" escapeHtml="false" /></s:else>
+									<s:elseif test="#resourceVar.postMethod.requiredPermission != null" ><s:if test="#resourceVar.postMethod.hidden" ><s:property value="#icon_lock_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_lock" escapeHtml="false" /></s:else></s:elseif>
+									<s:elseif test="#resourceVar.postMethod.requiredAuth" ><s:if test="#resourceVar.postMethod.hidden" ><s:property value="#icon_auth_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_auth" escapeHtml="false" /></s:else></s:elseif>
+									<s:else><s:if test="#resourceVar.postMethod.hidden" ><s:property value="#icon_free_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_free" escapeHtml="false" /></s:else></s:else>
 								</a>
 							</s:if>
 							<s:else><abbr title="<s:text name="api.resource.status.na" />">&ndash;</abbr></s:else>
@@ -87,9 +90,9 @@
 							<s:if test="#resourceVar.putMethod != null" >
 								<a href="<s:property value="#detailActionURL" escapeHtml="false" />#PUT_tab">
 									<s:if test="!#resourceVar.putMethod.active" ><s:property value="#icon_off" escapeHtml="false" /></s:if>
-									<s:elseif test="#resourceVar.putMethod.requiredPermission != null" ><s:property value="#icon_lock" escapeHtml="false" /></s:elseif>
-									<s:elseif test="#resourceVar.putMethod.requiredAuth" ><s:property value="#icon_auth" escapeHtml="false" /></s:elseif>
-									<s:else><s:property value="#icon_free" escapeHtml="false" /></s:else>
+									<s:elseif test="#resourceVar.putMethod.requiredPermission != null" ><s:if test="#resourceVar.putMethod.hidden" ><s:property value="#icon_lock_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_lock" escapeHtml="false" /></s:else></s:elseif>
+									<s:elseif test="#resourceVar.putMethod.requiredAuth" ><s:if test="#resourceVar.putMethod.hidden" ><s:property value="#icon_auth_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_auth" escapeHtml="false" /></s:else></s:elseif>
+									<s:else><s:if test="#resourceVar.putMethod.hidden" ><s:property value="#icon_free_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_free" escapeHtml="false" /></s:else></s:else>
 								</a>
 							</s:if>
 							<s:else><abbr title="<s:text name="api.resource.status.na" />">&ndash;</abbr></s:else>
@@ -99,9 +102,9 @@
 							<s:if test="#resourceVar.deleteMethod != null" >
 								<a href="<s:property value="#detailActionURL" escapeHtml="false" />#DELETE_tab">
 									<s:if test="!#resourceVar.deleteMethod.active" ><s:property value="#icon_off" escapeHtml="false" /></s:if>
-									<s:elseif test="#resourceVar.deleteMethod.requiredPermission != null" ><s:property value="#icon_lock" escapeHtml="false" /></s:elseif>
-									<s:elseif test="#resourceVar.deleteMethod.requiredAuth" ><s:property value="#icon_auth" escapeHtml="false" /></s:elseif>
-									<s:else><s:property value="#icon_free" escapeHtml="false" /></s:else>
+									<s:elseif test="#resourceVar.deleteMethod.requiredPermission != null" ><s:if test="#resourceVar.deleteMethod.hidden" ><s:property value="#icon_lock_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_lock" escapeHtml="false" /></s:else></s:elseif>
+									<s:elseif test="#resourceVar.deleteMethod.requiredAuth" ><s:if test="#resourceVar.deleteMethod.hidden" ><s:property value="#icon_auth_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_auth" escapeHtml="false" /></s:else></s:elseif>
+									<s:else><s:if test="#resourceVar.deleteMethod.hidden" ><s:property value="#icon_free_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_free" escapeHtml="false" /></s:else></s:else>
 								</a>
 							</s:if>
 							<s:else><abbr title="<s:text name="api.resource.status.na" />">&ndash;</abbr></s:else>
