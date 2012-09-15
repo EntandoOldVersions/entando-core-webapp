@@ -35,6 +35,7 @@
 						<wp:i18n key="ENTANDO_API_METHOD_AUTH_FREE" />
 					</s:else>
 				</dd>
+			<s:if test='%{!#methodVar.resourceName.equalsIgnoreCase("getService")}' >
 			<dt>
 				<wp:i18n key="ENTANDO_API_METHOD_SCHEMAS" />
 			</dt>
@@ -59,6 +60,7 @@
 							<wp:i18n key="ENTANDO_API_METHOD_SCHEMA_RESP" />
 						</a>
 				</dd>
+			</s:if>
 		</s:if>
 	</dl>
 	<s:if test="#methodVar != null">
