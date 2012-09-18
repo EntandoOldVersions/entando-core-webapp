@@ -3,6 +3,7 @@
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <s:set var="apiResourceVar" value="apiResource" />
 <s:set var="GETMethodVar" value="#apiResourceVar.getMethod" />
 <s:set var="POSTMethodVar" value="#apiResourceVar.postMethod" />
@@ -32,6 +33,11 @@
 </s:if>
 <!-- DESCRIPTION -->
 <p><s:property value="#apiResourceVar.description" /></p>
+
+<s:if test='%{#apiResourceVar.resourceName.equalsIgnoreCase("getService") || #apiResourceVar.resourceName.equalsIgnoreCase("getServices")}' >
+<a href="<wp:action path="/ExtStr2/do/Front/Api/Service/list.action" />"><wp:i18n key="ENTANDO_API_GOTO_SERVICE_LIST" /></a>
+</s:if>
+
 <!-- INFO -->
 <dl class="table-display">
 	<dt><wp:i18n key="ENTANDO_API_RESOURCE_NAME" /></dt>
