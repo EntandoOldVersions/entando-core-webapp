@@ -67,18 +67,22 @@
 				<wpsf:checkbox useTabindexAutoIncrement="true" name="activeService" id="activeService" cssClass="radiocheck" /><label for="activeService"><s:text name="label.active" /></label>
 			</p>
 			<p>
-				<wpsf:checkbox useTabindexAutoIncrement="true" name="publicService" id="publicService" cssClass="radiocheck" /><label for="publicService"><s:text name="label.public" /></label>
+				<wpsf:checkbox useTabindexAutoIncrement="true" name="publicService" id="publicService" cssClass="radiocheck"  /><label for="publicService"><s:text name="label.hidden" /></label>
 			</p>
 			<p>
 				<wpsf:checkbox useTabindexAutoIncrement="true" name="myEntandoService" id="myEntandoService" cssClass="radiocheck" /><label for="myEntandoService"><s:text name="label.myEntando.compatible" /></label>
 			</p>
+		</fieldset>
+		<fieldset>
+			<legend><s:text name="label.api.authorities" /></legend>
+			<p><wpsf:checkbox useTabindexAutoIncrement="true" name="requiredAuth" id="requiredAuth" cssClass="radiocheck" /><label for="requiredAuth"><s:text name="label.api.authority.autenticationRequired" /></label></p>
 			<p>
-				<label class="basic-mint-label" for="requiredPermission"><s:text name="label.api.authorization" />:</label>
+				<label class="basic-mint-label" for="requiredPermission"><s:text name="label.api.authority.permission" />:</label>
 				<wpsf:select useTabindexAutoIncrement="true" headerKey="" headerValue="%{getText('label.none')}" name="requiredPermission" list="permissionAutorityOptions" listKey="key" listValue="value" id="requiredPermission" />
 			</p>
 			<p>
 				<label class="basic-mint-label" for="requiredGroup"><s:text name="label.api.authority.group" />:</label>
-				<wpsf:select useTabindexAutoIncrement="true" headerKey="" headerValue="%{getText('label.none')}" name="requiredGroup" list="groups" listKey="name" listValue="descr" id="requiredPermission" />
+				<wpsf:select useTabindexAutoIncrement="true" headerKey="" headerValue="%{getText('label.none')}" name="requiredGroup" list="groups" listKey="name" listValue="descr" id="requiredGroup" />
 			</p>
 		</fieldset>
 		<fieldset>
