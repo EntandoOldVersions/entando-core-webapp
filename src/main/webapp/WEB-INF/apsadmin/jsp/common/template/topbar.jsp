@@ -32,7 +32,7 @@
 		</a>
 </s:if>
 <s:else>
-	<a href="<s:url action="main" namespace="/do" />" class="noborder outlineNone" title="<s:text name="note.goToMainPage" />"><img src="<wp:resourceURL/>administration/common/img/icons/16x16/topbar-<s:property value="#topbarUserShortcutVar.menuSectionCode" />.png" width="16" height="16" alt=" " /><span class="toggle-ellipsis">&nbsp;</span></a></a>
+	<a href="<s:url action="main" namespace="/do" />" class="noborder outlineNone" title="<s:text name="note.goToMainPage" />"><img src="<wp:resourceURL/>administration/common/img/icons/16x16/topbar-<s:property value="#topbarUserShortcutVar.menuSectionCode" />.png" width="16" height="16" alt=" " /><span class="toggle-ellipsis">&nbsp;</span></a>
 </s:else>
 
 </li>
