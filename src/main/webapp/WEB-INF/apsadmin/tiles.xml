@@ -284,6 +284,11 @@
         <put-attribute name="title" value="title.generalSettings.settings" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/admin/configSystemParams.jsp" />
     </definition>
+	
+	<definition extends="main.layout" name="admin.database.backup.done">
+        <put-attribute name="title" value="menu.reload.config" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/admin/database-backup-ok.jsp" />
+    </definition>
 
     <!-- ********* FINE Area Amministrazione Sistema ********* -->
 
