@@ -285,9 +285,9 @@
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/admin/configSystemParams.jsp" />
     </definition>
 	
-	<definition extends="main.layout" name="admin.database.backup.done">
-        <put-attribute name="title" value="menu.reload.config" />
-        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/admin/database-backup-ok.jsp" />
+	<definition extends="main.layout" name="admin.database.entry">
+        <put-attribute name="title" value="menu.database.admin" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/admin/database-admin.jsp" />
     </definition>
 
     <!-- ********* FINE Area Amministrazione Sistema ********* -->
