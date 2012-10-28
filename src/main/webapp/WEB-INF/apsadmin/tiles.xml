@@ -289,7 +289,17 @@
         <put-attribute name="title" value="menu.database.admin" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/admin/database-admin.jsp" />
     </definition>
-
+	
+	<definition extends="main.layout" name="admin.database.backup.details">
+        <put-attribute name="title" value="menu.database.admin" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/admin/database-backup-details.jsp" />
+    </definition>
+	
+	<definition extends="main.layout" name="admin.database.backup.trash">
+        <put-attribute name="title" value="menu.database.admin" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/admin/database-backup-trash.jsp" />
+    </definition>
+	
     <!-- ********* FINE Area Amministrazione Sistema ********* -->
 
     <!-- ********* INIZIO Area Gestione Lingue ********* -->
