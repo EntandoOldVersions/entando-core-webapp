@@ -1,15 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.sonatype.oss</groupId>
-		<artifactId>oss-parent</artifactId>
-		<version>7</version>
-	</parent>	
 	<groupId>org.entando.entando</groupId>
 	<artifactId>entando-core-webapp</artifactId>
 	<packaging>war</packaging>
-	<version>3.0.1-SNAPSHOT</version>
-	<name>Entando: Core Webapp</name>
+	<version>3.0.1-EU-SNAPSHOT</version>
+	<name>Entando EU Evolution: Core Webapp</name>
 	<description>Core webapp of Entando: an agile, modern and user-centric open source Portal platform.</description>
 	<url>http://www.entando.com/</url>
 	<licenses>
@@ -19,11 +14,6 @@
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
-	<scm>
-		<connection>scm:git:git://github.com/entando/entando-core-webapp.git</connection>
-		<developerConnection>scm:git:git@github.com:entando/entando-core-webapp.git</developerConnection>
-		<url>https://github.com/entando/entando-core-webapp</url>
-	</scm>			
 	<developers>
 		<developer>
 			<id>e.santoboni</id>
