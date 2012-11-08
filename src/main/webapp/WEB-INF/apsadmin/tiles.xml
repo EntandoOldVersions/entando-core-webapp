@@ -139,6 +139,7 @@
     <definition extends="main.layout" name="admin.api.service.entry">
         <put-attribute name="title" value="title.apiManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/api/service-entry.jsp" />
+        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/template/extraresources/api-service-entry-extras.jsp" />
     </definition>
 
     <definition extends="main.layout" name="admin.api.service.trash">
