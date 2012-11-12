@@ -39,8 +39,10 @@
 		<p><wp:i18n key="USER_STATUS_CREDENTIALS_INVALID" /></p>
 	</c:if>
 	
-	
 	<form action="<wp:url/>" method="post">
+		<c:if test="${null != param['returnUrl']}">
+		<input type="hidden" name="returnUrl" value="<c:out value="${param['returnUrl']}" />" />
+		</c:if>
 		<p>
 			<label for="username"><wp:i18n key="USERNAME" />:</label><br />
 			<input id="username" type="text" name="username" class="text" />
