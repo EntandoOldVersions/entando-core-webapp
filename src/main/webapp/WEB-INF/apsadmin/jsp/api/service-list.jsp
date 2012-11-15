@@ -36,12 +36,22 @@
 			</ul>
 		</div>
 	</s:if>
+	
 	<s:set var="resourceFlavoursVar" value="resourceFlavours" />
 	<s:set var="serviceFlavoursVar" value="serviceFlavours" />
-	<s:if test="%{#serviceFlavoursVar != null && #serviceFlavoursVar.size() > 0}">
+	<%-- <s:if test="%{#serviceFlavoursVar != null && #serviceFlavoursVar.size() > 0}"> --%>
 		<s:set var="servicesEmptyVar" value="true" />
 		<s:iterator var="resourceFlavour" value="#resourceFlavoursVar" status="varStatus">
 			<s:set var="serviceGroupVar" value="#resourceFlavour.get(0).getSectionCode()" />
+			
+			<s:form action="newService" cssClass="margin-more-bottom">
+			<p>
+				<label>Create new service from:</label><br />
+				<wpsf:select useTabindexAutoIncrement="true" list="#resourceFlavour" name="resourceCode" listKey="code" listValue="%{code + ' - ' + description}" />
+				&#32;<wpsf:submit useTabindexAutoIncrement="true" cssClass="button" value="Create" action="newService" />
+			</p>
+			</s:form>
+			
 			<s:set var="servicesByGroupVar" value="#serviceFlavoursVar[#serviceGroupVar]" />
 			<s:if test="null != #servicesByGroupVar && #servicesByGroupVar.size() > 0">
 				<s:set var="servicesEmptyVar" value="false" />
@@ -106,12 +116,14 @@
 			</s:if>
 			<s:else>
 				<p><s:text name="note.api.noServiceFromFlavour" />: <span class="monospace"><s:property value="#serviceGroupVar" /></span></p>
-				<p><a href="<s:url action="list" namespace="/do/Api/Resource" />"><s:text name="note.goToSomewhere" />&#32;<s:text name="menu.apisAdmin.resources" /></a>&#32;<s:text name="note.api.noServices.createOne" /></p>
+				<%-- <p><a href="<s:url action="list" namespace="/do/Api/Resource" />"><s:text name="note.goToSomewhere" />&#32;<s:text name="menu.apisAdmin.resources" /></a>&#32;<s:text name="note.api.noServices.createOne" /></p> --%>
 			</s:else>
 		</s:iterator>
+	<%--
 	</s:if>
 	<s:else>
 		<p><s:text name="note.api.noServices" /></p>
 		<p><a href="<s:url action="list" namespace="/do/Api/Resource" />"><s:text name="note.goToSomewhere" />&#32;<s:text name="menu.apisAdmin.resources" /></a>&#32;<s:text name="note.api.noServices.createOne" /></p>
 	</s:else>
+	--%>
 </div>
