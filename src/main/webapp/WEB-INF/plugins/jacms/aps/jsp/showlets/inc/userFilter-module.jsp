@@ -1,10 +1,9 @@
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div class="row-fluid"><div class="span12 padding-medium-top">
-
-
 <c:if test="${null != userFilterOptionsVar && !empty userFilterOptionsVar}">
+
+<div class="row-fluid"><div class="span12 padding-medium-top">
 
 <c:set var="hasUserFilterError" value="${false}" />
 <c:forEach var="userFilterOptionVar" items="${userFilterOptionsVar}">
@@ -69,5 +68,7 @@
 		<input type="submit" value="<wp:i18n key="SEARCH" />" class="btn btn-primary" />
 	</p>
 </form>
-</c:if>
+
 </div></div>
+
+</c:if>
