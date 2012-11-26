@@ -10,7 +10,7 @@
 <c:import url="/WEB-INF/plugins/jacms/aps/jsp/showlets/inc/userFilter-module-entity-Boolean-ignoreOption.jsp" />
 
 <div class="control-group">
-	<div class="controls">	
+	<div class="controls">
 		<label for="true_<c:out value="${formFieldNameVar}" />" class="checkbox">
 		<input name="<c:out value="${formFieldNameVar}" />"  id="true_<c:out value="${formFieldNameVar}" />" <c:if test="${null != formFieldValue || formFieldValue == 'true'}">checked="checked"</c:if> value="true" type="checkbox" />
 		<wp:i18n key="YES"/></label>

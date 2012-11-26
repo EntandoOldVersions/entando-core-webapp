@@ -16,7 +16,7 @@
 			<wp:i18n key="YES"/></label>
 		</div>
 		<div class="controls">
-			<label for="false_<c:out value="${formFieldNameVar}" />" class="radio">	
+			<label for="false_<c:out value="${formFieldNameVar}" />" class="radio">
 			<input name="<c:out value="${formFieldNameVar}" />" id="false_<c:out value="${formFieldNameVar}" />" <c:if test="${null == formFieldValue || formFieldValue == 'false'}">checked="checked"</c:if> value="false" type="radio" />
 			<wp:i18n key="NO"/></label>
 		</div>

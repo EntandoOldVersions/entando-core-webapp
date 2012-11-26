@@ -9,7 +9,7 @@
 */
 %>
 
-<jacms:contentList listName="contentList" titleVar="titleVar" 
+<jacms:contentList listName="contentList" titleVar="titleVar"
 	pageLinkVar="pageLinkVar" pageLinkDescriptionVar="pageLinkDescriptionVar" userFilterOptionsVar="userFilterOptionsVar" />
 
 <c:if test="${null != titleVar}">
@@ -23,10 +23,10 @@
 <c:when test="${contentList != null && !empty contentList}">
 	<wp:pager listName="contentList" objectName="groupContent" pagerIdFromFrame="true" advanced="true" offset="5">
 		<c:set var="group" value="${groupContent}" scope="request" />
-		<c:import url="/WEB-INF/plugins/jacms/aps/jsp/showlets/inc/pagerBlock.jsp" />		
+		<c:import url="/WEB-INF/plugins/jacms/aps/jsp/showlets/inc/pagerBlock.jsp" />
 		<c:forEach var="contentId" items="${contentList}" begin="${groupContent.begin}" end="${groupContent.end}">
 			<jacms:content contentId="${contentId}" />
-		</c:forEach>	
+		</c:forEach>
 		<c:import url="/WEB-INF/plugins/jacms/aps/jsp/showlets/inc/pagerBlock.jsp" />
 	</wp:pager>
 </c:when>
