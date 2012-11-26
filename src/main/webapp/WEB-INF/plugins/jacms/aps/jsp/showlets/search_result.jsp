@@ -7,7 +7,7 @@
 <c:choose>
 
 	<c:when test="${empty result}">
-	<p><em><wp:i18n key="SEARCH_NOTHING_FOUND" /></em></p>
+	<p class="alert alert-info"><wp:i18n key="SEARCH_NOTHING_FOUND" /></p>
 	</c:when>
 	<c:otherwise>
 
