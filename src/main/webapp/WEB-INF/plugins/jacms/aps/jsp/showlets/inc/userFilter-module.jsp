@@ -29,8 +29,10 @@
 </c:if>
 <c:set var="hasUserFilterError" value="${false}" />
 
+<p><button type="button" class="btn btn-info" data-toggle="collapse" data-target="#content-viewer-list-filters">Narrow your search <i class="icon-zoom-in icon-white"></i></button></p>
+
 <%-- search form with user filters --%>
-<form action="<wp:url />" method="post" class="form-horizontal">
+<form action="<wp:url />" method="post" class="form-horizontal collapse" id="content-viewer-list-filters">
 	<c:forEach var="userFilterOptionVar" items="${userFilterOptionsVar}">
 		<c:set var="userFilterOptionVar" value="${userFilterOptionVar}" scope="request" />
 		<c:choose>
