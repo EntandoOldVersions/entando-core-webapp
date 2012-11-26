@@ -32,7 +32,7 @@
 </c:when>
 <c:otherwise>
 	<c:if test="${not empty userFilterOptionsVar}">
-		<p><wp:i18n key="LIST_VIEWER_EMPTY" /></p>
+		<p class="alert alert-info"><wp:i18n key="LIST_VIEWER_EMPTY" /></p>
 	</c:if>
 </c:otherwise>
 </c:choose>
