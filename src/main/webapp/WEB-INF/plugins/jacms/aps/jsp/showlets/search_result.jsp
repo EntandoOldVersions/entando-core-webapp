@@ -11,7 +11,7 @@
 	</c:when>
 	<c:otherwise>
 
-<wp:pager listName="result" objectName="groupContent" max="5" pagerIdFromFrame="true" advanced="true" offset="5">
+<wp:pager listName="result" objectName="groupContent" max="10" pagerIdFromFrame="true" advanced="true" offset="5">
 	<c:set var="group" value="${groupContent}" scope="request" />
 
 	<p><em><wp:i18n key="SEARCH_RESULTS_INTRO" /> <!-- infamous whitespace hack -->
