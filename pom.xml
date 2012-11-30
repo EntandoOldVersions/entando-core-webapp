@@ -3,7 +3,7 @@
 	<groupId>org.entando.entando</groupId>
 	<artifactId>entando-core-webapp</artifactId>
 	<packaging>war</packaging>
-	<version>experiment-components</version>
+	<version>experiment-components-SNAPSHOT</version>
 	<name>Entando: Core Webapp - Experiment Components</name>
 	<description>Core webapp of Entando: an agile, modern and user-centric open source Portal platform.</description>
 	<url>http://www.entando.com/</url>
