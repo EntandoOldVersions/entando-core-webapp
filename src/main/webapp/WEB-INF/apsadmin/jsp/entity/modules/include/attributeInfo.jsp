@@ -14,13 +14,7 @@
 	
 	<s:set var="validationRules" value="#attribute.validationRules"></s:set>
 	<s:if test="#validationRules != null && #validationRules.ognlValidationRule != null&& #validationRules.ognlValidationRule.expression != null">
-		<abbr title="
-			<s:if test="#validationRules.ognlValidationRule.helpMessageKey != null">
-				<c:set var="labelKey"><s:property value="#validationRules.ognlValidationRule.helpMessageKey" /></c:set>
-				<c:set var="langCode"><s:property value="currentLang.code" /></c:set>
-				<wp:i18n key="${labelKey}" lang="${langCode}"></wp:i18n>
-			</s:if>
-			<s:else><s:property value="#validationRules.ognlValidationRule.helpMessage" /></s:else>
-					"><s:text name="Entity.attribute.flag.help.short"/></abbr><span class="attribute-meta-tip-info"></span>
+		<abbr title="<s:if test="#validationRules.ognlValidationRule.helpMessageKey != null"><s:set var="labelKey" value="#validationRules.ognlValidationRule.helpMessageKey" scope="page" /><s:set var="langCode" value="currentLang.code" scope="page" /><wp:i18n key="${labelKey}" lang="${langCode}" /></s:if><s:else><s:property value="#validationRules.ognlValidationRule.helpMessage" /></s:else>"><s:text name="Entity.attribute.flag.help.short"/></abbr>
+		<span class="attribute-meta-tip-info"></span>
 	</s:if>
 	</span><span class="monospace js_noscreen">]</span></s:if>
