@@ -67,7 +67,7 @@
 				<wpsf:checkbox useTabindexAutoIncrement="true" name="activeService" id="activeService" cssClass="radiocheck" /><label for="activeService"><s:text name="label.active" /></label>
 			</p>
 			<p>
-				<wpsf:checkbox useTabindexAutoIncrement="true" name="publicService" id="publicService" cssClass="radiocheck"  /><label for="publicService"><s:text name="label.hidden" /></label>
+				<wpsf:checkbox useTabindexAutoIncrement="true" name="hiddenService" id="hiddenService" cssClass="radiocheck" /><label for="hiddenService"><s:text name="label.hidden" /></label>
 			</p>
 			<p>
 				<wpsf:checkbox useTabindexAutoIncrement="true" name="myEntandoService" id="myEntandoService" cssClass="radiocheck" /><label for="myEntandoService"><s:text name="label.myEntando.compatible" /></label>
