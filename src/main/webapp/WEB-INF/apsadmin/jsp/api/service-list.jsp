@@ -38,14 +38,13 @@
 	</s:if>
 	<s:set var="resourceFlavoursVar" value="resourceFlavours" />
 	<s:set var="serviceFlavoursVar" value="serviceFlavours" />
-
-
+	
 	<s:form action="newService" cssClass="margin-more-bottom">
 		<p>
 			<label for="service-list"><s:text name="label.api.service.createNew" />:</label><br />
 			<select id="service-list" name="resourceCode" tabindex="<wpsa:counter />">
 				<s:iterator value="#resourceFlavoursVar" var="resourceFlavourGroup">
-					<optgroup label="<s:property value="%{getText(#resourceFlavourGroup.get(0).getPluginCode()+'.name')}" escapeHtml="false" />">
+					<optgroup label="<s:property value="%{getText(#resourceFlavourGroup.get(0).getSectionCode()+'.name')}" escapeHtml="false" />">
 						<s:iterator value="#resourceFlavourGroup" var="resource">
 							<option value="<s:property value="#resource.code" />">
 								<s:property value="#resource.code" /> - <s:property value="#resource.description" />
