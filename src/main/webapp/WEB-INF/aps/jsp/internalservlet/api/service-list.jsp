@@ -2,7 +2,8 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
-
+<wp:headInfo type="CSS" info="showlets/api.css"/>
+<div class="entando-api api-resource-list">
 <h2><wp:i18n key="ENTANDO_API_SERVICES" /></h2>
 <s:if test="hasActionErrors()">
 	<div class="message message_error">
@@ -38,44 +39,61 @@
 </s:if>
 <s:set var="resourceFlavoursVar" value="resourceFlavours" />
 <s:set var="serviceFlavoursVar" value="serviceFlavours" />
+
+<s:if test="#serviceFlavoursVar != null && #serviceFlavoursVar.size() > 0">
+	<ul class="api-summary">
+		<s:iterator var="resourceFlavour" value="#resourceFlavoursVar" status="statusVar">
+			<s:set var="serviceGroupVar" value="#resourceFlavour.get(0).getSectionCode()" />
+			<s:set var="servicesByGroupVar" value="#serviceFlavoursVar[#serviceGroupVar]" />
+			<s:if test="null != #servicesByGroupVar && #servicesByGroupVar.size() > 0">
+				<s:if test="#serviceGroupVar == 'core'"><s:set var="captionVar" value="%{#serviceGroupVar}" /></s:if>
+				<s:else><s:set var="captionVar" value="%{getText(#serviceGroupVar + '.name')}" /></s:else>
+				<li>
+					<a href="#api-flavour-<s:property value='%{#captionVar.toLowerCase().replaceAll("[^a-z0-9-]", "")}' />"><s:property value='%{#captionVar}' /></a>
+				</li>
+			</s:if>
+		</s:iterator>
+	</ul>
+</s:if>
+
 <s:if test="%{#serviceFlavoursVar != null && #serviceFlavoursVar.size() > 0}">
 	<s:set var="servicesEmptyVar" value="true" />
-	<s:iterator var="resourceFlavour" value="#resourceFlavoursVar" status="varStatus">
+	<s:iterator var="resourceFlavour" value="#resourceFlavoursVar">
 		<s:set var="serviceGroupVar" value="#resourceFlavour.get(0).getSectionCode()" />
 		<s:set var="servicesByGroupVar" value="#serviceFlavoursVar[#serviceGroupVar]" />
 		<s:if test="null != #servicesByGroupVar && #servicesByGroupVar.size() > 0">
 			<s:set var="servicesEmptyVar" value="false" />
-				<table class="generic">
-					<caption id="<s:property value="#serviceGroupVar" />"><span>
-						<s:text name="%{#serviceGroupVar}.name" />
-					</span></caption>
+			<s:if test="#serviceGroupVar == 'core'"><s:set var="captionVar" value="%{#serviceGroupVar}" /></s:if>
+			<s:else><s:set var="captionVar" value="%{getText(#serviceGroupVar + '.name')}" /></s:else>
+			<table class="generic" summary="<wp:i18n key="ENTANDO_API_TABLE_SUMMARY" />">
+				<caption id="api-flavour-<s:property value='%{#captionVar.toLowerCase().replaceAll("[^a-z0-9]", "")}' />">
+					<s:property value="#captionVar" />
+				</caption>
+				<tr>
+					<th><wp:i18n key="ENTANDO_API_SERVICE_KEY" /></th>
+					<th><wp:i18n key="ENTANDO_API_SERVICE_DESCRIPTION" /></th>
+				</tr>
+				<s:iterator var="serviceVar" value="#servicesByGroupVar" >
 					<tr>
-						<th><s:text name="name.api.service" /></th>
-						<th><s:text name="label.description" /></th>
+						<td class="monospace">
+							<wp:action path="/ExtStr2/do/Front/Api/Service/detail.action" var="detailActionURL">
+								<wp:parameter name="serviceKey"><s:property value="#serviceVar.key" /></wp:parameter>
+							</wp:action>
+							<a href="<c:out value="${detailActionURL}" escapeXml="false" />"><s:property value="#serviceVar.key" /></a>
+						</td>
+						<td><s:property value="#serviceVar.value" /></td>
 					</tr>
-					<s:iterator var="service" value="#servicesByGroupVar" >
-						<tr>
-							<td class="monospace">
-								<wp:action path="/ExtStr2/do/Front/Api/Service/detail.action" var="detailActionURL">
-									<wp:parameter name="serviceKey"><s:property value="#service.key" /></wp:parameter>
-								</wp:action>
-								<a title="<s:text name="label.detail" />: <s:property value="#service.key" />" 
-								   href="<c:out value="${detailActionURL}" escapeXml="false" />"><s:property value="#service.key" /></a>
-							</td>
-							<td>
-								<s:property value="#service.value" />
-							</td>
-						</tr>
-					</s:iterator>
-				</table>
+				</s:iterator>
+			</table>
 		</s:if>
-		<s:else>
-			<p><s:text name="note.api.noServiceFromFlavour" />: <span class="monospace"><s:property value="#serviceGroupVar" /></span></p>
-			<p><a href="<s:url action="list" namespace="/do/Api/Resource" />"><s:text name="note.goToSomewhere" />&#32;<s:text name="menu.apisAdmin.resources" /></a>&#32;<s:text name="note.api.noServices.createOne" /></p>
-		</s:else>
 	</s:iterator>
 </s:if>
 <s:else>
 	<p><wp:i18n key="ENTANDO_API_NO_SERVICES" /></p>
-	<a href="<wp:action path="/ExtStr2/do/Front/Api/Resource/list.action" />"><wp:i18n key="ENTANDO_API_GOTO_LIST" /></a>
 </s:else>
+	<p class="back">
+		<a href="<wp:action path="/ExtStr2/do/Front/Api/Resource/list.action" />">
+			<wp:i18n key="ENTANDO_API_GOTO_LIST" />
+		</a>
+	</p>
+</div>
