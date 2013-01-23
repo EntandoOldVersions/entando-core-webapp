@@ -278,7 +278,11 @@
 <s:if test="#content.onLine">
 	<a title="<s:text name="label.inspect" />: [<s:text name="name.onLine" />] <s:property value="#content.id" /> - <s:property value="#content.descr" />" href="<s:url action="inspect" namespace="/do/jacms/Content"><s:param name="contentId" value="#content.id" /><s:param name="currentPublicVersion" value="'true'" /></s:url>"><img src="<wp:resourceURL/>administration/common/img/icons/22x22/content-inspect-online.png" alt="<s:text name="label.inspect" />: <s:property value="#content.id" /> - <s:property value="#content.descr" />" /></a>
 </s:if>
-	
+	<wpsa:hookPoint key="jacms.contentFinding.contentRow.actions" objectName="hookpoint_contentFinding_contentRow">
+	<s:iterator value="#hookpoint_contentFinding_contentRow" var="hookPointElement">
+		<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
+	</s:iterator>
+	</wpsa:hookPoint>
 	</td>
 	<td><input type="checkbox" name="contentIds" id="content_<s:property value="#content.id" />" value="<s:property value="#content.id" />" /><label for="content_<s:property value="#content.id" />"><s:property value="#content.descr" /></label></td>
 	<s:if test="viewCode"><td><span class="monospace"><s:property value="#content.id" /></span></td></s:if>
