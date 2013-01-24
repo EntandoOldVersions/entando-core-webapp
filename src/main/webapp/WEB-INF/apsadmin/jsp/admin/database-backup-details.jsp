@@ -67,7 +67,7 @@ Required Time <s:property value="#dumpReportVar.requiredTime" /> ms
 <strong>COMPONENT HISTORY</strong>
 <br />
 <s:iterator var="componentHistoryVar" value="#dumpReportVar.componentsHistory">
-	Component <s:property value="#componentHistoryVar.componentName" /> - 
+	Component <s:property value="#componentHistoryVar.componentCode" /> - 
 	date <s:date name="#componentHistoryVar.date" format="dd/MM/yyyy HH:mm:ss" />
 	<br />
 </s:iterator>
