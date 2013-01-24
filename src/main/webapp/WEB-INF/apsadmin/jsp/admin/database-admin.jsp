@@ -71,7 +71,7 @@ DUMP NON AVAILABLE
 </s:else>
 
 <br />
-<a href="<s:url namespace="/do/Admin/Database" action="executeBackup" />">EXECUTE BACKUP</a>
+<a href="<s:url namespace="/do/Admin/Database" action="backupIntro" />">BACKUP</a>
 
 </s:else>
 

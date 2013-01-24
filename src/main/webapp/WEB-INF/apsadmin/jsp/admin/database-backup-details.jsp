@@ -95,7 +95,7 @@ Required Time <s:property value="#dumpReportVar.requiredTime" /> ms
 </s:iterator>
 
 <br />
-<a href="<s:url namespace="/do/Admin/Database" action="restoreBackup" >
+<a href="<s:url namespace="/do/Admin/Database" action="restoreIntro" >
 		   <s:param name="subFolderName" value="#dumpReportVar.subFolderName" />
 	   </s:url>">RESTORE BACKUP</a>
 
