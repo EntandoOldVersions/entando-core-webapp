@@ -36,7 +36,7 @@
 		</s:if>
 		<fieldset>
 			<legend><s:text name="label.info" /></legend>
-			<p>
+			<p class="noscreen">
 				<wpsf:hidden name="strutsAction" />
 				<s:if test="strutsAction == 2">
 					<wpsf:hidden name="serviceKey" />
@@ -47,12 +47,14 @@
 				</s:if>
 				<wpsf:hidden name="resourceName" />
 				<wpsf:hidden name="namespace" />
-				<label for="<s:property value="serviceKey" />" class="basic-mint-label"><s:text name="name.api.service" />:</label>
+			</p>
+			<p>
+				<label for="<s:property value="serviceKey" />" class="basic-mint-label"><s:text name="name.api.service" /> <abbr title="<s:text name="Entity.attribute.flag.mandatory.full"/>"><s:text name="Entity.attribute.flag.mandatory.short"/></abbr>:</label>
 				<wpsf:textfield useTabindexAutoIncrement="true" id="serviceKey" name="serviceKey" disabled="%{strutsAction == 2}" cssClass="text" />
 			</p>
 			<s:iterator value="systemLangs">
 				<p>
-					<label for="lang_<s:property value="code"/>" class="basic-mint-label"><span class="monospace">(<s:property value="code" />)</span>&#32;<s:text name="label.description" />:</label>
+					<label for="lang_<s:property value="code"/>" class="basic-mint-label alignTop"><span class="monospace">(<s:property value="code" />)</span>&#32;<s:text name="label.description" /> <abbr title="<s:text name="Entity.attribute.flag.mandatory.full"/>"><s:text name="Entity.attribute.flag.mandatory.short"/></abbr>:</label>
 					<wpsf:textarea cols="50" rows="3" useTabindexAutoIncrement="true" id="%{'lang_'+code}" name="%{'lang_'+code}" value="%{descriptions[code]}" cssClass="text" />
 				</p>
 			</s:iterator>
