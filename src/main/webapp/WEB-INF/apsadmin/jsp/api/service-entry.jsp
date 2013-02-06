@@ -104,7 +104,8 @@
 						<td><s:property value="#apiParameter.description" /></td>
 						<td class="icon"><img src="<wp:resourceURL />administration/common/img/icons/<s:property value="#apiParameter.required" />.png" alt="<s:property value="#apiParameter.required" />" /></td>
 						<td><wpsf:textfield useTabindexAutoIncrement="true" id="%{#apiParameter.key + '_apiParam'}" name="%{#apiParameter.key + '_apiParam'}" value="%{apiParameterValues[#apiParameter.key]}" cssClass="text" /></td>
-						<td><wpsf:checkbox useTabindexAutoIncrement="true" id="freeParameters" name="freeParameters" fieldValue="%{#apiParameter.key}" value="%{freeParameters.contains(#apiParameter.key)}" /> <label for="freeParameters"><s:if test="%{freeParameters.contains(#apiParameter.key)}"><s:text name="label.yes" /></s:if><s:else><s:text name="label.no" /></s:else></label></td>
+
+						<td><wpsf:radio useTabindexAutoIncrement="true" name="freeParameters" id="true_freeParameters" value="true" checked="%{freeParameters.contains(#apiParameter.key)}" /><label for="true_freeParameters"><s:text name="label.yes"/></label><span class="noscreen">&nbsp;,&nbsp;</span><wpsf:radio useTabindexAutoIncrement="true" name="freeParameters" id="false_freeParameters" value="false" checked="%{!freeParameters.contains(#apiParameter.key)}" /><label for="false_freeParameters"><s:text name="label.no"/></label></td>
 					</tr>
 				</s:iterator>
 			</table>
