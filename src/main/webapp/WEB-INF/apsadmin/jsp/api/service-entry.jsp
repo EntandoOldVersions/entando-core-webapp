@@ -108,9 +108,8 @@
 							<s:set var="freeParameterFieldNameVar" value="%{'freeParameter_' + #apiParameterVar.key}" />
 							<wpsf:radio useTabindexAutoIncrement="true" name="%{#freeParameterFieldNameVar}"
 										id="%{'true_' + #freeParameterFieldNameVar}" value="true" checked="%{freeParameters.contains(#apiParameterVar.key)}" />
-							<label for="<s:property value="%{'true_' + #freeParameterFieldNameVar}" />"><s:text name="label.yes"/></label>
-							<span class="noscreen">&nbsp;,&nbsp;</span>
-							<wpsf:radio useTabindexAutoIncrement="true" name="%{#freeParameterFieldNameVar}" 
+							<label for="<s:property value="%{'true_' + #freeParameterFieldNameVar}" />"><s:text name="label.yes"/></label><br />
+							<wpsf:radio useTabindexAutoIncrement="true" name="%{#freeParameterFieldNameVar}"
 										id="%{'false_' + #freeParameterFieldNameVar}" value="false" checked="%{!freeParameters.contains(#apiParameterVar.key)}" />
 							<label for="<s:property value="%{'false_' + #freeParameterFieldNameVar}" />"><s:text name="label.no"/></label>
 						</td>
