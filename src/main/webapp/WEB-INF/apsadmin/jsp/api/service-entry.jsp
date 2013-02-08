@@ -100,7 +100,7 @@
 				</tr>
 				<s:iterator value="apiParameters" var="apiParameterVar" >
 					<tr>
-						<td class="monospace"><label for="<s:property value="%{#apiParameterVar.key + '_apiParam'}" />"><s:property value="#apiParametervar.key" /></label></td>
+						<td class="monospace"><label for="<s:property value="%{#apiParameterVar.key + '_apiParam'}" />"><s:property value="#apiParameterVar.key" /></label></td>
 						<td><s:property value="#apiParameterVar.description" /></td>
 						<td class="icon"><img src="<wp:resourceURL />administration/common/img/icons/<s:property value="#apiParameterVar.required" />.png" alt="<s:property value="#apiParameterVar.required" />" /></td>
 						<td><wpsf:textfield useTabindexAutoIncrement="true" id="%{#apiParameterVar.key + '_apiParam'}" name="%{#apiParameterVar.key + '_apiParam'}" value="%{apiParameterValues[#apiParameterVar.key]}" cssClass="text" /></td>
