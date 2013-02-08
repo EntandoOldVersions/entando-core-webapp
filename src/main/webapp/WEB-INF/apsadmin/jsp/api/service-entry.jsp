@@ -106,7 +106,7 @@
 						<td><wpsf:textfield useTabindexAutoIncrement="true" id="%{#apiParameterVar.key + '_apiParam'}" name="%{#apiParameterVar.key + '_apiParam'}" value="%{apiParameterValues[#apiParameterVar.key]}" cssClass="text" /></td>
 						<td>
 							<s:set var="freeParameterFieldNameVar" value="%{'freeParameter_' + #apiParameterVar.key}" />
-							<wpsf:radio useTabindexAutoIncrement="true" name="%{#freeParameterFieldNameVar}" 
+							<wpsf:radio useTabindexAutoIncrement="true" name="%{#freeParameterFieldNameVar}"
 										id="%{'true_' + #freeParameterFieldNameVar}" value="true" checked="%{freeParameters.contains(#apiParameterVar.key)}" />
 							<label for="<s:property value="%{'true_' + #freeParameterFieldNameVar}" />"><s:text name="label.yes"/></label>
 							<span class="noscreen">&nbsp;,&nbsp;</span>
