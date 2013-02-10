@@ -1,4 +1,5 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 
 <div class="compositeAttribute">
 <s:set name="masterCompositeAttributeTracer" value="#attributeTracer" />
@@ -57,6 +58,13 @@
 		<s:elseif test="#attribute.type == 'Link'">
 			<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/linkAttribute.jsp" />
 		</s:elseif>
+		
+		<wpsa:hookPoint key="jacms.entryContent.attributeExtra" objectName="hookPointElements_jacms_entryContent_attributeExtra">
+		<s:iterator value="#hookPointElements_jacms_entryContent_attributeExtra" var="hookPointElement">
+			<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
+		</s:iterator>
+		</wpsa:hookPoint>
+		
 </div>		
 </s:iterator>
 <s:set name="attributeTracer" value="#masterCompositeAttributeTracer" />
