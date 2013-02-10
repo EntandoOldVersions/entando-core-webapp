@@ -220,7 +220,7 @@
 <td><input type="radio" name="contentId" id="contentId_<s:property value="#content.id"/>" value="<s:property value="#content.id"/>" />
 <label for="contentId_<s:property value="#content.id"/>"><s:property value="#content.descr" /></label></td>
 <td><span class="monospace"><s:property value="#content.id" /></span></td>
-<td><s:property value="groupsMap[#content.mainGroupCode].descr" /></td>
+<td><s:property value="%{getGroup(#content.mainGroupCode).descr}" /></td>
 <td><s:date name="#content.create" format="dd/MM/yyyy HH:mm" /></td>
 <td><s:date name="#content.modify" format="dd/MM/yyyy HH:mm" /></td>
 </tr>
