@@ -100,17 +100,16 @@
 				</tr>
 				<s:iterator value="apiParameters" var="apiParameterVar" >
 					<tr>
-						<td class="monospace"><label for="<s:property value="%{#apiParameterVar.key + '_apiParam'}" />"><s:property value="#apiParametervar.key" /></label></td>
+						<td class="monospace"><label for="<s:property value="%{#apiParameterVar.key + '_apiParam'}" />"><s:property value="#apiParameterVar.key" /></label></td>
 						<td><s:property value="#apiParameterVar.description" /></td>
 						<td class="icon"><img src="<wp:resourceURL />administration/common/img/icons/<s:property value="#apiParameterVar.required" />.png" alt="<s:property value="#apiParameterVar.required" />" /></td>
 						<td><wpsf:textfield useTabindexAutoIncrement="true" id="%{#apiParameterVar.key + '_apiParam'}" name="%{#apiParameterVar.key + '_apiParam'}" value="%{apiParameterValues[#apiParameterVar.key]}" cssClass="text" /></td>
 						<td>
 							<s:set var="freeParameterFieldNameVar" value="%{'freeParameter_' + #apiParameterVar.key}" />
-							<wpsf:radio useTabindexAutoIncrement="true" name="%{#freeParameterFieldNameVar}" 
+							<wpsf:radio useTabindexAutoIncrement="true" name="%{#freeParameterFieldNameVar}"
 										id="%{'true_' + #freeParameterFieldNameVar}" value="true" checked="%{freeParameters.contains(#apiParameterVar.key)}" />
-							<label for="<s:property value="%{'true_' + #freeParameterFieldNameVar}" />"><s:text name="label.yes"/></label>
-							<span class="noscreen">&nbsp;,&nbsp;</span>
-							<wpsf:radio useTabindexAutoIncrement="true" name="%{#freeParameterFieldNameVar}" 
+							<label for="<s:property value="%{'true_' + #freeParameterFieldNameVar}" />"><s:text name="label.yes"/></label><br />
+							<wpsf:radio useTabindexAutoIncrement="true" name="%{#freeParameterFieldNameVar}"
 										id="%{'false_' + #freeParameterFieldNameVar}" value="false" checked="%{!freeParameters.contains(#apiParameterVar.key)}" />
 							<label for="<s:property value="%{'false_' + #freeParameterFieldNameVar}" />"><s:text name="label.no"/></label>
 						</td>
