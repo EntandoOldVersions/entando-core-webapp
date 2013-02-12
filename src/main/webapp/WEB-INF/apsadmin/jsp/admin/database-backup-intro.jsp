@@ -21,23 +21,31 @@
 				</h3>
 				<s:set var="tableMappingVar" value="entandoTableMapping" />
 				<s:include value="/WEB-INF/apsadmin/jsp/admin/inc/datasource-table-names.jsp" />
-			
+				
 				<s:set var="currentComponentsVar" value="currentComponents" />
 				<s:iterator var="currentComponentVar" begin="0" end="%{#currentComponentsVar.size()/2-1}" value="#currentComponentsVar" >
+					<div class="subsection-light margin-more-top">
 						<h3 class="centerText">
 							Component '<s:property value="#currentComponentVar.description" />' (<s:property value="#currentComponentVar.code" />) 
 						</h3>
 						<s:set var="tableMappingVar" value="#currentComponentVar.tableMapping" />
 						<s:include value="/WEB-INF/apsadmin/jsp/admin/inc/datasource-table-names.jsp" />
+					</div>
 				</s:iterator>
 			</div>
 			<div class="block-column-right">
-				<s:iterator var="currentComponentVar" begin="%{#currentComponentsVar.size()/2}" value="#currentComponentsVar" >
+				<s:iterator var="currentComponentVar" begin="%{#currentComponentsVar.size()/2}" value="#currentComponentsVar" status="statusVar">
+					<s:if test="%{!(#statusVar.first)}">
+						<div class="subsection-light margin-more-top">
+					</s:if>
 						<h3 class="centerText">
 							Component '<s:property value="#currentComponentVar.description" />' (<s:property value="#currentComponentVar.code" />) 
 						</h3>
 						<s:set var="tableMappingVar" value="#currentComponentVar.tableMapping" />
 						<s:include value="/WEB-INF/apsadmin/jsp/admin/inc/datasource-table-names.jsp" />
+					<s:if test="%{!(#statusVar.first)}">
+						</div>
+					</s:if>
 				</s:iterator>
 			</div>
 		</div>
