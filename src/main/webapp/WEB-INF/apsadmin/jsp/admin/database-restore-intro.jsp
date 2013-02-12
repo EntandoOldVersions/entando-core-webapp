@@ -46,7 +46,7 @@
 			</p>
 
 		<s:set var="restoreCheckVar" value="%{checkRestore(#currentComponentsVar, #dumpReportVar)}" />
-		<s:if test="#restoreCheckVar && false">
+		<s:if test="#restoreCheckVar">
 			<p class="message message_confirm">
 				The backup fits the components installed in this portal. No problem detected.
 			</p>
