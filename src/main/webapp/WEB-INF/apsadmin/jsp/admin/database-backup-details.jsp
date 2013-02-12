@@ -4,7 +4,7 @@
 <h1><a href="<s:url namespace="/do/Admin/Database" action="entry" />">Database Management</a></h1>
 <div id="main">
 	<s:set var="subFolderNameVar" value="subFolderName" />
-	<h2>Backup Details</h2>
+	<h2><s:text name="title.databaseBackup.details" /></h2>
 	<s:if test="hasActionErrors()">
 		<div class="message message_error">
 			<h3><s:text name="message.title.ActionErrors" /></h3>	
@@ -39,32 +39,32 @@
 	</s:if>
 	<s:if test="managerStatus != 0" >
 		<p class="message message_error">	
-			Dump in progress... ( <a href="<s:url namespace="/do/Admin/Database" action="entry" />">Refresh</a> )
+			<s:text name="database.management.note.dump.in.progress" />&#32;(&#32;<a href="<s:url namespace="/do/Admin/Database" action="entry" />"><s:text name="database.management.refresh" /></a>&#32;)
 		</p>
 	</s:if>
 	<s:else>
 		<s:set var="dumpReportVar" value="getDumpReport(#subFolderNameVar)" />
 		<s:if test="null == #dumpReportVar">
 			<p>
-				The requested dump is not available.
+				<s:text name="database.management.note.dump.not.available" />
 			</p>
 		</s:if>
 		<s:else>
 			<dl class="table-display">
 				<dt>
-					Date
+					<s:text name="database.management.label.date" />
 				</dt>
 					<dd>
 						<s:date name="#dumpReportVar.date" format="dd/MM/yyyy HH:mm:ss" />
 					</dd>
 				<dt>
-					Required Time
+					<s:text name="database.management.label.time.required" />
 				</dt>
-					<dd><s:property value="#dumpReportVar.requiredTime" /> milliseconds</dd>
+					<dd><s:property value="#dumpReportVar.requiredTime" />&#32;<s:text name="database.management.label.milliseconds" /></dd>
 			</dl>
 
 			<h3 class="centerText">
-				Backup Components
+				<s:text name="database.management.label.components.backup" />
 			</h3>
 			<dl class="table-display">
 				<s:iterator var="componentHistoryVar" value="#dumpReportVar.componentsHistory">
@@ -82,14 +82,14 @@
 						<table class="generic reset_<s:property value="#status.count%2" />">
 							<caption>
 								<span>
-									Datasource <s:property value="#dataSourceNameVar" />
+									<span lang="en">Datasource</span>&#32;<em><s:property value="#dataSourceNameVar" /></em>
 								</span>
 							</caption>
 							<s:set var="tableReportsVar" value="#dumpReportVar.dataSourcesReports[#dataSourceNameVar]" />
 							<tr>
-								<th>Table Name</th>
-								<th>Rows</th>
-								<th>Time</th>
+								<th><s:text name="database.management.label.table" /></th>
+								<th><s:text name="database.management.label.rows" /></th>
+								<th><s:text name="database.management.label.time.required" /></th>
 							</tr>
 							<s:iterator var="tableReportVar" value="#tableReportsVar">
 								<tr>
@@ -97,7 +97,7 @@
 										<s:if test="#tableReportVar.rows == 0"><s:property value="#tableReportVar.tableName" /></s:if>
 										<s:else>
 												<a 
-													title="Download: <s:property value="#dataSourceNameVar" />/<s:property value="#tableReportVar.tableName" />"
+													title="<s:text name="database.management.label.download" />: <s:property value="#dataSourceNameVar" />/<s:property value="#tableReportVar.tableName" />"
 													href="<s:url namespace="/do/Admin/Database" action="extractTableDump" >
 													<s:param name="tableName" value="#tableReportVar.tableName" />
 													<s:param name="dataSourceName" value="#dataSourceNameVar" />
@@ -109,7 +109,7 @@
 										<s:property value="#tableReportVar.rows" />
 									</td>
 									<td class="rightText monospace">
-										<s:property value="#tableReportVar.requiredTime" /> ms
+										<s:property value="#tableReportVar.requiredTime" />&#32;<abbr title="<s:text name="database.management.label.milliseconds" />"><s:text name="database.management.label.milliseconds.short" /></abbr>
 									</td>
 								</tr>
 							</s:iterator>
@@ -121,14 +121,14 @@
 						<table class="generic reset_<s:property value="#status.count%2" />">
 							<caption>
 								<span>
-									Datasource <s:property value="#dataSourceNameVar" />
+									<span lang="en">Datasource</span>&#32;<em><s:property value="#dataSourceNameVar" /></em>
 								</span>
 							</caption>
 							<s:set var="tableReportsVar" value="#dumpReportVar.dataSourcesReports[#dataSourceNameVar]" />
 							<tr>
-								<th>Table Name</th>
-								<th>Rows</th>
-								<th>Time</th>
+								<th><s:text name="database.management.label.table" /></th>
+								<th><s:text name="database.management.label.rows" /></th>
+								<th><s:text name="database.management.label.time.required" /></th>
 							</tr>
 							<s:iterator var="tableReportVar" value="#tableReportsVar">
 								<tr>
@@ -136,7 +136,7 @@
 										<s:if test="#tableReportVar.rows == 0"><s:property value="#tableReportVar.tableName" /></s:if>
 										<s:else>
 												<a 
-													title="Download: <s:property value="#dataSourceNameVar" />/<s:property value="#tableReportVar.tableName" />"
+													title="<s:text name="database.management.label.download" />: <s:property value="#dataSourceNameVar" />/<s:property value="#tableReportVar.tableName" />"
 													href="<s:url namespace="/do/Admin/Database" action="extractTableDump" >
 													<s:param name="tableName" value="#tableReportVar.tableName" />
 													<s:param name="dataSourceName" value="#dataSourceNameVar" />
@@ -148,7 +148,7 @@
 										<s:property value="#tableReportVar.rows" />
 									</td>
 									<td class="rightText monospace">
-										<s:property value="#tableReportVar.requiredTime" /> ms
+										<s:property value="#tableReportVar.requiredTime" />&#32;<abbr title="<s:text name="database.management.label.milliseconds" />"><s:text name="database.management.label.milliseconds.short" /></abbr>
 									</td>
 								</tr>
 							</s:iterator>
@@ -159,12 +159,12 @@
 			<s:form namespace="/do/Admin/Database" method="get" cssClass="margin-more-top">
 				<p class="centerText">
 					<wpsf:hidden name="subFolderName" value="%{#dumpReportVar.subFolderName}" />
-					<wpsf:submit action="restoreIntro" value="Restore Backup" cssClass="button" />
+					<wpsf:submit action="restoreIntro" value="%{getText('database.management.label.restore')}" cssClass="button" />
 				</p>
 			</s:form>
 		</s:else>
 		<p>
-			<a href="<s:url namespace="/do/Admin/Database" action="entry" />">Go to Backups list</a>
+			<a href="<s:url namespace="/do/Admin/Database" action="entry" />"><s:text name="database.management.label.go.to.list" /></a>
 		</p>
 	</s:else>
 </div>

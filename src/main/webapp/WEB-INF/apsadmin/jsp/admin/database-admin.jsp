@@ -1,10 +1,9 @@
 <%@ page contentType="charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
-<h1>Database Management</h1>
+<h1><s:text name="title.databaseManagement" /></h1>
 <div id="main">
-	<h2 class="margin-more-bottom">Database Backups</h2>
-
+	<h2 class="margin-more-bottom"><s:text name="title.databaseBackup" /></h2>
 	<s:if test="hasActionErrors()">
 		<div class="message message_error">
 			<h3><s:text name="message.title.ActionErrors" /></h3>	
@@ -37,43 +36,42 @@
 			</ul>
 		</div>
 	</s:if>
-
 	<s:if test="managerStatus != 0" >
 		<p class="message message_error">	
-			Dump in progress... ( <a href="<s:url namespace="/do/Admin/Database" action="entry" />">Refresh</a> )
+			<s:text name="database.management.note.dump.in.progress" /> ( <a href="<s:url namespace="/do/Admin/Database" action="entry" />"><s:text name="database.management.refresh" /></a> )
 		</p>
 	</s:if>
 	<s:else>
 		<s:set var="dumpReportsVar" value="dumpReports" />
 		<s:if test="null == #dumpReportsVar || #dumpReportsVar.isEmpty()">
 			<p>
-				No backups available.
+				<s:text name="database.management.note.no.backups" />
 			</p>
 		</s:if>
 		<s:else>
-			<table class="generic margin-more-top">
-				<caption><span>Backup List</span></caption>
+			<table class="generic margin-more-top" summary="<s:text name="database.backup.list.summary" />">
+				<caption><span><s:text name="database.management.label.backup.list" /></span></caption>
 				<tr>
-					<th><abbr title="Number">N</abbr></th>
-					<th>Date</th>
-					<th>Required Time</th>
+					<th><abbr title="<s:text name="database.management.label.number" />"><s:text name="database.management.label.number.short" /></abbr></th>
+					<th><s:text name="database.management.label.date" /></th>
+					<th><s:text name="database.management.label.time.required" /></th>
 					<th class="icon"><abbr title="<s:text name="label.remove" />">&ndash;</abbr></th>	
 				<tr>
 				<s:iterator var="dumpReportVar" value="#dumpReportsVar" status="status">
 					<td class="icon rightText monospace"><s:property value="#status.count" /></td>
 					<td class="monospace">
 						<a 
-							title="Details: <s:property value="#status.count" />&#32;&ndash;&#32;<s:date name="#dumpReportVar.date" format="dd/MM/yyyy HH:mm:ss" />"
+							title="<s:text name="database.management.label.details" />:&#32;<s:property value="#status.count" />&#32;&ndash;&#32;<s:date name="#dumpReportVar.date" format="dd/MM/yyyy HH:mm:ss" />"
 							href="<s:url namespace="/do/Admin/Database" action="entryBackupDetails" >
 						   <s:param name="subFolderName" value="#dumpReportVar.subFolderName" />
 					   		</s:url>"><s:date name="#dumpReportVar.date" format="dd/MM/yyyy HH:mm:ss" /></a> 
 					</td>
 					<td class="monospace">
-						<s:property value="#dumpReportVar.requiredTime" /> milliseconds
+						<s:property value="#dumpReportVar.requiredTime" />&#32;<s:text name="database.management.label.milliseconds" />
 					</td>
 					<td class="icon">
 						<a 
-							title="Remove the backup: <s:property value="#status.count" />&#32;&ndash;&#32;<s:date name="#dumpReportVar.date" format="dd/MM/yyyy HH:mm:ss" />"
+							title="<s:text name="database.management.label.remove" />:&#32;<s:property value="#status.count" />&#32;&ndash;&#32;<s:date name="#dumpReportVar.date" format="dd/MM/yyyy HH:mm:ss" />"
 							href="<s:url namespace="/do/Admin/Database" action="trashBackup" >
 							   <s:param name="subFolderName" value="#dumpReportVar.subFolderName" />
 						   </s:url>"><img src="<wp:resourceURL />administration/common/img/icons/delete.png" alt="<s:text name="label.alt.clear" />" /></a>
@@ -83,7 +81,7 @@
 		</s:else>
 		<form action="<s:url namespace="/do/Admin/Database" action="backupIntro" />" method="get">
 			<p class="centerText">
-				<input type="submit" value="Create a Backup" class="button" />
+				<input type="submit" value="<s:text name="database.management.label.backup.create" />" class="button" />
 			</p>
 		</form>
 	</s:else>

@@ -2,7 +2,7 @@
 <s:if test="%{null != #tableMappingVar && !#tableMappingVar.isEmpty()}">
 	<s:iterator var="dataSourceNameVar" value="#tableMappingVar.keySet()" >
 		<p>
-			<strong>Datasource <s:property value="#dataSourceNameVar" /></strong>:
+			<strong><span lang="en">Datasource</span>&#32;<em><s:property value="#dataSourceNameVar" /></em></strong>:
 			<s:set var="tableNamesVar" value="%{getTableNames(#tableMappingVar[#dataSourceNameVar])}" />
 			<s:if test="null != #tableNamesVar">
 				<s:iterator var="tableNameVar" value="#tableNamesVar" status="statusVar">
@@ -11,14 +11,14 @@
 				</s:iterator>
 			</s:if>
 			<s:else>
-				<p>No table for backup.</p>
+				<p><s:text name="database.management.note.backup.notable" /></p>
 			</s:else>
 		</p>
 	</s:iterator>
 </s:if>
 <s:else>
 	<p>
-		No table for backup.
+		<s:text name="database.management.note.backup.notable" />
 	</p>
 </s:else>
 

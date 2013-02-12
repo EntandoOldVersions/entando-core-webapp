@@ -1,34 +1,34 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
-<h1><a href="<s:url namespace="/do/Admin/Database" action="entry" />">Database Management</a></h1>
+<h1><a href="<s:url namespace="/do/Admin/Database" action="entry" />"><s:text name="title.databaseManagement" /></a></h1>
 <div id="main">
 	<s:set var="subFolderNameVar" value="subFolderName" />
 	<s:set var="dumpReportVar" value="getDumpReport(#subFolderNameVar)" />
-	<h2>Restore</h2>
+	<h2><s:text name="title.databaseBackup.restore" /></h2>
 	<s:if test="managerStatus != 0" >
 		<p class="message message_error">	
-			Dump/Restore in progress... ( <a href="<s:url namespace="/do/Admin/Database" action="restoreIntro" ><s:param name="subFolderName" value="subFolderName" /></s:url>">Refresh</a> )
+			<s:text name="database.management.note.dump.in.progress" />&#32;(&#32;<a href="<s:url namespace="/do/Admin/Database" action="restoreIntro" ><s:param name="subFolderName" value="subFolderName" /></s:url>"><s:text name="database.management.refresh" /></a>&#32;)
 		</p>
 	</s:if>
 	<s:else>
 		<dl class="table-display">
 			<dt>
-				Date
+				<s:text name="database.management.label.date" />
 			</dt>
 				<dd>
 					<s:date name="#dumpReportVar.date" format="dd/MM/yyyy HH:mm:ss" />
 				</dd>
 		</dl>
 		<p>
-			Below the details of the components installed in this portal and the components data present in the backup.
+			<s:text name="database.management.note.installed.components" />
 		</p>
 		<s:set var="dumpReportVar" value="getDumpReport(subFolderName)" />
 		<s:set var="currentComponentsVar" value="currentComponents" />
 			<h3>
-				Current Components
+				<s:text name="database.management.label.components.current" />
 			</h3>
 			<p>
-				The components currently installed in this portal:
+				<s:text name="database.management.note.components.current" />
 				<em>entandoCore</em>
 				<s:iterator var="currentComponentVar" value="#currentComponentsVar" status="status" >
 					<s:if test="%{!(#status.last) || #status.first}">,&#32;</s:if>
@@ -36,9 +36,9 @@
 				</s:iterator>
 			</p>
 
-			<h3>Backup Components</h3>
+			<h3><s:text name="database.management.label.components.backup" /></h3>
 			<p>
-				The components data within this backup:
+				<s:text name="database.management.note.components.backup" />
 				<s:iterator var="componentHistoryVar" value="#dumpReportVar.componentsHistory" status="status">
 					<em><s:property value="#componentHistoryVar.componentCode" /></em>
 					<s:if test="%{!(#status.last)}">,&#32;</s:if>
@@ -48,12 +48,12 @@
 		<s:set var="restoreCheckVar" value="%{checkRestore(#currentComponentsVar, #dumpReportVar)}" />
 		<s:if test="#restoreCheckVar">
 			<p class="message message_confirm">
-				The backup fits the components installed in this portal. No problem detected.
+				<s:text name="database.management.note.restore.do.fits" />
 			</p>
 		</s:if>
 		<s:else>
 			<p class="message message_error">
-				This backup don't fits the installed components. Problems may occur while restoring.
+				<s:text name="database.management.note.restore.do.not.fits" />
 			</p>
 		</s:else>
 
@@ -66,7 +66,7 @@
 	</s:else>
 	<p>
 		<a href="<s:url namespace="/do/Admin/Database" action="entryBackupDetails" ><s:param name="subFolderName" value="%{subFolderName}" /></s:url>">
-			Go to backup details
+			<s:text name="database.management.label.go.to.list" />
 		</a>
 	</p>
 </div>
