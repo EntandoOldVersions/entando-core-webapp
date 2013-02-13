@@ -60,7 +60,7 @@
 		<s:form action="restoreBackup" method="get" namespace="/do/Admin/Database">
 			<p class="centerText">
 				<wpsf:hidden name="subFolderName" value="%{subFolderName}" />
-				<wpsf:submit value="Restore Backup" cssClass="button" />
+				<wpsf:submit value="%{getText('database.management.label.restore'}" cssClass="button" />
 			</p>
 		</s:form>
 	</s:else>
