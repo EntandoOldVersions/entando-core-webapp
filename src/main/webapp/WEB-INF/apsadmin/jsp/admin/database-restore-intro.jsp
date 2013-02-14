@@ -30,12 +30,10 @@
 			<p>
 				<s:text name="database.management.note.components.current" />
 				<em>entandoCore</em>
-				<s:iterator var="currentComponentVar" value="#currentComponentsVar" status="status" >
-					<s:if test="%{!(#status.last) || #status.first}">,&#32;</s:if>
-					<em><s:property value="#currentComponentVar.code" /></em>
+				<s:iterator var="currentComponentVar" value="#currentComponentsVar">
+					,&#32;<em><s:property value="#currentComponentVar.code" /></em>
 				</s:iterator>
 			</p>
-
 			<h3><s:text name="database.management.label.components.backup" /></h3>
 			<p>
 				<s:text name="database.management.note.components.backup" />
@@ -44,7 +42,6 @@
 					<s:if test="%{!(#status.last)}">,&#32;</s:if>
 				</s:iterator>
 			</p>
-
 		<s:set var="restoreCheckVar" value="%{checkRestore(#currentComponentsVar, #dumpReportVar)}" />
 		<s:if test="#restoreCheckVar">
 			<p class="message message_confirm">
@@ -56,11 +53,10 @@
 				<s:text name="database.management.note.restore.do.not.fits" />
 			</p>
 		</s:else>
-
 		<s:form action="restoreBackup" method="get" namespace="/do/Admin/Database">
 			<p class="centerText">
 				<wpsf:hidden name="subFolderName" value="%{subFolderName}" />
-				<wpsf:submit value="%{getText('database.management.label.restore'}" cssClass="button" />
+				<wpsf:submit value="%{getText('database.management.label.restore')}" cssClass="button" />
 			</p>
 		</s:form>
 	</s:else>
