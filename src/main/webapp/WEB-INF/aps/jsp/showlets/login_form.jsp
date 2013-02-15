@@ -63,7 +63,7 @@
 				<input id="password" type="password" name="password" class="input-xlarge" />
 		</div>
 		<div class="form-actions">
-			<input type="submit" value="Ok" class="btn btn-primary" />
+			<input type="submit" value="<wp:i18n key="SIGNIN" />" class="btn btn-primary" />
 		</div>
 	</form>
 	</c:otherwise>
