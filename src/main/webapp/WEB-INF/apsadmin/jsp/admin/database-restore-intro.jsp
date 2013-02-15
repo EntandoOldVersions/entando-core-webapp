@@ -6,7 +6,7 @@
 	<s:set var="dumpReportVar" value="getDumpReport(#subFolderNameVar)" />
 	<h2><s:text name="title.databaseBackup.restore" /></h2>
 	<s:if test="managerStatus != 0" >
-		<p class="message message_error">	
+		<p class="message message_error">
 			<s:text name="database.management.note.dump.in.progress" />&#32;(&#32;<a href="<s:url namespace="/do/Admin/Database" action="restoreIntro" ><s:param name="subFolderName" value="subFolderName" /></s:url>"><s:text name="database.management.refresh" /></a>&#32;)
 		</p>
 	</s:if>

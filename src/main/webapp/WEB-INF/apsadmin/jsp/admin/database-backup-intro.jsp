@@ -5,7 +5,7 @@
 	<s:set var="subFolderNameVar" value="subFolderName" />
 	<h2><s:text name="title.databaseBackup.new" /></h2>
 	<s:if test="managerStatus != 0" >
-		<p class="message message_error">	
+		<p class="message message_error">
 			<s:text name="database.management.note.dump.in.progress" />&#32;( <a href="<s:url namespace="/do/Admin/Database" action="backupIntro" />"><s:text name="database.management.refresh" /></a> )
 		</p>
 	</s:if>
@@ -21,12 +21,12 @@
 				</h3>
 				<s:set var="tableMappingVar" value="entandoTableMapping" />
 				<s:include value="/WEB-INF/apsadmin/jsp/admin/inc/datasource-table-names.jsp" />
-				
+
 				<s:set var="currentComponentsVar" value="currentComponents" />
 				<s:iterator var="currentComponentVar" begin="0" end="%{#currentComponentsVar.size()/2-1}" value="#currentComponentsVar" >
 					<div class="subsection-light margin-more-top">
 						<h3 class="centerText">
-							<s:text name="database.management.label.component" />&#32;<em><s:property value="#currentComponentVar.description" /></em> (<s:property value="#currentComponentVar.code" />) 
+							<s:text name="database.management.label.component" />&#32;<em><s:property value="#currentComponentVar.description" /></em> (<s:property value="#currentComponentVar.code" />)
 						</h3>
 						<s:set var="tableMappingVar" value="#currentComponentVar.tableMapping" />
 						<s:include value="/WEB-INF/apsadmin/jsp/admin/inc/datasource-table-names.jsp" />
@@ -39,7 +39,7 @@
 						<div class="subsection-light margin-more-top">
 					</s:if>
 						<h3 class="centerText">
-							<s:text name="database.management.label.component" />&#32;<em><s:property value="#currentComponentVar.description" /></em> (<s:property value="#currentComponentVar.code" />) 
+							<s:text name="database.management.label.component" />&#32;<em><s:property value="#currentComponentVar.description" /></em> (<s:property value="#currentComponentVar.code" />)
 						</h3>
 						<s:set var="tableMappingVar" value="#currentComponentVar.tableMapping" />
 						<s:include value="/WEB-INF/apsadmin/jsp/admin/inc/datasource-table-names.jsp" />

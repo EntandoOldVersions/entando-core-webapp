@@ -6,7 +6,7 @@
 	<h2 class="margin-more-bottom"><s:text name="title.databaseBackup" /></h2>
 	<s:if test="hasActionErrors()">
 		<div class="message message_error">
-			<h3><s:text name="message.title.ActionErrors" /></h3>	
+			<h3><s:text name="message.title.ActionErrors" /></h3>
 			<ul>
 				<s:iterator value="actionErrors">
 					<li><s:property escape="false" /></li>
@@ -16,7 +16,7 @@
 	</s:if>
 	<s:if test="hasFieldErrors()">
 		<div class="message message_error">
-			<h3><s:text name="message.title.FieldErrors" /></h3>	
+			<h3><s:text name="message.title.FieldErrors" /></h3>
 			<ul>
 				<s:iterator value="fieldErrors">
 					<s:iterator value="value">
@@ -28,7 +28,7 @@
 	</s:if>
 	<s:if test="hasActionMessages()">
 		<div class="message message_confirm">
-			<h3><s:text name="messages.confirm" /></h3>	
+			<h3><s:text name="messages.confirm" /></h3>
 			<ul>
 				<s:iterator value="actionMessages">
 					<li><s:property escape="false" /></li>
@@ -37,7 +37,7 @@
 		</div>
 	</s:if>
 	<s:if test="managerStatus != 0" >
-		<p class="message message_error">	
+		<p class="message message_error">
 			<s:text name="database.management.note.dump.in.progress" /> ( <a href="<s:url namespace="/do/Admin/Database" action="entry" />"><s:text name="database.management.refresh" /></a> )
 		</p>
 	</s:if>
@@ -55,27 +55,27 @@
 					<th><abbr title="<s:text name="database.management.label.number" />"><s:text name="database.management.label.number.short" /></abbr></th>
 					<th><s:text name="database.management.label.date" /></th>
 					<th><s:text name="database.management.label.time.required" /></th>
-					<th class="icon"><abbr title="<s:text name="label.remove" />">&ndash;</abbr></th>	
+					<th class="icon"><abbr title="<s:text name="label.remove" />">&ndash;</abbr></th>
 				<tr>
 				<s:iterator var="dumpReportVar" value="#dumpReportsVar" status="status">
 					<td class="icon rightText monospace"><s:property value="#status.count" /></td>
 					<td class="monospace">
-						<a 
+						<a
 							title="<s:text name="database.management.label.details" />:&#32;<s:property value="#status.count" />&#32;&ndash;&#32;<s:date name="#dumpReportVar.date" format="dd/MM/yyyy HH:mm:ss" />"
 							href="<s:url namespace="/do/Admin/Database" action="entryBackupDetails" >
 						   <s:param name="subFolderName" value="#dumpReportVar.subFolderName" />
-					   		</s:url>"><s:date name="#dumpReportVar.date" format="dd/MM/yyyy HH:mm:ss" /></a> 
+					   		</s:url>"><s:date name="#dumpReportVar.date" format="dd/MM/yyyy HH:mm:ss" /></a>
 					</td>
-					<td class="monospace">
+					<td class="rightText monospace">
 						<s:property value="#dumpReportVar.requiredTime" />&#32;<s:text name="database.management.label.milliseconds" />
 					</td>
 					<td class="icon">
-						<a 
+						<a
 							title="<s:text name="database.management.label.remove" />:&#32;<s:property value="#status.count" />&#32;&ndash;&#32;<s:date name="#dumpReportVar.date" format="dd/MM/yyyy HH:mm:ss" />"
 							href="<s:url namespace="/do/Admin/Database" action="trashBackup" >
 							   <s:param name="subFolderName" value="#dumpReportVar.subFolderName" />
 						   </s:url>"><img src="<wp:resourceURL />administration/common/img/icons/delete.png" alt="<s:text name="label.alt.clear" />" /></a>
-					</td> 
+					</td>
 				</s:iterator>
 			</table>
 		</s:else>

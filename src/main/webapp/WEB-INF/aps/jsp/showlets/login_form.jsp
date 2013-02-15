@@ -4,7 +4,7 @@
 <c:choose>
 	<c:when test="${sessionScope.currentUser != 'guest'}">
 		<p><wp:i18n key="WELCOME" />, <em><c:out value="${sessionScope.currentUser}"/></em>!</p>
-		
+
 		<c:if test="${sessionScope.currentUser.japsUser}">
 		<table class="table table-condensed">
 			<tr>
@@ -34,7 +34,7 @@
 		<p class="pull-right"><a href="<wp:info key="systemParam" paramName="applicationBaseURL" />do/logout.action" class="btn"><wp:i18n key="LOGOUT" /></a></p>
 	</c:when>
 	<c:otherwise>
-	
+
 	<c:if test="${accountExpired}">
 	<div class="alert alert-block alert-error">
 		<p><wp:i18n key="USER_STATUS_EXPIRED" /></p>
@@ -45,12 +45,12 @@
 		<p><wp:i18n key="USER_STATUS_CREDENTIALS_INVALID" /></p>
 	</div>
 	</c:if>
-	
-	
+
+
 	<form action="<wp:url/>" method="post" class="form-horizontal margin-medium-top">
 		<c:if test="${null != param['returnUrl']}">
 		<input type="hidden" name="returnUrl" value="<c:out value="${param['returnUrl']}" />" />
-		</c:if>	
+		</c:if>
 	<div class="control-group">
 			<label for="username" class="control-label"><wp:i18n key="USERNAME" /></label>
 			<div class="controls">
