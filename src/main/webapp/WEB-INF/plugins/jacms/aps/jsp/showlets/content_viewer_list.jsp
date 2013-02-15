@@ -9,11 +9,11 @@
 */
 %>
 
-<jacms:contentList listName="contentList" titleVar="titleVar" 
+<jacms:contentList listName="contentList" titleVar="titleVar"
 	pageLinkVar="pageLinkVar" pageLinkDescriptionVar="pageLinkDescriptionVar" userFilterOptionsVar="userFilterOptionsVar" />
 
 <c:if test="${null != titleVar}">
-	<h2><span><c:out value="${titleVar}" /></span></h2>
+	<h1><c:out value="${titleVar}" /></h1>
 </c:if>
 
 <c:set var="userFilterOptionsVar" value="${userFilterOptionsVar}" scope="request" />
@@ -23,23 +23,22 @@
 <c:when test="${contentList != null && !empty contentList}">
 	<wp:pager listName="contentList" objectName="groupContent" pagerIdFromFrame="true" advanced="true" offset="5">
 		<c:set var="group" value="${groupContent}" scope="request" />
-		<ul>
+		<c:import url="/WEB-INF/plugins/jacms/aps/jsp/showlets/inc/pagerBlock.jsp" />
 		<c:forEach var="contentId" items="${contentList}" begin="${groupContent.begin}" end="${groupContent.end}">
-			<li><jacms:content contentId="${contentId}" /></li>
-		</c:forEach>	
-		</ul>
+			<jacms:content contentId="${contentId}" />
+		</c:forEach>
 		<c:import url="/WEB-INF/plugins/jacms/aps/jsp/showlets/inc/pagerBlock.jsp" />
 	</wp:pager>
 </c:when>
 <c:otherwise>
 	<c:if test="${not empty userFilterOptionsVar}">
-		<p><wp:i18n key="LIST_VIEWER_EMPTY" /></p>
+		<p class="alert alert-info"><wp:i18n key="LIST_VIEWER_EMPTY" /></p>
 	</c:if>
 </c:otherwise>
 </c:choose>
 
 <c:if test="${null != pageLinkVar && null != pageLinkDescriptionVar}">
-	<p><a href="<wp:url page="${pageLinkVar}"/>"><c:out value="${pageLinkDescriptionVar}" /></a></p>
+	<p class="text-right"><a class="btn btn-primary" href="<wp:url page="${pageLinkVar}"/>"><c:out value="${pageLinkDescriptionVar}" /></a></p>
 </c:if>
 
 <%-- Important: reset variables --%>

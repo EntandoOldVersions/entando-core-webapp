@@ -3,17 +3,20 @@
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <s:set var="apiResourceVar" value="apiResource" />
 <s:set var="GETMethodVar" value="#apiResourceVar.getMethod" />
 <s:set var="POSTMethodVar" value="#apiResourceVar.postMethod" />
 <s:set var="PUTMethodVar" value="#apiResourceVar.putMethod" />
 <s:set var="DELETEMethodVar" value="#apiResourceVar.deleteMethod" />
 <s:set var="apiNameVar" value="(#apiResourceVar.namespace!=null && #apiResourceVar.namespace.length()>0 ? '/' + #apiResourceVar.namespace : '')+'/'+#apiResourceVar.resourceName" />
+<section>
+<p>
+	<a href="<wp:action path="/ExtStr2/do/Front/Api/Resource/list.action" />" class="btn btn-primary">&larr;&#32;<wp:i18n key="ENTANDO_API_GOTO_LIST" /></a>
+</p>
 <h2><wp:i18n key="ENTANDO_API_RESOURCE" />&#32;<s:property value="#apiNameVar" /></h2>
 <s:if test="hasActionMessages()">
-	<div class="message message_confirm">
-		<h3><wp:i18n key="ENTANDO_API_ERROR" /></h3>
+	<div class="alert alert-box alert-success">
+		<h3 class="alert-heading"><wp:i18n key="ENTANDO_API_ERROR" /></h3>
 		<ul>
 			<s:iterator value="actionMessages">
 				<li><s:property escape="false" /></li>
@@ -22,8 +25,8 @@
 	</div>
 </s:if>
 <s:if test="hasActionErrors()">
-	<div class="message message_error">
-		<h3><wp:i18n key="ENTANDO_API_ERROR" /></h3>
+	<div class="alert alert-box alert-error">
+		<h3 class="alert-heading"><wp:i18n key="ENTANDO_API_ERROR" /></h3>
 		<ul>
 			<s:iterator value="actionErrors">
 				<li><s:property escape="false" /></li>
@@ -34,12 +37,8 @@
 <!-- DESCRIPTION -->
 <p><s:property value="#apiResourceVar.description" /></p>
 
-<s:if test='%{#apiResourceVar.resourceName.equalsIgnoreCase("getService") || #apiResourceVar.resourceName.equalsIgnoreCase("getServices")}' >
-<a href="<wp:action path="/ExtStr2/do/Front/Api/Service/list.action" />"><wp:i18n key="ENTANDO_API_GOTO_SERVICE_LIST" /></a>
-</s:if>
-
 <!-- INFO -->
-<dl class="table-display">
+<dl class="dl-horizontal">
 	<dt><wp:i18n key="ENTANDO_API_RESOURCE_NAME" /></dt>
 		<dd><s:property value="#apiResourceVar.resourceName" /></dd>
 	<dt><span lang="en"><wp:i18n key="ENTANDO_API_RESOURCE_NAMESPACE" /></span></dt>
@@ -80,5 +79,6 @@
 	<h3 id="api_method_DELETE">DELETE</h3>
 	<s:include value="/WEB-INF/aps/jsp/internalservlet/api/include/resource-method-detail.jsp" />
 <p>
-	<a href="<wp:action path="/ExtStr2/do/Front/Api/Resource/list.action" />"><wp:i18n key="ENTANDO_API_GOTO_LIST" /></a>
+	<a href="<wp:action path="/ExtStr2/do/Front/Api/Resource/list.action" />" class="btn btn-primary">&larr;&#32;<wp:i18n key="ENTANDO_API_GOTO_LIST" /></a>
 </p>
+</section>

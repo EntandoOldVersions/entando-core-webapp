@@ -10,7 +10,7 @@
 <div id="header-2">
 <p>
 	<a class="noborder" href="http://www.entando.com/<s:property value="currentLang.code"/>/updates/" title="<s:text name="note.checkForUpdates" />">
-		<img src="<wp:resourceURL/>administration/common/img/entando-logo.png" width="97" height="60" alt="Entando Enterprise Edition" /> <span class="monospace version">version <wp:info key="systemParam" paramName="version" /></span>
+		<img src="<wp:resourceURL/>administration/common/img/entando-logo.png" width="97" height="60" alt="Entando" /> <span class="monospace version">version <wp:info key="systemParam" paramName="version" /></span>
 	</a>
 </p>
 </div>

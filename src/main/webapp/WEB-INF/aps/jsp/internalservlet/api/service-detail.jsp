@@ -3,9 +3,9 @@
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
-
+<wp:headInfo type="CSS" info="showlets/api.css"/>
 <s:set var="apiServiceVar" value="%{getApiService(serviceKey)}" />
-
+<div class="entando-api api-resource-detail">
 <h2><wp:i18n key="ENTANDO_API_SERVICE" />&#32;<s:property value="serviceKey" /></h2>
 <s:if test="hasActionMessages()">
 	<div class="message message_confirm">
@@ -29,17 +29,16 @@
 </s:if>
 
 <!-- DESCRIPTION -->
-<p><s:property value="getTitle(serviceKey, #apiServiceVar.description)" /></p>
+<p class="description"><s:property value="getTitle(serviceKey, #apiServiceVar.description)" /></p>
 
-<p>
-	<s:set var="masterMethodVar" value="#apiServiceVar.master" />
-	<wp:i18n key="ENTANDO_API_SERVICE_PARENT_API" />: <em><s:property value="#masterMethodVar.description" />&#32;(/<s:if test="#masterMethodVar.namespace!=null && #masterMethodVar.namespace.length()>0"><s:property value="#masterMethodVar.namespace" />/</s:if><s:property value="#masterMethodVar.resourceName" />)</em>
-</p>
+<s:set var="masterMethodVar" value="#apiServiceVar.master" />
 
 <!-- INFO -->
 <dl class="api-info">
 	<dt><wp:i18n key="ENTANDO_API_SERVICE_KEY" /></dt>
 		<dd><s:property value="serviceKey" /></dd>
+	<dt><wp:i18n key="ENTANDO_API_SERVICE_PARENT_API" /></dt>
+		<dd><s:property value="#masterMethodVar.description" />&#32;(/<s:if test="#masterMethodVar.namespace!=null && #masterMethodVar.namespace.length()>0"><s:property value="#masterMethodVar.namespace" />/</s:if><s:property value="#masterMethodVar.resourceName" />)</dd>
 	<dt>
 		<wp:i18n key="ENTANDO_API_SERVICE_AUTHORIZATION" />
 	</dt>
@@ -84,46 +83,6 @@
 			</a>
 		</dd>
 </dl>
-<%--
-<fieldset>
-	<legend><s:text name="label.info" /></legend>
-	<p>
-		<label for="<s:property value="serviceKey" />" class="basic-mint-label"><s:text name="name.api.service" />:</label>
-		<wpsf:textfield useTabindexAutoIncrement="true" id="serviceKey" name="serviceKey" disabled="%{strutsAction == 2}" cssClass="text" />
-	</p>
-	<s:iterator value="systemLangs">
-		<p>
-			<label for="lang_<s:property value="code"/>" class="basic-mint-label"><span class="monospace">(<s:property value="code" />)</span>&#32;<s:text name="label.description" />:</label>
-			<wpsf:textfield useTabindexAutoIncrement="true" id="%{'lang_'+code}" name="%{'lang_'+code}" value="%{descriptions[code]}" cssClass="text" />
-		</p>
-	</s:iterator>
-	<ul class="noBullet">
-		<li><wpsf:checkbox useTabindexAutoIncrement="true" name="activeService" id="activeService" cssClass="radiocheck" /><label for="activeService"><s:text name="label.active" /></label></li>
-		<li><wpsf:checkbox useTabindexAutoIncrement="true" name="publicService" id="publicService" cssClass="radiocheck" /><label for="publicService"><s:text name="label.public" /></label></li>
-		<li><wpsf:checkbox useTabindexAutoIncrement="true" name="myEntandoService" id="myEntandoService" cssClass="radiocheck" /><label for="myEntandoService"><s:text name="label.myEntando.compatible" /></label></li>
-	</ul>
-	<p>
-		<label for="tag" class="basic-mint-label"><s:text name="label.tag" />:</label>
-		<wpsf:textfield useTabindexAutoIncrement="true" id="tag" name="tag" cssClass="text" />
-	</p>
-</fieldset>
---%>
-<%--
-<fieldset>
-	<legend><s:text name="label.api.authorities" /></legend>
-	<ul class="noBullet">
-		<li><wpsf:checkbox useTabindexAutoIncrement="true" name="requiredAuth" id="requiredAuth" cssClass="radiocheck" /><label for="requiredAuth"><s:text name="label.api.authority.autenticationRequired" /></label></li>
-	</ul>
-	<p>
-		<label class="basic-mint-label" for="requiredPermission"><s:text name="label.api.authority.permission" />:</label>
-		<wpsf:select useTabindexAutoIncrement="true" headerKey="" headerValue="%{getText('label.none')}" name="requiredPermission" list="permissionAutorityOptions" listKey="key" listValue="value" id="requiredPermission" />
-	</p>
-	<p>
-		<label class="basic-mint-label" for="requiredGroup"><s:text name="label.api.authority.group" />:</label>
-		<wpsf:select useTabindexAutoIncrement="true" headerKey="" headerValue="%{getText('label.none')}" name="requiredGroup" list="groups" listKey="name" listValue="descr" id="requiredPermission" />
-	</p>
-</fieldset>
---%>
 
 <s:if test="%{null != #apiServiceVar.freeParameters}" >
 <table class="generic" summary="<wp:i18n key="ENTANDO_API_SERVICE_PARAMETERS_SUMMARY" />">
@@ -131,7 +90,7 @@
 	<tr>
 		<th><wp:i18n key="ENTANDO_API_SERVICE_PARAM_NAME" /></th>
 		<th><wp:i18n key="ENTANDO_API_SERVICE_PARAM_DESCRIPTION" /></th>
-		<th class="icon"><wp:i18n key="ENTANDO_API_SERVICE_PARAM_REQUIRED" /></th>
+		<th><wp:i18n key="ENTANDO_API_SERVICE_PARAM_REQUIRED" /></th>
 		<th><wp:i18n key="ENTANDO_API_SERVICE_PARAM_DEFAULT_VALUE" /></th>
 	</tr>
 	<s:iterator value="#apiServiceVar.freeParameters" var="apiParameterNameVar" >
@@ -139,10 +98,11 @@
 		<s:set var="apiParameterVar" value="%{#apiServiceVar.master.getParameter(#apiParameterNameVar)}" />
 		<s:set var="apiParameterRequiredVar" value="%{#apiParameterVar.required && null == #apiParameterValueVar}" />
 		<tr>
-			<td class="monospace"><label for="<s:property value="#apiParameterNameVar" />"><s:property value="#apiParameterNameVar" /></label></td>
+			<td><label for="<s:property value="#apiParameterNameVar" />"><s:property value="#apiParameterNameVar" /></label></td>
 			<td><s:property value="%{#apiParameterVar.description}" /></td>
-			<td class="icon">
-				<img src="<wp:resourceURL />administration/common/img/icons/<s:property value="#apiParameterRequiredVar" />.png" alt="<s:property value="#apiParameterRequiredVar" />" />
+			<td class="icon required_<s:property value="#apiParameterRequiredVar" />">
+				<s:if test="#apiParameterRequiredVar" ><wp:i18n key="YES" /></s:if>
+				<s:else><wp:i18n key="NO" /></s:else>
 			</td>
 			<td><s:if test="null != #apiParameterValueVar"><s:property value="#apiParameterValueVar" /></s:if><s:else>-</s:else></td>
 		</tr>
@@ -152,3 +112,4 @@
 <p class="api-back">
 	<a href="<wp:action path="/ExtStr2/do/Front/Api/Resource/list.action" />"><wp:i18n key="ENTANDO_API_GOTO_LIST" /></a>
 </p>
+</div>

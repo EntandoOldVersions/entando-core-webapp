@@ -7,14 +7,22 @@
 
 <fieldset>
 <legend><wp:i18n key="${i18n_Attribute_Key}" /></legend>
-<p><c:import url="/WEB-INF/plugins/jacms/aps/jsp/showlets/inc/userFilter-module-entity-Boolean-ignoreOption.jsp" /></p>
+<c:import url="/WEB-INF/plugins/jacms/aps/jsp/showlets/inc/userFilter-module-entity-Boolean-ignoreOption.jsp" />
 
-<p>
-<input name="<c:out value="${formFieldNameVar}" />" id="true_<c:out value="${formFieldNameVar}" />" <c:if test="${null != formFieldValue && formFieldValue == 'true'}">checked="checked"</c:if> value="true" type="radio" />
-<label for="true_<c:out value="${formFieldNameVar}" />"><wp:i18n key="YES"/></label>
-<input name="<c:out value="${formFieldNameVar}" />" id="false_<c:out value="${formFieldNameVar}" />" <c:if test="${null == formFieldValue || formFieldValue == 'false'}">checked="checked"</c:if> value="false" type="radio" />
-<label for="false_<c:out value="${formFieldNameVar}" />"><wp:i18n key="NO"/></label>
-<input name="<c:out value="${formFieldNameVar}" />" id="both_<c:out value="${formFieldNameVar}" />" <c:if test="${null != formFieldValue && formFieldValue == 'both'}">checked="checked"</c:if> value="both" type="radio" />
-<label for="both_<c:out value="${formFieldNameVar}" />"><wp:i18n key="BOTH"/></label>
-</p>
+<div class="control-group">
+
+	<div class="controls">
+		<label for="true_<c:out value="${formFieldNameVar}" />" class="radio">
+		<input name="<c:out value="${formFieldNameVar}" />" id="true_<c:out value="${formFieldNameVar}" />" <c:if test="${null != formFieldValue && formFieldValue == 'true'}">checked="checked"</c:if> value="true" type="radio" />
+		<wp:i18n key="YES"/></label>
+		<label for="false_<c:out value="${formFieldNameVar}" />" class="radio">
+		<input name="<c:out value="${formFieldNameVar}" />" id="false_<c:out value="${formFieldNameVar}" />" <c:if test="${null == formFieldValue || formFieldValue == 'false'}">checked="checked"</c:if> value="false" type="radio" />
+		<wp:i18n key="NO"/></label>
+		<label for="both_<c:out value="${formFieldNameVar}" />" class="radio">
+		<input name="<c:out value="${formFieldNameVar}" />" id="both_<c:out value="${formFieldNameVar}" />" <c:if test="${null != formFieldValue && formFieldValue == 'both'}">checked="checked"</c:if> value="both" type="radio" />
+		<wp:i18n key="BOTH"/></label>
+	</div>
+
+</div>
+
 </fieldset>

@@ -36,7 +36,7 @@
 		</s:if>
 		<fieldset>
 			<legend><s:text name="label.info" /></legend>
-			<p>
+			<p class="noscreen">
 				<wpsf:hidden name="strutsAction" />
 				<s:if test="strutsAction == 2">
 					<wpsf:hidden name="serviceKey" />
@@ -47,12 +47,14 @@
 				</s:if>
 				<wpsf:hidden name="resourceName" />
 				<wpsf:hidden name="namespace" />
-				<label for="<s:property value="serviceKey" />" class="basic-mint-label"><s:text name="name.api.service" />:</label>
+			</p>
+			<p>
+				<label for="<s:property value="serviceKey" />" class="basic-mint-label"><s:text name="name.api.service" /> <abbr title="<s:text name="Entity.attribute.flag.mandatory.full"/>"><s:text name="Entity.attribute.flag.mandatory.short"/></abbr>:</label>
 				<wpsf:textfield useTabindexAutoIncrement="true" id="serviceKey" name="serviceKey" disabled="%{strutsAction == 2}" cssClass="text" />
 			</p>
 			<s:iterator value="systemLangs">
 				<p>
-					<label for="lang_<s:property value="code"/>" class="basic-mint-label"><span class="monospace">(<s:property value="code" />)</span>&#32;<s:text name="label.description" />:</label>
+					<label for="lang_<s:property value="code"/>" class="basic-mint-label alignTop"><span class="monospace">(<s:property value="code" />)</span>&#32;<s:text name="label.description" /> <abbr title="<s:text name="Entity.attribute.flag.mandatory.full"/>"><s:text name="Entity.attribute.flag.mandatory.short"/></abbr>:</label>
 					<wpsf:textarea cols="50" rows="3" useTabindexAutoIncrement="true" id="%{'lang_'+code}" name="%{'lang_'+code}" value="%{descriptions[code]}" cssClass="text" />
 				</p>
 			</s:iterator>
@@ -96,13 +98,21 @@
 					<th><s:text name="label.default" /></th>
 					<th><s:text name="label.canBeOverridden" /></th>
 				</tr>
-				<s:iterator value="apiParameters" var="apiParameter" >
+				<s:iterator value="apiParameters" var="apiParameterVar" >
 					<tr>
-						<td class="monospace"><label for="<s:property value="%{#apiParameter.key + '_apiParam'}" />"><s:property value="#apiParameter.key" /></label></td>
-						<td><s:property value="#apiParameter.description" /></td>
-						<td class="icon"><img src="<wp:resourceURL />administration/common/img/icons/<s:property value="#apiParameter.required" />.png" alt="<s:property value="#apiParameter.required" />" /></td>
-						<td><wpsf:textfield useTabindexAutoIncrement="true" id="%{#apiParameter.key + '_apiParam'}" name="%{#apiParameter.key + '_apiParam'}" value="%{apiParameterValues[#apiParameter.key]}" cssClass="text" /></td>
-						<td><wpsf:checkbox useTabindexAutoIncrement="true" id="freeParameters" name="freeParameters" fieldValue="%{#apiParameter.key}" value="%{freeParameters.contains(#apiParameter.key)}" /> <label for="freeParameters"><s:if test="%{freeParameters.contains(#apiParameter.key)}"><s:text name="label.yes" /></s:if><s:else><s:text name="label.no" /></s:else></label></td>
+						<td class="monospace"><label for="<s:property value="%{#apiParameterVar.key + '_apiParam'}" />"><s:property value="#apiParameterVar.key" /></label></td>
+						<td><s:property value="#apiParameterVar.description" /></td>
+						<td class="icon"><img src="<wp:resourceURL />administration/common/img/icons/<s:property value="#apiParameterVar.required" />.png" alt="<s:property value="#apiParameterVar.required" />" /></td>
+						<td><wpsf:textfield useTabindexAutoIncrement="true" id="%{#apiParameterVar.key + '_apiParam'}" name="%{#apiParameterVar.key + '_apiParam'}" value="%{apiParameterValues[#apiParameterVar.key]}" cssClass="text" /></td>
+						<td>
+							<s:set var="freeParameterFieldNameVar" value="%{'freeParameter_' + #apiParameterVar.key}" />
+							<wpsf:radio useTabindexAutoIncrement="true" name="%{#freeParameterFieldNameVar}"
+										id="%{'true_' + #freeParameterFieldNameVar}" value="true" checked="%{freeParameters.contains(#apiParameterVar.key)}" />
+							<label for="<s:property value="%{'true_' + #freeParameterFieldNameVar}" />"><s:text name="label.yes"/></label><br />
+							<wpsf:radio useTabindexAutoIncrement="true" name="%{#freeParameterFieldNameVar}"
+										id="%{'false_' + #freeParameterFieldNameVar}" value="false" checked="%{!freeParameters.contains(#apiParameterVar.key)}" />
+							<label for="<s:property value="%{'false_' + #freeParameterFieldNameVar}" />"><s:text name="label.no"/></label>
+						</td>
 					</tr>
 				</s:iterator>
 			</table>

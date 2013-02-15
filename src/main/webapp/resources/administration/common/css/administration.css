@@ -445,3 +445,19 @@ div.resourceAttach {
 }
 
 /** /Intro pages **/
+
+/** Utility **/
+.block-column-container { /* block-column useful for half width column in backoffice interfaces */
+	float: left;
+	width: 100%;
+	margin-bottom: 1.5em;
+}
+
+.block-column-left {
+	float: left;
+	width: 49%;
+}
+.block-column-right {
+	width: 49%;
+	margin-left: 51%;
+}

@@ -2,9 +2,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:set var="currentCode"><wp:currentPage param="code" /></c:set>
+
 <c:if test="${currentCode == 'notfound'}">
-	<p><wp:i18n key="PAGE_NOT_FOUND" /></p>
+<div class="alert alert-error alert-block">
+	<h1 class="alert-heading"><wp:i18n key="PAGE_NOT_FOUND" /></h1>
+</div>
 </c:if>
 <c:if test="${currentCode == 'errorpage'}">
-	<p><wp:i18n key="GENERIC_ERROR" /></p>
+<div class="alert alert-error alert-block">
+	<h1 class="alert-heading"><wp:i18n key="GENERIC_ERROR" /></h1>
+</div>
 </c:if>

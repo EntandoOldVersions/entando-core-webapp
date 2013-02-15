@@ -69,10 +69,10 @@ window.addEvent('domready', function(){
 
 	$$('.accordion_toggler-menu').each(function(cToggler) {
 		cToggler.appendText(' ');
-		var poba_img = myAnchor_img.clone();
-		var poba = myAnchor.clone();
-		poba_img.injectBottom(poba);
-		poba.injectBottom(cToggler);
+		var imageAnchor = myAnchor_img.clone();
+		var anchorVar = myAnchor.clone();
+		imageAnchor.injectBottom(anchorVar);
+		anchorVar.injectBottom(cToggler);
 	});
 </s:if>	
 
@@ -114,10 +114,10 @@ window.addEvent('load', function(){
 
 	$$('.accordion_toggler').each(function(cToggler) {
 		cToggler.appendText(' ');
-		var poba_img = myAnchor_img.clone();
-		var poba = myAnchor.clone();
-		poba_img.injectBottom(poba);
-		poba.injectBottom(cToggler);
+		var imageAnchor = myAnchor_img.clone();
+		var anchorVar = myAnchor.clone();
+		imageAnchor.injectBottom(anchorVar);
+		anchorVar.injectBottom(cToggler);
 	});
 });
 </s:if>
@@ -133,9 +133,9 @@ window.addEvent('domready', function(){
 
 	$$('.accordion_toggler').each(function(cToggler) {
 		cToggler.appendText(' ');
-		var poba = myAnchor.clone();
-		poba.addEvent("click",function(ev){ev.preventDefault();}); //prevent from un-wanted page scroll
-		poba.injectBottom(cToggler);
+		var anchorVar = myAnchor.clone();
+		anchorVar.addEvent("click",function(ev){ev.preventDefault();}); //prevent from un-wanted page scroll
+		anchorVar.injectBottom(cToggler);
 	});
 
 	var myAccordion = new Fx.Accordion($$('.accordion_toggler'), $$('.accordion_element'), {
