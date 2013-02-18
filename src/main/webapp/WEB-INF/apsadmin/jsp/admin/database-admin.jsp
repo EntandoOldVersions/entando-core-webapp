@@ -59,7 +59,7 @@
 				<tr>
 				<s:iterator var="dumpReportVar" value="#dumpReportsVar" status="status">
 					<td class="icon rightText monospace"><s:property value="#status.count" /></td>
-					<td class="monospace">
+					<td class="rightText monospace">
 						<a
 							title="<s:text name="database.management.label.details" />:&#32;<s:property value="#status.count" />&#32;&ndash;&#32;<s:date name="#dumpReportVar.date" format="dd/MM/yyyy HH:mm:ss" />"
 							href="<s:url namespace="/do/Admin/Database" action="entryBackupDetails" >
