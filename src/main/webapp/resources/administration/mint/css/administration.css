@@ -192,6 +192,19 @@ label.basic-mint-label, .contentAttributeBox p.important, .contentAttributeBox s
 	width: 93px;
 }
 
+/* text-overflow for attributes name's labels more than 10 chars //start */ 
+.contentAttributeBox .attribute-main-label { 
+	text-overflow: ellipsis;
+	display: inline-block;
+	overflow: hidden;
+	max-width: 137px;
+}
+form.action-form .contentAttributeBox li label.attribute-main-label, 
+form.action-form .contentAttributeBox li span.important.attribute-main-label {
+	max-width: 90px;
+}
+/* text-overflow for attributes name's labels more than 10 chars //end */
+
 .contentAttributeBox {
 	-webkit-transition: color .25s ease-in-out, background-color .25s ease-in-out;
 	-moz-transition: color .25s ease-in-out, background-color .25s ease-in-out;

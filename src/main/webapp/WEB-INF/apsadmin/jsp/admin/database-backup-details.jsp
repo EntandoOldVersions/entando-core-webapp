@@ -7,7 +7,7 @@
 	<h2><s:text name="title.databaseBackup.details" /></h2>
 	<s:if test="hasActionErrors()">
 		<div class="message message_error">
-			<h3><s:text name="message.title.ActionErrors" /></h3>	
+			<h3><s:text name="message.title.ActionErrors" /></h3>
 			<ul>
 				<s:iterator value="actionErrors">
 					<li><s:property escape="false" /></li>
@@ -17,7 +17,7 @@
 	</s:if>
 	<s:if test="hasFieldErrors()">
 		<div class="message message_error">
-			<h3><s:text name="message.title.FieldErrors" /></h3>	
+			<h3><s:text name="message.title.FieldErrors" /></h3>
 			<ul>
 				<s:iterator value="fieldErrors">
 					<s:iterator value="value">
@@ -29,7 +29,7 @@
 	</s:if>
 	<s:if test="hasActionMessages()">
 		<div class="message message_confirm">
-			<h3><s:text name="messages.confirm" /></h3>	
+			<h3><s:text name="messages.confirm" /></h3>
 			<ul>
 				<s:iterator value="actionMessages">
 					<li><s:property escape="false" /></li>
@@ -38,7 +38,7 @@
 		</div>
 	</s:if>
 	<s:if test="managerStatus != 0" >
-		<p class="message message_error">	
+		<p class="message message_error">
 			<s:text name="database.management.note.dump.in.progress" />&#32;(&#32;<a href="<s:url namespace="/do/Admin/Database" action="entry" />"><s:text name="database.management.refresh" /></a>&#32;)
 		</p>
 	</s:if>
@@ -96,7 +96,7 @@
 									<td>
 										<s:if test="#tableReportVar.rows == 0"><s:property value="#tableReportVar.tableName" /></s:if>
 										<s:else>
-												<a 
+												<a
 													title="<s:text name="database.management.label.download" />: <s:property value="#dataSourceNameVar" />/<s:property value="#tableReportVar.tableName" />"
 													href="<s:url namespace="/do/Admin/Database" action="extractTableDump" >
 													<s:param name="tableName" value="#tableReportVar.tableName" />
@@ -135,7 +135,7 @@
 									<td>
 										<s:if test="#tableReportVar.rows == 0"><s:property value="#tableReportVar.tableName" /></s:if>
 										<s:else>
-												<a 
+												<a
 													title="<s:text name="database.management.label.download" />: <s:property value="#dataSourceNameVar" />/<s:property value="#tableReportVar.tableName" />"
 													href="<s:url namespace="/do/Admin/Database" action="extractTableDump" >
 													<s:param name="tableName" value="#tableReportVar.tableName" />

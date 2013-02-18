@@ -1,6 +1,5 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
-
 <div class="compositeAttribute">
 <s:set name="masterCompositeAttributeTracer" value="#attributeTracer" />
 <s:set name="masterCompositeAttribute" value="#attribute" />
@@ -8,13 +7,13 @@
 <div class="compositeAttribute-element">
 <s:set name="attributeTracer" value="#masterCompositeAttributeTracer.getCompositeTracer(#masterCompositeAttribute)"></s:set>
 <s:set name="parentAttribute" value="#masterCompositeAttribute"></s:set>
-
+ 
 <s:if test="#attribute.type == 'Image' || #attribute.type == 'CheckBox' || #attribute.type == 'Boolean' || #attribute.type == 'ThreeState'">
-	<span class="important"><s:property value="#attribute.name" /><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" />:</span>
+	<span class="important basic-mint-label attribute-main-label"><s:property value="#attribute.name" /><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" />:</span>
 
 </s:if>
 <s:else>
-	<label for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />" class="basic-mint-label"><s:property value="#attribute.name"/><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" />:</label>
+	<label for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />" class="basic-mint-label attribute-main-label"><s:property value="#attribute.name"/><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" />:</label>
 </s:else>
 		
 		<s:if test="#attribute.type == 'Text'">

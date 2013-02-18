@@ -130,8 +130,8 @@ window.addEvent('domready', function() { myCal_<s:property value="%{#attributeTr
 //per attributo Hypertext
 <s:if test="htmlEditorCode != 'none'">
 
-	<s:iterator value="langs" id="lang">
-		<s:iterator value="content.attributeList" id="attribute">
+	<s:iterator value="langs" var="lang">
+		<s:iterator value="content.attributeList" var="attribute">
 		<%-- INIZIALIZZAZIONE TRACCIATORE --%>
 		<wpsa:tracerFactory var="attributeTracer" lang="%{#lang.code}" />
 
@@ -310,6 +310,10 @@ window.addEvent('domready', function(){
 
 		el.addClass('tip-handler');
 	});
+
+	/* text-overflow for attributes name's labels more than 10 chars */
+	document.getElements('.attribute-main-label').ellipsis(); 
+
 });
 </s:if>
 
