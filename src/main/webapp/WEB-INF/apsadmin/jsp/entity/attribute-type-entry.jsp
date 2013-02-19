@@ -64,7 +64,10 @@
 		<wpsf:textfield useTabindexAutoIncrement="true" cssClass="text" name="attributeName" value="%{attributeName}" id="attributeName" disabled="true" />
 	</s:else>	
 	</p>
-
+	<p>
+		<label for="attributeDescription" class="basic-mint-label"><s:text name="label.description" />:</label>
+		<wpsf:textfield useTabindexAutoIncrement="true" name="attributeDescription" id="attributeDescription" cssClass="text"/> 
+	</p>
 	<p>
 		<wpsf:checkbox useTabindexAutoIncrement="true" name="required" id="required" cssClass="radiocheck" /><label for="required"><s:text name="Entity.attribute.flag.mandatory.full" /></label>
 	</p>
