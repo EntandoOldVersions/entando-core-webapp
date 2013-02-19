@@ -11,7 +11,7 @@
 <s:set var="apiNameVar" value="(#apiResourceVar.namespace!=null && #apiResourceVar.namespace.length()>0 ? '/' + #apiResourceVar.namespace : '')+'/'+#apiResourceVar.resourceName" />
 <section>
 <p>
-	<a href="<wp:action path="/ExtStr2/do/Front/Api/Resource/list.action" />" class="btn btn-primary">&larr;&#32;<wp:i18n key="ENTANDO_API_GOTO_LIST" /></a>
+	<a href="<wp:action path="/ExtStr2/do/Front/Api/Resource/list.action" />" class="btn btn-primary"><i class="icon-arrow-left icon-white"></i>&#32;<wp:i18n key="ENTANDO_API_GOTO_LIST" /></a>
 </p>
 <h2><wp:i18n key="ENTANDO_API_RESOURCE" />&#32;<s:property value="#apiNameVar" /></h2>
 <s:if test="hasActionMessages()">
@@ -79,6 +79,6 @@
 	<h3 id="api_method_DELETE">DELETE</h3>
 	<s:include value="/WEB-INF/aps/jsp/internalservlet/api/include/resource-method-detail.jsp" />
 <p>
-	<a href="<wp:action path="/ExtStr2/do/Front/Api/Resource/list.action" />" class="btn btn-primary">&larr;&#32;<wp:i18n key="ENTANDO_API_GOTO_LIST" /></a>
+	<a href="<wp:action path="/ExtStr2/do/Front/Api/Resource/list.action" />" class="btn btn-primary"><i class="icon-arrow-left icon-white"></i>&#32;<wp:i18n key="ENTANDO_API_GOTO_LIST" /></a>
 </p>
 </section>
