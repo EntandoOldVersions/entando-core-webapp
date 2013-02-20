@@ -12,11 +12,11 @@
 <s:else><s:set var="compositeElementLabelVar" value="#attribute.name" /></s:else>
 
 <s:if test="#attribute.type == 'Image' || #attribute.type == 'CheckBox' || #attribute.type == 'Boolean' || #attribute.type == 'ThreeState'">
-	<span class="important basic-mint-label attribute-main-label"><s:property value="#compositeElementLabelVar" /><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" />:</span>
+	<span class="important basic-mint-label"><span class="attribute-main-label"><s:property value="#compositeElementLabelVar" /></span><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" />:</span>
 
 </s:if>
 <s:else>
-	<label for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />" class="basic-mint-label attribute-main-label"><s:property value="#compositeElementLabelVar"/><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" />:</label>
+	<label for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />" class="basic-mint-label"><span class="attribute-main-label"><s:property value="#compositeElementLabelVar"/></span><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" />:</label>
 </s:else>
 		
 		<s:if test="#attribute.type == 'Text'">

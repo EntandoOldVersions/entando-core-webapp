@@ -194,14 +194,15 @@ label.basic-mint-label, .contentAttributeBox p.important, .contentAttributeBox s
 
 /* text-overflow for attributes name's labels more than 10 chars //start */ 
 .contentAttributeBox .attribute-main-label { 
-	text-overflow: ellipsis;
 	display: inline-block;
+	text-overflow: ellipsis;
 	overflow: hidden;
-	max-width: 137px;
+	max-width: 110px;
+	white-space: nowrap;
 }
-form.action-form .contentAttributeBox li label.attribute-main-label, 
-form.action-form .contentAttributeBox li span.important.attribute-main-label {
-	max-width: 90px;
+
+form.action-form .contentAttributeBox li .attribute-main-label {
+	max-width: 68px;
 }
 /* text-overflow for attributes name's labels more than 10 chars //end */
 
