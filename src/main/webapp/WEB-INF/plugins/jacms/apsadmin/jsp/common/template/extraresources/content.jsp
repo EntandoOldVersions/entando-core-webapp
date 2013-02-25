@@ -312,7 +312,11 @@ window.addEvent('domready', function(){
 	});
 
 	/* text-overflow for attributes name's labels more than 10 chars */
-	document.getElements('.attribute-main-label').ellipsis(); 
+	var mainLabels = document.getElements('.attribute-main-label');
+	mainLabels.ellipsis();
+	$each(mainLabels, function(label) {
+		label.set('title', label.get('html')); 
+	});
 
 });
 </s:if>

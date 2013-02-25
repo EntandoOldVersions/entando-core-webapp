@@ -114,7 +114,7 @@
 		</table>
 
 		<s:if test="#resourceVar.source=='core'">
-			<a href="<wp:action path="/ExtStr2/do/Front/Api/Service/list.action" />" class="btn pull-right"><wp:i18n key="ENTANDO_API_GOTO_SERVICE_LIST" />&#32;&rarr;</a>
+			<a href="<wp:action path="/ExtStr2/do/Front/Api/Service/list.action" />" class="btn btn-primary pull-right"><wp:i18n key="ENTANDO_API_GOTO_SERVICE_LIST" /></a>
 		</s:if>
 	</s:iterator>
 </s:if>

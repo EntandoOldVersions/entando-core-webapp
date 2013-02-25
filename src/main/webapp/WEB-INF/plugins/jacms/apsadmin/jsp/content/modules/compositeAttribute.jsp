@@ -7,13 +7,16 @@
 <div class="compositeAttribute-element">
 <s:set name="attributeTracer" value="#masterCompositeAttributeTracer.getCompositeTracer(#masterCompositeAttribute)"></s:set>
 <s:set name="parentAttribute" value="#masterCompositeAttribute"></s:set>
- 
+
+<s:if test="null != #attribute.description"><s:set var="compositeElementLabelVar" value="#attribute.description" /></s:if>
+<s:else><s:set var="compositeElementLabelVar" value="#attribute.name" /></s:else>
+
 <s:if test="#attribute.type == 'Image' || #attribute.type == 'CheckBox' || #attribute.type == 'Boolean' || #attribute.type == 'ThreeState'">
-	<span class="important basic-mint-label attribute-main-label"><s:property value="#attribute.name" /><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" />:</span>
+	<span class="important basic-mint-label"><span class="attribute-main-label"><s:property value="#compositeElementLabelVar" /></span><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" />:</span>
 
 </s:if>
 <s:else>
-	<label for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />" class="basic-mint-label attribute-main-label"><s:property value="#attribute.name"/><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" />:</label>
+	<label for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />" class="basic-mint-label"><span class="attribute-main-label"><s:property value="#compositeElementLabelVar"/></span><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" />:</label>
 </s:else>
 		
 		<s:if test="#attribute.type == 'Text'">
