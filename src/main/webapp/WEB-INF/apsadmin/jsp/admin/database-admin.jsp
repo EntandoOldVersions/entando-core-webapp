@@ -58,24 +58,26 @@
 					<th class="icon"><abbr title="<s:text name="label.remove" />">&ndash;</abbr></th>
 				<tr>
 				<s:iterator var="dumpReportVar" value="#dumpReportsVar" status="status">
-					<td class="icon rightText monospace"><s:property value="#status.count" /></td>
-					<td class="rightText monospace">
-						<a
-							title="<s:text name="database.management.label.details" />:&#32;<s:property value="#status.count" />&#32;&ndash;&#32;<s:date name="#dumpReportVar.date" format="dd/MM/yyyy HH:mm:ss" />"
-							href="<s:url namespace="/do/Admin/Database" action="entryBackupDetails" >
-						   <s:param name="subFolderName" value="#dumpReportVar.subFolderName" />
-					   		</s:url>"><s:date name="#dumpReportVar.date" format="dd/MM/yyyy HH:mm:ss" /></a>
-					</td>
-					<td class="rightText monospace">
-						<s:property value="#dumpReportVar.requiredTime" />&#32;<s:text name="database.management.label.milliseconds" />
-					</td>
-					<td class="icon">
-						<a
-							title="<s:text name="database.management.label.remove" />:&#32;<s:property value="#status.count" />&#32;&ndash;&#32;<s:date name="#dumpReportVar.date" format="dd/MM/yyyy HH:mm:ss" />"
-							href="<s:url namespace="/do/Admin/Database" action="trashBackup" >
+					<tr>
+						<td class="icon rightText monospace"><s:property value="#status.count" /></td>
+						<td class="rightText monospace">
+							<a
+								title="<s:text name="database.management.label.details" />:&#32;<s:property value="#status.count" />&#32;&ndash;&#32;<s:date name="#dumpReportVar.date" format="dd/MM/yyyy HH:mm:ss" />"
+								href="<s:url namespace="/do/Admin/Database" action="entryBackupDetails" >
 							   <s:param name="subFolderName" value="#dumpReportVar.subFolderName" />
-						   </s:url>"><img src="<wp:resourceURL />administration/common/img/icons/delete.png" alt="<s:text name="label.alt.clear" />" /></a>
-					</td>
+						   		</s:url>"><s:date name="#dumpReportVar.date" format="dd/MM/yyyy HH:mm:ss" /></a>
+						</td>
+						<td class="rightText monospace">
+							<s:property value="#dumpReportVar.requiredTime" />&#32;<s:text name="database.management.label.milliseconds" />
+						</td>
+						<td class="icon">
+							<a
+								title="<s:text name="database.management.label.remove" />:&#32;<s:property value="#status.count" />&#32;&ndash;&#32;<s:date name="#dumpReportVar.date" format="dd/MM/yyyy HH:mm:ss" />"
+								href="<s:url namespace="/do/Admin/Database" action="trashBackup" >
+								   <s:param name="subFolderName" value="#dumpReportVar.subFolderName" />
+							   </s:url>"><img src="<wp:resourceURL />administration/common/img/icons/delete.png" alt="<s:text name="label.alt.clear" />" /></a>
+						</td>
+					</tr>
 				</s:iterator>
 			</table>
 		</s:else>
