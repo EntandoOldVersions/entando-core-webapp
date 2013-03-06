@@ -27,7 +27,7 @@ jQuery(function($){
 		yearSuffix: ''};
 });
 
-$(function() {
+jQuery(function($){
 	if (Modernizr.touch && Modernizr.inputtypes.date) {
 		$.each(	$("input[data-isdate=true]"), function(index, item) {
 			item.type = 'date';
@@ -35,10 +35,10 @@ $(function() {
 	} else {
 		$.datepicker.setDefaults( $.datepicker.regional[ "<c:out value="${currentLang}" />" ] );
 		$("input[data-isdate=true]").datepicker({
-      changeMonth: true,
-      changeYear: true,
-      dateFormat: "yy-mm-dd"
-    });
+      			changeMonth: true,
+      			changeYear: true,
+      			dateFormat: "yy-mm-dd"
+    		});
 	}
 });
 </c:set>
