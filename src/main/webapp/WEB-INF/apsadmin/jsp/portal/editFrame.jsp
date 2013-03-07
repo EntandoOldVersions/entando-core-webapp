@@ -71,7 +71,7 @@
 				<s:else>
 					<wpsa:set var="pluginPropertyName" value="%{getText(#showletType.optgroup + '.name')}" />		
 					<wpsa:set var="pluginPropertyCode" value="%{getText(#showletType.optgroup + '.code')}" />					
-					<wpsa:set var="optgroupLabel">(<s:text name="#pluginPropertyCode" />) <s:text name="#pluginPropertyName" /></wpsa:set>
+					<wpsa:set var="optgroupLabel"><s:text name="#pluginPropertyName" /></wpsa:set>
 				</s:else>
 						
 			<optgroup label="<s:property value="#optgroupLabel" />">
