@@ -31,14 +31,23 @@
 				<s:text name="database.management.note.components.current" />
 				<em>entandoCore</em>
 				<s:iterator var="currentComponentVar" value="#currentComponentsVar">
-					,&#32;<em><s:property value="#currentComponentVar.code" /></em>
+					<s:set var="labelComponentDescrVar" value="%{#currentComponentVar.code + '.name'}" /><s:text name="%{#labelComponentDescrVar}" var="componentDescrVar" />
+					,&#32;<em>
+					<s:if test="%{#componentDescrVar.equals(#labelComponentDescrVar)}"><s:property value="#componentHistoryVar.componentCode" /></s:if>
+					<s:else><s:property value="#componentDescrVar" /></s:else>
+					</em>
 				</s:iterator>
 			</p>
 			<h3><s:text name="database.management.label.components.backup" /></h3>
 			<p>
 				<s:text name="database.management.note.components.backup" />
 				<s:iterator var="componentHistoryVar" value="#dumpReportVar.componentsHistory" status="status">
-					<em><s:property value="#componentHistoryVar.componentCode" /></em>
+					<s:set var="labelComponentDescrVar" value="%{#componentHistoryVar.componentCode + '.name'}" />
+					<s:text name="%{#labelComponentDescrVar}" var="componentDescrVar" />
+					<em>
+					<s:if test="%{#componentDescrVar.equals(#labelComponentDescrVar)}"><s:property value="#componentHistoryVar.componentCode" /></s:if>
+					<s:else><s:property value="#componentDescrVar" /></s:else>
+					</em>
 					<s:if test="%{!(#status.last)}">,&#32;</s:if>
 				</s:iterator>
 			</p>
