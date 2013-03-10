@@ -26,7 +26,7 @@
 				<s:iterator var="currentComponentVar" begin="0" end="%{#currentComponentsVar.size()/2-1}" value="#currentComponentsVar" >
 					<div class="subsection-light margin-more-top">
 						<h3 class="centerText">
-							<s:text name="database.management.label.component" />&#32;<em><s:property value="#currentComponentVar.description" /></em> (<s:property value="#currentComponentVar.code" />)
+							<s:text name="database.management.label.component" />&#32;<em><s:property value="#currentComponentVar.description" /></em><%-- (<s:property value="#currentComponentVar.code" />) --%>
 						</h3>
 						<s:set var="tableMappingVar" value="#currentComponentVar.tableMapping" />
 						<s:include value="/WEB-INF/apsadmin/jsp/admin/inc/datasource-table-names.jsp" />
@@ -39,7 +39,7 @@
 						<div class="subsection-light margin-more-top">
 					</s:if>
 						<h3 class="centerText">
-							<s:text name="database.management.label.component" />&#32;<em><s:property value="#currentComponentVar.description" /></em> (<s:property value="#currentComponentVar.code" />)
+							<s:text name="database.management.label.component" />&#32;<em><s:property value="#currentComponentVar.description" /></em><%-- (<s:property value="#currentComponentVar.code" />) --%>
 						</h3>
 						<s:set var="tableMappingVar" value="#currentComponentVar.tableMapping" />
 						<s:include value="/WEB-INF/apsadmin/jsp/admin/inc/datasource-table-names.jsp" />

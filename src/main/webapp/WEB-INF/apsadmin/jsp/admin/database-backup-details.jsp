@@ -69,7 +69,10 @@
 			<dl class="table-display">
 				<s:iterator var="componentHistoryVar" value="#dumpReportVar.componentsHistory">
 					<dt>
-						<s:property value="#componentHistoryVar.componentCode" />
+						<s:set var="labelComponentDescrVar" value="%{#componentHistoryVar.componentCode + '.name'}" />
+						<s:text name="%{#labelComponentDescrVar}" var="componentDescrVar" />
+						<s:if test="%{#componentDescrVar.equals(#labelComponentDescrVar)}"><s:property value="#componentHistoryVar.componentCode" /></s:if>
+						<s:else><s:property value="#componentDescrVar" /></s:else>
 					</dt>
 						<dd>
 							<s:date name="#componentHistoryVar.date" format="dd/MM/yyyy HH:mm:ss" />
