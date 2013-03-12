@@ -16,11 +16,11 @@
 <s:elseif test="getStrutsAction() == 2">
 	<h3 class="margin-more-bottom"><s:text name="title.generalSettings.locale.edit" /></h3>
 </s:elseif>
-	
+
 <s:form action="save" namespace="/do/LocaleString" >
 	<s:if test="hasFieldErrors()">
 <div class="message message_error">
-<h3><s:text name="message.title.FieldErrors" /></h3>	
+<h3><s:text name="message.title.FieldErrors" /></h3>
 	<ul>
 	<s:iterator value="fieldErrors">
 		<s:iterator value="value">
@@ -33,27 +33,43 @@
 
 	<p class="noscreen">
 		<wpsf:hidden value="%{getStrutsAction()}" name="strutsAction"/>
-	<s:if test="getStrutsAction() == 2">	
+	<s:if test="getStrutsAction() == 2">
 		<wpsf:hidden value="%{key}" name="key" />
-	</s:if> 
+	</s:if>
 	</p>
 
 <fieldset><legend><s:text name="label.info" /></legend>
-	<p>
+	<p class="margin-bit-top">
 		<label for="editLabel_key" class="basic-mint-label"><s:text name="label.code" />:</label>
 		<wpsf:textfield useTabindexAutoIncrement="true" value="%{key}" name="key" id="editLabel_key" disabled="%{getStrutsAction() == 2}" cssClass="text" />
-	</p>	
+	</p>
 
 	<s:iterator id="l" value="langs">
-		<p>
+		<s:if test="#l.default">
+			<p>
+				<label for="lang<s:property value="code"/>" class="basic-mint-label alignTop">
+				   <span class="monospace">(<s:property value="code" />)</span>&#32;<s:text name="label.description" />:
+				</label>
+				<wpsf:textarea useTabindexAutoIncrement="true" cols="50" rows="3" name="%{code}" id="%{'lang'+code}" value="%{labels[#l.code]}" cssClass="text" />
+			</p>
+		</s:if>
+	</s:iterator>
+</fieldset>
+
+<fieldset><legend><s:text name="label.localeString.languages.optional" /></legend>
+	<s:iterator id="lOpt" value="langs">
+		<s:if test="! #lOpt.default">
+		<p class="margin-bit-top">
 			<label for="lang<s:property value="code"/>" class="basic-mint-label alignTop">
 			   <span class="monospace">(<s:property value="code" />)</span>&#32;<s:text name="label.description" />:
 			</label>
-			<wpsf:textarea useTabindexAutoIncrement="true"  cols="50" rows="3" name="%{code}" id="%{'lang'+code}" value="%{labels[#l.code]}" cssClass="text" />
-		</p> 
-	</s:iterator>  
+			<wpsf:textarea useTabindexAutoIncrement="true" cols="50" rows="3" name="%{code}" id="%{'lang'+code}" value="%{labels[#lOpt.code]}" cssClass="text" />
+		</p>
+		</s:if>
+	</s:iterator>
 </fieldset>
+
 	<p><wpsf:submit useTabindexAutoIncrement="true" value="%{getText('label.save')}" cssClass="button" /></p>
 </s:form>
 
-</div> 
+</div>
