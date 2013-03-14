@@ -39,5 +39,11 @@ This converter shall always return a json object like this:
 	</s:if>
 	},
 	"$i18n": {
-		"getLabel(\"\")": null 
+		"getLabel(\"<LABEL_CODE>\")": null 
+	},
+	"$info": {
+		"getConfigParameter(\"<PARAM_NAME>\")": null, 
+		"getCurrentPage()": null, 
+		"getCurrentLang()": null, 
+		"getCurrentShowlet()": null
 	}

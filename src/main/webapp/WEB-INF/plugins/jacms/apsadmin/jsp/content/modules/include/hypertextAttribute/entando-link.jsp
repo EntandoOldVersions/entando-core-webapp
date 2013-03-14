@@ -3,7 +3,7 @@
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
-<wp:contentNegotiation mimeType="application/xhtml+xml" charset="utf-8" />
+
 <s:set var="myClient"><wpsa:backendGuiClient /></s:set>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -103,13 +103,11 @@
 		    'alt': '<s:text name="label.open" /> ',
 		    'title': '<s:text name="label.open" /> '
 		});
-
 		$$('.accordion_toggler').each(function(cToggler) {
 			cToggler.appendText(' ');
-			var poba = myAnchor.clone();
-			poba.injectBottom(cToggler);
+			var anchorVar = myAnchor.clone();
+			anchorVar.injectBottom(cToggler);
 		});
-
 	});
 
 

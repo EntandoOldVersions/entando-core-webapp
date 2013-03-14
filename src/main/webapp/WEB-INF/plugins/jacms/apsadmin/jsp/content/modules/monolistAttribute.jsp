@@ -1,4 +1,6 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
+
 <s:set var="operationButtonDisabled" value="false" />
 <p class="noscreen"><s:text name="note.monolist.intro" /></p>
 
@@ -71,6 +73,13 @@
 	<s:elseif test="#attribute.type == 'CheckBox'">
 		<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/checkBoxAttribute.jsp" />
 	</s:elseif>
+	
+	<wpsa:hookPoint key="jacms.entryContent.attributeExtra" objectName="hookPointElements_jacms_entryContent_attributeExtra">
+	<s:iterator value="#hookPointElements_jacms_entryContent_attributeExtra" var="hookPointElement">
+		<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
+	</s:iterator>
+	</wpsa:hookPoint>
+	
 </li>
 </s:iterator>
 

@@ -38,74 +38,95 @@
 	</s:if>
 	<s:set var="resourceFlavoursVar" value="resourceFlavours" />
 	<s:set var="serviceFlavoursVar" value="serviceFlavours" />
-	<s:if test="%{#serviceFlavoursVar != null && #serviceFlavoursVar.size() > 0}">
-		<s:set var="servicesEmptyVar" value="true" />
+
+	<s:form action="newService" cssClass="margin-more-bottom">
+		<p class="centerText margin-bit-top">
+			<label for="service-list" class="basic-mint-label" style="width: 200px"><s:text name="label.api.service.createNew" />:</label>
+			<select id="service-list" name="resourceCode" tabindex="<wpsa:counter />">
+				<s:iterator value="#resourceFlavoursVar" var="resourceFlavourGroup">
+					<optgroup label="<s:property value="%{getText(#resourceFlavourGroup.get(0).getSectionCode()+'.name')}" escapeHtml="false" />">
+						<s:iterator value="#resourceFlavourGroup" var="resource">
+							<option value="<s:property value="#resource.code" />">
+								<s:property value="#resource.code" /> - <s:property value="#resource.description" />
+							</option>
+						</s:iterator>
+					</optgroup>
+				</s:iterator>
+			</select>
+			&#32;
+			<wpsf:submit useTabindexAutoIncrement="true" cssClass="button" value="%{getText('api.button.create')}" action="newService" />
+		</p>
+	</s:form>
+
+	<div class="subsection-light margin-more-top">
+	<s:if test="#serviceFlavoursVar.size()>0">
 		<s:iterator var="resourceFlavour" value="#resourceFlavoursVar" status="varStatus">
 			<s:set var="serviceGroupVar" value="#resourceFlavour.get(0).getSectionCode()" />
-			<%--
-			<s:form action="newService" cssClass="margin-more-bottom">
-			<p>
-				<label>Create new service from:</label><br />
-				<wpsf:select useTabindexAutoIncrement="true" list="#resourceFlavour" name="resourceCode" listKey="code" listValue="%{code + ' - ' + description}" />
-				&#32;<wpsf:submit useTabindexAutoIncrement="true" cssClass="button" value="Create" action="newService" />
-			</p>
-			</s:form>
-			--%>
 			<s:set var="servicesByGroupVar" value="#serviceFlavoursVar[#serviceGroupVar]" />
-			<s:if test="null != #servicesByGroupVar && #servicesByGroupVar.size() > 0">
-				<s:set var="servicesEmptyVar" value="false" />
-				<s:form action="updateAllStatusOfGroup" cssClass="%{(!#varStatus.first) ? 'margin-more-bottom' : ''}">
+				<s:if test="null != #servicesByGroupVar && #servicesByGroupVar.size() > 0">
 					<p class="noscreen">
 						<wpsf:hidden name="serviceGroup" value="%{#serviceGroupVar}" />
 					</p>
-					<table class="generic">
-						<caption id="<s:property value="#serviceGroupVar" />"><span>
-							<%-- <s:property value="#serviceGroupVar" /> --%>
-							<s:text name="%{#serviceGroupVar}.name" />
-						</span></caption>
-						<tr>
-							<th><s:text name="name.api.service" /></th>
-							<th><s:text name="label.description" /></th>
-							<th><s:text name="label.active" /></th>
-							<th><s:text name="label.public" /></th>
-							<th class="icon"><abbr title="<s:text name="label.remove" />">&ndash;</abbr></th>
-						</tr>
-						<s:iterator var="service" value="#servicesByGroupVar" >
+						<table class="generic <s:property value="%{(!#varStatus.first) ? ' margin-more-bottom ' : ''}" />">
+							<caption id="<s:property value="#serviceGroupVar" />"><span>
+								<%-- <s:property value="#serviceGroupVar" /> --%>
+								<s:text name="%{#serviceGroupVar}.name" />
+							</span></caption>
 							<tr>
-								<td class="monospace">
-									<wpsf:hidden name="%{#service.key + '_checkField'}" value="true" />
-									<a title="<s:text name="label.edit" />: <s:property value="#service.key" />" href="<s:url action="edit"><s:param name="serviceKey"><s:property value="#service.key" /></s:param></s:url>"><s:property value="#service.key" /></a>
-							 	</td>
-								<td>
-							 		<s:property value="#service.value" />
-							 	</td>
-								<td class="monospace">
-									<wpsf:checkbox useTabindexAutoIncrement="true" id="%{#service.key + '_active'}" name="%{#service.key + '_active'}" value="%{#service.activeItem}" />
-									<label for="<s:property value="%{#service.key + '_active'}" />"><s:if test="#service.activeItem"><s:text name="label.yes" /></s:if><s:else><s:text name="label.no" /></s:else></label>
-								</td>
-								<td class="monospace">
-									<wpsf:checkbox useTabindexAutoIncrement="true" id="%{#service.key + '_public'}" name="%{#service.key + '_public'}" value="%{#service.publicItem}" />
-									<label for="<s:property value="%{#service.key + '_public'}" />"><s:if test="#service.publicItem"><s:text name="label.yes" /></s:if><s:else><s:text name="label.no" /></s:else></label>
-								</td>
-								<td class="icon">
-									<a href="<s:url action="trash"><s:param name="serviceKey"><s:property value="#service.key" /></s:param></s:url>" title="<s:text name="label.remove" />: <s:property value="#service.key" />"><img src="<wp:resourceURL />administration/common/img/icons/delete.png" alt="<s:text name="label.alt.clear" />" /></a>
-								</td>
+								<th><s:text name="name.api.service" /></th>
+								<th><s:text name="label.description" /></th>
+								<th class="icon"><abbr title="<s:text name="label.active" />">A</abbr></th>
+								<th class="icon"><abbr title="<s:text name="label.public" />">P</abbr></th>
+								<th class="icon"><abbr title="<s:text name="label.remove" />">&ndash;</abbr></th>
 							</tr>
-						</s:iterator>
-					</table>
-					<p class="centerText">
-						<wpsf:submit useTabindexAutoIncrement="true" cssClass="button" value="%{getText('label.api.service.update') + ' ' + getText(#serviceGroupVar+ '.name')}" />
-					</p>
-				</s:form>
-			</s:if>
-			<s:else>
-				<p><s:text name="note.api.noServiceFromFlavour" />: <span class="monospace"><s:property value="#serviceGroupVar" /></span></p>
-				<p><a href="<s:url action="list" namespace="/do/Api/Resource" />"><s:text name="note.goToSomewhere" />&#32;<s:text name="menu.apisAdmin.resources" /></a>&#32;<s:text name="note.api.noServices.createOne" /></p>
-			</s:else>
+							<s:iterator var="service" value="#servicesByGroupVar" >
+								<tr>
+									<td class="monospace">
+										<wpsf:hidden name="%{#service.key + '_checkField'}" value="true" />
+										<a title="<s:text name="label.edit" />: <s:property value="#service.key" />" href="<s:url action="edit"><s:param name="serviceKey"><s:property value="#service.key" /></s:param></s:url>"><s:property value="#service.key" /></a>
+								 	</td>
+									<td>
+								 		<s:property value="#service.value" />
+								 	</td>
+									<td class="icon">
+										<s:if test="#service.activeItem">
+											<img
+												title="<s:text name="label.active" />"
+												alt="<s:text name="label.active" />"
+												src="<wp:resourceURL />administration/common/img/icons/content-isonline.png" />
+										</s:if>
+										<s:else>
+											<img
+												title="<s:text name="label.api.notactive" />"
+												alt="<s:text name="label.api.notactive" />"
+												src="<wp:resourceURL />administration/common/img/icons/content-isnotonline.png" />
+										</s:else>
+									</td>
+									<td class="icon">
+										<s:if test="#service.publicItem">
+											<img
+												title="<s:text name="label.public" />"
+												alt="<s:text name="label.public" />"
+												src="<wp:resourceURL />administration/common/img/icons/content-isonline.png" />
+										</s:if>
+										<s:else>
+											<img
+												title="<s:text name="label.api.notpublic" />"
+												alt="<s:text name="label.api.notpublic" />"
+												src="<wp:resourceURL />administration/common/img/icons/content-isnotonline.png" />
+										</s:else>
+									</td>
+									<td class="icon">
+										<a href="<s:url action="trash"><s:param name="serviceKey"><s:property value="#service.key" /></s:param></s:url>" title="<s:text name="label.remove" />: <s:property value="#service.key" />"><img src="<wp:resourceURL />administration/common/img/icons/delete.png" alt="<s:text name="label.alt.clear" />" /></a>
+									</td>
+								</tr>
+							</s:iterator>
+						</table>
+				</s:if>
 		</s:iterator>
 	</s:if>
 	<s:else>
 		<p><s:text name="note.api.noServices" /></p>
-		<p><a href="<s:url action="list" namespace="/do/Api/Resource" />"><s:text name="note.goToSomewhere" />&#32;<s:text name="menu.apisAdmin.resources" /></a>&#32;<s:text name="note.api.noServices.createOne" /></p>
 	</s:else>
+	</div>
 </div>

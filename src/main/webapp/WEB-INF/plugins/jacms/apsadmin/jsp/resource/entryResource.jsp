@@ -85,14 +85,6 @@
 </p>
 </s:if>
 
-<p>
-	<label for="upload" class="basic-mint-label"><s:text name="label.file" />:</label>
-	<s:file name="upload" id="upload" label="label.file"/>
-</p>
-<p>
-	<wpsf:checkbox useTabindexAutoIncrement="true" name="normalizeFileName" id="normalizeFileName" cssClass="radiocheck" />&#32;<label for="normalizeFileName"><s:text name="label.normalize" />&#32;<s:text name="label.filename" /></label>
-</p>
-
 <s:if test="strutsAction == 2">
 <div class="subsection-light">
 <s:set var="referencingContentsId" value="references['jacmsContentManagerUtilizers']" />
@@ -149,6 +141,16 @@
 </table>
 </s:if>
 
+</fieldset>
+
+<fieldset><legend><s:text name="label.file" /></legend>
+<p>
+	<label for="upload" class="basic-mint-label"><s:text name="label.file" />:</label>
+	<s:file name="upload" id="upload" label="label.file"/>
+</p>
+<p>
+	<wpsf:checkbox useTabindexAutoIncrement="true" name="normalizeFileName" id="normalizeFileName" cssClass="radiocheck" />&#32;<label for="normalizeFileName"><s:text name="label.normalize" />&#32;<s:text name="label.filename" /></label>
+</p>
 </fieldset>
 
 <p class="centerText">

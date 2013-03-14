@@ -116,7 +116,10 @@
 <ul class="menu vertical">
 	<li><a href="<s:url namespace="/do/BaseAdmin" action="configSystemParams" />" id="menu_configura"><s:text name="menu.configure" /></a></li>
 	<li><a href="<s:url namespace="/do/BaseAdmin" action="reloadConfig" />" id="menu_ricarica_configurazione"><s:text name="menu.reload.config" /></a></li>
+	<li><a href="<s:url namespace="/do/Admin/Database" action="entry" />" id="menu_database_admin"><span lang="en">Database</span></a></li>
+	<%--
 	<li><a href="<s:url namespace="/do/Entity" action="viewManagers" />" id="menu_entita"><s:text name="menu.entityAdmin" /></a></li>
+	--%>
 </ul>
 </wp:ifauthorized>
 <s:if test="#myClient == 'advanced'">

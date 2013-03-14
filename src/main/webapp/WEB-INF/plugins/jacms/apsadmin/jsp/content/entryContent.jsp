@@ -2,7 +2,6 @@
 <%@ taglib uri="/aps-core" prefix="wp" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
-
 <s:set var="targetNS" value="%{'/do/jacms/Content'}" />
 <h1><s:text name="jacms.menu.contentAdmin" /><s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></h1>
 
@@ -89,7 +88,7 @@
 </p>
 </fieldset>
 <!-- FINE BLOCCO SELEZIONE GRUPPI SUPPLEMENTARI ABILITATI ALLA VISUALIZZAZIONE -->
-
+ 
 <!-- INIZIO CATEGORIE -->
 <s:action name="showCategoryBlockOnEntryContent" namespace="/do/jacms/Content" executeResult="true"></s:action>
 <!-- FINE CATEGORIE -->
@@ -103,29 +102,32 @@
 
 </div>
 <!-- START CICLO LINGUA -->
-<s:iterator value="langs" id="lang">
+<s:iterator value="langs" var="lang">
 <div id="<s:property value="#lang.code" />_tab" class="tab">
 <h3 class="js_noscreen"><s:property value="#lang.descr" /> (<a class="backLink" href="#quickmenu" id="<s:property value="#lang.code" />_tab_quickmenu"><s:text name="note.goBackToQuickMenu" /></a>)</h3>
 
 <!-- START CICLO ATTRIBUTI -->
-<s:iterator value="content.attributeList" id="attribute">
+<s:iterator value="content.attributeList" var="attribute">
 <div class="contentAttributeBox contentAttribute-<s:property value="#attribute.type" />" id="<s:property value="%{'contentedit_'+#lang.code+'_'+#attribute.name}" />">
-<%-- INIZIALIZZAZIONE TRACCIATORE --%>
+<%-- INIZIALIZZAZIONE TRACCIATORE --%> 
 <wpsa:tracerFactory var="attributeTracer" lang="%{#lang.code}" />
+
+<s:if test="null != #attribute.description"><s:set var="attributeLabelVar" value="#attribute.description" /></s:if>
+<s:else><s:set var="attributeLabelVar" value="#attribute.name" /></s:else>
 
 <s:if test="#attribute.type == 'List' || #attribute.type == 'Monolist'">
 <p class="important">
-	<s:property value="#attribute.name" /><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" /><span class="monospace">&#32;(<s:text name="label.list" />)</span>:
+	<span class="basic-mint-label"><span class="attribute-main-label"><s:property value="#attributeLabelVar" /></span></span><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" /><span class="monospace">&#32;(<s:text name="label.list" />)</span>:
 </p>
 </s:if>
 <s:elseif test="#attribute.type == 'Image' || #attribute.type == 'CheckBox' || #attribute.type == 'Boolean' || #attribute.type == 'ThreeState' || #attribute.type == 'Composite'">
 <p>
-	<span class="important"><s:property value="#attribute.name" /><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" />:</span>
+	<span class="important basic-mint-label"><span class="attribute-main-label"><s:property value="#attributeLabelVar" /></span><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" />:</span>
 
 </s:elseif>
 <s:elseif test="#attribute.type == 'Monotext' || #attribute.type == 'Text' || #attribute.type == 'Longtext' || #attribute.type == 'Hypertext' || #attribute.type == 'Attach' || #attribute.type == 'Number' || #attribute.type == 'Date' || #attribute.type == 'Link' || #attribute.type == 'Enumerator'">
 <p>
-	<label for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />" class="basic-mint-label"><s:property value="#attribute.name" /><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" />:</label>
+	<label for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />" class="basic-mint-label"><span class="attribute-main-label"><s:property value="#attributeLabelVar" /></span><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" />:</label>
 </s:elseif>
 
 <s:if test="#attribute.type == 'Monotext'">
@@ -205,7 +207,7 @@
 <s:include value="/WEB-INF/apsadmin/jsp/entity/modules/enumeratorAttribute.jsp" />
 </p>
 </s:elseif>
-
+ 
 <s:elseif test="#attribute.type == 'Monolist'">
 <!-- ############# ATTRIBUTO Monolist ############# -->
 <s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/monolistAttribute.jsp" />
@@ -214,7 +216,7 @@
 <s:elseif test="#attribute.type == 'List'">
 <!-- ############# ATTRIBUTO List ############# -->
 <s:include value="/WEB-INF/apsadmin/jsp/entity/modules/listAttribute.jsp" />
-</s:elseif>
+</s:elseif> 	 
 
 <s:elseif test="#attribute.type == 'Composite'">
 <!-- ############# ATTRIBUTO Composite ############# -->

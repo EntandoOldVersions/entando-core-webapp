@@ -7,10 +7,14 @@
 
 <fieldset>
 <legend><wp:i18n key="${i18n_Attribute_Key}" /></legend>
-<p><c:import url="/WEB-INF/plugins/jacms/aps/jsp/showlets/inc/userFilter-module-entity-Boolean-ignoreOption.jsp" /></p>
+<c:import url="/WEB-INF/plugins/jacms/aps/jsp/showlets/inc/userFilter-module-entity-Boolean-ignoreOption.jsp" />
 
-<p>
-<input name="<c:out value="${formFieldNameVar}" />"  id="true_<c:out value="${formFieldNameVar}" />" <c:if test="${null != formFieldValue || formFieldValue == 'true'}">checked="checked"</c:if> value="true" type="checkbox" />
-<label for="true_<c:out value="${formFieldNameVar}" />"><wp:i18n key="YES"/></label>
-</p>
+<div class="control-group">
+	<div class="controls">
+		<label for="true_<c:out value="${formFieldNameVar}" />" class="checkbox">
+		<input name="<c:out value="${formFieldNameVar}" />"  id="true_<c:out value="${formFieldNameVar}" />" <c:if test="${null != formFieldValue || formFieldValue == 'true'}">checked="checked"</c:if> value="true" type="checkbox" />
+		<wp:i18n key="YES"/></label>
+	</div>
+</div>
+
 </fieldset>

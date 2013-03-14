@@ -4,7 +4,7 @@
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 
 <h3><s:text name="title.userManagement.userList" /></h3>
-<s:form>
+
 <s:if test="hasActionErrors()">
 <div class="message message_error">
 <h4><s:text name="message.title.ActionErrors" /></h4>
@@ -26,10 +26,20 @@
 	</ul>
 </div>
 </s:if>
+
+<s:form>
+<p class="noscreen">
+	<wpsf:hidden name="text" />
+	<wpsf:hidden name="authName" />
+</p>
+
 <s:set name="removeIcon" id="removeIcon"><wp:resourceURL/>administration/common/img/icons/list-remove.png</s:set>
-<s:if test="%{authorizedUsers.size() > 0}">
+
+<s:set var="authorizedUsersVar" value="authorizedUsers" />
+
+<s:if test="%{#authorizedUsersVar.size() > 0}">
 <ul>
-<s:iterator id="user" value="authorizedUsers">
+<s:iterator id="user" value="#authorizedUsersVar">
 	<li>
 		<wpsa:actionParam action="removeUser" var="actionName" >
 			<wpsa:actionSubParam name="username" value="%{#user.username}" />
@@ -40,9 +50,12 @@
 </ul>
 </s:if>
 
+</s:form>
+
+<s:form action="search">
+
 <h4><s:text name="title.userManagement.searchUsers" /></h4>
 <p class="noscreen">
-<%-- //TODO attenzione che se l'azione precedente ha parametri, viene messo un '?' nell'id e la pagina non valida più --%>
 	<wpsf:hidden name="authName" />
 </p>
 <p><label for="text" class="basic-mint-label label-search"><s:text name="label.search.by"/>&#32;<s:text name="label.username"/>:</label>
@@ -51,8 +64,15 @@
 	<wpsf:submit useTabindexAutoIncrement="true" action="search" value="%{getText('label.search')}" cssClass="button" />
 </p>
 
-<div class="subsection-light">
+</s:form>
 
+<s:form action="search">
+<p class="noscreen">
+	<wpsf:hidden name="text" />
+	<wpsf:hidden name="authName" />
+</p>
+<div class="subsection-light">
+	
 <wpsa:subset source="users" count="10" objectName="groupUser" advanced="true" offset="5">
 <s:set name="group" value="#groupUser" />
 
@@ -74,7 +94,7 @@
 
 <s:if test="!#user.japsUser">
 	<s:set name="statusIconImagePath" id="statusIconImagePath"><wp:resourceURL/>administration/common/img/icons/user-status-notjAPSUser.png</s:set>
-	<s:set name="statusIconText" id="statusIconText"><s:text name="note.userStatus.notjAPSUser" /></s:set>
+	<s:set name="statusIconText" id="statusIconText"><s:text name="note.userStatus.notEntandoUser" /></s:set>
 </s:if>
 <s:elseif test="#user.disabled">
 	<s:set name="statusIconImagePath" id="statusIconImagePath"><wp:resourceURL/>administration/common/img/icons/user-status-notActive.png</s:set>

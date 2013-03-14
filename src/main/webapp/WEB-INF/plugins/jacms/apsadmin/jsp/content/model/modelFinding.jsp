@@ -24,7 +24,7 @@
 
 <s:form action="search">
 
-<p class="noscreen"><input type="hidden" name="contentType" value="" id="search_contentType"/></p>
+<p class="noscreen"><wpsf:hidden name="contentType" /></p>
 
 	<s:if test="%{contentModels.size > 0}" >
 	

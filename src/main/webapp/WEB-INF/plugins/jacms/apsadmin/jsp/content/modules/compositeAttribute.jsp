@@ -1,5 +1,5 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-
+<%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <div class="compositeAttribute">
 <s:set name="masterCompositeAttributeTracer" value="#attributeTracer" />
 <s:set name="masterCompositeAttribute" value="#attribute" />
@@ -8,12 +8,15 @@
 <s:set name="attributeTracer" value="#masterCompositeAttributeTracer.getCompositeTracer(#masterCompositeAttribute)"></s:set>
 <s:set name="parentAttribute" value="#masterCompositeAttribute"></s:set>
 
+<s:if test="null != #attribute.description"><s:set var="compositeElementLabelVar" value="#attribute.description" /></s:if>
+<s:else><s:set var="compositeElementLabelVar" value="#attribute.name" /></s:else>
+
 <s:if test="#attribute.type == 'Image' || #attribute.type == 'CheckBox' || #attribute.type == 'Boolean' || #attribute.type == 'ThreeState'">
-	<span class="important"><s:property value="#attribute.name" /><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" />:</span>
+	<span class="important basic-mint-label"><span class="attribute-main-label"><s:property value="#compositeElementLabelVar" /></span><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" />:</span>
 
 </s:if>
 <s:else>
-	<label for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />" class="basic-mint-label"><s:property value="#attribute.name"/><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" />:</label>
+	<label for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />" class="basic-mint-label"><span class="attribute-main-label"><s:property value="#compositeElementLabelVar"/></span><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" />:</label>
 </s:else>
 		
 		<s:if test="#attribute.type == 'Text'">
@@ -57,6 +60,13 @@
 		<s:elseif test="#attribute.type == 'Link'">
 			<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/linkAttribute.jsp" />
 		</s:elseif>
+		
+		<wpsa:hookPoint key="jacms.entryContent.attributeExtra" objectName="hookPointElements_jacms_entryContent_attributeExtra">
+		<s:iterator value="#hookPointElements_jacms_entryContent_attributeExtra" var="hookPointElement">
+			<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
+		</s:iterator>
+		</wpsa:hookPoint>
+		
 </div>		
 </s:iterator>
 <s:set name="attributeTracer" value="#masterCompositeAttributeTracer" />

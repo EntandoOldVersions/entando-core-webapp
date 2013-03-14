@@ -274,7 +274,11 @@
 						<s:text name="label.fulltext" />			
 					</s:if>
 					<s:elseif test="#userFilter['key'] == 'category'">
-						<s:text name="label.category" />			
+						<s:text name="label.category" />
+						<s:if test="null != #userFilter['categoryCode']">
+							<s:set name="userFilterCategoryRoot" value="%{getCategory(#userFilter['categoryCode'])}"></s:set>
+							(<s:property value="#userFilterCategoryRoot.getFullTitle(currentLang.code)"/>)
+						</s:if>
 					</s:elseif>
 				</s:if>
 				<s:elseif test="#userFilter['attributeFilter'] == 'true'">
@@ -324,10 +328,17 @@
 </p>
 
 <p>
-	<label for="maxElemForItem" class="basic-mint-label"><s:text name="label.maxElements" />:</label>
+	<label for="maxElemForItem" class="basic-mint-label"><s:text name="label.maxElementsForItem" />:</label>
 	<wpsf:select useTabindexAutoIncrement="true" name="maxElemForItem" id="maxElemForItem" value="%{getShowlet().getConfig().get('maxElemForItem')}" 
 		headerKey="" headerValue="%{getText('label.all')}" list="#{1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9,10:10,15:15,20:20}" cssClass="text" />
 </p>
+
+<p>
+	<label for="maxElements" class="basic-mint-label"><s:text name="label.maxElements" />:</label>
+	<wpsf:select name="maxElements" id="maxElements" value="%{getShowlet().getConfig().get('maxElements')}" 
+		headerKey="" headerValue="%{getText('label.all')}" list="#{1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9,10:10,15:15,20:20}" cssClass="text" />
+</p>
+
 </fieldset>
 
 <p class="centerText"><wpsf:submit useTabindexAutoIncrement="true" action="saveListViewerConfig" value="%{getText('label.save')}" cssClass="button" /></p>

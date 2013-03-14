@@ -3,13 +3,17 @@
 
 <c:if test="${null != userFilterOptionsVar && !empty userFilterOptionsVar}">
 
+<div class="row-fluid"><div class="span12 padding-medium-top">
+
 <c:set var="hasUserFilterError" value="${false}" />
 <c:forEach var="userFilterOptionVar" items="${userFilterOptionsVar}">
 <c:if test="${null != userFilterOptionVar.formFieldErrors && !empty userFilterOptionVar.formFieldErrors}"><c:set var="hasUserFilterError" value="${true}" /></c:if>
 </c:forEach>
 
 <c:if test="${hasUserFilterError}">
-	<h3><wp:i18n key="ERRORS" /></h3>
+<div class="alert alert-error">
+	<a class="close" data-dismiss="alert" href="#"><i class="icon-remove"></i></a>
+	<h2 class="alert-heading"><wp:i18n key="ERRORS" /></h2>
 	<ul>
 		<c:forEach var="userFilterOptionVar" items="${userFilterOptionsVar}">
 			<c:if test="${null != userFilterOptionVar.formFieldErrors}">
@@ -21,11 +25,14 @@
 			</c:if>
 		</c:forEach>
 	</ul>
+</div>
 </c:if>
 <c:set var="hasUserFilterError" value="${false}" />
 
+<p><button type="button" class="btn btn-info" data-toggle="collapse" data-target="#content-viewer-list-filters"><wp:i18n key="SEARCH_FILTERS_BUTTON" /> <i class="icon-zoom-in icon-white"></i></button></p>
+
 <%-- search form with user filters --%>
-<form action="<wp:url />" method="post">
+<form action="<wp:url />" method="post" class="form-horizontal collapse" id="content-viewer-list-filters">
 	<c:forEach var="userFilterOptionVar" items="${userFilterOptionsVar}">
 		<c:set var="userFilterOptionVar" value="${userFilterOptionVar}" scope="request" />
 		<c:choose>
@@ -59,8 +66,11 @@
 			</c:when>
 		</c:choose>
 	</c:forEach>
-	<p>
-		<input type="submit" value="<wp:i18n key="SEARCH" />" class="button" />
+	<p class="form-actions">
+		<input type="submit" value="<wp:i18n key="SEARCH" />" class="btn btn-primary" />
 	</p>
 </form>
+
+</div></div>
+
 </c:if>

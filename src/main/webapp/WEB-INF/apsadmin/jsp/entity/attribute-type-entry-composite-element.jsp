@@ -46,17 +46,18 @@
 		<label for="attributeName" class="basic-mint-label"><s:text name="label.code" />:</label>
 		<wpsf:textfield useTabindexAutoIncrement="true" name="attributeName" id="attributeName" cssClass="text"/> 
 	</p>
-	
+	<p>
+		<label for="attributeDescription" class="basic-mint-label"><s:text name="label.description" />:</label>
+		<wpsf:textfield useTabindexAutoIncrement="true" name="attributeDescription" id="attributeDescription" cssClass="text"/> 
+	</p>
 	<p>
 		<wpsf:checkbox useTabindexAutoIncrement="true" name="required" id="required" cssClass="radiocheck"/>&#32;<label for="required"><s:text name="Entity.attribute.flag.mandatory.full" /></label>
 	</p>
-	
 	<s:if test="isEntityManagerSearchEngineUser() && isIndexableOptionSupported(attributeTypeCode)">
 	<p>
 		<wpsf:checkbox useTabindexAutoIncrement="true" name="indexable" id="indexable" cssClass="radiocheck"/>&#32;<label for="indexable"><s:text name="Entity.attribute.flag.indexed.full" /></label>
 	</p>
 	</s:if>
-
 </fieldset>
 
 <s:if test="#attribute.textAttribute">
