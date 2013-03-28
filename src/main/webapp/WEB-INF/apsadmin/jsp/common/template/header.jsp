@@ -1,5 +1,5 @@
-<%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 
@@ -24,20 +24,7 @@
 	</span>
 </p><s:if test="#myClient == 'advanced'"><span id="welcome-cap">&nbsp;</span></s:if>
 </div>
-<%--
 
-<ul class="menu accordion_element">
-	<li><a href="<s:url action="main" namespace="/do" />"><img src="<wp:resourceURL/>administration/img/icons/32x32/go-first.png" alt="<s:text name="note.goToMain" />" title="<s:text name="note.goToMain" />" /></a></li>
-	<li class="noscreen"><a href="#manage"><s:text name="note.goToManageMenu" /></a></li>
-	<li class="noscreen"><a href="#fagiano_mainContent"><s:text name="note.skipToMainContent" /></a></li>
-	<c:if test="${sessionScope.currentUser.japsUser}">
-	<li><a href="<s:url action="editPassword" namespace="/do/CurrentUser" />"><img src="<wp:resourceURL/>administration/img/icons/32x32/security.png" alt="<s:text name="note.changeYourPassword" />" title="<s:text name="note.changeYourPassword" />" /></a></li></c:if>
-	<li><a href="<s:url value="/" />"><img src="<wp:resourceURL/>administration/img/icons/32x32/go-home.png" alt="<s:text name="note.goToPortal" /> ( <s:text name="note.sameWindow" /> )" title="<s:text name="note.goToPortal" /> ( <s:text name="note.sameWindow" /> )" /></a></li>
-	<li><a href="<s:url action="logout" namespace="/do" />"><img src="<wp:resourceURL/>administration/img/icons/32x32/system-log-out.png" alt="<s:text name="menu.exit"/>" title="<s:text name="menu.exit"/>" /></a></li>
-</ul>
-
- --%>
- 
 <s:if test="#myClient == 'normal'"> 
 <ul class="menu accordion_element-menu">
 </s:if> 
@@ -51,7 +38,7 @@
 	<li class="noscreen"><a href="#manage"><s:text name="note.goToManageMenu" /></a></li>
 	<li class="noscreen"><a href="#fagiano_mainContent"><s:text name="note.skipToMainContent" /></a></li>
 	<c:if test="${sessionScope.currentUser.japsUser}">
-	<li><a id="userbar-myprofile" href="<s:url action="editPassword" namespace="/do/CurrentUser" />"><s:text name="note.changeYourPassword" /></a></li></c:if>
+	<li><a id="userbar-myprofile" href="<s:url action="editProfile" namespace="/do/CurrentUser" />"><s:text name="note.changeYourPassword" /></a></li></c:if>
 	<li><a id="userbar-portal" href="<s:url value="/" />" title="<s:text name="note.goToPortal" /> ( <s:text name="note.sameWindow" /> )"><s:text name="note.goToPortal" /></a></li>
 	<li><a id="userbar-signout" href="<s:url action="logout" namespace="/do" />"><s:text name="menu.exit" /></a></li>
 </ul>
