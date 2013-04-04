@@ -57,7 +57,7 @@ window.addEvent('domready', function(){
 
 <wpsa:tracerFactory var="attributeTracer" lang="%{#lang.code}" />
 
-<s:if test="#attribute.type == 'Date'">
+<s:if test="#attribute.type == 'Date' || #attribute.type == 'Timestamp'">
 window.addEvent('domready', function() { myCal_<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" /> = new Calendar({ <s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />: 'd/m/Y' }, {
 		navigation: 1,
 		months: ['<s:text name="calendar.month.gen" />','<s:text name="calendar.month.feb" />','<s:text name="calendar.month.mar" />','<s:text name="calendar.month.apr" />','<s:text name="calendar.month.may" />','<s:text name="calendar.month.jun" />','<s:text name="calendar.month.jul" />','<s:text name="calendar.month.aug" />','<s:text name="calendar.month.sep" />','<s:text name="calendar.month.oct" />','<s:text name="calendar.month.nov" />','<s:text name="calendar.month.dec" />'],
@@ -85,7 +85,7 @@ window.addEvent('domready', function() { myCal_<s:property value="%{#attributeTr
 		<s:set name="attributeTracer" value="#masterCompositeAttributeTracer.getCompositeTracer(#masterCompositeAttribute)"></s:set>
 		<s:set name="parentAttribute" value="#masterCompositeAttribute"></s:set>
 
-		<s:if test="#attribute.type == 'Date'">
+		<s:if test="#attribute.type == 'Date' || #attribute.type == 'Timestamp'">
 		window.addEvent('domready', function() { myCal_<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" /> = new Calendar({ <s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />: 'd/m/Y' }, {
 				navigation: 1,
 				months: ['<s:text name="calendar.month.gen" />','<s:text name="calendar.month.feb" />','<s:text name="calendar.month.mar" />','<s:text name="calendar.month.apr" />','<s:text name="calendar.month.may" />','<s:text name="calendar.month.jun" />','<s:text name="calendar.month.jul" />','<s:text name="calendar.month.aug" />','<s:text name="calendar.month.sep" />','<s:text name="calendar.month.oct" />','<s:text name="calendar.month.nov" />','<s:text name="calendar.month.dec" />'],
@@ -105,7 +105,7 @@ window.addEvent('domready', function() { myCal_<s:property value="%{#attributeTr
 	<s:set name="parentAttribute" value=""></s:set>
 	</s:if>
 
-	<s:elseif test="#attribute.type == 'Date'">
+	<s:elseif test="#attribute.type == 'Date' || #attribute.type == 'Timestamp'">
 window.addEvent('domready', function() { myCal_<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" /> = new Calendar({ <s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />: 'd/m/Y' }, {
 		navigation: 1,
 		months: ['<s:text name="calendar.month.gen" />','<s:text name="calendar.month.feb" />','<s:text name="calendar.month.mar" />','<s:text name="calendar.month.apr" />','<s:text name="calendar.month.may" />','<s:text name="calendar.month.jun" />','<s:text name="calendar.month.jul" />','<s:text name="calendar.month.aug" />','<s:text name="calendar.month.sep" />','<s:text name="calendar.month.oct" />','<s:text name="calendar.month.nov" />','<s:text name="calendar.month.dec" />'],

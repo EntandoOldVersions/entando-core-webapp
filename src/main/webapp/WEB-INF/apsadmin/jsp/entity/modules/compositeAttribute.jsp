@@ -32,6 +32,9 @@
 		<s:elseif test="#attribute.type == 'Date'">
 			<br /><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/dateAttribute.jsp" />
 		</s:elseif>
+		<s:elseif test="#attribute.type == 'Timestamp'">
+			<br /><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/timestampAttribute.jsp" />
+		</s:elseif>
 		<s:elseif test="#attribute.type == 'Boolean'">
 			<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/booleanAttribute.jsp" />
 		</s:elseif>

@@ -19,6 +19,9 @@
 	<s:elseif test="#attribute.type == 'Date'">
 		<s:include value="/WEB-INF/apsadmin/jsp/entity/view/dateAttribute.jsp" />
 	</s:elseif>
+	<s:elseif test="#attribute.type == 'Timestamp'">
+		<s:include value="/WEB-INF/apsadmin/jsp/entity/view/timestampAttribute.jsp" />
+	</s:elseif>
 	<s:elseif test="#attribute.type == 'Hypertext'">
 		<s:include value="/WEB-INF/apsadmin/jsp/entity/view/hypertextAttribute.jsp" />
 	</s:elseif>
