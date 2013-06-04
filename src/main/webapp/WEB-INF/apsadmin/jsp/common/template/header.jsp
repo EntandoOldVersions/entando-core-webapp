@@ -25,11 +25,11 @@
 </p><s:if test="#myClient == 'advanced'"><span id="welcome-cap">&nbsp;</span></s:if>
 </div>
 
-<s:if test="#myClient == 'normal'"> 
+<s:if test="#myClient == 'normal'">
 <ul class="menu accordion_element-menu">
-</s:if> 
+</s:if>
 
-<s:if test="#myClient == 'advanced'"> 
+<s:if test="#myClient == 'advanced'">
 <div class="accordion_element-menu">
 <ul class="menu">
 </s:if>
@@ -43,7 +43,7 @@
 	<li><a id="userbar-signout" href="<s:url action="logout" namespace="/do" />"><s:text name="menu.exit" /></a></li>
 </ul>
 
-<s:if test="#myClient == 'advanced'"> 
+<s:if test="#myClient == 'advanced'">
 </div>
 </s:if>
 
