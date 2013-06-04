@@ -4,57 +4,26 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
-
-<s:set var="myClient"><wpsa:backendGuiClient /></s:set>
-<%-- <?xml version="1.0" encoding="utf-8"?>  --%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<s:property value="currentLang.code" />">
+<!DOCTYPE html>
+<html lang="<s:property value="currentLang.code" />">
 <head>
 
 	<title>Entando - <s:set name="documentTitle"><tiles:getAsString name="title"/></s:set><s:property value="%{getText(#documentTitle)}" escape="false" /></title>
 
-	<link rel="stylesheet" type="text/css" href="<wp:resourceURL />administration/common/css/administration.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="<wp:resourceURL />administration/common/css/menu.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="<wp:resourceURL />administration/common/css/layout-general.css" media="screen" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<!--[if IE 7]>
-		<link rel="stylesheet" type="text/css" href="<wp:resourceURL />administration/common/css/menu-ie7.css" media="screen" />
-		<link rel="stylesheet" type="text/css" href="<wp:resourceURL />administration/common/css/layout-general-ie7.css" media="screen" />
-	<![endif]-->
+	<link rel="stylesheet" href="<wp:resourceURL />administration/bootstrap/css/bootstrap.min.css" media="screen" />
 
-	<!--[if IE 8]>
-			<link rel="stylesheet" type="text/css" href="<wp:resourceURL />administration/common/css/administration-ie8.css" media="screen" />
-	<![endif]-->
-
-<s:if test="#myClient == 'normal'">
-	<link rel="stylesheet" type="text/css" href="<wp:resourceURL />administration/basic/css/administration.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="<wp:resourceURL />administration/basic/css/menu.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="<wp:resourceURL />administration/basic/css/layout-general.css" media="screen" />
-</s:if>
-
-<s:if test="#myClient == 'advanced'">
-	<link rel="stylesheet" type="text/css" href="<wp:resourceURL />administration/mint/css/administration.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="<wp:resourceURL />administration/mint/css/menu.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="<wp:resourceURL />administration/mint/css/layout-general.css" media="screen" />
-
-	<!--[if IE 7]>
-		<link rel="stylesheet" type="text/css" href="<wp:resourceURL />administration/mint/css/menu-ie7.css" media="screen" />
-		<link rel="stylesheet" type="text/css" href="<wp:resourceURL />administration/mint/css/layout-general-ie7.css" media="screen" />
-	<![endif]-->
-
-	<!--[if IE 8]>
-		<link rel="stylesheet" type="text/css" href="<wp:resourceURL />administration/mint/css/administration-ie8.css" media="screen" />
-	<![endif]-->
-
-</s:if>
-
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="<wp:resourceURL />administration/js/html5shiv.js"></script>
+  <script src="<wp:resourceURL />administration/js/respond.min.js"></script>
+<![endif]-->
 	<!-- QUA' FUORI LE COSE COMUNI. DENTRO L'EXTRA LE DIFFERENZE -->
 	<tiles:insertAttribute name="extraResources"/>
 
 </head>
-<body class="client-<s:property value="#myClient" />">
+<body>
 
 <div id="topbar">
 <tiles:insertAttribute name="topbar"/>
@@ -78,5 +47,12 @@
 <div id="footer">
 <tiles:insertAttribute name="footer"/>
 </div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="<wp:resourceURL />administration/js/jquery-1.9.1.min.js"></script>
+<script src="<wp:resourceURL />administration/bootstrap/js/bootstrap.js"></script>
+
 </body>
 </html>
