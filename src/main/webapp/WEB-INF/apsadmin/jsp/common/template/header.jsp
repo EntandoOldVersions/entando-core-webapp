@@ -12,6 +12,7 @@
 	<a class="noborder" href="http://www.entando.com/<s:property value="currentLang.code"/>/updates/" title="<s:text name="note.checkForUpdates" />">
 		<img src="<wp:resourceURL/>administration/common/img/entando-logo.png" width="97" height="60" alt="Entando" /> <span class="monospace version">version <wp:info key="systemParam" paramName="version" /></span>
 	</a>
+	<a href="<s:url namespace="/do/BaseAdmin" action="configSystemParams" />" style="display: inline-block; background-color: #5bb75b; text-transform: uppercase; float: right; padding: 8px; line-height: 1; margin: 26px 28px 0 0; border-bottom: none;">** <s:text name="menu.configure" /> **</a>
 </p>
 </div>
 

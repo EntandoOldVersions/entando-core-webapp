@@ -13,14 +13,6 @@
 <h3 id="menubar-components"><span><s:text name="menu.componentsAdmin" /></span></h3>
 <ul class="menu vertical">
 	<wp:ifauthorized permission="superuser">
-	<li class="openmenu"><a href="#" rel="fagiano_utenze" id="menu_utenze" class="subMenuToggler"><s:text name="menu.accountAdmin" /></a>
-		<div class="menuToggler" id="fagiano_utenze"><div class="menuToggler-1"><div class="menuToggler-2">
-		<ul>
-			<li><a href="<s:url action="intro" namespace="/do/User" />"><s:text name="menu.accountAdmin.users" /></a></li>
-			<li><a href="<s:url action="intro" namespace="/do/Role" />"><s:text name="menu.accountAdmin.roles" /></a></li>
-		</ul>
-		</div></div></div>
-	</li>
 	<li><a href="<s:url action="intro" namespace="/do/Group" />" id="menu_gruppi"><s:text name="menu.accountAdmin.groups" /></a></li>
 	</wp:ifauthorized>
 
@@ -28,16 +20,6 @@
 		<li><a href="<s:url action="viewTree" namespace="/do/Category" />" id="menu_categorie"><s:text name="menu.categoryAdmin" /></a></li>
 	</wp:ifauthorized>
 
-	<wp:ifauthorized permission="superuser">
-	<li class="openmenu"><a href="#" rel="fagiano_lingue" class="subMenuToggler" id="menu_lingue"><s:text name="menu.languageAdmin" /></a>
-		<div class="menuToggler" id="fagiano_lingue"><div class="menuToggler-1"><div class="menuToggler-2">
-		<ul>
-			<li><a href="<s:url action="list" namespace="/do/Lang" />"><s:text name="menu.languageAdmin.languages" /></a></li>
-			<li><a href="<s:url action="intro" namespace="/do/LocaleString" />"><s:text name="menu.languageAdmin.labels" /></a></li>
-		</ul>
-		</div></div></div>
-	</li>
-	</wp:ifauthorized>
 	<wpsa:pluginsSubMenu objectName="pluginsSubMenus" />
 	<li <s:if test="#pluginsSubMenus.size > 0">class="openmenu"</s:if> ><a href="#" <s:if test="#pluginsSubMenus.size > 0">rel="fagiano_plugins" class="subMenuToggler"</s:if> id="menu_plugins"><s:text name="menu.plugins" /></a>
 		<s:if test="#pluginsSubMenus.size > 0">
@@ -91,7 +73,6 @@
 				<wp:ifauthorized permission="superuser">
 				<li><a href="<s:url action="intro" namespace="/do/jacms/ContentModel" />"><s:text name="jacms.menu.contentModelAdmin" /></a></li>
 				<li><a href="<s:url action="initViewEntityTypes" namespace="/do/Entity"><s:param name="entityManagerName">jacmsContentManager</s:param></s:url>"><s:text name="jacms.menu.contentTypeAdmin" /></a></li>
-				<li><a href="<s:url action="openIndexProspect" namespace="/do/jacms/Content/Admin" />"><s:text name="menu.reload.contents" /></a></li>
 				</wp:ifauthorized>
 			</ul>
 			</div></div></div>
@@ -111,17 +92,6 @@
 </ul>
 </c:if>
 
-<wp:ifauthorized permission="superuser">
-<h3 id="menubar-tools"><span><s:text name="menu.generalSettings" /></span></h3>
-<ul class="menu vertical">
-	<li><a href="<s:url namespace="/do/BaseAdmin" action="configSystemParams" />" id="menu_configura"><s:text name="menu.configure" /></a></li>
-	<li><a href="<s:url namespace="/do/BaseAdmin" action="reloadConfig" />" id="menu_ricarica_configurazione"><s:text name="menu.reload.config" /></a></li>
-	<li><a href="<s:url namespace="/do/Admin/Database" action="entry" />" id="menu_database_admin"><span lang="en">Database</span></a></li>
-	<%--
-	<li><a href="<s:url namespace="/do/Entity" action="viewManagers" />" id="menu_entita"><s:text name="menu.entityAdmin" /></a></li>
-	--%>
-</ul>
-</wp:ifauthorized>
 <s:if test="#myClient == 'advanced'">
 </div></div></div>
 <div id="menubar_anchor">

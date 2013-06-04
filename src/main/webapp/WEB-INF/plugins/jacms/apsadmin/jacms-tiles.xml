@@ -146,7 +146,7 @@
 
     <!-- ********* INIZIO Area Amministrazione Contenuti ********* -->
 
-    <definition extends="main.layout" name="admin.jacms.content.contentIndexFunctions">
+    <definition extends="layout.settings" name="admin.jacms.content.contentIndexFunctions">
 		<put-attribute name="title" value="menu.reload.contents" />
 		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/contentIndexFunctions.jsp" />
 	</definition>
