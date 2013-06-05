@@ -5215,3 +5215,75 @@ a.list-group-item.active > .badge,
     display: none !important;
   }
 }
+
+.margin-small-vertical {
+  margin: 5px 0;
+}
+
+.margin-small-top {
+  margin-top: 5px;
+}
+
+.margin-small-bottom {
+  margin-bottom: 5px;
+}
+
+.margin-base-vertical {
+  margin: 8px 0;
+}
+
+.margin-base-top {
+  margin-top: 8px;
+}
+
+.margin-base-bottom {
+  margin-bottom: 8px;
+}
+
+.margin-large-vertical {
+  margin: 14px 0;
+}
+
+.margin-large-top {
+  margin-top: 14px;
+}
+
+.margin-large-bottom {
+  margin-bottom: 14px;
+}
+
+.padding-small-vertical {
+  padding: 5px 0;
+}
+
+.padding-small-top {
+  padding-top: 5px;
+}
+
+.padding-small-bottom {
+  padding-bottom: 5px;
+}
+
+.padding-base-vertical {
+  padding: 8px 0;
+}
+
+.padding-base-top {
+  padding-top: 8px;
+}
+
+.padding-base-bottom {
+  padding-bottom: 8px;
+}
+
+.padding-large-vertical {
+  padding: 14px 0;
+}
+
+.padding-large-top {
+  padding-top: 14px;
+}
+
+.padding-large-bottom {
+  padding-bottom: 14px;
+}
