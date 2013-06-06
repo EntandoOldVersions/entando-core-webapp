@@ -29,14 +29,14 @@
 
 			<h1 class="margin-base-top padding-small-top margin-small-bottom text-center">LOGO</h1>
 
-			<s:form action="doLogin">
+			<s:form action="doLogin" cssClass="padding-base-vertical">
 
 			<s:if test="hasActionErrors()">
 			<div class="alert alert-danger">
 				<button type="button" class="close" data-dismiss="alert">&times;</button>
 
 				<s:if test="hasActionErrors()">
-				<h2 class="alert-heading"><s:text name="message.title.ActionErrors" /></h2>
+				<h2><s:text name="message.title.ActionErrors" /></h2>
 				<ul class="list-unstyled">
 					<s:iterator value="actionErrors">
 					<li><s:property /></li>
@@ -47,40 +47,52 @@
 			</s:if>
 
 	 		<s:if test="#session.currentUser != null && #session.currentUser.username != 'guest'">
-			<div class="whiteBox">
-			<p>
-				<em><s:text name="note.userbar.welcome"/></em>,
-				<strong> <s:property value="#session.currentUser" /></strong>!
-			</p>
 
-			<%--
-			<s:if test="!#session.currentUser.accountNotExpired && #session.currentUser.username != 'admin'">
-			<p>
-				<s:text name="note.login.expiredAccount" />.
-			</p>
-			</s:if>
-			--%>
+				<h2 class="text-center margin-base-bottom"><s:text name="note.userbar.welcome"/>&#32;<s:property value="#session.currentUser" />!</h2>
 
-			<s:if test="!#session.currentUser.credentialsNotExpired">
-			<p>
-				<s:text name="note.login.expiredPassword.intro" />&#32;<a href="<s:url action="editPassword" />" ><s:text name="note.login.expiredPassword.outro" /></a>.
-			</p>
-			</s:if>
+				<s:if test="!#session.currentUser.credentialsNotExpired">
+
+					<div class="alert alert-warning alert-block">
+						<strong><s:text name="note.login.expiredPassword.intro" /></strong><br />
+						<div class="text-center margin-base-top">
+							<a href="<s:url action="editPassword" />" class="btn btn-large btn-warning">
+								<s:text name="note.login.expiredPassword.outro" />
+							</a>
+						</div>
+					</div>
+
+				</s:if>
 
 			<s:else>
 			<wp:ifauthorized permission="enterBackend" var="checkEnterBackend" />
 
 			<c:choose>
 				<c:when test="${checkEnterBackend}">
-				<p>
-					<s:text name="note.login.yetLogged" />,<br />
-					<a href="<s:url action="main" />" ><s:text name="note.goToMain" /></a> | <a href="<s:url action="logout" namespace="/do" />" ><s:text name="menu.exit"/></a>
-				</p>
+
+				<div class="alert alert-info alert-block">
+					<strong><s:text name="note.login.yetLogged" /></strong><br />
+					<div class="text-center margin-base-top">
+						<div class="btn-group btn-group-justified">
+							<a href="<s:url action="main" />" class="btn btn-primary">
+								<s:text name="note.goToMain" />
+							</a>
+							<a href="<s:url action="logout" namespace="/do" />" class="btn btn-danger">
+								<s:text name="menu.exit"/>
+							</a>
+						</div>
+					</div>
+				</div>
 				</c:when>
 				<c:otherwise>
-				<p>
-					<s:text name="note.login.notAllowed" />, <a href="<s:url action="logout" namespace="/do" />" ><s:text name="menu.exit"/></a>
-				</p>
+
+				<div class="alert alert-danger alert-block">
+					<strong><s:text name="note.login.notAllowed" /></strong><br />
+					<div class="text-center margin-base-top">
+						<a href="<s:url action="logout" namespace="/do" />" class="btn btn-large btn-danger">
+							<s:text name="menu.exit"/>
+						</a>
+					</div>
+				</div>
 
 				</c:otherwise>
 			</c:choose>
@@ -91,8 +103,6 @@
 			</s:if>
 
 			<s:else>
-
-			<div class="padding-base-vertical">
 
 				<s:set var="usernameFieldErrorsVar" value="%{fieldErrors['username']}" />
 				<s:set var="usernameHasFieldErrorVar" value="#usernameFieldErrorsVar != null && !#usernameFieldErrorsVar.isEmpty()" />
@@ -154,8 +164,6 @@
 				<p class="padding-base-top">
 						<s:submit cssClass="btn btn-success btn-large btn-block" name="backend_client_gui" value="advanced" />
 				</p>
-
-			</div>
 
 			</s:else>
 			</s:form>
