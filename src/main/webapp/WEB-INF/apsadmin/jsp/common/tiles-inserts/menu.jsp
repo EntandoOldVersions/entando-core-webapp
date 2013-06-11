@@ -6,9 +6,9 @@
 <h2 id="manage" class="noscreen"><s:text name="note.userbar.intro" />:</h2>
 
 <!-- <h3 id="menubar-components"><span><s:text name="menu.componentsAdmin" /></span></h3> -->
-<ul class="nav nav-pills nav-stacked">
+<ul class="nav nav-pills nav-stacked" id="backoffice-menu-main">
 	<wp:ifauthorized permission="superuser">
-	<li><a href="<s:url action="intro" namespace="/do/Group" />"><s:text name="menu.accountAdmin.groups" /></a></li>
+		<li><a href="<s:url action="intro" namespace="/do/Group" />"><s:text name="menu.accountAdmin.groups" /></a></li>
 	</wp:ifauthorized>
 
 	<wp:ifauthorized permission="manageCategories">
@@ -17,24 +17,35 @@
 
 	<wpsa:pluginsSubMenu objectName="pluginsSubMenus" />
 
-	<li<s:if test="#pluginsSubMenus.size > 0"> data-toggle="collapse" data-target="#submenu-plugins"</s:if>><span class="nav-header"><s:text name="menu.plugins" /><s:if test="#pluginsSubMenus.size > 0">&#32;<span class="caret"></span></s:if></span>
 		<s:if test="#pluginsSubMenus.size > 0">
-			<ul class="collapse" id="submenu-plugins">
-				<s:iterator value="#pluginsSubMenus" id="pluginSubMenu">
-					<wpsa:include value="%{#pluginSubMenu.subMenuFilePath}"></wpsa:include>
-				</s:iterator>
-			</ul>
+			<li class="accordion">
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse" href="#submenu-plugins">
+							<s:text name="menu.plugins" />&#32;
+							<span class="glyphicon glyphicon-chevron-down pull-right"></span>
+						</a>
+					</div>
+					<div id="submenu-plugins" class="accordion-body collapse">
+						<ul class="accordion-inner nav nav-pills nav-stacked">
+							<s:iterator value="#pluginsSubMenus" id="pluginSubMenu">
+								<wpsa:include value="%{#pluginSubMenu.subMenuFilePath}"></wpsa:include>
+							</s:iterator>
+						</ul>
+					</div>
+				</div>
+			</li>
 		</s:if>
-	</li>
-
-</ul>
+		<s:else>
+			<li><a href="#"><s:text name="menu.plugins" /></a></li>
+		</s:else>
 
 <wp:ifauthorized permission="managePages" var="isEditPages" />
 <wp:ifauthorized permission="superuser" var="isSuperuser" />
 
 <c:if test="${isEditPages || isSuperuser}">
 <!-- <h3 id="menubar-portal"><span><s:text name="menu.portalAdmin" /></span></h3> -->
-<ul class="nav nav-pills nav-stacked">
+
 <wp:ifauthorized permission="managePages">
 	<li><a href="<s:url action="viewTree" namespace="/do/Page" />"><s:text name="menu.pageAdmin" /></a></li>
 	<li><a href="<s:url action="viewShowlets" namespace="/do/Portal/ShowletType" />"><s:text name="menu.showletAdmin" /></a></li>
@@ -44,7 +55,8 @@
 		<div class="accordion-group">
 			<div class="accordion-heading">
 				<a class="accordion-toggle" data-toggle="collapse" href="#submenu-api">
-					<s:text name="menu.apisAdmin" />
+					<s:text name="menu.apisAdmin" />&#32;
+					<span class="glyphicon glyphicon-chevron-down pull-right"></span>
 				</a>
 			</div>
 			<div id="submenu-api" class="accordion-body collapse">
@@ -57,7 +69,7 @@
 		</div>
 	</li>
 </wp:ifauthorized>
-</ul>
+
 </c:if>
 
 <wp:ifauthorized permission="editContents" var="isEditContents" />
@@ -65,14 +77,14 @@
 
 <c:if test="${isEditContents || isManageResources}">
 <!-- <h3 id="menubar-cms"><span><s:text name="jacms.menu.cmsAdmin" /></span></h3> -->
-<ul class="nav nav-pills nav-stacked">
 	<wp:ifauthorized permission="editContents">
 
 		<li class="accordion">
 			<div class="accordion-group">
 				<div class="accordion-heading">
 					<a class="accordion-toggle" data-toggle="collapse" href="#submenu-contents">
-						<s:text name="jacms.menu.contentAdmin" />
+						<s:text name="jacms.menu.contentAdmin" />&#32;
+						<span class="glyphicon glyphicon-chevron-down pull-right"></span>
 					</a>
 				</div>
 				<div id="submenu-contents" class="accordion-body collapse">
@@ -94,7 +106,8 @@
 			<div class="accordion-group">
 				<div class="accordion-heading">
 					<a class="accordion-toggle" data-toggle="collapse" href="#submenu-resources">
-						<s:text name="jacms.menu.resourceAdmin" />
+						<s:text name="jacms.menu.resourceAdmin" />&#32;
+						<span class="glyphicon glyphicon-chevron-down pull-right"></span>
 					</a>
 				</div>
 				<div id="submenu-resources" class="accordion-body collapse">
@@ -108,5 +121,5 @@
 
 	</wp:ifauthorized>
 
-</ul>
 </c:if>
+</ul>
