@@ -15,7 +15,7 @@
 
 		<!-- Be sure to leave the brand out there if you want it shown -->
 
-		<a class="navbar-brand">
+		<a class="navbar-brand" href="<s:url action="main" namespace="/do" />" title="<s:text name="note.goToMainPage" />">
 			<img src="<wp:resourceURL/>administration/img/entando-logo.png" width="91" height="20" alt="Entando Enterprise Edition" />
 		</a>
 
@@ -26,7 +26,6 @@
 				<a class="navbar-link" href="http://www.entando.com/<s:property value="currentLang.code"/>/updates/" title="<s:text name="note.checkForUpdates" />">version <wp:info key="systemParam" paramName="version" /></a>
 			</p>
 			<p class="pull-right">
-				<a class="btn btn-info navbar-btn" href="<s:url action="main" namespace="/do" />" title="<s:text name="note.goToMainPage" />"><span class="glyphicon glyphicon-home"></span></a>
 				<a class="btn btn-info navbar-btn" href="<s:url namespace="/do/BaseAdmin" action="configSystemParams" />" title="<s:text name="menu.configure" />"><span class="glyphicon glyphicon-cog"></span></a>
 			</p>
 

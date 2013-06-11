@@ -14,6 +14,7 @@
 
 	<link rel="stylesheet" href="<wp:resourceURL />administration/bootstrap/css/bootstrap.min.css" media="screen" />
 	<link rel="stylesheet" href="<wp:resourceURL />administration/css/bootstrap-override.css" media="screen" />
+	<link rel="stylesheet" href="<wp:resourceURL />administration/css/bootstrap-offcanvas.css" media="screen" />
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -44,16 +45,20 @@
 <%--
 	<h1 id="fagiano_start"><s:text name="title.mainFunctions" /></h1>
 --%>
-<div class="row">
-	<div class="col-9">
+<div class="row row-offcanvas row-offcanvas-right">
+	<div class="col-sm-9">
+		<p class="pull-right visible-sm">
+			<a href="#sidebar" class="btn btn-info btn-offcanvas" data-toggle="offcanvas">
+				&hellip;
+			</a></p>
 		<tiles:insertAttribute name="body"/>
 	</div>
-	<div class="col-3">
+	<nav class="col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
 		<tiles:insertAttribute name="menu"/>
 		<p class="noscreen">
 			<a href="#fagiano_start" id="fagiano_mainContent"><s:text name="note.backToStart" /></a>
 		</p>
-	</div>
+	</nav>
 </div>
 
 <div class="row margin-large-top">
@@ -73,6 +78,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="<wp:resourceURL />administration/js/jquery-1.9.1.min.js"></script>
 <script src="<wp:resourceURL />administration/bootstrap/js/bootstrap.js"></script>
+<script src="<wp:resourceURL />administration/js/bootstrap-offcanvas.js"></script>
 
 </body>
 </html>
