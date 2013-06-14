@@ -118,7 +118,7 @@
 					<div class="controls">
 						<label for="username" class="noscreen"><s:text name="label.username" /></label>
 						<div class="input-group">
-							<div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+							<div class="input-group-addon"><span class="icon icon-user"></span></div>
 							<s:textfield name="username" id="username" cssClass="%{'input-large' + #inputErrorClassVar}" placeholder="%{getText('label.username')}" />
 						</div>
 					</div>
@@ -141,7 +141,7 @@
 					<div class="controls">
 						<label for="password" class="noscreen"><s:text name="label.password" /></label>
 						<div class="input-group">
-							<div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+							<div class="input-group-addon"><span class="icon icon-lock"></span></div>
 							<s:password name="password" id="password" cssClass="%{'input-large' + #inputErrorClassVar}" placeholder="%{getText('label.password')}" />
 						</div>
 					</div>

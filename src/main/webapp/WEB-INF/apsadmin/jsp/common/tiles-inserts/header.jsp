@@ -26,7 +26,7 @@
 				<a class="navbar-link" href="http://www.entando.com/<s:property value="currentLang.code"/>/updates/" title="<s:text name="note.checkForUpdates" />">version <wp:info key="systemParam" paramName="version" /></a>
 			</p>
 			<p class="pull-right">
-				<a class="btn btn-info navbar-btn" href="<s:url namespace="/do/BaseAdmin" action="configSystemParams" />" title="<s:text name="menu.configure" />"><span class="glyphicon glyphicon-cog"></span></a>
+				<a class="btn btn-info navbar-btn" href="<s:url namespace="/do/BaseAdmin" action="configSystemParams" />" title="<s:text name="menu.configure" />"><span class="icon icon-cog"></span></a>
 			</p>
 
 			<ul class="nav navbar-nav pull-right">
@@ -40,21 +40,21 @@
 					<c:if test="${sessionScope.currentUser.japsUser}">
 						<li>
 							<a href="<s:url action="editProfile" namespace="/do/CurrentUser" />">
-								<span class="glyphicon glyphicon-lock"></span>&#32;
+								<span class="icon icon-lock"></span>&#32;
 								<s:text name="note.changeYourPassword" />
 							</a>
 						</li>
 					</c:if>
 						<li>
 							<a href="<s:url value="/" />" title="<s:text name="note.goToPortal" /> ( <s:text name="note.sameWindow" /> )">
-								<span class="glyphicon glyphicon-globe"></span>&#32;
+								<span class="icon icon-globe"></span>&#32;
 								<s:text name="note.goToPortal" />
 							</a>
 						</li>
 						<li class="divider"></li>
 						<li>
 							<a href="<s:url action="logout" namespace="/do" />">
-								<span class="glyphicon glyphicon-off"></span>&#32;
+								<span class="icon icon-off"></span>&#32;
 								<s:text name="menu.exit" />
 							</a>
 						</li>

@@ -23,7 +23,7 @@
 					<div class="accordion-heading">
 						<a class="accordion-toggle" data-toggle="collapse" href="#submenu-plugins">
 							<s:text name="menu.plugins" />&#32;
-							<span class="glyphicon glyphicon-chevron-down pull-right"></span>
+							<span class="icon icon-chevron-down pull-right"></span>
 						</a>
 					</div>
 					<div id="submenu-plugins" class="accordion-body collapse">
@@ -56,7 +56,7 @@
 			<div class="accordion-heading">
 				<a class="accordion-toggle" data-toggle="collapse" href="#submenu-api">
 					<s:text name="menu.apisAdmin" />&#32;
-					<span class="glyphicon glyphicon-chevron-down pull-right"></span>
+					<span class="icon icon-chevron-down pull-right"></span>
 				</a>
 			</div>
 			<div id="submenu-api" class="accordion-body collapse">
@@ -84,7 +84,7 @@
 				<div class="accordion-heading">
 					<a class="accordion-toggle" data-toggle="collapse" href="#submenu-contents">
 						<s:text name="jacms.menu.contentAdmin" />&#32;
-						<span class="glyphicon glyphicon-chevron-down pull-right"></span>
+						<span class="icon icon-chevron-down pull-right"></span>
 					</a>
 				</div>
 				<div id="submenu-contents" class="accordion-body collapse">
@@ -107,7 +107,7 @@
 				<div class="accordion-heading">
 					<a class="accordion-toggle" data-toggle="collapse" href="#submenu-resources">
 						<s:text name="jacms.menu.resourceAdmin" />&#32;
-						<span class="glyphicon glyphicon-chevron-down pull-right"></span>
+						<span class="icon icon-chevron-down pull-right"></span>
 					</a>
 				</div>
 				<div id="submenu-resources" class="accordion-body collapse">
