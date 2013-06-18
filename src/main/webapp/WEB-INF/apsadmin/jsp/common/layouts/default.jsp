@@ -49,7 +49,7 @@
 	<div class="col-sm-9">
 		<p class="pull-right visible-sm">
 			<a href="#sidebar" class="btn btn-info btn-offcanvas" data-toggle="offcanvas">
-				&hellip;
+				<span class="icon icon-list-ul"></span>
 			</a></p>
 		<tiles:insertAttribute name="body"/>
 	</div>
@@ -59,15 +59,14 @@
 			<a href="#fagiano_start" id="fagiano_mainContent"><s:text name="note.backToStart" /></a>
 		</p>
 	</nav>
-</div>
-
-<div class="row margin-large-top">
-	<ul class="noscreen">
-		<li><a href="#fagiano_mainContent"><s:text name="note.backToMainContent" /></a></li>
-		<li><a href="#fagiano_start"><s:text name="note.backToStart" /></a></li>
-	</ul>
-	<div class="text-center">
-		<tiles:insertAttribute name="footer"/>
+	<div class="col-12 margin-large-top">
+		<ul class="noscreen">
+			<li><a href="#fagiano_mainContent"><s:text name="note.backToMainContent" /></a></li>
+			<li><a href="#fagiano_start"><s:text name="note.backToStart" /></a></li>
+		</ul>
+		<div class="text-center">
+			<tiles:insertAttribute name="footer"/>
+		</div>
 	</div>
 </div>
 
