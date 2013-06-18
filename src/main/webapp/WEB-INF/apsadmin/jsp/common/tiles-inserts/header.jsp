@@ -34,27 +34,27 @@
 					<a href="#" class="dropdown-toggle text-right" data-toggle="dropdown">
 						<em><s:text name="note.userbar.welcome"/></em>&#32;
 						<strong><c:out value="${sessionScope.currentUser}"/></strong>
-						<span class="caret"></span>
+						<span class="icon icon-caret-down"></span>
 					</a>
 					<ul class="dropdown-menu">
 					<c:if test="${sessionScope.currentUser.japsUser}">
 						<li>
 							<a href="<s:url action="editProfile" namespace="/do/CurrentUser" />">
-								<span class="icon icon-lock"></span>&#32;
+								<span class="icon icon-fixed-width icon-user"></span>&#32;
 								<s:text name="note.changeYourPassword" />
 							</a>
 						</li>
 					</c:if>
 						<li>
 							<a href="<s:url value="/" />" title="<s:text name="note.goToPortal" /> ( <s:text name="note.sameWindow" /> )">
-								<span class="icon icon-globe"></span>&#32;
+								<span class="icon icon-fixed-width icon-globe"></span>&#32;
 								<s:text name="note.goToPortal" />
 							</a>
 						</li>
 						<li class="divider"></li>
 						<li>
 							<a href="<s:url action="logout" namespace="/do" />">
-								<span class="icon icon-off"></span>&#32;
+								<span class="icon icon-fixed-width icon-off"></span>&#32;
 								<s:text name="menu.exit" />
 							</a>
 						</li>
