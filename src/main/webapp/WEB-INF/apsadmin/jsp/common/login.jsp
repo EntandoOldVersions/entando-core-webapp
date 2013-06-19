@@ -25,7 +25,7 @@
 <div class="container">
 
 	<div class="row">
-		<div class="col-lg-4 col-offset-4">
+		<div class="col-sm-6 col-offset-3">
 
 			<h1 class="margin-base-top padding-small-top margin-small-bottom text-center">LOGO</h1>
 
@@ -161,9 +161,11 @@
 					</div>
 				</div>
 
-				<p class="padding-base-top">
-						<s:submit cssClass="btn btn-success btn-large btn-block" name="backend_client_gui" value="advanced" />
-				</p>
+				<div class="row">
+					<p class="padding-base-top col-sm-8 col-offset-2">
+							<s:submit cssClass="btn btn-success btn-large btn-block" name="backend_client_gui" value="advanced" />
+					</p>
+				</div>
 
 			</s:else>
 			</s:form>
