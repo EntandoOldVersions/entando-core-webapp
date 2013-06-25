@@ -45,6 +45,8 @@
 <s:set name="removeIcon" id="removeIcon"><wp:resourceURL/>administration/common/img/icons/delete.png</s:set>
 
 <s:form cssClass="tab-container action-form">
+<wpsf:hidden name="contentOnSessionMarker" />
+
 <div id="info" class="tab">
 <h3 class="js_noscreen"><s:text name="title.contentInfo" /> (<a href="#quickmenu" id="info_content_goBackToQuickMenu"><s:text name="note.goBackToQuickMenu" /></a>)</h3>
 <fieldset class="margin-bit-top"><legend><s:text name="label.info" /></legend>
@@ -193,12 +195,6 @@
 <s:elseif test="#attribute.type == 'Date'">
 <!-- ############# ATTRIBUTO Date ############# -->
 <s:include value="/WEB-INF/apsadmin/jsp/entity/modules/dateAttribute.jsp" />
-</p>
-</s:elseif>
-
-<s:elseif test="#attribute.type == 'Timestamp'">
-<!-- ############# ATTRIBUTO Date ############# -->
-<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/timestampAttribute.jsp" />
 </p>
 </s:elseif>
 

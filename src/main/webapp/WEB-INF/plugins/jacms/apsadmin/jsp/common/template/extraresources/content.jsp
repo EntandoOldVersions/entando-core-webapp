@@ -9,7 +9,7 @@
 	<!-- per attributo Hypertext -->
 	<script type="text/javascript" src="<wp:resourceURL />administration/common/js/ckeditor/ckeditor.js"></script>
 </s:if>
-
+	
 <s:set var="categoryTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_category" /></s:set>
 
 <script type="text/javascript">
@@ -57,7 +57,7 @@ window.addEvent('domready', function(){
 
 <wpsa:tracerFactory var="attributeTracer" lang="%{#lang.code}" />
 
-<s:if test="#attribute.type == 'Date' || #attribute.type == 'Timestamp'">
+<s:if test="#attribute.type == 'Date'">
 window.addEvent('domready', function() { myCal_<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" /> = new Calendar({ <s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />: 'd/m/Y' }, {
 		navigation: 1,
 		months: ['<s:text name="calendar.month.gen" />','<s:text name="calendar.month.feb" />','<s:text name="calendar.month.mar" />','<s:text name="calendar.month.apr" />','<s:text name="calendar.month.may" />','<s:text name="calendar.month.jun" />','<s:text name="calendar.month.jul" />','<s:text name="calendar.month.aug" />','<s:text name="calendar.month.sep" />','<s:text name="calendar.month.oct" />','<s:text name="calendar.month.nov" />','<s:text name="calendar.month.dec" />'],
@@ -85,7 +85,7 @@ window.addEvent('domready', function() { myCal_<s:property value="%{#attributeTr
 		<s:set name="attributeTracer" value="#masterCompositeAttributeTracer.getCompositeTracer(#masterCompositeAttribute)"></s:set>
 		<s:set name="parentAttribute" value="#masterCompositeAttribute"></s:set>
 
-		<s:if test="#attribute.type == 'Date' || #attribute.type == 'Timestamp'">
+		<s:if test="#attribute.type == 'Date'">
 		window.addEvent('domready', function() { myCal_<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" /> = new Calendar({ <s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />: 'd/m/Y' }, {
 				navigation: 1,
 				months: ['<s:text name="calendar.month.gen" />','<s:text name="calendar.month.feb" />','<s:text name="calendar.month.mar" />','<s:text name="calendar.month.apr" />','<s:text name="calendar.month.may" />','<s:text name="calendar.month.jun" />','<s:text name="calendar.month.jul" />','<s:text name="calendar.month.aug" />','<s:text name="calendar.month.sep" />','<s:text name="calendar.month.oct" />','<s:text name="calendar.month.nov" />','<s:text name="calendar.month.dec" />'],
@@ -105,7 +105,7 @@ window.addEvent('domready', function() { myCal_<s:property value="%{#attributeTr
 	<s:set name="parentAttribute" value=""></s:set>
 	</s:if>
 
-	<s:elseif test="#attribute.type == 'Date' || #attribute.type == 'Timestamp'">
+	<s:elseif test="#attribute.type == 'Date'">
 window.addEvent('domready', function() { myCal_<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" /> = new Calendar({ <s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />: 'd/m/Y' }, {
 		navigation: 1,
 		months: ['<s:text name="calendar.month.gen" />','<s:text name="calendar.month.feb" />','<s:text name="calendar.month.mar" />','<s:text name="calendar.month.apr" />','<s:text name="calendar.month.may" />','<s:text name="calendar.month.jun" />','<s:text name="calendar.month.jul" />','<s:text name="calendar.month.aug" />','<s:text name="calendar.month.sep" />','<s:text name="calendar.month.oct" />','<s:text name="calendar.month.nov" />','<s:text name="calendar.month.dec" />'],
@@ -141,7 +141,7 @@ window.addEvent('domready', function() { myCal_<s:property value="%{#attributeTr
 					var ofckeditor = CKEDITOR.replace("<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />", {
 						customConfig : '<wp:resourceURL />administration/common/js/ckeditor/entando-ckeditor_config.js',
 						//EntandoLinkActionPath: CKEDITOR.basePath+"/jAPS/saved-japslink.html"
-						EntandoLinkActionPath: "<wp:info key="systemParam" paramName="applicationBaseURL" />do/jacms/Content/Hypertext/entandoInternalLink.action",
+						EntandoLinkActionPath: "<s:url namespace="/do/jacms/Content/Hypertext" action="entandoInternalLink"><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>",
 						language: '<s:property value="locale" />',
 						<s:if test="#myClient == 'advanced'">
 							width: "680px"
@@ -196,7 +196,7 @@ window.addEvent('domready', function() { myCal_<s:property value="%{#attributeTr
 									var ofckeditor = CKEDITOR.replace("<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />", {
 										customConfig : '<wp:resourceURL />administration/common/js/ckeditor/entando-ckeditor_config.js',
 										//EntandoLinkActionPath: CKEDITOR.basePath+"/jAPS/saved-japslink.html"
-										EntandoLinkActionPath: "<wp:info key="systemParam" paramName="applicationBaseURL" />do/jacms/Content/Hypertext/entandoInternalLink.action",
+										EntandoLinkActionPath: "<s:url namespace="/do/jacms/Content/Hypertext" action="entandoInternalLink"><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>",
 										language: '<s:property value="locale" />',
 										width: "425px"
 									});
@@ -237,7 +237,7 @@ window.addEvent('domready', function() { myCal_<s:property value="%{#attributeTr
 							var ofckeditor = CKEDITOR.replace("<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />", {
 								customConfig : '<wp:resourceURL />administration/common/js/ckeditor/entando-ckeditor_config.js',
 								//EntandoLinkActionPath: CKEDITOR.basePath+"/jAPS/saved-japslink.html"
-								EntandoLinkActionPath: "<wp:info key="systemParam" paramName="applicationBaseURL" />do/jacms/Content/Hypertext/entandoInternalLink.action",
+								EntandoLinkActionPath: "<s:url namespace="/do/jacms/Content/Hypertext" action="entandoInternalLink"><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>",
 								language: '<s:property value="locale" />',
 								<s:if test="#myClient == 'advanced'">
 									width: "640px"

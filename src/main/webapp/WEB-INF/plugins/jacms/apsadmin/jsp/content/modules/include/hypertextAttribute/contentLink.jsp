@@ -11,6 +11,7 @@
 	<wpsf:hidden name="lastOrder" />
 	<wpsf:hidden name="activeTab" value="2" />
 	<wpsf:hidden name="internalActionName" value="search" />
+	<wpsf:hidden name="contentOnSessionMarker" />
 </p>
 
 <p><label for="text"><s:text name="label.search.by"/>&#32;<s:text name="label.description"/>:</label><br />
@@ -53,6 +54,7 @@
 	<wpsf:hidden name="contentIdToken" />
 	<wpsf:hidden name="activeTab" value="2" />
 	<wpsf:hidden name="internalActionName" value="search" />
+	<wpsf:hidden name="contentOnSessionMarker" />
 </p>
 
 <wpsa:subset source="contents" count="10" objectName="groupContent" advanced="true" offset="5">

@@ -5,6 +5,7 @@
 
 <div id="divPageLink" class="tab">
 <form id="form_pageLink">
+<input type="hidden" name="contentOnSessionMarker" value="<s:property value="contentOnSessionMarker" />" />
 <p><s:text name="note.choosePageToLink" />.</p>
 <ul id="pageTree">
 	<s:set name="inputFieldName" value="'selectedNode'" />

@@ -55,6 +55,7 @@
 <p class="noscreen">
 	<wpsf:hidden name="strutsAction" />
 	<wpsf:hidden name="resourceTypeCode" />
+	<wpsf:hidden name="contentOnSessionMarker" />
 <s:iterator value="categoryCodes" id="categoryCode" status="rowstatus">
 <input type="hidden" name="categoryCodes" value="<s:property value="#categoryCode" />" id="categoryCodes-<s:property value="#rowstatus.index" />"/>
 </s:iterator>

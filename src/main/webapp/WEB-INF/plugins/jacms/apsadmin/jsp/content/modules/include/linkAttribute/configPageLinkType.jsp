@@ -12,6 +12,7 @@
 </p>
 
 <s:form cssClass="action-form">
+<wpsf:hidden name="contentOnSessionMarker" />
 <s:if test="hasFieldErrors()">
 	<div class="message message_error">
 	<h4><s:text name="message.title.FieldErrors" /></h4>

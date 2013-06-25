@@ -36,6 +36,7 @@
 <s:if test="#categoryTreeStyleVar == 'request'">
 <s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar"><wpsf:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"></wpsf:hidden></s:iterator>
 </s:if>
+<wpsf:hidden name="contentOnSessionMarker" />
 </p>
 <p>
 	<label for="text" class="basic-mint-label label-search"><s:text name="label.search.by"/>&#32;<s:text name="label.description"/>:</label>
@@ -88,7 +89,7 @@
 <div class="subsection-light">
 <s:if test="onEditContent">
 	<wp:ifauthorized permission="manageResources">
-		<p class="rightText"><a href="<s:url action="new" ><s:param name="resourceTypeCode" >Image</s:param></s:url>" class="object-new" title="<s:text name="label.new" />&#32;<s:text name="label.resource" />"><img src="<wp:resourceURL />administration/common/img/icons/22x22/general-new.png" alt=" " /><span><s:text name="label.new" />&#32;<s:text name="label.resource" /></span></a></p>
+		<p class="rightText"><a href="<s:url action="new" ><s:param name="resourceTypeCode" >Image</s:param><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>" class="object-new" title="<s:text name="label.new" />&#32;<s:text name="label.resource" />"><img src="<wp:resourceURL />administration/common/img/icons/22x22/general-new.png" alt=" " /><span><s:text name="label.new" />&#32;<s:text name="label.resource" /></span></a></p>
 	</wp:ifauthorized>
 </s:if>
 <s:form action="search">
@@ -101,6 +102,7 @@
 <s:if test="#categoryTreeStyleVar == 'request'">
 	<s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar"><wpsf:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"></wpsf:hidden></s:iterator>
 </s:if>
+	<wpsf:hidden name="contentOnSessionMarker" />
 </p>
 
 <wpsa:subset source="resources" count="10" objectName="groupResource" advanced="true" offset="5" >
@@ -134,7 +136,7 @@
 			<dt class="image">
 				<div class="image-centering">
 				<s:if test="onEditContent">
-					<s:url var="URLjoinResource" action="joinResource" namespace="/do/jacms/Content/Resource"><s:param name="resourceId" value="%{#resourceid}" /></s:url>
+					<s:url var="URLjoinResource" action="joinResource" namespace="/do/jacms/Content/Resource"><s:param name="resourceId" value="%{#resourceid}" /><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>
 					<a href="<s:property value="#URLjoinResource" />" class="noborder" title="<s:text name="note.joinThisToThat" />: <s:property value="content.descr" />" ><img src="<s:property value="%{#resource.getImagePath(1)}"/>" alt=" " /></a>
 				</s:if>
 				<s:else>

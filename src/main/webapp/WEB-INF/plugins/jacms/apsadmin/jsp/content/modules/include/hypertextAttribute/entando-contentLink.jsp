@@ -10,6 +10,7 @@
 			<wpsf:hidden name="lastOrder" />
 			<wpsf:hidden name="activeTab" value="2" />
 			<wpsf:hidden name="internalActionName" value="entandoSearch" />
+			<wpsf:hidden name="contentOnSessionMarker" />
 		</p>
 
 		<p>
@@ -54,6 +55,7 @@
 			<wpsf:hidden name="contentIdToken" />
 			<wpsf:hidden name="activeTab" value="2" />
 			<wpsf:hidden name="internalActionName" value="entandoSearch" />
+			<wpsf:hidden name="contentOnSessionMarker" />
 		</p>
 
 		<wpsa:subset source="contents" count="10" objectName="groupContent" advanced="true" offset="5">

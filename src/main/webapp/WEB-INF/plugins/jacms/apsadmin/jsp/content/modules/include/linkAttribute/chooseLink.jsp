@@ -7,6 +7,7 @@
 <s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/linkAttribute/linkAttributeConfigReminder.jsp"/>
 
 <s:form action="configLink">
+<wpsf:hidden name="contentOnSessionMarker" />
 <s:if test="hasFieldErrors()">
 	<div class="message message_error">
 	<h4><s:text name="message.title.FieldErrors" /></h4>	

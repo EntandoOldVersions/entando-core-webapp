@@ -63,6 +63,7 @@
 <p class="noscreen">
 	<wpsf:hidden name="lastGroupBy" />
 	<wpsf:hidden name="lastOrder" />
+	<wpsf:hidden name="contentOnSessionMarker" />
 </p>
 <s:if test="%{getContents().size() > 0}">
 <table class="generic" summary="<s:text name="note.content.linkAttribute.summary" />">

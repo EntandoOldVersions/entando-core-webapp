@@ -228,6 +228,7 @@
 				<div id="linkForm" class="tab-container">
 					<!-- URL Link -->
 					<form id="form_externalURL">
+						<input type="hidden" name="contentOnSessionMarker" value="<s:property value="contentOnSessionMarker" />" />
 					<div id="divURLLink" class="tab">
 					<h3 class="noscreen"><s:text name="note.URLLinkTo" /></h3>
 					<p>

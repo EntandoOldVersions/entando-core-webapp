@@ -34,6 +34,7 @@
 <s:if test="#categoryTreeStyleVar == 'request'">
 <s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar"><wpsf:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"></wpsf:hidden></s:iterator>
 </s:if>
+<wpsf:hidden name="contentOnSessionMarker" />
 </p>
 <p>
 	<label for="text" class="basic-mint-label label-search"><s:text name="label.search.by"/>&#32;<s:text name="label.description"/>:</label>
@@ -86,7 +87,7 @@
 <div class="subsection-light">
 <s:if test="onEditContent">
 	<wp:ifauthorized permission="manageResources">
-		<p class="rightText"><a href="<s:url action="new" ><s:param name="resourceTypeCode" >Attach</s:param></s:url>" class="object-new" title="<s:text name="label.new" />&#32;<s:text name="label.resource" />"><img src="<wp:resourceURL />administration/common/img/icons/32x32/general-new.png" alt=" " /><s:text name="label.new" />&#32;<s:text name="label.resource" /></a></p>
+		<p class="rightText"><a href="<s:url action="new" ><s:param name="resourceTypeCode" >Attach</s:param><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>" class="object-new" title="<s:text name="label.new" />&#32;<s:text name="label.resource" />"><img src="<wp:resourceURL />administration/common/img/icons/32x32/general-new.png" alt=" " /><s:text name="label.new" />&#32;<s:text name="label.resource" /></a></p>
 	</wp:ifauthorized>
 </s:if>
 <s:form action="search">
@@ -99,6 +100,7 @@
 <s:if test="#categoryTreeStyleVar == 'request'">
 	<s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar"><wpsf:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"></wpsf:hidden></s:iterator>
 </s:if>
+	<wpsf:hidden name="contentOnSessionMarker" />
 </p>
 
 <wpsa:subset source="resources" count="10" objectName="groupResource" advanced="true" offset="5">
@@ -125,6 +127,7 @@
 			<s:if test="onEditContent">
 				<a  class="noborder" href="<s:url action="joinResource" namespace="/do/jacms/Content/Resource">
 						<s:param name="resourceId" value="%{#resourceid}" />
+						<s:param name="contentOnSessionMarker" value="contentOnSessionMarker" />
 					</s:url>" title="<s:text name="note.joinThisToThat" />: <s:property value="content.descr" />" >
 					<img src="<wp:resourceURL/>administration/common/img/icons/resourceTypes/<s:property value="%{getIconFile(#resourceInstance.fileName)}"/>" alt="<s:property value="%{#resourceInstance.fileName}"/>" title="<s:text name="note.joinThisToThat" />: <s:property value="content.descr" />" /><s:if test='#myClient == "normal"'><br /><s:property value="%{#resourceInstance.fileLength}"/></s:if></a>
 			</s:if>
