@@ -89,6 +89,7 @@
 		<s:param name="lastGroupBy"><s:property value="lastGroupBy"/></s:param>
 		<s:param name="lastOrder"><s:property value="lastOrder"/></s:param>
 		<s:param name="groupBy">descr</s:param>
+		<s:param name="contentOnSessionMarker" value="contentOnSessionMarker" />
 	</s:url>
 "><s:text name="label.description" /></a></th>
 	<th><a href="
@@ -111,6 +112,7 @@
 		<s:param name="lastGroupBy"><s:property value="lastGroupBy"/></s:param>
 		<s:param name="lastOrder"><s:property value="lastOrder"/></s:param>
 		<s:param name="groupBy">code</s:param>
+		<s:param name="contentOnSessionMarker" value="contentOnSessionMarker" />
 	</s:url>
 "><s:text name="label.code" /></a></th>
 	<th><s:text name="label.group" /></th>
@@ -134,6 +136,7 @@
 		<s:param name="lastGroupBy"><s:property value="lastGroupBy"/></s:param>
 		<s:param name="lastOrder"><s:property value="lastOrder"/></s:param>
 		<s:param name="groupBy">created</s:param>
+		<s:param name="contentOnSessionMarker" value="contentOnSessionMarker" />
 	</s:url>
 "><s:text name="label.creationDate" /></a></th>
 	<th><a href="
@@ -156,6 +159,7 @@
 		<s:param name="lastGroupBy"><s:property value="lastGroupBy"/></s:param>
 		<s:param name="lastOrder"><s:property value="lastOrder"/></s:param>
 		<s:param name="groupBy">lastModified</s:param>
+		<s:param name="contentOnSessionMarker" value="contentOnSessionMarker" />
 	</s:url>
 "><s:text name="label.lastEdit" /></a></th>
 </tr>

@@ -12,7 +12,7 @@
 </p>
 
 <s:form cssClass="action-form">
-<wpsf:hidden name="contentOnSessionMarker" />
+	
 <s:if test="hasFieldErrors()">
 	<div class="message message_error">
 	<h4><s:text name="message.title.FieldErrors" /></h4>
@@ -27,6 +27,7 @@
 </s:if>
 
 <p class="noscreen">
+	<wpsf:hidden name="contentOnSessionMarker" />
 	<s:if test="contentId == null">
 		<wpsf:hidden name="linkType" value="2"/>
 	</s:if>
