@@ -49,7 +49,7 @@
 	<div class="col-sm-9">
 		<p class="pull-right visible-sm">
 			<a href="#sidebar" class="btn btn-info btn-offcanvas" data-toggle="offcanvas">
-				<span class="icon icon-list-ul"></span>
+				<span class="icon icon-ellipsis-horizontal"></span>
 			</a></p>
 		<tiles:insertAttribute name="body"/>
 	</div>
