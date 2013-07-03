@@ -136,8 +136,7 @@
 			<dt class="image">
 				<div class="image-centering">
 				<s:if test="onEditContent">
-					<s:url var="URLjoinResource" action="joinResource" namespace="/do/jacms/Content/Resource"><s:param name="resourceId" value="%{#resourceid}" /><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>
-					<a href="<s:property value="#URLjoinResource" />" class="noborder" title="<s:text name="note.joinThisToThat" />: <s:property value="content.descr" />" ><img src="<s:property value="%{#resource.getImagePath(1)}"/>" alt=" " /></a>
+					<a href="<s:url action="joinResource" namespace="/do/jacms/Content/Resource"><s:param name="resourceId" value="%{#resourceid}" /><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>" class="noborder" title="<s:text name="note.joinThisToThat" />: <s:property value="content.descr" />" ><img src="<s:property value="%{#resource.getImagePath(1)}"/>" alt=" " /></a>
 				</s:if>
 				<s:else>
 					<img src="<s:property value="%{#resource.getImagePath(1)}"/>" alt=" " />
