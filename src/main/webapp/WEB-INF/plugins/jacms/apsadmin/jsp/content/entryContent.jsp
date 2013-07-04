@@ -198,6 +198,12 @@
 </p>
 </s:elseif>
 
+<s:elseif test="#attribute.type == 'Timestamp'">
+<!-- ############# ATTRIBUTO Timestamp ############# -->
+<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/timestampAttribute.jsp" />
+</p>
+</s:elseif>
+
 <s:elseif test="#attribute.type == 'Link'">
 <!-- ############# ATTRIBUTO Link ############# -->
 <s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/linkAttribute.jsp" />
