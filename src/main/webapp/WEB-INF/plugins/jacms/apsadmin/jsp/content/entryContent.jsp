@@ -1,4 +1,4 @@
-<%@ taglib prefix="s" uri="/struts-tags" %>
+%<@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/aps-core" prefix="wp" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
@@ -138,7 +138,7 @@
 	</s:elseif>
 
 	<s:elseif test="#attribute.type == 'Timestamp'">
-	<!-- ############# ATTRIBUTO Date ############# -->
+	<!-- ############# ATTRIBUTO Timestamp ############# -->
 	<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/timestampAttribute.jsp" />
 	</p>
 	</s:elseif>
