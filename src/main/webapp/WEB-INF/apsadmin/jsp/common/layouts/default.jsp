@@ -22,6 +22,10 @@
   <script src="<wp:resourceURL />administration/js/respond.min.js"></script>
 <![endif]-->
 
+	<script src="<wp:resourceURL />administration/js/jquery-1.9.1.min.js"></script>
+	<script src="<wp:resourceURL />administration/bootstrap/js/bootstrap.js"></script>
+	<script src="<wp:resourceURL />administration/js/bootstrap-offcanvas.js"></script>
+
 	<style>
 		body {
 			padding-top: 60px;
@@ -71,13 +75,6 @@
 </div>
 
 </div>
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="<wp:resourceURL />administration/js/jquery-1.9.1.min.js"></script>
-<script src="<wp:resourceURL />administration/bootstrap/js/bootstrap.js"></script>
-<script src="<wp:resourceURL />administration/js/bootstrap-offcanvas.js"></script>
 
 </body>
 </html>

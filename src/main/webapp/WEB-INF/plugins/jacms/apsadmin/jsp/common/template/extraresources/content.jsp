@@ -1,3 +1,11 @@
+<script>
+$(function() {
+	$('#label').popover();
+});
+</script>
+
+<%-- TEMPORARILY COMMENTED OUT EVERYTHING
+
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
@@ -53,7 +61,7 @@ window.addEvent('domready', function(){
 
 //per attributo Date
 <s:iterator value="content.attributeList" id="attribute">
-<%-- INIZIALIZZAZIONE TRACCIATORE --%>
+<%-- INIZIALIZZAZIONE TRACCIATORE --
 
 <wpsa:tracerFactory var="attributeTracer" lang="%{#lang.code}" />
 
@@ -132,7 +140,7 @@ window.addEvent('domready', function() { myCal_<s:property value="%{#attributeTr
 
 	<s:iterator value="langs" var="lang">
 		<s:iterator value="content.attributeList" var="attribute">
-		<%-- INIZIALIZZAZIONE TRACCIATORE --%>
+		<%-- INIZIALIZZAZIONE TRACCIATORE --
 		<wpsa:tracerFactory var="attributeTracer" lang="%{#lang.code}" />
 
 		<s:if test="#attribute.type == 'Hypertext'">
@@ -328,3 +336,5 @@ window.addEvent('domready', function(){
 	<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
 </s:iterator>
 </wpsa:hookPoint>
+
+--%>

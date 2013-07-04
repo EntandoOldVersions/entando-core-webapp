@@ -1,7 +1,6 @@
-%<@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/aps-core" prefix="wp" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
-<%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 <s:set var="targetNS" value="%{'/do/jacms/Content'}" />
 <h1 class="well well-small title-page"><s:text name="jacms.menu.contentAdmin" />&#32;/&#32;<s:text name="label.new" /></h1>
 <%-- TODO new | edit --%>
@@ -33,7 +32,7 @@
 <s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/include/snippet-content.jsp" />
 
 <p class="noscreen">
-	<wpsf:hidden name="contentOnSessionMarker" />
+	<s:hidden name="contentOnSessionMarker" />
 </p>
 
 <!-- START CICLO LINGUA -->
@@ -49,7 +48,7 @@
 
 	<!-- START CICLO ATTRIBUTI -->
 	<s:iterator value="content.attributeList" var="attribute">
-	<div class="contentAttributeBox contentAttribute-<s:property value="#attribute.type" />" id="<s:property value="%{'contentedit_'+#lang.code+'_'+#attribute.name}" />">
+	<div class="margin-base-vertical" id="<s:property value="%{'contentedit_'+#lang.code+'_'+#attribute.name}" />">
 	<%-- INIZIALIZZAZIONE TRACCIATORE --%> 
 	<wpsa:tracerFactory var="attributeTracer" lang="%{#lang.code}" />
 
@@ -68,7 +67,7 @@
 	</s:elseif>
 	<s:elseif test="#attribute.type == 'Monotext' || #attribute.type == 'Text' || #attribute.type == 'Longtext' || #attribute.type == 'Hypertext' || #attribute.type == 'Attach' || #attribute.type == 'Number' || #attribute.type == 'Date' || #attribute.type == 'Timestamp' || #attribute.type == 'Link' || #attribute.type == 'Enumerator'">
 	<p>
-		<label for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />" class="basic-mint-label"><span class="attribute-main-label"><s:property value="#attributeLabelVar" /></span><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" />:</label>
+		<label for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />"><s:property value="#attributeLabelVar" />&#32;<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" /></label>
 	</s:elseif>
 
 	<s:if test="#attribute.type == 'Monotext'">
@@ -186,17 +185,17 @@
 	<wpsa:actionParam action="preview" var="previewActionName" >
 		<wpsa:actionSubParam name="%{'jacmsPreviewActionLangCode_' + #lang.code}" value="%{#lang.code}" />
 	</wpsa:actionParam>
-	<div class="centerText margin-more-top">
+	<div class="margin-base-vertical">
 	<s:if test="!#showingPageSelectItems.isEmpty()">
 		<s:set var="previewActionPageCodeLabelId">jacmsPreviewActionPageCode_<s:property value="#lang.code" /></s:set>
-		<p><label for="<s:property value="#previewActionPageCodeLabelId" />"><s:text name="name.preview.page" /></label>: 
-		<wpsf:select useTabindexAutoIncrement="true" name="%{'jacmsPreviewActionPageCode_' + #lang.code}" id="%{#previewActionPageCodeLabelId}" list="#showingPageSelectItems" listKey="key" listValue="value" />
-		<%-- <wpsf:select useTabindexAutoIncrement="true" name="jacmsPreviewActionPageCode" id="%{#previewActionPageCodeLabelId}" list="#showingPageSelectItems" listKey="key" listValue="value" /></p>  --%>
-		<wpsf:submit useTabindexAutoIncrement="true" cssClass="button" action="%{#previewActionName}" value="%{getText('label.preview')}" title="%{getText('note.button.previewContent')}" /></p>
+		<p><label for="<s:property value="#previewActionPageCodeLabelId" />"><s:text name="name.preview.page" /></label>
+		<s:select useTabindexAutoIncrement="true" name="%{'jacmsPreviewActionPageCode_' + #lang.code}" id="%{#previewActionPageCodeLabelId}" list="#showingPageSelectItems" listKey="key" listValue="value" />
+		<%-- <s:select useTabindexAutoIncrement="true" name="jacmsPreviewActionPageCode" id="%{#previewActionPageCodeLabelId}" list="#showingPageSelectItems" listKey="key" listValue="value" /></p>  --%>
+		<s:submit useTabindexAutoIncrement="true" cssClass="button" action="%{#previewActionName}" value="%{getText('label.preview')}" title="%{getText('note.button.previewContent')}" /></p>
 	</s:if>
 	<s:else>
 		<p><s:text name="label.preview.noPreviewPages" /></p>
-		<p><wpsf:submit useTabindexAutoIncrement="true" cssClass="button" disabled="true" action="%{#previewActionName}" value="%{getText('label.preview')}" title="%{getText('note.button.previewContent')}" /></p>	
+		<p><s:submit useTabindexAutoIncrement="true" cssClass="button" disabled="true" action="%{#previewActionName}" value="%{getText('label.preview')}" title="%{getText('note.button.previewContent')}" /></p>	
 	</s:else>
 	</div>
 
@@ -213,8 +212,8 @@
 <fieldset class="margin-bit-top"><legend><s:text name="label.info" /></legend>
 
 <p>
-<label for="status" class="basic-mint-label"><s:text name="label.state" />:</label>
-<wpsf:select useTabindexAutoIncrement="true" name="status" id="status" list="avalaibleStatus" value="%{content.status}" cssClass="text" listKey="key" listValue="%{getText(value)}" />
+<label for="status" class="basic-mint-label"><s:text name="label.state" /></label>
+<s:select useTabindexAutoIncrement="true" name="status" id="status" list="avalaibleStatus" value="%{content.status}" cssClass="text" listKey="key" listValue="%{getText(value)}" />
 </p>
 </fieldset>
 <div class="subsection">
@@ -228,16 +227,16 @@
 		<wpsa:actionParam action="removeGroup" var="actionName" >
 			<wpsa:actionSubParam name="extraGroupName" value="%{#groupName}" />
 		</wpsa:actionParam>
-		<wpsf:submit useTabindexAutoIncrement="true" action="%{#actionName}" type="image" src="%{#removeIcon}" value="%{getText('label.remove')}" title="%{getText('label.remove')}" />: <s:property value="%{getGroupsMap()[#groupName].getDescr()}"/> 
+		<s:submit useTabindexAutoIncrement="true" action="%{#actionName}" type="image" src="%{#removeIcon}" value="%{getText('label.remove')}" title="%{getText('label.remove')}" />: <s:property value="%{getGroupsMap()[#groupName].getDescr()}"/> 
 	</li>
 </s:iterator>
 </ul>
 </s:if>
 <p>
-	<label for="extraGroups" class="basic-mint-label"><s:text name="label.join" />&#32;<s:text name="label.group" />:</label>
-	<wpsf:select useTabindexAutoIncrement="true" name="extraGroupName" id="extraGroups" list="groups" 
+	<label for="extraGroups" class="basic-mint-label"><s:text name="label.join" />&#32;<s:text name="label.group" /></label>
+	<s:select useTabindexAutoIncrement="true" name="extraGroupName" id="extraGroups" list="groups" 
 		listKey="name" listValue="descr" cssClass="text" />
-	<wpsf:submit useTabindexAutoIncrement="true" action="joinGroup" value="%{getText('label.join')}" cssClass="button" />
+	<s:submit useTabindexAutoIncrement="true" action="joinGroup" value="%{getText('label.join')}" cssClass="button" />
 </p>
 </fieldset>
 <!-- FINE BLOCCO SELEZIONE GRUPPI SUPPLEMENTARI ABILITATI ALLA VISUALIZZAZIONE -->

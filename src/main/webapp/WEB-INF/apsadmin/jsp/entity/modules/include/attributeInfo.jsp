@@ -19,3 +19,5 @@
 		<span class="attribute-meta-tip-info"></span>
 	</s:if>
 	</span><span class="monospace js_noscreen">]</span></s:if> 
+
+<a id="label" href="#" class="btn btn-default" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="" data-original-title="Popover on bottom">Popover on bottom</a>
