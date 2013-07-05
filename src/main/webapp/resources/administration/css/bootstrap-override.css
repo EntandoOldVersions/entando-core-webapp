@@ -6,3 +6,13 @@
 	font-size: 18px; /* like Bootstrap .h4 */
 	text-transform: uppercase;
 }
+
+.popover-content {
+	font-weight: normal;
+}
+
+/* Font Awesome */
+.popover-content .icons-ul {
+	margin-left: 0;
+	-webkit-padding-start: 20px;
+}
