@@ -3,10 +3,8 @@
 
 <div class="row">
 	<div class="input-group col-12 col-sm-4 margin-small-vertical">
-		<select name="state">
-			<option>Draft</option>
-			<option>Ready</option>
-		</select>
+		<label for="status" class="noscreen"><s:text name="label.state" /></label>
+		<s:select name="status" id="status" list="avalaibleStatus" value="%{content.status}" listKey="key" listValue="%{getText(value)}" />
 		<span class="input-group-btn">
 			<s:submit action="save" type="button" cssClass="btn btn-default" title="%{getText('note.button.saveContent')}">
 				<span class="icon icon-save"></span>

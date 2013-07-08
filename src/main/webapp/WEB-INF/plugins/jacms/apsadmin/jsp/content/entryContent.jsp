@@ -209,13 +209,7 @@
 
 <div id="info" class="tab">
 <h3 class="js_noscreen"><s:text name="title.contentInfo" /> <a href="#quickmenu" id="info_content_goBackToQuickMenu" title="<s:text name="note.goBackToQuickMenu" />"><span class="icon icon-circle-arrow-up"></span></a></h3>
-<fieldset class="margin-bit-top"><legend><s:text name="label.info" /></legend>
 
-<p>
-<label for="status" class="basic-mint-label"><s:text name="label.state" /></label>
-<s:select useTabindexAutoIncrement="true" name="status" id="status" list="avalaibleStatus" value="%{content.status}" cssClass="text" listKey="key" listValue="%{getText(value)}" />
-</p>
-</fieldset>
 <div class="subsection">
 <!--  INIZIO BLOCCO SELEZIONE GRUPPI SUPPLEMENTARI ABILITATI ALLA VISUALIZZAZIONE -->
 <fieldset>
