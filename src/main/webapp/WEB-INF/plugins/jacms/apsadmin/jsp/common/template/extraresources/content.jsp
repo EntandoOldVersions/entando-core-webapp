@@ -1,6 +1,6 @@
 <script>
 $(function() {
-	$('#label').popover();
+	$('[data-toggle="popover"	]').popover();
 });
 </script>
 
