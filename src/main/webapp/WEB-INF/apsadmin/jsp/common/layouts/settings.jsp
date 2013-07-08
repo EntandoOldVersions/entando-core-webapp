@@ -8,31 +8,48 @@
 <html lang="<s:property value="currentLang.code" />">
 <head>
 
-	<title>Entando - <s:set name="documentTitle"><tiles:getAsString name="title"/></s:set><s:property value="%{getText(#documentTitle)}" escape="false" /></title>
+		<title>Entando - <s:set name="documentTitle"><tiles:getAsString name="title"/></s:set><s:property value="%{getText(#documentTitle)}" escape="false" /></title>
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link rel="stylesheet" href="<wp:resourceURL />administration/bootstrap/css/bootstrap.min.css" media="screen" />
+		<link rel="stylesheet" href="<wp:resourceURL />administration/bootstrap/css/bootstrap.min.css" media="screen" />
+		<link rel="stylesheet" href="<wp:resourceURL />administration/css/bootstrap-override.css" media="screen" />
+		<link rel="stylesheet" href="<wp:resourceURL />administration/css/bootstrap-offcanvas.css" media="screen" />
 
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-  <script src="<wp:resourceURL />administration/js/html5shiv.js"></script>
-  <script src="<wp:resourceURL />administration/js/respond.min.js"></script>
-<![endif]-->
-	<!-- QUA' FUORI LE COSE COMUNI. DENTRO L'EXTRA LE DIFFERENZE -->
-	<tiles:insertAttribute name="extraResources"/>
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	  <script src="<wp:resourceURL />administration/js/html5shiv.js"></script>
+	  <script src="<wp:resourceURL />administration/js/respond.min.js"></script>
+	<![endif]-->
+
+		<script src="<wp:resourceURL />administration/js/jquery-1.9.1.min.js"></script>
+		<script src="<wp:resourceURL />administration/bootstrap/js/bootstrap.js"></script>
+		<script src="<wp:resourceURL />administration/js/bootstrap-offcanvas.js"></script>
+
+		<style>
+			body {
+				padding-top: 60px;
+			}
+		</style>
+
+		<!-- QUA' FUORI LE COSE COMUNI. DENTRO L'EXTRA LE DIFFERENZE -->
+		<tiles:insertAttribute name="extraResources"/>
 
 </head>
 <body>
 
-<div id="topbar">
-<tiles:insertAttribute name="topbar"/>
-</div>
-
-<div id="header" class="clear">
-<h1 class="noscreen" id="fagiano_start"><s:text name="title.mainFunctions" /></h1>
 <tiles:insertAttribute name="header"/>
-</div>
+
+<div class="container">
+
+<%--
+	<tiles:insertAttribute name="shortcuts-quickbar"/>
+--%>
+
+<%--
+	<h1 id="fagiano_start"><s:text name="title.mainFunctions" /></h1>
+--%>
+
 <div id="corpo">
 	<div id="colonna1">
 	</div>
@@ -48,11 +65,7 @@
 <tiles:insertAttribute name="footer"/>
 </div>
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="<wp:resourceURL />administration/js/jquery-1.9.1.min.js"></script>
-<script src="<wp:resourceURL />administration/bootstrap/js/bootstrap.js"></script>
+</div>
 
 </body>
 </html>
