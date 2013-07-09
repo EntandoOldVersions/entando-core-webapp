@@ -28,13 +28,19 @@
 		<label class="control-label" for="contentMainGroup"><s:text name="label.ownerGroup" /></label>
 		<div class="controls">
 			<div class="input-group">
+				<s:set name="lockGroupSelectVar" value="%{content.id != null || content.mainGroup != null}" />
+				<s:select name="mainGroup" id="contentMainGroup" list="allowedGroups" value="content.mainGroup" 
+					listKey="name" listValue="descr" disabled="%{#lockGroupSelectVar}" cssClass="input-with-feedback" />
+				<%--
 				<select class="input-with-feedback" id="contentMainGroup">
 					<option>free</option>
 					<option>a different group</option>
 					<option>why not this other</option>
 				</select>
+				--%>
 				<span class="input-group-btn">
-					<button class="btn btn-warning" type="button">Set Group</button>
+					<s:submit action="configureMainGroup" type="button" value="Set Group" title="Set Group" cssClass="btn btn-warning" />
+					<%-- <button  class="btn btn-warning" type="button">Set Group</button> --%>
 				</span>
 			</div>
 			<span class="help-block"><span class="icon icon-info-sign"></span>&#32;You should set the owner group right now, or I won't be able to know who can see this content.</span>

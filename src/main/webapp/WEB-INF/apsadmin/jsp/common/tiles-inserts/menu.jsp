@@ -90,7 +90,7 @@
 				<div id="submenu-contents" class="accordion-body collapse">
 					<ul class="accordion-inner nav nav-pills nav-stacked">
 						<li><a href="<s:url action="intro" namespace="/do/jacms/Content" />"><s:text name="jacms.menu.contentAdmin" /></a></li>
-						<li><a href="<s:url action="createNewVoid" namespace="/do/jacms/Content" />?contentTypeCode=CNG&amp;contentMainGroup=free&amp;contentDescription=lorem+ipsum+description">New Generic Content</a></li>
+						<li><a href="<s:url action="createNew" namespace="/do/jacms/Content" />?contentTypeCode=CNG">New Generic Content</a></li>
 						<wp:ifauthorized permission="superuser">
 						<li><a href="<s:url action="intro" namespace="/do/jacms/ContentModel" />"><s:text name="jacms.menu.contentModelAdmin" /></a></li>
 						<li><a href="<s:url action="initViewEntityTypes" namespace="/do/Entity"><s:param name="entityManagerName">jacmsContentManager</s:param></s:url>"><s:text name="jacms.menu.contentTypeAdmin" /></a></li>
