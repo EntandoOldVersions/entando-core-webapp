@@ -1,13 +1,29 @@
+<%@ taglib prefix="wp" uri="/aps-core" %>
+
 <script>
 $(function() {
 	$('[data-toggle="popover"	]').popover();
 });
 </script>
 
+<script src="<wp:resourceURL />administration/js/bootstrap-swapon.js"></script>
+
+<script>
+	//events captured when swapped, they are not necessary
+	jQuery(function(){
+		$('#swapme').on('swapon', function(ev, action) {
+			console.log('element #swapme doing...', action);
+		});
+
+		$('#swapto').on('swapon', function(ev, action) {
+			console.log('element #swapto ...', action);
+		});
+	})
+</script>
+
 <%-- TEMPORARILY COMMENTED OUT EVERYTHING
 
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 
 <s:include value="/WEB-INF/apsadmin/jsp/common/template/defaultExtraResources.jsp" />

@@ -8,15 +8,11 @@
 </s:if><span class="noscreen">.</span></p>
 --%>
 
-<div class="alert alert-info">
-
-<p>
-	<s:text name="note.workingOn" />: <s:if test="!#myNameIsJack"><a href="<s:url action="backToEntryContent" ><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>" title="<s:text name="note.content.backToEdit" />" ></s:if><s:property value="content.descrDisablingTemporarily" /><s:if test="!#myNameIsJack"></a></s:if>
-	<a href="#" class="alert-link"><span class="icon icon-edit"></span>&#32;Provide a description</a>, or I will use the title as a default. (<s:property value="content.typeDescr" />) <abbr title="<s:text name="name.version" />">v</abbr><s:property value="content.version" />&#32;<s:text name="note.lastEditor" />&#32;<wp:ifauthorized permission="superuser"><a href="<s:url action="edit" namespace="/do/User"><s:param name="username" value="content.lastEditor"/></s:url>" title="<s:text name="label.edit" />: <s:property value="content.lastEditor" />"></wp:ifauthorized><s:property value="content.lastEditor" /> you<%-- TODO content.lastEditor should be == current user if this is a new content --%><wp:ifauthorized permission="superuser"></a></wp:ifauthorized>
-	<s:if test="content.onLine">
-	<br /><s:text name="note.lastApprovedIntro" />&#32;<a href="<s:url action="inspect" namespace="/do/jacms/Content" ><s:param name="contentId" value="content.id" /><s:param name="currentPublicVersion" value="'true'" /></s:url>"><s:text name="note.lastApproved" /></a>
-	</s:if>.
-</p>
+		<div class="alert alert-danger">
+			<p><strong>Not working, needs Andrea :F</strong></p>
+			<a class="btn btn-default" id="swapme" href="#swapto" data-swapon="swapto">swap me</a>
+			<a class="btn btn-default" style="display: none;" id="swapto" href="#swapme" data-swapon="swapme">swapped to. click to swap me back</a>
+		</div>
 
 <%--
 <p>
