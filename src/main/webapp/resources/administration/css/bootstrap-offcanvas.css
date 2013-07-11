@@ -41,19 +41,19 @@
 @media screen and (min-width: 320px) and (max-width: 480px) {
 
   .row-offcanvas-right .sidebar-offcanvas {
-    right: -270px; /* 60px * 4.5 = average iPhones and Android phones */
+    right: -246px; /* 60px * 4.5 - adjustment for this implementation = average iPhones and Android phones */
   }
   .row-offcanvas-left .sidebar-offcanvas {
-    left: -270px; /* 60px * 4.5 = average iPhones and Android phones */
+    left: -246px; /* 60px * 4.5 - adjustment for this implementation = average iPhones and Android phones */
   }
   .row-offcanvas-right.active {
-    right: 270px; /* 60px * 4.5 = average iPhones and Android phones */
+    right: 246px; /* 60px * 4.5 - adjustment for this implementation = average iPhones and Android phones */
   }
   .row-offcanvas-left.active {
-    left: 270px; /* 60px * 4.5 = average iPhones and Android phones */
+    left: 246px; /* 60px * 4.5 - adjustment for this implementation = average iPhones and Android phones */
   }
   .sidebar-offcanvas {
-    width: 270px; /* 60px * 4.5 = average iPhones and Android phones */
+    width: 246px; /* 60px * 4.5 - adjustment for this implementation = average iPhones and Android phones */
   }
 
 }
