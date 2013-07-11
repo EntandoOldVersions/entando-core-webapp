@@ -26,12 +26,6 @@
 	<script src="<wp:resourceURL />administration/bootstrap/js/bootstrap.js"></script>
 	<script src="<wp:resourceURL />administration/js/bootstrap-offcanvas.js"></script>
 
-	<style>
-		body {
-			/* padding-top: 60px; */
-		}
-	</style>
-
 	<!-- QUA' FUORI LE COSE COMUNI. DENTRO L'EXTRA LE DIFFERENZE -->
 	<tiles:insertAttribute name="extraResources"/>
 
