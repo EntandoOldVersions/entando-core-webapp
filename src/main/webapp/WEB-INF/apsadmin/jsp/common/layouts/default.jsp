@@ -90,7 +90,7 @@
 		</nav>
 	</div>
 	<div class="col-sm-9 col-pull-3">
-		<div class="navbar navbar-static-top navbar-inverse">
+		<div class="navbar navbar-static-top" id="navbar">
 			<div class="container">
 				<a href="#sidebar" class="btn-offcanvas navbar-toggle pull-right visible-sm" data-toggle="offcanvas">
 						<!-- <span class="icon icon-ellipsis-horizontal"></span> -->
