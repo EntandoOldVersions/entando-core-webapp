@@ -98,7 +98,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 				</a>
-				<a class="navbar-brand" href="#">Test</a>
+				<a class="navbar-brand" href="#">Entando</a>
 			</div>
 		</div>
 		<tiles:insertAttribute name="body"/>
