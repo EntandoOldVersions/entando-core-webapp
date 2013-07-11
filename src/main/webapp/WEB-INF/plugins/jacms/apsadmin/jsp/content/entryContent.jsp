@@ -92,7 +92,7 @@
 <!-- FINE BLOCCO SELEZIONE GRUPPI SUPPLEMENTARI ABILITATI ALLA VISUALIZZAZIONE -->
  
 <!-- INIZIO CATEGORIE -->
-<s:action name="showCategoryBlockOnEntryContent" namespace="/do/jacms/Content" executeResult="true"></s:action>
+<s:action name="showCategoryBlockOnEntryContent" namespace="/do/jacms/Content" executeResult="true"><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:action>
 <!-- FINE CATEGORIE -->
 </div>
 
