@@ -1,24 +1,20 @@
 <%@ taglib prefix="wp" uri="/aps-core" %>
 
+<script src="<wp:resourceURL />administration/js/bootstrap-swapon.js"></script>
 <script>
+//one domready to rule 'em all
 $(function() {
 	$('[data-toggle="popover"	]').popover();
-});
-</script>
 
-<script src="<wp:resourceURL />administration/js/bootstrap-swapon.js"></script>
-
-<script>
 	//events captured when swapped, they are not necessary
-	jQuery(function(){
-		$('#swapme').on('swapon', function(ev, action) {
-			console.log('element #swapme doing...', action);
-		});
+	$('#swapme').on('swapon', function(ev, action) {
+		console.log('element #swapme doing...', action);
+	});
 
-		$('#swapto').on('swapon', function(ev, action) {
-			console.log('element #swapto ...', action);
-		});
-	})
+	$('#swapto').on('swapon', function(ev, action) {
+		console.log('element #swapto ...', action);
+	});
+});
 </script>
 
 <%-- TEMPORARILY COMMENTED OUT EVERYTHING
