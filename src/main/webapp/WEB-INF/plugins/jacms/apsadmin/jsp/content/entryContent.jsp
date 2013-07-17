@@ -181,7 +181,7 @@
 	<!-- END CICLO ATTRIBUTI -->
 
 	<s:set var="showingPageSelectItems" value="showingPageSelectItems"></s:set>
-	<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/content-preview.png</s:set>	
+	<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/content-preview.png</s:set>
 	<wpsa:actionParam action="preview" var="previewActionName" >
 		<wpsa:actionSubParam name="%{'jacmsPreviewActionLangCode_' + #lang.code}" value="%{#lang.code}" />
 	</wpsa:actionParam>
@@ -195,7 +195,7 @@
 	</s:if>
 	<s:else>
 		<p><s:text name="label.preview.noPreviewPages" /></p>
-		<p><s:submit useTabindexAutoIncrement="true" cssClass="button" disabled="true" action="%{#previewActionName}" value="%{getText('label.preview')}" title="%{getText('note.button.previewContent')}" /></p>	
+		<p><s:submit useTabindexAutoIncrement="true" cssClass="button" disabled="true" action="%{#previewActionName}" value="%{getText('label.preview')}" title="%{getText('note.button.previewContent')}" /></p>
 	</s:else>
 	</div>
 
@@ -221,20 +221,20 @@
 		<wpsa:actionParam action="removeGroup" var="actionName" >
 			<wpsa:actionSubParam name="extraGroupName" value="%{#groupName}" />
 		</wpsa:actionParam>
-		<s:submit useTabindexAutoIncrement="true" action="%{#actionName}" type="image" src="%{#removeIcon}" value="%{getText('label.remove')}" title="%{getText('label.remove')}" />: <s:property value="%{getGroupsMap()[#groupName].getDescr()}"/> 
+		<s:submit useTabindexAutoIncrement="true" action="%{#actionName}" type="image" src="%{#removeIcon}" value="%{getText('label.remove')}" title="%{getText('label.remove')}" />: <s:property value="%{getGroupsMap()[#groupName].getDescr()}"/>
 	</li>
 </s:iterator>
 </ul>
 </s:if>
 <p>
 	<label for="extraGroups" class="basic-mint-label"><s:text name="label.join" />&#32;<s:text name="label.group" /></label>
-	<s:select useTabindexAutoIncrement="true" name="extraGroupName" id="extraGroups" list="groups" 
+	<s:select useTabindexAutoIncrement="true" name="extraGroupName" id="extraGroups" list="groups"
 		listKey="name" listValue="descr" cssClass="text" />
 	<s:submit useTabindexAutoIncrement="true" action="joinGroup" value="%{getText('label.join')}" cssClass="button" />
 </p>
 </fieldset>
 <!-- FINE BLOCCO SELEZIONE GRUPPI SUPPLEMENTARI ABILITATI ALLA VISUALIZZAZIONE -->
- 
+
 <!-- INIZIO CATEGORIE -->
 <s:action name="showCategoryBlockOnEntryContent" namespace="/do/jacms/Content" executeResult="true"><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:action>
 <!-- FINE CATEGORIE -->
