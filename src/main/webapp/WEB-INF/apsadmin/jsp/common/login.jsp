@@ -126,12 +126,7 @@
 						<label for="username" class="noscreen"><s:text name="label.username" /></label>
 						<div class="input-group">
 							<div class="input-group-addon"><span class="icon icon-user"></span></div>
-							<s:textfield 
-								name="username" 
-								id="username" 
-								cssClass="%{'input-large' + #inputErrorClassVar}" 
-								placeholder="%{getText('label.username')}" 
-								/>
+							<s:textfield name="username" id="username" cssClass="%{'input-large' + #inputErrorClassVar}" placeholder="%{getText('label.username')}" />
 						</div>
 					</div>
 					<s:if test="#usernameHasFieldErrorVar">
