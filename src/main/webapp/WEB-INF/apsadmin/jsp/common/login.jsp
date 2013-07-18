@@ -9,15 +9,22 @@
 
 	<title>Entando - Sign in</title>
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 	<link rel="stylesheet" href="<wp:resourceURL />administration/bootstrap/css/bootstrap.min.css" media="screen" />
 
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-  <script src="<wp:resourceURL />administration/js/html5shiv.js"></script>
-  <script src="<wp:resourceURL />administration/js/respond.min.js"></script>
-<![endif]-->
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="<wp:resourceURL />administration/js/html5shiv.js"></script>
+		<script src="<wp:resourceURL />administration/js/respond.min.js"></script>
+	<![endif]-->
+
+	<script src="<wp:resourceURL />administration/js/jquery-1.9.1.min.js"></script>
+	<script>
+		$(function(){
+			document.getElementById('username').focus();
+		});
+	</script>
 
 </head>
 <body>
@@ -119,7 +126,12 @@
 						<label for="username" class="noscreen"><s:text name="label.username" /></label>
 						<div class="input-group">
 							<div class="input-group-addon"><span class="icon icon-user"></span></div>
-							<s:textfield name="username" id="username" cssClass="%{'input-large' + #inputErrorClassVar}" placeholder="%{getText('label.username')}" />
+							<s:textfield 
+								name="username" 
+								id="username" 
+								cssClass="%{'input-large' + #inputErrorClassVar}" 
+								placeholder="%{getText('label.username')}" 
+								/>
 						</div>
 					</div>
 					<s:if test="#usernameHasFieldErrorVar">
