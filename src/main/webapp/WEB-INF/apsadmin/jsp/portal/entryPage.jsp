@@ -144,6 +144,13 @@
 
 </s:if>
 
+<wpsa:hookPoint key="core.entryPage" objectName="hookPointElements_core_entryPage">
+<s:iterator value="#hookPointElements_core_entryPage" var="hookPointElement">
+	<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
+</s:iterator>
+</wpsa:hookPoint>
+
+
 <p class="centerText"><wpsf:submit useTabindexAutoIncrement="true" value="%{getText('label.save')}" cssClass="button" /></p>
 </s:form>
 
