@@ -31,7 +31,7 @@
 <div id="actions-container">
 	<p class="buttons">
 		<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL />administration/common/img/icons/32x32/join-to-content.png</s:set>
-		<wpsf:submit useTabindexAutoIncrement="true" action="joinCategory" type="image" src="%{#iconImagePath}" value="%{getText('label.join')}" title="%{getText('label.join')}" />		
+		<wpsf:submit useTabindexAutoIncrement="true" action="joinCategory" type="image" src="%{#iconImagePath}" value="%{getText('label.join')}" title="%{getText('label.join')}" />
 	</p>
 </div>
 <s:set var="contentCategories" value="content.categories" />
@@ -40,7 +40,7 @@
 
 <table class="generic" summary="<s:text name="note.contentCategories.summary"/>: <s:property value="content.descr" />">
 <caption><span><s:text name="title.contentCategories.list"/></span></caption>
-<tr>	
+<tr>
 	<th><s:text name="label.category"/></th>
 	<th class="icon"><abbr title="<s:text name="label.remove" />">&ndash;</abbr></th>
 </tr>

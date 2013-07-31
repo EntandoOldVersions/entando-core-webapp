@@ -22,7 +22,7 @@ console.log("\n\n@nkjoep: please translate Mootoolsian --> jQuerian in /WEB-INF/
 					myInput.setStyle('position', 'absolute');
 					myInput.setStyle('left', '-9999px');
 				});
-			
+
 			var myActionMenu = currentForm.getElement('#actions-container p.buttons');
 				currentForm.getElement('#actions-container').dispose();
 				myActionMenu.setProperty('id','actions-menu');
@@ -36,8 +36,8 @@ console.log("\n\n@nkjoep: please translate Mootoolsian --> jQuerian in /WEB-INF/
 					 	risulta essere meno performante e pericoloso il replace:
 					 		var myActionButtonSrc = myActionButton.getProperty('src');
 							myActionButton.setProperty('src', myActionButtonSrc.replace('/32x32/','/16x16/'));
-							myActionButtonSrc = myActionButton.getProperty('src');		
-							myActionButton.setProperty('src', myActionButtonSrc.replace('/common/','/mint/')); 
+							myActionButtonSrc = myActionButton.getProperty('src');
+							myActionButton.setProperty('src', myActionButtonSrc.replace('/common/','/mint/'));
 					 */
 					//istazion path corrente
 					var currentPath;
@@ -57,7 +57,7 @@ console.log("\n\n@nkjoep: please translate Mootoolsian --> jQuerian in /WEB-INF/
 					//setto quello che ho trovato
 					myActionButton.setProperty('src', currentPath);
 				});
-			
+
 				var labels = currentForm.getElements("li.tree_node_flag label");
 				if (labels != null && labels.length > 0) {
 					for (var y = 0; y < labels.length;y++) {
@@ -74,7 +74,7 @@ console.log("\n\n@nkjoep: please translate Mootoolsian --> jQuerian in /WEB-INF/
 							myLabel.addEvent('click', function(e){
 								//e.stop();
 								var clickedLabel = this;
-								clickedLabel.set('morph', { duration: 'short' }); 
+								clickedLabel.set('morph', { duration: 'short' });
 								clickedLabel.morph('.highlight');
 								myActionMenu.inject(clickedLabel, 'after');
 								myActionMenu.set('tween', {duration: 'short'});
@@ -93,12 +93,12 @@ console.log("\n\n@nkjoep: please translate Mootoolsian --> jQuerian in /WEB-INF/
 									});
 							}.bind(myLabel));
 					}
-				}	
+				}
 		//endif
 		}
-			
 
-		
+
+
 /*
 --
 predisposizione per più di un form in una pagina - end
