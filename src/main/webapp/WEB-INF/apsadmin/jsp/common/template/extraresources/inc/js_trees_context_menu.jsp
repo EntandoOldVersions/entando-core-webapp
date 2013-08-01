@@ -5,7 +5,7 @@
 --
 predisposizione per più di un form in una pagina - start
 --
-var array_actionForm = document.getElements("form.action-form");
+var array_actionForm = $("form.action-form");
 if (array_actionForm != null && array_actionForm.length > 0) {
 	for (var i = 0; i < array_actionForm.length;i++) {
 	var currentForm = array_actionForm[i];
@@ -13,73 +13,54 @@ if (array_actionForm != null && array_actionForm.length > 0) {
 
 console.log("\n\n@nkjoep: please translate Mootoolsian --> jQuerian in /WEB-INF/apsadmin/jsp/common/template/extraresources/inc/js_trees_context_menu.jsp :F\n\n")
 
-		var iconPath = "<wp:resourceURL />administration/mint/img/icons/16x16/";
-		var currentForm = document.getElement("form.action-form");
+		var iconPath = "<wp:resourceURL />administration/_OLD/mint/img/icons/16x16/";
+		var currentForm = $("form.action-form");
 		if (null != currentForm) {
 		//if
-			var currentFormInputs = currentForm.getElements('li.tree_node_flag input[type="radio"]');
-				currentFormInputs.each(function(myInput) {
-					myInput.setStyle('position', 'absolute');
-					myInput.setStyle('left', '-9999px');
+			var currentFormInputs = currentForm.find('li.tree_node_flag input[type="radio"]');
+				console.log("currentForm:", currentForm);
+				console.log("currentFormInputs:", currentFormInputs);
+				currentFormInputs.each(function() {
+					$(this).css('position', 'absolute');
+					$(this).css('left', '-9999px');
 				});
 
-			var myActionMenu = currentForm.getElement('#actions-container p.buttons');
-				currentForm.getElement('#actions-container').dispose();
-				myActionMenu.setProperty('id','actions-menu');
+			var myActionMenu = currentForm.find('#actions-container p.buttons');
+				currentForm.find('#actions-container').remove();
+				myActionMenu.attr('id','actions-menu'); // prop() ?
 				myActionMenu.removeClass('buttons');
 				myActionMenu.addClass('actions-menu');
-				myActionMenu.fade('out');
-				myActionMenu.setStyle('display', 'none');
-				var path = null; //istanzio a null
-				myActionMenu.getElements('input').each(function(myActionButton) {
-					/*
-					 	risulta essere meno performante e pericoloso il replace:
-					 		var myActionButtonSrc = myActionButton.getProperty('src');
-							myActionButton.setProperty('src', myActionButtonSrc.replace('/32x32/','/16x16/'));
-							myActionButtonSrc = myActionButton.getProperty('src');
-							myActionButton.setProperty('src', myActionButtonSrc.replace('/common/','/mint/'));
-					 */
-					//istazion path corrente
-					var currentPath;
-					//se path esiste lo uso per spezzare l'url e trovare il nomefile
-					if (path != null) { currentPath = iconPath+myActionButton.getProperty('src').substring(path); }
-					else {
-						//recupero il path originale
-						var actionButtonPath = myActionButton.getProperty('src');
-						//splitto e recupero il nome del file
-						var filename = actionButtonPath.split("/"); //array
-							filename = filename[filename.length-1]; //recupero il nomefile
-						//costruisco path + nomefile
-						currentPath = iconPath+filename;
-						//setto dove trimmare
-						path = actionButtonPath.substring(0,actionButtonPath.length-filename.length).length;
-					}
-					//setto quello che ho trovato
-					myActionButton.setProperty('src', currentPath);
+				//myActionMenu.fade('out'); // restore with jQuery method
+				myActionMenu.css('display', 'none');
+				console.log("myActionMenu", myActionMenu);
+				myActionMenu.find('button').each(function() {
+					console.log("myActionButton", $(this));
 				});
 
-				var labels = currentForm.getElements("li.tree_node_flag label");
+				var labels = currentForm.find("li.tree_node_flag label");
 				if (labels != null && labels.length > 0) {
 					for (var y = 0; y < labels.length;y++) {
 						var myLabel = labels[y];
-							var myInput = document.id(myLabel.getProperty('for'));
-							if (myInput.getProperty('checked') == true) {
+						console.log(myLabel);
+							var myInput = $($(myLabel).attr('for'));
+							if (myInput.prop('checked') == true) {
 								myLabel.addClass('highlight');
-								myActionMenu.inject(myLabel, 'after');
+								myActionMenu.insertAfter(myLabel);
 								myActionMenu.set('tween', {duration: 'short'});
-								myActionMenu.setStyle('display', 'inline-block');
+								myActionMenu.css('display', 'inline-block');
 								myActionMenu.fade('in');
 							}
-							myLabel.setStyle("cursor","pointer"); //provare?
-							myLabel.addEvent('click', function(e){
+							$(myLabel).css("cursor","pointer"); //provare?
+							$(myLabel).on("click", function() {
 								//e.stop();
+								console.log(myLabel);
 								var clickedLabel = this;
-								clickedLabel.set('morph', { duration: 'short' });
-								clickedLabel.morph('.highlight');
-								myActionMenu.inject(clickedLabel, 'after');
-								myActionMenu.set('tween', {duration: 'short'});
-								myActionMenu.setStyle('display', 'inline-block');
-								myActionMenu.fade('in');
+								//clickedLabel.set('morph', { duration: 'short' });
+								//clickedLabel.morph('.highlight');
+								myActionMenu.insertAfter(clickedLabel);
+								//myActionMenu.set('tween', {duration: 'short'});
+								myActionMenu.css('display', 'inline-block');
+								//myActionMenu.fade('in');
 								//creo temp
 									var labelsArray = [];
 								//creo clono
@@ -91,7 +72,7 @@ console.log("\n\n@nkjoep: please translate Mootoolsian --> jQuerian in /WEB-INF/
 										myOtherLabel.set('morph', {duration: 'long'});
 										myOtherLabel.morph('.reset');
 									});
-							}.bind(myLabel));
+							});
 					}
 				}
 		//endif
