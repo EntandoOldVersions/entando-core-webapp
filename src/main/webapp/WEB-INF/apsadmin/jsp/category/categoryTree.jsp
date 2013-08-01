@@ -17,6 +17,16 @@
 </ul>
 </div>
 </s:if>
+<s:if test="hasActionMessages()">
+	<div class="message message_confirm">
+	<h3><s:text name="messages.confirm" /></h3>
+	<ul>
+		<s:iterator value="actionMessages">
+			<li><s:property escape="false" /></li>
+		</s:iterator>
+	</ul>
+	</div>
+</s:if>
 
 <fieldset class="margin-more-top"><legend><s:text name="title.categoryTree" /></legend>
 
