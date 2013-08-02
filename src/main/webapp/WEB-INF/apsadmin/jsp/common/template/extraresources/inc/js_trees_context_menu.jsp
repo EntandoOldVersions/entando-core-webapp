@@ -43,10 +43,10 @@ console.log("\n\n@nkjoep: please translate Mootoolsian --> jQuerian in /WEB-INF/
 				if (labels != null && labels.length > 0) {
 					for (var y = 0; y < labels.length;y++) {
 						var myLabel = labels[y];
-						console.log(myLabel);
 							var myInput = $($(myLabel).attr('for'));
 							if (myInput.prop('checked') == true) {
 								myLabel.addClass('highlight');
+								console.log("myLabel: ", myLabel);
 								myActionMenu.insertAfter(myLabel);
 								myActionMenu.set('tween', {duration: 'short'});
 								myActionMenu.css('display', 'inline-block');
@@ -59,6 +59,7 @@ console.log("\n\n@nkjoep: please translate Mootoolsian --> jQuerian in /WEB-INF/
 								var clickedLabel = this;
 								//clickedLabel.set('morph', { duration: 'short' });
 								//clickedLabel.morph('.highlight');
+								$(clickedLabel).addClass('text-info');
 								myActionMenu.insertAfter(clickedLabel);
 								//myActionMenu.set('tween', {duration: 'short'});
 								myActionMenu.css('display', 'inline-block');
@@ -70,11 +71,12 @@ console.log("\n\n@nkjoep: please translate Mootoolsian --> jQuerian in /WEB-INF/
 									labelsArray = jQuery.grep(labelsArray, function(value) {
 									  return value != clickedLabel;
 									});
-
+									console.log("labelsArray", labelsArray);
 								//dall'array delle label rimuovo quella corrente e per ciascuna di loro setto morph
-									$(labelsArray).each(function(myOtherLabel) {
+									$(labelsArray).each(function() {
 										//$(myOtherLabel).set('morph', {duration: 'long'});
 										//$(myOtherLabel).morph('.reset');
+										$(this).removeClass('text-info');
 									});
 							});
 					}
