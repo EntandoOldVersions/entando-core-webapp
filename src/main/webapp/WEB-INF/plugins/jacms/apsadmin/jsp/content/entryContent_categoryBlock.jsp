@@ -31,8 +31,8 @@
 	</s:elseif>
 </ul>
 <div id="actions-container">
-	<p class="buttons">
-		<s:submit useTabindexAutoIncrement="true" action="joinCategory" type="button" value="%{getText('label.join')}" cssClass="btn btn-default btn-small">
+	<p class="buttons margin-small-vertical">
+		<s:submit useTabindexAutoIncrement="true" action="joinCategory" type="button" value="%{getText('label.join')}" cssClass="btn btn-info btn-small">
 			<span class="icon icon-plus"></span>&nbsp;&nbsp;<s:text name="label.join" />
 		</s:submit>
 	</p>

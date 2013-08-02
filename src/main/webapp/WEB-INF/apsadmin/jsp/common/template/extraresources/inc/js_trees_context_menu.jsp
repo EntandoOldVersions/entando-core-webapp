@@ -28,12 +28,14 @@ console.log("\n\n@nkjoep: please translate Mootoolsian --> jQuerian in /WEB-INF/
 			var myActionMenu = currentForm.find('#actions-container p.buttons');
 				currentForm.find('#actions-container').remove();
 				myActionMenu.attr('id','actions-menu'); // prop() ?
-				myActionMenu.removeClass('buttons');
-				myActionMenu.addClass('actions-menu');
+				myActionMenu.removeClass('margin-small-vertical');
+				myActionMenu.addClass('margin-small-horizontal');
 				//myActionMenu.fade('out'); // restore with jQuery method
 				myActionMenu.css('display', 'none');
 				console.log("myActionMenu", myActionMenu);
 				myActionMenu.find('button').each(function() {
+					$(this).removeClass("btn-small");
+					$(this).addClass("btn-mini");
 					console.log("myActionButton", $(this));
 				});
 
@@ -61,16 +63,18 @@ console.log("\n\n@nkjoep: please translate Mootoolsian --> jQuerian in /WEB-INF/
 								//myActionMenu.set('tween', {duration: 'short'});
 								myActionMenu.css('display', 'inline-block');
 								//myActionMenu.fade('in');
-								//creo temp
-									var labelsArray = [];
-								//creo clono
-									labelsArray.combine(labels);
+
+								//creo temp e clono
+									var labelsArray = $.merge([], labels);
 								//creo rimuovo
-									labelsArray.erase(clickedLabel);
+									labelsArray = jQuery.grep(labelsArray, function(value) {
+									  return value != clickedLabel;
+									});
+
 								//dall'array delle label rimuovo quella corrente e per ciascuna di loro setto morph
-									labelsArray.each(function(myOtherLabel) {
-										myOtherLabel.set('morph', {duration: 'long'});
-										myOtherLabel.morph('.reset');
+									$(labelsArray).each(function(myOtherLabel) {
+										//$(myOtherLabel).set('morph', {duration: 'long'});
+										//$(myOtherLabel).morph('.reset');
 									});
 							});
 					}
