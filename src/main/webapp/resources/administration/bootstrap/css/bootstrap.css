@@ -3808,6 +3808,7 @@ a .icon-flip-vertical:before {
 }
 
 .input-group {
+  position: relative;
   display: table;
   border-collapse: separate;
 }
