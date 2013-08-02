@@ -6606,6 +6606,10 @@ td.visible-print {
   }
 }
 
+.margin-none {
+  margin: 0;
+}
+
 .margin-small-vertical {
   margin: 0.5em 0;
 }
@@ -6676,6 +6680,10 @@ td.visible-print {
 
 .margin-large-right {
   margin-right: 2em;
+}
+
+.padding-none {
+  padding: 0;
 }
 
 .padding-small-vertical {
