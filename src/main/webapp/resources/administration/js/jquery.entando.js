@@ -171,7 +171,6 @@
 				closeWood($(toggler));
 			});
 			$(":checked", el).prop('checked',false);
-			console.log($(":checked", el));
 		};
 		var openWood = this.openWood = function(toggler) {
 			var submenu = getSubMenu(toggler);
