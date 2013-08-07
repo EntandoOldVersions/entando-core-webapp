@@ -1,7 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
-<s:include value="/WEB-INF/apsadmin/jsp/common/template/defaultExtraResources.jsp" />
+<s:include value="/WEB-INF/apsadmin/jsp/common/layouts/assets-common.jsp" />
 
 <!-- for Date Attribute filters -->
 <script type="text/javascript" src="<wp:resourceURL />administration/js/calendar_wiz.js"></script>

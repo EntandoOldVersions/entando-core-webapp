@@ -1,7 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 
-<s:include value="/WEB-INF/apsadmin/jsp/common/template/defaultExtraResources.jsp" />
+<s:include value="/WEB-INF/apsadmin/jsp/common/layouts/assets-common.jsp" />
 
 <s:set var="categoryTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_category" /></s:set>
 

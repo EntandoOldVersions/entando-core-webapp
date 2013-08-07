@@ -1,8 +1,9 @@
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
+<s:include value="/WEB-INF/apsadmin/jsp/common/layouts/assets-common.jsp" />
+
 <script src="<wp:resourceURL />administration/js/bootstrap-swapon.js"></script>
-<script src="<wp:resourceURL />administration/js/jquery.entando.js"></script>
 <script>
 //one domready to rule 'em all
 $(function() {
@@ -36,7 +37,7 @@ $(function() {
 
 </s:if>
 
-<s:include value="/WEB-INF/apsadmin/jsp/common/template/extraresources/inc/js_trees_context_menu.jsp" />
+<s:include value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/inc/js_trees_context_menu.jsp" />
 
 });
 
