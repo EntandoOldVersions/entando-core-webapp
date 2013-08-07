@@ -1,0 +1,45 @@
+/* dl used as list/table
+========================
+
+<div class="dl-list">
+	<dl class="dl-horizontal dl-striped panel">
+		<dt class="hidden-sm">Key</dt>
+			<dd>MY_LABEL</dd>
+		<dt><abbr title="English">english</abbr></dt>
+			<dd>Label</dd>
+		<dt><abbr title="Italiano">italiano</abbr></dt>
+			<dd>Etichetta</dd>
+		<dt class="noscreen">Actions</dt>
+			<dd>
+				<button class="btn btn-default btn-small"><span class="icon icont-edit">Edit</span></button>
+				<button class="btn btn-default btn-small"><span class="icon icont-remove">Delete</span></button>
+			</dd>
+	</dl>
+	[........]
+</div>
+
+*/
+
+.dl-list > :nth-child(even) {
+	background-color: #dddddd;
+}
+
+.dl-striped > dd {
+	font-weight: bold;
+}
+.dl-striped > dt {
+	font-weight: normal;
+}
+
+@media (max-width: 768px) {
+	.dl-striped > dt {
+		padding-top: 0.4em;
+		vertical-align: bottom;
+	}
+	
+	.dl-striped > dd {
+		padding-bottom: 0.4em;
+		vertical-align: top;
+	}
+
+}
