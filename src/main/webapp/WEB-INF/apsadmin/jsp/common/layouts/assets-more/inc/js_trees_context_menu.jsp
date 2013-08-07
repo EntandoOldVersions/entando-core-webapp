@@ -1,14 +1,13 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
-var iconPath = "<wp:resourceURL />administration/_OLD/mint/img/icons/16x16/";
 
 //for each elements 'form.action-form'
 jQuery.each($('form.action-form'), function(index, currentForm){
 
 	//current form
 	var currentForm = $(currentForm);
-	
+
 	//the inputs type[radio]
 	var currentFormInputs = $('li.tree_node_flag input[type="radio"]', currentForm);
 		currentFormInputs.each(function() {
