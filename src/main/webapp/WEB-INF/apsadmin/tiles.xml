@@ -7,7 +7,7 @@
 
     <definition name="layout.default" template="/WEB-INF/apsadmin/jsp/common/layouts/default.jsp">
         <put-attribute name="title" value="document.title.main" />
-        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/template/defaultExtraResources.jsp" />
+        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-common.jsp" />
         <put-attribute name="shortcuts-quickbar" value="/WEB-INF/apsadmin/jsp/common/tiles-inserts/shortcuts-quickbar.jsp" />
         <put-attribute name="menu" value="/WEB-INF/apsadmin/jsp/common/tiles-inserts/menu.jsp" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/common/template/mainBody.jsp" />
@@ -16,7 +16,7 @@
 
     <definition name="layout.settings" template="/WEB-INF/apsadmin/jsp/common/layouts/settings.jsp">
         <put-attribute name="title" value="document.title.main" />
-        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/template/defaultExtraResources.jsp" />
+        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-common.jsp" />
         <put-attribute name="shortcuts-quickbar" value="/WEB-INF/apsadmin/jsp/common/tiles-inserts/shortcuts-quickbar.jsp" />
         <put-attribute name="menu" value="/WEB-INF/apsadmin/jsp/common/layouts/settings-menu.jsp" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/common/template/mainBody.jsp" />
@@ -24,7 +24,7 @@
     </definition>
 
     <definition extends="layout.default" name="admin.intro">
-        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/template/extraresources/startPage.jsp" />
+        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/startPage.jsp" />
     </definition>
 
     <definition extends="layout.default" name="admin.Common.Password.entry">
@@ -158,7 +158,7 @@
 
     <definition extends="layout.default" name="admin.api.resource.detail">
         <put-attribute name="title" value="title.apiManagement" />
-        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/template/extraresources/api-resource-detail-extras.jsp" />
+        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/api-resource-detail-extras.jsp" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/api/resource-detail.jsp" />
     </definition>
 
@@ -170,7 +170,7 @@
     <definition extends="layout.default" name="admin.api.service.entry">
         <put-attribute name="title" value="title.apiManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/api/service-entry.jsp" />
-        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/template/extraresources/api-service-entry-extras.jsp" />
+        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/api-service-entry-extras.jsp" />
     </definition>
 
     <definition extends="layout.default" name="admin.api.service.trash">
@@ -185,7 +185,7 @@
 
     <definition extends="layout.default" name="admin.api.consumer.entry">
         <put-attribute name="title" value="title.apiManagement" />
-        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/template/extraresources/calendar.jsp" />
+        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/calendar.jsp" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/api/consumer-entry.jsp" />
     </definition>
 
@@ -200,7 +200,7 @@
 
     <definition extends="layout.default" name="admin.Page.viewTree">
         <put-attribute name="title" value="title.pageManagement" />
-        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/template/extraresources/pageTree.jsp" />
+        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/pageTree.jsp" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/pageTree.jsp" />
     </definition>
     <definition extends="layout.default" name="admin.Page.entry">
@@ -221,7 +221,7 @@
     </definition>
     <definition extends="layout.default" name="admin.Page.searchResult">
         <put-attribute name="title" value="title.pageManagement" />
-        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/template/extraresources/pageSearchResult.jsp" />
+        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/pageSearchResult.jsp" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/pageSearchResult.jsp" />
     </definition>
 
@@ -279,7 +279,7 @@
 
     <definition extends="layout.default" name="admin.Category.viewTree">
         <put-attribute name="title" value="title.categoryManagement" />
-        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/template/extraresources/category.jsp" />
+        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/category.jsp" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/category/categoryTree.jsp" />
     </definition>
     <definition extends="layout.default" name="admin.Category.entry">
@@ -377,7 +377,7 @@
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/entity/manager-list.jsp" />
     </definition>
     <definition extends="layout.default" name="admin.entityManagement.search">
-        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/template/extraresources/entityFinding.jsp" />
+        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/entityFinding.jsp" />
         <put-attribute name="title" value="title.entityManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/entity/entityFinding.jsp" />
     </definition>
@@ -390,7 +390,7 @@
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/entity/entity-type-entry.jsp" />
     </definition>
     <definition extends="layout.default" name="admin.entityManagement.entryEntityAttributeType">
-        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/template/extraresources/calendar.jsp" />
+        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/calendar.jsp" />
         <put-attribute name="title" value="title.entityManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/entity/attribute-type-entry.jsp" />
     </definition>
@@ -411,7 +411,7 @@
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/entity/attribute-type-entry-composite.jsp" />
     </definition>
     <definition extends="layout.default" name="admin.entityManagement.compositeAttribute.entryAttributeElementType">
-        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/template/extraresources/calendar.jsp" />
+        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/calendar.jsp" />
         <put-attribute name="title" value="title.entityManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/entity/attribute-type-entry-composite-element.jsp" />
     </definition>
