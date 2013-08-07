@@ -24,14 +24,29 @@ html {
 	text-transform: uppercase;
 }
 
+.popover {
+	max-width: 400px;
+	width: auto;
+}
+
 .popover-content {
 	font-weight: normal;
+}
+
+.action-form .popover-content {
+	padding: 0 6px;
 }
 
 /* Font Awesome */
 .popover-content .icons-ul,
 #categoryTree.icons-ul,
-#categoryTree .icons-ul {
+#categoryTree .icons-ul,
+#pageTree.icons-ul,
+#pageTree .icons-ul {
 	margin-left: 0;
 	-webkit-padding-start: 20px;
+}
+
+#pageTree .btn-group .btn {
+	min-width: 35px;
 }

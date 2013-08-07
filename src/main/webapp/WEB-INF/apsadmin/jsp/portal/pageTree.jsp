@@ -29,10 +29,12 @@
 
 <s:set var="pageTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_page" /></s:set>
 
-<ul id="pageTree">
+<ul id="pageTree" class="icons-ul list-unstyled">
 	<s:set name="inputFieldName" value="'selectedNode'" />
 	<s:set name="selectedTreeNode" value="selectedNode" />
 	<s:set name="liClassName" value="'page'" />
+	<s:set name="treeItemIconName" value="'icon-folder-close'" />
+
 	<s:if test="#pageTreeStyleVar == 'classic'">
 	<s:set name="currentRoot" value="allowedTreeRootNode" />
 	<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder.jsp" />
@@ -50,26 +52,45 @@
 <fieldset id="actions-container"><legend><s:text name="title.pageActions" /></legend>
 <p class="noscreen"><s:text name="title.pageActionsIntro" /></p>
 
-<p class="buttons">
-	<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/page-new.png</s:set>
-	<wpsf:submit useTabindexAutoIncrement="true" action="new" type="image" src="%{#iconImagePath}" value="%{getText('page.options.new')}" title="%{getText('page.options.new')}" />
-	<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/page-edit.png</s:set>
-	<wpsf:submit useTabindexAutoIncrement="true" action="edit" type="image" src="%{#iconImagePath}" value="%{getText('page.options.modify')}" title="%{getText('page.options.modify')}" />
-	<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/detail.png</s:set>
-	<wpsf:submit useTabindexAutoIncrement="true" action="detail" type="image" src="%{#iconImagePath}" value="%{getText('page.options.detail')}" title="%{getText('page.options.detail')}" />
-	<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/delete.png</s:set>	
-	<wpsf:submit useTabindexAutoIncrement="true" action="trash" type="image" src="%{#iconImagePath}" value="%{getText('page.options.delete')}" title="%{getText('page.options.delete')}" />
-	<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/go-up.png</s:set>
-	<wpsf:submit useTabindexAutoIncrement="true" action="moveUp" type="image" src="%{#iconImagePath}" value="%{getText('page.options.moveUp')}" title="%{getText('page.options.moveUp')}" />
-	<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/go-down.png</s:set>
-	<wpsf:submit useTabindexAutoIncrement="true" action="moveDown" type="image" src="%{#iconImagePath}" value="%{getText('page.options.moveDown')}" title="%{getText('page.options.moveDown')}" />
-	<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/edit-copy.png</s:set>
-	<wpsf:submit useTabindexAutoIncrement="true" action="copy" type="image" src="%{#iconImagePath}" value="%{getText('page.options.copy')}" title="%{getText('page.options.copy')}" />
-	<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/edit-paste.png</s:set>
-	<wpsf:submit useTabindexAutoIncrement="true" action="paste" type="image" src="%{#iconImagePath}" value="%{getText('page.options.paste')}" title="%{getText('page.options.paste')}" />
-	<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/page-configure.png</s:set>
-	<wpsf:submit useTabindexAutoIncrement="true" action="configure" type="image" src="%{#iconImagePath}" value="%{getText('page.options.configure')}" title="%{getText('page.options.configure')}" />
-</p>
+<div id="actions-container">
+	<div class="buttons btn-toolbar">
+		<div class="btn-group margin-small-vertical">
+			<s:submit action="configure" type="button" title="%{getText('page.options.configure')}" cssClass="btn btn-info" data-toggle="tooltip">
+				<span class="icon icon-cog"></span>
+			</s:submit>
+			<s:submit action="detail" type="button" title="%{getText('page.options.detail')}" cssClass="btn btn-info" data-toggle="tooltip">
+				<span class="icon icon-info"></span>
+			</s:submit>
+		</div>
+		<div class="btn-group margin-small-vertical">
+			<s:submit action="copy" type="button" title="%{getText('page.options.copy')}" cssClass="btn btn-info" data-toggle="tooltip">
+				<span class="icon icon-copy"></span>
+			</s:submit>
+			<s:submit action="paste" type="button" title="%{getText('page.options.paste')}" cssClass="btn btn-info" data-toggle="tooltip">
+				<span class="icon icon-paste"></span>
+			</s:submit>
+			<s:submit action="moveUp" type="button" title="%{getText('page.options.moveUp')}" cssClass="btn btn-info" data-toggle="tooltip">
+				<span class="icon icon-sort-up"></span>
+			</s:submit>
+			<s:submit action="moveDown" type="button" title="%{getText('page.options.moveDown')}" cssClass="btn btn-info" data-toggle="tooltip">
+				<span class="icon icon-sort-down"></span>
+			</s:submit>
+		</div>
+		<div class="btn-group margin-small-vertical">
+			<s:submit action="new" type="button" title="%{getText('page.options.new')}" cssClass="btn btn-info" data-toggle="tooltip">
+				<span class="icon icon-plus-sign"></span>
+			</s:submit>
+			<s:submit action="edit" type="button" title="%{getText('page.options.modify')}" cssClass="btn btn-info" data-toggle="tooltip">
+				<span class="icon icon-edit"></span>
+			</s:submit>
+		</div>
+		<div class="btn-group margin-small-vertical">
+			<s:submit action="trash" type="button" title="%{getText('page.options.delete')}" cssClass="btn btn-warning" data-toggle="tooltip">
+				<span class="icon icon-remove-sign"></span>
+			</s:submit>
+		</div>
+	</div>
+</div>
 </fieldset>
 </s:form>
 
