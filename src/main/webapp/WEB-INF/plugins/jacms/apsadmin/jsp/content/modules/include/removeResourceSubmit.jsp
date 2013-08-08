@@ -2,6 +2,7 @@
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 
+<div class="panel-heading text-right">
 <%-- PULSANTE RIMUOVI --%>
 <s:set name="resourceTypeCode"><%= request.getParameter("resourceTypeCode")%></s:set>
 <wpsa:actionParam action="removeResource" var="removeResourceActionName" >
@@ -11,6 +12,10 @@
 	<wpsa:actionSubParam name="resourceTypeCode" value="%{#resourceTypeCode}" />
 	<wpsa:actionSubParam name="resourceLangCode" value="%{#lang.code}" />
 </wpsa:actionParam>
-<s:set name="iconImagePath" id="iconImagePath"><%= request.getParameter("iconImagePath")%></s:set>
-<wpsf:submit useTabindexAutoIncrement="true" type="image" action="%{#removeResourceActionName}" 
-	value="%{getText('label.remove')}" title="%{getText('label.remove')}" src="%{#iconImagePath}" />
+
+<s:submit action="%{#removeResourceActionName}" type="button" title="%{#attribute.name + ': ' + getText('label.clearImage')}" cssClass="btn btn-default btn-xs"> 
+		<span class="icon icon-remove"></span>&#32;
+		<s:text name="label.clearImage" />
+</s:submit>
+
+</div>

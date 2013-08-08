@@ -10,7 +10,7 @@
 <s:if test="#lang.default">
 <%-- Lingua di DEFAULT --%>
 	<s:if test="#currentResource != null">
-	<span class="imageAttribute">
+	<div class="row panel">
 		<%-- Lingua di default - Risorsa VALORIZZATA --%>
 		<%-- IMMAGINE E LINK + TESTO + PULSANTE RIMUOVI --%>
 		<%-- IMMAGINE E LINK --%>
@@ -18,19 +18,21 @@
 			<%-- PULSANTE DI RIMOZIONE RISORSA --%>
 			<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/removeResourceSubmit.jsp">
 				<s:param name="resourceTypeCode">Image</s:param>
-				<s:param name="iconImagePath"><wp:resourceURL/>administration/common/img/icons/delete.png</s:param>
 			</s:include>
 		</s:if>
-		<span class="imageAttribute-img">
+		<div class="col-lg-2">
 		<a href="<s:property value="#defaultResource.getImagePath('0')" />"><img class="alignTop" src="<s:property value="#defaultResource.getImagePath('1')"/>" 
 			alt="<s:property value="#defaultResource.descr"/>" /></a>
-		</span>
+		</div>
 		<%-- CAMPO DI TESTO --%>
-		<span class="imageAttribute-text">
-		<label class="basic-mint-label" for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />"><abbr title="<s:text name="label.img.text.long" />"><s:text name="label.img.text.short" /></abbr>:</label>
-		<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/textAttribute.jsp" />
-		</span>
-	</span>	
+		<div class="col-lg-8 form-horizontal margin-base-top">	
+		  	<div class="form-group">
+			<label class="col-lg-2 control-label" for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />"><abbr title="<s:text name="label.img.text.long" />"><s:text name="label.img.text.short" /></abbr>:</label>
+			<div class="col-lg-10">
+				<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/textAttribute.jsp" />
+			</div>
+		</div></div>
+	</div>
 	</s:if>
 	<s:else>
 		<%-- Lingua di default - Risorsa NON VALORIZZATA --%>
@@ -38,7 +40,6 @@
 		<%-- PULSANTE DI RICERCA RISORSA --%>
 		<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/chooseResourceSubmit.jsp">
 			<s:param name="resourceTypeCode">Image</s:param>
-			<s:param name="iconImagePath"><wp:resourceURL/>administration/common/img/icons/22x22/image.png</s:param>
 		</s:include>
 		
 	</s:else>
@@ -50,21 +51,20 @@
 		<s:text name="note.editContent.doThisInTheDefaultLanguage" />.
 	</s:if>
 	<s:else>
-		<span class="imageAttribute">
+	<div class="row panel">
 		<%-- Risorsa lingua di DEFAULT VALORIZZATA --%>
 		<s:if test="#currentResource == null">
 			<%-- Risorsa lingua corrente NON VALORIZZATA --%>
 			<%-- IMMAGINE DI DEFAULT + PULSANTE SCEGLI RISORSA --%> 
 			
 			<%-- IMMAGINE DI DEFAULT --%>
-			<span class="imageAttribute-img">
+			<div class="col-lg-2">
 			<a href="<s:property value="#defaultResource.getImagePath('0')" />"><img class="alignTop" src="<s:property value="#defaultResource.getImagePath('1')"/>" 
 				alt="<s:property value="#defaultResource.descr"/>" /></a>
-			</span>
+			</div>
 			<%-- PULSANTE DI RICERCA RISORSA --%>
 			<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/chooseResourceSubmit.jsp">
 				<s:param name="resourceTypeCode">Image</s:param>
-				<s:param name="iconImagePath"><wp:resourceURL/>administration/common/img/icons/22x22/image.png</s:param>
 			</s:include>
 		</s:if>
 		<s:else>
@@ -73,19 +73,17 @@
 			<%-- PULSANTE DI RIMOZIONE RISORSA --%>
 			<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/removeResourceSubmit.jsp">
 				<s:param name="resourceTypeCode">Image</s:param>
-				<s:param name="iconImagePath"><wp:resourceURL/>administration/common/img/icons/clear.png</s:param>
 			</s:include>			
 			
 			<%-- IMMAGINE LINGUA CORRENTE CON LINK  --%> 
-			<span class="imageAttribute-img">
+			<div class="col-lg-2">
 			<a href="<s:property value="#currentResource.getImagePath('0')" />"><img class="alignTop" src="<s:property value="#currentResource.getImagePath('1')"/>" 
 				alt="<s:property value="#currentResource.descr"/>" /></a>
-			</span>
+			</div>
 			
 			<%-- PULSANTE DI RICERCA RISORSA --%>
 			<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/chooseResourceSubmit.jsp">
 				<s:param name="resourceTypeCode">Image</s:param>
-				<s:param name="iconImagePath"><wp:resourceURL/>administration/common/img/icons/22x22/image.png</s:param>
 			</s:include>
 		</s:else>
 		<%-- CAMPO DI TESTO --%>
@@ -94,6 +92,6 @@
 		<label class="basic-mint-label" for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />"><abbr title="testo per ciccio">testo</abbr>:</label>		
 		<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/textAttribute.jsp" />
 		</span>
-	</span>	
+	</div>
 	</s:else>
 </s:else>

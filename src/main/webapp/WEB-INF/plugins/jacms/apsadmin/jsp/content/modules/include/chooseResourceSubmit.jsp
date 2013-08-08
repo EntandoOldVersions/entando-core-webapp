@@ -11,6 +11,7 @@
 	<wpsa:actionSubParam name="resourceTypeCode" value="%{#resourceTypeCode}" />
 	<wpsa:actionSubParam name="resourceLangCode" value="%{#lang.code}" />
 </wpsa:actionParam>
-<s:set name="iconImagePath" id="iconImagePath"><%= request.getParameter("iconImagePath")%></s:set>
-<wpsf:submit useTabindexAutoIncrement="true" type="image" action="%{#chooseResourceActionName}" 
-	value="%{getText('label.choose')}" title="%{#attribute.name + ': ' + getText('label.choose')}" src="%{#iconImagePath}" />
+<s:submit action="%{#chooseResourceActionName}" type="button" title="%{#attribute.name + ': ' + getText('label.chooseImage')}" cssClass="btn btn-default"> 
+		<span class="icon icon-picture"></span>&#32;
+		<s:text name="label.chooseImage" />
+</s:submit>
