@@ -7,11 +7,8 @@
 
 <s:if test="onEditContent">
 <s:set var="targetNS" value="%{'/do/jacms/Content'}" />
-<h1><s:text name="jacms.menu.contentAdmin" /><s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></h1>
-<div id="main">
-<h2><s:text name="title.contentEditing" /></h2>
+<h1 class="panel title-page"><s:text name="jacms.menu.contentAdmin" />&#32;/&#32;<s:text name="title.contentEditing" /></h1>
 <s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/include/snippet-content.jsp" />
-
 
 <%--
  	<s:if test="content.id == null"> NUOVO </s:if>
@@ -24,23 +21,25 @@
 	<s:set var="targetNS" value="%{'/do/jacms/Resource'}" />
 	<s:set var="targetParamName" value="%{'resourceTypeCode'}" />
 	<s:set var="targetParamValue" value="resourceTypeCode" />
-	<h1><s:property value="%{getText('title.resourceManagement.' + resourceTypeCode)}" /><s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></h1>
-	<div id="main">
+	<h1 class="panel title-page"><s:property value="%{getText('title.resourceManagement.' + resourceTypeCode)}" />
+	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></h1>
 </s:if>
 
-<s:form action="search">
+<s:form action="search" cssClass="tab-container action-form">
 <s:set var="categoryTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_category" /></s:set>
 
 <p class="sr-only">
-<wpsf:hidden name="resourceTypeCode" />
+<s:hidden name="resourceTypeCode" />
 <s:if test="#categoryTreeStyleVar == 'request'">
-<s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar"><wpsf:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"></wpsf:hidden></s:iterator>
+<s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar">
+<s:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"/>
+</s:iterator>
 </s:if>
-<wpsf:hidden name="contentOnSessionMarker" />
+<s:hidden name="contentOnSessionMarker" />
 </p>
 <p>
-	<label for="text" class="basic-mint-label label-search"><s:text name="label.search.by"/>&#32;<s:text name="label.description"/>:</label>
-	<wpsf:textfield useTabindexAutoIncrement="true" name="text" id="text" cssClass="text" />
+	<label for="text" class="label-control"><s:text name="label.search.by"/>&#32;<s:text name="label.description"/>:</label>
+	<s:textfield name="text" id="text" cssClass="text" />
 </p>
 
 <fieldset><legend class="accordion_toggler"><s:text name="title.searchFilters" /></legend>
@@ -49,15 +48,15 @@
 <s:set var="allowedGroupsVar" value="allowedGroups"></s:set>
 <s:if test="null != #allowedGroupsVar && #allowedGroupsVar.size()>1">
 <p>
-	<label for="ownerGroupName" class="basic-mint-label"><s:text name="label.group" />:</label>
-	<wpsf:select useTabindexAutoIncrement="true" name="ownerGroupName" id="ownerGroupName" list="#allowedGroupsVar"
+	<label for="ownerGroupName" class="label-control"><s:text name="label.group" />:</label>
+	<s:select useTabindexAutoIncrement="true" name="ownerGroupName" id="ownerGroupName" list="#allowedGroupsVar"
 		headerKey="" headerValue="%{getText('label.all')}" listKey="name" listValue="descr" cssClass="text" />
 </p>
 </s:if>
 
 <p>
-	<label for="fileName" class="basic-mint-label"><s:text name="label.filename" />:</label>
-	<wpsf:textfield useTabindexAutoIncrement="true" name="fileName" id="fileName" cssClass="text" />
+	<label for="fileName" class="label-control"><s:text name="label.filename" />:</label>
+	<s:textfield useTabindexAutoIncrement="true" name="fileName" id="fileName" cssClass="text" />
 </p>
 <div class="subsection-light">
 <p class="important">
@@ -82,11 +81,10 @@
 </div>
 </div>
 </fieldset>
-<p><wpsf:submit useTabindexAutoIncrement="true" value="%{getText('label.search')}" cssClass="button" /></p>
+<p><s:submit useTabindexAutoIncrement="true" value="%{getText('label.search')}" cssClass="button" /></p>
 
 </s:form>
 
-<div class="subsection-light">
 <s:if test="onEditContent">
 	<wp:ifauthorized permission="manageResources">
 		<p class="rightText"><a href="<s:url action="new" ><s:param name="resourceTypeCode" >Image</s:param><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>" class="object-new" title="<s:text name="label.new" />&#32;<s:text name="label.resource" />"><img src="<wp:resourceURL />administration/common/img/icons/22x22/general-new.png" alt=" " /><span><s:text name="label.new" />&#32;<s:text name="label.resource" /></span></a></p>
@@ -94,15 +92,17 @@
 </s:if>
 <s:form action="search">
 <p class="sr-only">
-	<wpsf:hidden name="text" />
-	<wpsf:hidden name="categoryCode" />
-	<wpsf:hidden name="resourceTypeCode" />
-	<wpsf:hidden name="fileName" />
-	<wpsf:hidden name="ownerGroupName" />
+	<s:hidden name="text" />
+	<s:hidden name="categoryCode" />
+	<s:hidden name="resourceTypeCode" />
+	<s:hidden name="fileName" />
+	<s:hidden name="ownerGroupName" />
 <s:if test="#categoryTreeStyleVar == 'request'">
-	<s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar"><wpsf:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"></wpsf:hidden></s:iterator>
+	<s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar">
+	<s:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"/>
+	</s:iterator>
 </s:if>
-	<wpsf:hidden name="contentOnSessionMarker" />
+	<s:hidden name="contentOnSessionMarker" />
 </p>
 
 <wpsa:subset source="resources" count="10" objectName="groupResource" advanced="true" offset="5" >
@@ -112,38 +112,28 @@
 	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 </div>
 
-<s:set var="imageDimensionsVar" value="imageDimensions" />
-<s:iterator var="resourceid" status="status">
-<s:set name="resource" value="%{loadResource(#resourceid)}" />
-<s:set var="resourceInstance" value='%{#resource.getInstance(0,null)}' />
-	<s:if test="#status.odd">
-		<s:if test="#status.count!=1">
-			</div>
-		</s:if>
-		<div class="gallery-row">
-	</s:if>
-		<s:set var="URLoriginal" value="%{#resource.getImagePath(0)}" />
-		<s:url var="URLedit" action="edit" namespace="/do/jacms/Resource"><s:param name="resourceId" value="%{#resourceid}" /></s:url>
-		<s:url var="URLtrash" action="trash" namespace="/do/jacms/Resource">
-				<s:param name="resourceId" value="%{#resourceid}" />
-				<s:param name="resourceTypeCode" value="%{#resource.type}" />
-				<s:param name="text" value="%{text}" />
-				<s:param name="categoryCode" value="%{categoryCode}" />
-				<s:param name="fileName" value="%{fileName}" />
-				<s:param name="ownerGroupName" value="%{ownerGroupName}" />
-				<s:param name="treeNodesToOpen" value="%{treeNodesToOpen}" /></s:url>
-		<dl class="gallery<s:if test="#status.odd"> gallery-left</s:if>">
-			<dt class="image">
-				<div class="image-centering">
+<div class="row">
+	<s:set var="imageDimensionsVar" value="imageDimensions" />
+	<s:iterator var="resourceid" status="status">
+	<s:set name="resource" value="%{loadResource(#resourceid)}" />
+	<s:set var="resourceInstance" value='%{#resource.getInstance(0,null)}' />
+	<s:set var="URLoriginal" value="%{#resource.getImagePath(0)}" />
+	<s:url var="URLedit" action="edit" namespace="/do/jacms/Resource"><s:param name="resourceId" value="%{#resourceid}" /></s:url>
+	<s:url var="URLtrash" action="trash" namespace="/do/jacms/Resource">
+		<s:param name="resourceId" value="%{#resourceid}" />
+		<s:param name="resourceTypeCode" value="%{#resource.type}" />
+		<s:param name="text" value="%{text}" />
+		<s:param name="categoryCode" value="%{categoryCode}" />
+		<s:param name="fileName" value="%{fileName}" />
+		<s:param name="ownerGroupName" value="%{ownerGroupName}" />
+		<s:param name="treeNodesToOpen" value="%{treeNodesToOpen}" /></s:url>
+		<div class="col-lg-3">
+			<div class="thumbnail text-center margin-base-bottom">
+				<img src="<s:property value="%{#resource.getImagePath(1)}"/>" alt=" " height="100px"/>	
 				<s:if test="onEditContent">
-					<a href="<s:url action="joinResource" namespace="/do/jacms/Content/Resource"><s:param name="resourceId" value="%{#resourceid}" /><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>" class="noborder" title="<s:text name="note.joinThisToThat" />: <s:property value="content.descr" />" ><img src="<s:property value="%{#resource.getImagePath(1)}"/>" alt=" " /></a>
+					<a href="<s:url action="joinResource" namespace="/do/jacms/Content/Resource"><s:param name="resourceId" value="%{#resourceid}" /><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>" class="btn btn-default" title="<s:text name="note.joinThisToThat" />: <s:property value="content.descr" />" >Choose</a>
 				</s:if>
-				<s:else>
-					<img src="<s:property value="%{#resource.getImagePath(1)}"/>" alt=" " />
-				</s:else>
-				</div>
-			</dt>
-			<dt class="options">
+			<div class="options">
 				<span>
 					<%-- <s:text name="label.size.original" /> --%>
 					<s:if test="!onEditContent">
@@ -160,62 +150,59 @@
 						<a href="<s:property value="URLtrash" escape="false" />"><img src="<wp:resourceURL />administration/common/img/icons/delete.png" alt="<s:text name="label.remove" />" title="<s:text name="label.remove" />" /></a>
 					</s:if>
 				</span>
-			</dt>
-			<s:if test="#myClient == 'advanced'">
-				<dt class="fileinfo">
-					<s:set var="fileName" value="#resourceInstance.fileName" />
-					<s:if test='%{#fileName.length()>24}'>
-					<s:set var="fileName" value='%{#fileName.substring(0,10)+"..."+#fileName.substring(#fileName.length()-10)}' />
-						<span class="monospace fileName cursor" title="<s:property value="#resourceInstance.fileName" />"><s:property value="#fileName" /></span>
-					</s:if>
-					<s:else>
-						<span class="monospace fileName">
-							<s:property value="#fileName" />
-						</span>
-					</s:else>
-					<span class="monospace fileLength">
-						<s:property value="%{#resourceInstance.fileLength.replaceAll(' ', '&nbsp;')}"  escapeXml="false" escapeHtml="false" escapeJavaScript="false" />
-					</span>
-				</dt>
-				<s:if test="!onEditContent">
-					<dd class="imageInfo monospace">
-						<span class="slidecrab-closer"><s:text name="label.close" /></span>
-						<ul>
-							<s:set var="dimensionId" value="0" />
-							<s:set var="resourceInstance" value='%{#resource.getInstance(#dimensionId,null)}' />
-							<%//TODO check if reaplaceAll of spaces with &nbsp; is a good thing  %>
-							<li>
-								<a href="<s:property value="%{#resource.getImagePath(#dimensionId)}" />"><span class="filehandler"><s:text name="label.size.original" /></span><span class="filesize"><s:property value='#resourceInstance.fileLength.replaceAll(" ", "&nbsp;")' escapeXml="false" escapeHtml="false" escapeJavaScript="false" /></span></a>
-							</li>
-							<s:set var="dimensionId" value="null" />
-							<s:set var="resourceInstance" value="null" />
-							<s:iterator value="#imageDimensionsVar" var="dimInfo">
-								<s:set var="dimensionId" value="#dimInfo.idDim" />
-								<s:set var="resourceInstance" value='%{#resource.getInstance(#dimensionId,null)}' />
-								<s:if test="#resourceInstance != null">
-							<li>
-									<a href="<s:property value="%{#resource.getImagePath(#dimensionId)}" />"><span class="filehandler"><s:property value="#dimInfo.dimx" />x<s:property value="#dimInfo.dimy" />&nbsp;px</span><span class="filesize"><s:property value='#resourceInstance.fileLength.replaceAll(" ", "&nbsp;")' escapeXml="false" escapeHtml="false" escapeJavaScript="false" /></span></a>
-									<%//TODO check if reaplaceAll of spaces with &nbsp; is a good thing  %>				
-							</li>
-								</s:if>
-							</s:iterator>
-						</ul>
-					</dd>
-				</s:if>
-			</s:if>
-			<dd>
-				<s:if test='%{#myClient == "advanced" && #resource.descr.length()>115}'>
-					<p class="cursor" title="<s:property value="#resource.descr" />"><s:property value="#resource.descr.substring(0,115)" />...</p>
+			</div>
+			<div class="fileinfo">
+				<s:set var="fileName" value="#resourceInstance.fileName" />
+				<s:if test='%{#fileName.length()>24}'>
+				<s:set var="fileName" value='%{#fileName.substring(0,10)+"..."+#fileName.substring(#fileName.length()-10)}' />
+					<span class="monospace fileName cursor" title="<s:property value="#resourceInstance.fileName" />"><s:property value="#fileName" /></span>
 				</s:if>
 				<s:else>
-					<p><s:property value="#resource.descr" /></p>
+					<span class="monospace fileName">
+						<s:property value="#fileName" />
+					</span>
 				</s:else>
-			</dd>
-		</dl>
-	<s:if test="#status.last">
+				<span class="monospace fileLength">
+					<s:property value="%{#resourceInstance.fileLength.replaceAll(' ', '&nbsp;')}"  escapeXml="false" escapeHtml="false" escapeJavaScript="false" />
+				</span>
+			</div>
+			<s:if test="!onEditContent">
+				<div class="imageInfo monospace">
+					<span class="slidecrab-closer"><s:text name="label.close" /></span>
+					<ul>
+						<s:set var="dimensionId" value="0" />
+						<s:set var="resourceInstance" value='%{#resource.getInstance(#dimensionId,null)}' />
+						<%//TODO check if reaplaceAll of spaces with &nbsp; is a good thing  %>
+						<li>
+							<a href="<s:property value="%{#resource.getImagePath(#dimensionId)}" />"><span class="filehandler"><s:text name="label.size.original" /></span><span class="filesize"><s:property value='#resourceInstance.fileLength.replaceAll(" ", "&nbsp;")' escapeXml="false" escapeHtml="false" escapeJavaScript="false" /></span></a>
+						</li>
+						<s:set var="dimensionId" value="null" />
+						<s:set var="resourceInstance" value="null" />
+						<s:iterator value="#imageDimensionsVar" var="dimInfo">
+							<s:set var="dimensionId" value="#dimInfo.idDim" />
+							<s:set var="resourceInstance" value='%{#resource.getInstance(#dimensionId,null)}' />
+							<s:if test="#resourceInstance != null">
+						<li>
+								<a href="<s:property value="%{#resource.getImagePath(#dimensionId)}" />"><span class="filehandler"><s:property value="#dimInfo.dimx" />x<s:property value="#dimInfo.dimy" />&nbsp;px</span><span class="filesize"><s:property value='#resourceInstance.fileLength.replaceAll(" ", "&nbsp;")' escapeXml="false" escapeHtml="false" escapeJavaScript="false" /></span></a>
+								<%//TODO check if reaplaceAll of spaces with &nbsp; is a good thing  %>				
+						</li>
+							</s:if>
+						</s:iterator>
+					</ul>
+				</div>
+			</s:if>
+			<div>
+				<s:set var="info-img"><s:property value="#resource.descr" /></s:set>
+				<span class="label label-info pull-right" data-toggle="popover" 
+				data-html="true" 
+				data-content="<s:property value="info-img" />" title="" 
+				data-original-title="Image info">Info</span>
+			</div>
 		</div>
-	</s:if>
+	</div>
 </s:iterator>
+</div>
+
 
 <div class="pager clear margin-more-top">
 	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
@@ -232,7 +219,5 @@
 </s:action>
 </s:if>
 </wp:ifauthorized>
-
-</div>
 
 </div>
