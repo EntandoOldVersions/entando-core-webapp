@@ -43,8 +43,14 @@ jQuery.each($('form.action-form'), function(index, currentForm){
 		var myLabel = $(myLabel);
 		var myInput = $('#'+myLabel.attr('for'));
 		if (myInput.attr('checked') == 'checked') {
-			myLabel.addClass('highlight');
+			$(myLabel).addClass('text-info');
 			$(myLabel).popover('show');
+
+			//prepare and attach tooltips to action buttons
+			$(myActionMenu).tooltip({
+				container: myActionMenu,
+				selector: "[data-toggle=tooltip]"
+			});
 		}
 		myLabel.css("cursor","pointer");
 	});
@@ -55,17 +61,17 @@ jQuery.each($('form.action-form'), function(index, currentForm){
 		//e.stop();
 		var clickedLabel = this;
 
-		//prepare and attach tooltips to action buttons
-		$(myActionMenu).tooltip({
-			container: myActionMenu,
-		  selector: "[data-toggle=tooltip]"
-		});
-
 		//hide any popover except for the one of the clicked label
 		//hide proved to be asynchronous, that's why we are excluding the unwanted label using .not()
 		labels.not(clickedLabel).popover('hide');
 		//show the popover for the clicked label
 		$(clickedLabel).popover('show');
+
+		//prepare and attach tooltips to action buttons
+		$(myActionMenu).tooltip({
+			container: myActionMenu,
+			selector: "[data-toggle=tooltip]"
+		});
 
 		//remove the class text-info from the other labels
 		labels.removeClass('text-info');
