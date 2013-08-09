@@ -8,7 +8,7 @@
 		startTabIndex: null,			//quale tab mostrare per primo (vince su startTab)
 		startTab: null,					//come sopra però arriva un ID
 		activeTabClass: "activetab",	//class css applicata al toggler attivo
-		hideClass: "noscreen",			//classe css che viene applicata in stato "nascosto"
+		hideClass: "sr-only",			//classe css che viene applicata in stato "nascosto"
 		showClass: "showClass",			//classe css che viene applicata in stato "visibile"
 		anchorTab: "_quickmenu",			//backlinks id suffix
 		tabTogglers: 'a.tab-toggle',
@@ -139,7 +139,7 @@
 	
 	var defaultOptions = {
 		menuToggler: "toggler", //togglers css class
-		hideClass: "noscreen", //css class for hidden menu
+		hideClass: "sr-only", //css class for hidden menu
 		showClass: "undoNoscreen", //css class for visible menu
 		openClass: "openmenu", //css class used when the branch is open
 		closedClass: "closedmenu", //css class used when the branch is closed
