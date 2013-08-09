@@ -21,13 +21,13 @@
 			</s:include>
 		</s:if>
 		<div class="row">
-			<div class="col-4 col-lg-2 col-sm-3">
+			<div class="col-4 col-sm-3 col-lg-2">
 			<a href="<s:property value="#defaultResource.getImagePath('0')" />" title="<s:text name="label.img.original" />">
 			<img class="alignTop" src="<s:property value="#defaultResource.getImagePath('1')"/>" alt="<s:property value="#defaultResource.descr"/>" />
 			</a>
 			</div>
 			<%-- CAMPO DI TESTO --%>
-			<div class="col-8 col-lg-10 col-sm-9 form-horizontal margin-base-top">	
+			<div class="col-8 col-sm-9 col-lg-10 form-horizontal margin-base-top">	
 			  	<div class="form-group">
 				<label class="col-2 col-lg-2 control-label" for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />">
 				<abbr title="<s:text name="label.img.text.long" />"><s:text name="label.img.text.short" /></abbr>:</label>
@@ -64,7 +64,7 @@
 			<%-- IMMAGINE DI DEFAULT + PULSANTE SCEGLI RISORSA --%> 
 			
 			<%-- IMMAGINE DI DEFAULT --%>
-			<div class="col-lg-2 col-sm-2">
+			<div class="col-sm-2 col-lg-2">
 			<a href="<s:property value="#defaultResource.getImagePath('0')" />" title="<s:text name="label.img.original" />">
 			<img class="alignTop" src="<s:property value="#defaultResource.getImagePath('1')"/>" alt="<s:property value="#defaultResource.descr"/>" />
 			</a>
@@ -83,7 +83,7 @@
 			</s:include>			
 			
 			<%-- IMMAGINE LINGUA CORRENTE CON LINK  --%> 
-			<div class="col-lg-2 col-sm-2">
+			<div class="col-sm-2 col-lg-2">
 			<a href="<s:property value="#currentResource.getImagePath('0')" />" title="<s:text name="label.img.original" />">
 			<img class="alignTop" src="<s:property value="#currentResource.getImagePath('1')"/>" alt="<s:property value="#currentResource.descr"/>" />
 			</a>
