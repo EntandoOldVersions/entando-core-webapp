@@ -132,7 +132,7 @@
 		<div class="col-lg-3">
 		<div class="thumbnail text-center margin-base-bottom">
 			<%-- Dimension forced for img on thumbnail --%>
-			<img src="<s:property value="%{#resource.getImagePath(1)}"/>" alt=" " style="height:90px;"/>	
+			<img src="<s:property value="%{#resource.getImagePath(1)}"/>" alt=" " style="height:90px;width:130px" />	
 			<div class="caption">
 			<p class="btn-group margin-small-vertical">
 				<s:if test="onEditContent">

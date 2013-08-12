@@ -21,17 +21,17 @@
 			</s:include>
 		</s:if>
 		<div class="row">
-			<div class="col-xs-4 col-sm-3 col-lg-2">
+			<div class="col-xs-5 col-sm-3 col-lg-2">
 			<a href="<s:property value="#defaultResource.getImagePath('0')" />" title="<s:text name="label.img.original" />">
-			<img src="<s:property value="#defaultResource.getImagePath('1')"/>" alt="<s:property value="#defaultResource.descr"/>" />
+			<img src="<s:property value="#defaultResource.getImagePath('1')"/>" alt="<s:property value="#defaultResource.descr"/>" style="height:90px;width:130px" />
 			</a>
 			</div>
 			<%-- CAMPO DI TESTO --%>
-			<div class="col-xs-8 col-sm-9 col-lg-10 form-horizontal margin-base-top">	
+			<div class="col-xs-7 col-sm-9 col-lg-10 form-horizontal margin-large-top">	
 			  	<div class="form-group">
-				<label class="col-sm-1 control-label" for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />">
+				<label class="col-xs-1 control-label" for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />">
 				<abbr title="<s:text name="label.img.text.long" />"><s:text name="label.img.text.short" /></abbr>&#32;</label>
-				<div class="col-sm-11">
+				<div class="col-xs-11">
 					<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/textAttribute.jsp" />
 				</div>
 				</div>
