@@ -5,8 +5,6 @@
 
 <h2 id="manage" class="sr-only"><s:text name="note.userbar.intro" />:</h2>
 
-<!-- <h3 id="menubar-components"><span><s:text name="menu.componentsAdmin" /></span></h3> -->
-
 <p>
 	<a class="btn btn-info btn-block" href="<s:url namespace="/do/BaseAdmin" action="configSystemParams" />"><span class="icon icon-cog"></span>&#32;<s:text name="menu.configure" /></a>
 </p>
@@ -49,7 +47,6 @@
 <wp:ifauthorized permission="superuser" var="isSuperuser" />
 
 <c:if test="${isEditPages || isSuperuser}">
-<!-- <h3 id="menubar-portal"><span><s:text name="menu.portalAdmin" /></span></h3> -->
 
 <wp:ifauthorized permission="managePages">
 	<li><a href="<s:url action="viewTree" namespace="/do/Page" />"><s:text name="menu.pageAdmin" /></a></li>
@@ -81,7 +78,6 @@
 <wp:ifauthorized permission="manageResources" var="isManageResources" />
 
 <c:if test="${isEditContents || isManageResources}">
-<!-- <h3 id="menubar-cms"><span><s:text name="jacms.menu.cmsAdmin" /></span></h3> -->
 	<wp:ifauthorized permission="editContents">
 
 		<li class="accordion">
@@ -94,7 +90,7 @@
 				</div>
 				<div id="submenu-contents" class="accordion-body collapse">
 					<ul class="accordion-inner nav nav-pills nav-stacked">
-						<li><a href="<s:url action="intro" namespace="/do/jacms/Content" />"><s:text name="jacms.menu.contentAdmin" /></a></li>
+						<li><a href="<s:url action="list" namespace="/do/jacms/Content" />"><s:text name="jacms.menu.contentAdmin.list" /></a></li>
 						<li><a href="<s:url action="createNew" namespace="/do/jacms/Content" />?contentTypeCode=CNG">New Generic Content</a></li>
 						<wp:ifauthorized permission="superuser">
 						<li><a href="<s:url action="intro" namespace="/do/jacms/ContentModel" />"><s:text name="jacms.menu.contentModelAdmin" /></a></li>
