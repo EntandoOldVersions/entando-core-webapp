@@ -54,7 +54,7 @@
 		<wpsa:actionParam action="removeCategory" var="actionName" >
 			<wpsa:actionSubParam name="categoryCode" value="%{#contentCategory.code}" />
 		</wpsa:actionParam>
-		<s:submit useTabindexAutoIncrement="true" type="button" action="%{#actionName}" value="%{getText('label.remove')}" title="%{getText('label.remove') + ' ' + #contentCategory.defaultFullTitle}" cssClass="btn btn-default btn-xs badge">
+		<s:submit type="button" action="%{#actionName}" title="%{getText('label.remove') + ' ' + #contentCategory.defaultFullTitle}" cssClass="btn btn-default btn-xs badge">
 			<span class="icon icon-remove"></span>
 			<span class="sr-only">x</span>
 		</s:submit>
