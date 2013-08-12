@@ -43,7 +43,7 @@
 	<h1 id="fagiano_start"><s:text name="title.mainFunctions" /></h1>
 --%>
 <div class="row row-offcanvas row-offcanvas-right">
-	<div class="col-lg-3 col-sm-3 sidebar-offcanvas col-sm-push-9 col-lg-push-9" id="sidebar">
+	<div class="col-sm-3 sidebar-offcanvas col-sm-push-9 col-md-push-9 col-lg-push-9" id="sidebar">
 
 		<div class="accordion">
 			<div class="accordion-group">
@@ -90,10 +90,10 @@
 			</p>
 		</nav>
 	</div>
-	<div class="col-sm-9 col-sm-pull-3 col-lg-9 col-lg-pull-3">
+	<div class="col-sm-9 col-sm-pull-3 col-md-pull-3 col-lg-pull-3">
 		<div class="navbar navbar-static-top" id="navbar">
 			<div class="container">
-				<a href="#sidebar" class="btn-offcanvas navbar-toggle pull-right visible-sm" data-toggle="offcanvas">
+				<a href="#sidebar" class="btn-offcanvas navbar-toggle pull-right visible-xs" data-toggle="offcanvas">
 						<!-- <span class="icon icon-ellipsis-horizontal"></span> -->
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
@@ -104,7 +104,7 @@
 		</div>
 		<tiles:insertAttribute name="body"/>
 	</div>
-	<div class="col-12 margin-large-top">
+	<div class="col-sm-12 margin-large-top">
 		<ul class="sr-only">
 			<li><a href="#fagiano_mainContent"><s:text name="note.backToMainContent" /></a></li>
 			<li><a href="#fagiano_start"><s:text name="note.backToStart" /></a></li>
