@@ -19,7 +19,6 @@
 		<script src="<wp:resourceURL />administration/js/respond.min.js"></script>
 	<![endif]-->
 
-	<script src="<wp:resourceURL />administration/js/jquery-1.9.1.min.js"></script>
 	<script>
 		$(function(){
 			document.getElementById('username').focus();
