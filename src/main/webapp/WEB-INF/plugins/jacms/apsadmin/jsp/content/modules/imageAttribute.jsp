@@ -10,7 +10,7 @@
 <s:if test="#lang.default">
 <%-- Lingua di DEFAULT --%>
 	<s:if test="#currentResource != null">
-	<div class="panel">
+	<div class="panel margin-small-top">
 		<%-- Lingua di default - Risorsa VALORIZZATA --%>
 		<%-- IMMAGINE E LINK + TESTO + PULSANTE RIMUOVI --%>
 		<%-- IMMAGINE E LINK --%>
@@ -21,17 +21,17 @@
 			</s:include>
 		</s:if>
 		<div class="row">
-			<div class="col-4 col-sm-3 col-lg-2">
+			<div class="col-xs-4 col-sm-3 col-lg-2">
 			<a href="<s:property value="#defaultResource.getImagePath('0')" />" title="<s:text name="label.img.original" />">
-			<img class="alignTop" src="<s:property value="#defaultResource.getImagePath('1')"/>" alt="<s:property value="#defaultResource.descr"/>" />
+			<img src="<s:property value="#defaultResource.getImagePath('1')"/>" alt="<s:property value="#defaultResource.descr"/>" />
 			</a>
 			</div>
 			<%-- CAMPO DI TESTO --%>
-			<div class="col-8 col-sm-9 col-lg-10 form-horizontal margin-base-top">	
+			<div class="col-xs-8 col-sm-9 col-lg-10 form-horizontal margin-base-top">	
 			  	<div class="form-group">
-				<label class="col-2 col-lg-2 control-label" for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />">
-				<abbr title="<s:text name="label.img.text.long" />"><s:text name="label.img.text.short" /></abbr>:</label>
-				<div class="col-10 col-lg-10">
+				<label class="col-sm-1 control-label" for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />">
+				<abbr title="<s:text name="label.img.text.long" />"><s:text name="label.img.text.short" /></abbr>&#32;</label>
+				<div class="col-sm-11">
 					<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/textAttribute.jsp" />
 				</div>
 				</div>
