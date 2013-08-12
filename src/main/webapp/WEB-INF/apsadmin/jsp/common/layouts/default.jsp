@@ -99,7 +99,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 				</a>
-				<a class="navbar-brand" href="#">Entando</a>
+				<a class="navbar-brand" href="<s:url action="main" namespace="/do" />">Entando</a>
 			</div>
 		</div>
 		<tiles:insertAttribute name="body"/>
