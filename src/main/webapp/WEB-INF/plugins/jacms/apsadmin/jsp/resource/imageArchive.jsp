@@ -132,7 +132,7 @@
 		<div class="col-lg-3">
 		<div class="thumbnail text-center margin-base-bottom">
 			<%-- Dimension forced for img on thumbnail --%>
-			<img src="<s:property value="%{#resource.getImagePath(1)}"/>" alt=" " style="height:90px;width:130px" />	
+			<img src="<s:property value="%{#resource.getImagePath(1)}"/>" alt=" " style="height:90px;max-width:130px" class="margin-base-top" />	
 			<div class="caption">
 			<p class="btn-group margin-small-vertical">
 				<s:if test="onEditContent">
@@ -141,7 +141,7 @@
 					<s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>" 
 					class="btn btn-primary" 
 					title="<s:text name="note.joinThisToThat" />: 
-					<s:property value="content.descr" />" >Choose</a>
+					<s:property value="content.descr" />" ><span class="icon icon-picture"></span>&#32;<s:text name="label.use"/></a>
 				</s:if>
 				<%-- <s:text name="label.size.original" /> --%>
 				<s:if test="!onEditContent">
@@ -197,9 +197,11 @@
 					</div>
 				</s:if>
 				<s:set var="info-img"><s:property value="#resource.descr" /></s:set>
-				<button type="button" class="btn btn-default" data-toggle="popover" 
+				<button type="submit" class="btn btn-info" data-toggle="popover" 
 				data-html="true" data-content="Ciao" title="" 
-				data-original-title="Image info">Info</button>
+				data-original-title="Image info"><span class="icon icon-info"></span>
+				<span class="sr-only"><s:text name="label.info" /></span>
+				</button>
 		</p>
 		</div>
 		</div>

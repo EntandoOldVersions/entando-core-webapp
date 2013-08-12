@@ -21,17 +21,17 @@
 			</s:include>
 		</s:if>
 		<div class="row">
-			<div class="col-xs-5 col-sm-3 col-lg-2">
+			<div class="col-xs-12 col-sm-3 col-lg-2 text-center">
 			<a href="<s:property value="#defaultResource.getImagePath('0')" />" title="<s:text name="label.img.original" />">
-			<img src="<s:property value="#defaultResource.getImagePath('1')"/>" alt="<s:property value="#defaultResource.descr"/>" style="height:90px;width:130px" />
+			<img src="<s:property value="#defaultResource.getImagePath('1')"/>" alt="<s:property value="#defaultResource.descr"/>" style="height:90px;max-width:130px" />
 			</a>
 			</div>
 			<%-- CAMPO DI TESTO --%>
-			<div class="col-xs-7 col-sm-9 col-lg-10 form-horizontal margin-large-top">	
+			<div class="col-xs-12 col-sm-9 col-lg-10 form-horizontal margin-large-top">	
 			  	<div class="form-group">
-				<label class="col-xs-1 control-label" for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />">
+				<label class="col-xs-2 control-label text-right" for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />">
 				<abbr title="<s:text name="label.img.text.long" />"><s:text name="label.img.text.short" /></abbr>&#32;</label>
-				<div class="col-xs-11">
+				<div class="col-xs-10">
 					<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/textAttribute.jsp" />
 				</div>
 				</div>
@@ -66,7 +66,7 @@
 			<%-- IMMAGINE DI DEFAULT --%>
 			<div class="col-sm-2 col-lg-2">
 			<a href="<s:property value="#defaultResource.getImagePath('0')" />" title="<s:text name="label.img.original" />">
-			<img class="alignTop" src="<s:property value="#defaultResource.getImagePath('1')"/>" alt="<s:property value="#defaultResource.descr"/>" />
+			<img src="<s:property value="#defaultResource.getImagePath('1')"/>" alt="<s:property value="#defaultResource.descr"/>" />
 			</a>
 			</div>
 			<%-- PULSANTE DI RICERCA RISORSA --%>
@@ -85,7 +85,7 @@
 			<%-- IMMAGINE LINGUA CORRENTE CON LINK  --%> 
 			<div class="col-sm-2 col-lg-2">
 			<a href="<s:property value="#currentResource.getImagePath('0')" />" title="<s:text name="label.img.original" />">
-			<img class="alignTop" src="<s:property value="#currentResource.getImagePath('1')"/>" alt="<s:property value="#currentResource.descr"/>" />
+			<img src="<s:property value="#currentResource.getImagePath('1')"/>" alt="<s:property value="#currentResource.descr"/>" />
 			</a>
 			</div>
 			
@@ -97,7 +97,8 @@
 		<%-- CAMPO DI TESTO --%>
 		<%-- CAMPO DI TESTO - MODULARIZZARE --%>
 		<span class="imageAttribute-text">
-		<label class="basic-mint-label" for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />"><abbr title="testo per ciccio">testo</abbr>:</label>		
+		<label class="basic-mint-label" for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />">
+		<abbr title="testo per ciccio">testo</abbr>:</label>		
 		<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/textAttribute.jsp" />
 		</span>
 	</div>
