@@ -10,6 +10,7 @@
 	<title>Entando - Sign in</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta charset="utf-8" />
 
 	<link rel="stylesheet" href="<wp:resourceURL />administration/bootstrap/css/bootstrap.min.css" media="screen" />
 
@@ -18,12 +19,6 @@
 		<script src="<wp:resourceURL />administration/js/html5shiv.js"></script>
 		<script src="<wp:resourceURL />administration/js/respond.min.js"></script>
 	<![endif]-->
-
-	<script>
-		$(function(){
-			document.getElementById('username').focus();
-		});
-	</script>
 
 </head>
 <body>
@@ -176,6 +171,11 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="<wp:resourceURL />administration/js/jquery-1.9.1.min.js"></script>
 <script src="<wp:resourceURL />administration/bootstrap/js/bootstrap.js"></script>
+<script>
+	$(function(){
+		document.getElementById('username').focus();
+	});
+</script>
 
 </body>
 </html>
