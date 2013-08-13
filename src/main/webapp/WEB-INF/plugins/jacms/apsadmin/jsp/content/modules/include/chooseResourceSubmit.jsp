@@ -11,7 +11,13 @@
 	<wpsa:actionSubParam name="resourceTypeCode" value="%{#resourceTypeCode}" />
 	<wpsa:actionSubParam name="resourceLangCode" value="%{#lang.code}" />
 </wpsa:actionParam>
-<s:submit action="%{#chooseResourceActionName}" type="button" title="%{#attribute.name + ': ' + getText('label.chooseImage')}" cssClass="btn btn-default"> 
+<s:submit action="%{#chooseResourceActionName}" type="button" title="%{#attribute.name + ': ' + getText('label.choose')}" cssClass="btn btn-default"> 
+<s:if test="#resourceTypeCode == 'Image'">
 		<span class="icon icon-picture"></span>&#32;
 		<s:text name="label.chooseImage" />
+</s:if>
+<s:else>
+		<span class="icon icon-paper-clip"></span>&#32;
+		<s:text name="label.chooseAttach" />
+</s:else>
 </s:submit>

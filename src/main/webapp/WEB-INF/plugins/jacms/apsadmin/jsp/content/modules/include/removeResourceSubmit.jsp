@@ -13,9 +13,15 @@
 	<wpsa:actionSubParam name="resourceLangCode" value="%{#lang.code}" />
 </wpsa:actionParam>
 
-<s:submit action="%{#removeResourceActionName}" type="button" title="%{#attribute.name + ': ' + getText('label.clearImage')}" cssClass="btn btn-warning btn-xs"> 
+<s:submit action="%{#removeResourceActionName}" type="button" title="%{#attribute.name + ': ' + getText('label.clear')}" cssClass="btn btn-warning btn-xs"> 
+<s:if test="#resourceTypeCode == 'Image'">
 		<span class="icon icon-remove"></span>&#32;
 		<s:text name="label.clearImage" />
+</s:if>
+<s:else>
+		<span class="icon icon-remove"></span>&#32;
+		<s:text name="label.clearAttach" />
+</s:else>
 </s:submit>
 
 </div>
