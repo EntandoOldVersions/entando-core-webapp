@@ -13,7 +13,7 @@
 	<wpsa:actionSubParam name="resourceLangCode" value="%{#lang.code}" />
 </wpsa:actionParam>
 
-<s:submit action="%{#removeResourceActionName}" type="button" title="%{#attribute.name + ': ' + getText('label.clearImage')}" cssClass="btn btn-default btn-xs"> 
+<s:submit action="%{#removeResourceActionName}" type="button" title="%{#attribute.name + ': ' + getText('label.clearImage')}" cssClass="btn btn-warning btn-xs"> 
 		<span class="icon icon-remove"></span>&#32;
 		<s:text name="label.clearImage" />
 </s:submit>
