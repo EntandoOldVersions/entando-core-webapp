@@ -1,7 +1,6 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/aps-core" prefix="wp" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
-<%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="jacms" uri="/jacms-apsadmin-core" %>
 
@@ -49,14 +48,14 @@
 <s:if test="null != #allowedGroupsVar && #allowedGroupsVar.size()>1">
 <p>
 	<label for="ownerGroupName" class="label-control"><s:text name="label.group" />:</label>
-	<s:select useTabindexAutoIncrement="true" name="ownerGroupName" id="ownerGroupName" list="#allowedGroupsVar"
+	<s:select name="ownerGroupName" id="ownerGroupName" list="#allowedGroupsVar"
 		headerKey="" headerValue="%{getText('label.all')}" listKey="name" listValue="descr" cssClass="text" />
 </p>
 </s:if>
 
 <p>
 	<label for="fileName" class="label-control"><s:text name="label.filename" />:</label>
-	<s:textfield useTabindexAutoIncrement="true" name="fileName" id="fileName" cssClass="text" />
+	<s:textfield name="fileName" id="fileName" cssClass="text" />
 </p>
 <div class="subsection-light">
 <p class="important">
@@ -133,15 +132,24 @@
 		<div class="thumbnail text-center margin-base-bottom">
 			<%-- Dimension forced for img on thumbnail --%>
 			<img src="<s:property value="%{#resource.getImagePath(1)}"/>" alt=" " style="height:90px;max-width:130px" class="margin-base-top" />	
-			<div class="caption">
-			<p class="btn-group margin-small-vertical">
 				<s:if test="onEditContent">
-					<a href="<s:url action="joinResource" namespace="/do/jacms/Content/Resource">
-					<s:param name="resourceId" value="%{#resourceid}" />
-					<s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>" 
-					class="btn btn-primary" 
-					title="<s:text name="note.joinThisToThat" />: 
-					<s:property value="content.descr" />" ><span class="icon icon-picture"></span>&#32;<s:text name="label.use"/></a>
+					<div class="caption">
+					<p class="btn-group margin-small-vertical">
+						<a href="<s:url action="joinResource" namespace="/do/jacms/Content/Resource">
+						<s:param name="resourceId" value="%{#resourceid}" />
+						<s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>" 
+						class="btn btn-primary" 
+						title="<s:text name="note.joinThisToThat" />: 
+						<s:property value="content.descr" />" ><span class="icon icon-picture"></span>&#32;<s:text name="label.use"/></a>
+						
+						<s:set var="info-img"><s:property value="#resource.descr" /></s:set>
+						<button type="submit" class="btn btn-info" data-toggle="popover" 
+						data-html="true" data-content="Ciao" title="" 
+						data-original-title="Image info"><span class="icon icon-info"></span>
+						<span class="sr-only"><s:text name="label.info" /></span>
+						</button>
+					</p>
+					</div>
 				</s:if>
 				<%-- <s:text name="label.size.original" /> --%>
 				<s:if test="!onEditContent">
@@ -196,14 +204,6 @@
 						</ul>
 					</div>
 				</s:if>
-				<s:set var="info-img"><s:property value="#resource.descr" /></s:set>
-				<button type="submit" class="btn btn-info" data-toggle="popover" 
-				data-html="true" data-content="Ciao" title="" 
-				data-original-title="Image info"><span class="icon icon-info"></span>
-				<span class="sr-only"><s:text name="label.info" /></span>
-				</button>
-		</p>
-		</div>
 		</div>
 	</div>
 </s:iterator>
