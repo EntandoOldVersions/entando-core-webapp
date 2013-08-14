@@ -27,7 +27,7 @@
 				&#32;
 				(<s:property value="content.typeDescr" />) <abbr title="<s:text name="name.version" />">v</abbr><s:property value="content.version" />&#32;<s:text name="note.lastEditor" />&#32;<wp:ifauthorized permission="superuser"><a href="<s:url action="edit" namespace="/do/User"><s:param name="username" value="content.lastEditor"/></s:url>" title="<s:text name="label.edit" />: <s:property value="content.lastEditor" />"></wp:ifauthorized><s:property value="content.lastEditor" /> you<%-- TODO content.lastEditor should be == current user if this is a new content --%><wp:ifauthorized permission="superuser"></a></wp:ifauthorized>
 			</span>
-			
+
 			<div id="contentDescription-input" style="display: none;" class="input-group has-warning">
 				<input class="form-control" type="text" name="contentDescription" value="<s:property value="#contentDescriptionVar" />" id="contentDescription" />
 				<span class="input-group-btn">
