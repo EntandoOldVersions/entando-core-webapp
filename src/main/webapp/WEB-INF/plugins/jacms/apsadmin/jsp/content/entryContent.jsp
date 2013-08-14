@@ -2,7 +2,7 @@
 <%@ taglib uri="/aps-core" prefix="wp" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <s:set var="targetNS" value="%{'/do/jacms/Content'}" />
-<h1 class="panel title-page"><s:text name="jacms.menu.contentAdmin" />&#32;/&#32;<s:text name="label.new" /></h1>
+<h1 class="panel title-page"><span class="panel-body display-block"><s:text name="jacms.menu.contentAdmin" />&#32;/&#32;<s:text name="label.new" /></span></h1>
 <%-- TODO new | edit --%>
 
 	<s:if test="hasFieldErrors()">
