@@ -108,19 +108,28 @@
 	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
 	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 </div>
+<h3>Choose a file</h3>
 
-<div class="row">
+<div class="list-group">
 <s:iterator var="resourceid" status="status">
 <s:set name="resource" value="%{loadResource(#resourceid)}"></s:set>
 <s:set name="resourceInstance" value="%{#resource.getInstance()}"></s:set>
-	<div class="col-lg-3">
-	<div class="thumbnail text-center margin-base-bottom">
-		<s:if test="onEditContent">	
-			<%--<img src="<wp:resourceURL/>administration/common/img/icons/resourceTypes/
-			<s:property value="%{getIconFile(#resourceInstance.fileName)}"/>" alt="<s:property value="%{#resourceInstance.fileName}"/>" 
-			title="<s:text name="note.joinThisToThat" />: <s:property value="content.descr" />" 
-			style="height:90px;max-width:130px" class="margin-base-top" /> --%>
-			<p class="text-primary margin-base-top" style="min-height:90px;">
+	<s:if test="onEditContent">	
+	<a href="<s:url action="joinResource" namespace="/do/jacms/Content/Resource"><s:param name="resourceId" value="%{#resourceid}" /><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>" 
+	title="<s:text name="label.use"/>" class="list-group-item" >
+		<%--<img src="<wp:resourceURL/>administration/common/img/icons/resourceTypes/
+		<s:property value="%{getIconFile(#resourceInstance.fileName)}"/>" alt="<s:property value="%{#resourceInstance.fileName}"/>" 
+		title="<s:text name="note.joinThisToThat" />: <s:property value="content.descr" />" 
+		style="height:90px;max-width:130px" class="margin-base-top" /> --%>
+		<div>
+			<s:if test="!#resource.categories.empty">
+				<s:iterator var="category_resource" value="#resource.categories">
+					<span class="label label-info margin-large-vertical"><s:property value="%{#category_resource.getTitle(currentLang.code)}"/></span>
+				</s:iterator>						
+			</s:if>
+		</div>
+		<div class="text-primary row">
+			<div class="col-lg-8">
 				<s:set var="fileDescr" value="#resource.descr" />
 				<s:if test='%{#fileDescr.length()>90}'>
 					<s:set var="fileDescr" value='%{#fileDescr.substring(0,30)+"..."+#fileDescr.substring(#fileDescr.length()-30)}' />
@@ -130,33 +139,23 @@
 				<s:else>
 					<s:property value="#resource.descr" />
 				</s:else>
-			</p>
-			<p>
+			</div>
+			<div class="col-lg-4 text-right">
 				<s:set var="fileName" value="#resourceInstance.fileName" />
-				<s:if test='%{#fileName.length()>20}'>
-					<s:set var="fileName" value='%{#fileName.substring(0,8)+"..."+#fileName.substring(#fileName.length()-8)}' />
-					<code>
-					<abbr title="<s:property value="#resourceInstance.fileName" />">
-					<s:property value="#fileName" /></abbr>
-					</code>
+				<s:if test='%{#fileName.length()>25}'>
+					<s:set var="fileName" value='%{#fileName.substring(0,10)+"..."+#fileName.substring(#fileName.length()-10)}' />
+					<code><abbr title="<s:property value="#resourceInstance.fileName" />"><s:property value="#fileName" /></abbr></code>
 				</s:if>
 				<s:else>
 					<code><s:property value="#fileName" /></code>
 				</s:else>
-			</p>
-			<p>
+				<span class="badge">
 				<s:property value="%{#resourceInstance.fileLength.replaceAll(' ', '&nbsp;')}"  escapeXml="false" escapeHtml="false" escapeJavaScript="false" />
-			</p>
-			<div class="caption">
-				<p class="margin-small-vertical">
-					<a href="<s:url action="joinResource" namespace="/do/jacms/Content/Resource">
-						<s:param name="resourceId" value="%{#resourceid}" />
-						<s:param name="contentOnSessionMarker" value="contentOnSessionMarker" />
-					</s:url>" title="<s:text name="note.joinThisToThat" />: <s:property value="content.descr" />"
-					class="btn btn-primary" ><span class="icon icon-paper-clip"></span>&#32;<s:text name="label.use"/></a>
-				</p>
+				</span>
 			</div>
-		</s:if>
+		</div>
+	</a>
+	</s:if>
 		<s:if test="!onEditContent">
 			<img src="<wp:resourceURL/>administration/common/img/icons/resourceTypes/<s:property value="%{getIconFile(#resourceInstance.fileName)}"/>" alt="<s:property value="%{#resourceInstance.fileName}"/>" title="<s:property value="%{#resourceInstance.fileName}"/>" /><s:if test='#myClient == "normal"'><br /><s:property value="%{#resourceInstance.fileLength}"/></s:if>
 				<s:if test="#myClient == 'advanced'">
@@ -193,10 +192,9 @@
 				</span>
 			</p>
 		</s:if>
-	</div>
-</div>
 </s:iterator>
 
+</div>
 <div class="pager clear margin-more-top">
 	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 </div>
