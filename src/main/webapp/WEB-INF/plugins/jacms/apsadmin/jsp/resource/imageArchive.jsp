@@ -98,11 +98,11 @@
 	<s:hidden name="resourceTypeCode" />
 	<s:hidden name="fileName" />
 	<s:hidden name="ownerGroupName" />
-<s:if test="#categoryTreeStyleVar == 'request'">
-	<s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar">
-	<s:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"/>
-	</s:iterator>
-</s:if>
+	<s:if test="#categoryTreeStyleVar == 'request'">
+		<s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar">
+		<s:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"/>
+		</s:iterator>
+	</s:if>
 	<s:hidden name="contentOnSessionMarker" />
 </p>
 
@@ -153,18 +153,22 @@
 				</s:if>
 				<%-- <s:text name="label.size.original" /> --%>
 				<s:if test="!onEditContent">
+					<%--
 					<s:if test="#myClient == 'advanced'">
-						<%//TODO insert icon and i18n label for "permalink" --%>
+						<%//TODO insert icon and i18n label for "permalink"
 						<a class="imageInfoToggler" href="<s:property value="URLoriginal" />" ><img src="<wp:resourceURL />administration/common/img/icons/22x22/detail.png" alt="<s:text name="label.view" />" title="<s:text name="label.view" />" /></a>
 					</s:if>
 					<s:else>
 						<a href="<s:property value="%{#resource.getImagePath(0)}" />" ><s:text name="label.size.original" /></a><br />
 					</s:else>
-					<span class="sr-only">, </span>
-					<a href="<s:property value="URLedit" escape="false" />"><img src="<wp:resourceURL />administration/common/img/icons/edit-content.png" alt="<s:text name="label.edit" />" title="<s:text name="label.edit" />" /></a>
-					<span class="sr-only">, </span>
-					<a href="<s:property value="URLtrash" escape="false" />"><img src="<wp:resourceURL />administration/common/img/icons/delete.png" alt="<s:text name="label.remove" />" title="<s:text name="label.remove" />" /></a>
+					 --%>
+					<p class="btn-group margin-small-vertical">
+					<a href="<s:property value="URLedit" escape="false" />" class="btn btn-default" ><span class="icon icon-edit"></span><span class="sr-only">Edit</span></a>
 					
+					<a href="<s:property value="URLtrash" escape="false" />" class="btn btn-danger"><span class="icon icon-trash"></span><span class="sr-only">Delete</span></a>
+					<a href="#" class="btn btn-info"><span class="icon icon-info"></span><span class="sr-only">Info</span></a>
+					</p>
+					<%--
 					<div class="fileinfo">
 						<s:set var="fileName" value="#resourceInstance.fileName" />
 						<s:if test='%{#fileName.length()>24}'>
@@ -203,6 +207,7 @@
 							</s:iterator>
 						</ul>
 					</div>
+					 --%>
 				</s:if>
 		</div>
 	</div>
