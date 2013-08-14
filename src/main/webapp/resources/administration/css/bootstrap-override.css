@@ -2,6 +2,11 @@ html {
 	overflow-y: scroll;
 }
 
+/**
+ * We need the navbar to be inside the same row with the main content,
+ * so we are expanding it to seem outside, but still inside the same
+ * container.
+ **/
 #navbar {
 	margin-left: -15px;
 	margin-right: -15px;
@@ -11,11 +16,9 @@ html {
 	right: 15px;
 }
 
-#backoffice-menu-main li.accordion {
-	margin-bottom: 0;
-}
 
-#sidebar > .accordion {
+
+#sidebar > .panel-group {
 	margin-top: 6px;
 }
 
