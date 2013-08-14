@@ -45,18 +45,18 @@
 <div class="row row-offcanvas row-offcanvas-right">
 	<div class="col-sm-3 sidebar-offcanvas col-sm-push-9 col-md-push-9 col-lg-push-9" id="sidebar">
 
-		<div class="accordion">
-			<div class="accordion-group">
-				<div class="accordion-heading">
-					<a class="accordion-toggle" data-toggle="collapse" href="#submenu-user">
+		<div class="panel-group margin-small-vertical">
+			<div class="panel">
+				<div class="panel-heading">
+					<a data-toggle="collapse" href="#submenu-user" class="display-block">
 						<c:out value="${sessionScope.currentUser}"/>
 						<span class="display-inline-block pull-right">
 							<span class="icon icon-user"></span>
 						</span>
 					</a>
 				</div>
-				<div id="submenu-user" class="accordion-body collapse">
-					<ul class="accordion-inner nav nav-pills nav-stacked">
+				<div id="submenu-user" class="panel collapse">
+					<ul class="panel-body nav nav-pills nav-stacked">
 					<c:if test="${sessionScope.currentUser.japsUser}">
 						<li>
 							<a href="<s:url action="editProfile" namespace="/do/CurrentUser" />">

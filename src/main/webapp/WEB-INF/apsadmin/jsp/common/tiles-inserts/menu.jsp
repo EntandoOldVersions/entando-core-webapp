@@ -21,16 +21,16 @@
 	<wpsa:pluginsSubMenu objectName="pluginsSubMenus" />
 
 		<s:if test="#pluginsSubMenus.size > 0">
-			<li class="accordion">
-				<div class="accordion-group">
-					<div class="accordion-heading">
-						<a class="accordion-toggle" data-toggle="collapse" href="#submenu-plugins">
+			<li class="panel-group">
+				<div class="panel">
+					<div class="panel-heading">
+						<a data-toggle="collapse" href="#submenu-plugins" class="display-block">
 							<s:text name="menu.plugins" />&#32;
 							<span class="icon icon-chevron-down pull-right"></span>
 						</a>
 					</div>
-					<div id="submenu-plugins" class="accordion-body collapse">
-						<ul class="accordion-inner nav nav-pills nav-stacked">
+					<div id="submenu-plugins" class="panel-collapse collapse">
+						<ul class="panel-body nav nav-pills nav-stacked">
 							<s:iterator value="#pluginsSubMenus" id="pluginSubMenu">
 								<wpsa:include value="%{#pluginSubMenu.subMenuFilePath}"></wpsa:include>
 							</s:iterator>
@@ -53,16 +53,16 @@
 	<li><a href="<s:url action="viewShowlets" namespace="/do/Portal/ShowletType" />"><s:text name="menu.showletAdmin" /></a></li>
 </wp:ifauthorized>
 <wp:ifauthorized permission="superuser">
-	<li class="accordion">
-		<div class="accordion-group">
-			<div class="accordion-heading">
-				<a class="accordion-toggle" data-toggle="collapse" href="#submenu-api">
+	<li class="panel-group">
+		<div class="panel">
+			<div class="panel-heading">
+				<a data-toggle="collapse" href="#submenu-api" class="display-block">
 					<s:text name="menu.apisAdmin" />&#32;
 					<span class="icon icon-chevron-down pull-right"></span>
 				</a>
 			</div>
-			<div id="submenu-api" class="accordion-body collapse">
-				<ul class="accordion-inner nav nav-pills nav-stacked">
+			<div id="submenu-api" class="panel-collapse collapse">
+				<ul class="panel-body nav nav-pills nav-stacked">
 					<li><a href="<s:url action="list" namespace="/do/Api/Resource" />" ><s:text name="menu.apisAdmin.resources" /></a></li>
 					<li><a href="<s:url action="list" namespace="/do/Api/Service" />" ><s:text name="menu.apisAdmin.services" /></a></li>
 					<li><a href="<s:url action="list" namespace="/do/Api/Consumer" />" ><s:text name="menu.apisAdmin.consumers" /></a></li>
@@ -80,16 +80,16 @@
 <c:if test="${isEditContents || isManageResources}">
 	<wp:ifauthorized permission="editContents">
 
-		<li class="accordion">
-			<div class="accordion-group">
-				<div class="accordion-heading">
-					<a class="accordion-toggle" data-toggle="collapse" href="#submenu-contents">
+		<li class="panel-group">
+			<div class="panel">
+				<div class="panel-heading">
+					<a data-toggle="collapse" href="#submenu-contents" class="display-block">
 						<s:text name="jacms.menu.contentAdmin" />&#32;
 						<span class="icon icon-chevron-down pull-right"></span>
 					</a>
 				</div>
-				<div id="submenu-contents" class="accordion-body collapse">
-					<ul class="accordion-inner nav nav-pills nav-stacked">
+				<div id="submenu-contents" class="panel-collapse collapse">
+					<ul class="panel-body nav nav-pills nav-stacked">
 						<li><a href="<s:url action="list" namespace="/do/jacms/Content" />"><s:text name="jacms.menu.contentAdmin.list" /></a></li>
 						<li><a href="<s:url action="createNew" namespace="/do/jacms/Content" />?contentTypeCode=CNG">New Generic Content</a></li>
 						<wp:ifauthorized permission="superuser">
@@ -104,16 +104,16 @@
 	</wp:ifauthorized>
 	<wp:ifauthorized permission="manageResources">
 
-		<li class="accordion">
-			<div class="accordion-group">
-				<div class="accordion-heading">
-					<a class="accordion-toggle" data-toggle="collapse" href="#submenu-resources">
+		<li class="panel-group">
+			<div class="panel">
+				<div class="panel-heading">
+					<a data-toggle="collapse" href="#submenu-resources" class="display-block">
 						<s:text name="jacms.menu.resourceAdmin" />&#32;
 						<span class="icon icon-chevron-down pull-right"></span>
 					</a>
 				</div>
-				<div id="submenu-resources" class="accordion-body collapse">
-					<ul class="accordion-inner nav nav-pills nav-stacked">
+				<div id="submenu-resources" class="panel-collapse collapse">
+					<ul class="panel-body nav nav-pills nav-stacked">
 						<li><a href="<s:url action="intro" namespace="/do/jacms/Resource"><s:param name="resourceTypeCode" >Image</s:param></s:url>"><s:text name="jacms.menu.imageAdmin" /></a></li>
 						<li><a href="<s:url action="intro" namespace="/do/jacms/Resource"><s:param name="resourceTypeCode" >Attach</s:param></s:url>"><s:text name="jacms.menu.attachAdmin" /></a></li>
 					</ul>
