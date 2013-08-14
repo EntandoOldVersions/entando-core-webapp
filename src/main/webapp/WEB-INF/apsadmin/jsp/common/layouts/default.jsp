@@ -104,6 +104,7 @@
 		</div>
 		<tiles:insertAttribute name="body"/>
 	</div>
+	<div class="clearfix"></div>
 	<div class="col-sm-12 margin-large-top">
 		<ul class="sr-only">
 			<li><a href="#fagiano_mainContent"><s:text name="note.backToMainContent" /></a></li>
