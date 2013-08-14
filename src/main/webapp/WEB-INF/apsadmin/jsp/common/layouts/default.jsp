@@ -92,9 +92,9 @@
 	</div>
 	<div class="col-sm-9 col-sm-pull-3 col-md-pull-3 col-lg-pull-3">
 		<div class="navbar navbar-static-top" id="navbar">
-			<div class="container">
+			<div class="navbar-header">
 				<a href="#sidebar" class="btn-offcanvas navbar-toggle pull-right visible-xs" data-toggle="offcanvas">
-						<!-- <span class="icon icon-ellipsis-horizontal"></span> -->
+						<span class="sr-only"><s:text name="label.menu" /></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
