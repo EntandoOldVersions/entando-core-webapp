@@ -108,23 +108,19 @@
 	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
 	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 </div>
-<h3>Choose a file</h3>
 
-<div class="list-group">
+<s:if test="onEditContent"><h3><s:text name="title.chooseAttach" /></h3><div class="list-group"></s:if>
+<s:if test="!onEditContent"><ul></s:if>	
 <s:iterator var="resourceid" status="status">
 <s:set name="resource" value="%{loadResource(#resourceid)}"></s:set>
 <s:set name="resourceInstance" value="%{#resource.getInstance()}"></s:set>
 	<s:if test="onEditContent">	
 	<a href="<s:url action="joinResource" namespace="/do/jacms/Content/Resource"><s:param name="resourceId" value="%{#resourceid}" /><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>" 
 	title="<s:text name="label.use"/>" class="list-group-item" >
-		<%--<img src="<wp:resourceURL/>administration/common/img/icons/resourceTypes/
-		<s:property value="%{getIconFile(#resourceInstance.fileName)}"/>" alt="<s:property value="%{#resourceInstance.fileName}"/>" 
-		title="<s:text name="note.joinThisToThat" />: <s:property value="content.descr" />" 
-		style="height:90px;max-width:130px" class="margin-base-top" /> --%>
 		<div>
 			<s:if test="!#resource.categories.empty">
 				<s:iterator var="category_resource" value="#resource.categories">
-					<span class="label label-info margin-large-vertical"><s:property value="%{#category_resource.getTitle(currentLang.code)}"/></span>
+					<span class="label label-info"><s:property value="%{#category_resource.getTitle(currentLang.code)}"/></span>
 				</s:iterator>						
 			</s:if>
 		</div>
@@ -156,17 +152,19 @@
 		</div>
 	</a>
 	</s:if>
-		<s:if test="!onEditContent">
-			<img src="<wp:resourceURL/>administration/common/img/icons/resourceTypes/<s:property value="%{getIconFile(#resourceInstance.fileName)}"/>" alt="<s:property value="%{#resourceInstance.fileName}"/>" title="<s:property value="%{#resourceInstance.fileName}"/>" /><s:if test='#myClient == "normal"'><br /><s:property value="%{#resourceInstance.fileLength}"/></s:if>
-				<s:if test="#myClient == 'advanced'">
-					<a href="<s:property value="%{#resource.documentPath}" />" title="<s:text name="label.download" />: <s:property value="#resource.descr" />"><img src="<wp:resourceURL />administration/common/img/icons/go-down.png" alt="<s:text name="label.download" />" title="<s:text name="label.download" />" /></a>
-				</s:if>
-				<s:else>
-					<a href="<s:property value="%{#resource.documentPath}" />" title="<s:text name="label.download" />: <s:property value="#resource.descr" />"><s:text name="label.download" /></a><br />
-				</s:else>
-				<span class="sr-only">, </span>
-				<a href="<s:url action="edit" namespace="/do/jacms/Resource"><s:param name="resourceId" value="%{#resourceid}" /></s:url>" ><img src="<wp:resourceURL />administration/common/img/icons/edit-content.png" alt="<s:text name="label.edit" />" title="<s:text name="label.edit" />" /></a>
-				<span class="sr-only">, </span>
+	<s:if test="!onEditContent">
+		<li class="list-group-item">
+		<div class="row">
+			<div class="col-xs-10 col-lg-8">
+			<s:if test="!#resource.categories.empty">
+					<s:iterator var="category_resource" value="#resource.categories">
+						<span class="label label-default label-sm pull-left padding-small-top padding-small-bottom margin-small-right margin-small-bottom">
+							<span class="icon icon-tag"></span>&#32;
+						<s:property value="%{#category_resource.getTitle(currentLang.code)}"/></span>
+					</s:iterator>						
+			</s:if>
+			</div>
+			<div class="col-xs-2 col-lg-4 text-right no-margin">
 				<a href="<s:url action="trash" namespace="/do/jacms/Resource" >
 						<s:param name="resourceId" value="%{#resourceid}" />
 						<s:param name="resourceTypeCode" value="%{#resource.type}" />
@@ -175,26 +173,38 @@
 						<s:param name="fileName" value="%{fileName}" />
 						<s:param name="ownerGroupName" value="%{ownerGroupName}" />
 						<s:param name="treeNodesToOpen" value="%{treeNodesToOpen}" />
-					</s:url>" ><img src="<wp:resourceURL />administration/common/img/icons/delete.png" alt="<s:text name="label.remove" />" title="<s:text name="label.remove" />" /></a>
+					</s:url>" ><span class="icon icon-remove text-warning"></span></a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
 			<p>
+			<a href="<s:url action="edit" namespace="/do/jacms/Resource"><s:param name="resourceId" value="%{#resourceid}" /></s:url>" >
+			<span class="icon icon-edit"></span>&#32;<s:property value="#resource.descr" /></a>
+			</p>
+			<p>
+			<a href="<s:property value="%{#resource.documentPath}" />" title="<s:text name="label.download" />: <s:property value="#resource.descr" />">
+			<span class="icon icon-download-alt"></span>&#32;
 				<s:set var="fileName" value="#resourceInstance.fileName" />
-				<s:if test='%{#fileName.length()>24}'>
+				<s:if test='%{#fileName.length()>25}'>
 					<s:set var="fileName" value='%{#fileName.substring(0,10)+"..."+#fileName.substring(#fileName.length()-10)}' />
-					<span class="monospace fileName" title="<s:property value="#resourceInstance.fileName" />"><s:property value="#fileName" /></span>
+					<code><abbr title="<s:property value="#resourceInstance.fileName" />"><s:property value="#fileName" /></abbr></code>
 				</s:if>
 				<s:else>
-					<span class="monospace fileName noCursor">
-						<s:property value="#fileName" />
-					</span>
+				<code><s:property value="#resourceInstance.fileName" /></code>
 				</s:else>
-				<span class="monospace fileLength">
-					<s:property value="%{#resourceInstance.fileLength.replaceAll(' ', '&nbsp;')}"  escapeXml="false" escapeHtml="false" escapeJavaScript="false" />
+			</a>
+				<span class="badge">
+				<s:property value="%{#resourceInstance.fileLength.replaceAll(' ', '&nbsp;')}"  escapeXml="false" escapeHtml="false" escapeJavaScript="false" />
 				</span>
 			</p>
-		</s:if>
+		</div>
+		</div>
+		</li>
+	</s:if>
 </s:iterator>
-
-</div>
+<s:if test="onEditContent"></div></s:if>
+<s:if test="!onEditContent"></ul></s:if>	
 <div class="pager clear margin-more-top">
 	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 </div>

@@ -129,9 +129,12 @@
 		<s:param name="ownerGroupName" value="%{ownerGroupName}" />
 		<s:param name="treeNodesToOpen" value="%{treeNodesToOpen}" /></s:url>
 		<div class="col-lg-3">
-		<div class="thumbnail text-center margin-base-bottom">
-			<%-- Dimension forced for img on thumbnail --%>
-			<img src="<s:property value="%{#resource.getImagePath(1)}"/>" alt=" " style="height:90px;max-width:130px" class="margin-base-top" />	
+		<div class="panel text-center">
+		<div class="panel-heading text-right margin-small-bottom padding-small-vertical padding-small-right">
+		<a href="<s:property value="URLtrash" escape="false" />" class="icon icon-remove text-warning"><span class="sr-only">Delete</span></a>
+		</div>
+		<%-- Dimension forced for img on thumbnail --%>
+			<img src="<s:property value="%{#resource.getImagePath(1)}"/>" alt=" " style="height:90px;max-width:130px" />	
 				<s:if test="onEditContent">
 					<div class="caption">
 					<p class="btn-group margin-small-vertical">
@@ -163,9 +166,8 @@
 					</s:else>
 					 --%>
 					<p class="btn-group margin-small-vertical">
-					<a href="<s:property value="URLedit" escape="false" />" class="btn btn-default" ><span class="icon icon-edit"></span><span class="sr-only">Edit</span></a>
+					<a href="<s:property value="URLedit" escape="false" />" class="btn btn-default" ><span class="icon icon-edit"></span>&#32;Edit</a>
 					
-					<a href="<s:property value="URLtrash" escape="false" />" class="btn btn-danger"><span class="icon icon-trash"></span><span class="sr-only">Delete</span></a>
 					<a href="#" class="btn btn-info"><span class="icon icon-info"></span><span class="sr-only">Info</span></a>
 					</p>
 					<%--
