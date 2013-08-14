@@ -8,7 +8,7 @@
 
 <span class="sr-only"><s:text name="note.imageContent" /></span>
 <s:if test="#lang.default">
-<%-- Lingua di DEFAULT --%>
+<%-- DEFAULT language --%>
 	<s:if test="#currentResource != null">
 	<%-- Default language - filled Attribute --%>
 
@@ -41,40 +41,36 @@
 				</div>
 
 			</div>
+
 		</div>
-	</div>
+
 	</s:if>
 	<s:else>
-		<%-- Lingua di default - Risorsa NON VALORIZZATA --%>
-		
-		<%-- PULSANTE DI RICERCA RISORSA --%>
+		<%-- Default language - empty Attribute --%>
+
 		<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/chooseResourceSubmit.jsp">
 			<s:param name="resourceTypeCode">Image</s:param>
 		</s:include>
-		
+
 	</s:else>
 </s:if>
 <s:else>
-<%-- Lingua NON di DEFAULT --%>
+<%-- non-default language --%>
 	<s:if test="#defaultResource == null">
-		<%-- Risorsa lingua di DEFAULT NON VALORIZZATA --%>
+		<%-- if default language still has empty Attribute --%>
 		<s:text name="note.editContent.doThisInTheDefaultLanguage" />.
 	</s:if>
 	<s:else>
 	<div class="panel">
 		<div class="row">
-		<%-- Risorsa lingua di DEFAULT VALORIZZATA --%>
+		<%-- if default language has filled Attribute --%>
 		<s:if test="#currentResource == null">
-			<%-- Risorsa lingua corrente NON VALORIZZATA --%>
-			<%-- IMMAGINE DI DEFAULT + PULSANTE SCEGLI RISORSA --%> 
-			
-			<%-- IMMAGINE DI DEFAULT --%>
+			<%-- this language: empty Attribute --%>
 			<div class="col-sm-2 col-lg-2">
 			<a href="<s:property value="#defaultResource.getImagePath('0')" />" title="<s:text name="label.img.original" />">
 			<img src="<s:property value="#defaultResource.getImagePath('1')"/>" alt="<s:property value="#defaultResource.descr"/>" />
 			</a>
 			</div>
-			<%-- PULSANTE DI RICERCA RISORSA --%>
 			<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/chooseResourceSubmit.jsp">
 				<s:param name="resourceTypeCode">Image</s:param>
 			</s:include>
@@ -88,23 +84,22 @@
 			</div>
 
 			<div class="col-sm-2 col-lg-2">
-			<a href="<s:property value="#currentResource.getImagePath('0')" />" title="<s:text name="label.img.original" />">
-			<img src="<s:property value="#currentResource.getImagePath('1')"/>" alt="<s:property value="#currentResource.descr"/>" />
-			</a>
+				<a href="<s:property value="#currentResource.getImagePath('0')" />" title="<s:text name="label.img.original" />">
+					<img src="<s:property value="#currentResource.getImagePath('1')"/>" alt="<s:property value="#currentResource.descr"/>" />
+				</a>
 			</div>
-			
-			<%-- PULSANTE DI RICERCA RISORSA --%>
 			<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/chooseResourceSubmit.jsp">
 				<s:param name="resourceTypeCode">Image</s:param>
 			</s:include>
 		</s:else>
-		<%-- CAMPO DI TESTO --%>
-		<%-- CAMPO DI TESTO - MODULARIZZARE --%>
-		<span class="imageAttribute-text">
-		<label class="basic-mint-label" for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />">
-		<abbr title="testo per ciccio">testo</abbr>:</label>		
-		<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/textAttribute.jsp" />
-		</span>
+
+		  <div class="form-group">
+				<label class="col-xs-2 control-label text-right" for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />">
+						<abbr title="<s:text name="label.img.text.long" />"><s:text name="label.img.text.short" /></abbr>
+				</label>
+				<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/textAttribute.jsp" />
+			</div>
+
 	</div>
 	</div>
 	</s:else>

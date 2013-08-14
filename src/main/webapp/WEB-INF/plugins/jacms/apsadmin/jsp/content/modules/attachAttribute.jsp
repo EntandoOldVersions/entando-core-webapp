@@ -26,7 +26,7 @@
 						<span class="icon icon-file-text icon-4x icon-large" ></span>
 					</a>
 				</div>
-				<div class="col-xs-12 col-sm-9 col-lg-10 form-horizontal margin-large-top">	
+				<div class="col-xs-12 col-sm-9 col-lg-10 form-horizontal margin-large-top">
 				  	<div class="form-group">
 					<label class="col-xs-2 control-label text-right" for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />">
 					<s:text name="label.text" /></label>
@@ -36,7 +36,7 @@
 					</div>
 				</div>
 			</div>
-		</div>		
+		</div>
 	</s:if>
 	<s:else>
 		<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/chooseResourceSubmit.jsp">
@@ -58,7 +58,6 @@
 			
 			<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/chooseResourceSubmit.jsp">
 				<s:param name="resourceTypeCode">Attach</s:param>
-				<s:param name="iconImagePath"><wp:resourceURL/>administration/common/img/icons/22x22/attachment.png</s:param>
 			</s:include>
 			
 		</s:if>
@@ -69,12 +68,10 @@
 			
 			<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/chooseResourceSubmit.jsp">
 				<s:param name="resourceTypeCode">Attach</s:param>
-				<s:param name="iconImagePath"><wp:resourceURL/>administration/common/img/icons/22x22/attachment.png</s:param>
 			</s:include>
 			
 			<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/removeResourceSubmit.jsp">
 				<s:param name="resourceTypeCode">Attach</s:param>
-				<s:param name="iconImagePath"><wp:resourceURL/>administration/common/img/icons/delete.png</s:param>
 			</s:include>
 			
 		</s:else>
