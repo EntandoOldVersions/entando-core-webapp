@@ -56,7 +56,7 @@
 						</span>
 					</a>
 				</div>
-				<div id="submenu-user" class="panel collapse">
+				<div id="submenu-user" class="panel-collapse collapse">
 					<ul class="panel-body nav nav-pills nav-stacked">
 					<c:if test="${sessionScope.currentUser.japsUser}">
 						<li>
@@ -72,7 +72,6 @@
 								<s:text name="note.goToPortal" />
 							</a>
 						</li>
-						<li class="divider"></li>
 						<li>
 							<a href="<s:url action="logout" namespace="/do" />">
 								<span class="icon icon-fixed-width icon-off"></span>&#32;
