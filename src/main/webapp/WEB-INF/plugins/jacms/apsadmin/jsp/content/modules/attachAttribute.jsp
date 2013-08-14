@@ -14,12 +14,13 @@
 		<div class="panel margin-small-top">
 			<s:if test="!(#attributeTracer.monoListElement) || ((#attributeTracer.monoListElement) && (#attributeTracer.compositeElement))">
 				<%-- PULSANTE DI RIMOZIONE RISORSA --%>
-				<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/removeResourceSubmit.jsp">
-					<s:param name="resourceTypeCode">Attach</s:param>
-					<s:param name="iconImagePath"><wp:resourceURL/>administration/common/img/icons/delete.png</s:param>
-				</s:include>
+				<div class="panel-heading text-right">
+					<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/removeResourceSubmit.jsp">
+						<s:param name="resourceTypeCode">Attach</s:param>
+					</s:include>
+				</div>
 			</s:if>
-			<div class="row">
+			<div class="row panel-body">
 				<div class="col-xs-12 col-sm-3 col-lg-2 text-center">
 					<a class="noborder" href="<s:property value="#defaultResource.attachPath" />" title="<s:text name="label.download" />:&#32;<s:property value="#defaultResource.descr"/>">
 						<span class="icon icon-file-text icon-4x icon-large" ></span>

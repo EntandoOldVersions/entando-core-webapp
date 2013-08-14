@@ -2,7 +2,6 @@
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 
-<div class="panel-heading text-right">
 <%-- PULSANTE RIMUOVI --%>
 <s:set name="resourceTypeCode"><%= request.getParameter("resourceTypeCode")%></s:set>
 <wpsa:actionParam action="removeResource" var="removeResourceActionName" >
