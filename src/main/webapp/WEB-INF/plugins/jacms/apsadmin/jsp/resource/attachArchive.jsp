@@ -173,17 +173,17 @@
 						<s:param name="fileName" value="%{fileName}" />
 						<s:param name="ownerGroupName" value="%{ownerGroupName}" />
 						<s:param name="treeNodesToOpen" value="%{treeNodesToOpen}" />
-					</s:url>" ><span class="icon icon-remove text-warning"></span></a>
+					</s:url>" title="<s:text name="label.remove" />: <s:property value="#resource.descr" /> "><span class="icon icon-remove text-warning"></span></a>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-lg-12">
 			<p>
-			<a href="<s:url action="edit" namespace="/do/jacms/Resource"><s:param name="resourceId" value="%{#resourceid}" /></s:url>" >
+			<a href="<s:url action="edit" namespace="/do/jacms/Resource"><s:param name="resourceId" value="%{#resourceid}" /></s:url>" title="<s:text name="label.edit" />: <s:property value="#resource.descr" /> ">
 			<span class="icon icon-edit"></span>&#32;<s:property value="#resource.descr" /></a>
 			</p>
 			<p>
-			<a href="<s:property value="%{#resource.documentPath}" />" title="<s:text name="label.download" />: <s:property value="#resource.descr" />">
+			<a href="<s:property value="%{#resource.documentPath}" />" title="<s:text name="label.download" />: <s:property value="#resourceInstance.fileName" />">
 			<span class="icon icon-download-alt"></span>&#32;
 				<s:set var="fileName" value="#resourceInstance.fileName" />
 				<s:if test='%{#fileName.length()>25}'>
@@ -194,9 +194,9 @@
 				<code><s:property value="#resourceInstance.fileName" /></code>
 				</s:else>
 			</a>
-				<span class="badge">
-				<s:property value="%{#resourceInstance.fileLength.replaceAll(' ', '&nbsp;')}"  escapeXml="false" escapeHtml="false" escapeJavaScript="false" />
-				</span>
+			<span class="badge">
+				<s:property value="%{#resourceInstance.fileLength.replaceAll(' ', '&nbsp;')}" escapeXml="false" escapeHtml="false" escapeJavaScript="false" />
+			</span>
 			</p>
 		</div>
 		</div>

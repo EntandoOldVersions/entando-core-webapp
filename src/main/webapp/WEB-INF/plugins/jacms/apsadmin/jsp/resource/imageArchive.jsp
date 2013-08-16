@@ -130,11 +130,13 @@
 		<s:param name="treeNodesToOpen" value="%{treeNodesToOpen}" /></s:url>
 		<div class="col-lg-3">
 		<div class="panel text-center">
-		<div class="panel-heading text-right margin-small-bottom padding-small-vertical padding-small-right">
-		<a href="<s:property value="URLtrash" escape="false" />" class="icon icon-remove text-warning"><span class="sr-only">Delete</span></a>
-		</div>
+		<s:if test="!onEditContent">
+			<div class="panel-heading text-right padding-small-vertical padding-small-right">
+			<a href="<s:property value="URLtrash" escape="false" />" class="icon icon-remove text-warning"><span class="sr-only">Delete</span></a>
+			</div>
+		</s:if>
 		<%-- Dimension forced for img on thumbnail --%>
-			<img src="<s:property value="%{#resource.getImagePath(1)}"/>" alt=" " style="height:90px;max-width:130px" />	
+			<img src="<s:property value="%{#resource.getImagePath(1)}"/>" alt=" " style="height:90px;max-width:130px" class="margin-small-top" />	
 				<s:if test="onEditContent">
 					<div class="caption">
 					<p class="btn-group margin-small-vertical">
