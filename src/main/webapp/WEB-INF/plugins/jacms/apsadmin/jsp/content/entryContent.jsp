@@ -9,7 +9,7 @@
 		<div class="alert alert-danger fade in">
 			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
 			<h2 class="h4 margin-small-vertical"><s:text name="message.title.FieldErrors" /></h2>
-			<p>Please review the content and fix the errors.</p>
+			<p>Please review the content and fix the errors. TODO label</p>
 		</div>
 	</s:if>
 <p class="sr-only"><s:text name="note.editContent" /></p>
