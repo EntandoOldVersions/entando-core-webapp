@@ -15,9 +15,9 @@
 	<wpsa:actionParam var="URLnew" action="new" />
 </s:else>
 <%-- anchor print --%>
-<a href="<s:url action="%{#URLlist}" namespace="%{#targetNS}" />" title="<s:text name="label.list" />">
-	<img src="<wp:resourceURL/>administration/common/img/icons/32x32/general-list.png" alt="<s:text name="label.list" />" />
+<a href="<s:url action="%{#URLlist}" namespace="%{#targetNS}" />">
+	<s:text name="label.list" />
 </a>
-<a href="<s:url action="%{#URLnew}" namespace="%{#targetNS}" />" title="<s:text name="label.new" />">
-	<img src="<wp:resourceURL/>administration/common/img/icons/32x32/general-new.png" alt="<s:text name="label.new" />" />
+<a href="<s:url action="%{#URLnew}" namespace="%{#targetNS}" />">
+	<s:text name="label.new" />
 </a>
