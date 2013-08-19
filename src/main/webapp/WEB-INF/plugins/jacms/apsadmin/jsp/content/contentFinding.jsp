@@ -83,17 +83,21 @@
 						</s:if>
 
 						<s:elseif test="#attribute.type == 'Date'">
-							<pre>https://github.com/eternicode/bootstrap-datepicker - needs patches: see issues</pre>
 							<s:set name="dateStartInputFieldName" ><s:property value="#attribute.name" />_dateStartFieldName</s:set>
 							<s:set name="dateEndInputFieldName" ><s:property value="#attribute.name" />_dateEndFieldName</s:set>
-							<p>
-								<label for="<s:property value="%{currentFieldId}" />_dateStartFieldName_cal"><s:text name="note.range.from.attribute" />&#32;<s:property value="#attribute.name" />:</label>
-								<s:textfield id="%{currentFieldId}_dateStartFieldName_cal" name="%{#dateStartInputFieldName}" value="%{getSearchFormFieldValue(#dateStartInputFieldName)}" /><span class="inlineNote">dd/MM/yyyy</span>
-							</p>
-							<p>
-								<label for="<s:property value="%{currentFieldId}" />_dateEndFieldName_cal"><s:text name="note.range.to.attribute" />&#32;<s:property value="#attribute.name" />:</label>
-								<s:textfield id="%{currentFieldId}_dateEndFieldName_cal" name="%{#dateEndInputFieldName}" value="%{getSearchFormFieldValue(#dateEndInputFieldName)}" /><span class="inlineNote">dd/MM/yyyy</span>
-							</p>
+
+							<div class="form-group">
+								<label for="<s:property value="%{currentFieldId}" />_dateStartFieldName_cal" class="control-label col-sm-5 text-right"><s:text name="note.range.from.attribute" />&#32;<s:property value="#attribute.name" /></label>
+								<div class="col-sm-2">
+									<s:textfield id="%{currentFieldId}_dateStartFieldName_cal" name="%{#dateStartInputFieldName}" value="%{getSearchFormFieldValue(#dateStartInputFieldName)}" cssClass="form-control datepicker" placeholder="dd/mm/yyyy" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="<s:property value="%{currentFieldId}" />_dateEndFieldName_cal" class="control-label col-sm-5 text-right"><s:text name="note.range.to.attribute" />&#32;<s:property value="#attribute.name" /></label>
+								<div class="col-sm-2">
+									<s:textfield id="%{currentFieldId}_dateEndFieldName_cal" name="%{#dateEndInputFieldName}" value="%{getSearchFormFieldValue(#dateEndInputFieldName)}" cssClass="form-control datepicker" placeholder="dd/mm/yyyy" />
+								</div>
+							</div>
 						</s:elseif>
 
 						<s:elseif test="#attribute.type == 'Number'">
