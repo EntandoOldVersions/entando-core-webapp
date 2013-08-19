@@ -6,94 +6,89 @@
 
 <s:if test="onEditContent">
 	<s:set var="targetNS" value="%{'/do/jacms/Content'}" />
-	<h1><s:text name="jacms.menu.contentAdmin" /><s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></h1>
-	
-	<div id="main">
-	
-	<h2 class="margin-more-bottom"><s:text name="title.contentEditing" /></h2>
-	
+	<h1 class="panel title-page"><span class="panel-body display-block">
+	<s:text name="jacms.menu.contentAdmin" />&#32;/&#32;
+	<s:if test="getStrutsAction() == 1"><s:text name="label.new" /></s:if><s:else><s:text name="label.edit" /></s:else>&#32;/&#32;
+	<s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />&#32;/&#32;
+	<s:if test="getStrutsAction() == 1"><s:text name="label.new" /></s:if><s:else><s:text name="label.edit" /></s:else>
+	</span></h1>
 	<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/include/snippet-content.jsp" />
-	<!--
-	 	<s:if test="content.id == null"> NUOVO </s:if>
-		<s:else> CON ID '<s:property value="content.id" />' </s:else>
-	 -->
-	<h3 class="margin-bit-bottom"><s:text name="title.resourceManagement" />: <s:text name="title.resourceManagement.resourceNew" /></h3> 	
 </s:if>
 
 <s:if test="!onEditContent">
 	<s:set var="targetNS" value="%{'/do/jacms/Resource'}" />
 	<s:set var="targetParamName" value="%{'resourceTypeCode'}" />
 	<s:set var="targetParamValue" value="resourceTypeCode" />	
-	<h1><s:property value="%{getText('title.resourceManagement.' + resourceTypeCode)}" /><s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></h1>
-
-	<div id="main">
-	<h2 class="margin-more-bottom">
-		<s:if test="getStrutsAction() == 1"><s:text name="title.resourceManagement.resourceNew" /></s:if>
-		<s:else><s:text name="title.resourceManagement.resourceEdit" /></s:else>
-		<%-- 
-		<s:text name="resourceType.%{resourceTypeCode}"></s:text>
-		--%>
-	</h2>
+	<h1 class="panel title-page"><span class="panel-body display-block">
+	<s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />&#32;/&#32;
+	<s:if test="getStrutsAction() == 1"><s:text name="label.new" /></s:if><s:else><s:text name="label.edit" /></s:else>
+	</span></h1>
+	</span></h1>
 </s:if>
 
 <s:form action="save" method="post" enctype="multipart/form-data" cssClass="action-form">
 
 <s:set var="categoryTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_category" /></s:set>
-
 <s:if test="hasFieldErrors()">
-<div class="message message_error">
-<h3><s:text name="message.title.FieldErrors" /></h3>
-<ul>
-<s:iterator value="fieldErrors">
-	<s:iterator value="value">
-	<li><s:property escape="false" /></li>
+	<div class="alert alert-danger fade in">
+		<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+		<h2 class="h4 margin-small-vertical"><s:text name="message.title.FieldErrors" /></h2>
+		<ul>
+		<s:iterator value="fieldErrors">
+			<s:iterator value="value">
+			<li><s:property escape="false" /></li>
+			</s:iterator>
+		</s:iterator>
+		</ul>
+	</div>
+</s:if>
+
+<p class="sr-only">
+	<s:hidden name="strutsAction" />
+	<s:hidden name="resourceTypeCode" />
+	<s:hidden name="contentOnSessionMarker" />
+	<s:iterator value="categoryCodes" id="categoryCode" status="rowstatus">
+	<input type="hidden" name="categoryCodes" value="<s:property value="#categoryCode" />" id="categoryCodes-<s:property value="#rowstatus.index" />"/>
 	</s:iterator>
-</s:iterator>
-</ul>
+	<s:if test="strutsAction != 1">
+		<s:hidden name="resourceId" />
+	</s:if>
+	<s:if test="#categoryTreeStyleVar == 'request'">
+		<s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar"><s:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"/></s:iterator>
+	</s:if>
+</p>
+
+<div class="panel">
+	<div class="panel-body">
+	 	<div class="form-group">
+			<label class="control-label" for="descr"><s:text name="label.description" /></label>
+			<wpsf:textfield useTabindexAutoIncrement="true" name="descr" id="descr" cssClass="form-control" />
+		</div>
+
+		<s:set name="lockGroupSelect" value="%{resourceId != null && resourceId != 0}"></s:set>
+		<div class="form-group">
+			<label class="control-label" for="mainGroup"><s:text name="label.group" /></label>
+			<s:select name="mainGroup" id="mainGroup" list="allowedGroups" value="mainGroup"
+			listKey="name" listValue="descr" disabled="%{lockGroupSelect}" cssClass="form-control" />
+		</div>
+
+		<s:if test="%{lockGroupSelect}">
+			<p class="sr-only">
+				<s:hidden name="mainGroup" />
+			</p>
+		</s:if>
+		<div class="form-group">
+			<label for="upload"><s:text name="label.file" /></label>
+			<s:file name="upload" id="upload" label="label.file"/>
+		</div>
+  		<div class="checkbox">
+    	<label>
+			<input type="checkbox" name="normalizeFileName" id="normalizeFileName">&#32;<s:text name="label.normalize" />
+		</label>
+		</div>
+	</div>
 </div>
-</s:if>
-<p class="sr-only">
-	<wpsf:hidden name="strutsAction" />
-	<wpsf:hidden name="resourceTypeCode" />
-	<wpsf:hidden name="contentOnSessionMarker" />
-<s:iterator value="categoryCodes" id="categoryCode" status="rowstatus">
-<input type="hidden" name="categoryCodes" value="<s:property value="#categoryCode" />" id="categoryCodes-<s:property value="#rowstatus.index" />"/>
-</s:iterator>
-<s:if test="strutsAction != 1">
-	<wpsf:hidden name="resourceId" />
-</s:if>
-<s:if test="#categoryTreeStyleVar == 'request'">
-	<s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar"><wpsf:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"></wpsf:hidden></s:iterator>
-</s:if>
-</p>
 
-<fieldset><legend><s:text name="label.info" /></legend>
-<p>
-	<label for="descr" class="basic-mint-label"><s:text name="label.description" />:</label>
-	<wpsf:textfield useTabindexAutoIncrement="true" name="descr" id="descr" cssClass="text" />
-</p>
-
-<s:set name="lockGroupSelect" value="%{resourceId != null && resourceId != 0}"></s:set>
-<p>
-	<label for="mainGroup" class="basic-mint-label"><s:text name="label.group" />:</label>
-	<wpsf:select useTabindexAutoIncrement="true" name="mainGroup" id="mainGroup" list="allowedGroups" value="mainGroup" 
-		listKey="name" listValue="descr" disabled="%{lockGroupSelect}" cssClass="text" />
-</p>
-
-<s:if test="%{lockGroupSelect}">
-<p class="sr-only">
-	<wpsf:hidden name="mainGroup" />
-</p>
-</s:if>
-
-<s:if test="strutsAction == 2">
-<div class="subsection-light">
-<s:set var="referencingContentsId" value="references['jacmsContentManagerUtilizers']" />
-<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/include/referencingContents.jsp" />
-</div>
-</s:if>
-
-</fieldset>
 <fieldset>
 	<legend><s:text name="title.resourceCategoriesManagement"/></legend>
 <ul id="categoryTree">
@@ -144,20 +139,13 @@
 
 </fieldset>
 
-<fieldset><legend><s:text name="label.file" /></legend>
-<p>
-	<label for="upload" class="basic-mint-label"><s:text name="label.file" />:</label>
-	<s:file name="upload" id="upload" label="label.file"/>
-</p>
-<p>
-	<wpsf:checkbox useTabindexAutoIncrement="true" name="normalizeFileName" id="normalizeFileName" cssClass="radiocheck" />&#32;<label for="normalizeFileName"><s:text name="label.normalize" />&#32;<s:text name="label.filename" /></label>
-</p>
-</fieldset>
+<s:if test="strutsAction == 2">
+	<s:set var="referencingContentsId" value="references['jacmsContentManagerUtilizers']" />
+	<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/include/referencingContents.jsp" />
+</s:if>
 
-<p class="centerText">
-	<wpsf:submit useTabindexAutoIncrement="true" value="%{getText('label.save')}" cssClass="button" />
+<p class="text-center">
+	<s:submit value="%{getText('label.save')}" cssClass="btn btn-default" />
 </p>
 
 </s:form>
-
-</div>

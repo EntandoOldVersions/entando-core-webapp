@@ -6,7 +6,8 @@
 <s:set var="targetNS" value="%{'/do/jacms/Resource'}" />
 <s:set var="targetParamName" value="%{'resourceTypeCode'}" />
 <s:set var="targetParamValue" value="resourceTypeCode" />
-<h1><s:property value="%{getText('title.resourceManagement.' + resourceTypeCode)}" /><s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></h1>
+<h1><s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />
+<s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></h1>
 
 <div id="main">
 

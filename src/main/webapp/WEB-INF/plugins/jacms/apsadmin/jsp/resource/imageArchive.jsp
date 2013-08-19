@@ -5,22 +5,26 @@
 <%@ taglib prefix="jacms" uri="/jacms-apsadmin-core" %>
 
 <s:if test="onEditContent">
-<s:set var="targetNS" value="%{'/do/jacms/Content'}" />
-<h1 class="panel title-page"><s:text name="jacms.menu.contentAdmin" />&#32;/&#32;<s:text name="title.contentEditing" /></h1>
-<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/include/snippet-content.jsp" />
+	<s:set var="targetNS" value="%{'/do/jacms/Content'}" />
+	<h1 class="panel title-page"><span class="panel-body display-block">
+	<s:text name="jacms.menu.contentAdmin" />&#32;/&#32;
+	<s:if test="getStrutsAction() == 1"><s:text name="label.new" /></s:if><s:else><s:text name="label.edit" /></s:else>&#32;/&#32;
+	<s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />
+	</span></h1>
+	
+	<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/include/snippet-content.jsp" />
 
 <%--
  	<s:if test="content.id == null"> NUOVO </s:if>
 	<s:else> CON ID '<s:property value="content.id" />' </s:else>
   --%>
-<h3 class="margin-bit-bottom"><s:text name="title.chooseImage" /></h3>
 </s:if>
 
 <s:if test="!onEditContent">
 	<s:set var="targetNS" value="%{'/do/jacms/Resource'}" />
 	<s:set var="targetParamName" value="%{'resourceTypeCode'}" />
 	<s:set var="targetParamValue" value="resourceTypeCode" />
-	<h1 class="panel title-page"><s:property value="%{getText('title.resourceManagement.' + resourceTypeCode)}" />
+	<h1 class="panel title-page"><s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />
 	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></h1>
 </s:if>
 

@@ -4,21 +4,19 @@
 <%@ taglib prefix="jacms" uri="/jacms-apsadmin-core" %>
 
 <s:if test="onEditContent">
-<s:set var="targetNS" value="%{'/do/jacms/Content'}" />
-<h1 class="panel title-page"><s:text name="jacms.menu.contentAdmin" />&#32;/&#32;<s:text name="title.contentEditing" /></h1>
-<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/include/snippet-content.jsp" />
-<%--
- 	<s:if test="content.id == null"> NUOVO </s:if>
-	<s:else> CON ID '<s:property value="content.id" />' </s:else>
-  --%>
-<h3 class="margin-bit-bottom"><s:text name="title.chooseAttach" /></h3>
+	<s:set var="targetNS" value="%{'/do/jacms/Content'}" />
+	<h1 class="panel title-page"><span class="panel-body display-block">
+	<s:text name="jacms.menu.contentAdmin" />&#32;/&#32;
+	<s:if test="getStrutsAction() == 1"><s:text name="label.new" /></s:if><s:else><s:text name="label.edit" /></s:else>&#32;/&#32;
+	<s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />
+	</span></h1>
 </s:if>
 
 <s:if test="!onEditContent">
 	<s:set var="targetNS" value="%{'/do/jacms/Resource'}" />
 	<s:set var="targetParamName" value="%{'resourceTypeCode'}" />
 	<s:set var="targetParamValue" value="resourceTypeCode" />
-	<h1 class="panel title-page"><s:property value="%{getText('title.resourceManagement.' + resourceTypeCode)}" />
+	<h1 class="panel title-page"><s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />
 	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></h1>
 </s:if>
 
@@ -117,15 +115,17 @@
 	<s:if test="onEditContent">	
 	<a href="<s:url action="joinResource" namespace="/do/jacms/Content/Resource"><s:param name="resourceId" value="%{#resourceid}" /><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>" 
 	title="<s:text name="label.use"/>" class="list-group-item" >
-		<div>
-			<s:if test="!#resource.categories.empty">
-				<s:iterator var="category_resource" value="#resource.categories">
-					<span class="label label-info"><s:property value="%{#category_resource.getTitle(currentLang.code)}"/></span>
-				</s:iterator>						
-			</s:if>
-		</div>
-		<div class="text-primary row">
-			<div class="col-lg-8">
+		<s:if test="!#resource.categories.empty">
+		<div class="row"><div class="col-lg-12">
+			<s:iterator var="category_resource" value="#resource.categories">
+					<span class="label label-default label-sm pull-left padding-small-top padding-small-bottom margin-small-right margin-small-bottom">
+						<span class="icon icon-tag"></span>&#32;
+						<s:property value="%{#category_resource.getTitle(currentLang.code)}"/></span>
+			</s:iterator>	
+		</div></div>				
+		</s:if>
+		<div class="row">
+		<div class="col-lg-12">
 				<s:set var="fileDescr" value="#resource.descr" />
 				<s:if test='%{#fileDescr.length()>90}'>
 					<s:set var="fileDescr" value='%{#fileDescr.substring(0,30)+"..."+#fileDescr.substring(#fileDescr.length()-30)}' />
@@ -135,12 +135,10 @@
 				<s:else>
 					<s:property value="#resource.descr" />
 				</s:else>
-			</div>
-			<div class="col-lg-4 text-right">
 				<s:set var="fileName" value="#resourceInstance.fileName" />
 				<s:if test='%{#fileName.length()>25}'>
 					<s:set var="fileName" value='%{#fileName.substring(0,10)+"..."+#fileName.substring(#fileName.length()-10)}' />
-					<code><abbr title="<s:property value="#resourceInstance.fileName" />"><s:property value="#fileName" /></abbr></code>
+					<code class="margin-small-bottom"><abbr title="<s:property value="#resourceInstance.fileName" />"><s:property value="#fileName" /></abbr></code>
 				</s:if>
 				<s:else>
 					<code><s:property value="#fileName" /></code>
@@ -177,13 +175,11 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-lg-12">
-			<p>
+		<div class="col-lg-12">
 			<a href="<s:url action="edit" namespace="/do/jacms/Resource"><s:param name="resourceId" value="%{#resourceid}" /></s:url>" title="<s:text name="label.edit" />: <s:property value="#resource.descr" /> ">
 			<span class="icon icon-edit"></span>&#32;<s:property value="#resource.descr" /></a>
-			</p>
-			<p>
-			<a href="<s:property value="%{#resource.documentPath}" />" title="<s:text name="label.download" />: <s:property value="#resourceInstance.fileName" />">
+			<p class="margin-none">
+			<a href="<s:property value="%{#resource.documentPath}" />" title="<s:text name="label.download" />: <s:property value="#resourceInstance.fileName" />" class="pull-left margin-small-top">
 			<span class="icon icon-download-alt"></span>&#32;
 				<s:set var="fileName" value="#resourceInstance.fileName" />
 				<s:if test='%{#fileName.length()>25}'>
@@ -194,7 +190,7 @@
 				<code><s:property value="#resourceInstance.fileName" /></code>
 				</s:else>
 			</a>
-			<span class="badge">
+			<span class="badge pull-right margin-small-top">
 				<s:property value="%{#resourceInstance.fileLength.replaceAll(' ', '&nbsp;')}" escapeXml="false" escapeHtml="false" escapeJavaScript="false" />
 			</span>
 			</p>
