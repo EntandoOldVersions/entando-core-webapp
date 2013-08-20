@@ -9,8 +9,11 @@
 
 <s:set name="elementIndex" value="#elementStatus.index" />
 <li class="list-group-item">
-	<label for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />"><s:property value="#elementStatus.index + 1" /></label>
-	<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/listAttributes/allList_operationModule.jsp" /> 
+	<label for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />" class=""><s:property value="#elementStatus.index + 1" /></label>
+	<div class="pull-right margin-small-bottom">
+		<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/listAttributes/allList_operationModule.jsp" />
+	</div>
+	<div class="clearfix"></div>
 	<s:if test="#attribute.type == 'Monotext'">
 		<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/monotextAttribute.jsp" />
 	</s:if>

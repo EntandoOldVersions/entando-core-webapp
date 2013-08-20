@@ -24,11 +24,14 @@
 	</s:if>
 	<s:else>
 		<li class="list-group-item">	
-		<label for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />"><s:property value="#elementStatus.index + 1" /></label>
+		<label for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />" class=""><s:property value="#elementStatus.index + 1" /></label>
 		<s:if test="!#lang.default">
 			<s:set var="operationButtonDisabled" value="true" />
 		</s:if>
+		<div class="pull-right">
 			<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/listAttributes/allList_operationModule.jsp" />
+		</div>
+		<div class="clearfix"></div>
 	</s:else>	 
 	
 	<s:if test="#attribute.type == 'Monotext'">
