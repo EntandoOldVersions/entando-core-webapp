@@ -1,7 +1,6 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/aps-core" prefix="wp" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
-<%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 
 <s:set name="currentResource" value="#attribute.resources[#lang.code]"></s:set>
 <s:set name="defaultResource" value="#attribute.resource"></s:set>

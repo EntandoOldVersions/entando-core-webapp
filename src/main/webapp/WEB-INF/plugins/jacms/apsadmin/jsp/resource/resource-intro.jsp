@@ -1,7 +1,6 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/aps-core" prefix="wp" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
-<%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 
 <s:set var="targetNS" value="%{'/do/jacms/Resource'}" />
 <s:set var="targetParamName" value="%{'resourceTypeCode'}" />

@@ -20,7 +20,7 @@
 
 <s:form>
 <p class="sr-only">
-	<wpsf:hidden name="resourceId" />
+	<s:hidden name="resourceId" />
 </p>
 
 <s:if test="references['jacmsContentManagerUtilizers']">

@@ -1,7 +1,6 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/aps-core" prefix="wp" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
-<%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 <%@ taglib prefix="jacms" uri="/jacms-apsadmin-core" %>
 
 <s:if test="onEditContent">
@@ -61,7 +60,7 @@
 	<div class="panel-body">
 	 	<div class="form-group">
 			<label class="control-label" for="descr"><s:text name="label.description" /></label>
-			<wpsf:textfield useTabindexAutoIncrement="true" name="descr" id="descr" cssClass="form-control" />
+			<s:textfield name="descr" id="descr" cssClass="form-control" />
 		</div>
 
 		<s:set name="lockGroupSelect" value="%{resourceId != null && resourceId != 0}"></s:set>
@@ -108,7 +107,7 @@
 <div id="actions-container">
 	<p class="buttons">
 		<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/join-to-resource.png</s:set>
-		<wpsf:submit useTabindexAutoIncrement="true" action="joinCategory" type="image" src="%{#iconImagePath}" value="%{getText('label.join')}" title="%{getText('label.join')}" />
+		<s:submit action="joinCategory" type="image" src="%{#iconImagePath}" value="%{getText('label.join')}" title="%{getText('label.join')}" />
 	</p>
 </div>
 
@@ -129,7 +128,7 @@
 			<wpsa:actionSubParam name="categoryCode" value="%{#resourceCategory.code}" />
 		</wpsa:actionParam>
 		<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL />administration/common/img/icons/delete.png</s:set>
-		<wpsf:submit useTabindexAutoIncrement="true" type="image" src="%{#iconImagePath}" action="%{#actionName}" value="%{getText('label.remove')}" title="%{getText('label.remove')}" />
+		<s:submit type="image" src="%{#iconImagePath}" action="%{#actionName}" value="%{getText('label.remove')}" title="%{getText('label.remove')}" />
 	</td>
 </tr>
 </s:iterator>
