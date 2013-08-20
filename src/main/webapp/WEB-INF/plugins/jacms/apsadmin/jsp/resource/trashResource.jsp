@@ -8,7 +8,7 @@
 <s:set var="targetParamName" value="%{'resourceTypeCode'}" />
 <s:set var="targetParamValue" value="resourceTypeCode" />
 
-<h1 class="panel title-page"><span class="panel-body display-block">
+<h1 class="panel panel-default title-page"><span class="panel-body display-block">
 <s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />&#32;/&#32;
 <s:text name="title.resourceManagement.resourceTrash" />
 <s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></span></h1>

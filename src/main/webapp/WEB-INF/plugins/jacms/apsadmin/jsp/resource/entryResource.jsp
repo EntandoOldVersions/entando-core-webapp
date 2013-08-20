@@ -23,7 +23,6 @@
 	<s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />&#32;/&#32;
 	<s:if test="getStrutsAction() == 1"><s:text name="label.new" /></s:if><s:else><s:text name="label.edit" /></s:else>
 	</span></h1>
-	</span></h1>
 </s:if>
 
 <s:form action="save" method="post" enctype="multipart/form-data" cssClass="action-form">
