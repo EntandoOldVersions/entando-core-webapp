@@ -16,8 +16,8 @@
 	<s:set var="targetNS" value="%{'/do/jacms/Resource'}" />
 	<s:set var="targetParamName" value="%{'resourceTypeCode'}" />
 	<s:set var="targetParamValue" value="resourceTypeCode" />
-	<h1 class="panel title-page"><s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />
-	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></h1>
+	<h1 class="panel title-page"><span class="panel-body display-block"><s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />
+	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></span></h1>
 </s:if>
 
 <s:form action="search" cssClass="tab-container action-form">

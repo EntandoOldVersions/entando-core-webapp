@@ -13,32 +13,27 @@
 	</span></h1>
 	
 	<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/include/snippet-content.jsp" />
-
-<%--
- 	<s:if test="content.id == null"> NUOVO </s:if>
-	<s:else> CON ID '<s:property value="content.id" />' </s:else>
-  --%>
 </s:if>
 
 <s:if test="!onEditContent">
 	<s:set var="targetNS" value="%{'/do/jacms/Resource'}" />
 	<s:set var="targetParamName" value="%{'resourceTypeCode'}" />
 	<s:set var="targetParamValue" value="resourceTypeCode" />
-	<h1 class="panel title-page"><s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />
-	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></h1>
+	<h1 class="panel title-page"><span class="panel-body display-block"><s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />
+	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></span></h1>
 </s:if>
 
 <s:form action="search" cssClass="tab-container action-form">
 <s:set var="categoryTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_category" /></s:set>
 
 <p class="sr-only">
-<s:hidden name="resourceTypeCode" />
-<s:if test="#categoryTreeStyleVar == 'request'">
-<s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar">
-<s:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"/>
-</s:iterator>
-</s:if>
-<s:hidden name="contentOnSessionMarker" />
+	<s:hidden name="resourceTypeCode" />
+	<s:if test="#categoryTreeStyleVar == 'request'">
+	<s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar">
+	<s:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"/>
+	</s:iterator>
+	</s:if>
+	<s:hidden name="contentOnSessionMarker" />
 </p>
 <p>
 	<label for="text" class="label-control"><s:text name="label.search.by"/>&#32;<s:text name="label.description"/>:</label>
