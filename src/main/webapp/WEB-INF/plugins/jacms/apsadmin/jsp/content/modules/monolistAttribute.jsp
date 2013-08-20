@@ -5,7 +5,7 @@
 <p class="sr-only"><s:text name="note.monolist.intro" /></p>
 
 <s:if test="#attribute.attributes.size() != 0">
-<ul>
+<ul class="list-group">
 </s:if>
 <s:set name="masterListAttributeTracer" value="#attributeTracer" />
 <s:set name="masterListAttribute" value="#attribute" />
@@ -15,15 +15,15 @@
 <s:set name="elementIndex" value="#elementStatus.index" />
 
 	<s:if test="#attribute.type == 'Composite'">
-<li>	
-		<span class="important" title="<s:text name="label.compositeAttribute.element" />"><s:property value="#elementStatus.index + 1" /></span>
-		<s:if test="!#lang.default">
-			<s:set var="operationButtonDisabled" value="true" />
-		</s:if>
-			<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/listAttributes/allList_operationModule.jsp" />
+	<li class="list-group-item">	
+			<span class="important" title="<s:text name="label.compositeAttribute.element" />"><s:property value="#elementStatus.index + 1" /></span>
+			<s:if test="!#lang.default">
+				<s:set var="operationButtonDisabled" value="true" />
+			</s:if>
+				<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/listAttributes/allList_operationModule.jsp" />
 	</s:if>
 	<s:else>
-<li>	
+		<li class="list-group-item">	
 		<label for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />"><s:property value="#elementStatus.index + 1" /></label>
 		<s:if test="!#lang.default">
 			<s:set var="operationButtonDisabled" value="true" />
@@ -94,5 +94,5 @@
 </s:if>
 
 <s:if test="#lang.default">
-<p class="button-align"><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/listAttributes/allList_addElementButton.jsp" /></p>
+<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/listAttributes/allList_addElementButton.jsp" />
 </s:if>

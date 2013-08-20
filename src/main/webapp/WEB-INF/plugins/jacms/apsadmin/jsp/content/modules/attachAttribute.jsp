@@ -10,32 +10,34 @@
 <s:if test="#lang.default">
 <%--Default lang --%>
 	<s:if test="#currentResource != null">
-		<div class="panel margin-small-top">
-			<s:if test="!(#attributeTracer.monoListElement) || ((#attributeTracer.monoListElement) && (#attributeTracer.compositeElement))">
-				<%-- PULSANTE DI RIMOZIONE RISORSA --%>
-				<div class="panel-heading text-right">
-					<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/removeResourceSubmit.jsp">
-						<s:param name="resourceTypeCode">Attach</s:param>
-					</s:include>
-				</div>
-			</s:if>
-			<div class="row panel-body">
-				<div class="col-xs-12 col-sm-3 col-lg-2 text-center">
-					<a class="noborder" href="<s:property value="#defaultResource.attachPath" />" title="<s:text name="label.download" />:&#32;<s:property value="#defaultResource.descr"/>">
-						<span class="icon icon-file-text icon-4x icon-large" ></span>
-					</a>
-				</div>
-				<div class="col-xs-12 col-sm-9 col-lg-10 form-horizontal margin-large-top">
-				  	<div class="form-group">
+		<s:if test="!(#attributeTracer.monoListElement) || ((#attributeTracer.monoListElement) && (#attributeTracer.compositeElement))">
+			<div class="panel panel-default margin-small-top">
+			<%-- PULSANTE DI RIMOZIONE RISORSA --%>
+			<div class="panel-heading text-right">
+				<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/removeResourceSubmit.jsp">
+					<s:param name="resourceTypeCode">Attach</s:param>
+				</s:include>
+			</div>
+		</s:if>
+		<div class="row panel-body">
+			<div class="col-xs-12 col-sm-3 col-lg-2 text-center">
+				<a class="noborder" href="<s:property value="#defaultResource.attachPath" />" title="<s:text name="label.download" />:&#32;<s:property value="#defaultResource.descr"/>">
+					<span class="icon icon-file-text icon-4x icon-large" ></span>
+				</a>
+			</div>
+			<div class="col-xs-12 col-sm-9 col-lg-10 form-horizontal margin-large-top">
+			  	<div class="form-group">
 					<label class="col-xs-2 control-label text-right" for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />">
 					<s:text name="label.text" /></label>
 					<div class="col-xs-10">
 						<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/textAttribute.jsp" />
 					</div>
-					</div>
 				</div>
 			</div>
 		</div>
+		<s:if test="!(#attributeTracer.monoListElement) || ((#attributeTracer.monoListElement) && (#attributeTracer.compositeElement))">
+			</div>
+		</s:if>
 	</s:if>
 	<s:else>
 		<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/chooseResourceSubmit.jsp">

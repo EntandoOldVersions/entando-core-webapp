@@ -11,7 +11,7 @@
 	<s:if test="#currentResource != null">
 	<%-- Default language - filled Attribute --%>
 
-		<div class="panel margin-small-top">
+		<div class="panel panel-default margin-small-top">
 
 			<s:if test="!(#attributeTracer.monoListElement) || ((#attributeTracer.monoListElement) && (#attributeTracer.compositeElement))">
 				<div class="panel-heading text-right">
@@ -60,7 +60,7 @@
 		<s:text name="note.editContent.doThisInTheDefaultLanguage" />.
 	</s:if>
 	<s:else>
-	<div class="panel">
+	<div class="panel panel-default">
 		<div class="row">
 		<%-- if default language has filled Attribute --%>
 		<s:if test="#currentResource == null">

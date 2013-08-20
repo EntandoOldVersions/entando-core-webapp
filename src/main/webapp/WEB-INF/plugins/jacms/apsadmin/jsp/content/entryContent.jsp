@@ -51,9 +51,9 @@
 	<s:else><s:set var="attributeLabelVar" value="#attribute.name" /></s:else>
 
 	<s:if test="#attribute.type == 'List' || #attribute.type == 'Monolist'">
-	<p class="important">
-		<span class="basic-mint-label"><span class="attribute-main-label"><s:property value="#attributeLabelVar" /></span></span><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" /><span class="monospace">&#32;(<s:text name="label.list" />)</span>:
-	</p>
+	<div class="form-group<s:property value="controlGroupErrorClassVar" />">
+		<label class="display-block"><span class="icon icon-list"></span>&#32;<s:property value="#attributeLabelVar" />&#32;<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" /></label>
+	
 	</s:if>
 	<s:elseif test="#attribute.type == 'Image' || #attribute.type == 'Attach' || #attribute.type == 'CheckBox' || #attribute.type == 'Boolean' || #attribute.type == 'ThreeState' || #attribute.type == 'Composite'">
 	<div class="form-group<s:property value="controlGroupErrorClassVar" />">
@@ -156,14 +156,10 @@
 	</s:iterator>
 	</wpsa:hookPoint>
 
-	<s:if test="#attribute.type == 'Monotext' || #attribute.type == 'Text' || #attribute.type == 'Longtext' || #attribute.type == 'Hypertext' || #attribute.type == 'Attach' || #attribute.type == 'Number' || #attribute.type == 'Date' || #attribute.type == 'Timestamp' || #attribute.type == 'Link' || #attribute.type == 'Enumerator' || #attribute.type == 'Image' || #attribute.type == 'CheckBox' || #attribute.type == 'Boolean' || #attribute.type == 'ThreeState' || #attribute.type == 'Composite'">
-
-		<s:if test="#attributeFieldErrorsVar">
-		  <p class="text-danger padding-small-vertical"><s:iterator value="#attributeFieldErrorsVar"><s:property /> </s:iterator></p>
-		</s:if>
-
-		</div> <!-- form-group -->
+	<s:if test="#attributeFieldErrorsVar">
+	  <p class="text-danger padding-small-vertical"><s:iterator value="#attributeFieldErrorsVar"><s:property /> </s:iterator></p>
 	</s:if>
+	</div> <!-- form-group -->
 
 	</div>
 	</s:iterator>

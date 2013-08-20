@@ -1,6 +1,6 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <s:if test="#attribute.getAttributeList(#lang.code).size() != 0">
-<ul>
+<ul class="list-group">
 </s:if>
 <s:set name="masterListAttributeTracer" value="#attributeTracer" />
 <s:set name="masterListAttribute" value="#attribute" />
@@ -8,7 +8,7 @@
 <s:set name="attributeTracer" value="#masterListAttributeTracer.getListElementTracer(#lang, #elementStatus.index)"></s:set>
 
 <s:set name="elementIndex" value="#elementStatus.index" />
-<li>
+<li class="list-group-item">
 	<label for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />"><s:property value="#elementStatus.index + 1" /></label>
 	<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/listAttributes/allList_operationModule.jsp" /> 
 	<s:if test="#attribute.type == 'Monotext'">
