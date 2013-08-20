@@ -91,7 +91,7 @@
 		</nav>
 	</div>
 	<div class="col-sm-9 col-sm-pull-3 col-md-pull-3 col-lg-pull-3">
-		<div class="navbar navbar-static-top" id="navbar">
+		<div class="navbar navbar-default navbar-static-top" id="navbar">
 			<div class="navbar-header">
 				<a href="#sidebar" class="btn-offcanvas navbar-toggle pull-right visible-xs" data-toggle="offcanvas">
 						<span class="sr-only"><s:text name="label.menu" /></span>
