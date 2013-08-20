@@ -19,17 +19,17 @@
 </c:if>
 
 <c:set var="userFilterOptionsVar" value="${userFilterOptionsVar}" scope="request" />
-<c:import url="/WEB-INF/plugins/jacms/aps/jsp/showlets/inc/userFilter-module.jsp" />
+<c:import url="/WEB-INF/plugins/jacms/aps/jsp/widgets/inc/userFilter-module.jsp" />
 
 <c:choose>
 <c:when test="${contentList != null && !empty contentList}">
 	<wp:pager listName="contentList" objectName="groupContent" pagerIdFromFrame="true" advanced="true" offset="5">
 		<c:set var="group" value="${groupContent}" scope="request" />
-		<c:import url="/WEB-INF/plugins/jacms/aps/jsp/showlets/inc/pagerBlock.jsp" />
+		<c:import url="/WEB-INF/plugins/jacms/aps/jsp/widgets/inc/pagerBlock.jsp" />
 		<c:forEach var="contentId" items="${contentList}" begin="${groupContent.begin}" end="${groupContent.end}">
 			<jacms:content contentId="${contentId}" />
 		</c:forEach>
-		<c:import url="/WEB-INF/plugins/jacms/aps/jsp/showlets/inc/pagerBlock.jsp" />
+		<c:import url="/WEB-INF/plugins/jacms/aps/jsp/widgets/inc/pagerBlock.jsp" />
 	</wp:pager>
 </c:when>
 <c:otherwise>

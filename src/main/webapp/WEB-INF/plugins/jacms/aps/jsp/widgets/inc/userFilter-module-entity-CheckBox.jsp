@@ -7,7 +7,7 @@
 
 <fieldset>
 <legend><wp:i18n key="${i18n_Attribute_Key}" /></legend>
-<c:import url="/WEB-INF/plugins/jacms/aps/jsp/showlets/inc/userFilter-module-entity-Boolean-ignoreOption.jsp" />
+<c:import url="/WEB-INF/plugins/jacms/aps/jsp/widgets/inc/userFilter-module-entity-Boolean-ignoreOption.jsp" />
 
 <div class="control-group">
 	<div class="controls">

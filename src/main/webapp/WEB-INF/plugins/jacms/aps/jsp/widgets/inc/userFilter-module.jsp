@@ -37,30 +37,30 @@
 		<c:set var="userFilterOptionVar" value="${userFilterOptionVar}" scope="request" />
 		<c:choose>
 			<c:when test="${!userFilterOptionVar.attributeFilter && (userFilterOptionVar.key == 'fulltext' || userFilterOptionVar.key == 'category')}">
-				<c:import url="/WEB-INF/plugins/jacms/aps/jsp/showlets/inc/userFilter-module-${userFilterOptionVar.key}.jsp" />
+				<c:import url="/WEB-INF/plugins/jacms/aps/jsp/widgets/inc/userFilter-module-${userFilterOptionVar.key}.jsp" />
 			</c:when>
 			<c:when test="${userFilterOptionVar.attributeFilter}">
 				<c:choose>
 					<c:when test="${userFilterOptionVar.attribute.type == 'Monotext' || userFilterOptionVar.attribute.type == 'Text' || userFilterOptionVar.attribute.type == 'Longtext' || userFilterOptionVar.attribute.type == 'Hypertext'}">
-						<c:import url="/WEB-INF/plugins/jacms/aps/jsp/showlets/inc/userFilter-module-entity-Text.jsp" />
+						<c:import url="/WEB-INF/plugins/jacms/aps/jsp/widgets/inc/userFilter-module-entity-Text.jsp" />
 					</c:when>
 					<c:when test="${userFilterOptionVar.attribute.type == 'Enumerator' }">
-						<c:import url="/WEB-INF/plugins/jacms/aps/jsp/showlets/inc/userFilter-module-entity-Enumerator.jsp" />
+						<c:import url="/WEB-INF/plugins/jacms/aps/jsp/widgets/inc/userFilter-module-entity-Enumerator.jsp" />
 					</c:when>
 					<c:when test="${userFilterOptionVar.attribute.type == 'Number'}">
-						<c:import url="/WEB-INF/plugins/jacms/aps/jsp/showlets/inc/userFilter-module-entity-Number.jsp" />
+						<c:import url="/WEB-INF/plugins/jacms/aps/jsp/widgets/inc/userFilter-module-entity-Number.jsp" />
 					</c:when>
 					<c:when test="${userFilterOptionVar.attribute.type == 'Date'}">
-						<c:import url="/WEB-INF/plugins/jacms/aps/jsp/showlets/inc/userFilter-module-entity-Date.jsp" />
+						<c:import url="/WEB-INF/plugins/jacms/aps/jsp/widgets/inc/userFilter-module-entity-Date.jsp" />
 					</c:when>
 					<c:when test="${userFilterOptionVar.attribute.type == 'Boolean' }">
-						<c:import url="/WEB-INF/plugins/jacms/aps/jsp/showlets/inc/userFilter-module-entity-Boolean.jsp" />
+						<c:import url="/WEB-INF/plugins/jacms/aps/jsp/widgets/inc/userFilter-module-entity-Boolean.jsp" />
 					</c:when>
 					<c:when test="${userFilterOptionVar.attribute.type == 'CheckBox'}">
-						<c:import url="/WEB-INF/plugins/jacms/aps/jsp/showlets/inc/userFilter-module-entity-CheckBox.jsp" />
+						<c:import url="/WEB-INF/plugins/jacms/aps/jsp/widgets/inc/userFilter-module-entity-CheckBox.jsp" />
 					</c:when>
 					<c:when test="${userFilterOptionVar.attribute.type == 'ThreeState'}">
-						<c:import url="/WEB-INF/plugins/jacms/aps/jsp/showlets/inc/userFilter-module-entity-ThreeState.jsp" />
+						<c:import url="/WEB-INF/plugins/jacms/aps/jsp/widgets/inc/userFilter-module-entity-ThreeState.jsp" />
 					</c:when>
 				</c:choose>
 			</c:when>

@@ -18,11 +18,11 @@
 	<c:out value="${groupContent.size}" /> <!-- infamous whitespace hack -->
 	<wp:i18n key="SEARCH_RESULTS_OUTRO" /> [<c:out value="${groupContent.begin + 1}" /> &ndash; <c:out value="${groupContent.end + 1}" />]:</em></p>
 
-	<c:import url="/WEB-INF/plugins/jacms/aps/jsp/showlets/inc/pagerBlock.jsp" />
+	<c:import url="/WEB-INF/plugins/jacms/aps/jsp/widgets/inc/pagerBlock.jsp" />
 	<c:forEach var="contentId" items="${result}" begin="${groupContent.begin}" end="${groupContent.end}">
 		<jacms:content contentId="${contentId}" modelId="list" />
 	</c:forEach>
-	<c:import url="/WEB-INF/plugins/jacms/aps/jsp/showlets/inc/pagerBlock.jsp" />
+	<c:import url="/WEB-INF/plugins/jacms/aps/jsp/widgets/inc/pagerBlock.jsp" />
 
 </wp:pager>
 
