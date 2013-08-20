@@ -11,7 +11,6 @@
 	<s:if test="getStrutsAction() == 1"><s:text name="label.new" /></s:if><s:else><s:text name="label.edit" /></s:else>&#32;/&#32;
 	<s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />
 	</span></h1>
-
 	<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/include/snippet-content.jsp" />
 </s:if>
 
@@ -23,64 +22,88 @@
 	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></span></h1>
 </s:if>
 
-<s:form action="search" cssClass="tab-container action-form">
-<s:set var="categoryTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_category" /></s:set>
+<s:form action="search" cssClass="form-horizontal">
+	<s:set var="categoryTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_category" /></s:set>
 
-<p class="sr-only">
-	<s:hidden name="resourceTypeCode" />
-	<s:if test="#categoryTreeStyleVar == 'request'">
-	<s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar">
-	<s:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"/>
-	</s:iterator>
-	</s:if>
-	<s:hidden name="contentOnSessionMarker" />
-</p>
-<p>
-	<label for="text" class="label-control"><s:text name="label.search.by"/>&#32;<s:text name="label.description"/>:</label>
-	<s:textfield name="text" id="text" cssClass="text" />
-</p>
+	<p class="sr-only">
+		<s:hidden name="resourceTypeCode" />
+		<s:if test="#categoryTreeStyleVar == 'request'">
+		<s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar">
+		<s:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"/>
+		</s:iterator>
+		</s:if>
+		<s:hidden name="contentOnSessionMarker" />
+	</p>
+	<div class="form-group">
 
-<fieldset><legend class="accordion_toggler"><s:text name="title.searchFilters" /></legend>
-<div class="accordion_element">
-
-<s:set var="allowedGroupsVar" value="allowedGroups"></s:set>
-<s:if test="null != #allowedGroupsVar && #allowedGroupsVar.size()>1">
-<p>
-	<label for="ownerGroupName" class="label-control"><s:text name="label.group" />:</label>
-	<s:select name="ownerGroupName" id="ownerGroupName" list="#allowedGroupsVar"
-		headerKey="" headerValue="%{getText('label.all')}" listKey="name" listValue="descr" cssClass="text" />
-</p>
-</s:if>
-
-<p>
-	<label for="fileName" class="label-control"><s:text name="label.filename" />:</label>
-	<s:textfield name="fileName" id="fileName" cssClass="text" />
-</p>
-<div class="subsection-light">
-<p class="important">
-	<s:text name="label.category" />:
-</p>
-
-<ul id="categoryTree">
-	<s:set name="inputFieldName" value="'categoryCode'" />
-	<s:set name="selectedTreeNode" value="categoryCode" />
-	<s:set name="liClassName" value="'category'" />
-	<s:if test="#categoryTreeStyleVar == 'classic'">
-	<s:set name="currentRoot" value="categoryRoot" />
-	<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder.jsp" />
-	</s:if>
-	<s:elseif test="#categoryTreeStyleVar == 'request'">
-	<s:set name="currentRoot" value="showableTree" />
-	<s:set name="openTreeActionName" value="'openCloseCategoryTreeNodeOnResourceFinding'" />
-	<s:set name="closeTreeActionName" value="'openCloseCategoryTreeNodeOnResourceFinding'" />
-	<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder-request-submits.jsp" />
-	</s:elseif>
-</ul>
-</div>
-</div>
-</fieldset>
-<p><s:submit useTabindexAutoIncrement="true" value="%{getText('label.search')}" cssClass="button" /></p>
-
+		<label for="text" class="sr-only"><s:text name="label.search.by"/>&#32;<s:text name="label.description"/></label>
+		<div class="input-group col-sm-12">
+			<span class="input-group-addon">
+				<span class="icon icon-file-text-alt icon-large"></span>
+			</span>
+			<s:textfield name="text" id="text" cssClass="form-control input-lg" placeholder="TODO Description" title="%{getText('label.search.by')} %{getText('label.description')}" />
+			<div class="input-group-btn">
+				<s:submit type="button" cssClass="btn btn-primary btn-lg">
+					<span class="icon icon-search" title="<s:text name="label.search" />"></span>
+				</s:submit>
+			</div>
+		</div>
+		<p class="help-block text-right">
+			<button type="button" data-toggle="collapse" data-target="#search-advanced"  class="btn btn-link">
+				<s:text name="title.searchFilters" />&#32;<span class="icon-chevron-down"></span>
+			</button>
+		</p>
+	</div>
+	<div id="search-advanced" class="collapse">
+	
+		<div class="form-group">
+			<s:set var="allowedGroupsVar" value="allowedGroups"></s:set>
+			<s:if test="null != #allowedGroupsVar && #allowedGroupsVar.size()>1">
+				<label for="ownerGroupName" class="control-label col-sm-2 text-right"><s:text name="label.group" /></label>
+				<div class="col-sm-5">
+					<s:select name="ownerGroupName" id="ownerGroupName" list="#allowedGroupsVar" headerKey="" headerValue="%{getText('label.all')}" listKey="name" listValue="descr" cssClass="form-control" />
+				</div>
+			</s:if>
+		</div>
+	
+		<div class="form-group">
+			<label for="fileName" class="control-label col-sm-2 text-right"><s:text name="label.filename" /></label>
+			<div class="col-sm-5">
+				<s:textfield name="fileName" id="fileName" cssClass="form-control"/>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="control-label col-sm-2 text-right">
+				<s:text name="label.category" />
+			</label>
+			<div class="col-sm-5">
+			<ul id="categoryTree">
+				<s:set name="inputFieldName" value="'categoryCode'" />
+				<s:set name="selectedTreeNode" value="categoryCode" />
+				<s:set name="liClassName" value="'category'" />
+				<s:if test="#categoryTreeStyleVar == 'classic'">
+				<s:set name="currentRoot" value="categoryRoot" />
+				<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder.jsp" />
+				</s:if>
+				<s:elseif test="#categoryTreeStyleVar == 'request'">
+				<s:set name="currentRoot" value="showableTree" />
+				<s:set name="openTreeActionName" value="'openCloseCategoryTreeNodeOnResourceFinding'" />
+				<s:set name="closeTreeActionName" value="'openCloseCategoryTreeNodeOnResourceFinding'" />
+				<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder-request-submits.jsp" />
+				</s:elseif>
+			</ul>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<div class="col-sm-5 col-sm-offset-2">
+				<s:submit type="button" cssClass="btn btn-primary">
+					<span class="icon icon-search"></span>&#32;<s:text name="label.search" />
+				</s:submit>
+			</div>
+		</div>
+	</div>
 </s:form>
 
 <s:if test="onEditContent">
