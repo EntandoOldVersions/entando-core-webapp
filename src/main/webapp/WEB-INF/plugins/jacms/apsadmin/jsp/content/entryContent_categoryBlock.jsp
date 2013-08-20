@@ -32,7 +32,7 @@
 </ul>
 <div id="actions-container">
 	<div class="buttons">
-		<s:submit action="joinCategory" type="button" title="%{getText('label.join')}" cssClass="btn btn-info margin-small-vertical" data-toggle="tooltip">
+		<s:submit action="joinCategory" type="button" title="%{getText('label.join')}" cssClass="btn btn-info btn-sm margin-small-vertical" data-toggle="tooltip">
 			<span class="icon icon-plus"></span>
 		</s:submit>
 	</div>

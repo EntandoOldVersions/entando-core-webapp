@@ -54,7 +54,7 @@
 
 <div id="actions-container">
 	<div class="buttons btn-toolbar">
-		<div class="btn-group margin-small-vertical">
+		<div class="btn-group btn-group-sm margin-small-vertical">
 			<s:submit action="configure" type="button" title="%{getText('page.options.configure')}" cssClass="btn btn-info" data-toggle="tooltip">
 				<span class="icon icon-cog"></span>
 			</s:submit>
@@ -62,7 +62,7 @@
 				<span class="icon icon-info"></span>
 			</s:submit>
 		</div>
-		<div class="btn-group margin-small-vertical">
+		<div class="btn-group btn-group-sm margin-small-vertical">
 			<s:submit action="copy" type="button" title="%{getText('page.options.copy')}" cssClass="btn btn-info" data-toggle="tooltip">
 				<span class="icon icon-copy"></span>
 			</s:submit>
@@ -76,7 +76,7 @@
 				<span class="icon icon-sort-down"></span>
 			</s:submit>
 		</div>
-		<div class="btn-group margin-small-vertical">
+		<div class="btn-group btn-group-sm margin-small-vertical">
 			<s:submit action="new" type="button" title="%{getText('page.options.new')}" cssClass="btn btn-info" data-toggle="tooltip">
 				<span class="icon icon-plus-sign"></span>
 			</s:submit>
@@ -84,7 +84,7 @@
 				<span class="icon icon-edit"></span>
 			</s:submit>
 		</div>
-		<div class="btn-group margin-small-vertical">
+		<div class="btn-group btn-group-sm margin-small-vertical">
 			<s:submit action="trash" type="button" title="%{getText('page.options.delete')}" cssClass="btn btn-warning" data-toggle="tooltip">
 				<span class="icon icon-remove-sign"></span>
 			</s:submit>

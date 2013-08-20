@@ -5,7 +5,7 @@
 <s:if test="null == #operationButtonDisabled">
 	<s:set var="operationButtonDisabled" value="false" />
 </s:if>
-<div class="btn-group margin-small-vertical">
+<div class="btn-group btn-group-sm margin-small-vertical">
 	<wpsa:actionParam action="moveListElement" var="actionName" >
 		<wpsa:actionSubParam name="attributeName" value="%{#attribute.name}" />
 		<wpsa:actionSubParam name="listLangCode" value="%{#lang.code}" />

@@ -21,11 +21,6 @@ jQuery.each($('form.action-form'), function(index, currentForm){
 	$('#actions-container', currentForm).remove();
 	myActionMenu.removeClass('margin-small-vertical');
 
-	//for each button add class btn-sm
-	$('button', myActionMenu).each(function() {
-		$(this).addClass("btn-sm");
-	});
-
 	//the labels
 	var labels = $('li.tree_node_flag label', currentForm);
 
