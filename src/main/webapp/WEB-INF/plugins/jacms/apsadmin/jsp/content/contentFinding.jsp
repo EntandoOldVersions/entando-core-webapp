@@ -201,7 +201,7 @@
 
 			<div id="search-configure-results" class="collapse">
 
-				<div class="form-group">
+				<div class="form-group col-sm-12">
 					<div class="btn-group" data-toggle="buttons">
 						<label class="btn btn-default" for="viewCode">
 							<wpsf:checkbox name="viewCode" id="viewCode" />&#32;
@@ -226,7 +226,7 @@
 					</div>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group col-sm-12">
 					<s:submit action="%{#searchActionName}" type="button" cssClass="btn btn-primary">
 							<span class="icon icon-search"></span>&#32;<s:text name="label.search" />
 					</s:submit>
