@@ -1,7 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
-<%-- radios only --%>
+<%-- radios + checkboxes only --%>
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 
 <s:set var="targetNS" value="%{'/do/jacms/Content'}" />
@@ -203,24 +203,24 @@
 
 				<div class="form-group">
 					<div class="btn-group" data-toggle="buttons">
-						<label class="btn btn-default">
-							<s:checkbox name="viewCode" id="viewCode"></s:checkbox>&#32;
+						<label class="btn btn-default" for="viewCode">
+							<wpsf:checkbox name="viewCode" id="viewCode" />&#32;
 							<s:text name="label.code" />
 						</label>
 						<label class="btn btn-default">
-							<s:checkbox name="viewTypeDescr" id="viewTypeDescr"></s:checkbox>&#32;
+							<wpsf:checkbox name="viewTypeDescr" id="viewTypeDescr" />&#32;
 							<s:text name="name.contentType" />
 						</label>
 						<label class="btn btn-default">
-							<s:checkbox name="viewStatus" id="viewStatus"></s:checkbox>&#32;
+							<wpsf:checkbox name="viewStatus" id="viewStatus" />&#32;
 							<s:text name="name.contentStatus" />
 						</label>
 						<label class="btn btn-default">
-							<s:checkbox name="viewGroup" id="viewGroup"></s:checkbox>&#32;
+							<wpsf:checkbox name="viewGroup" id="viewGroup" />&#32;
 							<s:text name="label.group"/>
 						</label>
 						<label class="btn btn-default">
-							<s:checkbox name="viewCreationDate" id="viewCreationDate"></s:checkbox>&#32;
+							<wpsf:checkbox name="viewCreationDate" id="viewCreationDate" />&#32;
 							<s:text name="label.creationDate"/>
 						</label>
 					</div>
