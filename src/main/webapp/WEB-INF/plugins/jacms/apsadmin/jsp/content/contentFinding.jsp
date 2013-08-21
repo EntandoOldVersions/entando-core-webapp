@@ -311,10 +311,11 @@
 
 		<s:if test="%{#contentIdsVar.size() > 0}">
 
-			<table class="generic" id="contentListTable" summary="<s:text name="note.content.contentList.summary" />">
-			<caption><span><s:text name="title.contentList" />&nbsp;<a title="<s:text name="note.goToSomewhere" />: <s:text name="title.searchFilters" />" href="#content_list-changeContentType" name="content_list-search" id="content_list-search" class="noborder"><img src="<wp:resourceURL />administration/common/img/icons/16x16/go-up.png" width="16" height="16" alt=" " /></a></span></caption>
+		<div class="table-responsive">
+			<table class="table table-bordered" id="contentListTable" summary="<s:text name="note.content.contentList.summary" />">
+			<caption class="sr-only"><s:text name="title.contentList" /></caption>
 			<tr>
-				<th class="icon_double"><abbr title="<s:text name="label.actions" />">&ndash;</abbr></th>
+				<th class="text-center padding-large-left padding-large-right"><abbr title="<s:text name="label.actions" />">&ndash;</abbr></th>
 				<th>
 				<a href="<s:url action="changeOrder" anchor="content_list_intro" includeParams="all" >
 					<s:param name="lastGroupBy"><s:property value="lastGroupBy"/></s:param>
@@ -350,66 +351,136 @@
 					<s:param name="groupBy">lastModified</s:param>
 					</s:url>"><s:text name="label.lastEdit" /></a>
 				</th>
-				<th class="icon"><abbr title="<s:text name="name.onLine" />">P</abbr></th>
+				<th class="text-center">
+					<abbr title="<s:text name="name.onLine" />">P</abbr>
+				</th>
 			</tr>
 			<s:iterator var="contentId">
 			<s:set name="content" value="%{getContentVo(#contentId)}"></s:set>
 			<tr>
-			<td class="icon_double">
-			<a title="<s:text name="label.edit" />: <s:property value="#content.id" /> - <s:property value="#content.descr" />" href="<s:url action="edit" namespace="/do/jacms/Content"><s:param name="contentId" value="#content.id" /></s:url>"><img src="<wp:resourceURL/>administration/common/img/icons/edit-content.png" alt="<s:text name="label.edit" />: <s:property value="#content.id" /> - <s:property value="#content.descr" />" /></a>
-			<a title="<s:text name="label.copyPaste" />: <s:property value="#content.id" /> - <s:property value="#content.descr" />" href="<s:url action="copyPaste" namespace="/do/jacms/Content"><s:param name="contentId" value="#content.id" /><s:param name="copyPublicVersion" value="'false'" /></s:url>"><img src="<wp:resourceURL/>administration/common/img/icons/edit-copy.png" alt="<s:text name="label.copyPaste" />: <s:property value="#content.id" /> - <s:property value="#content.descr" />" /></a>
-			<a title="<s:text name="label.inspect" />: [<s:text name="name.work" />] <s:property value="#content.id" /> - <s:property value="#content.descr" />" href="<s:url action="inspect" namespace="/do/jacms/Content"><s:param name="contentId" value="#content.id" /><s:param name="currentPublicVersion" value="'false'" /></s:url>"><img src="<wp:resourceURL/>administration/common/img/icons/22x22/content-inspect-work.png" alt="<s:text name="label.inspect" />: <s:property value="#content.id" /> - <s:property value="#content.descr" />" /></a>
-		<s:if test="#content.onLine">
-			<a title="<s:text name="label.inspect" />: [<s:text name="name.onLine" />] <s:property value="#content.id" /> - <s:property value="#content.descr" />" href="<s:url action="inspect" namespace="/do/jacms/Content"><s:param name="contentId" value="#content.id" /><s:param name="currentPublicVersion" value="'true'" /></s:url>"><img src="<wp:resourceURL/>administration/common/img/icons/22x22/content-inspect-online.png" alt="<s:text name="label.inspect" />: <s:property value="#content.id" /> - <s:property value="#content.descr" />" /></a>
-		</s:if>
-			<wpsa:hookPoint key="jacms.contentFinding.contentRow.actions" objectName="hookpoint_contentFinding_contentRow">
-			<s:iterator value="#hookpoint_contentFinding_contentRow" var="hookPointElement">
-				<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
-			</s:iterator>
-			</wpsa:hookPoint>
+			<td class="text-center text-nowrap">
+				<div class="btn-group btn-group-xs">
+					<a class="btn btn-default" title="<s:text name="label.edit" />: <s:property value="#content.id" /> - <s:property value="#content.descr" />" href="<s:url action="edit" namespace="/do/jacms/Content"><s:param name="contentId" value="#content.id" /></s:url>">
+						<span class="icon icon-edit"></span>
+						<span class="sr-only"><s:text name="label.edit" />: <s:property value="#content.id" /> - <s:property value="#content.descr" /></span>
+					</a>
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li>
+							<a title="<s:text name="label.copyPaste" />: <s:property value="#content.id" /> - <s:property value="#content.descr" />" href="<s:url action="copyPaste" namespace="/do/jacms/Content"><s:param name="contentId" value="#content.id" /><s:param name="copyPublicVersion" value="'false'" /></s:url>">
+								<span class="icon icon-fixed-width icon-copy"></span>
+								<s:text name="label.copyPaste" /><span class="sr-only">: <s:property value="#content.id" /> - <s:property value="#content.descr" /></span>
+							</a>
+						</li>
+						<li>
+							<a title="<s:text name="label.inspect" />: [<s:text name="name.work" />] <s:property value="#content.id" /> - <s:property value="#content.descr" />" href="<s:url action="inspect" namespace="/do/jacms/Content"><s:param name="contentId" value="#content.id" /><s:param name="currentPublicVersion" value="'false'" /></s:url>">
+								<span class="icon icon-fixed-width icon-info-sign"></span>
+								<s:text name="label.inspect" />&#32;<s:text name="name.work" />
+							</a>
+						</li>
+						<li>
+							<a title="<s:text name="label.inspect" />: [<s:text name="name.onLine" />] <s:property value="#content.id" /> - <s:property value="#content.descr" />" href="<s:url action="inspect" namespace="/do/jacms/Content"><s:param name="contentId" value="#content.id" /><s:param name="currentPublicVersion" value="'true'" /></s:url>">
+								<span class="icon icon-fixed-width icon-info-sign"></span>
+								<s:text name="label.inspect" />&#32;<s:text name="name.onLine" />
+							</a>
+						</li>
+						<wpsa:hookPoint key="jacms.contentFinding.contentRow.actions" objectName="hookpoint_contentFinding_contentRow">
+						<li class="divider"></li>
+							<s:iterator value="#hookpoint_contentFinding_contentRow" var="hookPointElement">
+								<li>
+									<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
+								</li>
+							</s:iterator>
+						</wpsa:hookPoint>
+					</ul>
+				</div>
 			</td>
-			<td><input type="checkbox" name="contentIds" id="content_<s:property value="#content.id" />" value="<s:property value="#content.id" />" /><label for="content_<s:property value="#content.id" />"><s:property value="#content.descr" /></label></td>
-			<s:if test="viewCode"><td><span class="monospace"><s:property value="#content.id" /></span></td></s:if>
-			<s:if test="viewTypeDescr"><td><s:property value="%{getSmallContentType(#content.typeCode).descr}" /></td></s:if>
-			<s:if test="viewStatus"><td><s:property value="%{getText('name.contentStatus.' + #content.status)}" /></td></s:if>
-			<s:if test="viewGroup"><td><s:property value="%{getGroup(#content.mainGroupCode).descr}" /></td></s:if>
-			<s:if test="viewCreationDate"><td class="centerText"><span class="monospace"><s:date name="#content.create" format="dd/MM/yyyy HH:mm" /></span></td></s:if>
-			<td class="icon"><span class="monospace"><s:date name="#content.modify" format="dd/MM/yyyy HH:mm" /></span></td>
+			<td>
+				<label>
+					<input type="checkbox" name="contentIds" id="content_<s:property value="#content.id" />" value="<s:property value="#content.id" />" />&#32;
+					<s:property value="#content.descr" />
+				</label>
+			</td>
+			<s:if test="viewCode">
+				<td class="text-center text-nowrap">
+					<code><s:property value="#content.id" /></code>
+				</td>
+			</s:if>
+			<s:if test="viewTypeDescr">
+				<td>
+					<s:property value="%{getSmallContentType(#content.typeCode).descr}" />
+				</td>
+			</s:if>
+			<s:if test="viewStatus">
+				<td>
+					<s:property value="%{getText('name.contentStatus.' + #content.status)}" />
+				</td>
+			</s:if>
+			<s:if test="viewGroup">
+				<td>
+					<s:property value="%{getGroup(#content.mainGroupCode).descr}" />
+				</td>
+			</s:if>
+			<s:if test="viewCreationDate">
+				<td class="text-center text-nowrap">
+					<code><s:date name="#content.create" format="dd/MM/yyyy HH:mm" /></code>
+				</td>
+			</s:if>
+			<td class="text-center text-nowrap">
+				<code><s:date name="#content.modify" format="dd/MM/yyyy HH:mm" /></code>
+			</td>
 
 			<s:if test="#content.onLine && #content.sync">
-				<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/content-isonline.png</s:set>
+				<s:set name="iconName" id="iconName">sun</s:set>
+				<s:set name="textVariant" id="textVariant">success</s:set>
 				<s:set name="isOnlineStatus" value="%{getText('label.yes')}" />
 			</s:if>
 			<s:if test="#content.onLine && !(#content.sync)">
-				<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/content-isnotsynched.png</s:set>
+				<s:set name="iconName" id="iconName">adjust</s:set>
+				<s:set name="textVariant" id="textVariant">info</s:set>
 				<s:set name="isOnlineStatus" value="%{getText('label.yes') + ', ' + getText('note.notSynched')}" />
 			</s:if>
 			<s:if test="!(#content.onLine)">
-				<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/content-isnotonline.png</s:set>
+				<s:set name="iconName" id="iconName">moon</s:set>
+				<s:set name="textVariant" id="textVariant">warning</s:set>
 				<s:set name="isOnlineStatus" value="%{getText('label.no')}" />
 			</s:if>
 
-			<td class="centerText"><img src="<s:property value="iconImagePath" />" alt="<s:property value="isOnlineStatus" />" title="<s:property value="isOnlineStatus" />" /></td>
+			<td class="text-center">
+				<span class="icon icon-<s:property value="iconName" /> text-<s:property value="textVariant" />" title="<s:property value="isOnlineStatus" />"></span>
+				<span class="sr-only"><s:property value="isOnlineStatus" /></span>
+			</td>
 			</tr>
 			</s:iterator>
 			</table>
+		</div>
 		</s:if>
-		<s:else>
 
-		</s:else>
-
-		<fieldset><legend><s:text name="title.contentActions" /></legend>
-		<p class="sr-only"><s:text name="title.contentActionsIntro" /></p>
-		<p class="buttons">
-		<wp:ifauthorized permission="validateContents">
-			<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/approve.png</s:set>
-			<s:submit action="approveContentGroup" type="image" src="%{#iconImagePath}" value="%{getText('label.approve')}" title="%{getText('note.button.approve')}" />
-			<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/suspend.png</s:set>
-			<s:submit action="suspendContentGroup" type="image" src="%{#iconImagePath}" value="%{getText('label.suspend')}" title="%{getText('note.button.suspend')}" />
-		</wp:ifauthorized>
-			<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/delete.png</s:set>
-			<s:submit action="trashContentGroup" type="image" src="%{#iconImagePath}" value="%{getText('label.remove')}" title="%{getText('note.button.delete')}" />
-		</p>
+		<fieldset>
+			<legend class="sr-only"><s:text name="title.contentActions" /></legend>
+			<p class="sr-only"><s:text name="title.contentActionsIntro" /></p>
+			<div class="btn-toolbar">
+			<wp:ifauthorized permission="validateContents">
+				<div class="btn-group margin-small-vertical">
+					<s:submit action="approveContentGroup" type="button" title="%{getText('note.button.approve')}" cssClass="btn btn-success">
+						<span class="icon icon-sun"></span>
+						<s:text name="label.approve" />
+					</s:submit>
+					<s:submit action="suspendContentGroup" type="button" title="%{getText('note.button.suspend')}" cssClass="btn btn-warning">
+						<span class="icon icon-moon"></span>
+						<s:text name="label.suspend" />
+					</s:submit>
+				</div>
+			</wp:ifauthorized>
+				<div class="btn-group margin-small-vertical">
+					<s:submit action="trashContentGroup" type="button" title="%{getText('note.button.delete')}" cssClass="btn btn-link">
+						<span class="icon icon-remove"></span>
+						<s:text name="label.remove" />
+					</s:submit>
+				</div>
+			</div>
 		</fieldset>
 
 		<div class="pager">
