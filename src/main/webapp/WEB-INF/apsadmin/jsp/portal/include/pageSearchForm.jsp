@@ -1,15 +1,21 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 
-<s:form action="search" >
+<s:form action="search" cssClass="form-horizontal">
 
-	<p>
-		<label for="pageCodeToken" class="basic-mint-label label-search"><s:text name="label.search.by"/>&#32;<s:text name="name.pageCode"/>:</label>
-		<wpsf:textfield useTabindexAutoIncrement="true" name="pageCodeToken" id="pageCodeToken" value="%{pageCodeToken}" cssClass="text" />
-	</p>
-	<p>
-		<wpsf:submit useTabindexAutoIncrement="true" value="%{getText('label.search')}" cssClass="button" />
-	</p>
-	
+	<div class="form-group">
+		<label for="pageCodeToken" class="sr-only"><s:text name="label.search.by"/>&#32;<s:text name="name.pageCode"/></label>
+		<div class="input-group col-sm-12">
+			<span class="input-group-addon">
+				<span class="icon icon-file-text-alt icon-large"></span>
+			</span>
+			<s:textfield name="pageCodeToken" id="pageCodeToken" value="%{pageCodeToken}" cssClass="form-control input-lg" placeholder="page_code_sample TODO label" />
+			<div class="input-group-btn">
+				<s:submit type="button" cssClass="btn btn-primary btn-lg">
+					<span class="icon icon-search" title="<s:text name="label.search" />"></span>
+				</s:submit>
+			</div>
+		</div>
+	</div>
+
 </s:form>
 

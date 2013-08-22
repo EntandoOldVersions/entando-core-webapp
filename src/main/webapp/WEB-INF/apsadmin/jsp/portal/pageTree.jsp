@@ -1,31 +1,32 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/aps-core" prefix="wp" %>
-<%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
-<h1><s:text name="title.pageManagement" /></h1>
+
+<h1 class="panel panel-default title-page"><span class="panel-body display-block"><s:text name="title.pageManagement" /></span></h1>
 
 <div id="main">
 
 <p><s:text name="note.pageTree.intro" /></p>
 
-	<s:if test="hasActionErrors()">
-<div class="message message_error">
-<h2><s:text name="message.title.ActionErrors" /></h2>	
+<s:if test="hasActionErrors()">
+<div class="alert alert-danger alert-dismissable">
+	<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+	<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
 	<ul>
 	<s:iterator value="actionErrors">
 		<li><s:property escape="false" /></li>
 	</s:iterator>
 	</ul>
 </div>
-	</s:if>
+</s:if>
 
 <%-- Inclusione del form di ricerca per codice --%>
 <s:include value="/WEB-INF/apsadmin/jsp/portal/include/pageSearchForm.jsp" />
 
-<div class="subsection">
+<hr />
+
+<h2 class="margin-base-vertical"><s:text name="title.pageTree" /></h2>
 
 <s:form cssClass="action-form">
-
-<fieldset><legend><s:text name="title.pageTree" /></legend>
 
 <s:set var="pageTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_page" /></s:set>
 
@@ -47,7 +48,7 @@
 
 </fieldset>
 
-<p class="sr-only"><wpsf:hidden name="copyingPageCode" /></p>
+<p class="sr-only"><s:hidden name="copyingPageCode" /></p>
 
 <fieldset id="actions-container"><legend><s:text name="title.pageActions" /></legend>
 <p class="sr-only"><s:text name="title.pageActionsIntro" /></p>
@@ -94,5 +95,4 @@
 </fieldset>
 </s:form>
 
-</div>
 </div>
