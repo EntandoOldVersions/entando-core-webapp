@@ -55,7 +55,7 @@
 		</p>
 	</div>
 	<div id="search-advanced" class="collapse">
-	
+
 		<div class="form-group">
 			<s:set var="allowedGroupsVar" value="allowedGroups"></s:set>
 			<s:if test="null != #allowedGroupsVar && #allowedGroupsVar.size()>1">
@@ -65,14 +65,14 @@
 				</div>
 			</s:if>
 		</div>
-	
+
 		<div class="form-group">
 			<label for="fileName" class="control-label col-sm-2 text-right"><s:text name="label.filename" /></label>
 			<div class="col-sm-5">
 				<s:textfield name="fileName" id="fileName" cssClass="form-control"/>
 			</div>
 		</div>
-		
+
 		<div class="form-group">
 			<label class="control-label col-sm-2 text-right">
 				<s:text name="label.category" />
@@ -95,7 +95,7 @@
 			</ul>
 			</div>
 		</div>
-		
+
 		<div class="form-group">
 			<div class="col-sm-5 col-sm-offset-2">
 				<s:submit type="button" cssClass="btn btn-primary">
@@ -108,11 +108,17 @@
 
 <s:if test="onEditContent">
 	<wp:ifauthorized permission="manageResources">
-		<p><a href="<s:url action="new" >
-		<s:param name="resourceTypeCode" >Image</s:param><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>"
-		class="btn btn-default" title="<s:text name="label.new" />&#32;<s:text name="label.image" />"><span class="icon icon-plus-sign"></span>&#32;<s:text name="label.new" />&#32;<s:text name="label.image" /></a></p>
+		<a href="
+			<s:url action="new" >
+				<s:param name="resourceTypeCode" >Image</s:param><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" />
+			</s:url>"
+			class="btn btn-default">
+			<span class="icon icon-plus-sign"></span>&#32;
+			<s:text name="label.new" />&#32;<s:text name="label.image" />
+		</a>
 	</wp:ifauthorized>
 </s:if>
+
 <s:form action="search">
 <p class="sr-only">
 	<s:hidden name="text" />
@@ -136,83 +142,76 @@
 </div>
 
 <div class="row">
+
 	<s:set var="imageDimensionsVar" value="imageDimensions" />
 	<s:iterator var="resourceid" status="status">
-	<s:set name="resource" value="%{loadResource(#resourceid)}" />
-	<s:set var="resourceInstance" value='%{#resource.getInstance(0,null)}' />
-	<s:set var="URLoriginal" value="%{#resource.getImagePath(0)}" />
-	<s:url var="URLedit" action="edit" namespace="/do/jacms/Resource"><s:param name="resourceId" value="%{#resourceid}" /></s:url>
-	<s:url var="URLtrash" action="trash" namespace="/do/jacms/Resource">
-		<s:param name="resourceId" value="%{#resourceid}" />
-		<s:param name="resourceTypeCode" value="%{#resource.type}" />
-		<s:param name="text" value="%{text}" />
-		<s:param name="categoryCode" value="%{categoryCode}" />
-		<s:param name="fileName" value="%{fileName}" />
-		<s:param name="ownerGroupName" value="%{ownerGroupName}" />
-		<s:param name="treeNodesToOpen" value="%{treeNodesToOpen}" /></s:url>
-		<div class="col-lg-3">
-		<div class="panel panel-default text-center">
-		<s:if test="!onEditContent">
-			<div class="panel-heading text-right padding-small-vertical padding-small-right">
-			<a href="<s:property value="URLtrash" escape="false" />" class="icon icon-remove text-warning"><span class="sr-only">Delete</span></a>
-			</div>
-		</s:if>
-		<%-- Dimension forced for img on thumbnail --%>
-			<img src="<s:property value="%{#resource.getImagePath(1)}"/>" alt=" " style="height:90px;max-width:130px" class="margin-small-top" />
-				<s:if test="onEditContent">
-					<div class="caption">
-					<p class="btn-group margin-small-vertical">
-						<a href="<s:url action="joinResource" namespace="/do/jacms/Content/Resource">
-						<s:param name="resourceId" value="%{#resourceid}" />
-						<s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>"
-						class="btn btn-primary"
-						title="<s:text name="note.joinThisToThat" />:
-						<s:property value="content.descr" />" ><span class="icon icon-picture"></span>&#32;<s:text name="label.use"/></a>
 
-						<s:set var="info-img"><s:property value="#resource.descr" /></s:set>
-						<button type="submit" class="btn btn-info" data-toggle="popover"
-						data-html="true" data-content="Ciao" title=""
-						data-original-title="Image info"><span class="icon icon-info"></span>
+		<s:set name="resource" value="%{loadResource(#resourceid)}" />
+		<s:set var="resourceInstance" value='%{#resource.getInstance(0,null)}' />
+		<s:set var="URLoriginal" value="%{#resource.getImagePath(0)}" />
+
+		<s:url var="URLedit" action="edit" namespace="/do/jacms/Resource">
+			<s:param name="resourceId" value="%{#resourceid}" />
+		</s:url>
+		<s:url var="URLuse" action="joinResource" namespace="/do/jacms/Content/Resource">
+			<s:param name="resourceId" value="%{#resourceid}" />
+			<s:param name="contentOnSessionMarker" value="contentOnSessionMarker" />
+		</s:url>
+
+		<s:url var="URLtrash" action="trash" namespace="/do/jacms/Resource">
+			<s:param name="resourceId" value="%{#resourceid}" />
+			<s:param name="resourceTypeCode" value="%{#resource.type}" />
+			<s:param name="text" value="%{text}" />
+			<s:param name="categoryCode" value="%{categoryCode}" />
+			<s:param name="fileName" value="%{fileName}" />
+			<s:param name="ownerGroupName" value="%{ownerGroupName}" />
+			<s:param name="treeNodesToOpen" value="%{treeNodesToOpen}" />
+		</s:url>
+
+		<div class="col-lg-3">
+			<div class="panel panel-default text-center">
+
+			<s:if test="!onEditContent">
+				<div class="panel-heading text-right padding-small-vertical padding-small-right">
+					<a href="<s:property value="URLtrash" escape="false" />" class="icon icon-remove text-warning">
+						<span class="sr-only">Delete</span>
+					</a>
+				</div>
+			</s:if>
+
+				<%-- Dimension forced for img thumbnail --%>
+				<img src="<s:property value="%{#resource.getImagePath(1)}"/>" alt=" " style="height:90px;max-width:130px" class="margin-small-top" />
+
+				<div class="btn-group margin-small-vertical">
+				<s:if test="!onEditContent">
+					<a href="<s:property value="URLedit" escape="false" />"
+						 class="btn btn-default"
+						 title="<s:text name="label.edit" />: <s:property value="#resource.descr" />">
+						<span class="icon icon-edit"></span>&#32;
+						<s:text name="label.edit" />
+					</a>
+				</s:if>
+				<s:else>
+					<a href="<s:property value="URLuse" escape="false" />"
+						 class="btn btn-primary"
+						 title="<s:text name="note.joinThisToThat" />:	<s:property value="content.descr" />" >
+						<span class="icon icon-picture"></span>&#32;
+						<s:text name="label.use"/>
+					</a>
+				</s:else>
+					<button type="button" class="btn btn-info" data-toggle="popover">
+						<span class="icon icon-info"></span>
 						<span class="sr-only"><s:text name="label.info" /></span>
 						</button>
 					</p>
 					</div>
 				</s:if>
-				<%-- <s:text name="label.size.original" /> --%>
-				<s:if test="!onEditContent">
-					<%--
-					<s:if test="#myClient == 'advanced'">
-						<%//TODO insert icon and i18n label for "permalink"
-						<a class="imageInfoToggler" href="<s:property value="URLoriginal" />" ><img src="<wp:resourceURL />administration/common/img/icons/22x22/detail.png" alt="<s:text name="label.view" />" title="<s:text name="label.view" />" /></a>
-					</s:if>
-					<s:else>
-						<a href="<s:property value="%{#resource.getImagePath(0)}" />" ><s:text name="label.size.original" /></a><br />
-					</s:else>
-					 --%>
-					<p class="btn-group margin-small-vertical">
-					<a href="<s:property value="URLedit" escape="false" />" class="btn btn-default" ><span class="icon icon-edit"></span>&#32;Edit</a>
-
-					<a href="#" class="btn btn-info"><span class="icon icon-info"></span><span class="sr-only">Info</span></a>
-					</p>
-					<%--
-					<div class="fileinfo">
-						<s:set var="fileName" value="#resourceInstance.fileName" />
-						<s:if test='%{#fileName.length()>24}'>
-						<s:set var="fileName" value='%{#fileName.substring(0,10)+"..."+#fileName.substring(#fileName.length()-10)}' />
-							<span class="monospace fileName cursor" title="<s:property value="#resourceInstance.fileName" />"><s:property value="#fileName" /></span>
-						</s:if>
-						<s:else>
-							<span class="monospace fileName">
-								<s:property value="#fileName" />
-							</span>
-						</s:else>
-						<span class="monospace fileLength">
-							<s:property value="%{#resourceInstance.fileLength.replaceAll(' ', '&nbsp;')}"  escapeXml="false" escapeHtml="false" escapeJavaScript="false" />
-						</span>
-					</div>
-					<div class="imageInfo monospace">
-						<span class="slidecrab-closer"><s:text name="label.close" /></span>
-						<ul>
+				<s:else>
+					<s:property value="#fileName" />
+				</s:else>
+					<%-- file dimensions --%>
+					<ul>
+						<li>
 							<s:set var="dimensionId" value="0" />
 							<s:set var="resourceInstance" value='%{#resource.getInstance(#dimensionId,null)}' />
 							<%//TODO check if reaplaceAll of spaces with &nbsp; is a good thing  %>
@@ -236,8 +235,9 @@
 					 --%>
 				</s:if>
 		</div>
-	</div>
-</s:iterator>
+
+	</s:iterator>
+
 </div>
 
 
