@@ -340,7 +340,7 @@
 				<s:if test="viewStatus"><th><s:text name="label.state" /></th></s:if>
 				<s:if test="viewGroup"><th><s:text name="label.group" /></th></s:if>
 			<s:if test="viewCreationDate">
-				<th>
+				<th class="text-center">
 				<a href="<s:url action="changeOrder" anchor="content_list_intro" includeParams="all" >
 					<s:param name="lastGroupBy"><s:property value="lastGroupBy"/></s:param>
 					<s:param name="lastOrder"><s:property value="lastOrder" /></s:param>
@@ -348,7 +348,7 @@
 					</s:url>"><s:text name="label.creationDate" /></a>
 				</th>
 			</s:if>
-				<th>
+				<th class="text-center">
 				<a href="<s:url action="changeOrder" anchor="content_list_intro" includeParams="all" >
 					<s:param name="lastGroupBy"><s:property value="lastGroupBy"/></s:param>
 					<s:param name="lastOrder"><s:property value="lastOrder" /></s:param>
@@ -371,7 +371,7 @@
 					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 						<span class="caret"></span>
 					</button>
-					<ul class="dropdown-menu" role="menu">
+					<ul class="dropdown-menu text-left" role="menu">
 						<li>
 							<a title="<s:text name="label.copyPaste" />: <s:property value="#content.id" /> - <s:property value="#content.descr" />" href="<s:url action="copyPaste" namespace="/do/jacms/Content"><s:param name="contentId" value="#content.id" /><s:param name="copyPublicVersion" value="'false'" /></s:url>">
 								<span class="icon icon-fixed-width icon-copy"></span>
@@ -408,7 +408,7 @@
 				</label>
 			</td>
 			<s:if test="viewCode">
-				<td class="text-center text-nowrap">
+				<td>
 					<code><s:property value="#content.id" /></code>
 				</td>
 			</s:if>
