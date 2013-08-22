@@ -24,22 +24,22 @@ jQuery.each($('form.action-form'), function(index, currentForm){
 	//the labels
 	var labels = $('li.tree_node_flag label', currentForm);
 
-	//prepare and attach popover to labels
-	labels.popover({
-		html: true,
-		content: myActionMenu,
-		placement: "right",
-		animation: false,
-		container: currentForm
-	});
-
 	//for each label if checked just show the menu
 	jQuery.each(labels, function(index, myLabel){
 		var myLabel = $(myLabel);
 		var myInput = $('#'+myLabel.attr('for'));
 		if (myInput.attr('checked') == 'checked') {
 			$(myLabel).addClass('text-info');
-			$(myLabel).popover('show');
+
+			//prepare and attach popover to selected label
+			$(myLabel).popover({
+				html: true,
+				content: myActionMenu,
+				placement: "right",
+				animation: false,
+				container: currentForm
+			});
+			$(myLabel).popover("show");
 
 			//prepare and attach tooltips to action buttons
 			$(myActionMenu).tooltip({
@@ -56,11 +56,20 @@ jQuery.each($('form.action-form'), function(index, currentForm){
 		//e.stop();
 		var clickedLabel = this;
 
-		//hide any popover except for the one of the clicked label
-		//hide proved to be asynchronous, that's why we are excluding the unwanted label using .not()
-		labels.not(clickedLabel).popover('hide');
-		//show the popover for the clicked label
-		$(clickedLabel).popover('show');
+		//prepare and attach popover to selected label
+		$(clickedLabel).popover({
+			html: true,
+			content: myActionMenu,
+			placement: "right",
+			animation: false,
+			container: currentForm
+		});
+		$(clickedLabel).popover("show");
+
+		//destroy any popover except for the one of the clicked label
+		//destroy proved to be asynchronous, that's why we are excluding the
+		//unwanted label using .not()
+		labels.not(clickedLabel).popover('destroy');
 
 		//prepare and attach tooltips to action buttons
 		$(myActionMenu).tooltip({
