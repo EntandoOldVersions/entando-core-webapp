@@ -202,9 +202,23 @@
 					<button type="button" class="btn btn-info" data-toggle="popover">
 						<span class="icon icon-info"></span>
 						<span class="sr-only"><s:text name="label.info" /></span>
-						</button>
-					</p>
-					</div>
+					</button>
+				</div>
+
+				<div class="popover top" style="position: relative; display: block; width: 260px; margin: 20px">
+	        <div class="arrow"></div>
+	        <h3 class="popover-title">Popover top</h3>
+	        <div class="popover-content">
+	          <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+	        </div>
+	      </div>
+
+				<%-- file info --%>
+				<s:property value="#resource.descr" />
+				<s:set var="fileName" value="#resourceInstance.fileName" />
+				<s:if test='%{#fileName.length()>24}'>
+					<s:set var="fileName" value='%{#fileName.substring(0,10)+"..."+#fileName.substring(#fileName.length()-10)}' />
+					<s:property value="#fileName" />
 				</s:if>
 				<s:else>
 					<s:property value="#fileName" />
@@ -214,26 +228,42 @@
 						<li>
 							<s:set var="dimensionId" value="0" />
 							<s:set var="resourceInstance" value='%{#resource.getInstance(#dimensionId,null)}' />
-							<%//TODO check if reaplaceAll of spaces with &nbsp; is a good thing  %>
-							<li>
-								<a href="<s:property value="%{#resource.getImagePath(#dimensionId)}" />"><span class="filehandler"><s:text name="label.size.original" /></span><span class="filesize"><s:property value='#resourceInstance.fileLength.replaceAll(" ", "&nbsp;")' escapeXml="false" escapeHtml="false" escapeJavaScript="false" /></span></a>
-							</li>
-							<s:set var="dimensionId" value="null" />
-							<s:set var="resourceInstance" value="null" />
-							<s:iterator value="#imageDimensionsVar" var="dimInfo">
-								<s:set var="dimensionId" value="#dimInfo.idDim" />
-								<s:set var="resourceInstance" value='%{#resource.getInstance(#dimensionId,null)}' />
-								<s:if test="#resourceInstance != null">
-							<li>
-									<a href="<s:property value="%{#resource.getImagePath(#dimensionId)}" />"><span class="filehandler"><s:property value="#dimInfo.dimx" />x<s:property value="#dimInfo.dimy" />&nbsp;px</span><span class="filesize"><s:property value='#resourceInstance.fileLength.replaceAll(" ", "&nbsp;")' escapeXml="false" escapeHtml="false" escapeJavaScript="false" /></span></a>
-									<%//TODO check if reaplaceAll of spaces with &nbsp; is a good thing  %>
-							</li>
-								</s:if>
-							</s:iterator>
-						</ul>
-					</div>
-					 --%>
-				</s:if>
+							<a href="<s:property value="%{#resource.getImagePath(#dimensionId)}" />">
+								<s:text name="label.size.original" />&#32;
+								<s:property value='#resourceInstance.fileLength.replaceAll(" ", "&nbsp;")' escapeXml="false" escapeHtml="false" escapeJavaScript="false" />
+							</a>
+						</li>
+						<s:set var="dimensionId" value="null" />
+						<s:set var="resourceInstance" value="null" />
+						<s:iterator value="#imageDimensionsVar" var="dimInfo">
+							<s:set var="dimensionId" value="#dimInfo.idDim" />
+							<s:set var="resourceInstance" value='%{#resource.getInstance(#dimensionId,null)}' />
+							<s:if test="#resourceInstance != null">
+						<li>
+								<a href="<s:property value="%{#resource.getImagePath(#dimensionId)}" />">
+									<s:property value="#dimInfo.dimx" />x<s:property value="#dimInfo.dimy" />&nbsp;px&#32;
+									<s:property value='#resourceInstance.fileLength.replaceAll(" ", "&nbsp;")' escapeXml="false" escapeHtml="false" escapeJavaScript="false" />
+								</a>
+						</li>
+							</s:if>
+						</s:iterator>
+					</ul>
+				<%-- // file info --%>
+
+
+				<s:set var="fileInfo">
+					<s:include value="imageArchive-file-info.jsp" />
+				</s:set>
+
+<%--
+				<script>
+					$("[data-toggle=popover]").popover({
+						html: true,
+						content: '<s:property value="fileInfo" escape="false" />'
+					});
+				</script>
+--%>
+			</div>
 		</div>
 
 	</s:iterator>
