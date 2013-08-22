@@ -199,12 +199,12 @@
 						<s:text name="label.use"/>
 					</a>
 				</s:else>
-					<button type="button" class="btn btn-info" data-toggle="popover">
+					<button type="button" class="btn btn-info" data-toggle="popover" data-title="<s:property value="#resource.descr" />">
 						<span class="icon icon-info"></span>
 						<span class="sr-only"><s:text name="label.info" /></span>
 					</button>
 				</div>
-				
+
 				<s:set var="fileInfo">
 					<s:include value="imageArchive-file-info.jsp" />
 				</s:set>
