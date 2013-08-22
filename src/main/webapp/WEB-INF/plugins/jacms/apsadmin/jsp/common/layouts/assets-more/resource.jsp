@@ -4,6 +4,7 @@
 
 <s:set var="categoryTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_category" /></s:set>
 
+<%--
 <script type="text/javascript">
 <!--//--><![CDATA[//><!--
 //per categorie
@@ -56,3 +57,5 @@ window.addEvent('domready', function(){
 </s:if>
 
 //--><!]]></script>
+
+--%>
