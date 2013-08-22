@@ -32,6 +32,10 @@ html {
 	width: auto;
 }
 
+.popover .list-group {
+	min-width: 200px;
+}
+
 .popover-content {
 	font-weight: normal;
 }
