@@ -6,10 +6,10 @@
 <%-- TODO new | edit --%>
 
 	<s:if test="hasFieldErrors()">
-		<div class="alert alert-danger fade in">
+		<div class="alert alert-danger alert-dismissable fade in">
 			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
-			<h2 class="h4 margin-small-vertical"><s:text name="message.title.FieldErrors" /></h2>
-			<p>Please review the content and fix the errors. TODO label</p>
+			<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h2>
+			<p class="margin-base-vertical">Please review the content and fix the errors. TODO label</p>
 		</div>
 	</s:if>
 <p class="sr-only"><s:text name="note.editContent" /></p>

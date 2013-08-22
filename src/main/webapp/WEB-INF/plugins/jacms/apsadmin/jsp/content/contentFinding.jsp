@@ -279,9 +279,12 @@
 		</p>
 
 		<s:if test="hasActionErrors()">
-		<div class="message message_error">
-		<h2><s:text name="message.title.ActionErrors" /></h2>
-			<ul>
+		<div class="alert alert-danger alert-dismissable fade in">
+			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+			<h2 class="h4 margin-none">
+				<s:text name="message.title.ActionErrors" />
+			</h2>
+			<ul class="margin-base-vertical">
 			<s:iterator value="ActionErrors">
 				<li><s:property escape="false" /></li>
 			</s:iterator>
@@ -289,13 +292,14 @@
 		</div>
 		</s:if>
 		<s:if test="hasActionMessages()">
-		<div class="message message_confirm">
-		<h2><s:text name="messages.confirm" /></h2>
-		<ul>
-			<s:iterator value="actionMessages">
-				<li><s:property escape="false" /></li>
-			</s:iterator>
-		</ul>
+		<div class="alert alert-success alert-dismissable fade in">
+			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+			<h2 class="h4 margin-none"><s:text name="messages.confirm" /></h2>
+			<ul class="margin-base-vertical">
+				<s:iterator value="actionMessages">
+					<li><s:property escape="false" /></li>
+				</s:iterator>
+			</ul>
 		</div>
 		</s:if>
 

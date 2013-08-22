@@ -33,12 +33,11 @@
 			<s:form action="doLogin" cssClass="padding-base-vertical">
 
 			<s:if test="hasActionErrors()">
-			<div class="alert alert-danger">
-				<button type="button" class="close" data-dismiss="alert">&times;</button>
-
+			<div class="alert alert-danger alert-dismissable">
+				<button type="button" class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
 				<s:if test="hasActionErrors()">
-				<h2><s:text name="message.title.ActionErrors" /></h2>
-				<ul class="list-unstyled">
+				<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
+				<ul class="margin-base-vertical">
 					<s:iterator value="actionErrors">
 					<li><s:property /></li>
 					</s:iterator>
@@ -53,7 +52,7 @@
 
 				<s:if test="!#session.currentUser.credentialsNotExpired">
 
-					<div class="alert alert-warning alert-block">
+					<div class="alert alert-warning">
 						<strong><s:text name="note.login.expiredPassword.intro" /></strong><br />
 						<div class="text-center margin-base-top">
 							<a href="<s:url action="editPassword" />" class="btn btn-large btn-warning">
@@ -70,7 +69,7 @@
 			<c:choose>
 				<c:when test="${checkEnterBackend}">
 
-				<div class="alert alert-info alert-block">
+				<div class="alert alert-info">
 					<strong><s:text name="note.login.yetLogged" /></strong><br />
 					<div class="text-center margin-base-top">
 						<div class="btn-group btn-group-justified">
@@ -86,7 +85,7 @@
 				</c:when>
 				<c:otherwise>
 
-				<div class="alert alert-danger alert-block">
+				<div class="alert alert-danger">
 					<strong><s:text name="note.login.notAllowed" /></strong><br />
 					<div class="text-center margin-base-top">
 						<a href="<s:url action="logout" namespace="/do" />" class="btn btn-large btn-danger">
