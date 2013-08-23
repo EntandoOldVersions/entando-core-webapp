@@ -53,68 +53,72 @@
 				</a>
 		</h2>
 		<s:if test="null != #showletType.code">
-			<div class="list-group-item-text padding-base-top">
-				<s:property value="%{getTitle(#showletType.getCode(), #showletType.getTitles())}" />
-				<div class="btn-toolbar pull-right"><%-- no pull-right, use columns --%>
-					<div class="btn-group btn-group-xs">
-						<a href="<s:url namespace="/do/Portal/ShowletType" action="viewShowletUtilizers">
-											<s:param name="showletTypeCode" value="{#showletType.getCode()}" />
-										 </s:url>"
-							 title="<s:text name="title.showletManagement.howmanypages.goToSee" />: <s:property value="%{getTitle(#showletType.getCode(), #showletType.getTitles())}" />"
-							 class="btn btn-info">
-							<span class="icon icon-info"></span>
-						</a>
-					<wp:ifauthorized permission="superuser">
-						<s:if test="!#showletType.isLogic() && null != #showletType.typeParameters && #showletType.typeParameters.size() > 0">
-							<a href="
-								<s:url namespace="/do/Portal/ShowletType" action="copy">
-									<s:param name="pageCode" value="currentPage.code" />
-									<s:param name="framePos" value="#rowstatus.index" />
-								</s:url>"
-								 title="<s:text name="label.userShowlet.new.from" />: <s:property value="%{getTitle(#showletType.getCode(), #showletType.getTitles())}" />"
-								 class="btn btn-info">
-								<span class="icon icon-puzzle-piece"></span>
+			<div class="list-group-item-text padding-base-top row">
+				<div class="col-sm-6">
+					<s:property value="%{getTitle(#showletType.getCode(), #showletType.getTitles())}" />
+				</div>
+				<div class="col-sm-6">
+					<div class="btn-toolbar pull-right">
+						<div class="btn-group btn-group-xs">
+							<a href="<s:url namespace="/do/Portal/ShowletType" action="viewShowletUtilizers">
+												<s:param name="showletTypeCode" value="{#showletType.getCode()}" />
+											 </s:url>"
+								 title="<s:text name="title.showletManagement.howmanypages.goToSee" />: <s:property value="%{getTitle(#showletType.getCode(), #showletType.getTitles())}" />"
+								 class="btn btn-default">
+								<span class="icon icon-info"></span>
 							</a>
-						</s:if>
-					</wp:ifauthorized>
-					<s:if test="null != #showletType.code">
 						<wp:ifauthorized permission="superuser">
-						<s:if test="!#showletType.isLogic()">
-							<s:set var="relatedApiMethodVar" value="#showletTypeApiMappingsVar[#showletType.code]" />
-						</s:if>
-						<s:else>
-							<s:set var="relatedApiMethodVar" value="#showletTypeApiMappingsVar[#showletType.parentType.code]" />
-						</s:else>
-						<s:if test="null != #relatedApiMethodVar">
-							<a href="
-								<s:url action="copyFromShowlet" namespace="/do/Api/Service">
-									<s:param name="pageCode" value="currentPage.code" />
-									<s:param name="framePos" value="#rowstatus.index" />
-									<s:param name="resourceName" value="#relatedApiMethodVar.resourceName" />
-									<s:param name="namespace" value="#relatedApiMethodVar.namespace" />
-								</s:url>"
-								 title="<s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#relatedApiMethodVar.methodName" />"
-								 class="btn btn-info">
-								<span class="icon icon-code-fork"></span>
-							</a>
-						</s:if>
-						<s:set var="relatedApiMethodVar" />
+							<s:if test="!#showletType.isLogic() && null != #showletType.typeParameters && #showletType.typeParameters.size() > 0">
+								<a href="
+									<s:url namespace="/do/Portal/ShowletType" action="copy">
+										<s:param name="pageCode" value="currentPage.code" />
+										<s:param name="framePos" value="#rowstatus.index" />
+									</s:url>"
+									 title="<s:text name="label.userShowlet.new.from" />: <s:property value="%{getTitle(#showletType.getCode(), #showletType.getTitles())}" />"
+									 class="btn btn-default">
+									<span class="icon icon-puzzle-piece"></span>
+								</a>
+							</s:if>
 						</wp:ifauthorized>
-					</div>
-					<div class="btn-group btn-group-xs">
-						<a href="
-							<s:url action="trashShowletFromPage" namespace="/do/Page">
-								<s:param name="pageCode" value="currentPage.code" />
-								<s:param name="frame" value="#rowstatus.index" />
-								<s:param name="showletTypeCode" value="#showletType.code" />
-							</s:url>"
-							 title="<s:text name="label.clear" />: <s:property value="%{getTitle(#showletType.code, #showletType.titles)}" />"
-							 class="btn btn-warning">
-								<span class="icon icon-eraser"></span>
-						</a>
-					</div>
-					</s:if>
-				</div><!-- // toolbar -->
+						<s:if test="null != #showletType.code">
+							<wp:ifauthorized permission="superuser">
+							<s:if test="!#showletType.isLogic()">
+								<s:set var="relatedApiMethodVar" value="#showletTypeApiMappingsVar[#showletType.code]" />
+							</s:if>
+							<s:else>
+								<s:set var="relatedApiMethodVar" value="#showletTypeApiMappingsVar[#showletType.parentType.code]" />
+							</s:else>
+							<s:if test="null != #relatedApiMethodVar">
+								<a href="
+									<s:url action="copyFromShowlet" namespace="/do/Api/Service">
+										<s:param name="pageCode" value="currentPage.code" />
+										<s:param name="framePos" value="#rowstatus.index" />
+										<s:param name="resourceName" value="#relatedApiMethodVar.resourceName" />
+										<s:param name="namespace" value="#relatedApiMethodVar.namespace" />
+									</s:url>"
+									 title="<s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#relatedApiMethodVar.methodName" />"
+									 class="btn btn-default">
+									<span class="icon icon-code-fork"></span>
+								</a>
+							</s:if>
+							<s:set var="relatedApiMethodVar" />
+							</wp:ifauthorized>
+						</div>
+						<div class="btn-group btn-group-xs">
+							<a href="
+								<s:url action="trashShowletFromPage" namespace="/do/Page">
+									<s:param name="pageCode" value="currentPage.code" />
+									<s:param name="frame" value="#rowstatus.index" />
+									<s:param name="showletTypeCode" value="#showletType.code" />
+								</s:url>"
+								 title="<s:text name="label.clear" />: <s:property value="%{getTitle(#showletType.code, #showletType.titles)}" />"
+								 class="btn btn-warning">
+									<span class="icon icon-eraser"></span>
+							</a>
+						</div>
+						</s:if>
+					</div><!-- // toolbar -->
+				</div>
 			</div><!-- // list-group-item-text -->
 		</s:if>
 	</li>
