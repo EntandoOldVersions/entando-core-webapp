@@ -15,13 +15,9 @@
 <s:set var="breadcrumbs_pivotPageCode" value="currentPage.code" />
 <s:include value="/WEB-INF/apsadmin/jsp/portal/include/pageInfo_breadcrumbs.jsp" />
 
-<%--
-<h3><s:text name="title.configPage.youAreDoing" /></h3>
-
 <s:action namespace="/do/Page" name="printPageDetails" executeResult="true" ignoreContextParams="true">
 	<s:param name="selectedNode" value="currentPage.code"></s:param>
 </s:action>
---%>
 
 <ol start="0" class="list-group">
 
