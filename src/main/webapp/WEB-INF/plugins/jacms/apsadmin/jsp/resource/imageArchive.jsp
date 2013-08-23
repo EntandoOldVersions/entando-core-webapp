@@ -168,7 +168,7 @@
 			<s:param name="treeNodesToOpen" value="%{treeNodesToOpen}" />
 		</s:url>
 
-		<div class="col-lg-3">
+		<div class="col-sm-4 col-md-3">
 			<div class="panel panel-default text-center">
 
 			<s:if test="!onEditContent">
@@ -178,10 +178,10 @@
 					</a>
 				</div>
 			</s:if>
-
-				<%-- Dimension forced for img thumbnail --%>
-				<img src="<s:property value="%{#resource.getImagePath(1)}"/>" alt=" " style="height:90px;max-width:130px" class="margin-small-top" />
-
+				<div>
+					<%-- Dimension forced for img thumbnail --%>
+					<img src="<s:property value="%{#resource.getImagePath(1)}"/>" alt=" " style="height:90px;max-width:130px" class="margin-small-top" />
+				</div>
 				<div class="btn-group margin-small-vertical">
 				<s:if test="!onEditContent">
 					<a href="<s:property value="URLedit" escape="false" />"
