@@ -43,7 +43,7 @@
 
 	<!-- START CICLO ATTRIBUTI -->
 	<s:iterator value="content.attributeList" var="attribute">
-	<div class="margin-base-vertica" id="<s:property value="%{'contentedit_'+#lang.code+'_'+#attribute.name}" />">
+	<div class="margin-base-vertical" id="<s:property value="%{'contentedit_'+#lang.code+'_'+#attribute.name}" />">
 	<%-- INIZIALIZZAZIONE TRACCIATORE --%>
 	<wpsa:tracerFactory var="attributeTracer" lang="%{#lang.code}" />
 
