@@ -86,53 +86,50 @@
 		</div>
 	</div>
 </div>
-
-<fieldset>
-	<legend><s:text name="title.resourceCategoriesManagement"/></legend>
-<ul id="categoryTree">
+<fieldset class="margin-base-vertical" id="category-content-block">
+	<legend><span class="icon icon-tags"></span>&#32;<s:text name="title.categoriesManagement"/></legend>
+<ul id="categoryTree" class="icons-ul list-unstyled">
 	<s:set name="inputFieldName" value="'categoryCode'" />
 	<s:set name="selectedTreeNode" value="selectedNode" />
 	<s:set name="liClassName" value="'category'" />
+	<s:set name="treeItemIconName" value="'icon-folder-close'" />
+
 	<s:if test="#categoryTreeStyleVar == 'classic'">
-	<s:set name="currentRoot" value="categoryRoot" />
-	<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder.jsp" />
+		<s:set name="currentRoot" value="categoryRoot" />
+		<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder.jsp" />
 	</s:if>
 	<s:elseif test="#categoryTreeStyleVar == 'request'">
-	<s:set name="currentRoot" value="showableTree" />
-	<s:set name="openTreeActionName" value="'openCloseCategoryTreeNodeOnEntryResource'" />
-	<s:set name="closeTreeActionName" value="'openCloseCategoryTreeNodeOnEntryResource'" />
-	<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder-request-submits.jsp" />
+		<s:set name="currentRoot" value="showableTree" />
+		<s:set name="openTreeActionName" value="'openCloseCategoryTreeNodeOnEntryResource'" />
+		<s:set name="closeTreeActionName" value="'openCloseCategoryTreeNodeOnEntryResource'" />
+		<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder-request-submits.jsp" />
 	</s:elseif>
 </ul>
 <div id="actions-container">
-	<p class="buttons">
-		<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/join-to-resource.png</s:set>
-		<s:submit action="joinCategory" type="image" src="%{#iconImagePath}" value="%{getText('label.join')}" title="%{getText('label.join')}" />
-	</p>
+	<div class="buttons">
+		<s:submit action="joinCategory" type="button" title="%{getText('label.join')}" cssClass="btn btn-info btn-sm margin-small-vertical" data-toggle="tooltip">
+			<span class="icon icon-plus"></span>
+		</s:submit>
+	</div>
 </div>
 
 <s:if test="categoryCodes != null && categoryCodes.size() > 0">
+<h4 class="margin-base-vertical"><s:text name="note.resourceCategories.summary"/></h4>
 
-<table class="generic" summary="<s:text name="note.resourceCategories.summary"/>">
-<caption><span><s:text name="title.resourceCategories.list"/></span></caption>
-<tr>
-	<th><s:text name="label.category"/></th>
-	<th class="icon"><abbr title="<s:text name="label.remove" />">&ndash;</abbr></th>
-</tr>
 <s:iterator value="categoryCodes" id="categoryCode">
 <s:set name="resourceCategory" value="%{getCategory(#categoryCode)}"></s:set>
-<tr>
-	<td><s:property value="#resourceCategory.getFullTitle(currentLang.code)"/></td>
-	<td class="icon">
+	<span class="label label-default label-sm pull-left padding-small-top padding-small-bottom margin-small-right margin-small-bottom">
+		<span class="icon icon-tag"></span>&#32;
+		<abbr title="<s:property value="#resourceCategory.getFullTitle(currentLang.code)"/>"><s:property value="#resourceCategory.getShortFullTitle(currentLang.code)" /></abbr>&#32;
 		<wpsa:actionParam action="removeCategory" var="actionName" >
 			<wpsa:actionSubParam name="categoryCode" value="%{#resourceCategory.code}" />
 		</wpsa:actionParam>
-		<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL />administration/common/img/icons/delete.png</s:set>
-		<s:submit type="image" src="%{#iconImagePath}" action="%{#actionName}" value="%{getText('label.remove')}" title="%{getText('label.remove')}" />
-	</td>
-</tr>
+		<s:submit type="button" action="%{#actionName}" title="%{getText('label.remove') + ' ' + #resourceCategory.defaultFullTitle}" cssClass="btn btn-default btn-xs badge">
+			<span class="icon icon-remove"></span>
+			<span class="sr-only">x</span>
+		</s:submit>
+	</span>
 </s:iterator>
-</table>
 </s:if>
 
 </fieldset>
