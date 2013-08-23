@@ -50,7 +50,7 @@
 			</p>
 		</s:if>
 		<s:else>
-			<dl class="table-display">
+			<dl class="dl-horizontal">
 				<dt>
 					<s:text name="database.management.label.date" />
 				</dt>
@@ -66,7 +66,7 @@
 			<h3 class="centerText">
 				<s:text name="database.management.label.components.backup" />
 			</h3>
-			<dl class="table-display">
+			<dl class="dl-horizontal">
 				<s:iterator var="componentHistoryVar" value="#dumpReportVar.componentsHistory">
 					<dt>
 						<s:set var="labelComponentDescrVar" value="%{#componentHistoryVar.componentCode + '.name'}" />

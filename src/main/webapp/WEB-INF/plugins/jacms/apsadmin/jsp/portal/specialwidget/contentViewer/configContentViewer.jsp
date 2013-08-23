@@ -46,7 +46,7 @@
 <s:if test="showlet.config['contentId'] != null">
 <s:set name="content" value="%{getContentVo(showlet.config['contentId'])}"></s:set>
 <div class="centerText">
-<dl class="table-display">
+<dl class="dl-horizontal">
 	<dt><s:text name="label.code" /></dt>
 	<dd><s:property value="#content.id" /></dd>
 

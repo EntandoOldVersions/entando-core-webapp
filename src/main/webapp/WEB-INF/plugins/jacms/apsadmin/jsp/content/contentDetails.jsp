@@ -34,7 +34,7 @@
 	
 	<p class="sr-only" id="jpcontentinspection_metadata"><s:text name="title.metadata" /></p>
 	
-	<dl class="table-display">
+	<dl class="dl-horizontal">
 		<dt><s:text name="label.key" /></dt>
 			<dd><s:property value="content.id" /></dd>
 		<dt><s:text name="label.description" /></dt>

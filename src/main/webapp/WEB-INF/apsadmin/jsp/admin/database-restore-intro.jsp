@@ -11,7 +11,7 @@
 		</p>
 	</s:if>
 	<s:else>
-		<dl class="table-display">
+		<dl class="dl-horizontal">
 			<dt>
 				<s:text name="database.management.label.date" />
 			</dt>

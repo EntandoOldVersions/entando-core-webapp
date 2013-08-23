@@ -9,7 +9,7 @@
 <s:set var="breadcrumbs_pivotCategoryCode" value="categoryCode" />
 <s:include value="/WEB-INF/apsadmin/jsp/category/include/categoryInfo_breadcrumbs.jsp" />
 
-<dl class="table-display">
+<dl class="dl-horizontal">
 	<dt><s:text name="name.categoryCode" /></dt>
 		<dd><s:property value="categoryCode" /></dd>
 	<dt><s:text name="name.categoryTitle" /></dt>

@@ -71,7 +71,7 @@
 
 <s:if test="getStrutsAction() == 2">
 <fieldset><legend><s:text name="label.state" /></legend>
-<dl class="table-display">
+<dl class="dl-horizontal">
 <dt><s:text name="label.date.registration" /></dt>
 	<dd><s:date name="user.creationDate" format="dd/MM/yyyy" /></dd>
 <dt><s:text name="label.date.lastLogin" /></dt>

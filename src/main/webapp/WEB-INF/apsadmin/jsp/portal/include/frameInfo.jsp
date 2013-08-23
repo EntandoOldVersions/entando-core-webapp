@@ -1,5 +1,5 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<dl class="table-display">
+<dl class="dl-horizontal">
 	<dt><s:text name="name.position" /></dt>
 	<dd><s:property value="frame"/></dd>
 

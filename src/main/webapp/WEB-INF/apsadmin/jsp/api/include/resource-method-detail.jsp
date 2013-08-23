@@ -2,7 +2,7 @@
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
-<dl class="table-display">
+<dl class="dl-horizontal">
 	<dt>
 		<s:text name="label.api.resourceMethod" />
 	</dt>

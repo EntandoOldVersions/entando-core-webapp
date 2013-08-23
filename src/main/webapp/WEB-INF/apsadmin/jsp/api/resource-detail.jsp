@@ -65,7 +65,7 @@
 
 	<div class="tab-container">
 		<div id="general" class="tab">
-			<dl class="table-display">
+			<dl class="dl-horizontal">
 				<dt><s:text name="label.api.resource.name" /></dt>
 					<dd><s:property value="#apiResourceVar.resourceName" /></dd>
 				<dt><span lang="en"><s:text name="label.api.resource.namespace" /></span></dt>

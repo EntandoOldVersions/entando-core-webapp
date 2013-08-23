@@ -8,7 +8,7 @@
 
 <h2><s:text name="title.groupDetail" /></h2>
 
-<dl class="table-display">
+<dl class="dl-horizontal">
 	<dt><s:text name="label.group" /></dt>
 		<dd><s:property value="name" /></dd>
 	<dt><s:text name="label.description" /></dt>

@@ -18,7 +18,7 @@ REFACTORING IN CORSO
 </p>
 <h3><s:text name="title.configPage.youAreDoing" /></h3>
 
-<dl class="table-display">
+<dl class="dl-horizontal">
 	<dt><s:text name="name.pageTitle" /></dt>
 		<dd>
 <s:iterator value="langs" status="rowStatus">
