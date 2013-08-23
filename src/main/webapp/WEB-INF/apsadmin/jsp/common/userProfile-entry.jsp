@@ -71,6 +71,12 @@
 
 </s:form>
 
+<h2 class="margin-more-bottom"><s:text name="jpuserprofile.title.changeUserProfile" /></h2>
+<fieldset>
+<legend><span><s:text name="label.info" /></span></legend>
+<s:action name="edit" namespace="/do/currentuser/profile" executeResult="true"></s:action>
+</fieldset>
+
 <wpsa:hookPoint key="core.userProfile.entry" objectName="hookPointElements_core_userProfile_entry">
 <s:iterator value="#hookPointElements_core_userProfile_entry" var="hookPointElement">
 	<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
