@@ -209,6 +209,7 @@
 			$(toggler).parentsUntil(WoodRoot).children('.'+opt.menuToggler).each(function(index, togg){
 				openWood($(togg));
 			});
+			toggler.prop('checked', true);
 		};
 
 		if (opt.showTools.toString()=='true') {
