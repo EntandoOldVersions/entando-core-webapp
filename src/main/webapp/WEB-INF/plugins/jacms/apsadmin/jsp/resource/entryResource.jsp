@@ -24,8 +24,8 @@
 			<s:param name="resourceTypeCode">
 				<s:property value="resourceTypeCode" />
 			</s:param>
-			</s:url>" 
-			title="<s:text name="note.goToSomewhere" />: 
+			</s:url>"
+			title="<s:text name="note.goToSomewhere" />:
 			<s:text name="title.resourceManagement" />">
 			<s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" /></a>
 			&#32;/&#32;
