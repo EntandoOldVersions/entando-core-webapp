@@ -4,8 +4,7 @@
 <c:choose>
 	<c:when test="${sessionScope.currentUser != 'guest'}">
 		<p><wp:i18n key="WELCOME" />, <em><c:out value="${sessionScope.currentUser}"/></em>!</p>
-
-		<c:if test="${sessionScope.currentUser.japsUser}">
+		<c:if test="${sessionScope.currentUser.entandoUser}">
 		<table class="table table-condensed">
 			<tr>
 				<th><wp:i18n key="USER_DATE_CREATION" /></th>
@@ -32,6 +31,11 @@
 		</div>
 		</wp:ifauthorized>
 		<p class="pull-right"><a href="<wp:info key="systemParam" paramName="applicationBaseURL" />do/logout.action" class="btn"><wp:i18n key="LOGOUT" /></a></p>
+		
+		<wp:pageWithWidget widgetTypeCode="userprofile_editCurrentUser" var="userprofileEditingPageVar" listResult="false" />
+		<c:if test="${null != userprofileEditingPageVar}" >
+		<p><a href="<wp:url page="${userprofileEditingPageVar}" />" ><wp:i18n key="PROFILE_CONFIGURATION" /></a></p>
+		</c:if>
 	</c:when>
 	<c:otherwise>
 
@@ -45,7 +49,6 @@
 		<p><wp:i18n key="USER_STATUS_CREDENTIALS_INVALID" /></p>
 	</div>
 	</c:if>
-
 
 	<form action="<wp:url/>" method="post" class="form-horizontal margin-medium-top">
 		<c:if test="${null != param['returnUrl']}">
