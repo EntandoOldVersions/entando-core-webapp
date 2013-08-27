@@ -13,12 +13,11 @@
 </wpsa:actionParam>
 
 <s:submit action="%{#removeResourceActionName}" type="button" title="%{#attribute.name + ': ' + getText('label.clear')}" cssClass="btn btn-warning btn-xs">
+<span class="icon icon-eraser"></span>&#32;
 <s:if test="#resourceTypeCode == 'Image'">
-		<span class="icon icon-remove"></span>&#32;
-		<s:text name="label.clearImage" />
+	<s:text name="label.clearImage" />
 </s:if>
 <s:else>
-		<span class="icon icon-remove"></span>&#32;
-		<s:text name="label.clearAttach" />
+	<s:text name="label.clearAttach" />
 </s:else>
 </s:submit>

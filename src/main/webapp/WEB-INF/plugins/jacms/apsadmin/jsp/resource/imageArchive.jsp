@@ -175,7 +175,7 @@
 
 			<s:if test="!onEditContent">
 				<div class="panel-heading text-right padding-small-vertical padding-small-right">
-					<a href="<s:property value="URLtrash" escape="false" />" class="icon icon-remove text-warning">
+					<a href="<s:property value="URLtrash" escape="false" />" class="icon icon-remove-sign text-warning">
 						<span class="sr-only">Delete</span>
 					</a>
 				</div>

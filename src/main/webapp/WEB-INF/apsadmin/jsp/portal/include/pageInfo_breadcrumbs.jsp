@@ -21,7 +21,7 @@
 		<s:if test="!#isVoid">
 			<a href="<wp:info key="systemParam" paramName="applicationBaseURL" /><s:property value="currentLang.code"/>/<s:property value="#target.code" />.wp"
 				title="<s:text name="note.goToPortal" />: <s:property value="getTitle(#target.code, #target.titles)" />">
-				<span class="icon icon-external-link"></span>
+				<span class="icon icon-globe"></span>
 			</a>
 		</s:if>
 	</s:else>

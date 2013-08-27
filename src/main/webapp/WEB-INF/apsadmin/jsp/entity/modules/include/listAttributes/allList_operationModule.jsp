@@ -32,6 +32,6 @@
 			<wpsa:actionSubParam name="elementIndex" value="%{#elementIndex}" />
 		</wpsa:actionParam>
 		<s:submit disabled="%{#operationButtonDisabled}" action="%{#actionName}" type="button" cssClass="btn btn-default btn-warning" value="%{getText('label.remove')}" title="%{getText('label.remove')}">
-		<span class="icon icon-remove-sign"></span></s:submit>
+		<span class="icon icon-remove-circle"></span></s:submit>
 	</div>
 </div>
