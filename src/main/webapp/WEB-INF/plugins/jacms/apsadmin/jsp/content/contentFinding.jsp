@@ -374,19 +374,19 @@
 					<ul class="dropdown-menu text-left" role="menu">
 						<li>
 							<a title="<s:text name="label.copyPaste" />: <s:property value="#content.id" /> - <s:property value="#content.descr" />" href="<s:url action="copyPaste" namespace="/do/jacms/Content"><s:param name="contentId" value="#content.id" /><s:param name="copyPublicVersion" value="'false'" /></s:url>">
-								<span class="icon icon-fixed-width icon-copy"></span>
+								<span class="icon icon-fixed-width icon-paste"></span>
 								<s:text name="label.copyPaste" /><span class="sr-only">: <s:property value="#content.id" /> - <s:property value="#content.descr" /></span>
 							</a>
 						</li>
 						<li>
 							<a title="<s:text name="label.inspect" />: [<s:text name="name.work" />] <s:property value="#content.id" /> - <s:property value="#content.descr" />" href="<s:url action="inspect" namespace="/do/jacms/Content"><s:param name="contentId" value="#content.id" /><s:param name="currentPublicVersion" value="'false'" /></s:url>">
-								<span class="icon icon-fixed-width icon-info-sign"></span>
+								<span class="icon icon-fixed-width icon-info"></span>
 								<s:text name="label.inspect" />&#32;<s:text name="name.work" />
 							</a>
 						</li>
 						<li>
 							<a title="<s:text name="label.inspect" />: [<s:text name="name.onLine" />] <s:property value="#content.id" /> - <s:property value="#content.descr" />" href="<s:url action="inspect" namespace="/do/jacms/Content"><s:param name="contentId" value="#content.id" /><s:param name="currentPublicVersion" value="'true'" /></s:url>">
-								<span class="icon icon-fixed-width icon-info-sign"></span>
+								<span class="icon icon-fixed-width icon-info"></span>
 								<s:text name="label.inspect" />&#32;<s:text name="name.onLine" />
 							</a>
 						</li>
@@ -437,7 +437,7 @@
 			</td>
 
 			<s:if test="#content.onLine && #content.sync">
-				<s:set name="iconName" id="iconName">sun</s:set>
+				<s:set name="iconName" id="iconName">ok</s:set>
 				<s:set name="textVariant" id="textVariant">success</s:set>
 				<s:set name="isOnlineStatus" value="%{getText('label.yes')}" />
 			</s:if>
@@ -447,7 +447,7 @@
 				<s:set name="isOnlineStatus" value="%{getText('label.yes') + ', ' + getText('note.notSynched')}" />
 			</s:if>
 			<s:if test="!(#content.onLine)">
-				<s:set name="iconName" id="iconName">moon</s:set>
+				<s:set name="iconName" id="iconName">pause</s:set>
 				<s:set name="textVariant" id="textVariant">warning</s:set>
 				<s:set name="isOnlineStatus" value="%{getText('label.no')}" />
 			</s:if>
@@ -469,18 +469,18 @@
 			<wp:ifauthorized permission="validateContents">
 				<div class="btn-group margin-small-vertical">
 					<s:submit action="approveContentGroup" type="button" title="%{getText('note.button.approve')}" cssClass="btn btn-success">
-						<span class="icon icon-sun"></span>
+						<span class="icon icon-ok"></span>
 						<s:text name="label.approve" />
 					</s:submit>
 					<s:submit action="suspendContentGroup" type="button" title="%{getText('note.button.suspend')}" cssClass="btn btn-warning">
-						<span class="icon icon-moon"></span>
+						<span class="icon icon-pause"></span>
 						<s:text name="label.suspend" />
 					</s:submit>
 				</div>
 			</wp:ifauthorized>
 				<div class="btn-group margin-small-vertical">
 					<s:submit action="trashContentGroup" type="button" title="%{getText('note.button.delete')}" cssClass="btn btn-link">
-						<span class="icon icon-remove"></span>
+						<span class="icon icon-remove-sign"></span>
 						<s:text name="label.remove" />
 					</s:submit>
 				</div>
