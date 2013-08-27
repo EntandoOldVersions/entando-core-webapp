@@ -213,21 +213,16 @@
 	<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
 </s:iterator>
 </wpsa:hookPoint>
-<td class="icon_double">
-	<%--
-	<a href="<s:url namespace="/do/jpuserprofile/User" action="edit"><s:param name="username" value="#user.username"/></s:url>" title="<s:text name="jpuserprofile.label.profile.edit" />:&#32;<s:property value="#userProfileVar.getValue(#userProfileVar.firstNameAttributeName)"/>&#32;<s:property value="#userProfileVar.getValue(#userProfileVar.surnameAttributeName)"/>" >
-		<img src="<wp:resourceURL />plugins/jpuserprofile/administration/common/img/icons/edit.png" alt="<s:text name="label.alt.edit" />" />
-	</a>
-	--%>
+	<td class="icon">
 	<c:if test="${hasEditProfilePermission}"><a href="<s:url action="edit" namespace="/do/userprofile"><s:param name="username" value="#usernameVar"/></s:url>"
-		title="<s:text name="jpuserprofile.label.editProfile" />:&#32;<s:property value="#userProfileVar.getValue(#userProfileVar.firstNameAttributeName)"/>&#32;<s:property value="#userProfileVar.getValue(#userProfileVar.surnameAttributeName)"/>"><img src="<wp:resourceURL/>administration/common/img/icons/22x22/edit.png" alt="<s:text name="jpuserprofile.label.editProfile" />" /></a></c:if>
+		title="<s:text name="userprofile.label.editProfile" />:&#32;<s:property value="#userProfileVar.getValue(#userProfileVar.firstNameAttributeName)"/>&#32;<s:property value="#userProfileVar.getValue(#userProfileVar.surnameAttributeName)"/>"><img src="<wp:resourceURL/>administration/common/img/icons/22x22/edit.png" alt="<s:text name="userprofile.label.editProfile" />" /></a></c:if>
 	<s:if test="null != #userProfileVar"><a href="<s:url action="view" namespace="/do/userprofile"><s:param name="username" value="#usernameVar"/></s:url>"
-		title="<s:text name="jpuserprofile.label.viewProfile" />: <s:property value="#usernameVar" />"><img src="<wp:resourceURL/>administration/common/img/icons/22x22/details.png" alt="<s:text name="userprofile.label.viewProfile" />" /></a></s:if>
+		title="<s:text name="userprofile.label.viewProfile" />: <s:property value="#usernameVar" />"><img src="<wp:resourceURL/>administration/common/img/icons/22x22/details.png" alt="<s:text name="userprofile.label.viewProfile" />" /></a></s:if>
 	</td>
-		<td class="icon"><img src="<s:property value="#statusIconImagePath" />" alt="<s:property value="#statusIconText" />" title="<s:property value="#statusIconText" />" /></td>
-		<td class="icon"><a href="<s:url namespace="/do/User/Auth" action="edit"><s:param name="username" value="#usernameVar"/></s:url>" title="<s:text name="note.configureAuthorizationsFor" />: <s:property value="#usernameVar" />"><img src="<wp:resourceURL />administration/common/img/icons/authorizations.png" alt="<s:text name="note.configureAuthorizationsFor" />: <s:property value="#usernameVar" />" /></a></td>
-		<td class="icon"><a href="<s:url action="trash"><s:param name="username" value="#usernameVar"/></s:url>" title="<s:text name="label.remove" />: <s:property value="#usernameVar" />"><img src="<wp:resourceURL />administration/common/img/icons/delete.png" alt="<s:text name="label.alt.clear" />" /></a></td>
-	</tr>
+	<td class="icon"><img src="<s:property value="#statusIconImagePath" />" alt="<s:property value="#statusIconText" />" title="<s:property value="#statusIconText" />" /></td>
+	<td class="icon"><a href="<s:url namespace="/do/User/Auth" action="edit"><s:param name="username" value="#usernameVar"/></s:url>" title="<s:text name="note.configureAuthorizationsFor" />: <s:property value="#usernameVar" />"><img src="<wp:resourceURL />administration/common/img/icons/authorizations.png" alt="<s:text name="note.configureAuthorizationsFor" />: <s:property value="#usernameVar" />" /></a></td>
+	<td class="icon"><a href="<s:url action="trash"><s:param name="username" value="#usernameVar"/></s:url>" title="<s:text name="label.remove" />: <s:property value="#usernameVar" />"><img src="<wp:resourceURL />administration/common/img/icons/delete.png" alt="<s:text name="label.alt.clear" />" /></a></td>
+</tr>
 <s:set var="userVar" value="null" />
 <s:set var="userProfileVar" value="null" />
 </s:iterator>

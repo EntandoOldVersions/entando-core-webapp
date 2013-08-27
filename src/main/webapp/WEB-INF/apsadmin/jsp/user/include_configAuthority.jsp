@@ -29,7 +29,7 @@
 
 <s:form>
 <p class="noscreen">
-	<wpsf:hidden name="text" />
+	<wpsf:hidden name="username" />
 	<wpsf:hidden name="authName" />
 </p>
 
@@ -58,8 +58,8 @@
 <p class="noscreen">
 	<wpsf:hidden name="authName" />
 </p>
-<p><label for="text" class="basic-mint-label label-search"><s:text name="label.search.by"/>&#32;<s:text name="label.username"/>:</label>
-<wpsf:textfield useTabindexAutoIncrement="true" name="text" id="text" cssClass="text" /></p>
+<p><label for="username" class="basic-mint-label label-search"><s:text name="label.search.by"/>&#32;<s:text name="label.username"/>:</label>
+<wpsf:textfield useTabindexAutoIncrement="true" name="username" id="username" cssClass="text" /></p>
 <p>
 	<wpsf:submit useTabindexAutoIncrement="true" action="search" value="%{getText('label.search')}" cssClass="button" />
 </p>
@@ -68,12 +68,12 @@
 
 <s:form action="search">
 <p class="noscreen">
-	<wpsf:hidden name="text" />
+	<wpsf:hidden name="username" />
 	<wpsf:hidden name="authName" />
 </p>
 <div class="subsection-light">
-	
-<wpsa:subset source="users" count="10" objectName="groupUser" advanced="true" offset="5">
+
+<wpsa:subset source="searchResult" count="10" objectName="groupUser" advanced="true" offset="5">
 <s:set name="group" value="#groupUser" />
 
 <div class="pager">
@@ -90,46 +90,47 @@
 	<th><s:text name="label.date.lastPasswordChange" /></th>
 	<th class="icon"><abbr title="<s:text name="label.state" />">S</abbr></th>	
 </tr>
-<s:iterator id="user">
+<s:iterator id="usernameVar">
+<s:set var="userVar" value="%{getUser(#usernameVar)}" />
 
-<s:if test="!#user.japsUser">
+<s:if test="!#userVar.entandoUser">
 	<s:set name="statusIconImagePath" id="statusIconImagePath"><wp:resourceURL/>administration/common/img/icons/user-status-notjAPSUser.png</s:set>
 	<s:set name="statusIconText" id="statusIconText"><s:text name="note.userStatus.notEntandoUser" /></s:set>
 </s:if>
-<s:elseif test="#user.disabled">
+<s:elseif test="#userVar.disabled">
 	<s:set name="statusIconImagePath" id="statusIconImagePath"><wp:resourceURL/>administration/common/img/icons/user-status-notActive.png</s:set>
 	<s:set name="statusIconText" id="statusIconText"><s:text name="note.userStatus.notActive" /></s:set>	
 </s:elseif>
-<s:elseif test="!#user.accountNotExpired">
+<s:elseif test="!#userVar.accountNotExpired">
 	<s:set name="statusIconImagePath" id="statusIconImagePath"><wp:resourceURL/>administration/common/img/icons/user-status-expiredAccount.png</s:set>
 	<s:set name="statusIconText" id="statusIconText"><s:text name="note.userStatus.expiredAccount" /></s:set>	
 </s:elseif>
-<s:elseif test="!#user.credentialsNotExpired">
+<s:elseif test="!#userVar.credentialsNotExpired">
 	<s:set name="statusIconImagePath" id="statusIconImagePath"><wp:resourceURL/>administration/common/img/icons/user-status-expiredPassword.png</s:set>
 	<s:set name="statusIconText" id="statusIconText"><s:text name="note.userStatus.expiredPassword" /></s:set>	
 </s:elseif>
-<s:elseif test="!#user.disabled">
+<s:elseif test="!#userVar.disabled">
 	<s:set name="statusIconImagePath" id="statusIconImagePath"><wp:resourceURL/>administration/common/img/icons/user-status-active.png</s:set>
 	<s:set name="statusIconText" id="statusIconText"><s:text name="note.userStatus.active" /></s:set>
 </s:elseif>
 
 <tr>
-	<td><input type="radio" name="username" id="<s:property value="#user.username" />" value="<s:property value="#user.username"/>" /><label for="<s:property value="#user.username" />"><s:property value="#user" /></label></td>
+	<td><input type="radio" name="username" id="<s:property value="#usernameVar" />" value="<s:property value="#usernameVar"/>" /><label for="<s:property value="#usernameVar" />"><s:property value="#userVar" /></label></td>
 	<td class="centerText monospace">
-		<s:if test="#user.japsUser">
-			<s:date name="#user.creationDate" format="dd/MM/yyyy" />
+		<s:if test="#userVar.entandoUser">
+			<s:date name="#userVar.creationDate" format="dd/MM/yyyy" />
 		</s:if>
 		<s:else><abbr title="<s:text name="label.none" />">&ndash;</abbr></s:else>
 	</td>
 	<td class="centerText monospace">
-		<s:if test="#user.japsUser && #user.lastAccess != null">
-			<s:date name="#user.lastAccess" format="dd/MM/yyyy" />
+		<s:if test="#userVar.entandoUser && #userVar.lastAccess != null">
+			<s:date name="#userVar.lastAccess" format="dd/MM/yyyy" />
 		</s:if>
 		<s:else><abbr title="<s:text name="label.none" />">&ndash;</abbr></s:else>
 	</td>
 	<td class="centerText monospace">
-		<s:if test="#user.japsUser && #user.lastPasswordChange != null">
-			<s:date name="#user.lastPasswordChange" format="dd/MM/yyyy" />
+		<s:if test="#userVar.entandoUser && #userVar.lastPasswordChange != null">
+			<s:date name="#userVar.lastPasswordChange" format="dd/MM/yyyy" />
 		</s:if>
 		<s:else><abbr title="<s:text name="label.none" />">&ndash;</abbr></s:else>
 	</td>
