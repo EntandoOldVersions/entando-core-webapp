@@ -11,7 +11,7 @@
 
 <ul class="nav nav-pills nav-stacked" id="backoffice-menu-main">
 	<wp:ifauthorized permission="superuser">
-		<li><a href="<s:url action="intro" namespace="/do/Group" />"><s:text name="menu.accountAdmin.groups" /></a></li>
+		<li><a href="<s:url action="list" namespace="/do/Group" />"><s:text name="menu.accountAdmin.groups" /></a></li>
 	</wp:ifauthorized>
 
 	<wp:ifauthorized permission="manageCategories">

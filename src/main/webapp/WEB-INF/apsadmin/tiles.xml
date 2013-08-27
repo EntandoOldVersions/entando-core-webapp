@@ -116,10 +116,6 @@
 
     <!-- ********* INIZIO Area Gestione Gruppi ********* -->
 
-    <definition extends="layout.default" name="admin.Group.intro">
-        <put-attribute name="title" value="title.groupManagement" />
-        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/user/group/group-intro.jsp" />
-    </definition>
     <definition extends="layout.default" name="admin.Group.list">
         <put-attribute name="title" value="title.groupManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/user/group/groupFinding.jsp" />
