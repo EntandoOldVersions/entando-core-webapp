@@ -55,10 +55,10 @@ $(function() {
 		collapseAllLabel: "<s:text name="label.collapseAll" />",
 	<s:if test="%{categoryCode != null && !(categoryCode.equalsIgnoreCase(''))}">
 		startIndex: "fagianonode_<s:property value="categoryCode" />",
+	</s:if>
 		toolTextIntro: "<s:text name="label.introExpandAll" />",
 		toolexpandAllLabelTitle: "<s:text name="label.expandAllTitle" />",
 		toolcollapseLabelTitle: "<s:text name="label.collapseAllTitle" />"
-	</s:if>
 	});
 
 </s:if>
