@@ -148,9 +148,11 @@
 	<th><s:text name="label.username" /></th>
 	<th><s:text name="label.name" /></th>
 	<th><s:text name="label.mail" /></th>
+	<%--
 	<th><s:text name="label.date.registration" /></th>
 	<th><s:text name="label.date.lastLogin" /></th>
 	<th><s:text name="label.date.lastPasswordChange" /></th>
+	--%>
 <wpsa:hookPoint key="core.user-list.table.th" objectName="hookPointElements_core_user_list_table_th">
 <s:iterator value="#hookPointElements_core_user_list_table_th" var="hookPointElement">
 	<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
@@ -165,7 +167,7 @@
 <wp:ifauthorized permission="editUserProfile" var="hasEditProfilePermission" />
 <s:iterator id="usernameVar">
 <s:set var="userVar" value="%{getUser(#usernameVar)}" />
-<s:set var="userProfileVar" value="%{getUserProfile(#userVar)}" />
+<s:set var="userProfileVar" value="%{getUserProfile(#usernameVar)}" />
 
 <s:if test="!#userVar.entandoUser">
 	<s:set name="statusIconImagePath" id="statusIconImagePath"><wp:resourceURL/>administration/common/img/icons/user-status-notjAPSUser.png</s:set>
@@ -190,12 +192,16 @@
 
 <tr>
 	<td><a href="<s:url action="edit"><s:param name="username" value="#usernameVar"/></s:url>" title="<s:text name="label.edit" />: <s:property value="#usernameVar" />" ><s:property value="#userVar" /></a></td>
-	<td><s:if test="null != #userProfileVar"><s:property value="#userProfileVar.getValue(#userProfileVar.fullnameAttributeName)"/></s:if><s:else><abbr title="<s:text name="userprofile.label.noProfile" />">&ndash;</abbr></s:else></td>
+	<td>
+		<s:if test="null != #userProfileVar"><s:property value="#userProfileVar.getValue(#userProfileVar.fullNameAttributeName)"/></s:if>
+		<s:else><abbr title="<s:text name="userprofile.label.noProfile" />">&ndash;</abbr></s:else>
+	</td>
 	<td class="monospace"><s:if test="null != #userProfileVar">
 		<s:set var="mailVar" value="#userProfileVar.getValue(#userProfileVar.mailAttributeName)" />
 		<s:if test="#mailVar.length()>16"><abbr title="<s:property value="#mailVar" />"><s:property value="%{#mailVar.substring(0,8) + '...' + #mailVar.substring(#mailVar.length()-8)}" /></abbr></s:if>
 		<s:else><s:property value="#mailVar"/></s:else></s:if><s:else><abbr title="<s:text name="userprofile.label.noProfile" />">&ndash;</abbr></s:else>
 	</td>
+	<%--
 	<td class="centerText monospace">
 		<s:if test="#userVar.entandoUser">
 			<s:date name="#userVar.creationDate" format="dd/MM/yyyy" />
@@ -214,16 +220,17 @@
 		</s:if>
 		<s:else><abbr title="<s:text name="label.none" />">&ndash;</abbr></s:else>
 	</td>
+	--%>
 <wpsa:hookPoint key="core.user-list.table.td" objectName="hookPointElements_core_user_list_table_td">
 <s:iterator value="#hookPointElements_core_user_list_table_td" var="hookPointElement">
 	<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
 </s:iterator>
 </wpsa:hookPoint>
-	<td class="icon">
+	<td class="icon_double">
 	<c:if test="${hasEditProfilePermission}"><a href="<s:url action="edit" namespace="/do/userprofile"><s:param name="username" value="#usernameVar"/></s:url>"
 		title="<s:text name="userprofile.label.editProfile" />:&#32;<s:property value="#userProfileVar.getValue(#userProfileVar.firstNameAttributeName)"/>&#32;<s:property value="#userProfileVar.getValue(#userProfileVar.surnameAttributeName)"/>"><img src="<wp:resourceURL/>administration/common/img/icons/22x22/edit.png" alt="<s:text name="userprofile.label.editProfile" />" /></a></c:if>
 	<s:if test="null != #userProfileVar"><a href="<s:url action="view" namespace="/do/userprofile"><s:param name="username" value="#usernameVar"/></s:url>"
-		title="<s:text name="userprofile.label.viewProfile" />: <s:property value="#usernameVar" />"><img src="<wp:resourceURL/>administration/common/img/icons/22x22/details.png" alt="<s:text name="userprofile.label.viewProfile" />" /></a></s:if>
+		title="<s:text name="userprofile.label.viewProfile" />: <s:property value="#usernameVar" />"><img src="<wp:resourceURL/>administration/common/img/icons/22x22/detail.png" alt="<s:text name="userprofile.label.viewProfile" />" /></a></s:if>
 	</td>
 	<td class="icon"><img src="<s:property value="#statusIconImagePath" />" alt="<s:property value="#statusIconText" />" title="<s:property value="#statusIconText" />" /></td>
 	<td class="icon"><a href="<s:url namespace="/do/User/Auth" action="edit"><s:param name="username" value="#usernameVar"/></s:url>" title="<s:text name="note.configureAuthorizationsFor" />: <s:property value="#usernameVar" />"><img src="<wp:resourceURL />administration/common/img/icons/authorizations.png" alt="<s:text name="note.configureAuthorizationsFor" />: <s:property value="#usernameVar" />" /></a></td>

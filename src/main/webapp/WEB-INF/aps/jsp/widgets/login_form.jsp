@@ -34,7 +34,7 @@
 		
 		<wp:pageWithWidget widgetTypeCode="userprofile_editCurrentUser" var="userprofileEditingPageVar" listResult="false" />
 		<c:if test="${null != userprofileEditingPageVar}" >
-		<p><a href="<wp:url page="${userprofileEditingPageVar}" />" ><wp:i18n key="PROFILE_CONFIGURATION" /></a></p>
+		<p><a href="<wp:url page="${userprofileEditingPageVar.code}" />" ><wp:i18n key="userprofile_CONFIGURATION" /></a></p>
 		</c:if>
 	</c:when>
 	<c:otherwise>
