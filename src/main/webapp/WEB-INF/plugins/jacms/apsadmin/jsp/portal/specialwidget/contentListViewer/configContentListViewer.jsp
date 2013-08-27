@@ -2,10 +2,16 @@
 <%@ taglib uri="/aps-core" prefix="wp" %>
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
-<h1><a href="<s:url action="viewTree" namespace="/do/Page" />" title="<s:text name="note.goToSomewhere" />: <s:text name="title.pageManagement" />"><s:text name="title.pageManagement" /></a></h1>
+
+<h1 class="panel panel-default title-page">
+	<span class="panel-body display-block">
+		<a href="<s:url action="viewTree" namespace="/do/Page" />" title="<s:text name="note.goToSomewhere" />: <s:text name="title.pageManagement" />">
+			<s:text name="title.pageManagement" /></a>&#32;/&#32;
+		<s:text name="title.configPage" />
+	</span>
+</h1>
 
 <div id="main">
-<h2><s:text name="title.configPage" /></h2>
 
 <s:set var="breadcrumbs_pivotPageCode" value="pageCode" />
 <s:include value="/WEB-INF/apsadmin/jsp/portal/include/pageInfo_breadcrumbs.jsp" />
