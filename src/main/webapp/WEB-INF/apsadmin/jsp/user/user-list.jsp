@@ -24,6 +24,12 @@
 <p><label for="username" class="basic-mint-label label-search"><s:text name="label.search.by"/>&#32;<s:text name="label.username"/>:</label>
 <wpsf:textfield useTabindexAutoIncrement="true" name="username" id="username" cssClass="text" /></p>
 
+<wpsa:hookPoint key="core.user-list.form-field" objectName="hookPointElements_core_user_list_form_fields">
+<s:iterator value="#hookPointElements_core_user_list_form_fields" var="hookPointElement">
+	<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
+</s:iterator>
+</wpsa:hookPoint>
+
 <fieldset>
 	<legend class="accordion_toggler"><s:text name="title.searchFilters" /></legend>
 	<div class="accordion_element">
@@ -145,8 +151,8 @@
 	<th><s:text name="label.date.registration" /></th>
 	<th><s:text name="label.date.lastLogin" /></th>
 	<th><s:text name="label.date.lastPasswordChange" /></th>
-<wpsa:hookPoint key="core.userFinding.list.table.th" objectName="hookPointElements_core_userFinding_list_table_th">
-<s:iterator value="#hookPointElements_core_userFinding_list_table_th" var="hookPointElement">
+<wpsa:hookPoint key="core.user-list.table.th" objectName="hookPointElements_core_user_list_table_th">
+<s:iterator value="#hookPointElements_core_user_list_table_th" var="hookPointElement">
 	<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
 </s:iterator>
 </wpsa:hookPoint>
@@ -208,8 +214,8 @@
 		</s:if>
 		<s:else><abbr title="<s:text name="label.none" />">&ndash;</abbr></s:else>
 	</td>
-<wpsa:hookPoint key="core.userFinding.list.table.td" objectName="hookPointElements_core_userFinding_list_table_td">
-<s:iterator value="#hookPointElements_core_userFinding_list_table_td" var="hookPointElement">
+<wpsa:hookPoint key="core.user-list.table.td" objectName="hookPointElements_core_user_list_table_td">
+<s:iterator value="#hookPointElements_core_user_list_table_td" var="hookPointElement">
 	<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
 </s:iterator>
 </wpsa:hookPoint>
