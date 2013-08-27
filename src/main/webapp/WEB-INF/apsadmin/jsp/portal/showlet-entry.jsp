@@ -10,13 +10,13 @@
 <div id="main">
 
 <s:if test="strutsAction == 2">
-<wpsa:showletType key="%{showletTypeCode}" var="showletTypeVar" />
+<wpsa:widgetType key="%{showletTypeCode}" var="showletTypeVar" />
 <h2><s:text name="title.showletManagement.edit" />:&#32;<s:property value="#showletTypeVar.titles[currentLang.code]" /></h2>
 </s:if>
 <s:else>
 <h2><s:text name="title.newShowletType.from" />:&#32;
 <s:if test="strutsAction == 1">
-<wpsa:showletType var="parentShowletTypeVar" key="%{parentShowletTypeCode}" />
+<wpsa:widgetType var="parentShowletTypeVar" key="%{parentShowletTypeCode}" />
 <em><s:property value="%{getTitle(#parentShowletTypeVar.code, #parentShowletTypeVar.titles)}" /></em>
 </s:if>
 <s:elseif test="strutsAction == 3">
