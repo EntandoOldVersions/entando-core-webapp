@@ -106,13 +106,12 @@
 	</div>
 </s:form>
 
-<s:if test="onEditContent">
-	<wp:ifauthorized permission="manageResources">
-		<p><a href="<s:url action="new" >
-		<s:param name="resourceTypeCode" >Attach</s:param><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>" 
-		class="btn btn-default" title="<s:text name="label.new" />&#32;<s:text name="label.attach" />"><span class="icon icon-plus-sign"></span>&#32;<s:text name="label.new" />&#32;<s:text name="label.attach" /></a></p>
-	</wp:ifauthorized>
-</s:if>
+<wp:ifauthorized permission="manageResources">
+	<p><a href="<s:url action="new" >
+	<s:param name="resourceTypeCode" >Attach</s:param><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>" 
+	class="btn btn-default" title="<s:text name="label.new" />&#32;<s:text name="label.attach" />"><span class="icon icon-plus-sign"></span>&#32;<s:text name="label.new" />&#32;<s:text name="label.attach" /></a></p>
+</wp:ifauthorized>
+
 <s:form action="search">
 <p class="sr-only">
 	<s:hidden name="text" />

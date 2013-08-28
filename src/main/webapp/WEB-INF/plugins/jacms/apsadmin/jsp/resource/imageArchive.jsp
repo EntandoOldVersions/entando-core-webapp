@@ -108,18 +108,18 @@
 	</div>
 </s:form>
 
-<s:if test="onEditContent">
-	<wp:ifauthorized permission="manageResources">
-		<a href="
-			<s:url action="new" >
-				<s:param name="resourceTypeCode" >Image</s:param><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" />
-			</s:url>"
-			class="btn btn-default">
-			<span class="icon icon-plus-sign"></span>&#32;
-			<s:text name="label.new" />&#32;<s:text name="label.image" />
-		</a>
-	</wp:ifauthorized>
-</s:if>
+
+<wp:ifauthorized permission="manageResources">
+	<a href="
+		<s:url action="new" >
+			<s:param name="resourceTypeCode" >Image</s:param><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" />
+		</s:url>"
+		class="btn btn-default">
+		<span class="icon icon-plus-sign"></span>&#32;
+		<s:text name="label.new" />&#32;<s:text name="label.image" />
+	</a>
+</wp:ifauthorized>
+
 
 <s:form action="search">
 <p class="sr-only">
