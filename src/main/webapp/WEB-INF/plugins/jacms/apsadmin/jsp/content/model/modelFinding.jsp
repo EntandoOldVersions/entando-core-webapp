@@ -2,11 +2,12 @@
 <%@ taglib uri="/aps-core" prefix="wp" %>
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
-<s:set var="targetNS" value="%{'/do/jacms/ContentModel'}" />
-<h1><s:text name="title.generalSettings.contentModels" /><s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></h1>
+
+<h1 class="panel panel-default title-page"><span class="panel-body display-block"><s:text name="title.generalSettings.contentModels" /></span></h1>
+
+<a href="<s:url action="new" namespace="/do/jacms/ContentModel"/>">NEW TODO</a>
 
 <div id="main">
-<h2 class="margin-bit-bottom"><s:text name="title.generalSettings.contentModels.installedModels" /></h2>
 
 <s:form action="search" >
 

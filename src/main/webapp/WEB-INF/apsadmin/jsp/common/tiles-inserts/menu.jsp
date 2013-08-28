@@ -93,7 +93,7 @@
 						<li><a href="<s:url action="list" namespace="/do/jacms/Content" />"><s:text name="jacms.menu.contentAdmin.list" /></a></li>
 						<li><a href="<s:url action="createNew" namespace="/do/jacms/Content" />?contentTypeCode=CNG">New Generic Content</a></li>
 						<wp:ifauthorized permission="superuser">
-						<li><a href="<s:url action="intro" namespace="/do/jacms/ContentModel" />"><s:text name="jacms.menu.contentModelAdmin" /></a></li>
+						<li><a href="<s:url action="list" namespace="/do/jacms/ContentModel" />"><s:text name="jacms.menu.contentModelAdmin" /></a></li>
 						<li><a href="<s:url action="initViewEntityTypes" namespace="/do/Entity"><s:param name="entityManagerName">jacmsContentManager</s:param></s:url>"><s:text name="jacms.menu.contentTypeAdmin" /></a></li>
 						</wp:ifauthorized>
 					</ul>

@@ -1,6 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
-<h1><s:text name="title.apiServiceManagement" /></h1>
+
+<h1 class="panel panel-default title-page"><span class="panel-body display-block"><s:text name="title.apiServiceManagement" /></span></h1>
 
 <div id="main">
 	<h2><s:text name="title.api.apiService.trash" /></h2>

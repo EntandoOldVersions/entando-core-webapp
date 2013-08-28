@@ -2,8 +2,9 @@
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
-<s:set var="targetNS" value="%{'/do/Api/Consumer'}" />
-<h1><s:text name="title.apiConsumerManagement" /><s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></h1>
+
+<h1 class="panel panel-default title-page"><span class="panel-body display-block"><s:text name="title.apiConsumerManagement" /></span></h1>
+
 <div id="main">
 	<s:if test="strutsAction == 1">
 		<h2 class="margin-more-bottom"><s:text name="title.apiConsumerManagement.new" /></h2>

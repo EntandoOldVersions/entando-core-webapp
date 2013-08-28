@@ -2,7 +2,9 @@
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
-<h1><s:text name="title.apiResourceManagement" /></h1>
+
+<h1 class="panel panel-default title-page"><span class="panel-body display-block"><s:text name="title.apiResourceManagement" /></span></h1>
+
 <div id="main">
 	<s:if test="hasActionMessages()">
 		<div class="message message_confirm">

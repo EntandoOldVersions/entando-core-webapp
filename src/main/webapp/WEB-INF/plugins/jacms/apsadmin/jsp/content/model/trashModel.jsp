@@ -2,11 +2,17 @@
 <%@ taglib uri="/aps-core" prefix="wp" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
-<s:set var="targetNS" value="%{'/do/jacms/ContentModel'}" />
-<h1><s:text name="title.generalSettings.contentModels" /><s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></h1>
-<div id="main">
 
-<h2><s:text name="title.generalSettings.contentModels.remove" /></h2>
+<h1 class="panel panel-default title-page">
+	<span class="panel-body display-block">
+		<a href="<s:url action="list" namespace="/do/jacms/ContentModel" />">
+		<s:text name="title.generalSettings.contentModels" /></a>
+		&#32;/&#32;
+		<s:text name="title.generalSettings.contentModels.remove" />
+	</span>
+</h1>
+
+<div id="main">
 
 <s:form>
 	<p class="sr-only">	

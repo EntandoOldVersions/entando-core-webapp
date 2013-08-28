@@ -3,16 +3,21 @@
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <%@ taglib prefix="jacms" uri="/jacms-apsadmin-core" %>
 
-<s:set var="targetNS" value="%{'/do/jacms/ContentModel'}" />
-<h1><s:text name="title.generalSettings.contentModels" /><s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></h1>
+<h1 class="panel panel-default title-page">
+	<span class="panel-body display-block">
+		<a href="<s:url action="list" namespace="/do/jacms/ContentModel" />">
+		<s:text name="title.generalSettings.contentModels" />
+		</a>&#32;/&#32;
+		<s:if test="strutsAction == 1">
+			<s:text name="title.generalSettings.contentModels.new" />
+		</s:if>
+		<s:if test="strutsAction == 2">
+			<s:text name="title.generalSettings.contentModels.edit" />
+		</s:if> 
+	</span>
+</h1>
 
-<div id="main">
-<s:if test="strutsAction == 1">
-	<h2 class="margin-bit-bottom"><s:text name="title.generalSettings.contentModels.new" /></h2>
-</s:if>
-<s:if test="strutsAction == 2">
-	<h2 class="margin-bit-bottom"><s:text name="title.generalSettings.contentModels.edit" /></h2>
-</s:if>                 
+<div id="main">        
 
 <s:form action="save" namespace="/do/jacms/ContentModel" >
 	
