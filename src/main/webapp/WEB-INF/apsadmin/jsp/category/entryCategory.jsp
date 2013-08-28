@@ -2,16 +2,23 @@
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 
-<h1><a href="<s:url action="viewTree" namespace="/do/Category" />" title="<s:text name="note.goToSomewhere" />: <s:text name="title.categoryManagement" />"><s:text name="title.categoryManagement" /></a></h1>
+<h1 class="panel panel-default title-page">
+	<span class="panel-body display-block">
+		<a href="<s:url action="viewTree" namespace="/do/Category" />" 
+		title="<s:text name="note.goToSomewhere" />: <s:text name="title.categoryManagement" />">
+		<s:text name="title.categoryManagement" />
+		</a>
+		&#32;/&#32;
+		<s:if test="strutsAction == 1">
+			<s:text name="title.newCategory" />
+		</s:if>
+		<s:elseif test="strutsAction == 2">
+			<s:text name="title.editCategory" />
+		</s:elseif>
+	</span>
+</h1>
 
 <div id="main">
-
-<s:if test="strutsAction == 1">
-	<h2 class="margin-more-bottom"><s:text name="title.newCategory" /></h2>
-</s:if>
-<s:elseif test="strutsAction == 2">
-	<h2 class="margin-more-bottom"><s:text name="title.editCategory" /></h2>
-</s:elseif>
 
 <s:if test="strutsAction == 2"><s:set var="breadcrumbs_pivotCategoryCode" value="categoryCode" /></s:if>
 <s:else><s:set var="breadcrumbs_pivotCategoryCode" value="parentCategoryCode" /></s:else>

@@ -1,7 +1,16 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 
-<h1><a href="<s:url action="viewTree" namespace="/do/Category" />" title="<s:text name="note.goToSomewhere" />: <s:text name="title.categoryManagement" />"><s:text name="title.categoryManagement" /></a></h1>
+<h1 class="panel panel-default title-page">
+	<span class="panel-body display-block">
+		<a href="<s:url action="viewTree" namespace="/do/Category" />" 
+		title="<s:text name="note.goToSomewhere" />: <s:text name="title.categoryManagement" />">
+		<s:text name="title.categoryManagement" />
+		</a>
+		&#32;/&#32;
+		<s:text name="title.categoryReference" />
+	</span>
+</h1>
 
 <div id="main">
 
