@@ -1,7 +1,6 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
-<s:set var="targetNS" value="%{'/do/Group'}" />
 
 <h1 class="panel panel-default title-page"><span class="panel-body display-block"><s:text name="title.groupManagement" /></span></h1>
 

@@ -1,7 +1,15 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
-<s:set var="targetNS" value="%{'/do/Group'}" />
-<h1><s:text name="title.groupManagement" /><s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></h1>
+<h1 class="panel panel-default title-page">
+	<span class="panel-body display-block">
+		<a href="<s:url action="list" namespace="/do/Group"></s:url>" 
+		title="<s:text name="note.goToSomewhere" />: <s:text name="title.groupManagement" />">
+		<s:text name="title.groupManagement" />
+		</a>
+		&#32;/&#32;
+		<s:text name="title.groupManagement.groupTrash" />
+	</span>
+</h1>
 
 <div id="main">
 
