@@ -2,7 +2,12 @@
 <%@ taglib uri="/aps-core" prefix="wp" %>
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
-<h1><s:text name="title.entityAdmin.manage" /></h1>
+
+<h1 class="panel panel-default title-page">
+	<span class="panel-body display-block">
+		<s:text name="title.entityAdmin.manage" />
+	</span>
+</h1>
 
 <div id="main">
 
