@@ -3,7 +3,7 @@
 
 <s:set var="pageTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_page" /></s:set>
 <s:if test="#pageTreeStyleVar == 'classic'">
-var pageTree = jQuery("#pageTree").EntandoWoodMenu({
+jQuery("#pageTree").EntandoWoodMenu({
 	menuToggler: "subTreeToggler",
 	menuRetriever: function(toggler) {
 		return $(toggler).parent().children("ul");
@@ -18,9 +18,9 @@ var pageTree = jQuery("#pageTree").EntandoWoodMenu({
 	collapseAllLabel: "<s:text name="label.collapseAll" />",
 <s:if test="%{selectedNode != null && !(selectedNode.equalsIgnoreCase(''))}">
 	startIndex: "fagianonode_<s:property value="selectedNode" />",
+</s:if>
 	toolTextIntro: "<s:text name="label.introExpandAll" />",
 	toolexpandAllLabelTitle: "<s:text name="label.expandAllTitle" />",
 	toolcollapseLabelTitle: "<s:text name="label.collapseAllTitle" />"
-</s:if>
 });
 </s:if>
