@@ -18,7 +18,7 @@
 
 <h3 class="margin-more-top margin-more-bottom"><s:text name="name.showlet" />:&#32;<s:property value="%{getTitle(showlet.type.code, showlet.type.titles)}" /></h3>
 
-<s:form action="saveListViewerConfig" namespace="/do/jacms/Page/SpecialShowlet/ListViewer">
+<s:form action="saveListViewerConfig" namespace="/do/jacms/Page/SpecialWidget/ListViewer">
 <p class="noscreen">
 	<wpsf:hidden name="pageCode" />
 	<wpsf:hidden name="frame" />

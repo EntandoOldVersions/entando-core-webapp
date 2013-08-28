@@ -18,7 +18,7 @@
 
 <h3 class="margin-more-top"><s:text name="name.showlet" />:&#32;<s:property value="%{getTitle(showlet.type.code, showlet.type.titles)}" /></h3>
 
-<s:url action="saveNavigatorConfig" namespace="do/Page/SpecialShowlet/Navigator" id="formAction" anchor="expressions" />
+<s:url action="saveNavigatorConfig" namespace="do/Page/SpecialWidget/Navigator" id="formAction" anchor="expressions" />
 <s:form action="%{'/' + #formAction}">
 
 	<s:if test="hasActionErrors()">

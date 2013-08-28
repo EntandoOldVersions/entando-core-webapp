@@ -18,7 +18,7 @@
 <h3 class="margin-more-top"><s:text name="name.showlet" />:&#32;<s:property value="%{getTitle(#showletType.code, #showletType.titles)}" /></h3>
 <h4 class="margin-bit-bottom"><s:text name="title.filterAdd" /></h4>
 
-<s:form namespace="/do/jacms/Page/SpecialShowlet/ListViewer">
+<s:form namespace="/do/jacms/Page/SpecialWidget/ListViewer">
 <p class="noscreen">
 	<wpsf:hidden name="pageCode" />
 	<wpsf:hidden name="frame" />
