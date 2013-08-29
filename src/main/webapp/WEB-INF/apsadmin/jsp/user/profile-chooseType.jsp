@@ -2,12 +2,14 @@
 <%@ taglib uri="/aps-core" prefix="wp" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
-<h1><s:text name="userprofile.menu.profileAdmin" /></h1>
+
+<h1><s:text name="title.userprofileManagement" /></h1>
+
 <div id="main">
-	<h2><s:text name="userprofile.title.profile.choose" />:&#32;<em><s:property value="username" /></em></h2>
+	<h2><s:text name="title.chooseUserProfileType" />:&#32;<em><s:property value="username" /></em></h2>
 
 	<s:form action="new">
-		<p><s:text name="userprofile.note.intro" /></p>
+		<p><s:text name="" /></p>
 
 		<s:if test="hasFieldErrors()">
 			<div class="message message_error">

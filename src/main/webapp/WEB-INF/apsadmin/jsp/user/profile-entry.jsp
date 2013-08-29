@@ -3,11 +3,11 @@
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 
-<h1><s:text name="userprofile.menu.profileAdmin" /></h1>
+<h1><s:text name="title.userprofileManagement" /></h1>
 
 <div id="main">
-	<h2><s:text name="userprofile.title.changeUserProfile" /></h2>
-	<p class="margin-more-bottom"><s:text name="userprofile.note.current" />:&#32;<em class="important">
+	<h2><s:text name="title.editUserProfile" /></h2>
+	<p class="margin-more-bottom"><s:text name="note.userprofile.current" />:&#32;<em class="important">
 		<a href="<s:url action="edit" namespace="/do/User"><s:param name="username" value="%{userProfile.username}" /></s:url>">
 			<s:property value="userProfile.username" />
 		</a>
@@ -28,15 +28,6 @@
 		<fieldset>
 		<legend><span><s:text name="label.info" /></span></legend>
 		<s:set name="lang" value="defaultLang" />
-		<%--
-		<div class="contentAttributeBox contentAttribute-Checkbox">
-			<p>
-				<s:set name="checkedValue" value="%{userProfile.publicProfile != null && userProfile.publicProfile == true}" />
-				<wpsf:checkbox useTabindexAutoIncrement="true" id="userprofile_isPublic" name="publicProfile" value="#checkedValue" cssClass="radiocheck" />
-				<label for="userprofile_isPublic"><s:text name="userprofile.title.myPublicPorfile" /></label>
-			</p>
-		</div>
-		--%>
 		<%-- START CICLO ATTRIBUTI --%>
 		<s:iterator value="userProfile.attributeList" id="attribute">
 			<div class="contentAttributeBox contentAttribute-<s:property value="#attribute.type" />" id="<s:property value="%{'contentedit_'+#lang.code+'_'+#attribute.name}" />">

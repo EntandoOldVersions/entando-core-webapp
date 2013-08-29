@@ -3,17 +3,17 @@
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 
-<h1><s:text name="userprofile.menu.profileAdmin" /></h1>
+<h1><s:text name="title.userprofileManagement" /></h1>
 
 <div id="main">
-	<h2 class="margin-more-bottom"><s:text name="userprofile.title.profileDetail" /></h2>
+	<h2 class="margin-more-bottom"><s:text name="title.userProfileDetails" /></h2>
 	
 	<s:set name="lang" value="defaultLang" />
 	<s:set var="userProfileVar" value="%{getUserProfile(username)}" />
 	<s:if test="%{null != #userProfileVar}">
 		<div class="centerText">
 			<dl class="table-display">
-				<dt><s:text name="userprofile.label.username" /></dt>
+				<dt><s:text name="label.username" /></dt>
 				<dd><s:property value="username" /> </dd>
 				<s:set name="lang" value="defaultLang" />
 				<s:iterator value="#userProfileVar.attributeList" id="attribute">
@@ -93,6 +93,6 @@
 	</s:if>
 	
 	<p>
-		<a href="<s:url namespace="/do/userprofile" action="list" />" ><s:text name="userprofile.note.returnTo.search" /></a> 
+		<a href="<s:url namespace="/do/userprofile" action="list" />" ><s:text name="note.userprofile.returnTo.search" /></a> 
 	</p>
 </div>
