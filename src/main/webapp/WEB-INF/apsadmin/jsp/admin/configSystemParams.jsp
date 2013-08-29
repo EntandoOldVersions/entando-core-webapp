@@ -14,18 +14,19 @@
 	</div>
 
 	<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-		<s:if test="hasActionMessages()">
-			<div class="message message_confirm">
-				<h2><s:text name="messages.confirm" /></h2>
-				<ul>
-					<s:iterator value="actionMessages">
-						<li><s:property escape="false" /></li>
-					</s:iterator>
-				</ul>
-				</div>
-		</s:if>
 
 		<s:form action="updateSystemParams" cssClass="form-horizontal">
+			
+			<div class="alert alert-success alert-dismissable fade in">
+				<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+				<h2 class="h4 margin-none"><s:text name="messages.confirm" /></h2>
+				<ul class="margin-base-vertical">
+						<s:iterator value="actionMessages">
+							<li><s:property escape="false" /></li>
+						</s:iterator>
+				</ul>
+			</div>
+
 			<fieldset>
 				<legend><s:text name="name.pages" /></legend>
 				<p class="lead text-right"><s:text name="sysconfig.legend.systemPages" /></p>
