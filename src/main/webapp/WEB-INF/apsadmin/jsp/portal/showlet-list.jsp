@@ -91,14 +91,14 @@
 	<s:set var="showletUtilizers" value="getShowletUtilizers(#showletType.key)" ></s:set>
 	<s:if test="#showletUtilizers != null && #showletUtilizers.size() > 0">
 		<td class="tinyColumn60 rightText">
-			<a href="<s:url namespace="/do/Portal/ShowletType" action="viewShowletUtilizers"><s:param name="showletTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="title.showletManagement.howmanypages.goToSee" />: <s:property value="#showletType.value" />"><s:property value="#showletUtilizers.size()" />&#32;<img src="<wp:resourceURL />administration/common/img/icons/16x16/detail.png" alt=" " /></a>
+			<a href="<s:url namespace="/do/Portal/WidgetType" action="viewShowletUtilizers"><s:param name="showletTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="title.showletManagement.howmanypages.goToSee" />: <s:property value="#showletType.value" />"><s:property value="#showletUtilizers.size()" />&#32;<img src="<wp:resourceURL />administration/common/img/icons/16x16/detail.png" alt=" " /></a>
 		</td>
 	</s:if>
 	<s:else>
 		<td class="tinyColumn60 centerText"><abbr title="<s:text name="label.none" />">&ndash;</abbr></td>
 	</s:else>
 		<td>
-		<a href="<s:url namespace="/do/Portal/ShowletType" action="edit"><s:param name="showletTypeCode" value="#showletType.key" /></s:url>" ><s:property value="#showletType.value" /></a>
+		<a href="<s:url namespace="/do/Portal/WidgetType" action="edit"><s:param name="showletTypeCode" value="#showletType.key" /></s:url>" ><s:property value="#showletType.value" /></a>
 		</td>
 
 <wpsa:hookPoint key="core.showletType.list.table.td" objectName="hookPointElements_core_showletType_list_table_td">
@@ -137,10 +137,10 @@
 		<s:set var="relatedApiMethodVar" value="null" />
 		
 		<s:if test="null != #concreteShowletTypeVar.typeParameters && #concreteShowletTypeVar.typeParameters.size() > 0">
-			<a href="<s:url namespace="/do/Portal/ShowletType" action="new"><s:param name="parentShowletTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.userShowlet.new.from" />: <s:property value="#showletType.value" />" ><img src="<wp:resourceURL/>administration/common/img/icons/22x22/showlet-user-new.png" alt="<s:text name="label.userShowlet.new" />" /></a>
+			<a href="<s:url namespace="/do/Portal/WidgetType" action="new"><s:param name="parentShowletTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.userShowlet.new.from" />: <s:property value="#showletType.value" />" ><img src="<wp:resourceURL/>administration/common/img/icons/22x22/showlet-user-new.png" alt="<s:text name="label.userShowlet.new" />" /></a>
 		</s:if>
 		<s:if test="#firstType.optgroup == 'userShowletCode' && !#concreteShowletTypeVar.isLocked() && (#showletUtilizers == null || #showletUtilizers.size() == 0)">
-			<a href="<s:url namespace="/do/Portal/ShowletType" action="trash"><s:param name="showletTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.remove" />: <s:property value="#showletType.value" />" ><img src="<wp:resourceURL/>administration/common/img/icons/delete.png" alt="<s:text name="label.remove" />" /></a>
+			<a href="<s:url namespace="/do/Portal/WidgetType" action="trash"><s:param name="showletTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.remove" />: <s:property value="#showletType.value" />" ><img src="<wp:resourceURL/>administration/common/img/icons/delete.png" alt="<s:text name="label.remove" />" /></a>
 		</s:if>
 		</td>
 		</wp:ifauthorized>

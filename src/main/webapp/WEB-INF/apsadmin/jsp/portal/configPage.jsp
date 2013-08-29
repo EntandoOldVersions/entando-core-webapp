@@ -42,14 +42,14 @@
 	</td>
 	<td>
 		<s:if test="null != #showletType.code">
-		<a class="noborder" href="<s:url namespace="/do/Portal/ShowletType" action="viewShowletUtilizers"><s:param name="showletTypeCode" value="{#showletType.getCode()}" /></s:url>" title="<s:text name="title.showletManagement.howmanypages.goToSee" />: <s:property value="%{getTitle(#showletType.getCode(), #showletType.getTitles())}" />"><img src="<wp:resourceURL />administration/common/img/icons/16x16/detail.png" alt=" " /></a>
+		<a class="noborder" href="<s:url namespace="/do/Portal/WidgetType" action="viewShowletUtilizers"><s:param name="showletTypeCode" value="{#showletType.getCode()}" /></s:url>" title="<s:text name="title.showletManagement.howmanypages.goToSee" />: <s:property value="%{getTitle(#showletType.getCode(), #showletType.getTitles())}" />"><img src="<wp:resourceURL />administration/common/img/icons/16x16/detail.png" alt=" " /></a>
 		</s:if>
 		<s:property value="%{getTitle(#showletType.getCode(), #showletType.getTitles())}" />
 	</td>
 	<td class="<wp:ifauthorized permission="superuser">tinyColumn90 rightText</wp:ifauthorized>">
 		<wp:ifauthorized permission="superuser">
 		<s:if test="!#showletType.isLogic() && null != #showletType.typeParameters && #showletType.typeParameters.size() > 0">
-			<a href="<s:url namespace="/do/Portal/ShowletType" action="copy"><s:param name="pageCode" value="currentPage.code" /><s:param name="framePos" value="#rowstatus.index" /></s:url>" title="<s:text name="label.userShowlet.new.from" />: <s:property value="%{getTitle(#showletType.getCode(), #showletType.getTitles())}" />" class="noborder"><img src="<wp:resourceURL/>administration/common/img/icons/22x22/showlet-user-new.png" alt="<s:text name="label.userShowlet.new" />" /></a>
+			<a href="<s:url namespace="/do/Portal/WidgetType" action="copy"><s:param name="pageCode" value="currentPage.code" /><s:param name="framePos" value="#rowstatus.index" /></s:url>" title="<s:text name="label.userShowlet.new.from" />: <s:property value="%{getTitle(#showletType.getCode(), #showletType.getTitles())}" />" class="noborder"><img src="<wp:resourceURL/>administration/common/img/icons/22x22/showlet-user-new.png" alt="<s:text name="label.userShowlet.new" />" /></a>
 		</s:if>
 		</wp:ifauthorized>
 		<s:if test="null != #showletType.code">

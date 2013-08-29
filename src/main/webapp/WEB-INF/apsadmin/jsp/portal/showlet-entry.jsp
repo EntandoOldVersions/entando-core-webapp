@@ -4,7 +4,7 @@
 <%@ taglib prefix="wp" uri="/aps-core" %>
 
 <h1>
-<s:if test="strutsAction == 2"><a href="<s:url action="viewShowlets" namespace="/do/Portal/ShowletType" />" title="<s:text name="note.goToSomewhere" />: <s:text name="title.showletManagement" />"><s:text name="title.showletManagement" /></a></s:if>
+<s:if test="strutsAction == 2"><a href="<s:url action="viewShowlets" namespace="/do/Portal/WidgetType" />" title="<s:text name="note.goToSomewhere" />: <s:text name="title.showletManagement" />"><s:text name="title.showletManagement" /></a></s:if>
 <s:else><s:text name="title.newShowletType" /></s:else>
 </h1>
 <div id="main">
@@ -31,7 +31,7 @@
 </s:if>
 </s:else>
 
-<s:form action="save" namespace="/do/Portal/ShowletType" >
+<s:form action="save" namespace="/do/Portal/WidgetType" >
 
 <wp:ifauthorized permission="superuser"><s:set var="isSuperuserVar" value="%{true}" /></wp:ifauthorized>
 

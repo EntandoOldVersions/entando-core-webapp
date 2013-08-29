@@ -61,7 +61,7 @@
 <ul class="menu vertical">
 <wp:ifauthorized permission="managePages">
 	<li><a href="<s:url action="viewTree" namespace="/do/Page" />" id="menu_pagine"><s:text name="menu.pageAdmin" /></a></li>
-	<li><a href="<s:url action="viewShowlets" namespace="/do/Portal/ShowletType" />" id="menu_servizi"><s:text name="menu.showletAdmin" /></a></li>
+	<li><a href="<s:url action="viewShowlets" namespace="/do/Portal/WidgetType" />" id="menu_servizi"><s:text name="menu.showletAdmin" /></a></li>
 </wp:ifauthorized>
 <wp:ifauthorized permission="superuser">
 	<li class="openmenu"><a href="#" rel="fagiano_apis" class="subMenuToggler" id="menu_apis"><s:text name="menu.apisAdmin" /></a>

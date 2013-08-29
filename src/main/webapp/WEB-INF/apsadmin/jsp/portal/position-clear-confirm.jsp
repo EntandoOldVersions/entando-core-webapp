@@ -4,8 +4,8 @@
 
 <s:set name="NScurrent" value="#context['struts.actionMapping'].getNamespace()" />
 
-<s:if test="%{#NScurrent == '/do/Portal/ShowletType'}">
-<h1><a href="<s:url action="viewShowlets" namespace="/do/Portal/ShowletType" />" title="<s:text name="note.goToSomewhere" />: <s:text name="title.showletManagement" />"><s:text name="title.showletManagement" /></a></h1>
+<s:if test="%{#NScurrent == '/do/Portal/WidgetType'}">
+<h1><a href="<s:url action="viewShowlets" namespace="/do/Portal/WidgetType" />" title="<s:text name="note.goToSomewhere" />: <s:text name="title.showletManagement" />"><s:text name="title.showletManagement" /></a></h1>
 </s:if>
 <s:elseif test="%{#NScurrent == '/do/Page'}">
 <h1><a href="<s:url action="viewTree" namespace="/do/Page" />" title="<s:text name="note.goToSomewhere" />: <s:text name="title.pageManagement" />"><s:text name="title.pageManagement" /></a></h1>

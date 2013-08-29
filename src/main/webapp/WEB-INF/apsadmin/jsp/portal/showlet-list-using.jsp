@@ -3,7 +3,7 @@
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 
-<h1><a href="<s:url action="viewShowlets" namespace="/do/Portal/ShowletType" />" title="<s:text name="note.goToSomewhere" />: <s:text name="title.showletManagement" />"><s:text name="title.showletManagement" /></a></h1>
+<h1><a href="<s:url action="viewShowlets" namespace="/do/Portal/WidgetType" />" title="<s:text name="note.goToSomewhere" />: <s:text name="title.showletManagement" />"><s:text name="title.showletManagement" /></a></h1>
 
 <div id="main">
 
@@ -57,7 +57,7 @@
 		<s:if test="#showlet != null && #showlet.type != null && #showlet.type.code.equals(showletTypeCode)">
 			<li>
 			<s:if test="null != #showlet.type.typeParameters && #showlet.type.typeParameters.size() > 0">
-				<a href="<s:url namespace="/do/Portal/ShowletType" action="copy" ><s:param name="pageCode" value="#singlePage.code" /><s:param name="framePos" value="#rowstatus.index" /></s:url>" title="<s:text name="label.userShowlet.new" />" class="noborder"><img src="<wp:resourceURL/>administration/common/img/icons/16x16/showlet-user-new.png" alt="<s:text name="label.userShowlet.new" />" /></a>
+				<a href="<s:url namespace="/do/Portal/WidgetType" action="copy" ><s:param name="pageCode" value="#singlePage.code" /><s:param name="framePos" value="#rowstatus.index" /></s:url>" title="<s:text name="label.userShowlet.new" />" class="noborder"><img src="<wp:resourceURL/>administration/common/img/icons/16x16/showlet-user-new.png" alt="<s:text name="label.userShowlet.new" />" /></a>
 			</s:if>
 			<s:if test="%{isUserAllowed(#singlePage)}">
 				<s:if test="null != #relatedApiMethodVar && !#showletTypeVar.isLogic()">
@@ -79,7 +79,7 @@
 				</s:url>" title="<s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#relatedApiMethodVar.methodName" />"><img src="<wp:resourceURL />administration/common/img/icons/16x16/api-service-new.png" alt="<s:text name="label.new" />" /></a>				
 				</wp:ifauthorized>
 				</s:if>
-				<a class="noborder" href="<s:url action="trashShowletFromPage" namespace="/do/Portal/ShowletType">
+				<a class="noborder" href="<s:url action="trashShowletFromPage" namespace="/do/Portal/WidgetType">
 					<s:param name="pageCode"><s:property value="#singlePage.code"/></s:param>
 					<s:param name="frame"><s:property value="#rowstatus.index"/></s:param>
 					<s:param name="showletTypeCode"><s:property value="#showletTypeVar.code"/></s:param>
