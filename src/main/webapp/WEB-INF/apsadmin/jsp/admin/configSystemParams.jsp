@@ -8,7 +8,7 @@
 
 <div class="row">
 	
-	<div class="hidden-xs hidden-sm col-md-3 col-lg-3 btn-group-vertical">
+	<div class="hidden-xs hidden-sm col-md-3 col-lg-3 ">
 			<s:set var="settingsNavMenuActiveItem" value="%{'configSystemParams'}" />
 			<s:include value="/WEB-INF/apsadmin/jsp/admin/inc/settings-nav-menu.jsp" />
 	</div>
@@ -16,20 +16,22 @@
 	<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
 
 		<s:form action="updateSystemParams" cssClass="form-horizontal">
-			
-			<div class="alert alert-success alert-dismissable fade in">
-				<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
-				<h2 class="h4 margin-none"><s:text name="messages.confirm" /></h2>
-				<ul class="margin-base-vertical">
-						<s:iterator value="actionMessages">
-							<li><s:property escape="false" /></li>
-						</s:iterator>
-				</ul>
-			</div>
-
+			<s:if test="hasActionMessages()">
+				<div class="alert alert-success alert-dismissable fade in">
+					<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+					<h2 class="h4 margin-none"><s:text name="messages.confirm" /></h2>
+					<ul class="margin-base-vertical">
+							<s:iterator value="actionMessages">
+								<li><s:property escape="false" /></li>
+							</s:iterator>
+					</ul>
+				</div>
+			</s:if>
 			<fieldset>
 				<legend><s:text name="name.pages" /></legend>
-				<p class="lead text-right"><s:text name="sysconfig.legend.systemPages" /></p>
+				<p class="text-right">
+					<span class="label label-default"><s:text name="sysconfig.legend.systemPages" /></span>
+				</p>
 				
 				<s:set name="className" value="'form-control'" />
 				<div class="form-group">
