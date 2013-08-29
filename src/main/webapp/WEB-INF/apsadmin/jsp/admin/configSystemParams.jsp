@@ -1,9 +1,175 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
-<%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form"  %>
+<%@ taglib prefix="wpsa" uri="/apsadmin-core"  %>
+<h1 class="panel panel-default title-page">
+	<span class="panel-body display-block">
+		<a href="<s:url namespace="/do/BaseAdmin" action="settings" />"><s:text name="menu.configure" /></a> / <s:text name="menu.settings.general" /></span>
+</h1>
 
-<h1><s:text name="title.generalSettings.settings" /></h1>
+<div class="row">
+	
+	<div class="hidden-xs hidden-sm col-md-3 col-lg-3 btn-group-vertical">
+			<s:set var="settingsNavMenuActiveItem" value="%{'configSystemParams'}" />
+			<s:include value="/WEB-INF/apsadmin/jsp/admin/inc/settings-nav-menu.jsp" />
+	</div>
 
+	<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+		<s:if test="hasActionMessages()">
+			<div class="message message_confirm">
+				<h2><s:text name="messages.confirm" /></h2>
+				<ul>
+					<s:iterator value="actionMessages">
+						<li><s:property escape="false" /></li>
+					</s:iterator>
+				</ul>
+				</div>
+		</s:if>
+
+		<s:form action="updateSystemParams" cssClass="form-horizontal">
+			<fieldset>
+				<legend><s:text name="name.pages" /></legend>
+				<p class="lead text-right"><s:text name="sysconfig.legend.systemPages" /></p>
+				
+				<s:set name="className" value="'form-control'" />
+				<div class="form-group">
+					<label class="control-label col-lg-3 col-md-3" for="homePageCode"><s:text name="sysconfig.homePageCode" /></label>
+					<div class="col-md-9 col-lg-9">
+						<s:set name="paramName" value="'homePageCode'" />
+						<s:include value="/WEB-INF/apsadmin/jsp/admin/selectPageParamBlock.jsp" />
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-lg-3 col-md-3" for="notFoundPageCode"><s:text name="sysconfig.notFoundPageCode" /></label>
+					<div class="col-md-9 col-lg-9">
+						<s:set name="paramName" value="'notFoundPageCode'" />
+						<s:include value="/WEB-INF/apsadmin/jsp/admin/selectPageParamBlock.jsp" />
+					</div>
+				</div>
+			
+				<div class="form-group">
+					<label class="control-label col-lg-3 col-md-3" for="errorPageCode"><s:text name="sysconfig.errorPageCode" /></label>
+					<div class="col-md-9 col-lg-9">
+						<s:set name="paramName" value="'errorPageCode'" />
+						<s:include value="/WEB-INF/apsadmin/jsp/admin/selectPageParamBlock.jsp" />
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-lg-3 col-md-3" for="loginPageCode"><s:text name="sysconfig.loginPageCode" /></label>
+					<div class="col-md-9 col-lg-9">
+						<s:set name="paramName" value="'loginPageCode'" />
+						<s:include value="/WEB-INF/apsadmin/jsp/admin/selectPageParamBlock.jsp" />
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<s:set name="paramName" value="'urlStyle'" />
+					<label class="control-label col-lg-3 col-md-3"><s:text name="sysconfig.URLstyle" /></label>
+					<div class="btn-group col-md-9 col-lg-9" data-toggle="buttons">
+						
+							<label class="btn btn-default <s:if test="systemParams['urlStyle'] == 'classic'"> active</s:if>" for="urlStyle_classic">
+								<input type="radio" class="radiocheck" id="urlStyle_classic" name="urlStyle" value="classic" <s:if test="systemParams['urlStyle'] == 'classic'">checked="checked"</s:if> />
+								<s:text name="URLstyle.classic" />
+							</label>
+							<label class="btn btn-default <s:if test="systemParams['urlStyle'] == 'breadcrumbs'"> active</s:if>" for="urlStyle_breadcrumbs">
+								<input type="radio" class="radiocheck" id="urlStyle_breadcrumbs" name="urlStyle" value="breadcrumbs" <s:if test="systemParams['urlStyle'] == 'breadcrumbs'">checked="checked"</s:if> />
+								<s:text name="URLstyle.breadcrumbs" />
+							</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-lg-3 col-md-3"><s:text name="sysconfig.lang.browser" /></label>
+					<div class="btn-group col-md-9 col-lg-9" data-toggle="buttons">
+						<s:set name="paramName" value="'startLangFromBrowser'" />
+						<s:include value="/WEB-INF/apsadmin/jsp/admin/booleanParamBlock.jsp" />
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset class="margin-large-top"><legend><s:text name="sysconfig.legend.privacyModule" /></legend>
+				<div class="form-group">
+					<s:set name="paramName" value="'extendedPrivacyModuleEnabled'" />
+					<label class="control-label col-lg-3 col-md-3" for="extendedPrivacyModuleEnabled">
+						<s:text name="label.active" />
+					</label>
+					<div class="col-md-9 col-lg-9">
+						<div class="checkbox">
+							<s:include value="/WEB-INF/apsadmin/jsp/admin/simpleCheckboxParamBlock.jsp" />	
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-lg-3 col-md-3" for="maxMonthsSinceLastAccess"><s:text name="sysconfig.maxMonthsSinceLastAccess" /></label>
+					<div class="col-md-9 col-lg-9">
+						<s:set name="paramName" value="'maxMonthsSinceLastAccess'" />
+						<s:include value="/WEB-INF/apsadmin/jsp/admin/textParamBlock.jsp" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-lg-3 col-md-3"><s:text name="sysconfig.maxMonthsSinceLastPasswordChange" /></label>
+					<div class="col-md-9 col-lg-9">
+						<s:set name="paramName" value="'maxMonthsSinceLastPasswordChange'" />
+						<s:include value="/WEB-INF/apsadmin/jsp/admin/textParamBlock.jsp" />
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset class="margin-large-top"><legend><s:text name="sysconfig.legend.misc" /></legend>
+				<div class="form-group">
+					<label class="control-label col-lg-3 col-md-3"><s:text name="sysconfig.chooseYourEditor" /></label>
+					<div class="btn-group col-md-9 col-lg-9" data-toggle="buttons">
+							<label class="btn btn-default <s:if test="systemParams['hypertextEditor'] == 'none'"> active</s:if>" for="hypertextEditor_none">
+								<input type="radio" id="hypertextEditor_none" name="hypertextEditor" value="none" <s:if test="systemParams['hypertextEditor'] == 'none'">checked="checked"</s:if> />
+								<s:text name="label.none" />
+							</label>
+							<label class="btn btn-default <s:if test="systemParams['hypertextEditor'] == 'fckeditor'"> active</s:if>" for="hypertextEditor_fckeditor">
+								<input type="radio" id="hypertextEditor_fckeditor" name="hypertextEditor" value="fckeditor" <s:if test="systemParams['hypertextEditor'] == 'fckeditor'">checked="checked"</s:if> />
+								<s:text name="name.editor.ckeditor" />
+							</label>
+							<label class="btn btn-default <s:if test="systemParams['hypertextEditor'] == 'hoofed'"> active</s:if>" for="hypertextEditor_hoofed">
+								<input type="radio" id="hypertextEditor_hoofed" name="hypertextEditor" value="hoofed" <s:if test="systemParams['hypertextEditor'] == 'hoofed'">checked="checked"</s:if> />
+								<s:text name="name.editor.hoofed" />
+							</label>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-lg-3 col-md-3"><s:text name="sysconfig.chooseYourPagesTreeStyle" /></label>
+					<div class="btn-group col-md-9 col-lg-9" data-toggle="buttons">
+						<s:set name="paramName" value="'treeStyle_page'" />
+						<s:include value="/WEB-INF/apsadmin/jsp/admin/treeStyleParamBlock.jsp" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-lg-3 col-md-3"><s:text name="sysconfig.chooseYourCategoriesTreeStyle" /></label>
+					<div class="btn-group col-md-9 col-lg-9" data-toggle="buttons">
+						<s:set name="paramName" value="'treeStyle_category'" />
+						<s:include value="/WEB-INF/apsadmin/jsp/admin/treeStyleParamBlock.jsp" />
+					</div>
+				</div>
+
+			</fieldset>
+
+			<wpsa:hookPoint key="core.configSystemParams" objectName="hookPointElements_core_configSystemParams">
+				<s:iterator value="#hookPointElements_core_configSystemParams" var="hookPointElement">
+					<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
+				</s:iterator>
+			</wpsa:hookPoint>
+
+			<div class="btn-toolbar">
+				<div class="btn-group margin-small-vertical">
+					<s:submit type="button" value="" cssClass="btn btn-success"><span class="icon icon-ok"></span>&#32;<s:text name="label.save" /></s:submit>
+				</div>
+			</div>
+			
+		</s:form>
+
+	</div>
+</div>
+
+<%--
 <div id="main">
 
 <s:if test="hasActionMessages()">
@@ -18,7 +184,7 @@
 </s:if>
 
 <s:form action="updateSystemParams">
-<fieldset class="margin-more-top"><legend><s:text name="name.pages" /></legend>
+<fieldset class="margin-large-top"><legend><s:text name="name.pages" /></legend>
 <div>
 
 <p class="important"><s:text name="sysconfig.legend.systemPages" />:</p>
@@ -115,3 +281,4 @@
 </s:form>
 
 </div>
+--%>
