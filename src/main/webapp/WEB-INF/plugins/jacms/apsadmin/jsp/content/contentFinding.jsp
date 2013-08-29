@@ -24,7 +24,7 @@
 					<span class="input-group-addon">
 						<span class="icon icon-file-text-alt icon-large"></span>
 					</span>
-					<s:textfield name="text" id="text" cssClass="form-control input-lg" placeholder="<s:text name="label.search.topic" />" title="%{getText('label.search.by')} %{getText('label.description')}" />
+					<s:textfield name="text" id="text" cssClass="form-control input-lg" placeholder="%{getText('label.search.topic')}" title="%{getText('label.search.by')} %{getText('label.description')}" />
 					<div class="input-group-btn">
 						<wpsa:actionParam action="search" var="searchActionName" >
 							<wpsa:actionSubParam name="actionCode" value="search" />
