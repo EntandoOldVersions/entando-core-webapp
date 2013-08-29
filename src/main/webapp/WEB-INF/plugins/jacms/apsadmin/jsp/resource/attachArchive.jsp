@@ -198,7 +198,7 @@
 						<s:param name="fileName" value="%{fileName}" />
 						<s:param name="ownerGroupName" value="%{ownerGroupName}" />
 						<s:param name="treeNodesToOpen" value="%{treeNodesToOpen}" />
-					</s:url>" title="<s:text name="label.remove" />: <s:property value="#resource.descr" /> "><span class="icon icon-remove text-warning"></span></a>
+					</s:url>" title="<s:text name="label.remove" />: <s:property value="#resource.descr" /> "><span class="icon icon-remove-sign text-warning"></span></a>
 			</div>
 		</div>
 		<div class="row">
