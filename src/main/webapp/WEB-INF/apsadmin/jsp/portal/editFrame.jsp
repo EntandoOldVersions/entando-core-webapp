@@ -24,9 +24,10 @@
 
 <%-- Error message handling --%>
 	<s:if test="hasActionErrors()">
-<div class="message message_error">
-<h2><s:text name="message.title.ActionErrors" /></h2>
-	<ul>
+<div class="alert alert-danger alert-dismissable">
+	<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+	<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
+	<ul class="margin-base-vertical">
 	<s:iterator value="actionErrors">
 		<li><s:property escape="false" /></li>
 	</s:iterator>
