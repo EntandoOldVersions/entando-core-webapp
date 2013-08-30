@@ -50,7 +50,7 @@
 			<span class="input-group-addon">
 				<span class="icon icon-file-text-alt icon-large"></span>
 			</span>
-			<s:textfield name="text" id="text" cssClass="form-control input-lg" placeholder="TODO Description" title="%{getText('label.search.by')} %{getText('label.description')}" />
+			<s:textfield name="text" id="text" cssClass="form-control input-lg" placeholder="%{getText('label.description')}" title="%{getText('label.search.by')} %{getText('label.description')}" />
 			<div class="input-group-btn">
 				<s:submit type="button" cssClass="btn btn-primary btn-lg">
 					<span class="icon icon-search" title="<s:text name="label.search" />"></span>

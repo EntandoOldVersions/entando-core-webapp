@@ -18,12 +18,8 @@
 					<s:text name="label.edit" />
 				</s:else>
 			</a>&#32;/&#32;
-			<a href="<s:url action="list" namespace="/do/jacms/Resource">
-			<s:param name="resourceTypeCode"><s:property value="resourceTypeCode" /></s:param>
-			<s:param name="contentOnSessionMarker"><s:property value="contentOnSessionMarker" /></s:param>
-			</s:url>" title="<s:text name="note.goToSomewhere" />:<s:text name="title.resourceManagement" />"> <s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />
-			</a>
-			&#32;/&#32;
+			<s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />
+			&#32;/&#32;<%--TODO -- Link to archive--%>
 			<s:if test="getStrutsAction() == 1">
 				<s:text name="label.new" />
 			</s:if>
