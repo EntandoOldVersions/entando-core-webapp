@@ -30,8 +30,8 @@
 		<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder-request-submits.jsp" />
 	</s:elseif>
 </ul>
-<div id="actions-container">
-	<div class="buttons">
+<div data-toggle="tree-toolbar">
+	<div data-toggle="tree-toolbar-actions">
 		<s:submit action="joinCategory" type="button" title="%{getText('label.join')}" cssClass="btn btn-info btn-sm margin-small-vertical" data-toggle="tooltip">
 			<span class="icon icon-plus"></span>
 		</s:submit>

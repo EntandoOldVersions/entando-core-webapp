@@ -73,10 +73,10 @@
 	<wpsf:hidden name="copyingPageCode" />
 </p>
 
-<fieldset id="actions-container"><legend><s:text name="title.pageActions" /></legend>
+<fieldset data-toggle="tree-toolbar"><legend><s:text name="title.pageActions" /></legend>
 <p class="sr-only"><s:text name="title.pageActionsIntro" /></p>
 
-<p class="buttons">
+<p data-toggle="tree-toolbar-actions">
 
 	<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/page-edit.png</s:set>
 	<wpsf:submit useTabindexAutoIncrement="true" action="edit" type="image" src="%{#iconImagePath}" value="%{getText('page.options.modify')}" title="%{getText('page.options.modify')}" />

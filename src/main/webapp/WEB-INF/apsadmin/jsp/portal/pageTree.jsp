@@ -50,11 +50,10 @@
 
 <p class="sr-only"><s:hidden name="copyingPageCode" /></p>
 
-<fieldset id="actions-container"><legend><s:text name="title.pageActions" /></legend>
-<p class="sr-only"><s:text name="title.pageActionsIntro" /></p>
+<fieldset data-toggle="tree-toolbar"><legend><s:text name="title.pageActions" /></legend>
+	<p class="sr-only"><s:text name="title.pageActionsIntro" /></p>
 
-<div id="actions-container">
-	<div class="buttons btn-toolbar">
+	<div class="btn-toolbar" data-toggle="tree-toolbar-actions">
 		<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
 			<s:submit action="configure" type="button" title="%{getText('page.options.configure')}" cssClass="btn btn-info" data-toggle="tooltip">
 				<span class="icon icon-cog"></span>
@@ -91,7 +90,6 @@
 			</s:submit>
 		</div>
 	</div>
-</div>
 </fieldset>
 </s:form>
 

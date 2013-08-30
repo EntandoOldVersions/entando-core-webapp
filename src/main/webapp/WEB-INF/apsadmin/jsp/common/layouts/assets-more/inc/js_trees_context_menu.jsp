@@ -15,10 +15,13 @@ jQuery.each($('form.action-form'), function(index, currentForm){
 			$(this).css('left', '-9999px');
 		});
 
-	//the action container
-	var myActionMenu = $('#actions-container .buttons', currentForm);
+	//the fieldset
+	var fieldset = $('[data-toggle="tree-toolbar"]', currentForm).first();
 
-	$('#actions-container', currentForm).remove();
+	//the actions
+	var myActionMenu = $('[data-toggle="tree-toolbar-actions"]', fieldset).first();
+
+	fieldset.remove();
 	myActionMenu.removeClass('margin-small-vertical');
 
 	//the labels

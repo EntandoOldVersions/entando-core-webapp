@@ -51,10 +51,10 @@
 
 </fieldset>
 
-<fieldset id="actions-container"><legend><s:text name="title.categoryActions" /></legend>
+<fieldset data-toggle="tree-toolbar"><legend><s:text name="title.categoryActions" /></legend>
 <p class="sr-only"><s:text name="title.categoryActionsIntro" /></p>
 
-<p class="buttons">
+<p data-toggle="tree-toolbar-actions">
 	<s:set var="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/page-new.png</s:set>
 	<wpsf:submit useTabindexAutoIncrement="true" action="new" type="image" src="%{#iconImagePath}" value="%{getText('category.options.new')}" title="%{getText('category.options.new')}" />
 	<s:set var="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/page-edit.png</s:set>
