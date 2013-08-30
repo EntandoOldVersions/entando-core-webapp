@@ -234,11 +234,11 @@
 
     <definition extends="main.layout" name="admin.Page.Showlet.configSimpleParameter">
         <put-attribute name="title" value="title.pageManagement" />
-        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/specialshowlet/configSimpleParameter.jsp" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/specialwidget/configSimpleParameter.jsp" />
     </definition>
     <definition extends="main.layout" name="admin.Page.Showlet.Navigator.config">
         <put-attribute name="title" value="title.pageManagement" />
-        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/specialshowlet/navigatorConfig.jsp" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/specialwidget/navigatorConfig.jsp" />
     </definition>
 
     <!-- FINE Area Gestione Configurazione Showlet Speciali -->

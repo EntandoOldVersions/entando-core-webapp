@@ -157,24 +157,24 @@
 
 	<definition extends="main.layout" name="admin.jacms.page.showlet.contentViewer.config">
 		<put-attribute name="title" value="title.pageManagement" />
-		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/specialshowlet/contentViewer/configContentViewer.jsp" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/specialwidget/contentViewer/configContentViewer.jsp" />
 	</definition>
 	<definition extends="main.layout" name="admin.jacms.page.showlet.contentListViewer.config">
 		<put-attribute name="title" value="title.pageManagement" />
-		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/specialshowlet/contentListViewer/configContentListViewer.jsp" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/specialwidget/contentListViewer/configContentListViewer.jsp" />
 	</definition>
 	<definition extends="main.layout" name="admin.jacms.page.showlet.contentListViewer.config.userfilter.category">
 		<put-attribute name="title" value="title.pageManagement" />
-		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/specialshowlet/contentListViewer/userFilter/entryCategory.jsp" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/specialwidget/contentListViewer/userFilter/entryCategory.jsp" />
 	</definition>
 	<definition extends="main.layout" name="admin.jacms.page.showlet.contentViewer.searchContents">
 		<put-attribute name="title" value="title.pageManagement" />
-		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/specialshowlet/contentViewer/contentFinding.jsp" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/specialwidget/contentViewer/contentFinding.jsp" />
 	</definition>
 	<definition extends="main.layout" name="admin.jacms.page.showlet.contentListViewer.entryFilter">
 		<put-attribute name="title" value="title.pageManagement" />
 		<put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/template/extraresources/entryFilter.jsp" />
-		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/specialshowlet/contentListViewer/entryFilter.jsp" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/specialwidget/contentListViewer/entryFilter.jsp" />
 	</definition>
 
 	<!-- FINE Area Gestione Configurazione Showlet Speciali -->
