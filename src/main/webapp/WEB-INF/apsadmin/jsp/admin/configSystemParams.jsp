@@ -36,7 +36,7 @@
 				
 				<s:set name="className" value="'form-control'" />
 				<div class="form-group">
-					<label class="control-label col-lg-3 col-md-3" for="homePageCode"><s:text name="sysconfig.homePageCode" /></label>
+					<label class="control-label col-md-3 col-lg-3" for="homePageCode"><s:text name="sysconfig.homePageCode" /></label>
 					<div class="col-md-9 col-lg-9">
 						<s:set name="paramName" value="'homePageCode'" />
 						<s:include value="/WEB-INF/apsadmin/jsp/admin/selectPageParamBlock.jsp" />
@@ -44,7 +44,7 @@
 				</div>
 				
 				<div class="form-group">
-					<label class="control-label col-lg-3 col-md-3" for="notFoundPageCode"><s:text name="sysconfig.notFoundPageCode" /></label>
+					<label class="control-label col-md-3 col-lg-3" for="notFoundPageCode"><s:text name="sysconfig.notFoundPageCode" /></label>
 					<div class="col-md-9 col-lg-9">
 						<s:set name="paramName" value="'notFoundPageCode'" />
 						<s:include value="/WEB-INF/apsadmin/jsp/admin/selectPageParamBlock.jsp" />
@@ -52,7 +52,7 @@
 				</div>
 			
 				<div class="form-group">
-					<label class="control-label col-lg-3 col-md-3" for="errorPageCode"><s:text name="sysconfig.errorPageCode" /></label>
+					<label class="control-label col-md-3 col-lg-3" for="errorPageCode"><s:text name="sysconfig.errorPageCode" /></label>
 					<div class="col-md-9 col-lg-9">
 						<s:set name="paramName" value="'errorPageCode'" />
 						<s:include value="/WEB-INF/apsadmin/jsp/admin/selectPageParamBlock.jsp" />
@@ -60,7 +60,7 @@
 				</div>
 				
 				<div class="form-group">
-					<label class="control-label col-lg-3 col-md-3" for="loginPageCode"><s:text name="sysconfig.loginPageCode" /></label>
+					<label class="control-label col-md-3 col-lg-3" for="loginPageCode"><s:text name="sysconfig.loginPageCode" /></label>
 					<div class="col-md-9 col-lg-9">
 						<s:set name="paramName" value="'loginPageCode'" />
 						<s:include value="/WEB-INF/apsadmin/jsp/admin/selectPageParamBlock.jsp" />
@@ -69,7 +69,7 @@
 				
 				<div class="form-group">
 					<s:set name="paramName" value="'urlStyle'" />
-					<label class="control-label col-lg-3 col-md-3"><s:text name="sysconfig.URLstyle" /></label>
+					<label class="control-label col-md-3 col-lg-3"><s:text name="sysconfig.URLstyle" /></label>
 					<div class="btn-group col-md-9 col-lg-9" data-toggle="buttons">
 						
 							<label class="btn btn-default <s:if test="systemParams['urlStyle'] == 'classic'"> active</s:if>" for="urlStyle_classic">
@@ -83,7 +83,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-lg-3 col-md-3"><s:text name="sysconfig.lang.browser" /></label>
+					<label class="control-label col-md-3 col-lg-3"><s:text name="sysconfig.lang.browser" /></label>
 					<div class="btn-group col-md-9 col-lg-9" data-toggle="buttons">
 						<s:set name="paramName" value="'startLangFromBrowser'" />
 						<s:include value="/WEB-INF/apsadmin/jsp/admin/booleanParamBlock.jsp" />
@@ -94,24 +94,30 @@
 			<fieldset class="margin-large-top"><legend><s:text name="sysconfig.legend.privacyModule" /></legend>
 				<div class="form-group">
 					<s:set name="paramName" value="'extendedPrivacyModuleEnabled'" />
-					<label class="control-label col-lg-3 col-md-3" for="extendedPrivacyModuleEnabled">
-						<s:text name="label.active" />
-					</label>
-					<div class="col-md-9 col-lg-9">
-						<div class="checkbox">
-							<s:include value="/WEB-INF/apsadmin/jsp/admin/simpleCheckboxParamBlock.jsp" />	
+						<div class="col-lg-offset-3 col-lg-9">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" class="radiocheck" 
+										id="extendedPrivacyModuleEnabled" 
+										name="extendedPrivacyModuleEnabled" 
+										value="true" 
+										<s:if test="systemParams['extendedPrivacyModuleEnabled']"> checked="checked" </s:if> 
+										/>
+									&#32;<strong><s:text name="label.active" /></strong>
+								</label>
+							</div>
 						</div>
-					</div>
 				</div>
+
 				<div class="form-group">
-					<label class="control-label col-lg-3 col-md-3" for="maxMonthsSinceLastAccess"><s:text name="sysconfig.maxMonthsSinceLastAccess" /></label>
+					<label class="control-label col-md-3 col-lg-3" for="maxMonthsSinceLastAccess"><s:text name="sysconfig.maxMonthsSinceLastAccess" /></label>
 					<div class="col-md-9 col-lg-9">
 						<s:set name="paramName" value="'maxMonthsSinceLastAccess'" />
 						<s:include value="/WEB-INF/apsadmin/jsp/admin/textParamBlock.jsp" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-lg-3 col-md-3"><s:text name="sysconfig.maxMonthsSinceLastPasswordChange" /></label>
+					<label class="control-label col-md-3 col-lg-3"><s:text name="sysconfig.maxMonthsSinceLastPasswordChange" /></label>
 					<div class="col-md-9 col-lg-9">
 						<s:set name="paramName" value="'maxMonthsSinceLastPasswordChange'" />
 						<s:include value="/WEB-INF/apsadmin/jsp/admin/textParamBlock.jsp" />
@@ -121,7 +127,7 @@
 
 			<fieldset class="margin-large-top"><legend><s:text name="sysconfig.legend.misc" /></legend>
 				<div class="form-group">
-					<label class="control-label col-lg-3 col-md-3"><s:text name="sysconfig.chooseYourEditor" /></label>
+					<label class="control-label col-md-3 col-lg-3"><s:text name="sysconfig.chooseYourEditor" /></label>
 					<div class="btn-group col-md-9 col-lg-9" data-toggle="buttons">
 							<label class="btn btn-default <s:if test="systemParams['hypertextEditor'] == 'none'"> active</s:if>" for="hypertextEditor_none">
 								<input type="radio" id="hypertextEditor_none" name="hypertextEditor" value="none" <s:if test="systemParams['hypertextEditor'] == 'none'">checked="checked"</s:if> />
@@ -139,7 +145,7 @@
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-lg-3 col-md-3"><s:text name="sysconfig.chooseYourPagesTreeStyle" /></label>
+					<label class="control-label col-md-3 col-lg-3"><s:text name="sysconfig.chooseYourPagesTreeStyle" /></label>
 					<div class="btn-group col-md-9 col-lg-9" data-toggle="buttons">
 						<s:set name="paramName" value="'treeStyle_page'" />
 						<s:include value="/WEB-INF/apsadmin/jsp/admin/treeStyleParamBlock.jsp" />
@@ -147,7 +153,7 @@
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-lg-3 col-md-3"><s:text name="sysconfig.chooseYourCategoriesTreeStyle" /></label>
+					<label class="control-label col-md-3 col-lg-3"><s:text name="sysconfig.chooseYourCategoriesTreeStyle" /></label>
 					<div class="btn-group col-md-9 col-lg-9" data-toggle="buttons">
 						<s:set name="paramName" value="'treeStyle_category'" />
 						<s:include value="/WEB-INF/apsadmin/jsp/admin/treeStyleParamBlock.jsp" />
