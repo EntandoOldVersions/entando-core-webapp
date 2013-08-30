@@ -9,8 +9,9 @@
 <div class="row">
 	
 	<div class="hidden-xs hidden-sm col-md-3 col-lg-3 ">
-			<s:set var="settingsNavMenuActiveItem" value="%{'configSystemParams'}" />
-			<s:include value="/WEB-INF/apsadmin/jsp/admin/inc/settings-nav-menu.jsp" />
+			<s:include value="/WEB-INF/apsadmin/jsp/admin/inc/settings-nav-menu.jsp">
+				<s:param name="activeItem" value="%{'configSystemParams'}" />
+			</s:include>
 	</div>
 
 	<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">

@@ -3,8 +3,9 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
+<s:set var="activeItem"><c:out value="${param.activeItem}" /></s:set>
 <ul class="nav nav-pills nav-stacked">
-	<li <s:if test="%{#settingsNavMenuActiveItem=='configSystemParams'}">class="active"</s:if> >
+	<li <s:if test="%{#activeItem=='configSystemParams'}">class="active"</s:if> >
 		<a href="<s:url namespace="/do/BaseAdmin" action="configSystemParams" />" title="<s:text name="menu.settings.general.keywords" />">
 			<span class="icon icon-cogs"></span>&#32;
 			<s:text name="menu.settings.general" />
