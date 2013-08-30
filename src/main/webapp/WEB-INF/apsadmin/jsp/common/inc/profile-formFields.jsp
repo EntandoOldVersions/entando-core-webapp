@@ -4,15 +4,7 @@
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 
 <s:set name="lang" value="defaultLang" />
-<%--
-<div class="contentAttributeBox contentAttribute-Checkbox">
-	<p>
-		<s:set name="checkedValue" value="%{userProfile.publicProfile != null && userProfile.publicProfile == true}" />
-		<wpsf:checkbox id="userprofile_isPublic" name="publicProfile" value="#checkedValue" cssClass="radiocheck" />
-		<label for="userprofile_isPublic"><s:text name="userprofile.title.myPublicPorfile" /></label> 
-	</p>
-</div>
---%>
+
 <%-- START CICLO ATTRIBUTI --%> 
 <s:iterator value="userProfile.attributeList" var="attribute">
 	<div class="contentAttributeBox contentAttribute-<s:property value="#attribute.type" />" id="<s:property value="%{'contentedit_'+#lang.code+'_'+#attribute.name}" />">
