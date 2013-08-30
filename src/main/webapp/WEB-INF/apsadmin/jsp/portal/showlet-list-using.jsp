@@ -45,7 +45,7 @@
 	<div class="panel-heading">
 		<h2 class="panel-title row" title="<s:property value="%{#singlePage.getFullTitle(currentLang.code)}" />">
 		<s:if test="%{isUserAllowed(#singlePage)}">
-			<div class="col-xs-5 col-sm-3 col-lg-2">
+			<div class="col-sm-3 col-lg-3">
 				<div class="btn-group pull-right">
 					<a href="
 							<s:url namespace="/do/Page" action="viewTree">
@@ -61,10 +61,10 @@
 					</a>
 				</div>
 			</div>
-			<div class="col-xs-7 col-sm-9 col-lg-10 padding-small-top padding-small-bottom">
+			<div class="col-sm-9 col-lg-9 padding-small-top padding-small-bottom">
 		</s:if>
 		<s:else>
-			<div class="col-xs-7 col-sm-9 col-lg-10 col-sm-offset-3 col-lg-offset-2 padding-small-top padding-small-bottom">
+			<div class="col-sm-9 col-lg-9 col-sm-offset-3 col-lg-offset-3 padding-small-top padding-small-bottom">
 		</s:else>
 				<s:property value="%{#singlePage.getShortFullTitle(currentLang.code)}" />
 			</div>
@@ -75,7 +75,7 @@
 		<s:if test="#showlet != null && #showlet.type != null && #showlet.type.code.equals(showletTypeCode)">
 		<li class="list-group-item">
 			<div class="row">
-				<div class="col-xs-5 col-sm-3 col-lg-2">
+				<div class="col-sm-3 col-lg-3">
 					<div class="btn-group pull-right">
 						<div class="btn-group">
 							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Valar Morghulis">
@@ -132,11 +132,22 @@
 					</div>
 				</div>
 
-				<div class="col-xs-7 col-sm-9 col-lg-10 padding-small-top padding-small-bottom">
-					clear button still missing
+				<div class="col-sm-8 col-lg-8 padding-small-top padding-small-bottom">
 					<span class="label label-default"><s:property value="#rowstatus.index"/></span>&#32;
 					<s:property value="#singlePage.model.getFrames()[#rowstatus.index]"/>
 				</div>
+
+				<div class="col-sm-1">
+					<a href="
+							<s:url action="trashShowletFromPage" namespace="/do/Portal/ShowletType">
+								<s:param name="pageCode"><s:property value="#singlePage.code"/></s:param>
+								<s:param name="frame"><s:property value="#rowstatus.index"/></s:param>
+								<s:param name="showletTypeCode"><s:property value="#showletTypeVar.code"/></s:param>
+							</s:url>" title="<s:text name="label.clear" />: <s:property value="#rowstatus.index"/> &middot; <s:property value="#singlePage.model.getFrames()[#rowstatus.index]"/>" class="btn btn-warning pull-right">
+						<span class="icon icon-eraser"></span>
+					</a>
+				</div>
+
 			</div>
 		</li>
 		</s:if>
