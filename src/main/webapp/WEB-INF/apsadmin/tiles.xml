@@ -66,18 +66,15 @@
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/user/configUserAuthorities.jsp" />
     </definition>
 	
-	
-	<definition extends="main.layout" name="admin.UserProfile.view">
+	<definition extends="layout.settings" name="admin.UserProfile.view">
         <put-attribute name="title" value="title.userProfileManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/user/profile-view.jsp" />
     </definition>
-    
-    <definition extends="main.layout" name="admin.UserProfile.chooseType">
+    <definition extends="layout.settings" name="admin.UserProfile.chooseType">
         <put-attribute name="title" value="title.userProfileManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/user/profile-chooseType.jsp" />
     </definition>
-    
-    <definition extends="main.layout" name="admin.UserProfile.entry">
+    <definition extends="layout.settings" name="admin.UserProfile.entry">
         <put-attribute name="title" value="title.userProfileManagement" />
         <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/template/extraresources/profile-entry.jsp" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/user/profile-entry.jsp" />
