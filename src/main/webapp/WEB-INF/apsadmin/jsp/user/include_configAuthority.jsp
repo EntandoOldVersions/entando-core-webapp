@@ -29,7 +29,7 @@
 
 <s:form>
 <p class="sr-only">
-	<wpsf:hidden name="text" />
+	<wpsf:hidden name="username" />
 	<wpsf:hidden name="authName" />
 </p>
 
@@ -68,7 +68,7 @@
 
 <s:form action="search">
 <p class="sr-only">
-	<wpsf:hidden name="text" />
+	<wpsf:hidden name="username" />
 	<wpsf:hidden name="authName" />
 </p>
 <div class="subsection-light">
