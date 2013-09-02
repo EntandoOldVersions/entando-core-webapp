@@ -27,7 +27,7 @@
 				</a>
 			</li>
 
-			<li>
+			<li <s:if test="%{#activeItem=='languages'}">class="active"</s:if>>
 				<a href="<s:url action="list" namespace="/do/Lang" />" classs="btn btn-default btn-block text-left">
 					<span class="icon icon-globe"></span>&#32;
 					<s:text name="menu.languageAdmin.languages" />
