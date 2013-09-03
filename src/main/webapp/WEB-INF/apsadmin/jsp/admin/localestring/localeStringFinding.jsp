@@ -4,7 +4,9 @@
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <h1 class="panel panel-default title-page">
 	<span class="panel-body display-block">
-		<a href="<s:url namespace="/do/BaseAdmin" action="settings" />"><s:text name="menu.configure" /></a> / <s:text name="title.languageAdmin" />
+		<a href="<s:url namespace="/do/BaseAdmin" action="settings" />"><s:text name="menu.configure" /></a> 
+		/ 
+		<s:text name="title.languageAdmin.labels" />
 	</span>
 </h1>
 <div class="row">
@@ -26,6 +28,11 @@
 					</ul>
 				</div>
 			</s:if>
+			<div class="form-group">
+				<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<a href="<s:url namespace="/do/LocaleString" action="new" />" class="btn btn-default"><s:text name="title.languageAdmin.labels" /></a>					
+				</div>
+			</div>
 			<div class="form-group">
 				<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<span class="input-group-addon">
@@ -63,6 +70,7 @@
 						</div>
 					</div>
 			</div>
+			<hr />
 			<s:set name="currentLocaleStrings" value="localeStrings"/>
 			<wpsa:subset source="currentLocaleStrings" count="10" objectName="groupContent" advanced="true" offset="5">
 				<s:set name="group" value="#groupContent" />

@@ -4,8 +4,8 @@
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <h1 class="panel panel-default title-page">
 	<span class="panel-body display-block">
-		<a href="<s:url namespace="/do/BaseAdmin" action="settings" />"><s:text name="menu.configure" /></a> / 
-		<a href="<s:url namespace="/do/LocaleString" action="list" />"><s:text name="title.languageAdmin" /></a> / 
+		<a href="<s:url namespace="/do/BaseAdmin" action="settings" />"><s:text name="menu.configure" /></a>&#32;/&#32;
+		<a href="<s:url namespace="/do/LocaleString" action="list" />"><s:text name="title.languageAdmin.labels" /></a>&#32;/&#32;
 		<s:if test="getStrutsAction() == 1"><s:text name="title.generalSettings.locale.new" /></s:if> 
 		<s:elseif test="getStrutsAction() == 2"><s:text name="title.generalSettings.locale.edit" /> </s:elseif>
 	</span>
@@ -25,36 +25,50 @@
 					<h2 class="h4 margin-none">
 						<s:text name="message.title.FieldErrors" />
 					</h2>
-					<ul class="margin-base-top">
-					<s:iterator value="fieldErrors">
-						<s:iterator value="value">
-						<li><s:property escape="false" /></li>
+					<%--
+						<ul class="margin-base-top">
+						<s:iterator value="fieldErrors">
+							<s:iterator value="value">
+							<li><s:property escape="false" /></li>
+							</s:iterator>
 						</s:iterator>
-					</s:iterator>
-					</ul>
+						</ul>
+					--%>
 				</div>
 			</s:if>
-
 			<p class="sr-only">
 				<s:hidden value="%{getStrutsAction()}" name="strutsAction"/>
 				<s:if test="getStrutsAction() == 2">
 					<s:hidden value="%{key}" name="key" />
 				</s:if>
 			</p>
-			<div class="form-group">
+			<s:set var="keyFieldErrorsVar" value="%{fieldErrors['key']}" />
+			<s:set var="keyHasFieldErrorVar" value="#keyFieldErrorsVar != null && !#keyFieldErrorsVar.isEmpty()" />
+		  <s:set var="controlGroupErrorClassVar" value="%{#keyHasFieldErrorVar ? ' has-error' : ''}" />
+			<div class="form-group<s:property value="#controlGroupErrorClassVar" />">
 				<label class="control-label col-lg-3 col-md-3" for="editLabel_key"><s:text name="label.code" /></label>
 				<div class="col-md-9 col-lg-9">
 					<s:textfield value="%{key}" name="key" id="editLabel_key" disabled="%{getStrutsAction() == 2}" cssClass="form-control" />
+					<s:if test="#keyHasFieldErrorVar">
+						<p class="text-danger padding-small-vertical"><s:iterator value="#keyFieldErrorsVar"><s:property />&#32;</s:iterator></p>
+					</s:if>
 				</div>
 			</div>
 			<s:iterator value="langs" var="l">
 				<s:if test="#l.default">
-					<div class="form-group">
-						<label class="control-label col-lg-3 col-md-3" for="lang<s:property value="code"/>">
-							(<s:property value="code" />)</span>&#32;<s:text name="label.description" />
+					<s:set var="currentFieldErrorsVar" value="%{fieldErrors[#l.code]}" />
+					<s:set var="currentHasFieldErrorVar" value="#currentFieldErrorsVar != null && !#currentFieldErrorsVar.isEmpty()" />
+					<s:set var="controlGroupErrorClassVar" value="%{#currentHasFieldErrorVar ? ' has-error' : ''}" />
+					<div class="form-group<s:property value="#controlGroupErrorClassVar" />">
+						<label class="control-label col-lg-3 col-md-3" for="lang<s:property value="#l.code"/>">
+							<%-- (<s:property value="#l.code" />)&#32;<s:text name="label.description" /> --%>
+							<span lang="<s:property value="#l.code" />"><s:property value="#l.descr" /></span>
 						</label>
 						<div class="col-md-9 col-lg-9">
 							<s:textarea cols="50" rows="3" name="%{code}" id="%{'lang'+code}" value="%{labels[#l.code]}" cssClass="form-control" />
+							<s:if test="#currentHasFieldErrorVar">
+								<p class="text-danger padding-small-vertical"><s:iterator value="#currentFieldErrorsVar"><s:property />&#32;</s:iterator></p>
+							</s:if>
 						</div>
 					</div>
 				</s:if>
@@ -64,12 +78,19 @@
 					<legend><s:text name="label.localeString.languages.optional" /></legend>
 						<s:iterator value="langs" var="l">
 							<s:if test="! #l.default">
-								<div class="form-group">
-									<label class="control-label col-lg-3 col-md-3" for="lang<s:property value="code"/>">
-										(<s:property value="code" />)</span>&#32;<s:text name="label.description" />
+								<s:set var="currentFieldErrorsVar" value="%{fieldErrors[#l.code]}" />
+								<s:set var="currentHasFieldErrorVar" value="#currentFieldErrorsVar != null && !#currentFieldErrorsVar.isEmpty()" />
+								<s:set var="controlGroupErrorClassVar" value="%{#currentHasFieldErrorVar ? ' has-error' : ''}" />
+								<div class="form-group<s:property value="#controlGroupErrorClassVar" />">
+									<label class="control-label col-lg-3 col-md-3" for="lang<s:property value="#l.code"/>">
+										<%-- (<s:property value="#l.code" />)</span>&#32;<s:text name="label.description" />--%>
+										<span lang="<s:property value="#l.code" />"><s:property value="#l.descr" /></span>
 									</label>
 									<div class="col-md-9 col-lg-9">
 										<s:textarea cols="50" rows="3" name="%{code}" id="%{'lang'+code}" value="%{labels[#l.code]}" cssClass="form-control" />
+										<s:if test="#currentHasFieldErrorVar">
+											<p class="text-danger padding-small-vertical"><s:iterator value="#currentFieldErrorsVar"><s:property />&#32;</s:iterator></p>
+										</s:if>
 									</div>
 								</div>
 							</s:if>
