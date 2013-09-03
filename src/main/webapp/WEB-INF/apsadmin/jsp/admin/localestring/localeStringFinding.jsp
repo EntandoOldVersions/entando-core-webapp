@@ -84,7 +84,14 @@
 									<dd><s:property value="#key" /></dd>
 									<s:iterator value="systemLangs" var="lang">
 										<dt><abbr title="<s:property value="#lang.descr" />"><s:property value="#lang.descr" /></abbr></dt>
-											<dd><s:property value="#currentLabel[#lang.code]" /></dd>
+											<dd>
+												<s:if test="%{#currentLabel[#lang.code]==null || #currentLabel[#lang.code].length()==0}">
+													<abbr title="empty">&ndash;</abbr>
+												</s:if>
+												<s:else>
+													<s:property value="#currentLabel[#lang.code]" />
+												</s:else>
+											</dd>
 									</s:iterator>
 								<dt class="sr-only"><s:text name="label.actions" /></dt>
 									<dd class="margin-small-top">

@@ -26,9 +26,16 @@
 
 .dl-striped > dd {
 	font-weight: bold;
+	max-width: 100%;
+	text-overflow: ellipsis;
+	overflow-x: hidden;
+	min-width: 10px;
 }
+
 .dl-striped > dt {
 	font-weight: normal;
+	text-overflow: ellipsis;
+	overflow-x: hidden;
 }
 
 @media (max-width: 768px) {
