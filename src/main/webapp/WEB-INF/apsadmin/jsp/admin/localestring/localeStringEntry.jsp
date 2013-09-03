@@ -18,7 +18,6 @@
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
 		<s:form action="save" namespace="/do/LocaleString" cssClass="form-horizontal">
-			
 			<s:if test="hasFieldErrors()">
 				<div class="alert alert-warning">
 					<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>

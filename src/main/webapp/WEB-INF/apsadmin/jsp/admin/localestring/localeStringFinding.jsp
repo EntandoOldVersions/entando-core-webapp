@@ -30,11 +30,6 @@
 			</s:if>
 			<div class="form-group">
 				<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
-					<a href="<s:url namespace="/do/LocaleString" action="new" />" class="btn btn-default"><s:text name="title.languageAdmin.labels" /></a>					
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<span class="input-group-addon">
 							<span class="icon icon-file-text-alt icon-large"></span>
 						</span>
@@ -70,7 +65,16 @@
 						</div>
 					</div>
 			</div>
-			<hr />
+			</s:form>
+			<a href="<s:url namespace="/do/LocaleString" action="new" />" class="btn btn-default">
+				<span class="icon icon-plus-sign"></span>
+				<s:text name="title.generalSettings.locale.new" />
+			</a>
+			<s:form action="search" cssClass="form-horizontal margin-large-top">
+			<p class="sr-only">
+				<s:hidden name="text" />
+				<s:hidden name="searchOption" />
+			</p>
 			<s:set name="currentLocaleStrings" value="localeStrings"/>
 			<wpsa:subset source="currentLocaleStrings" count="10" objectName="groupContent" advanced="true" offset="5">
 				<s:set name="group" value="#groupContent" />
