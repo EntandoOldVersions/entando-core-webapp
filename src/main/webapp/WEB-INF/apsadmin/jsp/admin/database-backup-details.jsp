@@ -59,16 +59,18 @@
 		</div>
 	</s:if>
 	<s:else>
-		<p class="lead">
-				<s:text name="database.management.label.date" />:
-				<code><s:date name="#dumpReportVar.date" format="EEEE dd/MMM/yyyy, HH:mm:ss" /></code>
-		</p>
-		<p class="lead">
-			<s:text name="database.management.label.time.required" />:
-			<code><s:property value="#dumpReportVar.requiredTime" /></code>&#32;
-			<s:text name="database.management.label.milliseconds" />
-		</p>
-		
+		<div class="well panel">
+			<dl class="margin-none dl-horizontal">
+				<dt><s:text name="database.management.label.date" /></dt>
+					<dd><code><s:date name="#dumpReportVar.date" format="EEEE dd/MMM/yyyy, HH:mm:ss" /></code></dd>
+				<dt><s:text name="database.management.label.time.required" /></dt>
+					<dd>
+						<code><s:property value="#dumpReportVar.requiredTime" />&#32;<s:text name="database.management.label.milliseconds" />
+						</code>
+					</dd>
+			</dl>
+		</div>
+
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-condensed table-striped">
 				<caption><s:text name="database.management.label.components.backup" /></caption>
