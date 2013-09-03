@@ -78,7 +78,7 @@
 				<div class="col-sm-3 col-lg-3">
 					<div class="btn-group pull-right">
 						<div class="btn-group">
-							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Valar Morghulis">
+							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="<s:text name="label.new" />..."">
 								<span class="icon-plus-sign"></span>
 								<span class="caret"></span>
 							</button>
