@@ -37,7 +37,7 @@
 
 <div id="editFrame" class="panel panel-default">
 	<div class="panel-heading">
-		<h2 class="h4 margin-small-top"><span class="label label-default"><s:property value="frame" /></span>&#32;<s:property value="currentPage.getModel().getFrames()[frame]"/></h2>
+		<s:include value="/WEB-INF/apsadmin/jsp/portal/include/frameInfo.jsp" />
 	</div>
 
 	<div class="panel-body">

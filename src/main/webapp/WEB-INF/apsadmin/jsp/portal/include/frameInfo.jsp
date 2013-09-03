@@ -1,8 +1,2 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<dl class="dl-horizontal">
-	<dt><s:text name="name.position" /></dt>
-	<dd><s:property value="frame"/></dd>
-
-	<dt><s:text name="label.description" /></dt>
-	<dd><s:property value="currentPage.getModel().getFrames()[frame]"/></dd>
-</dl>
+<h2 class="h4 margin-small-top"><span class="label label-default"><s:property value="frame" /></span>&#32;<s:property value="currentPage.getModel().getFrames()[frame]"/></h2>
