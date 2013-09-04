@@ -155,7 +155,7 @@
 
 				<div class="row">
 					<p class="padding-base-top col-sm-8 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
-							<s:submit cssClass="btn btn-success btn-lg btn-block" name="backend_client_gui" value="advanced" />
+							<s:submit cssClass="btn btn-success btn-lg btn-block" />
 					</p>
 				</div>
 
