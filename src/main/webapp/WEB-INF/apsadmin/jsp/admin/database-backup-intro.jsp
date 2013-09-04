@@ -45,7 +45,7 @@
 				type="button"
 				action="executeBackup"
 				value="%{getText('database.management.label.backup.execute')}"
-				cssClass="btn">
+				cssClass="btn btn-default">
 					<span class="icon icon-ok"></span>
 					<s:text name="database.management.label.backup.execute" />
 			</s:submit>
