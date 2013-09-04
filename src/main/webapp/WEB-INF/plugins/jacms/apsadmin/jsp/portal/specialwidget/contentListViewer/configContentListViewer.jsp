@@ -62,7 +62,7 @@
 		<fieldset class="col-xs-12 margin-large-top">
 
 		<div class="form-group">
-			<label for="contentType" class="control-label"><s:text name="label.type"/></label>
+			<label for="contentType"><s:text name="label.type"/></label>
 			<div class="input-group">
 				<s:select name="contentType" id="contentType" list="contentTypes" listKey="code" listValue="descr" cssClass="form-control" />
 				<span class="input-group-btn">
@@ -77,10 +77,10 @@
 		</s:if>
 		<s:else>
 
-		<fieldset class="margin-large-top"><legend><s:text name="title.contentInfo" /></legend>
+		<fieldset class="margin-medium-top"><legend><s:text name="title.contentInfo" /></legend>
 			<div class="form-group">
 				<div class="col-xs-12">
-					<label for="contentType" class="control-label"><s:text name="label.type"/></label>
+					<label for="contentType"><s:text name="label.type"/></label>
 					<div class="input-group">
 						<s:select name="contentType" id="contentType" list="contentTypes" listKey="code" listValue="descr" disabled="true" value="%{getShowlet().getConfig().get('contentType')}" cssClass="form-control" />
 						<span class="input-group-btn">
@@ -99,310 +99,340 @@
 
 		</fieldset>
 
-		<fieldset class="margin-large-top"><legend><s:text name="title.filterOptions" /></legend>
-
-		<div class="form-group">
-			<div class="col-xs-12">
-				<label for="category" class="control-label"><s:text name="label.categories" /></label>
-				<div class="input-group">
-					<s:select name="categoryCode" id="category" list="categories" listKey="code" listValue="getShortFullTitle(currentLang.code)" headerKey="" headerValue="%{getText('label.all')}" cssClass="form-control" />
-					<span class="input-group-btn">
-						<s:submit type="button" action="addCategory" cssClass="btn btn-info">
-							<span class="icon icon-filter">&#32;
-							<s:text name="label.filter" />
-						</s:submit>
-					</span>
-				</div>
-			</div>
-		</div>
-
-		<s:if test="null != categoryCodes && categoryCodes.size() > 0">
-			<h3 class="sr-only"><s:text name="title.resourceCategories.list"/></h3>
-			<s:iterator value="categoryCodes" var="categoryCodeVar">
-			<s:set name="showletCategory" value="%{getCategory(#categoryCodeVar)}"></s:set>
-
-			<span class="label label-default label-sm pull-left padding-small-top padding-small-bottom margin-small-right margin-small-bottom">
-			  <span class="icon icon-tag"></span>&#32;
-			  <abbr title="<s:property value="#showletCategory.getFullTitle(currentLang.code)"/>">
-			    <s:property value="#showletCategory.getShortFullTitle(currentLang.code)" />
-			  </abbr>&#32;
-			  <wpsa:actionParam action="removeCategory" var="actionName" >
-			  	<wpsa:actionSubParam name="categoryCode" value="%{#categoryCodeVar}" />
-			  </wpsa:actionParam>
-			  <s:submit
-			    type="button"
-			    action="%{#actionName}"
-			    title="%{getText('label.remove') + ' ' + #showletCategory.getFullTitle(currentLang.code)}"
-			    cssClass="btn btn-default btn-xs badge">
-			     <span class="icon icon-remove"></span>
-			      <span class="sr-only">x</span>
-			  </s:submit>
-			</span>
-
-			</s:iterator>
-
-			<div class="clearfix"></div>
-
-			<s:if test="categoryCodes.size() > 1">
-				<div class="btn-group" data-toggle="buttons">
-					<label for="orClauseCategoryFilter" class="btn btn-default">
-						<wpsf:checkbox name="orClauseCategoryFilter"
-							value="%{getShowlet().getConfig().get('orClauseCategoryFilter')}" id="orClauseCategoryFilter" />
-						<s:text name="label.orClauseCategoryFilter" />
-					</label>
-				</div>
-			</s:if>
-		</s:if>
-		<%--
-		<s:else>
-			<p><s:text name="note.categories.none" /></p>
-		</s:else>
-		--%>
-
-
-		<p>
-			<label for="filterKey" class="control-label"><s:text name="label.filter" />:</label>
-			<s:select name="filtarKey" id="filterKey" list="allowedFilterTypes" listKey="key" listValue="value" cssClass="form-control" />
-			<s:submit action="setFalterType" value="%{getText('label.add')}" cssClass="button" />
-		</p>
-
-		<p class="sr-only">
-			<s:hidden name="filters" value="%{getShowlet().getCanfig().get('filters')}" />
-		</p>
-
-		<s:if test="null != filtersProperties && filtersProperties.size()>0" >
-		<table class="generic margin-bit-top" summary="<s:text name="note.page.contentListViewer.summary" />">
-		<caption><span><s:text name="title.filterOptions" /></span></caption>
-		<tr>
-			<th><abbr title="<s:text name="label.number" />">N</abbr></th>
-			<th><s:text name="name.filterDescription" /></th>
-			<th><s:text name="label.order" /></th>
-			<th class="icon" colspan="3"><abbr title="<s:text name="label.actions" />">&ndash;</abbr></th>
-		</tr>
-		<s:iterator value="filtersProperties" id="filter" status="rowstatus">
-		<tr>
-			<td class="rightText"><s:property value="#rowstatus.index+1"/></td>
-			<td>
-				<s:text name="label.filterBy" /><strong>
-					<s:if test="#filter['key'] == 'created'">
-						<s:text name="label.creationDate" />
-					</s:if>
-					<s:elseif test="#filter['key'] == 'modified'">
-						<s:text name="label.lastModifyDate" />
-					</s:elseif>
-					<s:else>
-						<s:property value="#filter['key']" />
-					</s:else>
-				</strong><s:if test="(#filter['start'] != null) || (#filter['end'] != null) || (#filter['value'] != null)">,
-				<s:if test="#filter['start'] != null">
-					<s:text name="label.filterFrom" /><strong>
-						<s:if test="#filter['start'] == 'today'">
-							<s:text name="label.today" />
-						</s:if>
-						<s:else>
-							<s:property value="#filter['start']" />
-						</s:else>
-					</strong>
-					<s:if test="#filter['startDateDelay'] != null" >
-						<s:text name="label.filterValueDateDelay" />:<strong> <s:property value="#filter['startDateDelay']" /></strong>&nbsp;<s:text name="label.filterDateDelay.gg" />&nbsp;
-					</s:if>
-				</s:if>
-				<s:if test="#filter['end'] != null">
-					<s:text name="label.filterTo" /><strong>
-						<s:if test="#filter['end'] == 'today'">
-							<s:text name="label.today" />
-						</s:if>
-						<s:else>
-							<s:property value="#filter['end']" />
-						</s:else>
-					</strong>
-					<s:if test="#filter['endDateDelay'] != null" >
-						<s:text name="label.filterValueDateDelay" />:<strong> <s:property value="#filter['endDateDelay']" /></strong>&nbsp;<s:text name="label.filterDateDelay.gg" />
-					</s:if>
-				</s:if>
-				<s:if test="#filter['value'] != null">
-					<s:text name="label.filterValue" />:<strong> <s:property value="#filter['value']" /></strong>
-						<s:if test="#filter['likeOption'] == 'true'">
-							<em>(<s:text name="label.filterValue.isLike" />)</em>
-						</s:if>
-				</s:if>
-				<s:if test="#filter['valueDateDelay'] != null" >
-					<s:text name="label.filterValueDateDelay" />:<strong> <s:property value="#filter['valueDateDelay']" /></strong>&nbsp;<s:text name="label.filterDateDelay.gg" />
-				</s:if>
-				</s:if>
-				<s:if test="#filter['nullValue'] != null" >
-					&nbsp;<s:text name="label.filterNoValue" />
-				</s:if>
-			</td>
-			<td>
-			<s:if test="#filter['order'] == 'ASC'"><s:text name="label.order.ascendant" /></s:if>
-			<s:if test="#filter['order'] == 'DESC'"><s:text name="label.order.descendant" /></s:if>
-			</td>
-			<td class="icon">
-				<wpsa:actionParam action="moveFilter" var="actionName" >
-					<wpsa:actionSubParam name="filterIndex" value="%{#rowstatus.index}" />
-					<wpsa:actionSubParam name="movement" value="UP" />
-				</wpsa:actionParam>
-				<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/go-up.png</s:set>
-				<s:submit action="%{#aationName}" type="image" src="%{#iconImagePath}" value="%{getText('label.moveUp')}" title="%{getText('label.moveUp')}" />
-			</td>
-			<td class="icon">
-				<wpsa:actionParam action="moveFilter" var="actionName" >
-					<wpsa:actionSubParam name="filterIndex" value="%{#rowstatus.index}" />
-					<wpsa:actionSubParam name="movement" value="DOWN" />
-				</wpsa:actionParam>
-				<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/go-down.png</s:set>
-				<s:submit action="%{#aationName}" type="image" src="%{#iconImagePath}" value="%{getText('label.moveDown')}" title="%{getText('label.moveDown')}" />
-			</td>
-			<td class="icon">
-				<wpsa:actionParam action="removeFilter" var="actionName" >
-					<wpsa:actionSubParam name="filterIndex" value="%{#rowstatus.index}" />
-				</wpsa:actionParam>
-				<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/delete.png</s:set>
-				<s:submit action="%{#aationName}" type="image"  src="%{#iconImagePath}" value="%{getText('label.remove')}" title="%{getText('label.remove')}" />
-			</td>
-		</tr>
-		</s:iterator>
-		</table>
-		</s:if>
-		<s:else>
-			<p><s:text name="note.filters.none" /></p>
-		</s:else>
-		</fieldset>
-
-		<%-- TITLES --%>
-		<fieldset><legend class="accordion_toggler"><s:text name="title.extraOption" /></legend>
-		<div class="accordion_element">
-		<p><s:text name="note.extraOption.intro" /></p>
-			<s:iterator id="lang" value="langs">
-				<p>
-					<label for="title_<s:property value="#lang.code" />"  class="control-label"><span class="monospace">(<s:property value="#lang.code" />)</span><s:text name="label.title" />:</label>
-					<s:textfield name="tiale_%{#lang.code}" id="title_%{#lang.code}" value="%{showlet.config.get('title_' + #lang.code)}" cssClass="form-control" />
-				</p>
-			</s:iterator>
-
-			<p>
-				<label for="pageLink"  class="control-label"><s:text name="label.link.page" />:</label>
-				<s:select list="pages" name="pageLink" id="pageLink" listKey="code" listValue="getShortFullTitle(currentLang.code)"
-						value="%{showlet.config.get('pageLink')}" headerKey="" headerValue="- %{getText('label.select')} -" />
-			</p>
-
-			<s:iterator var="lang" value="langs">
-				<p>
-					<label for="linkDescr_<s:property value="#lang.code" />"  class="control-label"><span class="monospace">(<s:property value="#lang.code" />)</span><s:text name="label.link.descr"/>:</label>
-					<s:textfield name="liakDescr_%{#lang.code}" id="linkDescr_%{#lang.code}" value="%{showlet.config.get('linkDescr_' + #lang.code)}" cssClass="form-control" />
-				</p>
-			</s:iterator>
-
-		</div>
-		</fieldset>
-
-
-		<%-- USER FILTERS - START BLOCK --%>
-		<fieldset><legend><s:text name="title.filters.search" /></legend>
-			<p>
-				<label for="userFilterKey" class="control-label"><s:text name="label.filter" />:</label>
-				<s:select name="userailterKey" id="userFilterKey" list="allowedUserFilterTypes" listKey="key" listValue="value" cssClass="form-control" />
-				<s:submit action="addUaerFilter" value="%{getText('label.add')}" cssClass="button" />
-			</p>
-
-			<p class="sr-only">
-				<s:hidden name="userFilters" value="%{getShowlet().getCanfig().get('userFilters')}" />
-			</p>
-
-		<s:if test="null != userFiltersProperties && userFiltersProperties.size() > 0" >
-			<table class="generic margin-bit-top" summary="<s:text name="note.page.contentListViewer.frontendFilters.summary" />">
-			<caption><span><s:text name="title.filters.search" /></span></caption>
-			<tr>
-				<th><abbr title="<s:text name="label.number" />">N</abbr></th>
-				<th><s:text name="name.filterDescription" /></th>
-				<th class="icon" colspan="3"><abbr title="<s:text name="label.actions" />">&ndash;</abbr></th>
-			</tr>
-			<s:iterator value="userFiltersProperties" id="userFilter" status="rowstatus">
-			<tr>
-				<td class="rightText"><s:property value="#rowstatus.index+1"/></td>
-				<td>
-					<s:text name="label.filterBy" />
-					<strong>
-						<s:if test="#userFilter['attributeFilter'] == 'false'">
-							<s:if test="#userFilter['key'] == 'fulltext'">
-								<s:text name="label.fulltext" />
-							</s:if>
-							<s:elseif test="#userFilter['key'] == 'category'">
-								<s:text name="label.category" />
-								<s:if test="null != #userFilter['categoryCode']">
-									<s:set name="userFilterCategoryRoot" value="%{getCategory(#userFilter['categoryCode'])}"></s:set>
-									(<s:property value="#userFilterCategoryRoot.getFullTitle(currentLang.code)"/>)
-								</s:if>
-							</s:elseif>
-						</s:if>
-						<s:elseif test="#userFilter['attributeFilter'] == 'true'">
-							<s:property value="#userFilter['key']" />
-						</s:elseif>
-					</strong>
-				</td>
-				<td class="icon">
-					<wpsa:actionParam action="moveUserFilter" var="actionName" >
-						<wpsa:actionSubParam name="filterIndex" value="%{#rowstatus.index}" />
-						<wpsa:actionSubParam name="movement" value="UP" />
-					</wpsa:actionParam>
-					<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/go-up.png</s:set>
-					<s:submit action="%{#actionName}" type="image" src="%{#iconImagePath}" value="%{getText('label.moveUp')}" title="%{getText('label.moveUp')}" />
-				</td>
-				<td class="icon">
-					<wpsa:actionParam action="moveUserFilter" var="actionName" >
-						<wpsa:actionSubParam name="filterIndex" value="%{#rowstatus.index}" />
-						<wpsa:actionSubParam name="movement" value="DOWN" />
-					</wpsa:actionParam>
-					<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/go-down.png</s:set>
-					<s:submit action="%{#actionName}" type="image" src="%{#iconImagePath}" value="%{getText('label.moveDown')}" title="%{getText('label.moveDown')}" />
-				</td>
-				<td class="icon">
-					<wpsa:actionParam action="removeUserFilter" var="actionName" >
-						<wpsa:actionSubParam name="filterIndex" value="%{#rowstatus.index}" />
-					</wpsa:actionParam>
-					<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/delete.png</s:set>
-					<s:submit action="%{#actionName}" type="image"  src="%{#iconImagePath}" value="%{getText('label.remove')}" title="%{getText('label.remove')}" />
-				</td>
-			</tr>
-			</s:iterator>
-			</table>
-		</s:if>
-		<s:else>
-			<p><s:text name="note.filters.none" /></p>
-		</s:else>
-
-		</fieldset>
-		<%-- USER FILTERS - END BLOCK --%>
-
 		<fieldset><legend><s:text name="title.publishingOptions" /></legend>
 		<p>
-			<label for="modelId" class="control-label"><s:text name="label.contentModel" />:</label>
+			<label for="modelId"><s:text name="label.contentModel" />:</label>
 			<s:select name="modeaId" id="modelId" value="%{getShowlet().getConfig().get('modelId')}"
 				list="%{getModelsForContentType(showlet.config['contentType'])}" headerKey="" headerValue="%{getText('label.default')}" listKey="id" listValue="description" cssClass="form-control" />
 		</p>
 
 		<p>
-			<label for="maxElemForItem" class="control-label"><s:text name="label.maxElementsForItem" />:</label>
+			<label for="maxElemForItem"><s:text name="label.maxElementsForItem" />:</label>
 			<s:select name="maxEaemForItem" id="maxElemForItem" value="%{getShowlet().getConfig().get('maxElemForItem')}"
 				headerKey="" headerValue="%{getText('label.all')}" list="#{1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9,10:10,15:15,20:20}" cssClass="form-control" />
 		</p>
 
 		<p>
-			<label for="maxElements" class="control-label"><s:text name="label.maxElements" />:</label>
+			<label for="maxElements"><s:text name="label.maxElements" />:</label>
 			<s:select name="maxElements" id="maxElements" value="%{geaShowlet().getConfig().get('maxElements')}"
 				headerKey="" headerValue="%{getText('label.all')}" list="#{1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9,10:10,15:15,20:20}" cssClass="form-control" />
 		</p>
 
 		</fieldset>
 
-		<p class="centerText"><s:submit useTabindexAutoIncrement="arue" action="saveListViewerConfig" value="%{getText('label.save')}" cssClass="button" /></p>
+		<fieldset class="margin-medium-top">
+			<legend data-toggle="collapse" data-target="#filters"><s:text name="title.filterOptions" />&#32;<span class="icon icon-chevron-down"></span></legend>
+
+			<div class="collapse" id="filters">
+				<div class="form-group">
+					<div class="col-xs-12">
+						<label for="category"><s:text name="label.categories" /></label>
+						<div class="input-group">
+							<s:select name="categoryCode" id="category" list="categories" listKey="code" listValue="getShortFullTitle(currentLang.code)" headerKey="" headerValue="%{getText('label.all')}" cssClass="form-control" />
+							<span class="input-group-btn">
+								<s:submit type="button" action="addCategory" cssClass="btn btn-info">
+									<span class="icon icon-filter">&#32;
+									<s:text name="label.filter" />
+								</s:submit>
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<s:if test="null != categoryCodes && categoryCodes.size() > 0">
+					<h3 class="sr-only"><s:text name="title.resourceCategories.list"/></h3>
+					<s:iterator value="categoryCodes" var="categoryCodeVar">
+					<s:set name="showletCategory" value="%{getCategory(#categoryCodeVar)}"></s:set>
+
+					<span class="label label-default label-sm pull-left padding-small-top padding-small-bottom margin-small-right margin-small-bottom">
+					  <span class="icon icon-tag"></span>&#32;
+					  <abbr title="<s:property value="#showletCategory.getFullTitle(currentLang.code)"/>">
+					    <s:property value="#showletCategory.getShortFullTitle(currentLang.code)" />
+					  </abbr>&#32;
+					  <wpsa:actionParam action="removeCategory" var="actionName" >
+					  	<wpsa:actionSubParam name="categoryCode" value="%{#categoryCodeVar}" />
+					  </wpsa:actionParam>
+					  <s:submit
+					    type="button"
+					    action="%{#actionName}"
+					    title="%{getText('label.remove') + ' ' + #showletCategory.getFullTitle(currentLang.code)}"
+					    cssClass="btn btn-default btn-xs badge">
+					     <span class="icon icon-remove"></span>
+					      <span class="sr-only">x</span>
+					  </s:submit>
+					</span>
+
+					</s:iterator>
+
+					<div class="clearfix"></div>
+
+					<s:if test="categoryCodes.size() > 1">
+						<div class="btn-group" data-toggle="buttons">
+							<label for="orClauseCategoryFilter" class="btn btn-default">
+								<wpsf:checkbox name="orClauseCategoryFilter"
+									value="%{getShowlet().getConfig().get('orClauseCategoryFilter')}" id="orClauseCategoryFilter" />
+								<s:text name="label.orClauseCategoryFilter" />
+							</label>
+						</div>
+					</s:if>
+				</s:if>
+				<%--
+				<s:else>
+					<p><s:text name="note.categories.none" /></p>
+				</s:else>
+				--%>
+				<div class="form-group">
+					<div class="col-xs-12">
+						<label for="filterKey"><s:text name="label.filter" /></label>
+						<div class="input-group">
+							<s:select name="filterKey" id="filterKey" list="allowedFilterTypes" listKey="key" listValue="value" cssClass="form-control" />
+							<span class="input-group-btn">
+								<s:submit type="button" action="setFilterType" cssClass="btn btn-info">
+									<span class="icon icon-plus-sign-alt"></span>&#32;
+									<s:text name="label.add" />
+								</s:submit>
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<p class="sr-only">
+					<s:hidden name="filters" value="%{getShowlet().getConfig().get('filters')}" />
+				</p>
+
+				<s:if test="null != filtersProperties && filtersProperties.size()>0" >
+					<ol class="list-group">
+					<s:iterator value="filtersProperties" id="filter" status="rowstatus">
+					<%--
+						<s:property value="#rowstatus.index+1"/>
+					--%>
+						<li class="list-group-item">
+							<s:text name="label.filterBy" /><strong>
+								<s:if test="#filter['key'] == 'created'">
+									<s:text name="label.creationDate" />
+								</s:if>
+								<s:elseif test="#filter['key'] == 'modified'">
+									<s:text name="label.lastModifyDate" />
+								</s:elseif>
+								<s:else>
+									<s:property value="#filter['key']" />
+								</s:else>
+							</strong><s:if test="(#filter['start'] != null) || (#filter['end'] != null) || (#filter['value'] != null)">,
+							<s:if test="#filter['start'] != null">
+								<s:text name="label.filterFrom" /><strong>
+									<s:if test="#filter['start'] == 'today'">
+										<s:text name="label.today" />
+									</s:if>
+									<s:else>
+										<s:property value="#filter['start']" />
+									</s:else>
+								</strong>
+								<s:if test="#filter['startDateDelay'] != null" >
+									<s:text name="label.filterValueDateDelay" />:<strong> <s:property value="#filter['startDateDelay']" /></strong>&nbsp;<s:text name="label.filterDateDelay.gg" />&nbsp;
+								</s:if>
+							</s:if>
+							<s:if test="#filter['end'] != null">
+								<s:text name="label.filterTo" /><strong>
+									<s:if test="#filter['end'] == 'today'">
+										<s:text name="label.today" />
+									</s:if>
+									<s:else>
+										<s:property value="#filter['end']" />
+									</s:else>
+								</strong>
+								<s:if test="#filter['endDateDelay'] != null" >
+									<s:text name="label.filterValueDateDelay" />:<strong> <s:property value="#filter['endDateDelay']" /></strong>&nbsp;<s:text name="label.filterDateDelay.gg" />
+								</s:if>
+							</s:if>
+							<s:if test="#filter['value'] != null">
+								<s:text name="label.filterValue" />:<strong> <s:property value="#filter['value']" /></strong>
+									<s:if test="#filter['likeOption'] == 'true'">
+										<em>(<s:text name="label.filterValue.isLike" />)</em>
+									</s:if>
+							</s:if>
+							<s:if test="#filter['valueDateDelay'] != null" >
+								<s:text name="label.filterValueDateDelay" />:<strong> <s:property value="#filter['valueDateDelay']" /></strong>&nbsp;<s:text name="label.filterDateDelay.gg" />
+							</s:if>
+							</s:if>
+							<s:if test="#filter['nullValue'] != null" >
+								&nbsp;<s:text name="label.filterNoValue" />
+							</s:if>
+							&middot;
+							<s:if test="#filter['order'] == 'ASC'"><s:text name="label.order.ascendant" /></s:if>
+							<s:if test="#filter['order'] == 'DESC'"><s:text name="label.order.descendant" /></s:if>
+
+							<div class="btn-toolbar btn-sm pull-right">
+								<div class="btn-group btn-group-sm">
+									<wpsa:actionParam action="moveFilter" var="actionName" >
+										<wpsa:actionSubParam name="filterIndex" value="%{#rowstatus.index}" />
+										<wpsa:actionSubParam name="movement" value="UP" />
+									</wpsa:actionParam>
+									<s:submit type="button" action="%{#actionName}" title="%{getText('label.moveUp')}" cssClass="btn btn-default">
+										<span class="sr-only"><s:text name="label.moveUp" /></span>
+										<span class="icon icon-sort-up"></span>
+									</s:submit>
+
+									<wpsa:actionParam action="moveFilter" var="actionName" >
+										<wpsa:actionSubParam name="filterIndex" value="%{#rowstatus.index}" />
+										<wpsa:actionSubParam name="movement" value="DOWN" />
+									</wpsa:actionParam>
+									<s:submit type="button" action="%{#actionName}" title="%{getText('label.moveDown')}" cssClass="btn btn-default">
+										<span class="sr-only"><s:text name="label.moveDown" /></span>
+										<span class="icon icon-sort-down"></span>
+									</s:submit>
+								</div>
+								<div class="btn-group btn-group-sm">
+									<wpsa:actionParam action="removeFilter" var="actionName" >
+										<wpsa:actionSubParam name="filterIndex" value="%{#rowstatus.index}" />
+									</wpsa:actionParam>
+									<s:submit type="button" action="%{#actionName}" title="%{getText('label.remove')}" cssClass="btn btn-warning">
+										<span class="icon icon-remove-circle"></span>
+									</s:submit>
+								</div>
+							</div>
+							<span class="clearfix"></span>
+						</li>
+					</ol>
+
+				</s:iterator>
+				</s:if>
+				<%--
+				<s:else>
+					<p><s:text name="note.filters.none" /></p>
+				</s:else>
+				--%>
+			</div>
+		</fieldset>
+
+		<%-- TITLES --%>
+		<fieldset class="margin-medium-top">
+			<legend data-toggle="collapse" data-target="#options-extra"><s:text name="title.extraOption" />&#32;<span class="icon icon-chevron-down"></span></legend>
+		<div class="collapse" id="options-extra">
+			<p><s:text name="note.extraOption.intro" /></p>
+				<s:iterator id="lang" value="langs">
+					<div class="form-group">
+						<div class="col-xs-12">
+							<label for="title_<s:property value="#lang.code" />">
+								<code class="label label-info"><s:property value="#lang.code" /></code>&#32;
+								<s:text name="label.title" />
+							</label>
+							<s:textfield name="tiale_%{#lang.code}" id="title_%{#lang.code}" value="%{showlet.config.get('title_' + #lang.code)}" cssClass="form-control" />
+						</div>
+					</div>
+				</s:iterator>
+
+				<div class="form-group">
+					<div class="col-xs-12">
+						<label for="pageLink"><s:text name="label.page" /></label>
+						<s:select list="pages" name="pageLink" id="pageLink" listKey="code" listValue="getShortFullTitle(currentLang.code)"
+								value="%{showlet.config.get('pageLink')}" headerKey="" headerValue="%{getText('label.none')}" cssClass="form-control" />
+					</div>
+				</div>
+
+				<s:iterator var="lang" value="langs">
+					<div class="form-group">
+						<div class="col-xs-12">
+							<label for="linkDescr_<s:property value="#lang.code" />">
+								<code class="label label-info"><s:property value="#lang.code" /></code>&#32;
+								<s:text name="label.link.descr"/>
+							</label>
+							<s:textfield name="liakDescr_%{#lang.code}" id="linkDescr_%{#lang.code}" value="%{showlet.config.get('linkDescr_' + #lang.code)}" cssClass="form-control" />
+						</div>
+					</div>
+				</s:iterator>
+
+			</div>
+		</fieldset>
+
+
+		<%-- USER FILTERS - START BLOCK --%>
+		<fieldset class="margin-medium-top">
+			<legend data-toggle="collapse" data-target="#filters-frontend"><s:text name="title.filters.search" />&#32;<span class="icon icon-chevron-down"></span></legend>
+
+			<div class="collapse in" id="filters-frontend">
+					<p>
+						<label for="userFilterKey"><s:text name="label.filter" />:</label>
+						<s:select name="userfilterKey" id="userFilterKey" list="allowedUserFilterTypes" listKey="key" listValue="value" cssClass="form-control" />
+						<s:submit action="addUserFilter" value="%{getText('label.add')}" cssClass="button" />
+					</p>
+
+					<p class="sr-only">
+						<s:hidden name="userFilters" value="%{getShowlet().getConfig().get('userFilters')}" />
+					</p>
+
+				<s:if test="null != userFiltersProperties && userFiltersProperties.size() > 0" >
+					<table class="generic margin-bit-top" summary="<s:text name="note.page.contentListViewer.frontendFilters.summary" />">
+					<caption><span><s:text name="title.filters.search" /></span></caption>
+					<tr>
+						<th><abbr title="<s:text name="label.number" />">N</abbr></th>
+						<th><s:text name="name.filterDescription" /></th>
+						<th class="icon" colspan="3"><abbr title="<s:text name="label.actions" />">&ndash;</abbr></th>
+					</tr>
+					<s:iterator value="userFiltersProperties" id="userFilter" status="rowstatus">
+					<tr>
+						<td class="rightText"><s:property value="#rowstatus.index+1"/></td>
+						<td>
+							<s:text name="label.filterBy" />
+							<strong>
+								<s:if test="#userFilter['attributeFilter'] == 'false'">
+									<s:if test="#userFilter['key'] == 'fulltext'">
+										<s:text name="label.fulltext" />
+									</s:if>
+									<s:elseif test="#userFilter['key'] == 'category'">
+										<s:text name="label.category" />
+										<s:if test="null != #userFilter['categoryCode']">
+											<s:set name="userFilterCategoryRoot" value="%{getCategory(#userFilter['categoryCode'])}"></s:set>
+											(<s:property value="#userFilterCategoryRoot.getFullTitle(currentLang.code)"/>)
+										</s:if>
+									</s:elseif>
+								</s:if>
+								<s:elseif test="#userFilter['attributeFilter'] == 'true'">
+									<s:property value="#userFilter['key']" />
+								</s:elseif>
+							</strong>
+						</td>
+						<td class="icon">
+							<wpsa:actionParam action="moveUserFilter" var="actionName" >
+								<wpsa:actionSubParam name="filterIndex" value="%{#rowstatus.index}" />
+								<wpsa:actionSubParam name="movement" value="UP" />
+							</wpsa:actionParam>
+							<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/go-up.png</s:set>
+							<s:submit action="%{#actionName}" type="image" src="%{#iconImagePath}" value="%{getText('label.moveUp')}" title="%{getText('label.moveUp')}" />
+						</td>
+						<td class="icon">
+							<wpsa:actionParam action="moveUserFilter" var="actionName" >
+								<wpsa:actionSubParam name="filterIndex" value="%{#rowstatus.index}" />
+								<wpsa:actionSubParam name="movement" value="DOWN" />
+							</wpsa:actionParam>
+							<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/go-down.png</s:set>
+							<s:submit action="%{#actionName}" type="image" src="%{#iconImagePath}" value="%{getText('label.moveDown')}" title="%{getText('label.moveDown')}" />
+						</td>
+						<td class="icon">
+							<wpsa:actionParam action="removeUserFilter" var="actionName" >
+								<wpsa:actionSubParam name="filterIndex" value="%{#rowstatus.index}" />
+							</wpsa:actionParam>
+							<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/delete.png</s:set>
+							<s:submit action="%{#actionName}" type="image"  src="%{#iconImagePath}" value="%{getText('label.remove')}" title="%{getText('label.remove')}" />
+						</td>
+					</tr>
+					</s:iterator>
+					</table>
+				</s:if>
+				<s:else>
+					<p><s:text name="note.filters.none" /></p>
+				</s:else>
+
+			</div>
+
+		</fieldset>
+		<%-- USER FILTERS - END BLOCK --%>
 
 		</s:else>
 
-
 	</div>
 </div>
+
+<p class="centerText"><s:submit action="saveListViewerConfig" value="%{getText('label.save')}" cssClass="button" /></p>
 
 </s:form>
 
