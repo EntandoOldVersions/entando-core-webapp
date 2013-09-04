@@ -5,7 +5,7 @@
 			<code title="<s:property value="#dataSourceNameVar" /> datasource tables"><s:property value="#dataSourceNameVar" /></code>:
 			<s:set var="tableNamesVar" value="%{getTableNames(#tableMappingVar[#dataSourceNameVar])}" />
 			<s:if test="null != #tableNamesVar">
-				<s:iterator var="tableNameVar" value="#tableNamesVar" status="statusVar"><em><s:property value="#tableNameVar" /></em><s:if test="%{!(#statusVar.last)}">,&#32;</s:if></s:iterator>
+				<s:iterator var="tableNameVar" value="#tableNamesVar" status="statusVar"><s:property value="#tableNameVar" /><s:if test="%{!(#statusVar.last)}">,&#32;</s:if></s:iterator>
 			</s:if>
 			<s:else>
 				<p><s:text name="database.management.note.backup.notable" /></p>
