@@ -94,7 +94,7 @@
 		</s:else>
 		<form action="<s:url namespace="/do/Admin/Database" action="backupIntro" />" method="get">
 			<p class="text-center">
-				<button type="submit" class="btn btn-primary">
+				<button type="submit" class="btn btn-default">
 					<s:text name="database.management.label.backup.create" />
 				</button>
 			</p>
