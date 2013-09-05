@@ -165,13 +165,13 @@
 <s:set var="userVar" value="%{getUser(#usernameVar)}" />
 <s:set var="userProfileVar" value="%{getUserProfile(#usernameVar)}" />
 
-<s:if test="!#userVar.entandoUser">
-	<s:set name="statusIconImagePath" id="statusIconImagePath"><wp:resourceURL/>administration/common/img/icons/user-status-notjAPSUser.png</s:set>
-	<s:set name="statusIconText" id="statusIconText"><s:text name="note.userStatus.notEntandoUser" /></s:set>
-</s:if>
-<s:elseif test="#userVar.disabled">
+<s:if test="null == #userVar || #userVar.disabled">
 	<s:set name="statusIconImagePath" id="statusIconImagePath"><wp:resourceURL/>administration/common/img/icons/user-status-notActive.png</s:set>
 	<s:set name="statusIconText" id="statusIconText"><s:text name="note.userStatus.notActive" /></s:set>	
+</s:if>
+<s:elseif test="!#userVar.entandoUser">
+	<s:set name="statusIconImagePath" id="statusIconImagePath"><wp:resourceURL/>administration/common/img/icons/user-status-notjAPSUser.png</s:set>
+	<s:set name="statusIconText" id="statusIconText"><s:text name="note.userStatus.notEntandoUser" /></s:set>
 </s:elseif>
 <s:elseif test="!#userVar.accountNotExpired">
 	<s:set name="statusIconImagePath" id="statusIconImagePath"><wp:resourceURL/>administration/common/img/icons/user-status-expiredAccount.png</s:set>
@@ -187,7 +187,12 @@
 </s:elseif>
 
 <tr>
-	<td><a href="<s:url action="edit"><s:param name="username" value="#usernameVar"/></s:url>" title="<s:text name="label.edit" />: <s:property value="#usernameVar" />" ><s:property value="#userVar" /></a></td>
+	<td>
+		<s:if test="null == #userVar">
+		<a href="<s:url action="edit"><s:param name="username" value="#usernameVar"/></s:url>" title="<s:text name="label.edit" />: <s:property value="#usernameVar" />" ><s:property value="#userVar" /></a>
+		</s:if>
+		<s:else><s:property value="#usernameVar" /></s:else>
+	</td>
 	<td>
 		<s:if test="null != #userProfileVar"><s:property value="#userProfileVar.getValue(#userProfileVar.fullNameAttributeName)"/></s:if>
 		<s:else><abbr title="<s:text name="label.noProfile" />">&ndash;</abbr></s:else>
