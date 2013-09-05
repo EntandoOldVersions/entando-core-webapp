@@ -50,7 +50,7 @@
 
 <wp:ifauthorized permission="managePages">
 	<li><a href="<s:url action="viewTree" namespace="/do/Page" />"><s:text name="menu.pageAdmin" /></a></li>
-	<li><a href="<s:url action="viewShowlets" namespace="/do/Portal/ShowletType" />"><s:text name="menu.showletAdmin" /></a></li>
+	<li><a href="<s:url action="viewShowlets" namespace="/do/Portal/WidgetType" />"><s:text name="menu.showletAdmin" /></a></li>
 </wp:ifauthorized>
 <wp:ifauthorized permission="superuser">
 	<li class="panel-group">
