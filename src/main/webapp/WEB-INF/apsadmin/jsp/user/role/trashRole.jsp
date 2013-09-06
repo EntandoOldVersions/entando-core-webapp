@@ -1,23 +1,34 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
-<%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
-
-<s:set var="targetNS" value="%{'/do/Role'}" />
-<h1><s:text name="title.roleManagement" /><s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></h1>
-
-<div id="main">
-
-<h2><s:text name="title.roleManagement.roleTrash" /></h2>
-
+<h1 class="panel panel-default title-page">
+	<span class="panel-body display-block">
+		<a href="<s:url namespace="/do/BaseAdmin" action="settings" />"><s:text name="menu.configure" /></a>
+		&#32;/&#32;
+		<a href="<s:url namespace="/do/Role" action="list" />">
+			<s:text name="title.roleManagement" />
+		</a>
+		&#32;/&#32;
+		<s:text name="title.roleManagement.roleTrash" />
+	</span>
+</h1>
 <s:form action="delete">
-	<p class="sr-only"><wpsf:hidden name="name"/></p>
-	
-	<p> 
-		<s:text name="note.roleConfirm.trash" />&#32;<em class="important"><s:property value="name" /></em>? 
-		<wpsf:submit useTabindexAutoIncrement="true" value="%{getText('label.remove')}" cssClass="button" />
-	</p>
-
-	<p><s:text name="note.roleConfirm.trash.goBack" />&#32;<a href="<s:url action="list" namespace="/do/Role" />"><s:text name="menu.accountAdmin.roles" /></a></p>
+	<div class="panel panel-default">
+			<div class="panel-body display-block">
+				<s:hidden name="name"/>
+				<a 
+					title="<s:text name="note.roleConfirm.trash.goBack" />&#32;<s:text name="menu.accountAdmin.roles" />"
+					href="<s:url action="list" namespace="/do/Role" />">
+					<span class="icon icon-reply"></span>
+					<span class="sr-only"><s:text name="note.roleConfirm.trash.goBack" />&#32;<s:text name="menu.accountAdmin.roles" /></span>
+				</a>
+				&#32;
+				<s:text name="note.roleConfirm.trash" />&#32;
+				<code><s:property value="name" /></code>&#32;
+				?
+				<div class="text-center margin-small-top">
+					<s:submit type="button" cssClass="btn btn-default">
+						<s:text name="label.remove" />
+					</s:submit>
+				</div>
+			</div>
+	</div>
 </s:form>
-
-</div>

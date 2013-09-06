@@ -1,38 +1,71 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
-<s:set var="targetNS" value="%{'/do/Role'}" />
-<h1><s:text name="title.roleManagement" /><s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></h1>
-
-<div id="main">
-
-	<s:if test="hasActionErrors()">
-<div class="message message_error">	
-<h2><s:text name="message.title.ActionErrors" /></h2>
-		<ul>
-			<s:iterator value="actionErrors">
-				<li><s:property escape="false" /></li>
-			</s:iterator>
+<h1 class="panel panel-default title-page">
+	<span class="panel-body display-block">
+		<a href="<s:url namespace="/do/BaseAdmin" action="settings" />"><s:text name="menu.configure" /></a>
+		&#32;/&#32;
+		<s:text name="title.roleManagement" />
+	</span>
+</h1>
+<s:if test="hasActionErrors()">
+	<div class="alert alert-warning alert-dismissable fade in">
+		<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+		<h2 class="h4 margin-none"><s:text name="messages.title.ActionErrors" /></h2>
+		<ul class="margin-base-top">
+				<s:iterator value="actionErrors">
+					<li><s:property escape="false" /></li>
+				</s:iterator>
 		</ul>
-</div>
-	</s:if>	
-
-<table class="generic" summary="<s:text name="note.roleList.summary" />">
-<caption><span><s:text name="title.roleManagement.roleList" /></span></caption>
-<tr>
-	<th><s:text name="name.role" /></th>
-	<th><s:text name="label.description" /></th>	
-	<th class="icon"><abbr title="<s:text name="label.users" />">U</abbr></th>
-	<th class="icon"><abbr title="<s:text name="label.remove" />">&ndash;</abbr></th>
-</tr>
-<s:iterator id="role" value="roles">
-<tr>
-	<td><a href="<s:url action="edit"><s:param name="name" value="#role.name"/></s:url>" ><s:property value="#role.name" /></a></td>
- 	<td><s:property value="#role.description" /></td>
-	<td class="icon"><a href="<s:url namespace="/do/Role/Auth" action="config"><s:param name="authName" value="#role.name"/></s:url>" title="<s:text name="note.assignToUsers" />: <s:property value="#role.name" />"><img src="<wp:resourceURL />administration/common/img/icons/users.png" alt="<s:text name="note.assignToUsers" />: <s:property value="#role.name" />" /></a></td>
-	<td class="icon"><a href="<s:url action="trash"><s:param name="name" value="#role.name"/></s:url>"  title="<s:text name="label.remove" />: <s:property value="#role.name" />"><img src="<wp:resourceURL />administration/common/img/icons/delete.png" alt="<s:text name="label.alt.clear" />" /></a></td>
-</tr>
-</s:iterator>
-</table>
-
+	</div>
+</s:if>
+<a 
+	class="btn btn-default margin-base-bottom"
+	href="<s:url namespace="/do/Role" action="new" />">
+		<span class="icon icon-plus-sign">
+			&#32;
+			<s:text name="title.roleManagement.roleNew" />
+		</span>
+</a>
+<div class="table-responsive">
+	<table class="table table-bordered">
+		<tr>
+			<th class="text-center text-nowap col-xs-6 col-sm-3 col-md-3 col-lg-3 "><s:text name="label.actions" /></th>
+			<th><s:text name="name.role" /></th>
+			<th><s:text name="label.description" /></th>
+		</tr>
+		<s:iterator value="roles" var="role">
+			<tr>
+				<td class="text-center text-nowrap">
+					<div class="btn-group btn-group-xs">
+						<a 
+							class="btn btn-default" 
+							title="<s:text name="label.edit" />:&#32;<s:property value="#role.name" />" 
+							href="<s:url action="edit"><s:param name="name" value="#role.name"/></s:url>">
+								<span class="icon icon-edit"></span>
+								<span class="sr-only"><s:text name="label.edit" />:&#32;<s:property value="#role.name" /></span>
+						</a>
+						<a 
+							class="btn btn-default" 
+							title="<s:text name="note.assignToUsers" />:&#32;<s:property value="#role.name" />" 
+							href="<s:url namespace="/do/Role/Auth" action="config"><s:param name="authName" value="#role.name"/></s:url>">
+								<span class="icon icon-group"></span>
+								<span class="sr-only"><s:text name="note.assignToUsers" />:&#32;<s:property value="#role.name" /></span>
+						</a>
+					</div>
+					<div class="btn-group btn-group-xs">
+						<a 
+							class="btn btn-warning" 
+							title="<s:text name="label.remove" />: <s:property value="#role.name" />" 
+							href="<s:url action="trash"><s:param name="name" value="#role.name"/></s:url>">
+								<span class="icon icon-remove-circle" />
+								<span class="sr-only"><s:text name="label.remove" />: <s:property value="#role.name" /></span>
+						</a>
+					</div>
+				</td>
+				<td><code><s:property value="#role.name" /></a></td>
+			 	<td><s:property value="#role.description" /></td>
+			</tr>
+		</s:iterator>
+	</table>
 </div>

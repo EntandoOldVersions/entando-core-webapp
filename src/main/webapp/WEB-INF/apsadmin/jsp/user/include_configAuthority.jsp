@@ -2,151 +2,187 @@
 <%@ taglib uri="/aps-core" prefix="wp" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
-
-<h3><s:text name="title.userManagement.userList" /></h3>
-
 <s:if test="hasActionErrors()">
-<div class="message message_error">
-<h4><s:text name="message.title.ActionErrors" /></h4>
-	<ul>
-		<s:iterator value="actionErrors">
-			<li><s:property escape="false" /></li>
-		</s:iterator>
-	</ul>
-</div>	
+	<div class="alert alert-warning alert-dismissable fade in">
+		<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+		<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
+		<ul class="margin-base-top">
+			<s:iterator value="actionErrors">
+				<li><s:property escape="false" /></li>
+			</s:iterator>
+		</ul>
+	</div>
 </s:if>
-
 <s:if test="hasFieldErrors()">
-<div class="message message_error">
-<h4><s:text name="message.title.ActionErrors" /></h4>
-	<ul>
-		<s:iterator value="fieldErrors">
-			<li><s:property escape="false" /></li>
-		</s:iterator>
-	</ul>
-</div>
+	<div class="alert alert-warning alert-dismissable fade in">
+		<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+		<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
+		<ul class="margin-base-top">
+			<s:iterator value="fieldErrors">
+				<li><s:property escape="false" /></li>
+			</s:iterator>
+		</ul>
+	</div>
 </s:if>
+<div class="panel panel-default">
+	<div class="panel-body">
+		<h3 class="h3 margin-none margin-small-bottom"><s:text name="title.userManagement.userList" /></h3>
+		<s:form>
+			<p class="sr-only">
+				<wpsf:hidden name="username" />
+				<wpsf:hidden name="authName" />
+			</p>
+			<s:set name="removeIcon" id="removeIcon"><wp:resourceURL/>administration/common/img/icons/list-remove.png</s:set>
+			<s:set var="authorizedUsersVar" value="authorizedUsers" />
 
-<s:form>
-<p class="sr-only">
-	<wpsf:hidden name="username" />
-	<wpsf:hidden name="authName" />
-</p>
-
-<s:set name="removeIcon" id="removeIcon"><wp:resourceURL/>administration/common/img/icons/list-remove.png</s:set>
-
-<s:set var="authorizedUsersVar" value="authorizedUsers" />
-
-<s:if test="%{#authorizedUsersVar.size() > 0}">
-<ul>
-<s:iterator id="user" value="#authorizedUsersVar">
-	<li>
-		<wpsa:actionParam action="removeUser" var="actionName" >
-			<wpsa:actionSubParam name="usernameToSet" value="%{#user.username}" />
-		</wpsa:actionParam>
-		<wpsf:submit useTabindexAutoIncrement="true" action="%{#actionName}" type="image" src="%{#removeIcon}" value="%{getText('label.remove')}" title="%{getText('label.remove')}" />: <s:property value="#user" />
-	</li>
-</s:iterator>
-</ul>
-</s:if>
-
-</s:form>
-
-<s:form action="search">
-
-<h4><s:text name="title.userManagement.searchUsers" /></h4>
-<p class="sr-only">
-	<wpsf:hidden name="authName" />
-</p>
-<p><label for="username" class="basic-mint-label label-search"><s:text name="label.search.by"/>&#32;<s:text name="label.username"/>:</label>
-<wpsf:textfield useTabindexAutoIncrement="true" name="username" id="username" cssClass="text" /></p>
-<p>
-	<wpsf:submit useTabindexAutoIncrement="true" action="search" value="%{getText('label.search')}" cssClass="button" />
-</p>
-
-</s:form>
-
-<s:form action="search">
-<p class="sr-only">
-	<wpsf:hidden name="username" />
-	<wpsf:hidden name="authName" />
-</p>
-<div class="subsection-light">
-
-<wpsa:subset source="searchResult" count="10" objectName="groupUser" advanced="true" offset="5">
-<s:set name="group" value="#groupUser" />
-
-<div class="pager">
-	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
-	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
+			<s:if test="%{#authorizedUsersVar.size() > 0}">
+				<ul class="list-unstyled">
+					<s:iterator var="user" value="#authorizedUsersVar">
+						<li>
+							<wpsa:actionParam action="removeUser" var="actionName" >
+								<wpsa:actionSubParam name="usernameToSet" value="%{#user.username}" />
+							</wpsa:actionParam>
+							<span class="label label-default label-sm pull-left padding-small-top padding-small-bottom margin-small-right margin-small-bottom">
+							  <s:property value="#user" />&#32;
+								<s:submit type="button" action="%{#actionName}" title="%{getText('label.remove') +' '+ #user}" cssClass="btn btn-default btn-xs badge">
+									<span class="icon icon-remove"></span>
+									<span class="sr-only">x</span>
+								</s:submit>
+							</span>
+						</li>
+					</s:iterator>
+				</ul>
+			</s:if>
+		</s:form>
+	</div>
 </div>
+<div class="panel panel-default">
+	<div class="panel-body">
+		<s:form action="search">
+			<h3 class="margin-none h3 margin-base-bottom"><s:text name="title.userManagement.searchUsers" /></h3>
+			<p class="sr-only">
+				<s:hidden name="authName" />
+			</p>
+			<div class="form-group">
+				<div class="input-group col-sm-12">
+					<label for="username" class="sr-only"><s:text name="title.userManagement.searchUsers" /></label>
+					<span class="input-group-addon" title="<s:text name="title.userManagement.searchUsers" />">
+						<span class="icon icon-file-text-alt icon-large"></span>
+					</span>
+					<s:textfield name="text" id="username" cssClass="form-control input-lg" title="%{getText('title.userManagement.searchUsers')}" placeholder="%{getText('label.search.by')+ ' '+ getText('label.username')}" />
+					<div class="input-group-btn">
+						<s:submit type="button" action="search" cssClass="btn btn-primary btn-lg" title="%{getText('title.userManagement.searchUsers')}">
+								<span class="icon icon-search" title="<s:text name="label.search" />"></span>
+						</s:submit>
+					</div>
+				</div>
+			</div>
+		</s:form>
 
-<table class="generic" summary="<s:text name="note.configAuthority.summary" />">
-<caption><span><s:text name="title.userManagement.userList" /></span></caption>
-<tr>
-	<th><s:text name="label.username" /></th>
-	<th><s:text name="label.date.registration" /></th>
-	<th><s:text name="label.date.lastLogin" /></th>
-	<th><s:text name="label.date.lastPasswordChange" /></th>
-	<th class="icon"><abbr title="<s:text name="label.state" />">S</abbr></th>	
-</tr>
-<s:iterator id="usernameVar">
-<s:set var="userVar" value="%{getUser(#usernameVar)}" />
+		<s:form action="search">
+			<p class="sr-only">
+				<wpsf:hidden name="username" />
+				<wpsf:hidden name="authName" />
+			</p>
+			<div class="form-group">
+				<div class="input-group col-sm-12">
+						<wpsa:subset source="searchResult" count="10" objectName="groupUser" advanced="true" offset="5">
+							<s:set name="group" value="#groupUser" />
+							<div class="text-center">
+								<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
+								<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
+							</div>
+							<div class="table-responsive">
+								<table class="table table-borded">
+									<tr>
+										<th><s:text name="label.username" /></th>
+										<th class="text-center"><s:text name="label.date.registration" /></th>
+										<th class="text-center"><s:text name="label.date.lastLogin" /></th>
+										<th class="text-center"><s:text name="label.date.lastPasswordChange" /></th>
+										<th class="icon"><abbr title="<s:text name="label.state" />">S</abbr></th>	
+									</tr>
+									<s:iterator var="usernameVar">
+										<s:set var="userVar" value="%{getUser(#usernameVar)}" />
+										<s:if test="!#userVar.entandoUser">
+											<s:set var="statusIconImagePath">icon-sitemap</s:set>
+											<s:set var="statusIconText" value="%{getText('note.userStatus.notEntandoUser')}" />
+										</s:if>
+										<s:elseif test="#userVar.disabled">
+											<s:set var="statusIconImagePath">icon-moon</s:set>
+											<s:set var="statusIconText" value="%{getText('note.userStatus.notActive')}" />
+										</s:elseif>
+										<s:elseif test="!#userVar.accountNotExpired">
+											<s:set var="statusIconImagePath">icon-off</s:set>
+											<s:set var="statusIconText" value="%{getText('note.userStatus.expiredAccount')}" />
+										</s:elseif>
+										<s:elseif test="!#userVar.credentialsNotExpired">
+											<s:set var="statusIconImagePath">icon-check</s:set>
+											<s:set var="statusIconText" value="%{getText('note.userStatus.expiredPassword')}" />
+										</s:elseif>
+										<s:elseif test="!#userVar.disabled">
+											<s:set var="statusIconImagePath">icon-ok</s:set>
+											<s:set var="statusIconText" value="%{getText('note.userStatus.active')}" />
+										</s:elseif>
+										<tr>
+											<td class="text-nowrap">
+												<label>
+													<input type="radio" name="usernameToSet" value="<s:property value="#usernameVar"/>" />
+													&#32;
+													<s:property value="#userVar" />
+												</label>
+											</td>
+											<td class="text-center text-nowrap">
+												<code>
+													<s:if test="#userVar.entandoUser">
+														<s:date name="#userVar.creationDate" format="dd/MM/yyyy" />
+													</s:if>
+													<s:else><abbr title="<s:text name="label.none" />">&ndash;</abbr></s:else>
+												</code>
+											</td>
+											<td class="text-center text-nowrap">
+												<code>
+													<s:if test="#userVar.entandoUser && #userVar.lastAccess != null">
+														<s:date name="#userVar.lastAccess" format="dd/MM/yyyy" />
+													</s:if>
+													<s:else><abbr title="<s:text name="label.none" />">&ndash;</abbr></s:else>
+												</code>
+											</td>
+											<td class="text-center text-nowrap">
+													<code>
+														<s:if test="#userVar.entandoUser && #userVar.lastPasswordChange != null">
+															<s:date name="#userVar.lastPasswordChange" format="dd/MM/yyyy" />
+														</s:if>
+														<s:else><abbr title="<s:text name="label.none" />">&ndash;</abbr></s:else>
+													</code>
+											</td>
+											<td class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+												<span 
+													class="icon <s:property value="#statusIconImagePath" />"
+													title="<s:property value="#statusIconText" />"
+													>
+														<span class="sr-only"><s:property value="#statusIconText" /></span>
+												</span>
+											</td>
+										</tr>
+									</s:iterator>
+								</table>
+							</div>
+							<div class="text-center">
+								<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
+							</div>
+						</wpsa:subset>
+				</div>
+			</div>
+			<p class="text-center">
+				<s:submit 
+					type="button" 
+					action="addUser" 
+					cssClass="btn btn-default">
+						<s:text name="label.add" />
+				</s:submit>
+			</p>
+		</s:form>
 
-<s:if test="!#userVar.entandoUser">
-	<s:set name="statusIconImagePath" id="statusIconImagePath"><wp:resourceURL/>administration/common/img/icons/user-status-notjAPSUser.png</s:set>
-	<s:set name="statusIconText" id="statusIconText"><s:text name="note.userStatus.notEntandoUser" /></s:set>
-</s:if>
-<s:elseif test="#userVar.disabled">
-	<s:set name="statusIconImagePath" id="statusIconImagePath"><wp:resourceURL/>administration/common/img/icons/user-status-notActive.png</s:set>
-	<s:set name="statusIconText" id="statusIconText"><s:text name="note.userStatus.notActive" /></s:set>	
-</s:elseif>
-<s:elseif test="!#userVar.accountNotExpired">
-	<s:set name="statusIconImagePath" id="statusIconImagePath"><wp:resourceURL/>administration/common/img/icons/user-status-expiredAccount.png</s:set>
-	<s:set name="statusIconText" id="statusIconText"><s:text name="note.userStatus.expiredAccount" /></s:set>	
-</s:elseif>
-<s:elseif test="!#userVar.credentialsNotExpired">
-	<s:set name="statusIconImagePath" id="statusIconImagePath"><wp:resourceURL/>administration/common/img/icons/user-status-expiredPassword.png</s:set>
-	<s:set name="statusIconText" id="statusIconText"><s:text name="note.userStatus.expiredPassword" /></s:set>	
-</s:elseif>
-<s:elseif test="!#userVar.disabled">
-	<s:set name="statusIconImagePath" id="statusIconImagePath"><wp:resourceURL/>administration/common/img/icons/user-status-active.png</s:set>
-	<s:set name="statusIconText" id="statusIconText"><s:text name="note.userStatus.active" /></s:set>
-</s:elseif>
 
-<tr>
-	<td><input type="radio" name="usernameToSet" id="<s:property value="#usernameVar" />" value="<s:property value="#usernameVar"/>" /><label for="<s:property value="#usernameVar" />"><s:property value="#userVar" /></label></td>
-	<td class="centerText monospace">
-		<s:if test="#userVar.entandoUser">
-			<s:date name="#userVar.creationDate" format="dd/MM/yyyy" />
-		</s:if>
-		<s:else><abbr title="<s:text name="label.none" />">&ndash;</abbr></s:else>
-	</td>
-	<td class="centerText monospace">
-		<s:if test="#userVar.entandoUser && #userVar.lastAccess != null">
-			<s:date name="#userVar.lastAccess" format="dd/MM/yyyy" />
-		</s:if>
-		<s:else><abbr title="<s:text name="label.none" />">&ndash;</abbr></s:else>
-	</td>
-	<td class="centerText monospace">
-		<s:if test="#userVar.entandoUser && #userVar.lastPasswordChange != null">
-			<s:date name="#userVar.lastPasswordChange" format="dd/MM/yyyy" />
-		</s:if>
-		<s:else><abbr title="<s:text name="label.none" />">&ndash;</abbr></s:else>
-	</td>
-	<td class="icon"><img src="<s:property value="#statusIconImagePath" />" alt="<s:property value="#statusIconText" />" title="<s:property value="#statusIconText" />" /></td>
-</tr>
-</s:iterator>
-</table>
-
-<div class="pager">
-	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
+	</div>
 </div>
-
-</wpsa:subset>
-
-<p><wpsf:submit useTabindexAutoIncrement="true" action="addUser" value="%{getText('label.add')}" cssClass="button" /></p>
-
-</div>
-
-</s:form>
