@@ -125,7 +125,7 @@
 													<s:param name="tableName" value="#tableReportVar.tableName" />
 													<s:param name="dataSourceName" value="#dataSourceNameVar" />
 													<s:param name="subFolderName" value="#dumpReportVar.subFolderName" />
-												</s:url>"><span class="icon icon-download" />&#32;<s:property value="#tableReportVar.tableName" /></a>
+												</s:url>"><span class="icon icon-download"></span>&#32;<s:property value="#tableReportVar.tableName" /></a>
 										</s:else>
 									</td>
 									<td class="text-right text-nowrap">
@@ -164,7 +164,7 @@
 												<s:param name="tableName" value="#tableReportVar.tableName" />
 												<s:param name="dataSourceName" value="#dataSourceNameVar" />
 												<s:param name="subFolderName" value="#dumpReportVar.subFolderName" />
-											</s:url>"><span class="icon icon-download" />&#32;<s:property value="#tableReportVar.tableName" /></a>
+											</s:url>"><span class="icon icon-download"></span>&#32;<s:property value="#tableReportVar.tableName" /></a>
 									</s:else>
 								</td>
 								<td class="text-right text-nowrap">

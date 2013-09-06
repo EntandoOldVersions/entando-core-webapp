@@ -19,7 +19,7 @@
 			<a
 				href="<s:url namespace="/do/Admin/Database" action="entry" />"
 				title="<s:text name="title.databaseManagement" />">
-				<span class="icon icon-reply" /></a>
+				<span class="icon icon-reply"></span></a>
 				&#32;
 				<s:text name="database.management.label.remove.areyousure" />&#32;
 				<code><s:date name="#dumpReportVar.date" format="dd/MM/yyyy HH:mm:ss" /></code>?
