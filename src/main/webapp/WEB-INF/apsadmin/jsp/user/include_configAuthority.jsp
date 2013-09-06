@@ -34,7 +34,6 @@
 			</p>
 			<s:set name="removeIcon" id="removeIcon"><wp:resourceURL/>administration/common/img/icons/list-remove.png</s:set>
 			<s:set var="authorizedUsersVar" value="authorizedUsers" />
-
 			<s:if test="%{#authorizedUsersVar.size() > 0}">
 				<ul class="list-unstyled">
 					<s:iterator var="user" value="#authorizedUsersVar">
@@ -125,8 +124,13 @@
 										</s:elseif>
 										<tr>
 											<td class="text-nowrap">
+												<s:set var="usernameAlreadyInVar" value="%{false}" />
+												<s:iterator value="#authorizedUsersVar" var="u"><s:if test="%{#u.username == #usernameVar}"><s:set var="usernameAlreadyInVar" value="%{true}" /></s:if></s:iterator>
 												<label>
-													<input type="radio" name="usernameToSet" value="<s:property value="#usernameVar"/>" />
+													<s:if test="%{!#usernameAlreadyInVar}">
+														<input type="radio" name="usernameToSet" value="<s:property value="#usernameVar"/>" />
+													</s:if>
+													<s:else><span class="icon icon-check" /></s:else>
 													&#32;
 													<s:property value="#userVar" />
 												</label>
