@@ -42,7 +42,7 @@
 <s:iterator id="user" value="#authorizedUsersVar">
 	<li>
 		<wpsa:actionParam action="removeUser" var="actionName" >
-			<wpsa:actionSubParam name="username" value="%{#user.username}" />
+			<wpsa:actionSubParam name="usernameToSet" value="%{#user.username}" />
 		</wpsa:actionParam>
 		<wpsf:submit useTabindexAutoIncrement="true" action="%{#actionName}" type="image" src="%{#removeIcon}" value="%{getText('label.remove')}" title="%{getText('label.remove')}" />: <s:property value="#user" />
 	</li>
@@ -115,7 +115,7 @@
 </s:elseif>
 
 <tr>
-	<td><input type="radio" name="username" id="<s:property value="#usernameVar" />" value="<s:property value="#usernameVar"/>" /><label for="<s:property value="#usernameVar" />"><s:property value="#userVar" /></label></td>
+	<td><input type="radio" name="usernameToSet" id="<s:property value="#usernameVar" />" value="<s:property value="#usernameVar"/>" /><label for="<s:property value="#usernameVar" />"><s:property value="#userVar" /></label></td>
 	<td class="centerText monospace">
 		<s:if test="#userVar.entandoUser">
 			<s:date name="#userVar.creationDate" format="dd/MM/yyyy" />
