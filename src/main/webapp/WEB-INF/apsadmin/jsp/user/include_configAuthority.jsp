@@ -55,10 +55,9 @@
 		</s:form>
 	</div>
 </div>
-<div class="panel panel-default">
-	<div class="panel-body">
-		<s:form action="search">
-			<h3 class="margin-none h3 margin-base-bottom"><s:text name="title.userManagement.searchUsers" /></h3>
+
+		<s:form action="search" cssClass="margin-base-top">
+			<h3 class="h4 margin-none  margin-base-bottom"><s:text name="title.userManagement.searchUsers" /></h3>
 			<p class="sr-only">
 				<s:hidden name="authName" />
 			</p>
@@ -92,7 +91,7 @@
 								<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 							</div>
 							<div class="table-responsive">
-								<table class="table table-borded">
+								<table class="table table-bordered">
 									<tr>
 										<th><s:text name="label.username" /></th>
 										<th class="text-center"><s:text name="label.date.registration" /></th>
@@ -130,7 +129,7 @@
 													<s:if test="%{!#usernameAlreadyInVar}">
 														<input type="radio" name="usernameToSet" value="<s:property value="#usernameVar"/>" />
 													</s:if>
-													<s:else><span class="icon icon-check" /></s:else>
+													<s:else><span class="icon icon-check text-muted"></span></s:else>
 													&#32;
 													<s:property value="#userVar" />
 												</label>
@@ -188,5 +187,3 @@
 		</s:form>
 
 
-	</div>
-</div>
