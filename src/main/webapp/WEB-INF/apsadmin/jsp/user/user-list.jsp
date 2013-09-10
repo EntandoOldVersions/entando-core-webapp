@@ -28,9 +28,15 @@
 			<span class="input-group-addon">
 				<span class="icon icon-file-text-alt icon-large" title="<s:text name="label.search.by"/>&#32;<s:text name="label.username"/>"></span>
 			</span>
-			<input type="text" name="text" value="" id="text" class="form-control input-lg" title="<s:text name="label.search.by"/>&#32;<s:text name="label.username"/>" placeholder="Description">
+			<s:textfield 
+				name="text" 
+				id="text" 
+				cssClass="form-control input-lg"
+				title="%{getText('label.search.by')+' '+getText('label.username')}"
+				placeholder="%{getText('label.username')}" />
 			<div class="input-group-btn">
-				<s:submit type="button" name="username" id="search-username" cssClass="btn btn-primary btn-lg">
+				<s:submit type="button" name="username" id="search-username" cssClass="btn btn-primary btn-lg" title="%{getText('label.search')}">
+					<span class="sr-only"><s:text name="label.search" /></span>
 					<span class="icon icon-search" title="<s:text name="label.search" />"></span>
 				</s:submit>
 			</div>
@@ -178,120 +184,161 @@
 					</s:elseif>
 			</s:iterator>
 		</s:if>
+		<%-- second search button --%>
 		<div class="form-group">
 			<div class="col-sm-5 col-sm-offset-2">
 				<s:submit type="button" cssClass="btn btn-primary">
-					<span class="icon icon-search" />&#32;<s:text name="label.search" />
+					<span class="icon icon-search" /></span>
+					&#32;
+					<s:text name="label.search" />
 				</s:submit>
 			</div>
 		</div>
 	</div>
 	<wpsa:subset source="searchResult" count="10" objectName="groupUserVar" advanced="true" offset="5">
 		<s:set var="group" value="#groupUserVar" />
+		<wp:ifauthorized permission="editUserProfile" var="hasEditProfilePermission" />
+		<s:set var="hasEditProfilePermission" value="#attr.hasEditProfilePermission" />
 		<div class="text-center">
 			<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
 			<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 		</div>
 		<div class="table-responsive">
-			<wp:ifauthorized permission="editUserProfile" var="hasEditProfilePermission" />
-			<table class="table table-bordered" summary="<s:text name="note.userList.summary" />">
+			<table class="table table-bordered">
 				<caption><span><s:text name="title.userManagement.userList" /></span></caption>
 				<tr>
+					<th class="text-center padding-large-left padding-large-right col-xs-4 col-sm-3 col-md-2 col-lg-2"><abbr title="<s:text name="label.actions" />">&ndash;</abbr>
 					<th><s:text name="label.username" /></th>
-					<th><s:text name="label.name" /></th>
 					<th><s:text name="label.email" /></th>
-					<%--
-					<th><s:text name="label.date.registration" /></th>
-					<th><s:text name="label.date.lastLogin" /></th>
-					<th><s:text name="label.date.lastPasswordChange" /></th>
-					--%>
+					<%-- hookpoint core.user-list.table.th --%>
 					<wpsa:hookPoint key="core.user-list.table.th" objectName="hookPointElements_core_user_list_table_th">
 						<s:iterator value="#hookPointElements_core_user_list_table_th" var="hookPointElement">
 							<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
 						</s:iterator>
 					</wpsa:hookPoint>
-					<th class="icon"><abbr title="<s:text name="label.profile" />">P</abbr></th>
-					<th class="icon"><abbr title="<s:text name="label.state" />">S</abbr></th>
-					<th class="icon"><abbr title="<s:text name="label.authorizations" />">A</abbr></th>
-					<th class="icon"><abbr title="<s:text name="label.remove" />">&ndash;</abbr></th>
-					<s:iterator var="usernameVar">
-						<s:set var="userVar" value="%{getUser(#usernameVar)}" />
-						<s:set var="userProfileVar" value="%{getUserProfile(#usernameVar)}" />
-						<s:if test="null == #userVar || #userVar.disabled">
-							<s:set var="statusIconImagePath" id="statusIconImagePath"><wp:resourceURL/>administration/common/img/icons/user-status-notActive.png</s:set>
-							<s:set var="statusIconText" id="statusIconText"><s:text name="note.userStatus.notActive" /></s:set>
-						</s:if>
-						<s:elseif test="!#userVar.entandoUser">
-							<s:set var="statusIconImagePath" id="statusIconImagePath"><wp:resourceURL/>administration/common/img/icons/user-status-notjAPSUser.png</s:set>
-							<s:set var="statusIconText" id="statusIconText"><s:text name="note.userStatus.notEntandoUser" /></s:set>
-						</s:elseif>
-						<s:elseif test="!#userVar.accountNotExpired">
-							<s:set var="statusIconImagePath" id="statusIconImagePath"><wp:resourceURL/>administration/common/img/icons/user-status-expiredAccount.png</s:set>
-							<s:set var="statusIconText" id="statusIconText"><s:text name="note.userStatus.expiredAccount" /></s:set>
-						</s:elseif>
-						<s:elseif test="!#userVar.credentialsNotExpired">
-							<s:set var="statusIconImagePath" id="statusIconImagePath"><wp:resourceURL/>administration/common/img/icons/user-status-expiredPassword.png</s:set>
-							<s:set var="statusIconText" id="statusIconText"><s:text name="note.userStatus.expiredPassword" /></s:set>
-						</s:elseif>
-						<s:elseif test="!#userVar.disabled">
-							<s:set var="statusIconImagePath" id="statusIconImagePath"><wp:resourceURL/>administration/common/img/icons/user-status-active.png</s:set>
-							<s:set var="statusIconText" id="statusIconText"><s:text name="note.userStatus.active" /></s:set>
-						</s:elseif>
-						<tr>
+					<th class="text-center col-xs-1 col-sm-1 col-md-1 col-lg-1"><abbr title="<s:text name="label.state" />">S</abbr></th>
+				</tr>
+				<s:iterator var="usernameVar">
+					<s:set var="userVar" value="%{getUser(#usernameVar)}" />
+					<s:set var="userProfileVar" value="%{getUserProfile(#usernameVar)}" />
+					<s:url action="edit" var="editUserActionVar"><s:param name="username" value="#usernameVar"/></s:url>
+					<s:url action="edit" namespace="/do/User/Auth" var="editUserAuthActionVar"><s:param name="username" value="#usernameVar"/></s:url>
+					<s:url action="edit" namespace="/do/userprofile" var="editUserProfileActionVar"><s:param name="username" value="#usernameVar"/></s:url>
+					<s:url action="view" namespace="/do/userprofile" var="viewUserProfileActionVar"><s:param name="username" value="#usernameVar"/></s:url>
+					<s:url action="trash" var="userTrashActionVar"><s:param name="username" value="#usernameVar"/></s:url>
+					<s:if test="null == #userVar || #userVar.disabled">
+						<s:set var="statusIconClassVar" value="%{'icon icon-pause text-warning'}" />
+						<s:set var="statusTextVar" value="%{getText('note.userStatus.notActive')}" />
+					</s:if>
+					<s:elseif test="!#userVar.entandoUser">
+						<s:set var="statusIconClassVar" value="%{'icon icon-minus'}" />
+						<s:set var="statusTextVar" value="%{getText('note.userStatus.notEntandoUser')}" />
+					</s:elseif>
+					<s:elseif test="!#userVar.accountNotExpired">
+						<s:set var="statusIconClassVar" value="%{'icon icon-circle-blank text-danger'}" />
+						<s:set var="statusTextVar" value="%{getText('note.userStatus.expiredAccount')}" />
+					</s:elseif>
+					<s:elseif test="!#userVar.credentialsNotExpired">
+						<s:set var="statusIconClassVar" value="%{'icon icon-adjust text-warning'}" />
+						<s:set var="statusTextVar" value="%{getText('note.userStatus.expiredPassword')}" />
+					</s:elseif>
+					<s:elseif test="!#userVar.disabled">
+						<s:set var="statusIconClassVar" value="%{'icon icon-ok text-success'}" />
+						<s:set var="statusTextVar" value="%{getText('note.userStatus.active')}" />
+					</s:elseif>
+					<tr>
+						<td class="text-center text-nowrap">
+							<div class="btn-group btn-group-xs">
+								<%-- edit --%>
+									<a class="btn btn-default" title="<s:text name="label.edit" />&#32;<s:property value="#usernameVar" />" href="<s:property value="#editUserActionVar" escapeHtml="false" />">
+										<span class="sr-only"><s:text name="label.edit" />&#32;<s:property value="#usernameVar" /></span>
+										<span class="icon icon-edit"></span>
+									</a>
+								<%-- dropdown button --%>
+									<button type="submit" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+										<span class="caret"></span>
+									</button>
+								<ul class="dropdown-menu text-left"  role="menu">
+									<li>
+										<%-- edit auth --%>
+										<a
+											href="<s:property value="#editUserAuthActionVar" escapeHtml="false" />"
+											title="<s:text name="note.configureAuthorizationsFor" />: <s:property value="#usernameVar" />"
+											>
+												<span class="icon-fixed-width icon icon-unlock"></span>&#32;
+												<s:text name="note.configureAuthorizationsFor" />: <s:property value="#usernameVar" />
+										</a>
+									</li>
+									<s:if test="#hasEditProfilePermission">
+										<li>
+											<%-- edit profile --%>
+											<a 
+												href="<s:property value="#editUserProfileActionVar" escapeHtml="false" />" 
+												title="<s:text name="label.editProfile" />:&#32;<s:property value="#userProfileVar.getValue(#userProfileVar.firstNameAttributeName)"/>&#32;<s:property value="#userProfileVar.getValue(#userProfileVar.surnameAttributeName)"/>">
+													<span class="icon-fixed-width icon icon-user"></span>&#32;
+													<s:text name="label.editProfile" />: <s:property value="#usernameVar" />
+											</a>
+										</li>
+									</s:if>
+									<s:if test="null != #userProfileVar">
+										<li>
+											<%-- view profile --%>
+											<a 
+												href="<s:property value="#viewUserProfileActionVar" escapeHtml="false" />" 
+												title="<s:text name="label.viewProfile" />: <s:property value="#usernameVar" />">
+													<span class="icon-fixed-width icon icon-info"></span>&#32;
+													<s:text name="label.viewProfile" />
+											</a>
+										</li>
+									</s:if>
+								</ul>
+							</div>
+							<%-- remove --%>
+								<div class="btn-group btn-group-xs">
+									<a
+										href="<s:property value="#userTrashActionVar" escapeHtml="false" />"
+										title="<s:text name="label.remove" />: <s:property value="#usernameVar" />"
+										class="btn btn-warning"
+										>
+										<span class="icon-fixed-width icon icon-remove-circle"></span>&#32;
+										<span class="sr-only"><s:text name="label.alt.clear" /></span>
+									</a>
+								</div>
+						</td>
+						<%-- username --%>
+							<td><s:property value="#usernameVar" /></td>
+						<%-- email --%>
 							<td>
-								<s:if test="null == #userVar">
-								<a href="<s:url action="edit"><s:param name="username" value="#usernameVar"/></s:url>" title="<s:text name="label.edit" />: <s:property value="#usernameVar" />" ><s:property value="#userVar" /></a>
+								<s:if test="null != #userProfileVar">
+									<s:set var="mailVar" value="#userProfileVar.getValue(#userProfileVar.mailAttributeName)" />
+									<s:if test="#mailVar.length()>25">
+										<abbr title="<s:property value="#mailVar" />">
+											<s:set var="chunks" value="%{#mailVar.split('@')}" />
+											<s:property value="%{#chunks[0].length() > 8 ? #chunks[0].substring(0,8)+'...' : #chunks[0]}" />@<s:property value="%{#chunks[1].length() > 8 ? '...'+#chunks[1].substring(#chunks[1].length()-8) : #chunks[1]}" />
+											<%-- <s:property value="%{#mailVar.substring(0,8) + '...' + #mailVar.substring(#mailVar.length()-8)}" /> --%>
+										</abbr>
+									</s:if>
+									<s:else>
+										<s:property value="#mailVar"/>
+									</s:else>
 								</s:if>
-								<s:else><s:property value="#usernameVar" /></s:else>
+								<s:else>
+									<abbr title="<s:text name="label.noProfile" />">&ndash;</abbr>
+								</s:else>
 							</td>
-							<td>
-								<s:if test="null != #userProfileVar"><s:property value="#userProfileVar.getValue(#userProfileVar.fullNameAttributeName)"/></s:if>
-								<s:else><abbr title="<s:text name="label.noProfile" />">&ndash;</abbr></s:else>
-							</td>
-							<td class="monospace"><s:if test="null != #userProfileVar">
-								<s:set var="mailVar" value="#userProfileVar.getValue(#userProfileVar.mailAttributeName)" />
-								<s:if test="#mailVar.length()>16"><abbr title="<s:property value="#mailVar" />"><s:property value="%{#mailVar.substring(0,8) + '...' + #mailVar.substring(#mailVar.length()-8)}" /></abbr></s:if>
-								<s:else><s:property value="#mailVar"/></s:else></s:if><s:else><abbr title="<s:text name="label.noProfile" />">&ndash;</abbr></s:else>
-							</td>
-							<%--
-							<td class="centerText monospace">
-								<s:if test="#userVar.entandoUser">
-									<s:date name="#userVar.creationDate" format="dd/MM/yyyy" />
-								</s:if>
-								<s:else><abbr title="<s:text name="label.none" />">&ndash;</abbr></s:else>
-							</td>
-							<td class="centerText monospace">
-								<s:if test="#userVar.entandoUser && #userVar.lastAccess != null">
-									<s:date name="#userVar.lastAccess" format="dd/MM/yyyy" />
-								</s:if>
-								<s:else><abbr title="<s:text name="label.none" />">&ndash;</abbr></s:else>
-							</td>
-							<td class="centerText monospace">
-								<s:if test="#userVar.entandoUser && #userVar.lastPasswordChange != null">
-									<s:date name="#userVar.lastPasswordChange" format="dd/MM/yyyy" />
-								</s:if>
-								<s:else><abbr title="<s:text name="label.none" />">&ndash;</abbr></s:else>
-							</td>
-							--%>
+						<%-- td hookpoint --%>
 							<wpsa:hookPoint key="core.user-list.table.td" objectName="hookPointElements_core_user_list_table_td">
 								<s:iterator value="#hookPointElements_core_user_list_table_td" var="hookPointElement">
 									<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
 								</s:iterator>
 							</wpsa:hookPoint>
-							<td class="icon_double">
-								<c:if test="${hasEditProfilePermission}"><a href="<s:url action="edit" namespace="/do/userprofile"><s:param name="username" value="#usernameVar"/></s:url>"
-									title="<s:text name="label.editProfile" />:&#32;<s:property value="#userProfileVar.getValue(#userProfileVar.firstNameAttributeName)"/>&#32;<s:property value="#userProfileVar.getValue(#userProfileVar.surnameAttributeName)"/>"><img src="<wp:resourceURL/>administration/common/img/icons/22x22/edit.png" alt="<s:text name="label.editProfile" />: <s:property value="#usernameVar" />" /></a></c:if>
-								<s:if test="null != #userProfileVar"><a href="<s:url action="view" namespace="/do/userprofile"><s:param name="username" value="#usernameVar"/></s:url>"
-									title="<s:text name="label.viewProfile" />: <s:property value="#usernameVar" />"><img src="<wp:resourceURL/>administration/common/img/icons/22x22/detail.png" alt="<s:text name="label.viewProfile" />: <s:property value="#usernameVar" />" /></a></s:if>
+						<%-- status --%>
+							<td class="text-center">
+								<span class="sr-only"><s:property value="#statusTextVar" /></span>
+								<span class="<s:property value="#statusIconClassVar" />" title="<s:property value="#statusTextVar" />"></span>
 							</td>
-							<td class="icon"><img src="<s:property value="#statusIconImagePath" />" alt="<s:property value="#statusIconText" />" title="<s:property value="#statusIconText" />" /></td>
-							<td class="icon"><a href="<s:url namespace="/do/User/Auth" action="edit"><s:param name="username" value="#usernameVar"/></s:url>" title="<s:text name="note.configureAuthorizationsFor" />: <s:property value="#usernameVar" />"><img src="<wp:resourceURL />administration/common/img/icons/authorizations.png" alt="<s:text name="note.configureAuthorizationsFor" />: <s:property value="#usernameVar" />" /></a></td>
-							<td class="icon"><a href="<s:url action="trash"><s:param name="username" value="#usernameVar"/></s:url>" title="<s:text name="label.remove" />: <s:property value="#usernameVar" />"><img src="<wp:resourceURL />administration/common/img/icons/delete.png" alt="<s:text name="label.alt.clear" />" /></a></td>
-						</tr>
-						<s:set var="userVar" value="null" />
-						<s:set var="userProfileVar" value="null" />
-					</s:iterator>
-				</tr>
+					</tr>
+				</s:iterator>
 			</table>
 		</div>
 		<div class="text-center">
