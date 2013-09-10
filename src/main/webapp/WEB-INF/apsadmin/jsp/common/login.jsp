@@ -155,7 +155,10 @@
 
 				<div class="row">
 					<p class="padding-base-top col-sm-8 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
-							<s:submit cssClass="btn btn-success btn-lg btn-block" />
+							<s:submit type="button" cssClass="btn btn-success btn-lg btn-block">
+								<span class="icon icon-signin"></span>&#32;
+								<s:text name="label.signin" />
+							</s:submit>
 					</p>
 				</div>
 
