@@ -15,7 +15,7 @@
 		<div class="alert alert-warning alert-dismissable fade in">
 			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
 			<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
-			<ul class="margin-base-vertical">
+			<ul class="margin-base-top">
 				<s:iterator value="actionErrors">
 					<li><s:property escape="false" /></li>
 				</s:iterator>
@@ -195,6 +195,12 @@
 			</div>
 		</div>
 	</div>
+
+<a href="<s:url namespace="/do/User" action="new" />" class="btn btn-default">
+	<span class="icon icon-plus-sign"></span>&#32;
+	<s:text name="title.userManagement.userNew" />
+</a>
+
 	<wpsa:subset source="searchResult" count="10" objectName="groupUserVar" advanced="true" offset="5">
 		<s:set var="group" value="#groupUserVar" />
 		<wp:ifauthorized permission="editUserProfile" var="hasEditProfilePermission" />
