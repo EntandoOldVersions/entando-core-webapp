@@ -15,7 +15,7 @@
 	<div class="alert alert-warning alert-dismissable fade in">
 		<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
 		<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
-		<ul class="margin-base-vertical">
+		<ul class="margin-base-top">
 			<s:iterator value="actionErrors">
 				<li><s:property escape="false" /></li>
 			</s:iterator>
@@ -26,7 +26,7 @@
 	<div class="alert alert-warning alert-dismissable fade in">
 		<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
 		<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h2>
-		<ul class="margin-base-vertical">
+		<ul class="margin-base-top">
 			<s:iterator value="fieldErrors">
 					<s:iterator value="value">
 						<li><s:property escape="false" /></li>
@@ -39,7 +39,7 @@
 	<div class="alert alert-info alert-dismissable fade in">
 		<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
 		<h2 class="h4 margin-none"><s:text name="messages.confirm" /></h2>
-		<ul class="margin-base-vertical">
+		<ul class="margin-base-top">
 			<s:iterator value="actionMessages">
 				<li><s:property escape="false" /></li>
 			</s:iterator>
