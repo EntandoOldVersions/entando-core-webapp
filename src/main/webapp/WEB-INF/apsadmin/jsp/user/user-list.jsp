@@ -73,7 +73,7 @@
 			<div class="col-sm-5 input-group">
 				<s:select id="userprofile_src_entityPrototypes" list="entityPrototypes" name="entityTypeCode" headerKey="" headerValue="%{getText('label.all')}" listKey="typeCode" listValue="typeDescr" cssClass="form-control" />
 				<div class="input-group-btn">
-					<s:submit type="button" cssClass="btn btn-default" action="changeProfileType">
+					<s:submit type="button" cssClass="btn btn-default" action="changeProfileType" value="set">
 						<s:text name="label.set" />
 					</s:submit>
 				</div>
@@ -81,7 +81,7 @@
 		</div>
 		<c:if test="${empty searcheableAttributesPageScope}">
 			<div class="form-group">
-				<div class="col-lg-offset-2 col-sm-5 input-group">
+				<div class="col-sm-offset-2 col-lg-offset-2 col-sm-10 col-lg-10 input-group">
 					<span class="text-info">
 						<s:text name="note.userprofile.searchAdvanced.chooseType" />
 					</span>
