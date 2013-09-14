@@ -151,10 +151,6 @@
 	</div>
 </s:elseif>
 
-</div>
-
-<div id="main">
-
 <wpsa:activityStream var="activityStreamVar" />
 
 <s:if test="null != #activityStreamVar && #activityStreamVar.size() != 0">
