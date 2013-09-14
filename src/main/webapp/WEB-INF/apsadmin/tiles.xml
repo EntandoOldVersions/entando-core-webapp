@@ -22,7 +22,10 @@
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/common/template/mainBody.jsp" />
         <put-attribute name="footer" value="/WEB-INF/apsadmin/jsp/common/template/footer.jsp" />
     </definition>
-
+	
+	<!-- temporary addition -->
+	<definition extends="layout.default" name="main.layout" />
+	
     <definition extends="layout.default" name="admin.intro">
         <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/startPage.jsp" />
     </definition>
