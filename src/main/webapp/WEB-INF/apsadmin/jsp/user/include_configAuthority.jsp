@@ -4,7 +4,7 @@
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 <s:if test="hasActionErrors()">
 	<div class="alert alert-warning alert-dismissable fade in">
-		<button class="close" data-dismiss="alert">&times;</button>
+		<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
 		<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
 		<ul class="margin-base-top">
 			<s:iterator value="actionErrors">

@@ -38,7 +38,7 @@
 
 			<s:if test="hasFieldErrors()">
 			<div class="alert alert-danger alert-dismissable">
-				<button class="close" data-dismiss="alert">&times;</button>
+				<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
 				<h3 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h3>
 				<ul>
 				<s:iterator value="fieldErrors">

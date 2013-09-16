@@ -18,7 +18,7 @@
 
 	<s:if test="hasFieldErrors()">
 		<div class="alert alert-danger alert-dismissable fade in">
-			<button class="close" data-dismiss="alert">&times;</button>
+			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
 			<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h2>
 			<p class="margin-base-vertical"><s:text name="message.content.error" /></p>
 		</div>
