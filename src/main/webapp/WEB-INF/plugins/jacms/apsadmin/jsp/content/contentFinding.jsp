@@ -18,178 +18,161 @@
 			</p>
 
 			<div class="form-group">
-
 				<label for="text" class="sr-only"><s:text name="label.search.by"/>&#32;<s:text name="label.description"/></label>
-				<div class="input-group col-sm-12">
+				<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					<span class="input-group-addon">
-						<span class="icon icon-file-text-alt icon-large"></span>
+						<span class="icon icon-file-text-alt icon-large" title="<s:text name="label.search.by"/>&#32;<s:text name="label.description"/>"></span>
 					</span>
-					<s:textfield name="text" id="text" cssClass="form-control input-lg" placeholder="%{getText('label.search.topic')}" title="%{getText('label.search.by')} %{getText('label.description')}" />
-					<div class="input-group-btn">
+					<s:textfield name="text" id="text" cssClass="form-control input-lg" placeholder="%{getText('label.description')}" title="%{getText('label.search.by')} %{getText('label.description')}" />
+					<span class="input-group-btn">
 						<wpsa:actionParam action="search" var="searchActionName" >
 							<wpsa:actionSubParam name="actionCode" value="search" />
 						</wpsa:actionParam>
-						<s:submit action="%{#searchActionName}" type="button" cssClass="btn btn-primary btn-lg">
-							<span class="icon icon-search" title="<s:text name="label.search" />"></span>
+						<s:submit action="%{#searchActionName}" type="button" cssClass="btn btn-primary btn-lg" title="%{getText('label.search')}">
+							<span class="sr-only"><s:text name="label.search" /></span>
+							<span class="icon icon-search"></span>
 						</s:submit>
-					</div>
+						<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="collapse" data-target="#search-advanced" title="<s:text name="title.searchFilters" />">
+								<span class="sr-only"><s:text name="title.searchFilters" /></span>
+								<span class="caret"></span>
+						</button>
+					</span>
 				</div>
-				<p class="help-block text-right">
-					<button type="button" data-toggle="collapse" data-target="#search-advanced"  class="btn btn-link">
-						<s:text name="title.searchFilters" />&#32;<span class="icon-chevron-down"></span>
-					</button>
-				</p>
-			</div>
-
-			<div id="search-advanced" class="collapse">
-
-				<div class="form-group">
-					<label for="contentType" class="control-label col-sm-2 text-right">
-						<s:text name="label.type"/>
-					</label>
-					<div class="col-sm-5 input-group">
-						<s:select cssClass="form-control" name="contentType" id="contentType"
-							list="contentTypes" listKey="code" listValue="descr"
-							headerKey="" headerValue="%{getText('label.all')}" />
-						<div class="input-group-btn">
-							<wpsa:actionParam action="changeContentType" var="changeContentTypeActionName" >
-								<wpsa:actionSubParam name="actionCode" value="changeContentType" />
-							</wpsa:actionParam>
-							<s:submit action="%{#changeContentTypeActionName}" cssClass="btn btn-default" value="%{getText('label.set')}" />
+				<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div id="search-advanced" class="collapse well collapse-input-group">
+						<div class="form-group">
+							<label for="contentType" class="control-label col-sm-2 text-right">
+								<s:text name="label.type"/>
+							</label>
+							<div class="col-sm-5 input-group">
+								<s:select cssClass="form-control" name="contentType" id="contentType"
+									list="contentTypes" listKey="code" listValue="descr"
+									headerKey="" headerValue="%{getText('label.all')}" />
+								<div class="input-group-btn">
+									<wpsa:actionParam action="changeContentType" var="changeContentTypeActionName" >
+										<wpsa:actionSubParam name="actionCode" value="changeContentType" />
+									</wpsa:actionParam>
+									<s:submit action="%{#changeContentTypeActionName}" cssClass="btn btn-default" value="%{getText('label.set')}" />
+								</div>
+							</div>
 						</div>
-					</div>
-				</div>
-
-				<s:set var="searcheableAttributes" value="searcheableAttributes" ></s:set>
-
-				<s:if test="null != #searcheableAttributes && #searcheableAttributes.size() > 0">
-
-					<%-- restore when we can dimiss it with a timeout
-					<div class="alert alert-info alert-dismissable fade in">
-						<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
-						<p>Content type successfully set. TODO label.</p>
-					</div>
-					--%>
-					<s:iterator var="attribute" value="#searcheableAttributes">
-						<s:set var="currentFieldId">entityFinding_<s:property value="#attribute.name" /></s:set>
-
-						<s:if test="#attribute.textAttribute">
+						<s:set var="searcheableAttributes" value="searcheableAttributes" />
+						<s:if test="null != #searcheableAttributes && #searcheableAttributes.size() > 0">
+							<%-- restore when we can dimiss it with a timeout
+							<div class="alert alert-info alert-dismissable fade in">
+								<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+								<p>Content type successfully set. TODO label.</p>
+							</div>
+							--%>
+							<s:iterator var="attribute" value="#searcheableAttributes">
+								<s:set var="currentFieldId" value="%{'entityFinding_'+#attribute.name}" />
+								<s:if test="#attribute.textAttribute">
+									<div class="form-group">
+										<s:set name="textInputFieldName"><s:property value="#attribute.name" />_textFieldName</s:set>
+										<label for="<s:property value="currentFieldId" />" class="control-label col-sm-3 text-right"><s:property value="#attribute.name" /></label>
+										<div class="col-sm-4">
+											<s:textfield id="%{currentFieldId}" name="%{#textInputFieldName}" value="%{getSearchFormFieldValue(#textInputFieldName)}" cssClass="form-control" />
+										</div>
+									</div>
+								</s:if>
+								<s:elseif test="#attribute.type == 'Date'">
+									<s:set name="dateStartInputFieldName" ><s:property value="#attribute.name" />_dateStartFieldName</s:set>
+									<s:set name="dateEndInputFieldName" ><s:property value="#attribute.name" />_dateEndFieldName</s:set>
+									<div class="form-group">
+										<label for="<s:property value="%{currentFieldId}" />_dateStartFieldName_cal" class="control-label col-sm-5 text-right"><s:text name="note.range.from.attribute" />&#32;<s:property value="#attribute.name" /></label>
+										<div class="col-sm-2">
+											<s:textfield id="%{currentFieldId}_dateStartFieldName_cal" name="%{#dateStartInputFieldName}" value="%{getSearchFormFieldValue(#dateStartInputFieldName)}" cssClass="form-control datepicker" placeholder="dd/mm/yyyy" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="<s:property value="%{currentFieldId}" />_dateEndFieldName_cal" class="control-label col-sm-5 text-right"><s:text name="note.range.to.attribute" />&#32;<s:property value="#attribute.name" /></label>
+										<div class="col-sm-2">
+											<s:textfield id="%{currentFieldId}_dateEndFieldName_cal" name="%{#dateEndInputFieldName}" value="%{getSearchFormFieldValue(#dateEndInputFieldName)}" cssClass="form-control datepicker" placeholder="dd/mm/yyyy" />
+										</div>
+									</div>
+								</s:elseif>
+								<s:elseif test="#attribute.type == 'Number'">
+									<s:set name="numberStartInputFieldName" ><s:property value="#attribute.name" />_numberStartFieldName</s:set>
+									<s:set name="numberEndInputFieldName" ><s:property value="#attribute.name" />_numberEndFieldName</s:set>
+									<p>
+										<label for="<s:property value="currentFieldId" />_start"><s:text name="note.range.from.attribute" />&#32;<s:property value="#attribute.name" />:</label>
+										<s:textfield id="%{currentFieldId}_start" name="%{#numberStartInputFieldName}" value="%{getSearchFormFieldValue(#numberStartInputFieldName)}" />
+									</p>
+									<p>
+										<label for="<s:property value="currentFieldId" />_end"><s:text name="note.range.to.attribute" />&#32;<s:property value="#attribute.name" />:</label>
+										<s:textfield id="%{currentFieldId}_end" name="%{#numberEndInputFieldName}" value="%{getSearchFormFieldValue(#numberEndInputFieldName)}" />
+									</p>
+								</s:elseif>
+								<s:elseif test="#attribute.type == 'Boolean' || #attribute.type == 'ThreeState'">
+									<p>
+										<span class="important"><s:property value="#attribute.name" /></span><br />
+									</p>
+									<s:set name="booleanInputFieldName" ><s:property value="#attribute.name" />_booleanFieldName</s:set>
+									<s:set name="booleanInputFieldValue" ><s:property value="%{getSearchFormFieldValue(#booleanInputFieldName)}" /></s:set>
+									<ul class="noBullet radiocheck">
+										<li><wpsf:radio id="none_%{#booleanInputFieldName}" name="%{#booleanInputFieldName}" value="" checked="%{!#booleanInputFieldValue.equals('true') && !#booleanInputFieldValue.equals('false')}" /><label for="none_<s:property value="#booleanInputFieldName" />" class="normal" ><s:text name="label.bothYesAndNo"/></label></li>
+										<li><wpsf:radio id="true_%{#booleanInputFieldName}" name="%{#booleanInputFieldName}" value="true" checked="%{#booleanInputFieldValue == 'true'}" /><label for="true_<s:property value="#booleanInputFieldName" />" class="normal" ><s:text name="label.yes"/></label></li>
+										<li><wpsf:radio id="false_%{#booleanInputFieldName}" name="%{#booleanInputFieldName}" value="false" checked="%{#booleanInputFieldValue == 'false'}" /><label for="false_<s:property value="#booleanInputFieldName" />" class="normal"><s:text name="label.no"/></label></li>
+									</ul>
+								</s:elseif>
+							</s:iterator>
+						</s:if>
+						<div class="form-group">
+							<label for="contentType" class="control-label col-sm-2 text-right">
+								<s:text name="label.category" />
+							</label>
+							<div class="col-sm-5">
+								<s:action name="showCategoryTreeOnContentFinding" namespace="/do/jacms/Content" executeResult="true"></s:action>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="contentIdToken" class="control-label col-sm-2 text-right"><s:text name="label.code"/></label>
+							<div class="col-sm-5">
+								<s:textfield name="contentIdToken" id="contentIdToken" cssClass="form-control" placeholder="CNG12" />
+							</div>
+						</div>
+						<s:set var="allowedGroupsVar" value="allowedGroups" />
+						<s:if test="null != #allowedGroupsVar && #allowedGroupsVar.size()>1">
 							<div class="form-group">
-								<s:set name="textInputFieldName"><s:property value="#attribute.name" />_textFieldName</s:set>
-								<label for="<s:property value="currentFieldId" />" class="control-label col-sm-3 text-right"><s:property value="#attribute.name" /></label>
-								<div class="col-sm-4">
-									<s:textfield id="%{currentFieldId}" name="%{#textInputFieldName}" value="%{getSearchFormFieldValue(#textInputFieldName)}" cssClass="form-control" />
+								<label for="ownerGroupName" class="control-label col-sm-2 text-right"><s:text name="label.group" /></label>
+								<div class="col-sm-5">
+									<s:select name="ownerGroupName" id="ownerGroupName" list="#allowedGroupsVar" headerKey="" headerValue="%{getText('label.all')}" listKey="name" listValue="descr" cssClass="form-control" />
 								</div>
 							</div>
 						</s:if>
-
-						<s:elseif test="#attribute.type == 'Date'">
-							<s:set name="dateStartInputFieldName" ><s:property value="#attribute.name" />_dateStartFieldName</s:set>
-							<s:set name="dateEndInputFieldName" ><s:property value="#attribute.name" />_dateEndFieldName</s:set>
-
-							<div class="form-group">
-								<label for="<s:property value="%{currentFieldId}" />_dateStartFieldName_cal" class="control-label col-sm-5 text-right"><s:text name="note.range.from.attribute" />&#32;<s:property value="#attribute.name" /></label>
-								<div class="col-sm-2">
-									<s:textfield id="%{currentFieldId}_dateStartFieldName_cal" name="%{#dateStartInputFieldName}" value="%{getSearchFormFieldValue(#dateStartInputFieldName)}" cssClass="form-control datepicker" placeholder="dd/mm/yyyy" />
-								</div>
+						<div class="form-group">
+							<label for="state" class="control-label col-sm-2 text-right"><s:text name="label.state"/></label>
+							<div class="col-sm-5">
+								<s:select name="state" id="state" list="avalaibleStatus" headerKey="" headerValue="%{getText('label.all')}" listKey="key" listValue="%{getText(value)}" cssClass="form-control" />
 							</div>
-							<div class="form-group">
-								<label for="<s:property value="%{currentFieldId}" />_dateEndFieldName_cal" class="control-label col-sm-5 text-right"><s:text name="note.range.to.attribute" />&#32;<s:property value="#attribute.name" /></label>
-								<div class="col-sm-2">
-									<s:textfield id="%{currentFieldId}_dateEndFieldName_cal" name="%{#dateEndInputFieldName}" value="%{getSearchFormFieldValue(#dateEndInputFieldName)}" cssClass="form-control datepicker" placeholder="dd/mm/yyyy" />
-								</div>
+						</div>
+						<div class="form-group">
+							<div class="btn-group col-sm-5 col-sm-offset-2" data-toggle="buttons">
+								<label class="btn btn-default">
+									<input type="radio" name="onLineState" id="approved" <s:if test="('yes' == onLineState)">checked="checked"</s:if> value="yes" />&#32;
+									<s:text name="name.isApprovedContent"/>
+								</label>
+								<label class="btn btn-default">
+									<input type="radio" name="onLineState" id="notApproved" <s:if test="('no' == onLineState)">checked="checked"</s:if> value="no" />&#32;
+									<s:text name="name.isNotApprovedContent"/>
+								</label>
+								<label class="btn btn-default active">
+									<input type="radio" name="onLineState" id="bothApproved" <s:if test="('yes' != onLineState) && ('no' != onLineState)">checked="checked"</s:if> value="" />&#32;
+									<s:text name="name.isApprovedOrNotContent" />
+								</label>
 							</div>
-						</s:elseif>
-
-						<s:elseif test="#attribute.type == 'Number'">
-							<s:set name="numberStartInputFieldName" ><s:property value="#attribute.name" />_numberStartFieldName</s:set>
-							<s:set name="numberEndInputFieldName" ><s:property value="#attribute.name" />_numberEndFieldName</s:set>
-							<p>
-								<label for="<s:property value="currentFieldId" />_start"><s:text name="note.range.from.attribute" />&#32;<s:property value="#attribute.name" />:</label>
-								<s:textfield id="%{currentFieldId}_start" name="%{#numberStartInputFieldName}" value="%{getSearchFormFieldValue(#numberStartInputFieldName)}" />
-							</p>
-							<p>
-								<label for="<s:property value="currentFieldId" />_end"><s:text name="note.range.to.attribute" />&#32;<s:property value="#attribute.name" />:</label>
-								<s:textfield id="%{currentFieldId}_end" name="%{#numberEndInputFieldName}" value="%{getSearchFormFieldValue(#numberEndInputFieldName)}" />
-							</p>
-						</s:elseif>
-
-						<s:elseif test="#attribute.type == 'Boolean' || #attribute.type == 'ThreeState'">
-							<p>
-								<span class="important"><s:property value="#attribute.name" /></span><br />
-							</p>
-							<s:set name="booleanInputFieldName" ><s:property value="#attribute.name" />_booleanFieldName</s:set>
-							<s:set name="booleanInputFieldValue" ><s:property value="%{getSearchFormFieldValue(#booleanInputFieldName)}" /></s:set>
-							<ul class="noBullet radiocheck">
-								<li><wpsf:radio id="none_%{#booleanInputFieldName}" name="%{#booleanInputFieldName}" value="" checked="%{!#booleanInputFieldValue.equals('true') && !#booleanInputFieldValue.equals('false')}" /><label for="none_<s:property value="#booleanInputFieldName" />" class="normal" ><s:text name="label.bothYesAndNo"/></label></li>
-								<li><wpsf:radio id="true_%{#booleanInputFieldName}" name="%{#booleanInputFieldName}" value="true" checked="%{#booleanInputFieldValue == 'true'}" /><label for="true_<s:property value="#booleanInputFieldName" />" class="normal" ><s:text name="label.yes"/></label></li>
-								<li><wpsf:radio id="false_%{#booleanInputFieldName}" name="%{#booleanInputFieldName}" value="false" checked="%{#booleanInputFieldValue == 'false'}" /><label for="false_<s:property value="#booleanInputFieldName" />" class="normal"><s:text name="label.no"/></label></li>
-							</ul>
-						</s:elseif>
-
-					</s:iterator>
-
-				</s:if>
-
-				<div class="form-group">
-					<label for="contentType" class="control-label col-sm-2 text-right">
-						<s:text name="label.category" />
-					</label>
-					<div class="col-sm-5">
-						<s:action name="showCategoryTreeOnContentFinding" namespace="/do/jacms/Content" executeResult="true"></s:action>
-					</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-5 col-sm-offset-2">
+								<s:submit action="%{#searchActionName}" type="button" cssClass="btn btn-primary">
+									<span class="icon icon-search"></span>&#32;<s:text name="label.search" />
+								</s:submit>
+							</div>
+						</div>
+					</div><%--// search-advanced --%>
 				</div>
+			</div>
 
-				<div class="form-group">
-					<label for="contentIdToken" class="control-label col-sm-2 text-right"><s:text name="label.code"/></label>
-					<div class="col-sm-5">
-						<s:textfield name="contentIdToken" id="contentIdToken" cssClass="form-control" placeholder="CNG12" />
-					</div>
-				</div>
-
-				<s:set var="allowedGroupsVar" value="allowedGroups"></s:set>
-				<s:if test="null != #allowedGroupsVar && #allowedGroupsVar.size()>1">
-				<div class="form-group">
-					<label for="ownerGroupName" class="control-label col-sm-2 text-right"><s:text name="label.group" /></label>
-					<div class="col-sm-5">
-						<s:select name="ownerGroupName" id="ownerGroupName" list="#allowedGroupsVar" headerKey="" headerValue="%{getText('label.all')}" listKey="name" listValue="descr" cssClass="form-control" />
-					</div>
-				</div>
-				</s:if>
-
-				<div class="form-group">
-					<label for="state" class="control-label col-sm-2 text-right"><s:text name="label.state"/></label>
-					<div class="col-sm-5">
-						<s:select name="state" id="state" list="avalaibleStatus" headerKey="" headerValue="%{getText('label.all')}" listKey="key" listValue="%{getText(value)}" cssClass="form-control" />
-					</div>
-				</div>
-
-				<div class="form-group">
-					<div class="btn-group col-sm-5 col-sm-offset-2" data-toggle="buttons">
-						<label class="btn btn-default">
-							<input type="radio" name="onLineState" id="approved" <s:if test="('yes' == onLineState)">checked="checked"</s:if> value="yes" />&#32;
-							<s:text name="name.isApprovedContent"/>
-						</label>
-						<label class="btn btn-default">
-							<input type="radio" name="onLineState" id="notApproved" <s:if test="('no' == onLineState)">checked="checked"</s:if> value="no" />&#32;
-							<s:text name="name.isNotApprovedContent"/>
-						</label>
-						<label class="btn btn-default active">
-							<input type="radio" name="onLineState" id="bothApproved" <s:if test="('yes' != onLineState) && ('no' != onLineState)">checked="checked"</s:if> value="" />&#32;
-							<s:text name="name.isApprovedOrNotContent" />
-						</label>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<div class="col-sm-5 col-sm-offset-2">
-						<s:submit action="%{#searchActionName}" type="button" cssClass="btn btn-primary">
-							<span class="icon icon-search"></span>&#32;<s:text name="label.search" />
-						</s:submit>
-					</div>
-				</div>
-
-			</div><!--// search-advanced -->
 
 			<hr />
 
@@ -284,7 +267,7 @@
 			<h2 class="h4 margin-none">
 				<s:text name="message.title.ActionErrors" />
 			</h2>
-			<ul class="margin-base-vertical">
+			<ul class="margin-base-top">
 			<s:iterator value="ActionErrors">
 				<li><s:property escape="false" /></li>
 			</s:iterator>
@@ -295,7 +278,7 @@
 		<div class="alert alert-success alert-dismissable fade in">
 			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
 			<h2 class="h4 margin-none"><s:text name="messages.confirm" /></h2>
-			<ul class="margin-base-vertical">
+			<ul class="margin-base-top">
 				<s:iterator value="actionMessages">
 					<li><s:property escape="false" /></li>
 				</s:iterator>

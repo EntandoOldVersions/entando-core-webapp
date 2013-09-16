@@ -57,3 +57,12 @@ html {
 .btn-group-xs .btn {
 	min-width: 35px;
 }
+
+/* Content Finding: advanced search tuning */
+.collapse-input-group {
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	box-shadow: none;
+	-webkit-box-shadow:  none;
+	border-top: 0;
+}
