@@ -1,10 +1,9 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wp" uri="/aps-core"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <s:set var="validationRules" value="#attribute.validationRules" />
 <s:set var="hasValidationRulesVar" value="%{#validationRules != null && #validationRules.ognlValidationRule != null&& #validationRules.ognlValidationRule.expression != null}" />
-
+<s:if test="#attribute.required">&#32;<span class="icon-li icon-asterisk text-muted" title="<s:text name="Entity.attribute.flag.mandatory.full" />"></span></s:if>
 <s:if test="#attribute.required || #attribute.searcheable || #attribute.indexingType != 'NONE' || (#attribute.textAttribute && (#attribute.minLength != -1 || #attribute.maxLength != -1)) || (#hasValidationRulesVar) ">
 
 <s:set var="htmlContent">
