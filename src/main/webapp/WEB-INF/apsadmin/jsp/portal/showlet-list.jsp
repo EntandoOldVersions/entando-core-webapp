@@ -39,20 +39,20 @@
 
 <s:if test="%{#firstType.optgroup == 'stockShowletCode'}">
 	<h2><span lang="en"><s:text name="title.widgetManagement.showlets.stock" /></span></h2>
-	<table class="generic" summary="<s:text name="note.widgetManagement.showlets.summary" />">
+	<table class="generic" summary="<s:text name="note.widgetManagement.widgets.summary" />">
 		<caption><span><s:text name="name.widgets" /></span></caption>
 </s:if>
 
 <s:elseif test="%{#firstType.optgroup == 'customShowletCode'}">
 	<h2><span lang="en"><s:text name="title.widgetManagement.showlets.custom" /></span></h2>
-	<table class="generic" summary="<s:text name="note.widgetManagement.showlets.summary" />">
+	<table class="generic" summary="<s:text name="note.widgetManagement.widgets.summary" />">
 		<caption><span><s:text name="name.widgets" /></span></caption>
 
 </s:elseif>
 
 <s:elseif test="%{#firstType.optgroup == 'userShowletCode'}">
 	<h2><span lang="en"><s:text name="title.widgetManagement.showlets.user" /></span></h2>
-	<table class="generic" summary="<s:text name="note.widgetManagement.showlets.summary" />">
+	<table class="generic" summary="<s:text name="note.widgetManagement.widgets.summary" />">
 		<caption><span><s:text name="name.widgets" /></span></caption>
 
 </s:elseif>
@@ -61,7 +61,7 @@
 	<s:if test="#pluginTitleCheck.equals('false')">
 		<h2><span lang="en"><s:text name="title.widgetManagement.showlets.plugin" /></span></h2>
 	</s:if>
-	<table class="generic" summary="<s:text name="note.widgetManagement.showlets.summary" />">
+	<table class="generic" summary="<s:text name="note.widgetManagement.widgets.summary" />">
 	<s:set var="pluginTitleCheck" value="'true'" ></s:set>
 
 	<wpsa:set var="pluginPropertyName" value="%{getText(#firstType.optgroup + '.name')}" />	
