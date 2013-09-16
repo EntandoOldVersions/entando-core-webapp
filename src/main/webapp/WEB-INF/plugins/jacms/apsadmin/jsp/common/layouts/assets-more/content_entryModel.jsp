@@ -3,7 +3,7 @@
 <s:include value="/WEB-INF/apsadmin/jsp/common/template/defaultExtraResources.jsp" />
 <script type="text/javascript">
 	var ENTANDO_MODEL_VOCABULARY = {
-		<jsp:include page="/WEB-INF/plugins/jacms/apsadmin/jsp/common/template/extraresources/inc/attributeType-json-Model.jsp" />,
+		<jsp:include page="inc/attributeType-json-Model.jsp" />,
 		"#foreach ($item in $<LIST>) $item #end": null,
 		"#if (<TRUE>) <DO> #else <DOANOTHER> #end": null, 
 		"#if (<TRUE>) <DO> #end": null,

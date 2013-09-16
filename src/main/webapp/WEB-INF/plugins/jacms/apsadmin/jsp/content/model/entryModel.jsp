@@ -6,13 +6,13 @@
 <h1 class="panel panel-default title-page">
 	<span class="panel-body display-block">
 		<a href="<s:url action="list" namespace="/do/jacms/ContentModel" />">
-		<s:text name="title.generalSettings.contentModels" />
+		<s:text name="title.contentModels" />
 		</a>&#32;/&#32;
 		<s:if test="strutsAction == 1">
-			<s:text name="title.generalSettings.contentModels.new" />
+			<s:text name="title.contentModels.new" />
 		</s:if>
 		<s:if test="strutsAction == 2">
-			<s:text name="title.generalSettings.contentModels.edit" />
+			<s:text name="title.contentModels.edit" />
 		</s:if> 
 	</span>
 </h1>

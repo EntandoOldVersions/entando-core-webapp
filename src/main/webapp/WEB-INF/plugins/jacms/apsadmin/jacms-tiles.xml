@@ -72,24 +72,24 @@
 
     <!-- ********* INIZIO Area Gestione Modelli di Contenuto ********* -->
     <definition extends="layout.default" name="admin.jacms.contentModel.intro">
-		<put-attribute name="title" value="title.generalSettings.contentModels" />
+		<put-attribute name="title" value="title.contentModels" />
 		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/model/model-intro.jsp" />
 	</definition>
     <definition extends="layout.default" name="admin.jacms.contentModel.list">
-		<put-attribute name="title" value="title.generalSettings.contentModels" />
+		<put-attribute name="title" value="title.contentModels" />
 		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/model/modelFinding.jsp" />
 	</definition>
     <definition extends="layout.default" name="admin.jacms.contentModel.entry">
-		<put-attribute name="title" value="title.generalSettings.contentModels" />
+		<put-attribute name="title" value="title.contentModels" />
 		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/layouts/assets-more/content_entryModel.jsp" />
 		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/model/entryModel.jsp" />
 	</definition>
     <definition extends="layout.default" name="admin.jacms.contentModel.reference">
-		<put-attribute name="title" value="title.generalSettings.contentModels" />
+		<put-attribute name="title" value="title.contentModels" />
 		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/model/modelReferences.jsp" />
 	</definition>
     <definition extends="layout.default" name="admin.jacms.contentModel.trash">
-		<put-attribute name="title" value="title.generalSettings.contentModels" />
+		<put-attribute name="title" value="title.contentModels" />
 		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/model/trashModel.jsp" />
 	</definition>
 

@@ -3,7 +3,7 @@
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 
-<h1 class="panel panel-default title-page"><span class="panel-body display-block"><s:text name="title.generalSettings.contentModels" /></span></h1>
+<h1 class="panel panel-default title-page"><span class="panel-body display-block"><s:text name="title.contentModels" /></span></h1>
 
 <div id="main">
 
@@ -26,7 +26,7 @@
 
 <a href="<s:url action="new" namespace="/do/jacms/ContentModel"/>" class="btn btn-default">
 	<span class="icon icon-plus-sign"></span>&#32;
-	<s:text name="title.contentModel.New" />
+	<s:text name="title.contentModels.new" />
 </a>
 
 <s:form action="search">
@@ -44,7 +44,7 @@
 		</div>
 			
 		<div class="table-responsive">
-		<table class="table table-bordered" summary="<s:text name="note.generalSettings.contentModels.summary" />">
+		<table class="table table-bordered" summary="<s:text name="note.contentModels.summary" />">
 		<caption class="sr-only"><s:text name="title.contentModels.installedModels" /></caption>
 			
 			<tr>
