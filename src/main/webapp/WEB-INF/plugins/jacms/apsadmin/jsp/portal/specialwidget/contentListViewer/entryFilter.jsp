@@ -210,17 +210,23 @@
 			</s:elseif>
 
 			<s:elseif test="filterTypeId==3">
-			<%-- INIZIO FILTRO PER ATTRIBUTO TIPO BULEANO --%>
+			<%-- Boolean --%>
 				<s:text name="note.filterTypes.BooleanAttribute" /><span>
 			</p>
 			<fieldset class="margin-base-top"><legend><s:text name="label.settings"/></legend>
-			<ul class="noBullet radiocheck">
-				<li><input type="radio" name="booleanValue" id="booleanValue_true" value="true" /><label for="booleanValue_true"><s:text name="label.yes" /></label></li>
-				<li><input type="radio" name="booleanValue" id="booleanValue_false" value="false" /><label for="booleanValue_false"><s:text name="label.no" /></label></li>
-				<li><input type="radio" name="booleanValue" id="booleanValue_none" checked="checked" value="" /><label for="booleanValue_none"><s:text name="label.all" /></label></li>
+			<ul class="list-unstyled">
+				<li class="radio">
+					<label><input type="radio" name="booleanValue" id="booleanValue_true" value="true" />&#32;<s:text name="label.yes" /></label>
+				</li>
+				<li class="radio">
+					<label><input type="radio" name="booleanValue" id="booleanValue_false" value="false" />&#32;<s:text name="label.no" /></label>
+				</li>
+				<li class="radio">
+					<label><input type="radio" name="booleanValue" id="booleanValue_none" checked="checked" value="" /><s:text name="label.all" /></label>
+				</li>
 			</ul>
 			</fieldset>
-			<%-- FINE FILTRO PER ATTRIBUTO TIPO BULEANO --%>
+			<%-- // Boolean --%>
 			</s:elseif>
 
 			<s:elseif test="filterTypeId==4">
