@@ -1,3 +1,7 @@
+/*
+	2013-09-17: touchstart events, few translations
+*/
+
 //taboo start
 !function ($) {
 	"use strict"; // jshint ;_;
@@ -224,7 +228,7 @@
 				collapseAll();
 			});
 		}
-		
+
 		$(el).on('click touchstart', "."+opt.menuToggler, function(ev) {
 			var toggler = $(ev.target);
 			toggleWood(toggler);
