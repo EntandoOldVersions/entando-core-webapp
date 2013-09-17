@@ -160,37 +160,53 @@
 			</s:elseif>
 
 			<s:elseif test="filterTypeId==2">
-			<%-- INIZIO FILTRO PER ATTRIBUTO TIPO NUMERO --%>
+			<%-- Number --%>
 				<s:text name="note.filterTypes.NumberAttribute" /><span>
 			</p>
 			<fieldset class="margin-base-top"><legend><s:text name="label.settings"/></legend>
-			<p>
-				<label for="filterOptionId" class="control-label"><s:text name="label.option"/>:</label>
-				<wpsf:select name="filterOptionId" id="filterOptionId" list="#{3:getText('label.presenceOptionFilter'),4:getText('label.absenceOptionFilter'),1:getText('label.valueOptionFilter'),2:getText('label.rangeOptionFilter')}" disabled="filterOptionId>-1" cssClass="form-control" />
-				<s:if test="filterOptionId>-1"><wpsf:hidden name="filterOptionId" /></s:if>
-				<s:else><wpsf:submit action="setFilterOption" value="%{getText('label.continue')}" cssClass="button" /></s:else>
-			</p>
+			<div class="form-group">
+				<div class="col-xs-12">
+					<label for="filterOptionId"><s:text name="label.option"/></label>
+				<s:if test="filterOptionId<=-1">
+					<div class="input-group">
+				</s:if>
+					<wpsf:select name="filterOptionId" id="filterOptionId" list="#{3:getText('label.presenceOptionFilter'),4:getText('label.absenceOptionFilter'),1:getText('label.valueOptionFilter'),2:getText('label.rangeOptionFilter')}" disabled="filterOptionId>-1" cssClass="form-control" />
+					<s:if test="filterOptionId>-1"><wpsf:hidden name="filterOptionId" /></s:if>
+					<s:else>
+						<div class="input-group-btn">
+							<wpsf:submit action="setFilterOption" value="%{getText('label.continue')}" cssClass="btn btn-info" />
+						</div>
+					</div>
+					</s:else>
+				</div>
+			</div>
 
 			<s:if test="filterOptionId==1">
-			<p>
-				<label for="numberValue" class="control-label"><s:text name="label.filterValue.exact" />:</label>
-				<wpsf:textfield name="numberValue" id="numberValue" cssClass="form-control" />
-			</p>
+			<div class="form-group">
+				<div class="col-xs-12">
+					<label for="numberValue"><s:text name="label.filterValue.exact" /></label>
+					<wpsf:textfield name="numberValue" id="numberValue" cssClass="form-control" />
+				</div>
+			</div>
 			</s:if>
 
 			<s:if test="filterOptionId==2">
-			<p>
-				<label for="numberStart" class="control-label"><s:text name="label.filterFrom" />:</label>
-				<wpsf:textfield name="numberStart" id="numberStart" cssClass="form-control" />
-			</p>
-			<p>
-				<label for="numberEnd" class="control-label"><s:text name="label.filterTo" />:</label>
-				<wpsf:textfield name="numberEnd" id="numberEnd" cssClass="form-control" />
-			</p>
+			<div class="form-group">
+				<div class="col-xs-12">
+					<label for="numberStart"><s:text name="label.filterFrom" /></label>
+					<wpsf:textfield name="numberStart" id="numberStart" cssClass="form-control" />
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-xs-12">
+					<label for="numberEnd"><s:text name="label.filterTo" /></label>
+					<wpsf:textfield name="numberEnd" id="numberEnd" cssClass="form-control" />
+				</div>
+			</div>
 			</s:if>
 			</fieldset>
 
-			<%-- FINE FILTRO PER ATTRIBUTO TIPO NUMERO --%>
+			<%-- // Number --%>
 			</s:elseif>
 
 			<s:elseif test="filterTypeId==3">
