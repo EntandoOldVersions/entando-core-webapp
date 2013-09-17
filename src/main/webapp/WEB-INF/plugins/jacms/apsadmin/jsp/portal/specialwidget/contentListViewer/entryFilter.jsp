@@ -113,7 +113,7 @@
 			<div class="form-group">
 				<div class="col-xs-12">
 					<label for="filterOptionId"><s:text name="label.option"/></label>
-					<s:if test="filterOptionId=<-1">
+					<s:if test="filterOptionId<=-1">
 						<div class="input-group">
 					</s:if>
 						<wpsf:select id="filterOptionId" name="filterOptionId" list="#{3:getText('label.presenceOptionFilter'),4:getText('label.absenceOptionFilter'),1:getText('label.valueLikeOptionFilter'),2:getText('label.rangeOptionFilter')}" disabled="filterOptionId>-1" cssClass="form-control" />
@@ -128,13 +128,17 @@
 			</div>
 
 			<s:if test="filterOptionId==1">
-			<p>
-				<label for="stringValue"><s:text name="label.filterValue" />:</label>
-				<wpsf:textfield name="stringValue" id="stringValue" cssClass="form-control" />
-			</p>
-			<p>
-				<wpsf:checkbox name="like" /><label><s:text name="label.filterValue.isLike" /></label>
-			</p>
+			<div class="form-group">
+				<div class="col-xs-12">
+					<label for="stringValue"><s:text name="label.filterValue" /></label>
+					<wpsf:textfield name="stringValue" id="stringValue" cssClass="form-control" />
+				</div>
+			</div>
+			<div class="checkbox">
+				<label>
+					<wpsf:checkbox name="like" />&#32;<s:text name="label.filterValue.isLike" />
+				</label>
+			</div>
 			</s:if>
 
 			<s:if test="filterOptionId==2">
