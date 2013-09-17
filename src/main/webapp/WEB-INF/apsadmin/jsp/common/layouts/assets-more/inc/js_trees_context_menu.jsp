@@ -55,7 +55,7 @@ jQuery.each($('form.action-form'), function(index, currentForm){
 
 
 	//onclick event delegation for the labels
-	$(currentForm).delegate('li.tree_node_flag label', 'click', function() {
+	$(currentForm).delegate('li.tree_node_flag label', 'click touchstart', function() {
 		//e.stop();
 		var clickedLabel = this;
 
