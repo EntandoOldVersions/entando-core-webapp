@@ -10,7 +10,7 @@
 <s:form action="add" cssClass="form-horizontal">
 	<%-- <p><s:text name="title.languageAdmin.languages" /></p> --%>
 	<s:if test="hasActionErrors()">
-		<div class="alert alert-warning alert-dismissable fade in">
+		<div class="alert alert-danger alert-dismissable fade in">
 			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
 			<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
 			<ul class="margin-base-top">
