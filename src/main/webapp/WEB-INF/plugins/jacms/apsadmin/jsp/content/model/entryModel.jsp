@@ -36,8 +36,8 @@
 	
 	<div class="form-group<s:property value="controlGroupErrorClassVar" />">
 		<s:set var="modelIdFieldErrorsVar" value="%{fieldErrors['modelId']}" />
-		<s:set var="modelIdHasFieldErrorVar" value="#modelIdFieldErrorsVarmodelIdFieldErrorsVar != null && !#modelIdFieldErrorsVar.isEmpty()" />
-		<s:set var="controlGroupErrorClassVar" value="%{#modelIdFieldErrorsVar ? ' has-error' : ''}" />
+		<s:set var="modelIdHasFieldErrorVar" value="#modelIdFieldErrorsVar!= null && !#modelIdFieldErrorsVar.isEmpty()" />
+		<s:set var="controlGroupErrorClassVar" value="%{#modelIdHasFieldErrorVar ? ' has-error' : ''}" />
 		<label class="control-label" for="modelId"><s:text name="contentModel.id" /></label>
 		<s:textfield name="modelId" id="modelId" disabled="%{getStrutsAction() == 2}" cssClass="form-control" />
 		<s:if test="#modelIdHasFieldErrorVar">
@@ -57,17 +57,17 @@
 	</div> 
 	<div class="form-group<s:property value="controlGroupErrorClassVar" />">
 		<s:set var="descriptionFieldErrorsVar" value="%{fieldErrors['description']}" />
-		<s:set var="descriptionFieldErrorsVar" value="#descriptionFieldErrorsVar!= null && !#descriptionFieldErrorsVar.isEmpty()" />
-		<s:set var="controlGroupErrorClassVar" value="%{#descriptionFieldErrorsVar ? ' has-error' : ''}" />
+		<s:set var="descriptionHasFieldErrors" value="#descriptionFieldErrorsVar!= null && !#descriptionFieldErrorsVar.isEmpty()" />
+		<s:set var="controlGroupErrorClassVar" value="%{#descriptionHasFieldErrors ? ' has-error' : ''}" />
 		<label for="description" class="control-label"><s:text name="label.description" />:</label>
 		<s:textfield name="description" id="description" cssClass="form-control" />
-		<s:if test="#descriptionHasFieldErrorVar">
+		<s:if test="#descriptionHasFieldErrors">
 		  <p class="text-danger padding-small-vertical"><s:iterator value="#descriptionFieldErrorsVar"><s:property /> </s:iterator></p>
 		</s:if>
 	</div>
 	<div class="form-group<s:property value="controlGroupErrorClassVar" />">
 		<s:set var="contentShapeFieldErrorsVar" value="%{fieldErrors['contentShape']}" />
-		<s:set var="contentShapeHasFieldErrorVar" value="#contentModelFieldErrorsVar != null && !#contentModelFieldErrorsVar.isEmpty()" />
+		<s:set var="contentShapeHasFieldErrorVar" value="#contentShapeFieldErrorsVar != null && !#contentShapeFieldErrorsVar.isEmpty()" />
 		<label for="contentShape" class="control-label"><s:text name="contentModel.label.shape" />:</label>
 		<s:textarea name="contentShape" id="contentShape" cols="50" rows="10" cssClass="form-control" />
 		<span class="help-block"><span class="icon icon-info-sign"></span>&#32;
@@ -77,7 +77,7 @@
 				<s:else>[<s:text name="note.contentModel.attributeHelp" />:&#32;<em class="important"><s:text name="label.off" /></em>]</s:else>
 		</span>
 		<s:if test="#contentShapeHasFieldErrorVar">
-		  <p class="text-danger padding-small-vertical"><s:iterator value="#contentModelFieldErrorsVar"><s:property /> </s:iterator></p>
+		  <p class="text-danger padding-small-vertical"><s:iterator value="#contentShapeFieldErrorsVar"><s:property /> </s:iterator></p>
 		</s:if>
 	</div>
 	<div class="form-group">
