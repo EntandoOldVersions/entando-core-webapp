@@ -13,7 +13,7 @@
 			<wpsa:actionSubParam name="elementIndex" value="%{#elementIndex}" />
 			<wpsa:actionSubParam name="movement" value="UP" />
 		</wpsa:actionParam>
-		<s:submit disabled="%{#operationButtonDisabled}" action="%{#actionName}" type="button" cssClass="btn btn-default" value="%{getText('label.moveUp')}" title="%{getText('label.moveInPositionNumber')}: %{#elementIndex}">
+		<s:submit disabled="%{#operationButtonDisabled}" action="%{#actionName}" type="button" cssClass="btn btn-default" title="%{getText('label.moveInPositionNumber')}: %{#elementIndex}">
 		<span class="icon icon-sort-up"></span></s:submit>
 		
 		<wpsa:actionParam action="moveListElement" var="actionName" >
@@ -22,7 +22,7 @@
 			<wpsa:actionSubParam name="elementIndex" value="%{#elementIndex}" />
 			<wpsa:actionSubParam name="movement" value="DOWN" />
 		</wpsa:actionParam>
-		<s:submit disabled="%{#operationButtonDisabled}" action="%{#actionName}" type="button" cssClass="btn btn-default" value="%{getText('label.moveDown')}" title="%{getText('label.moveInPositionNumber')}: %{#elementIndex+2}">
+		<s:submit disabled="%{#operationButtonDisabled}" action="%{#actionName}" type="button" cssClass="btn btn-default" title="%{getText('label.moveInPositionNumber')}: %{#elementIndex+2}">
 		<span class="icon icon-sort-down"></span></s:submit>
 	</div>
 	<div class="btn-group btn-group-sm">	
@@ -31,7 +31,7 @@
 			<wpsa:actionSubParam name="listLangCode" value="%{#lang.code}" />
 			<wpsa:actionSubParam name="elementIndex" value="%{#elementIndex}" />
 		</wpsa:actionParam>
-		<s:submit disabled="%{#operationButtonDisabled}" action="%{#actionName}" type="button" cssClass="btn btn-default btn-warning" value="%{getText('label.remove')}" title="%{getText('label.remove')}">
+		<s:submit disabled="%{#operationButtonDisabled}" action="%{#actionName}" type="button" cssClass="btn btn-default btn-warning" title="%{getText('label.remove')}">
 		<span class="icon icon-remove-circle"></span></s:submit>
 	</div>
 </div>
