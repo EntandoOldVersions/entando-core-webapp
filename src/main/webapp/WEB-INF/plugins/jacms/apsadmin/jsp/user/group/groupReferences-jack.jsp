@@ -18,7 +18,6 @@
 					</div>
 					<div class="table-responsive">
 						<table class="table table-bordered" id="contentListTable">
-							<%-- <caption><span><s:text name="title.contentList" /></span></caption> --%>
 							<tr>
 								<th><s:text name="label.description" /></th>
 								<th><s:text name="label.code" /></th>
@@ -71,8 +70,7 @@
 						<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
 						<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 					</div>
-					<table class="table table-bordered" id="resourceListTable" summary="<s:text name="note.group.referencedResources.summary" />">
-					<caption><span><s:text name="title.resourceList" /></span></caption>
+					<table class="table table-bordered" id="resourceListTable">
 						<tr>
 							<th>
 								<s:text name="label.description" />
