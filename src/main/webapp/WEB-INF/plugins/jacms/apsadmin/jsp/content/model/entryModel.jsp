@@ -18,7 +18,7 @@
 
 <div id="main">        
 
-<s:form action="save" namespace="/do/jacms/ContentModel" class="form-horizontal" >
+<s:form action="save" namespace="/do/jacms/ContentModel" cssClass="form-horizontal" >
 <s:if test="hasFieldErrors()">
 	<div class="alert alert-danger alert-dismissable">
 		<button type="button" class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
@@ -69,7 +69,9 @@
 		<s:set var="contentShapeFieldErrorsVar" value="%{fieldErrors['contentShape']}" />
 		<s:set var="contentShapeHasFieldErrorVar" value="#contentShapeFieldErrorsVar != null && !#contentShapeFieldErrorsVar.isEmpty()" />
 		<label for="contentShape" class="control-label"><s:text name="contentModel.label.shape" />:</label>
-		<s:textarea name="contentShape" id="contentShape" cols="50" rows="10" cssClass="form-control" />
+		<div class="display-block">
+			<s:textarea name="contentShape" id="contentShape" cols="50" rows="10" cssClass="form-control" />
+		</div>
 		<span class="help-block"><span class="icon icon-info-sign"></span>&#32;
 			<s:if test="strutsAction == 2 || (strutsAction == 1 && null != contentType)">(<s:text name="note.contentModel.help" />)&#32;</s:if>
 			<s:text name="note.contentModel.contentAssist" />:&#32;<em class="important"><s:text name="label.on" /></em>.&#32;
