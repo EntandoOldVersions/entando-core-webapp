@@ -2,6 +2,7 @@
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="jacmswpsa" uri="/jacms-apsadmin-core" %>
 
 <h2 id="manage" class="sr-only"><s:text name="note.userbar.intro" />:</h2>
 
@@ -91,7 +92,15 @@
 				<div id="submenu-contents" class="panel-collapse collapse">
 					<ul class="panel-body nav nav-pills nav-stacked">
 						<li><a href="<s:url action="list" namespace="/do/jacms/Content" />"><s:text name="jacms.menu.contentAdmin.list" /></a></li>
-						<li><a href="<s:url action="createNew" namespace="/do/jacms/Content" />?contentTypeCode=CNG">New Generic Content</a></li>
+						<wpsa:entityTypes entityManagerName="jacmsContentManager" var="contentTypesVar" />
+						<s:iterator var="contentTypeVar" value="#contentTypesVar">
+							<jacmswpsa:contentType typeCode="%{#contentTypeVar.typeCode}" property="isAuthToEdit" var="isAuthToEditVar" />
+							<s:if test="%{#isAuthToEditVar}">
+							<li><a href="<s:url action="createNew" namespace="/do/jacms/Content" >
+									   <s:param name="contentTypeCode" value="%{#contentTypeVar.typeCode}" />
+								   </s:url>" >New&#32;<s:property value="%{#contentTypeVar.typeDescr}" /></a></li>
+							</s:if>
+						</s:iterator>
 						<wp:ifauthorized permission="superuser">
 						<li><a href="<s:url action="list" namespace="/do/jacms/ContentModel" />"><s:text name="jacms.menu.contentModelAdmin" /></a></li>
 						<li><a href="<s:url action="initViewEntityTypes" namespace="/do/Entity"><s:param name="entityManagerName">jacmsContentManager</s:param></s:url>"><s:text name="jacms.menu.contentTypeAdmin" /></a></li>
