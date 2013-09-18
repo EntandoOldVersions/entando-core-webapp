@@ -143,7 +143,7 @@
 </div>
 <div class="form-group">
 	<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-		<s:submit value="%{getText('label.confirm')}" cssClass="btn btn-primary btn-block" />
+		<s:submit value="%{getText('label.save')}" cssClass="btn btn-primary btn-block" />
 	</div>
 </div>
 </s:form>
