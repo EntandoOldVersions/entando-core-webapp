@@ -1,22 +1,26 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/aps-core" prefix="wp" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
-<%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 
 <h1 class="panel panel-default title-page">
 	<span class="panel-body display-block">
 		<a href="<s:url action="list" namespace="/do/jacms/ContentModel" />">
-		<s:text name="title.generalSettings.contentModels" /></a>
+		<s:text name="title.contentModels" /></a>
 		&#32;/&#32;
-		<s:text name="title.generalSettings.contentModels.remove" />
+		<s:text name="title.contentModels.remove" />
 	</span>
 </h1>
 
 <div id="main">
-
-<div class="message message_error">
-<h3><s:text name="message.title.ActionErrors" /></h3>
-<p><s:text name="contentModel.reference"><s:param><s:property value="modelId" /></s:param></s:text>:</p>
+<div class="alert alert-danger alert-dismissable fade in">
+	<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+	<h2 class="h4 margin-none">
+		<s:text name="message.title.ActionErrors" />
+	</h2>
+	<p class="margin-base-vertical">
+		<p><s:text name="contentModel.tip" /></p>
+	</p>
+</div>
 
 <ul>
 	<s:iterator id="contentId" value="referencedContentsOnPages">
@@ -42,7 +46,6 @@
 	</s:iterator>
 </ul>
 
-<p><s:text name="contentModel.tip" />.</p>
 </div>
 
 </div>

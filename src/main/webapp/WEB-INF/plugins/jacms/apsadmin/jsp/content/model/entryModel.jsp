@@ -73,8 +73,8 @@
 		<span class="help-block"><span class="icon icon-info-sign"></span>&#32;
 			<s:if test="strutsAction == 2 || (strutsAction == 1 && null != contentType)">(<s:text name="note.contentModel.help" />)&#32;</s:if>
 			<s:text name="note.contentModel.contentAssist" />:&#32;<em class="important"><s:text name="label.on" /></em>.&#32;
-				<s:if test="strutsAction == 2 || (strutsAction == 1 && null != contentType)">[<s:text name="note.contentModel.attributeHelp" />:&#32;<em class="important"><s:text name="label.on" /></em>]</s:if>
-				<s:else>[<s:text name="note.contentModel.attributeHelp" />:&#32;<em class="important"><s:text name="label.off" /></em>]</s:else>
+			<s:if test="strutsAction == 2 || (strutsAction == 1 && null != contentType)">[<s:text name="note.contentModel.attributeHelp" />:&#32;<em class="important"><s:text name="label.on" /></em>]</s:if>
+			<s:else>[<s:text name="note.contentModel.attributeHelp" />:&#32;<em class="important"><s:text name="label.off" /></em>]</s:else>
 		</span>
 		<s:if test="#contentShapeHasFieldErrorVar">
 		  <p class="text-danger padding-small-vertical"><s:iterator value="#contentShapeFieldErrorsVar"><s:property /> </s:iterator></p>
