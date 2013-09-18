@@ -66,3 +66,22 @@ html {
 	-webkit-box-shadow:  none;
 	border-top: 0;
 }
+
+/* Selects inside button groups */
+.btn-group .form-control {
+	height: 28px;
+	width: auto !important;
+	max-width: 100px;
+	display: inline-block;
+	margin-left: 4px;
+}
+
+.btn-with-form-control {
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+.label-btn-with-form-control {
+	margin-bottom: 0;
+	font-weight: normal;
+}
