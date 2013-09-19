@@ -56,7 +56,7 @@
 					class="btn btn-xs btn-warning" 
 					href="<s:url action="remove"><s:param name="langCode" value="#lang.code"/></s:url>" 
 					title="<s:text name="label.remove" />: <s:property value="#lang.descr" />"> 
-					<span class="icon-fixed-width icon icon-remove-circle"></span>
+					<span class="icon icon-remove-circle"></span>
 					<span class="sr-only"><s:text name="label.alt.clear" /></span>
 				</a>
 			</td>

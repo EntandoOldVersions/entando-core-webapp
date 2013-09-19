@@ -44,7 +44,7 @@
 	<p class="sr-only">
 		<wpsf:hidden name="strutsAction" />
 		<s:if test="getStrutsAction() == 2">
-				<wpsf:hidden name="username" />
+			<wpsf:hidden name="username" />
 		</s:if>
 	</p>
 	
