@@ -18,7 +18,7 @@
 
 <div id="main">        
 
-<s:form action="save" namespace="/do/jacms/ContentModel" cssClass="form-horizontal" >
+<s:form action="save" namespace="/do/jacms/ContentModel" >
 <s:if test="hasFieldErrors()">
 	<div class="alert alert-danger alert-dismissable">
 		<button type="button" class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
@@ -32,34 +32,37 @@
 	</s:if>
 </p>
 
-<fieldset class="col-xs-12"><legend><s:text name="label.info" /></legend>
-	
+<div class="col-xs-12">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="form-group has-warning">
+				<label for="contentType"><s:text name="contentModel.type" /></label>
+				<div class="input-group">
+				<s:select id="contentType" list="smallContentTypes" name="contentType" 
+					listKey="code" listValue="descr" cssClass="form-control" />
+					<span class="input-group-btn">
+						<s:submit type="button" action="lockContentType" cssClass="btn btn-warning" value="%{getText('label.set')}"/>
+					</span>
+				</div>
+				<span class="help-block"><span class="icon icon-info-sign"></span>&#32;<s:text name="note.contentModel.assist.intro" /></span>
+			</div>
+		</div>
+	</div>
 	<div class="form-group<s:property value="controlGroupErrorClassVar" />">
 		<s:set var="modelIdFieldErrorsVar" value="%{fieldErrors['modelId']}" />
 		<s:set var="modelIdHasFieldErrorVar" value="#modelIdFieldErrorsVar!= null && !#modelIdFieldErrorsVar.isEmpty()" />
 		<s:set var="controlGroupErrorClassVar" value="%{#modelIdHasFieldErrorVar ? ' has-error' : ''}" />
-		<label class="control-label" for="modelId"><s:text name="contentModel.id" /></label>
+		<label for="modelId"><s:text name="contentModel.id" /></label>
 		<s:textfield name="modelId" id="modelId" disabled="%{getStrutsAction() == 2}" cssClass="form-control" />
 		<s:if test="#modelIdHasFieldErrorVar">
 		  <p class="text-danger padding-small-vertical"><s:iterator value="#modelIdFieldErrorsVar"><s:property /> </s:iterator></p>
 		</s:if>
 	</div>
-	<div class="form-group has-warning">
-		<label for="contentType" class="control-label"><s:text name="contentModel.type" />:</label>
-		<div class="input-group">
-		<s:select id="contentType" list="smallContentTypes" name="contentType" 
-			listKey="code" listValue="descr" cssClass="form-control" />
-			<span class="input-group-btn">
-				<s:submit type="button" action="lockContentType" cssClass="btn btn-warning" value="%{getText('label.set')}"/>
-			</span>
-		</div>
-		<span class="help-block"><span class="icon icon-info-sign"></span>&#32;<s:text name="note.contentModel.assist.intro" /></span>
-	</div> 
 	<div class="form-group<s:property value="controlGroupErrorClassVar" />">
 		<s:set var="descriptionFieldErrorsVar" value="%{fieldErrors['description']}" />
 		<s:set var="descriptionHasFieldErrors" value="#descriptionFieldErrorsVar!= null && !#descriptionFieldErrorsVar.isEmpty()" />
 		<s:set var="controlGroupErrorClassVar" value="%{#descriptionHasFieldErrors ? ' has-error' : ''}" />
-		<label for="description" class="control-label"><s:text name="label.description" />:</label>
+		<label for="description"><s:text name="label.description" /></label>
 		<s:textfield name="description" id="description" cssClass="form-control" />
 		<s:if test="#descriptionHasFieldErrors">
 		  <p class="text-danger padding-small-vertical"><s:iterator value="#descriptionFieldErrorsVar"><s:property /> </s:iterator></p>
@@ -68,7 +71,7 @@
 	<div class="form-group<s:property value="controlGroupErrorClassVar" />">
 		<s:set var="contentShapeFieldErrorsVar" value="%{fieldErrors['contentShape']}" />
 		<s:set var="contentShapeHasFieldErrorVar" value="#contentShapeFieldErrorsVar != null && !#contentShapeFieldErrorsVar.isEmpty()" />
-		<label for="contentShape" class="control-label"><s:text name="contentModel.label.shape" />:</label>
+		<label for="contentShape"><s:text name="contentModel.label.shape" /></label>
 		<div class="display-block">
 			<s:textarea name="contentShape" id="contentShape" cols="50" rows="10" cssClass="form-control" />
 		</div>
@@ -83,10 +86,10 @@
 		</s:if>
 	</div>
 	<div class="form-group">
-		<label for="newModel_stylesheet" class="control-label"><s:text name="contentModel.label.stylesheet" />:</label>
+		<label for="newModel_stylesheet"><s:text name="contentModel.label.stylesheet" /></label>
 		<s:textfield name="stylesheet" id="newModel_stylesheet" cssClass="form-control" />
 	</div>
-</fieldset>
+</div>
 
 <div class="form-group">
 	<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">

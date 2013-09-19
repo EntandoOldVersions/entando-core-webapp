@@ -49,7 +49,7 @@
 			
 			<tr>
 				<th class="text-center padding-large-left padding-large-right col-xs-4 col-sm-3 col-md-2 col-lg-2"><abbr title="<s:text name="label.actions" />">&ndash;</abbr></th>
-				<th><s:text name="contentModel.id" /></th>
+				<th class="text-right"><s:text name="contentModel.id" /></th>
 				<th><s:text name="label.description" /></th>
 				<th><s:text name="contentModel.type" /></th>
 			</tr>
@@ -67,12 +67,12 @@
 						<%-- remove --%>
 						<div class="btn-group btn-group-xs">
 							<a href="<s:url action="trash" namespace="/do/jacms/ContentModel" />?modelId=<s:property value="#model.id" />" title="<s:text name="label.remove" />: <s:property value="#model.description" />" class="btn btn-warning">
-							<span class="icon-fixed-width icon icon-remove-circle"></span>&#32;
+							<span class="icon icon-remove-circle"></span>&#32;
 							<span class="sr-only"><s:text name="label.alt.clear" /></span>
 							</a>
 						</div>
 					</td>
-					<td>
+					<td class="text-right text-nowrap">
 						<code><s:property value="#model.id" /></code>
 					</td>
 					<td>
