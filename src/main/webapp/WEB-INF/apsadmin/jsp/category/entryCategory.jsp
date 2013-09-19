@@ -21,7 +21,7 @@
 	<s:else><s:set var="breadcrumbs_pivotCategoryCode" value="parentCategoryCode" /></s:else>
 	<s:include value="/WEB-INF/apsadmin/jsp/category/include/categoryInfo_breadcrumbs.jsp" />
 
-	<s:form action="save" cssClass="form-horizontal">
+	<s:form action="save">
 		<s:if test="hasFieldErrors()">
 			<div class="alert alert-danger alert-dismissable fade in">
 				<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
@@ -42,43 +42,43 @@
 			<s:if test="getStrutsAction() == 2"><wpsf:hidden name="categoryCode" /></s:if>
 			<wpsf:hidden name="parentCategoryCode" />
 		</p>
-
-		<%-- category code --%>
-			<s:set var="currentFieldFieldErrorsVar" value="%{fieldErrors['categoryCode']}" />
-			<s:set var="currentFieldHasFieldErrorVar" value="#currentFieldFieldErrorsVar != null && !#currentFieldFieldErrorsVar.isEmpty()" />
-			<s:set var="controlGroupErrorClassVar" value="%{#currentFieldHasFieldErrorVar ? ' has-error' : ''}" />
-			<div class="form-group<s:property value="controlGroupErrorClassVar" />">
-				<label class="control-label" for="categoryCode"><s:text name="name.categoryCode" /></label>
-					<s:textfield name="categoryCode" id="categoryCode" disabled="%{getStrutsAction() == 2}" cssClass="form-control" />
-					<s:if test="getStrutsAction() != 2">
-						<s:hidden name="selectedNode" value="%{parentCategoryCode}" />
-					</s:if>
-					<s:elseif test="getStrutsAction() == 2">
-						<s:hidden name="selectedNode" value="%{categoryCode}" />
-					</s:elseif>
-					<s:if test="#currentFieldHasFieldErrorVar">
-						<p class="help help-block"><s:iterator value="#currentFieldFieldErrorsVar"><s:property />&#32;</s:iterator></p>
-					</s:if>
-			</div>
-
-		<s:iterator value="langs">
-			<s:set var="currentFieldFieldErrorsVar" value="%{fieldErrors['lang'+code]}" />
-			<s:set var="currentFieldHasFieldErrorVar" value="#currentFieldFieldErrorsVar != null && !#currentFieldFieldErrorsVar.isEmpty()" />
-			<s:set var="controlGroupErrorClassVar" value="%{#currentFieldHasFieldErrorVar ? ' has-error' : ''}" />
-			<div class="form-group<s:property value="controlGroupErrorClassVar" />">
-				<label class="control-label" for="lang<s:property value="code" />">
-					<span class="label label-info"><s:property value="code" /></span>&#32;
-					<s:text name="name.categoryTitle" />
-				</label>
-				<s:textfield name="%{'lang'+code}" id="%{'lang'+code}" value="%{titles.get(code)}" cssClass="form-control" />
-				<s:if test="#currentFieldHasFieldErrorVar">
-					<p class="help help-block"><s:iterator value="#currentFieldFieldErrorsVar"><s:property />&#32;</s:iterator></p>
-				</s:if>
-			</div>
-		</s:iterator>
+		<fieldset class="col-xs-12">
+			<%-- category code --%>
+				<s:set var="currentFieldFieldErrorsVar" value="%{fieldErrors['categoryCode']}" />
+				<s:set var="currentFieldHasFieldErrorVar" value="#currentFieldFieldErrorsVar != null && !#currentFieldFieldErrorsVar.isEmpty()" />
+				<s:set var="controlGroupErrorClassVar" value="%{#currentFieldHasFieldErrorVar ? ' has-error' : ''}" />
+				<div class="form-group<s:property value="controlGroupErrorClassVar" />">
+					<label class="control-label" for="categoryCode"><s:text name="name.categoryCode" /></label>
+						<s:textfield name="categoryCode" id="categoryCode" disabled="%{getStrutsAction() == 2}" cssClass="form-control" />
+						<s:if test="getStrutsAction() != 2">
+							<s:hidden name="selectedNode" value="%{parentCategoryCode}" />
+						</s:if>
+						<s:elseif test="getStrutsAction() == 2">
+							<s:hidden name="selectedNode" value="%{categoryCode}" />
+						</s:elseif>
+						<s:if test="#currentFieldHasFieldErrorVar">
+							<p class="help help-block"><s:iterator value="#currentFieldFieldErrorsVar"><s:property />&#32;</s:iterator></p>
+						</s:if>
+				</div>
+				<s:iterator value="langs">
+					<s:set var="currentFieldFieldErrorsVar" value="%{fieldErrors['lang'+code]}" />
+					<s:set var="currentFieldHasFieldErrorVar" value="#currentFieldFieldErrorsVar != null && !#currentFieldFieldErrorsVar.isEmpty()" />
+					<s:set var="controlGroupErrorClassVar" value="%{#currentFieldHasFieldErrorVar ? ' has-error' : ''}" />
+					<div class="form-group<s:property value="controlGroupErrorClassVar" />">
+						<label class="control-label" for="lang<s:property value="code" />">
+							<abbr class="label label-info" title="<s:property value="descr" />"><s:property value="code" /></abbr>&#32;
+							<s:text name="name.categoryTitle" />
+						</label>
+						<s:textfield name="%{'lang'+code}" id="%{'lang'+code}" value="%{titles.get(code)}" cssClass="form-control" />
+						<s:if test="#currentFieldHasFieldErrorVar">
+							<p class="help help-block"><s:iterator value="#currentFieldFieldErrorsVar"><s:property />&#32;</s:iterator></p>
+						</s:if>
+					</div>
+				</s:iterator>
+		</fieldset>
 		<div class="form-group">
 			<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-				<s:submit type="button" cssClass="btn btn-primary margin-small-vertical">
+				<s:submit type="button" cssClass="btn btn-primary btn-block">
       		<span class="icon icon-save">&#32;</span>
 					<s:text name="label.save" />
 				</s:submit>
