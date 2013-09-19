@@ -36,7 +36,7 @@
 	<div class="panel panel-default">
 		<div class="panel-body">
 			<div class="form-group has-warning">
-				<label for="contentType"><s:text name="contentModel.type" /></label>
+				<label for="contentType" class="control-label"><s:text name="contentModel.type" /></label>
 				<div class="input-group">
 				<s:select id="contentType" list="smallContentTypes" name="contentType" 
 					listKey="code" listValue="descr" cssClass="form-control" />
