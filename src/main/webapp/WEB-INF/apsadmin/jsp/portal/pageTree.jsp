@@ -46,8 +46,6 @@
 	</s:elseif>
 </ul>
 
-</fieldset>
-
 <p class="sr-only"><s:hidden name="copyingPageCode" /></p>
 
 <fieldset data-toggle="tree-toolbar"><legend><s:text name="title.pageActions" /></legend>
