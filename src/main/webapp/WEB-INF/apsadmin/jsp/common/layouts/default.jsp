@@ -48,12 +48,10 @@
 
 		<div class="panel-group margin-base-bottom">
 			<div class="panel panel-default">
-				<div class="panel-heading">
+				<div class="panel-heading" id="user-avatar">
 					<a data-toggle="collapse" href="#submenu-user" class="display-block">
 						<c:out value="${sessionScope.currentUser}"/>
-						<span class="display-inline-block pull-right">
-							<span class="icon icon-user"></span>
-						</span>
+							<img src="<wp:resourceURL />administration/img/avatar-default.png" alt=" " class="img-rounded" />
 					</a>
 				</div>
 				<div id="submenu-user" class="panel-collapse collapse">
