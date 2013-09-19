@@ -39,13 +39,15 @@
 				</s:iterator>
 			</ul>
 		</div>
-		<p class="sr-only">
-			<wpsf:hidden name="strutsAction" />
-			<s:if test="getStrutsAction() == 2">
-					<wpsf:hidden name="username" />
-			</s:if>
-		</p>
 	</s:if>
+
+	<p class="sr-only">
+		<wpsf:hidden name="strutsAction" />
+		<s:if test="getStrutsAction() == 2">
+				<wpsf:hidden name="username" />
+		</s:if>
+	</p>
+	
 	<%-- username --%>
 		<s:set var="fieldFieldErrorsVar" value="%{fieldErrors['username']}" />
 		<s:set var="fieldHasFieldErrorVar" value="#fieldFieldErrorsVar != null && !#fieldFieldErrorsVar.isEmpty()" />
