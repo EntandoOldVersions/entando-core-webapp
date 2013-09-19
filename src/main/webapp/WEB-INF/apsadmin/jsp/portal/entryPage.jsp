@@ -24,7 +24,7 @@
 <s:else><s:set var="breadcrumbs_pivotPageCode" value="parentPageCode" /></s:else>
 <s:include value="/WEB-INF/apsadmin/jsp/portal/include/pageInfo_breadcrumbs.jsp" />
 
-<s:form action="save" class="form-horizontal">
+<s:form action="save" cssClass="form-horizontal">
 
 	<s:if test="hasActionErrors()">
 		<div class="alert alert-danger alert-dismissable">

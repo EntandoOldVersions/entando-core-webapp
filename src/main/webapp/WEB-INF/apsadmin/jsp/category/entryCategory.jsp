@@ -26,13 +26,14 @@
 			<div class="alert alert-danger alert-dismissable fade in">
 				<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
 				<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h2>
-					<ul class="margin-base-top">
+					<%-- <ul class="margin-base-top">
 						<s:iterator value="fieldErrors">
 							<s:iterator value="value">
 								<li><s:property escape="false" /></li>
 							</s:iterator>
 						</s:iterator>
 					</ul>
+					--%>
 			</div>
 		</s:if>
 
@@ -42,36 +43,44 @@
 			<wpsf:hidden name="parentCategoryCode" />
 		</p>
 
-		<div class="form-group">
-			<label class="control-label col-lg-3 col-md-3" for="categoryCode"><s:text name="name.categoryCode" /></label>
-			<div class="col-md-9 col-lg-9">
-				<s:textfield name="categoryCode" id="categoryCode" disabled="%{getStrutsAction() == 2}" cssClass="form-control" />
-				<s:if test="getStrutsAction() != 2">
-					<s:hidden name="selectedNode" value="%{parentCategoryCode}" />
-				</s:if>
-				<s:elseif test="getStrutsAction() == 2">
-					<s:hidden name="selectedNode" value="%{categoryCode}" />
-				</s:elseif>
+		<%-- category code --%>
+			<s:set var="currentFieldFieldErrorsVar" value="%{fieldErrors['categoryCode']}" />
+			<s:set var="currentFieldHasFieldErrorVar" value="#currentFieldFieldErrorsVar != null && !#currentFieldFieldErrorsVar.isEmpty()" />
+			<s:set var="controlGroupErrorClassVar" value="%{#currentFieldHasFieldErrorVar ? ' has-error' : ''}" />
+			<div class="form-group<s:property value="controlGroupErrorClassVar" />">
+				<label class="control-label" for="categoryCode"><s:text name="name.categoryCode" /></label>
+					<s:textfield name="categoryCode" id="categoryCode" disabled="%{getStrutsAction() == 2}" cssClass="form-control" />
+					<s:if test="getStrutsAction() != 2">
+						<s:hidden name="selectedNode" value="%{parentCategoryCode}" />
+					</s:if>
+					<s:elseif test="getStrutsAction() == 2">
+						<s:hidden name="selectedNode" value="%{categoryCode}" />
+					</s:elseif>
+					<s:if test="#currentFieldHasFieldErrorVar">
+						<p class="help help-block"><s:iterator value="#currentFieldFieldErrorsVar"><s:property />&#32;</s:iterator></p>
+					</s:if>
 			</div>
-		</div>
 
 		<s:iterator value="langs">
-			<div class="form-group">
-				<label class="control-label col-lg-3 col-md-3" for="lang<s:property value="code" />">
-					<span class="label label-info">
-						<s:property value="code" />
-					</span>&#32;
+			<s:set var="currentFieldFieldErrorsVar" value="%{fieldErrors['lang'+code]}" />
+			<s:set var="currentFieldHasFieldErrorVar" value="#currentFieldFieldErrorsVar != null && !#currentFieldFieldErrorsVar.isEmpty()" />
+			<s:set var="controlGroupErrorClassVar" value="%{#currentFieldHasFieldErrorVar ? ' has-error' : ''}" />
+			<div class="form-group<s:property value="controlGroupErrorClassVar" />">
+				<label class="control-label" for="lang<s:property value="code" />">
+					<span class="label label-info"><s:property value="code" /></span>&#32;
 					<s:text name="name.categoryTitle" />
 				</label>
-				<div class="col-md-9 col-lg-9">
-					<s:textfield name="%{'lang'+code}" id="%{'lang'+code}" value="%{titles.get(code)}" cssClass="form-control" />
-				</div>
+				<s:textfield name="%{'lang'+code}" id="%{'lang'+code}" value="%{titles.get(code)}" cssClass="form-control" />
+				<s:if test="#currentFieldHasFieldErrorVar">
+					<p class="help help-block"><s:iterator value="#currentFieldFieldErrorsVar"><s:property />&#32;</s:iterator></p>
+				</s:if>
 			</div>
 		</s:iterator>
 		<div class="form-group">
-			<div class="col-offset-md-3 col-offset-lg-3 col-md-9 col-lg-9">
-				<s:submit type="button" cssClass="btn btn-primary">
-					<s:tex name="label.save" />
+			<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+				<s:submit type="button" cssClass="btn btn-primary margin-small-vertical">
+      		<span class="icon icon-save">&#32;</span>
+					<s:text name="label.save" />
 				</s:submit>
 			</div>
 		</div>
