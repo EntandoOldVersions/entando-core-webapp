@@ -3,9 +3,8 @@
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <h1 class="panel panel-default title-page">
 	<span class="panel-body display-block">
-		<a href="<s:url namespace="/do/BaseAdmin" action="settings" />"><s:text name="menu.configure" /></a> 
-		/ 
-		<s:text name="menu.reload.contents" />
+		<a href="<s:url namespace="/do/BaseAdmin" action="settings" />"><s:text name="menu.configure" /></a>&#32;/&#32;
+		<s:text name="title.databaseManagement" />
 	</span>
 </h1>
 <s:if test="hasActionErrors()">
