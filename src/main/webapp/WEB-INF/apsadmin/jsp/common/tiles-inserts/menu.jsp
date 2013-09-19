@@ -98,7 +98,7 @@
 							<s:if test="%{#isAuthToEditVar}">
 							<li><a href="<s:url action="createNew" namespace="/do/jacms/Content" >
 									   <s:param name="contentTypeCode" value="%{#contentTypeVar.typeCode}" />
-								   </s:url>" >New&#32;<s:property value="%{#contentTypeVar.typeDescr}" /></a></li>
+								   </s:url>" ><s:text name="label.new" />&#32;<s:property value="%{#contentTypeVar.typeDescr}" /></a></li>
 							</s:if>
 						</s:iterator>
 						<wp:ifauthorized permission="superuser">

@@ -275,7 +275,7 @@
 
     <definition extends="layout.default" name="admin.Category.viewTree">
         <put-attribute name="title" value="title.categoryManagement" />
-        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/category.jsp" />
+        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/categoryTree.jsp" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/category/categoryTree.jsp" />
     </definition>
     <definition extends="layout.default" name="admin.Category.entry">

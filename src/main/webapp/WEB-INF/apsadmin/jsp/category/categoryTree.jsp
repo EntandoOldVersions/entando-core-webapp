@@ -1,70 +1,78 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
-
 <h1 class="panel panel-default title-page"><span class="panel-body display-block"><s:text name="title.categoryManagement" /></span></h1>
-
 <div id="main">
-
-<s:form cssClass="action-form">
-
-<s:if test="hasActionErrors()">
-<div class="message message_error">
-<h2><s:text name="message.title.ActionErrors" /></h2>
-<ul>
-	<s:iterator value="actionErrors">
-		<li><s:property escape="false" /></li>
-	</s:iterator>
-</ul>
-</div>
-</s:if>
-<s:if test="hasActionMessages()">
-	<div class="message message_confirm">
-	<h3><s:text name="messages.confirm" /></h3>
-	<ul>
-		<s:iterator value="actionMessages">
-			<li><s:property escape="false" /></li>
-		</s:iterator>
-	</ul>
-	</div>
-</s:if>
-
-<fieldset class="margin-more-top"><legend><s:text name="title.categoryTree" /></legend>
-
-<s:set var="categoryTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_category" /></s:set>
-
-<ul id="categoryTree">
-	<s:set name="inputFieldName" value="'selectedNode'" />
-	<s:set name="selectedTreeNode" value="selectedNode" />
-	<s:set name="liClassName" value="'category'" />
-	<s:if test="#categoryTreeStyleVar == 'classic'">
-	<s:set name="currentRoot" value="treeRootNode" />
-	<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder.jsp" />
+<s:form cssClass="action-form" cssClass="action-form">
+	<s:if test="hasActionErrors()">
+		<div class="alert alert-danger alert-dismissable fade in">
+			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+			<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
+				<ul class="margin-base-top">
+					<s:iterator value="actionErrors">
+						<li><s:property escape="false" /></li>
+					</s:iterator>
+				</ul>
+		</div>
 	</s:if>
-	<s:elseif test="#categoryTreeStyleVar == 'request'">
-	<s:set name="openTreeActionName" value="'openCloseCategoryTree'" />
-	<s:set name="closeTreeActionName" value="'openCloseCategoryTree'" />
-	<s:set name="currentRoot" value="showableTree" />
-	<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder-request-links.jsp" />
-	</s:elseif>
-</ul>
+	<s:if test="hasActionMessages()">
+		<div class="alert alert-info alert-dismissable fade in">
+			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+			<h2 class="h4 margin-none"><s:text name="messages.confirm" /></h3>
+			<ul class="margin-base-top">
+				<s:iterator value="actionMessages">
+					<li><s:property escape="false" /></li>
+				</s:iterator>
+			</ul>
+		</div>
+	</s:if>
+	<%-- <fieldset class="margin-more-top"><legend><s:text name="title.categoryTree" /></legend> --%>
 
-</fieldset>
+	<s:set var="categoryTreeStyleVar"><wp:info key="systemParam" paramName="treeStyle_category" /></s:set>
 
-<fieldset data-toggle="tree-toolbar"><legend><s:text name="title.categoryActions" /></legend>
-<p class="sr-only"><s:text name="title.categoryActionsIntro" /></p>
+	<ul id="categoryTree" class="icons-ul list-unstyled">
+		<s:set name="inputFieldName" value="%{'selectedNode'}" />
+		<s:set name="selectedTreeNode" value="%{selectedNode}" />
+		<s:set name="liClassName" value="%{'category'}" />
+		<s:set var="treeItemIconName" value="'icon-folder-close'" />
 
-<p data-toggle="tree-toolbar-actions">
-	<s:set var="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/page-new.png</s:set>
-	<wpsf:submit useTabindexAutoIncrement="true" action="new" type="image" src="%{#iconImagePath}" value="%{getText('category.options.new')}" title="%{getText('category.options.new')}" />
-	<s:set var="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/page-edit.png</s:set>
-	<wpsf:submit useTabindexAutoIncrement="true" action="edit" type="image" src="%{#iconImagePath}" value="%{getText('category.options.modify')}" title="%{getText('category.options.modify')}" />
-	<s:set var="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/detail.png</s:set>
-	<wpsf:submit useTabindexAutoIncrement="true" action="detail" type="image" src="%{#iconImagePath}" value="%{getText('category.options.detail')}" title="%{getText('category.options.detail')}" />
-	<s:set var="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/delete.png</s:set>
-	<wpsf:submit useTabindexAutoIncrement="true" action="trash" type="image" src="%{#iconImagePath}" value="%{getText('category.options.delete')}" title="%{getText('category.options.delete')}" />
-</p>
-</fieldset>
+		<s:if test="#categoryTreeStyleVar == 'classic'">
+		<s:set name="currentRoot" value="treeRootNode" />
+		<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder.jsp" />
+		</s:if>
+		<s:elseif test="#categoryTreeStyleVar == 'request'">
+		<s:set name="openTreeActionName" value="'openCloseCategoryTree'" />
+		<s:set name="closeTreeActionName" value="'openCloseCategoryTree'" />
+		<s:set name="currentRoot" value="showableTree" />
+		<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder-request-links.jsp" />
+		</s:elseif>
+	</ul>
+	<p class="sr-only"><s:text name="title.categoryActionsIntro" /></p>
+	<fieldset data-toggle="tree-toolbar"><legend><s:text name="title.categoryActions" /></legend>
+		<div class="btn-toolbar" data-toggle="tree-toolbar-actions">
+			<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
+				<s:submit type="button" action="detail" title="%{getText('category.options.detail')}" data-toggle="tooltip" cssClass="btn btn-info">
+					<span class="sr-only"><s:text name="category.options.detail" /></span>
+					<span class="icon icon-info"></span>
+				</s:submit>
+			</div>
+			<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
+				<s:submit type="button" action="new" title="%{getText('category.options.new')}" data-toggle="tooltip" cssClass="btn btn-info">
+					<span class="sr-only"><s:text name="category.options.new" /></span>
+					<span class="icon icon-plus-sign"></span>
+				</s:submit>
+				<s:submit type="button" action="edit" title="%{getText('category.options.modify')}" data-toggle="tooltip" cssClass="btn btn-info">
+					<span class="sr-only"><s:text name="category.options.modify" /></span>
+					<span class="icon icon-edit"></span>
+				</s:submit>
+			</div>
+			<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
+				<s:submit type="button" action="trash" title="%{getText('category.options.delete')}" data-toggle="tooltip" cssClass="btn btn-warning">
+					<span class="sr-only"><s:text name="category.options.delete" /></span>
+					<span class="icon icon-remove-sign"></span>
+				</s:submit>
+			</div>
+		</div>
+	</fieldset>
 </s:form>
-
 </div>
