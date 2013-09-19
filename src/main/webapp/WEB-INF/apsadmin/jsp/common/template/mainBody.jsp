@@ -8,6 +8,7 @@
 
 <div id="main">
 
+<%--
 <s:if test="hasFieldErrors()">
 <div class="message message_error">
 <h2><s:text name="message.title.FieldErrors" /></h2>	
@@ -40,7 +41,7 @@
 <s:set var="userShortcutLongDescr"><s:if test="null != #userShortcut.longDescriptionKey" ><s:text name="%{#userShortcut.longDescriptionKey}" /></s:if><s:else><s:property value="%{#userShortcut.longDescription}" /></s:else></s:set>
 
 	<dt class="name <s:property value="#userShortcut.menuSectionCode" />">
-		<%-- SCRIVERE TAG PER AGGIUNGERE MAPPA PARAMETRI ALLA URL --%>
+		<%-- SCRIVERE TAG PER AGGIUNGERE MAPPA PARAMETRI ALLA URL
 		<a class="shortcut-link" 
 				href="<s:url action="%{#userShortcut.actionName}" namespace="%{#userShortcut.namespace}"><wpsa:paramMap map="#userShortcut.parameters" /></s:url>" 
 				lang="en" title="<s:property value="%{#userShortcutShortDescr}" />">
@@ -80,9 +81,9 @@
 
 </s:iterator>
 
-<%-- shortucs available for the current user --%>
+<%-- shortucs available for the current user
 <s:set var="allowedShortcutsVar" value="allowedShortcuts" />
-<%-- if there are shortcuts and if position not null, so show the configuration form --%>
+<%-- if there are shortcuts and if position not null, so show the configuration form
 <s:if test="((null != #allowedShortcutsVar) && (#allowedShortcutsVar.size() > 0) && (null != position)) || #myClient=='advanced'">
 	<div class="subsection-light clear" id="shortcut-configure-container">
 		<h2 class="margin-bit-bottom" id="shortcut-configure"><s:text name="label.configure" />&#32;<s:text name="name.position" />&#32;<span class="position-name"><s:property value="%{position + 1}" /></span></h2>
@@ -114,7 +115,7 @@
 		</s:form>
 	</div>
 </s:if>
-<%-- else show the swap form --%>
+<%-- else show the swap form
 <s:elseif test="null != positionTarget">
 	<div class="subsection-light clear" id="shortcut-swap-container">
 	<h2 class="margin-bit-bottom" id="shortcut-swap"><s:text name="label.swap" />&#32;<s:text name="name.position" />: <s:property value="%{positionTarget + 1}" /> &ndash; 
@@ -151,6 +152,7 @@
 	</div>
 </s:elseif>
 
+--%>
 <wpsa:activityStream var="activityStreamVar" />
 
 <s:if test="null != #activityStreamVar && #activityStreamVar.size() != 0">
@@ -161,7 +163,7 @@
 		<s:set var="emailAttributeVar"><wp:userProfileAttribute username="${usernameVar}" attributeRoleName="userprofile:email" /></s:set>
 		<s:if test="null != #fullnameVar && #fullnameVar.length() > 0"><s:property value="#fullnameVar" /></s:if>
 		<s:else><s:property value="#actionLogRecordVar.username" /></s:else>
-		
+
 		<%--
 		&nbsp;&dash;&nbsp;x<s:property value="#emailAttributeVar" />x&nbsp;
 		--%>
