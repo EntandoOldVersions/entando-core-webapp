@@ -71,30 +71,50 @@
 	</s:if>
 
 	<s:if test="strutsAction != 2">
-		<p>
+		<div class="form-group<s:property value="controlGroupErrorClassVar" />">
+			<s:set var="pageCodeFieldErrorsVar" value="%{fieldErrors['showletTypeCode']}" />
+			<s:set var="pageCodeHasFieldErrorVar" value="#pageCodeFieldErrorsVar != null && !#pageCodeFieldErrorsVar.isEmpty()" />
 			<label for="showletTypeCode" class="control-label"><s:text name="label.code" /></label>
 			<s:textfield id="showletTypeCode" name="showletTypeCode" cssClass="form-control" />
-		</p>
+			<s:if test="#pageCodeHasFieldErrorVar">
+			  <p class="text-danger padding-small-vertical"><s:iterator value="#pageCodeFieldErrorsVar"><s:property /> </s:iterator></p>
+			</s:if>
+		</div>
 	</s:if>
 	
-	<div class="form-group">
-		<label for="showlet-title-en" class="control-label"><code class="label label-info">en</code>&#32;<s:text name="label.title" /></label>
-		<s:textfield id="showlet-title-en" name="englishTitle" cssClass="form-control" />
+	<div class="form-group<s:property value="controlGroupErrorClassVar" />">
+			<s:set var="pageCodeFieldErrorsVar" value="%{fieldErrors['englishTitle']}" />
+			<s:set var="pageCodeHasFieldErrorVar" value="#pageCodeFieldErrorsVar != null && !#pageCodeFieldErrorsVar.isEmpty()" />
+		<label for="englishTitle" class="control-label"><code class="label label-info">en</code>&#32;<s:text name="label.title" /></label>
+		<s:textfield id="englishTitle" name="englishTitle" cssClass="form-control" />
+		<s:if test="#pageCodeHasFieldErrorVar">
+		  <p class="text-danger padding-small-vertical"><s:iterator value="#pageCodeFieldErrorsVar"><s:property /> </s:iterator></p>
+		</s:if>
 	</div>
 	
-	<div class="form-group">
-		<label for="showlet-title-it" class="control-label"><code class="label label-info">it</code>&#32;<s:text name="label.title" /></label>
-		<s:textfield id="showlet-title-it" name="italianTitle" cssClass="form-control" />
+	<div class="form-group<s:property value="controlGroupErrorClassVar" />">
+		<s:set var="pageCodeFieldErrorsVar" value="%{fieldErrors['italianTitle']}" />
+		<s:set var="pageCodeHasFieldErrorVar" value="#pageCodeFieldErrorsVar != null && !#pageCodeFieldErrorsVar.isEmpty()" />
+		<label for="italianTitle" class="control-label"><code class="label label-info">it</code>&#32;<s:text name="label.title" /></label>
+		<s:textfield id="italianTitle" name="italianTitle" cssClass="form-control" />
+		<s:if test="#pageCodeHasFieldErrorVar">
+		  <p class="text-danger padding-small-vertical"><s:iterator value="#pageCodeFieldErrorsVar"><s:property /> </s:iterator></p>
+		</s:if>
 	</div>
 
-	<div class="form-group">
-		<label for="showlet-maingroup" class="control-label"><s:text name="label.group" /></label>
-		<s:select name="mainGroup" id="showlet-maingroup" list="groups" listKey="name" listValue="descr" cssClass="form-control" disabled="%{!#isSuperuserVar}" />
+	<div class="form-group<s:property value="controlGroupErrorClassVar" />">
+		<s:set var="pageCodeFieldErrorsVar" value="%{fieldErrors['mainGroup']}" />
+		<s:set var="pageCodeHasFieldErrorVar" value="#pageCodeFieldErrorsVar != null && !#pageCodeFieldErrorsVar.isEmpty()" />
+		<label for="mainGroup" class="control-label"><s:text name="label.group" /></label>
+		<s:select name="mainGroup" id="mainGroup" list="groups" listKey="name" listValue="descr" cssClass="form-control" disabled="%{!#isSuperuserVar}" />
+		<s:if test="#pageCodeHasFieldErrorVar">
+		  <p class="text-danger padding-small-vertical"><s:iterator value="#pageCodeFieldErrorsVar"><s:property /> </s:iterator></p>
+		</s:if>
 	</div>
 	
 	<s:if test="#showletTypeVar.logic && strutsAction == 2">
-	<div class="form-group">
-	    <label class="control-label"><s:text name="label.showletType.parentType" /></label>
+	<div class="form-group">    
+		<label class="control-label"><s:text name="label.showletType.parentType" /></label>
 		<p class="form-control-static"><s:property value="#showletTypeVar.parentType.titles[currentLang.code]" /></p>
 	</div>
 	</s:if>
