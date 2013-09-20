@@ -61,16 +61,19 @@
 	<li class="list-group-item">
 	<div class="row">
 
-		<div class="col-sm-6 col-lg-6">
-
-		<a href="<s:url namespace="/do/Portal/WidgetType" action="edit"><s:param name="showletTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.configWidget" />" class="" ><span class="icon icon-cog"></span>
-		<s:property value="#showletType.value" /></a>
-		
-		<span class="badge"><s:property value="#showletUtilizers.size()" /></span>
-		<%--<s:property value="%{getGroup(getShowletType(#showletType.key).mainGroup).descr}" />--%>
+		<div class="col-sm-8 col-lg-8">
+			<div class="col-xs-2 col-md-1">
+				<span class="badge"><s:property value="#showletUtilizers.size()" /></span>&#32;
+			</div>
+			<div class="col-xs-10 col-md-11">
+				<a href="<s:url namespace="/do/Portal/WidgetType" action="edit"><s:param name="showletTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.configWidget" />" class="" ><span class="icon icon-cog"></span>
+				<s:property value="#showletType.value" /></a>
+				
+				<%--<span class="label label-default label-sm padding-small-top padding-small-bottom margin-small-right margin-small-bottom"><s:property value="%{getGroup(getShowletType(#showletType.key).mainGroup).descr}" /></span>--%>
+			</div>
 		</div>
 
-		<div class="col-sm-6 col-lg-6">
+		<div class="col-sm-4 col-lg-4">
 		<div class="btn-group btn-group-xs pull-right">
 		
 		<s:if test="#showletUtilizers != null && #showletUtilizers.size() > 0">
