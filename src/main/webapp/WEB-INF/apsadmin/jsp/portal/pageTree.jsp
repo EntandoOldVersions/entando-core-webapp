@@ -19,7 +19,6 @@
 </div>
 </s:if>
 
-<%-- Inclusione del form di ricerca per codice --%>
 <s:include value="/WEB-INF/apsadmin/jsp/portal/include/pageSearchForm.jsp" />
 
 <hr />
