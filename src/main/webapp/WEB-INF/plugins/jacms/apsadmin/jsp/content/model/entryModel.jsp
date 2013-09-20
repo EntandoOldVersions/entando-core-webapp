@@ -36,21 +36,21 @@
 	
 	<div class="panel panel-default">
 		<div class="panel-body">
-			<div class="form-group<s:if test="strutsAction == 1"> has-warning</s:if>">
+			<div class="form-group<s:if test="strutsAction == 1 && null == contentType"> has-warning</s:if>">
 				<label for="contentType" class="control-label"><s:text name="contentModel.type" /></label>
 				<div class="input-group">
 				<s:select id="contentType" list="smallContentTypes" name="contentType" 
 					listKey="code" listValue="descr" cssClass="form-control" />
 					<span class="input-group-btn">
-					<s:if test="strutsAction == 1">
+					<s:if test="strutsAction == 1 && null == contentType">
 						<s:submit type="button" action="lockContentType" cssClass="btn btn-warning" value="%{getText('label.set')}"/>
 					</s:if>
 					<s:else>
-						<s:submit type="button" action="lockContentType" cssClass="btn" value="%{getText('label.change')}"/>						
+						<s:submit type="button" action="lockContentType" cssClass="btn btn-info" value="%{getText('label.change')}"/>						
 					</s:else>
 					</span>
 				</div>
-				<s:if test="strutsAction == 1">
+				<s:if test="strutsAction == 1 && null == contentType">
 				<span class="help-block"><span class="icon icon-info-sign"></span>&#32;<s:text name="note.contentModel.assist.intro" /></span>
 				</s:if>
 			</div>
