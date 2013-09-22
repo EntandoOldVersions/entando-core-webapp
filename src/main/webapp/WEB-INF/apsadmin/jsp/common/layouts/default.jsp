@@ -51,7 +51,9 @@
 				<div class="panel-heading" id="user-avatar">
 					<a data-toggle="collapse" href="#submenu-user" class="display-block">
 						<c:out value="${sessionScope.currentUser}"/>
-							<img src="<wp:resourceURL />administration/img/avatar-default.png" alt=" " class="img-rounded" />
+						<img src="<s:url action="avatarStream" namespace="/do/currentuser/avatar">
+							<s:param name="gravatarSize">34</s:param>
+						</s:url>" alt=" " class="img-rounded" />
 					</a>
 				</div>
 				<div id="submenu-user" class="panel-collapse collapse">
