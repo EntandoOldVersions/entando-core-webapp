@@ -10,7 +10,7 @@
 		<div class="alert alert-info alert-dismissable fade in">
 			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
 			<h2 class="h4 margin-none"><s:text name="messages.confirm" /></h2>
-			<ul>
+			<ul class="margin-base-top">
 				<s:iterator value="actionMessages">
 					<li><s:property escape="false" /></li>
 				</s:iterator>
