@@ -18,7 +18,7 @@
 	<link rel="stylesheet" href="<wp:resourceURL />administration/css/bootstrap-offcanvas.css" media="screen" />
 	<link rel="stylesheet" href="<wp:resourceURL />administration/css/bootstrap-addendum.css" media="screen" />
 	<c:catch>
-		<tiles:insertAttribute name="cssSpecial" />
+		<tiles:insertAttribute name="cssSpecial" ignore="true" />
 	</c:catch>
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
