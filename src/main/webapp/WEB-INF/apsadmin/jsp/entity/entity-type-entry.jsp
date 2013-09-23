@@ -5,16 +5,23 @@
 <h1 class="panel panel-default title-page">
 	<span class="panel-body display-block">
 		<a href="<s:url action="viewManagers" namespace="/do/Entity" />" title="<s:text name="note.goToSomewhere" />: <s:text name="title.entityManagement" />">
-		<s:text name="title.entityManagement" /></a>
+		<s:text name="title.entityAdmin.manage" /></a>&#32;/&#32;
+		<a href="<s:url action="initViewEntityTypes" namespace="/do/Entity"><s:param name="entityManagerName"><s:property value="entityManagerName" /></s:param></s:url>" title="<s:text name="note.goToSomewhere" />:<s:property value="entityManagerName" />"><s:property value="entityManagerName" /></a>&#32;/&#32;
+		<s:if test="operationId == 1">
+			<s:text name="title.entityTypes.editType.new" />
+		</s:if>
+		<s:else>
+			<s:text name="title.entityTypes.editType.edit" />
+		</s:else>
 	</span>
 </h1>
 
 <div id="main">
-<h2><a href="<s:url action="initViewEntityTypes" namespace="/do/Entity"><s:param name="entityManagerName"><s:property value="entityManagerName" /></s:param></s:url>" title="<s:text name="note.goToSomewhere" />: <s:text name="title.entityAdmin.manager" />&#32;<s:property value="entityManagerName" />"><s:text name="title.entityAdmin.manager" />: <s:property value="entityManagerName" /></a></h2>
 
 <s:if test="hasFieldErrors()">
-	<div class="message message_error">	
-	<h3><s:text name="message.title.FieldErrors" /></h3>
+	<div class="alert alert-danger alert-dismissable">
+		<button type="button" class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+		<p><s:text name="message.title.FieldErrors" /></p>
 			<ul>
 				<s:iterator value="fieldErrors">
 					<s:iterator value="value">
@@ -25,15 +32,12 @@
 	</div>
 </s:if>
 
-<s:if test="operationId == 1">
-	<h3><s:text name="title.entityTypes.editType.new" /></h3>
-</s:if>
-<s:else>
-	<h3><s:text name="title.entityTypes.editType.edit" /></h3>
-</s:else>
-
-<p><s:text name="note.entityTypes.editType.intro.1" />.</p>
-<p><s:text name="note.entityTypes.editType.intro.2" /></p>
+<div class="panel panel-default">
+	<div class="panel-body">
+		<s:text name="note.entityTypes.editType.intro.1" /><br />
+		<s:text name="note.entityTypes.editType.intro.2" />
+	</div>
+</div>
 
 <s:form action="saveEntityType">
 
@@ -44,8 +48,8 @@
 	</p>
 </s:if>
 
-<fieldset class="margin-more-top"><legend><s:text name="label.info" /></legend>
-	<p>
+<fieldset class="col-xs-12"><legend><s:text name="label.info" /></legend>
+	<div class="form-group">
 	<s:if test="operationId == 1">
 		<label for="entityTypeCode" class="basic-mint-label"><s:text name="label.code" />:</label>
 		<wpsf:textfield useTabindexAutoIncrement="true" name="entityTypeCode" id="entityTypeCode" value="%{#entityType.typeCode}" cssClass="text" />
@@ -54,12 +58,12 @@
 		<label for="entityTypeCode" class="basic-mint-label"><s:text name="label.code" />:</label>
 		<wpsf:textfield useTabindexAutoIncrement="true" name="entityTypeCode" id="entityTypeCode" value="%{#entityType.typeCode}" cssClass="text" disabled="true" />	
 	</s:else>
-	</p>
+	</div>
 	
-	<p>
+	<div class="form-group">
 		<label for="entityTypeDescription" class="basic-mint-label"><s:text name="label.description" />:</label>
 		<wpsf:textfield useTabindexAutoIncrement="true" name="entityTypeDescription" id="entityTypeDescription" value="%{#entityType.typeDescr}" cssClass="text" />
-	</p>
+	</div>
 </fieldset>
 
 <%-- 
@@ -73,14 +77,19 @@
 	<s:include value="%{'/WEB-INF/plugins/' + #hookpoint_plugin_code + '/apsadmin/jsp/entity/include/entity-type-entry.jsp'}" />
 </s:if>
 
-<fieldset><legend><s:text name="label.attributes" /></legend>
+<fieldset class="col-xs-12"><legend><s:text name="label.attributes" /></legend>
 	<s:include value="/WEB-INF/apsadmin/jsp/entity/include/attribute-operations-add.jsp" />
 	<s:include value="/WEB-INF/apsadmin/jsp/entity/include/attribute-list.jsp" />
 </fieldset>
 
-<p class="centerText">
-	<wpsf:submit useTabindexAutoIncrement="true" value="%{getText('label.save')}" action="saveEntityType" cssClass="button" />
-</p>
+<div class="form-group">
+      <div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+        <s:submit type="button" cssClass="btn btn-primary btn-block" action="saveEntityType" >
+          <span class="icon icon-save"></span>&#32;
+          <s:text name="label.save" />
+        </s:submit>
+      </div>
+    </div>
 
 </s:form>
 

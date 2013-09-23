@@ -6,14 +6,14 @@
 <h1 class="panel panel-default title-page">
 	<span class="panel-body display-block">
 		<a href="<s:url action="viewManagers" namespace="/do/Entity" />" title="<s:text name="note.goToSomewhere" />: <s:text name="title.entityManagement" />">
-			<s:text name="title.entityAdmin.manage" /></a>&#32;/&#32;
-		<s:text name="title.entityAdmin.manager" />: <code><s:property value="entityManagerName" /></code>
+		<s:text name="title.entityAdmin.manage" /></a>&#32;/&#32;
+		<s:property value="entityManagerName" />
 	</span>
 </h1>
 
 <div class="panel panel-default">
 	<div class="panel-body">
-		<s:text name="note.entityTypes.intro.1" />
+		<s:text name="note.entityTypes.intro.1" /><br />
 		<s:text name="note.entityTypes.intro.2" />
 	</div>
 </div>
