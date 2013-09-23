@@ -63,10 +63,10 @@
 
 		<div class="col-sm-8 col-lg-8">
 			<div class="col-xs-2 col-md-1">
-				<span class="badge"><s:property value="#showletUtilizers.size()" /></span>&#32;
+				<span class="badge" title="<s:text name="title.showletManagement.howmanypages.long" />: <s:property value="#showletType.value" />"><s:property value="#showletUtilizers.size()" /></span>&#32;
 			</div>
 			<div class="col-xs-10 col-md-11">
-				<a href="<s:url namespace="/do/Portal/WidgetType" action="edit"><s:param name="showletTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.configWidget" />" class="" ><span class="icon icon-cog"></span>
+				<a href="<s:url namespace="/do/Portal/WidgetType" action="edit"><s:param name="showletTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.configWidget" />: <s:property value="#showletType.value" />" ><span class="icon icon-cog"></span>
 				<s:property value="#showletType.value" /></a>
 				
 				<%--<span class="label label-default label-sm padding-small-top padding-small-bottom margin-small-right margin-small-bottom"><s:property value="%{getGroup(getShowletType(#showletType.key).mainGroup).descr}" /></span>--%>

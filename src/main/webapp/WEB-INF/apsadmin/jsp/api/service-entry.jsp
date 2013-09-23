@@ -122,26 +122,12 @@
 						<s:textfield id="%{#apiParameterVar.key + '_apiParam'}" name="%{#apiParameterVar.key + '_apiParam'}" value="%{apiParameterValues[#apiParameterVar.key]}" cssClass="form-control" /></td>
                         <td>
 				        <s:set var="freeParameterFieldNameVar" value="%{'freeParameter_' + #apiParameterVar.key}" />
-				        <wpsf:radio useTabindexAutoIncrement="true" name="%{#freeParameterFieldNameVar}"
+				        <wpsf:radio name="%{#freeParameterFieldNameVar}"
 				        id="%{'true_' + #freeParameterFieldNameVar}" value="true" checked="%{freeParameters.contains(#apiParameterVar.key)}" />
 				        <label for="<s:property value="%{'true_' + #freeParameterFieldNameVar}" />"><s:text name="label.yes"/></label><br />
-				        <wpsf:radio useTabindexAutoIncrement="true" name="%{#freeParameterFieldNameVar}"
+				        <wpsf:radio name="%{#freeParameterFieldNameVar}"
 				        id="%{'false_' + #freeParameterFieldNameVar}" value="false" checked="%{!freeParameters.contains(#apiParameterVar.key)}" />
 				        <label for="<s:property value="%{'false_' + #freeParameterFieldNameVar}" />"><s:text name="label.no"/></label>
-						<%--<div class="form-group">
-							<s:set var="freeParameterFieldNameVar" value="%{'freeParameter_' + #apiParameterVar.key}" />
-							<div class="btn-group col-md-9 col-lg-9" data-toggle="buttons">
-								
-									<label class="btn btn-default <s:if test="%{#freeParameterFieldNameVar}"> active</s:if>" >
-										<input type="radio" class="radiocheck" id="%{'true_' + #freeParameterFieldNameVar}" name="%{#freeParameterFieldNameVar}" value="true" <s:if test="%{freeParameters.contains(#apiParameterVar.key)}">checked="checked"</s:if> />
-										<s:text name="label.yes"/>
-									</label>
-									<label class="btn btn-default <s:if test="%{!#freeParameterFieldNameVar}"> active</s:if>" >
-										<input type="radio" class="radiocheck" id="%{'false_' + #freeParameterFieldNameVar}" name="%{#freeParameterFieldNameVar}" value="false" <s:if test="%{freeParameters.contains(#apiParameterVar.key)}">checked="checked"</s:if> />
-										<s:text name="label.no"/>
-									</label>
-							</div>
-						</div>--%>
 						</td>
 					</tr>
 				</s:iterator>
