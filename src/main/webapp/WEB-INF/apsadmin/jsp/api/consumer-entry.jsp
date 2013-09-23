@@ -1,77 +1,117 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
-<%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
-
-<h1 class="panel panel-default title-page"><span class="panel-body display-block"><s:text name="title.apiConsumerManagement" /></span></h1>
-
+<%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
+<h1 class="panel panel-default title-page">
+	<span class="panel-body display-block">
+		<a href="<s:url action="list" />"><s:text name="title.apiConsumerManagement" /></a>
+		&#32;/&#32;
+		<s:if test="strutsAction == 1">
+			<s:text name="title.apiConsumerManagement.new" />
+		</s:if>
+		<s:if test="strutsAction == 2">
+			<s:text name="title.apiConsumerManagement.edit" />
+		</s:if>
+	</span>
+</h1>
 <div id="main">
-	<s:if test="strutsAction == 1">
-		<h2 class="margin-more-bottom"><s:text name="title.apiConsumerManagement.new" /></h2>
-	</s:if>
-	<s:if test="strutsAction == 2">
-		<h2 class="margin-more-bottom"><s:text name="title.apiConsumerManagement.edit" /></h2>
-	</s:if>
-
-
 	<s:form action="save" >
 		<s:if test="hasFieldErrors()">
-			<div class="message message_error">
-				<h3><s:text name="message.title.FieldErrors" /></h3>
-				<ul>
+			<div class="alert alert-danger alert-dismissable fade in">
+				<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+				<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h2>
+				<%--
+				<ul class="margin-base-top">
 					<s:iterator value="fieldErrors">
 						<s:iterator value="value">
 							<li><s:property escape="false" /></li>
 						</s:iterator>
 					</s:iterator>
 				</ul>
+				--%>
 			</div>
 		</s:if>
 		<s:if test="hasActionErrors()">
-			<div class="message message_error">
-				<h3><s:text name="message.title.ActionErrors" /></h3>
-				<ul>
+			<div class="alert alert-danger alert-dismissable fade in">
+				<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+				<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
+				<ul class="margin-base-top">
 					<s:iterator value="actionErrors">
 						<li><s:property escape="false" /></li>
 					</s:iterator>
 				</ul>
 			</div>
 		</s:if>
-
-		<fieldset><legend><s:text name="label.info" /></legend>
-			<p>
+		<p class="sr-only">
 				<wpsf:hidden name="strutsAction" />
 				<s:if test="strutsAction == 2">
 					<wpsf:hidden name="consumerKey" />
 				</s:if>
-				<label for="consumerKey" class="basic-mint-label"><s:text name="label.consumerKey" />:</label>
-				<wpsf:textfield useTabindexAutoIncrement="true" name="consumerKey" id="consumerKey" disabled="%{getStrutsAction() == 2}" cssClass="text" />
-			</p>
-			<p>
-				<label for="secret" class="basic-mint-label"><s:text name="label.secret" />:</label>
-				<wpsf:textfield useTabindexAutoIncrement="true" name="secret" id="secret" cssClass="text" />
-			</p>
-			<p>
-				<label for="description" class="basic-mint-label alignTop"><s:text name="label.description" />:</label>
-				<wpsf:textarea useTabindexAutoIncrement="true"  cols="50" rows="3" name="description" id="description"cssClass="text"  />
-			</p>
-			<%--
-			<p>
-				<label for="callbackUrl" class="basic-mint-label"><s:text name="label.callbackUrl" />:</label>
-				<wpsf:textfield useTabindexAutoIncrement="true" name="callbackUrl" id="callbackUrl" cssClass="text" />
-			</p>
-			--%>
-			<p>
-				<label for="expirationDate_cal" class="basic-mint-label"><s:text name="label.expirationDate" />:</label>
-				<wpsf:textfield useTabindexAutoIncrement="true" name="expirationDate" id="expirationDate_cal" cssClass="text" />
-				<span class="inlineNote">dd/mm/yyyy</span>
-			</p>
-		</fieldset>
-
-		<p class="centerText">
-			<wpsf:submit useTabindexAutoIncrement="true" value="%{getText('label.save')}" cssClass="button" />
 		</p>
 
+		<div class="col-xs-12">
+			<s:set var="currentFieldErrorsVar" value="%{fieldErrors['consumerKey']}" />
+			<s:set var="currentFieldHasFieldErrorVar" value="#currentFieldErrorsVar != null && !#currentFieldErrorsVar.isEmpty()" />
+			<s:set var="controlGroupErrorClassVar" value="%{#currentFieldHasFieldErrorVar ? ' has-error' : ''}" />
+			<div class="form-group<s:property value="#controlGroupErrorClassVar" />">
+				<label for="consumerKey"><s:text name="label.consumerKey" /></label>
+				<s:textfield name="consumerKey" id="consumerKey" disabled="%{getStrutsAction() == 2}" cssClass="form-control" />
+				<s:if test="#currentFieldHasFieldErrorVar">
+					<span class="text-danger padding-small-vertical"><s:iterator value="#currentFieldErrorsVar"><s:property />&#32;</s:iterator></span>
+				</s:if>
+			</div>
+			<s:set var="currentFieldErrorsVar" value="%{fieldErrors['secret']}" />
+			<s:set var="currentFieldHasFieldErrorVar" value="#currentFieldErrorsVar != null && !#currentFieldErrorsVar.isEmpty()" />
+			<s:set var="controlGroupErrorClassVar" value="%{#currentFieldHasFieldErrorVar ? ' has-error' : ''}" />
+			<div class="form-group<s:property value="#controlGroupErrorClassVar" />">
+				<label for="secret"><s:text name="label.secret" /></label>
+				<s:textfield name="secret" id="secret" cssClass="form-control" />
+				<s:if test="#currentFieldHasFieldErrorVar">
+					<span class="text-danger padding-small-vertical"><s:iterator value="#currentFieldErrorsVar"><s:property />&#32;</s:iterator></span>
+				</s:if>
+			</div>
+			<s:set var="currentFieldErrorsVar" value="%{fieldErrors['description']}" />
+			<s:set var="currentFieldHasFieldErrorVar" value="#currentFieldErrorsVar != null && !#currentFieldErrorsVar.isEmpty()" />
+			<s:set var="controlGroupErrorClassVar" value="%{#currentFieldHasFieldErrorVar ? ' has-error' : ''}" />
+			<div class="form-group<s:property value="#controlGroupErrorClassVar" />">
+				<label for="description"><s:text name="label.description" /></label>
+				<s:textarea  cols="50" rows="3" name="description" id="description" cssClass="form-control"  />
+				<s:if test="#currentFieldHasFieldErrorVar">
+					<span class="text-danger padding-small-vertical"><s:iterator value="#currentFieldErrorsVar"><s:property />&#32;</s:iterator></span>
+				</s:if>
+			</div>
+			<%--
+			<s:set var="currentFieldErrorsVar" value="%{fieldErrors['callbackUrl']}" />
+			<s:set var="currentFieldHasFieldErrorVar" value="#currentFieldErrorsVar != null && !#currentFieldErrorsVar.isEmpty()" />
+			<s:set var="controlGroupErrorClassVar" value="%{#currentFieldHasFieldErrorVar ? ' has-error' : ''}" />
+			<div class="form-group<s:property value="#controlGroupErrorClassVar" />">
+				<label for="callbackUrl"><s:text name="label.callbackUrl" /></label>
+				<s:textfield name="callbackUrl" id="callbackUrl" cssClass="form-control" />
+				<s:if test="#currentFieldHasFieldErrorVar">
+					<span class="text-danger padding-small-vertical"><s:iterator value="#currentFieldErrorsVar"><s:property />&#32;</s:iterator></span>
+				</s:if>
+			</div>
+			--%>
+			<s:set var="currentFieldErrorsVar" value="%{fieldErrors['expirationDate']}" />
+			<s:set var="currentFieldHasFieldErrorVar" value="#currentFieldErrorsVar != null && !#currentFieldErrorsVar.isEmpty()" />
+			<s:set var="controlGroupErrorClassVar" value="%{#currentFieldHasFieldErrorVar ? ' has-error' : ''}" />
+			<div class="form-group<s:property value="#controlGroupErrorClassVar" />">
+				<label for="expirationDate_cal"><s:text name="label.expirationDate" /></label>
+				<s:textfield name="expirationDate" id="expirationDate_cal" cssClass="form-control" />
+				<span class="help help-block">dd/mm/yyyy</span>
+				<s:if test="#currentFieldHasFieldErrorVar">
+					<span class="text-danger padding-small-vertical"><s:iterator value="#currentFieldErrorsVar"><s:property />&#32;</s:iterator></span>
+				</s:if>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+				<s:submit type="button" cssClass="btn btn-primary btn-block">
+					<span class="icon icon-save"></span>&#32;
+					<s:text name="label.save" />
+				</s:submit>
+			</div>
+		</div>
 	</s:form>
-
 </div>
+
