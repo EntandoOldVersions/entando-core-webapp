@@ -133,14 +133,18 @@
 
 <%-- GET --%>
 		<s:set var="methodVar" value="#GETMethodVar" />
+		<s:set var="titleMethod" value="%{'GET'}" />
 		<s:include value="/WEB-INF/apsadmin/jsp/api/include/resource-method-detail.jsp" />
 <%-- POST --%>
 		<s:set var="methodVar" value="#POSTMethodVar" />
+		<s:set var="titleMethod" value="%{'POST'}" />
 		<s:include value="/WEB-INF/apsadmin/jsp/api/include/resource-method-detail.jsp" />
 <%-- PUT --%>
 		<s:set var="methodVar" value="#PUTMethodVar" />
+		<s:set var="titleMethod" value="%{'PUT'}" />
 		<s:include value="/WEB-INF/apsadmin/jsp/api/include/resource-method-detail.jsp" />
 <%-- DELETE --%>
 		<s:set var="methodVar" value="#DELETEMethodVar" />
+		<s:set var="titleMethod" value="%{'DELETE'}" />
 		<s:include value="/WEB-INF/apsadmin/jsp/api/include/resource-method-detail.jsp" />
 </div>

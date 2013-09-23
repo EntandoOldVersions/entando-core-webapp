@@ -3,7 +3,7 @@
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <div class="panel panel-default" id="<s:property value="#methodVar.httpMethod" />_tab">
-		<div class="panel-heading"><h3 class="panel-title"><s:property value="#methodVar.httpMethod" /></h3></div>
+		<div class="panel-heading"><h3 class="panel-title"><s:property value="#titleMethod" /></h3></div>
 				<table class="table">
 					<tr>
 						<th class="text-right"><s:text name="label.api.resourceMethod" /></th>
@@ -87,84 +87,84 @@
 						</tr>
 					</s:if>
 				</table>
-			<div class="panel-body">
 			<s:if test="#methodVar != null">
-				<s:set var="methodParametersVar" value="#methodVar.parameters" />
-				<s:if test="null != #methodParametersVar && #methodParametersVar.size() > 0">
-					<div class="panel panel-default">
-						<div class="panel-heading"><h4 class="panel-title"><s:text name="label.api.resource.method.requestParameters" /></h3></div>
-						<div class="panel-body">
-							<div class="table-responsive">
-								<table class="table">
-									<tr>
-										<th class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><s:text name="label.required" /></th>
-										<th><s:text name="label.name" /></th>
-										<th><s:text name="label.description" /></th>
-									</tr>
-									<s:iterator value="#methodParametersVar" var="apiParameter" >
+				<div class="panel-body">
+					<s:set var="methodParametersVar" value="#methodVar.parameters" />
+					<s:if test="null != #methodParametersVar && #methodParametersVar.size() > 0">
+						<div class="panel panel-default">
+							<div class="panel-heading"><h4 class="panel-title"><s:text name="label.api.resource.method.requestParameters" /></h3></div>
+							<div class="panel-body">
+								<div class="table-responsive">
+									<table class="table">
 										<tr>
-											<td class="text-right">
-												<span class="icon icon-<s:property value="%{#apiParameter.required ? 'ok' : ''}" />" title="<s:property value="%{#apiParameter.required ? getText('label.yes') : getText('label.no')}" />"></span>
-												<span class="sr-only"><s:property value="%{#apiParameter.required ? getText('label.yes') : getText('label.no')}" /></span>
-											</td>
-											<td><code><s:property value="#apiParameter.key" /></code></td>
-											<td><s:property value="#apiParameter.description" /></td>
+											<th class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><s:text name="label.required" /></th>
+											<th><s:text name="label.name" /></th>
+											<th><s:text name="label.description" /></th>
 										</tr>
-									</s:iterator>
-								</table>
-							</div>
-						</div>
-					</div>
-				</s:if>
-				<s:if test="null != #methodVar.requiredPermission" ><s:set var="selectFieldValue" value="#methodVar.requiredPermission" /></s:if>
-				<s:elseif test="#methodVar.requiredAuth"><s:set var="selectFieldValue">0</s:set></s:elseif>
-				<s:url namespace="/do/Api/Resource" action="updateMethodStatus" var="updateMethodStatusURL" />
-				<form 
-					action="<s:url namespace="/do/Api/Resource" action="updateMethodStatus" />#<s:property value="#methodVar.httpMethod" />_tab" 
-					class="form-horizontal">
-						<div class="form-group">
-							<div class="col-xs-12">
-								<span class="checkbox">
-									<wpsf:hidden name="resourceName" value="%{#methodVar.resourceName}" />
-									<wpsf:hidden name="namespace" value="%{#methodVar.namespace}" />
-									<wpsf:hidden name="httpMethod" value="%{#methodVar.httpMethod}" />
-									<s:set var="activeFieldValue" value="#methodVar.active" />
-									<label for="active_<s:property value="%{#methodVar.httpMethod}" />">
-										<wpsf:checkbox name="%{#methodVar.httpMethod}_active" value="%{#activeFieldValue}" cssClass="radiocheck" id="active_%{#methodVar.httpMethod}" />
-										&#32;
-										<s:text name="label.active" />
-									</label>
-								</span>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-xs-12">
-								<s:set var="hiddenFieldValue" value="#methodVar.hidden" />
-								<div class="checkbox">
-									<label for="hidden_<s:property value="%{#methodVar.httpMethod}" />">
-										<wpsf:checkbox name="%{#methodVar.httpMethod}_hidden" value="%{#hiddenFieldValue}" cssClass="radiocheck" id="hidden_%{#methodVar.httpMethod}"/>
-											<s:text name="label.hidden" />
-									</label>
+										<s:iterator value="#methodParametersVar" var="apiParameter" >
+											<tr>
+												<td class="text-right">
+													<span class="icon icon-<s:property value="%{#apiParameter.required ? 'ok' : ''}" />" title="<s:property value="%{#apiParameter.required ? getText('label.yes') : getText('label.no')}" />"></span>
+													<span class="sr-only"><s:property value="%{#apiParameter.required ? getText('label.yes') : getText('label.no')}" /></span>
+												</td>
+												<td><code><s:property value="#apiParameter.key" /></code></td>
+												<td><s:property value="#apiParameter.description" /></td>
+											</tr>
+										</s:iterator>
+									</table>
 								</div>
 							</div>
 						</div>
-						<div class="form-group">
-							<div class="col-xs-12">
-								<label for="methodAuthority_<s:property value="%{#methodVar.httpMethod}" />">
-									<s:text name="label.api.authorization" />
-								</label>
-								<s:select cssClass="form-control" name="%{#methodVar.httpMethod}_methodAuthority" list="methodAuthorityOptions" listKey="key" listValue="value" value="%{selectFieldValue}" id="methodAuthority_%{#methodVar.httpMethod}" />
+					</s:if>
+					<s:if test="null != #methodVar.requiredPermission" ><s:set var="selectFieldValue" value="#methodVar.requiredPermission" /></s:if>
+					<s:elseif test="#methodVar.requiredAuth"><s:set var="selectFieldValue">0</s:set></s:elseif>
+					<s:url namespace="/do/Api/Resource" action="updateMethodStatus" var="updateMethodStatusURL" />
+					<form 
+						action="<s:url namespace="/do/Api/Resource" action="updateMethodStatus" />#<s:property value="#methodVar.httpMethod" />_tab" 
+						class="form-horizontal">
+							<div class="form-group">
+								<div class="col-xs-12">
+									<span class="checkbox">
+										<wpsf:hidden name="resourceName" value="%{#methodVar.resourceName}" />
+										<wpsf:hidden name="namespace" value="%{#methodVar.namespace}" />
+										<wpsf:hidden name="httpMethod" value="%{#methodVar.httpMethod}" />
+										<s:set var="activeFieldValue" value="#methodVar.active" />
+										<label for="active_<s:property value="%{#methodVar.httpMethod}" />">
+											<wpsf:checkbox name="%{#methodVar.httpMethod}_active" value="%{#activeFieldValue}" cssClass="radiocheck" id="active_%{#methodVar.httpMethod}" />
+											&#32;
+											<s:text name="label.active" />
+										</label>
+									</span>
+								</div>
 							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-xs-12">
-								<s:submit type="button" action="updateMethodStatus" cssClass="btn btn-primary"><s:text name="label.update" /></s:submit>
-								&#32;
-								<s:submit type="button" action="resetMethodStatus" id="%{''}" cssClass="btn btn-default"><s:text name="label.reset.default" /></s:submit>
+							<div class="form-group">
+								<div class="col-xs-12">
+									<s:set var="hiddenFieldValue" value="#methodVar.hidden" />
+									<div class="checkbox">
+										<label for="hidden_<s:property value="%{#methodVar.httpMethod}" />">
+											<wpsf:checkbox name="%{#methodVar.httpMethod}_hidden" value="%{#hiddenFieldValue}" cssClass="radiocheck" id="hidden_%{#methodVar.httpMethod}"/>
+												<s:text name="label.hidden" />
+										</label>
+									</div>
+								</div>
 							</div>
-						</div>
-				</form>
-				<s:set var="selectFieldValue" />
-			</s:if>
-		</div><%-- panel --%>
+							<div class="form-group">
+								<div class="col-xs-12">
+									<label for="methodAuthority_<s:property value="%{#methodVar.httpMethod}" />">
+										<s:text name="label.api.authorization" />
+									</label>
+									<s:select cssClass="form-control" name="%{#methodVar.httpMethod}_methodAuthority" list="methodAuthorityOptions" listKey="key" listValue="value" value="%{selectFieldValue}" id="methodAuthority_%{#methodVar.httpMethod}" />
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-xs-12">
+									<s:submit type="button" action="updateMethodStatus" cssClass="btn btn-primary"><s:text name="label.update" /></s:submit>
+									&#32;
+									<s:submit type="button" action="resetMethodStatus" id="%{''}" cssClass="btn btn-default"><s:text name="label.reset.default" /></s:submit>
+								</div>
+							</div>
+					</form>
+					<s:set var="selectFieldValue" />
+			</div><%-- panel --%>
+		</s:if>
 </div><%-- panel --%>
