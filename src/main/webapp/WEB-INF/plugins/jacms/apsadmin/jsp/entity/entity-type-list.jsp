@@ -11,8 +11,6 @@
 	<c:otherwise><c:set var="cache_buster">${fn:substring(cache_buster, 1, -1)}${fn:substring(cache_buster, 0, 1)}</c:set></c:otherwise> 
 </c:choose>
 
-<h1><a href="<s:url action="viewManagers" namespace="/do/Entity" />" title="<s:text name="note.goToSomewhere" />: <s:text name="title.entityManagement" />"><s:text name="title.entityAdmin.manage" /></a></h1>
-
 <div id="main">
 
 <s:include value="/WEB-INF/apsadmin/jsp/entity/include/entity-type-list.jsp" />
