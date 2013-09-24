@@ -99,7 +99,11 @@
 					<s:elseif test="#attribute.type == 'ThreeState'">
 						<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/threeStateAttribute.jsp" />
 					</s:elseif>
+					<s:elseif test="#attribute.type == 'Timestamp'">
+						<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/timestampAttribute.jsp" />
+					</s:elseif>
 					<s:else><%-- all other attributes uses monotext --%>
+							<!-- attribute: <s:property value="#attribute.type" /> -->
 							<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/monotextAttribute.jsp" />
 					</s:else>
 					<s:if test="#attributeFieldErrorsVar">
