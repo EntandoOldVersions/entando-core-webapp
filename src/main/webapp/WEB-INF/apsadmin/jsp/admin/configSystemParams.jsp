@@ -32,7 +32,7 @@
 				<s:include value="/WEB-INF/apsadmin/jsp/admin/selectPageParamBlock.jsp" />
 			</div>
 		</div>
-		
+
 		<div class="form-group">
 			<label class="control-label col-md-3 col-lg-3" for="admin-settings-area-notFoundPageCode"><s:text name="sysconfig.notFoundPageCode" /></label>
 			<div class="col-md-9 col-lg-9">
@@ -40,7 +40,7 @@
 				<s:include value="/WEB-INF/apsadmin/jsp/admin/selectPageParamBlock.jsp" />
 			</div>
 		</div>
-	
+
 		<div class="form-group">
 			<label class="control-label col-md-3 col-lg-3" for="admin-settings-area-errorPageCode"><s:text name="sysconfig.errorPageCode" /></label>
 			<div class="col-md-9 col-lg-9">
@@ -48,7 +48,7 @@
 				<s:include value="/WEB-INF/apsadmin/jsp/admin/selectPageParamBlock.jsp" />
 			</div>
 		</div>
-		
+
 		<div class="form-group">
 			<label class="control-label col-md-3 col-lg-3" for="admin-settings-area-loginPageCode"><s:text name="sysconfig.loginPageCode" /></label>
 			<div class="col-md-9 col-lg-9">
@@ -56,12 +56,12 @@
 				<s:include value="/WEB-INF/apsadmin/jsp/admin/selectPageParamBlock.jsp" />
 			</div>
 		</div>
-		
+
 		<div class="form-group">
 			<s:set name="paramName" value="'urlStyle'" />
 			<label class="control-label col-md-3 col-lg-3"><s:text name="sysconfig.URLstyle" /></label>
 			<div class="btn-group col-md-9 col-lg-9" data-toggle="buttons">
-				
+
 					<label class="btn btn-default <s:if test="systemParams['urlStyle'] == 'classic'"> active</s:if>">
 						<input type="radio" class="radiocheck" id="admin-settings-area-urlStyle-classic" name="urlStyle" value="classic" <s:if test="systemParams['urlStyle'] == 'classic'">checked="checked"</s:if> />
 						<s:text name="URLstyle.classic" />
@@ -72,7 +72,7 @@
 					</label>
 			</div>
 		</div>
-		
+
 		<div class="form-group">
 			<label class="control-label col-md-3 col-lg-3"><s:text name="sysconfig.lang.browser" /></label>
 			<div class="btn-group col-md-9 col-lg-9" data-toggle="buttons">
@@ -88,11 +88,11 @@
 			<div class="col-lg-offset-3 col-lg-9">
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" class="radiocheck" 
-							id="admin-settings-area-extendedPrivacyModuleEnabled" 
-							name="extendedPrivacyModuleEnabled" 
-							value="true" 
-							<s:if test="systemParams['extendedPrivacyModuleEnabled']"> checked="checked" </s:if> 
+						<input type="checkbox" class="radiocheck"
+							id="admin-settings-area-extendedPrivacyModuleEnabled"
+							name="extendedPrivacyModuleEnabled"
+							value="true"
+							<s:if test="systemParams['extendedPrivacyModuleEnabled']"> checked="checked" </s:if>
 							/>
 						&#32;<strong><s:text name="label.active" /></strong>
 					</label>
@@ -165,5 +165,5 @@
 			<s:submit type="button" value="" cssClass="btn btn-success"><span class="icon icon-ok"></span>&#32;<s:text name="label.save" /></s:submit>
 		</div>
 	</div>
-	
+
 </s:form>
