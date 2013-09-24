@@ -43,9 +43,9 @@
 <caption><s:text name="title.entityAdmin.entityTypes.list" /></caption>
 	<tr>
 		<th class="text-center padding-large-left padding-large-right col-xs-4 col-sm-3 col-md-2 col-lg-2"><abbr title="<s:text name="label.actions" />">&ndash;</abbr></th>
-		<th class="text-right"><s:text name="label.code" /></th>
+		<th class="text-center"><abbr title="<s:text name="label.state" />">S</abbr></th>
+		<th class="text-center"><s:text name="label.code" /></th>
 		<th><s:text name="label.description" /></th>
-		<th class="text-center"><abbr title="<s:text name="label.references.long" />"><s:text name="label.references.short" /></abbr></th>
 	</tr> 
 
 	<s:iterator value="entityPrototypes" var="entityType" status="counter">
@@ -63,6 +63,15 @@
 					<span class="sr-only"><s:text name="label.edit" />&#32;<s:property value="#entityType.typeDescr" /></span>
 					<span class="icon icon-edit"></span>
 				</a>
+
+				<a href="
+				<s:url namespace="/do/Entity" action="reloadEntityTypeReferences" anchor="%{#entityAnchor}"><s:param name="entityManagerName"><s:property value="entityManagerName" /></s:param><s:param name="entityTypeCode"><s:property value="#entityType.typeCode" /></s:param>
+				</s:url>" title="<s:if test="getEntityManagerStatus(entityManagerName, #entityType.typeCode) == 2"><s:text name="label.references.status.ko" /></s:if><s:if test="getEntityManagerStatus(entityManagerName, #entityType.typeCode) == 0"><s:text name="label.references.status.ok" /></s:if>" class="btn btn-default btn-xs"
+				<s:if test="getEntityManagerStatus(entityManagerName, #entityType.typeCode) == 1">disabled="true"</s:if>>
+				<span class="icon icon-refresh">
+				<span class="sr-only"><s:text name="label.references.status.ko" /></span>
+				</span>
+				</a>
 			</div>
 			<%-- remove --%>
 			<div class="btn-group btn-group-xs">
@@ -77,42 +86,24 @@
 				</a>
 			</div>
 		</td>
-		<td class="text-right text-nowrap">
+		<td class="text-center">
+		<s:if test="getEntityManagerStatus(entityManagerName, #entityType.typeCode) == 1">
+			<span class="icon icon-spinner" title="<s:text name="label.references.status.wip" />">
+			</span> 
+		</s:if>
+		<s:elseif test="getEntityManagerStatus(entityManagerName, #entityType.typeCode) == 2">
+			<span class="icon icon-exclamation text-warning" title="<s:text name="label.references.status.ko" />">
+			</span>
+		</s:elseif>
+		<s:elseif test="getEntityManagerStatus(entityManagerName, #entityType.typeCode) == 0">
+			<span class="icon icon-ok text-success" title="<s:text name="label.references.status.ok" />">
+			</span>			
+		</s:elseif>
+		</td>
+		<td class="text-center text-nowrap">
 			<code><s:property value="#entityType.typeCode" /></code>
 		</td>
 		<td><s:property value="#entityType.typeDescr" /></td>
-		<th class="text-center">
-		<s:if test="getEntityManagerStatus(entityManagerName, #entityType.typeCode) == 1">
-			<a href="
-					<s:url namespace="/do/Entity" action="initViewEntityTypes" anchor="%{#entityAnchor}"> 
-						<s:param name="entityManagerName"><s:property value="entityManagerName" /></s:param>
-					</s:url> 
-				" title="<s:text name="label.references.status.wip" />"><s:text name="label.references.status.wip" /></a> 
-		</s:if>
-		<s:elseif test="getEntityManagerStatus(entityManagerName, #entityType.typeCode) == 2">
-			<a href="
-				<s:url namespace="/do/Entity" action="reloadEntityTypeReferences" anchor="%{#entityAnchor}">
-					<s:param name="entityManagerName"><s:property value="entityManagerName" /></s:param>
-					<s:param name="entityTypeCode"><s:property value="#entityType.typeCode" /></s:param>
-				</s:url>
-				" title="<s:text name="label.references.status.ko" />"><s:text name="label.references.status.ko" /></a> 
-		</s:elseif>
-		<s:elseif test="getEntityManagerStatus(entityManagerName, #entityType.typeCode) == 0">
-			<a href="
-				<s:url namespace="/do/Entity" action="reloadEntityTypeReferences" anchor="%{#entityAnchor}">
-					<s:param name="entityManagerName"><s:property value="entityManagerName" /></s:param>
-					<s:param name="entityTypeCode"><s:property value="#entityType.typeCode" /></s:param>
-				</s:url>
-				" title="<s:text name="label.references.status.ok" />">
-				<span class="btn btn-default btn-xs" title="<s:text name="label.references.status.ok" />">
-				<span class="icon icon-ok text-success">
-				<span class="sr-only"><s:text name="label.references.status.ok" /></span>
-				</span>
-				</span>
-				</a>				
-		</s:elseif>
-
-		</td>	
 	</tr>
 	</s:iterator>
 </table>

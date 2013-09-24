@@ -8,12 +8,12 @@
 <table class="table table-bordered" summary="<s:text name="note.entityTypes.list.summary" />" id="fagiano_entityTypesList">
 <caption><span><s:text name="label.attributes" /></span></caption>
 <tr>
-	<th><abbr title="<s:text name="label.actions" />">&ndash;</abbr></th>
+	<th class="text-center text-nowrap"><abbr title="<s:text name="label.actions" />">&ndash;</abbr></th>
 	<th><s:text name="label.code" /></th>
 	<th><s:text name="label.type" /></th>
 	<th><s:text name="name.roles" /></th>
-	<th><abbr title="<s:text name="Entity.attribute.flag.mandatory.full" />"><s:text name="Entity.attribute.flag.mandatory.short" /></abbr></th>
-	<th><abbr title="<s:text name="Entity.attribute.flag.searcheable.full" />"><s:text name="Entity.attribute.flag.searcheable.short" /></abbr></th>
+	<th class="text-center text-nowrap" class="text-center text-nowrap"><abbr title="<s:text name="Entity.attribute.flag.mandatory.full" />"><s:text name="Entity.attribute.flag.mandatory.short" /></abbr></th>
+	<th class="text-center text-nowrap"><abbr title="<s:text name="Entity.attribute.flag.searcheable.full" />"><s:text name="Entity.attribute.flag.searcheable.short" /></abbr></th>
 </tr>
 
 <s:iterator value="#entityType.attributeList" var="attribute" status="elementStatus">
@@ -32,7 +32,7 @@
 		<s:include value="/WEB-INF/apsadmin/jsp/entity/include/attribute-operations-misc.jsp" />
 	</div>
 	</td>
-	<td><s:property value="#attribute.name" /></td>
+	<td><code><s:property value="#attribute.name" /></code></td>
 	<td>
 	<s:property value="#attribute.type" />
 	<s:if test="#attribute.type == 'Monolist' || #attribute.type == 'List'">: <s:property value="#attribute.nestedAttributeTypeCode" /></s:if>

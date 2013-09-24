@@ -18,12 +18,21 @@
 	<p><s:text name="note.entity.reload.references" /></p>
 	<ul>
 		<s:iterator value="entityPrototypes" var="entityType" status="counter">
-			<s:if test="getEntityManagerStatus(entityManagerName, #entityType.typeCode) == 1">
-				<li><a href="<s:url namespace="/do/Entity" action="initViewEntityTypes" anchor="%{#entityAnchor}"><s:param name="entityManagerName"><s:property value="entityManagerName" /></s:param></s:url>" title="<s:text name="label.references.status.wip" />"><s:property value="#entityType.typeDescr"/>&#32;<img src="<wp:resourceURL />administration/common/img/icons/generic-status-wip.png" alt="<s:text name="label.references.status.wip" />" /></a></li> 
-			</s:if>
-			<s:elseif test="getEntityManagerStatus(entityManagerName, #entityType.typeCode) == 2">
-				<li><a href="<s:url namespace="/do/Entity" action="reloadEntityTypeReferences" anchor="%{#entityAnchor}"><s:param name="entityManagerName"><s:property value="entityManagerName" /></s:param><s:param name="entityTypeCode"><s:property value="#entityType.typeCode" /></s:param></s:url>" title="<s:text name="label.references.status.ko" />"><s:property value="#entityType.typeDescr"/>&#32;<img src="<wp:resourceURL />administration/common/img/icons/generic-status-ko.png" alt="<s:text name="label.references.status.ko" />" /></a></li> 
-			</s:elseif>
+		<s:if test="getEntityManagerStatus(entityManagerName, #entityType.typeCode) == 1">
+			<li>
+				<span title="<s:text name="label.references.status.wip" />">
+					<s:property value="#entityType.typeDescr"/>&#32;
+					<span class="icon icon-spinner"></span>
+				</span>
+			</li> 
+		</s:if>
+		<s:elseif test="getEntityManagerStatus(entityManagerName, #entityType.typeCode) == 2">
+			<li>
+				<a href="<s:url namespace="/do/Entity" action="reloadEntityTypeReferences" anchor="%{#entityAnchor}"><s:param name="entityManagerName"><s:property value="entityManagerName" /></s:param><s:param name="entityTypeCode"><s:property value="#entityType.typeCode" /></s:param></s:url>" title="<s:text name="label.references.status.ko" />">
+				<s:property value="#entityType.typeDescr"/>&#32;<span class="icon icon-exclamation text-warning"></span>
+				</a>
+			</li> 
+		</s:elseif>
 		</s:iterator>			
 	</ul>
 </s:if>
