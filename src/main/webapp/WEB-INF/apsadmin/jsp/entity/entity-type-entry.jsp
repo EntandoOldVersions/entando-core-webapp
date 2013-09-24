@@ -44,25 +44,25 @@
 <s:set var="entityType" value="entityType" />
 <s:if test="operationId != 1">
 	<p class="sr-only">	
-		<wpsf:hidden name="entityTypeCode" value="%{#entityType.typeCode}" />
+		<s:hidden name="entityTypeCode" value="%{#entityType.typeCode}" />
 	</p>
 </s:if>
 
 <fieldset class="col-xs-12"><legend><s:text name="label.info" /></legend>
 	<div class="form-group">
-	<s:if test="operationId == 1">
-		<label for="entityTypeCode" class="basic-mint-label"><s:text name="label.code" />:</label>
-		<wpsf:textfield useTabindexAutoIncrement="true" name="entityTypeCode" id="entityTypeCode" value="%{#entityType.typeCode}" cssClass="text" />
-	</s:if>
-	<s:else>
-		<label for="entityTypeCode" class="basic-mint-label"><s:text name="label.code" />:</label>
-		<wpsf:textfield useTabindexAutoIncrement="true" name="entityTypeCode" id="entityTypeCode" value="%{#entityType.typeCode}" cssClass="text" disabled="true" />	
-	</s:else>
+		<s:if test="operationId == 1">
+			<label for="entityTypeCode"><s:text name="label.code" /></label>
+			<wpsf:textfield name="entityTypeCode" id="entityTypeCode" value="%{#entityType.typeCode}" cssClass="form-control" />
+		</s:if>
+		<s:else>
+			<label for="entityTypeCode"><s:text name="label.code" /></label>
+			<wpsf:textfield name="entityTypeCode" id="entityTypeCode" value="%{#entityType.typeCode}" cssClass="form-control" disabled="true" />	
+		</s:else>
 	</div>
 	
 	<div class="form-group">
-		<label for="entityTypeDescription" class="basic-mint-label"><s:text name="label.description" />:</label>
-		<wpsf:textfield useTabindexAutoIncrement="true" name="entityTypeDescription" id="entityTypeDescription" value="%{#entityType.typeDescr}" cssClass="text" />
+		<label for="entityTypeDescription"><s:text name="label.description" /></label>
+		<wpsf:textfield name="entityTypeDescription" id="entityTypeDescription" value="%{#entityType.typeDescr}" cssClass="form-control" />
 	</div>
 </fieldset>
 
