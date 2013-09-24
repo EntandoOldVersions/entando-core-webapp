@@ -1,41 +1,41 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 
-<fieldset><legend><s:text name="label.settings" /></legend>
+<fieldset class="col-xs-12"><legend><s:text name="label.settings" /></legend>
 <s:if test="#attribute.type == 'Enumerator'">
-	<p>
+	<div class="form-group">
 		<label for="enumeratorStaticItems" class="basic-mint-label"><s:text name="Entity.attribute.setting.enumerator.items" />:</label>
 		<wpsf:textfield useTabindexAutoIncrement="true" name="enumeratorStaticItems" id="enumeratorStaticItems" cssClass="text" />
-	</p>
+	</div>
 	
-	<p>
+	<div class="form-group">
 		<label for="enumeratorStaticItemsSeparator" class="basic-mint-label"><s:text name="Entity.attribute.setting.enumerator.separator" />:</label>
 		<wpsf:textfield useTabindexAutoIncrement="true" name="enumeratorStaticItemsSeparator" id="enumeratorStaticItemsSeparator" cssClass="text" />
-	</p>
+	</div>
 	
 	<s:set var="enumeratorExtractorBeans" value="enumeratorExtractorBeans"></s:set>
 	<s:if test="null != #enumeratorExtractorBeans && #enumeratorExtractorBeans.size() > 0">
-	<p>
+	<div class="form-group">
 		<label for="enumeratorExtractorBean"><s:text name="Entity.attribute.setting.enumerator.extractorBean" />:</label>
 		<wpsf:select useTabindexAutoIncrement="true" list="#enumeratorExtractorBeans" name="enumeratorExtractorBean" id="enumeratorExtractorBean" headerKey="" headerValue="" />
-	</p>
+	</div>
 	</s:if>
 </s:if>
 <s:elseif test="#attribute.textAttribute">
-	<p>
+	<div class="form-group">
 		<label for="minLength" class="basic-mint-label"><s:text name="Entity.attribute.flag.minLength.full" />:</label>
 		<wpsf:textfield useTabindexAutoIncrement="true" name="minLength" id="minLength" cssClass="text"/>
-	</p>
+	</div>
 
-	<p>
+	<div class="form-group">
 		<label for="maxLength" class="basic-mint-label"><s:text name="Entity.attribute.flag.maxLength.full" />:</label>
 		<wpsf:textfield useTabindexAutoIncrement="true" name="maxLength" id="maxLength" cssClass="text" />
-	</p>
+	</div>
 	
-	<p>
+	<div class="form-group">
 		<label for="regexp" class="basic-mint-label"><s:text name="Entity.attribute.setting.regexp.full" />:</label>
 		<wpsf:textfield useTabindexAutoIncrement="true" name="regexp" id="regexp" cssClass="text" />
-	</p>
+	</div>
 </s:elseif>
 	
 	<%--

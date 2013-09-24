@@ -38,9 +38,8 @@
 </a>
 
 <s:if test="%{entityPrototypes.size > 0}">
-<div class="table-responsive">
-<table class="table table-bordered" summary="<s:text name="note.entityAdmin.entityTypes.list.summary" />">
-<caption><s:text name="title.entityAdmin.entityTypes.list" /></caption>
+<div class="table-responsive margin-base-vertical">
+<table class="table table-bordered">
 	<tr>
 		<th class="text-center padding-large-left padding-large-right col-xs-4 col-sm-3 col-md-2 col-lg-2"><abbr title="<s:text name="label.actions" />">&ndash;</abbr></th>
 		<th class="text-center"><abbr title="<s:text name="label.state" />">S</abbr></th>
