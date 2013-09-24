@@ -306,7 +306,7 @@
 										title="<s:text name="label.remove" />: <s:property value="#usernameVar" />"
 										class="btn btn-warning"
 										>
-										<span class="icon-fixed-width icon icon-remove-circle"></span>&#32;
+										<span class="icon icon-remove-circle"></span>&#32;
 										<span class="sr-only"><s:text name="label.alt.clear" /></span>
 									</a>
 								</div>
