@@ -28,9 +28,9 @@
 			<span class="input-group-addon">
 				<span class="icon icon-file-text-alt icon-large" title="<s:text name="label.search.by"/>&#32;<s:text name="label.username"/>"></span>
 			</span>
-			<s:textfield 
-				name="text" 
-				id="text" 
+			<s:textfield
+				name="text"
+				id="text"
 				cssClass="form-control input-lg"
 				title="%{getText('label.search.by')+' '+getText('label.username')}"
 				placeholder="%{getText('label.username')}" />
@@ -278,8 +278,8 @@
 										<s:if test="#hasEditProfilePermission">
 											<li>
 												<%-- edit profile --%>
-												<a 
-													href="<s:property value="#editUserProfileActionVar" escapeHtml="false" />" 
+												<a
+													href="<s:property value="#editUserProfileActionVar" escapeHtml="false" />"
 													title="<s:text name="label.editProfile" />:&#32;<s:property value="#userProfileVar.getValue(#userProfileVar.firstNameAttributeName)"/>&#32;<s:property value="#userProfileVar.getValue(#userProfileVar.surnameAttributeName)"/>">
 														<span class="icon-fixed-width icon icon-user"></span>&#32;
 														<s:text name="label.editProfile" />: <s:property value="#usernameVar" />
@@ -289,8 +289,8 @@
 										<s:if test="null != #userProfileVar">
 											<li>
 												<%-- view profile --%>
-												<a 
-													href="<s:property value="#viewUserProfileActionVar" escapeHtml="false" />" 
+												<a
+													href="<s:property value="#viewUserProfileActionVar" escapeHtml="false" />"
 													title="<s:text name="label.viewProfile" />: <s:property value="#usernameVar" />">
 														<span class="icon-fixed-width icon icon-info"></span>&#32;
 														<s:text name="label.viewProfile" />
