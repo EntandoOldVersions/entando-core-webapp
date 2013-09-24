@@ -1,6 +1,16 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
+<s:include value="/WEB-INF/apsadmin/jsp/common/layouts/assets-common.jsp" />
+<s:include value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/inc/snippet-datepicker.jsp" />
+<script>
+//one domready to rule 'em all
+$(function() {
+	$('[data-toggle="popover"]').popover();
+});
+</script>
+
+<%--
 <s:include value="/WEB-INF/apsadmin/jsp/common/template/defaultExtraResources.jsp" />
 <s:include value="/WEB-INF/apsadmin/jsp/common/template/extraresources/inc/snippet-calendar.jsp" />
 <s:if test="htmlEditorCode == 'fckeditor'">
@@ -15,7 +25,6 @@
 
 //per attributo Date
 <s:iterator value="userProfile.attributeList" id="attribute">
-<%-- INIZIALIZZAZIONE TRACCIATORE --%>
 
 <wpsa:tracerFactory var="attributeTracer" lang="%{#lang.code}" />
 
@@ -52,7 +61,6 @@ window.addEvent('domready', function() { myCal_<s:property value="%{#attributeTr
 <s:if test="htmlEditorCode != 'none'">
 
 	<s:iterator value="userProfile.attributeList" id="attribute">
-	<%-- INIZIALIZZAZIONE TRACCIATORE --%>
 	<wpsa:tracerFactory var="attributeTracer" lang="%{#lang.code}" />
 
 	<s:if test="#attribute.type == 'Hypertext'">
@@ -199,3 +207,4 @@ window.addEvent('domready', function(){
 </s:if>
 
 //--><!]]></script>
+--%>
