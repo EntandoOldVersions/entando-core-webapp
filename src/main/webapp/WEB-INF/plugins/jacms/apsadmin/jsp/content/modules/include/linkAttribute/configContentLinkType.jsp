@@ -11,7 +11,7 @@
 
 <p class="margin-more-bottom"><s:text name="note.chooseContentToLink" /></p>
 
-<s:form action="search" >
+<s:form action="search" cssClass="form-horizontal">
 <s:if test="hasFieldErrors()">
 	<div class="message message_error">
 	<h4><s:text name="message.title.FieldErrors" /></h4>
@@ -25,31 +25,58 @@
 	</div>
 </s:if>
 
-<p>
-	<label for="text" class="basic-mint-label label-search"><s:text name="label.search.by"/>&#32;<s:text name="label.description"/>:</label>
-	<wpsf:textfield useTabindexAutoIncrement="true" name="text" id="text" cssClass="text" />
-</p>
-
-<fieldset><legend class="accordion_toggler"><s:text name="title.searchFilters" /></legend>
-<div class="accordion_element">	
-	<p>
-		<label for="contentIdToken" class="basic-mint-label"><s:text name="label.code"/>:</label>
-		<wpsf:textfield useTabindexAutoIncrement="true" name="contentIdToken" id="contentIdToken" cssClass="text" />
-	</p>
-	
-	<p>
-		<label for="contentType" class="basic-mint-label"><s:text name="label.type"/>:</label>
-		<wpsf:select useTabindexAutoIncrement="true" name="contentType" id="contentType" list="contentTypes" listKey="code" listValue="descr" headerKey="" headerValue="%{getText('label.all')}" cssClass="text" />
-	</p>
-	
-	<p>
-		<label for="state" class="basic-mint-label"><s:text name="label.state"/>:</label>
-		<wpsf:select useTabindexAutoIncrement="true" name="state" id="state" list="avalaibleStatus" headerKey="" headerValue="%{getText('label.all')}" cssClass="text" listKey="key" listValue="%{getText(value)}" />
-	</p>
-</div>
-</fieldset>
-
-<p><wpsf:submit useTabindexAutoIncrement="true" value="%{getText('label.search')}" cssClass="button" /></p>
+	<div class="form-group">
+		<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<label class="sr-only" for="text"><s:text name="label.search.by" />&#32;<s:text name="label.description" /></label>
+			<span class="input-group-addon" title="<s:text name="label.search.by" />&#32;<s:text name="label.description" />">
+				<span class="icon icon-file-text-alt icon-large"></span>
+			</span>
+			<wpsf:textfield name="text" id="text" cssClass="form-control input-lg" placeholder="%{getText('label.description')}" title="%{getText('label.search.by')+' '+getText('label.description')}" />
+			<span class="input-group-btn">
+				<s:submit type="button" title="%{getText('label.search')}" cssClass="btn btn-primary btn-lg">
+					<span class="icon icon-search"></span>
+					<span class="sr-only"><s:text name="label.search" /></span>
+				</s:submit>
+				<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="collapse" data-target="#search-advanced" title="<s:text name="title.searchFilters" />">
+					<span class="sr-only"><s:text name="title.searchFilters" /></span>
+					<span class="caret"></span>
+				</button>
+			</span>
+		</div>
+		<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div id="search-advanced" class="collapse well collapse-input-group">
+				<%-- code --%>
+					<div class="form-group">
+						<label class="control-label col-sm-2 text-right" for="contentIdToken"><s:text name="label.code"/></label>
+						<div class="col-sm-5 input-group">
+							<wpsf:textfield name="contentIdToken" id="contentIdToken" cssClass="form-control" />
+						</div>
+					</div>
+				<%-- type --%>
+					<div class="form-group">
+						<label class="control-label col-sm-2 text-right" for="contentType"><s:text name="label.type"/></label>
+						<div class="col-sm-5 input-group">
+							<wpsf:select name="contentType" id="contentType" list="contentTypes" listKey="code" listValue="descr" headerKey="" headerValue="%{getText('label.all')}" cssClass="form-control" />
+						</div>
+					</div>
+				<%-- status --%>
+					<div class="form-group">
+						<label class="control-label col-sm-2 text-right" for="state"><s:text name="label.state"/></label>
+						<div class="col-sm-5 input-group">
+							<wpsf:select name="state" id="state" list="avalaibleStatus" headerKey="" headerValue="%{getText('label.all')}" cssClass="form-control" listKey="key" listValue="%{getText(value)}" />
+						</div>
+					</div>
+				<%-- search --%>
+					<div class="form-group">
+						<div class="col-sm-5 col-sm-offset-2">
+							<s:submit type="button" cssClass="btn btn-primary">
+								<span class="icon icon-search"></span>&#32;<s:text name="label.search" />
+							</s:submit>
+						</div>
+					</div>
+			</div>
+		</div>
+	</div>
 
 <div class="subsection-light">
 <wpsa:subset source="contents" count="10" objectName="groupContent" advanced="true" offset="5">

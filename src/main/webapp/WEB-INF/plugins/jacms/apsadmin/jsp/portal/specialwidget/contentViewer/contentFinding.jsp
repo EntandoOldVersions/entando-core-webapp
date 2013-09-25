@@ -270,55 +270,53 @@
 					</span>
 					<s:textfield name="text" id="text" cssClass="form-control input-lg" placeholder="%{getText('label.search.topic')}" title="%{getText('label.search.by')} %{getText('label.description')}" />
 					<div class="input-group-btn">
-						<s:submit type="button" cssClass="btn btn-primary btn-lg">
-							<span class="icon icon-search" title="<s:text name="label.search" />"></span>
+						<s:submit type="button" cssClass="btn btn-primary btn-lg" title="%{getText('label.search')}">
+							<span class="icon icon-search"></span>
+							<span class="sr-only"><s:text name="label.search" /></span>
 						</s:submit>
+						<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="collapse" data-target="#search-advanced" title="<s:text name="title.searchFilters" />">
+							<span class="sr-only"><s:text name="title.searchFilters" /></span>
+							<span class="caret"></span>
+						</button>
 					</div>
 				</div>
-				<p class="help-block text-right">
-					<button type="button" data-toggle="collapse" data-target="#search-advanced"  class="btn btn-link">
-						<s:text name="title.searchFilters" />&#32;<span class="icon-chevron-down"></span>
-					</button>
-				</p>
-
+				<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div id="search-advanced" class="collapse well collapse-input-group">
+					<%-- type --%>
+						<div class="form-group">
+							<label for="contentType" class="control-label col-sm-2 text-right">
+								<s:text name="label.type" />
+							</label>
+							<div class="col-sm-5">
+								<s:select name="contentType" id="contentType"	list="contentTypes" listKey="code" listValue="descr" headerKey="" headerValue="%{getText('label.all')}" cssClass="form-control" />
+							</div>
+						</div>
+					<%-- code --%>
+						<div class="form-group">
+							<label for="contentIdToken" class="control-label col-sm-2 text-right">
+								<s:text name="label.code" />
+							</label>
+							<div class="col-sm-5">
+								<s:textfield name="contentIdToken" id="contentIdToken" cssClass="form-control" />
+							</div>
+						</div>
+					<%-- status --%>
+						<div class="form-group">
+							<label for="state" class="control-label col-sm-2 text-right"><s:text name="label.state" /></label>
+							<div class="col-sm-5">
+								<s:select name="state" id="state" list="avalaibleStatus" headerKey="" headerValue="%{getText('label.all')}" cssClass="form-control" listKey="key" listValue="%{getText(value)}" />
+							</div>
+						</div>
+					<%-- search --%>
+						<div class="form-group">
+							<div class="col-sm-5 col-sm-offset-2">
+								<s:submit type="button" cssClass="btn btn-primary">
+									<span class="icon icon-search"></span>&#32;<s:text name="label.search" />
+								</s:submit>
+							</div>
+						</div>
+				</div><!--// search-advanced -->
 			</div>
-
-			<div id="search-advanced" class="collapse">
-
-				<div class="form-group">
-					<label for="contentType" class="control-label col-sm-2 text-right">
-						<s:text name="label.type" />
-					</label>
-					<div class="col-sm-5">
-						<s:select name="contentType" id="contentType"	list="contentTypes" listKey="code" listValue="descr" headerKey="" headerValue="%{getText('label.all')}" cssClass="form-control" />
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label for="contentIdToken" class="control-label col-sm-2 text-right">
-						<s:text name="label.code" />
-					</label>
-					<div class="col-sm-5">
-						<s:textfield name="contentIdToken" id="contentIdToken" cssClass="form-control" />
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label for="state" class="control-label col-sm-2 text-right"><s:text name="label.state" /></label>
-					<div class="col-sm-5">
-						<s:select name="state" id="state" list="avalaibleStatus" headerKey="" headerValue="%{getText('label.all')}" cssClass="form-control" listKey="key" listValue="%{getText(value)}" />
-					</div>
-				</div>
-
-				<div class="form-group">
-					<div class="col-sm-5 col-sm-offset-2">
-						<s:submit type="button" cssClass="btn btn-primary">
-							<span class="icon icon-search"></span>&#32;<s:text name="label.search" />
-						</s:submit>
-					</div>
-				</div>
-
-			</div><!--// search-advanced -->
 
 			<hr />
 

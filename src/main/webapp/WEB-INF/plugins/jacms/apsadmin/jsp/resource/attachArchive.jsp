@@ -29,10 +29,8 @@
 		</span>
 	</h1>
 </s:if>
-
 <s:form action="search" cssClass="form-horizontal">
 	<s:set var="categoryTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_category" /></s:set>
-
 	<p class="sr-only">
 		<s:hidden name="resourceTypeCode" />
 		<s:if test="#categoryTreeStyleVar == 'request'">
@@ -41,75 +39,75 @@
 		<s:hidden name="contentOnSessionMarker" />
 	</p>
 	<div class="form-group">
-
-		<label for="text" class="sr-only"><s:text name="label.search.by"/>&#32;<s:text name="label.description"/></label>
-		<div class="input-group col-sm-12">
-			<span class="input-group-addon">
+		<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<label class="sr-only" for="text"><s:text name="label.search.by" />&#32;<s:text name="label.description" /></label>
+			<span class="input-group-addon" title="<s:text name="label.search.by" />&#32;<s:text name="label.description" />">
 				<span class="icon icon-file-text-alt icon-large"></span>
 			</span>
 			<s:textfield name="text" id="text" cssClass="form-control input-lg" placeholder="%{getText('label.description')}" title="%{getText('label.search.by')} %{getText('label.description')}" />
-			<div class="input-group-btn">
-				<s:submit type="button" cssClass="btn btn-primary btn-lg">
-					<span class="icon icon-search" title="<s:text name="label.search" />"></span>
+			<span class="input-group-btn">
+				<s:submit type="button" title="%{getText('label.search')}" cssClass="btn btn-primary btn-lg">
+					<span class="icon icon-search"></span>
+					<span class="sr-only"><s:text name="label.search" /></span>
 				</s:submit>
-			</div>
+				<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="collapse" data-target="#search-advanced" title="<s:text name="title.searchFilters" />">
+					<span class="sr-only"><s:text name="title.searchFilters" /></span>
+					<span class="caret"></span>
+				</button>
+			</span>
 		</div>
-		<p class="help-block text-right">
-			<button type="button" data-toggle="collapse" data-target="#search-advanced"  class="btn btn-link">
-				<s:text name="title.searchFilters" />&#32;<span class="icon-chevron-down"></span>
-			</button>
-		</p>
-	</div>
-	
-	<div id="search-advanced" class="collapse">
-	
-		<div class="form-group">
-			<s:set var="allowedGroupsVar" value="allowedGroups"></s:set>
-			<s:if test="null != #allowedGroupsVar && #allowedGroupsVar.size()>1">
-				<label for="ownerGroupName" class="control-label col-sm-2 text-right"><s:text name="label.group" /></label>
-				<div class="col-sm-5">
-					<s:select name="ownerGroupName" id="ownerGroupName" list="#allowedGroupsVar" headerKey="" headerValue="%{getText('label.all')}" listKey="name" listValue="descr" cssClass="form-control" />
-				</div>
-			</s:if>
-		</div>
-	
-		<div class="form-group">
-			<label for="fileName" class="control-label col-sm-2 text-right"><s:text name="label.filename" /></label>
-			<div class="col-sm-5">
-				<s:textfield name="fileName" id="fileName" cssClass="form-control"/>
-			</div>
-		</div>
-		
-		<div class="form-group">
-			<label class="control-label col-sm-2 text-right">
-				<s:text name="label.category" />
-			</label>
-			<div class="col-sm-5">
-				<ul id="categoryTree" class="icons-ul list-unstyled">
-					<s:set name="inputFieldName" value="'categoryCode'" />
-					<s:set name="selectedTreeNode" value="categoryCode" />
-					<s:set name="liClassName" value="'category'" />
-					<s:set name="treeItemIconName" value="'icon-folder-close'" />
-
-					<s:if test="#categoryTreeStyleVar == 'classic'">
-						<s:set name="currentRoot" value="categoryRoot" />
-						<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder.jsp" />
+		<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div id="search-advanced" class="collapse well collapse-input-group">
+				<%-- group --%>
+					<s:set var="allowedGroupsVar" value="allowedGroups"></s:set>
+					<s:if test="null != #allowedGroupsVar && #allowedGroupsVar.size()>1">
+						<div class="form-group">
+							<label for="ownerGroupName" class="control-label col-sm-2 text-right"><s:text name="label.group" /></label>
+							<div class="col-sm-5">
+								<s:select name="ownerGroupName" id="ownerGroupName" list="#allowedGroupsVar" headerKey="" headerValue="%{getText('label.all')}" listKey="name" listValue="descr" cssClass="form-control" />
+							</div>
+						</div>
 					</s:if>
-					<s:elseif test="#categoryTreeStyleVar == 'request'">
-						<s:set name="currentRoot" value="showableTree" />
-						<s:set name="openTreeActionName" value="'openCloseCategoryTreeNodeOnResourceFinding'" />
-						<s:set name="closeTreeActionName" value="'openCloseCategoryTreeNodeOnResourceFinding'" />
-						<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder-request-submits.jsp" />
-					</s:elseif>
-				</ul>
-			</div>
-		</div>
-		
-		<div class="form-group">
-			<div class="col-sm-5 col-sm-offset-2">
-				<s:submit type="button" cssClass="btn btn-primary">
-					<span class="icon icon-search"></span>&#32;<s:text name="label.search" />
-				</s:submit>
+				<%-- filename --%>
+					<div class="form-group">
+						<label for="fileName" class="control-label col-sm-2 text-right"><s:text name="label.filename" /></label>
+						<div class="col-sm-5">
+							<s:textfield name="fileName" id="fileName" cssClass="form-control"/>
+						</div>
+					</div>
+				<%-- category --%>
+					<div class="form-group">
+						<label class="control-label col-sm-2 text-right">
+							<s:text name="label.category" />
+						</label>
+						<div class="col-sm-5">
+							<ul id="categoryTree" class="icons-ul list-unstyled">
+								<s:set name="inputFieldName" value="'categoryCode'" />
+								<s:set name="selectedTreeNode" value="categoryCode" />
+								<s:set name="liClassName" value="'category'" />
+								<s:set name="treeItemIconName" value="'icon-folder-close'" />
+
+								<s:if test="#categoryTreeStyleVar == 'classic'">
+									<s:set name="currentRoot" value="categoryRoot" />
+									<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder.jsp" />
+								</s:if>
+								<s:elseif test="#categoryTreeStyleVar == 'request'">
+									<s:set name="currentRoot" value="showableTree" />
+									<s:set name="openTreeActionName" value="'openCloseCategoryTreeNodeOnResourceFinding'" />
+									<s:set name="closeTreeActionName" value="'openCloseCategoryTreeNodeOnResourceFinding'" />
+									<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder-request-submits.jsp" />
+								</s:elseif>
+							</ul>
+						</div>
+					</div>
+				<%-- search button --%>
+					<div class="form-group">
+						<div class="col-sm-5 col-sm-offset-2">
+							<s:submit type="button" cssClass="btn btn-primary">
+								<span class="icon icon-search"></span>&#32;<s:text name="label.search" />
+							</s:submit>
+						</div>
+					</div>
 			</div>
 		</div>
 	</div>
@@ -117,7 +115,7 @@
 
 <wp:ifauthorized permission="manageResources">
 	<p><a href="<s:url action="new" >
-	<s:param name="resourceTypeCode" >Attach</s:param><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>" 
+	<s:param name="resourceTypeCode" >Attach</s:param><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>"
 	class="btn btn-default" title="<s:text name="label.new" />&#32;<s:text name="label.attach" />"><span class="icon icon-plus-sign"></span>&#32;<s:text name="label.new" />&#32;<s:text name="label.attach" /></a></p>
 </wp:ifauthorized>
 
@@ -144,12 +142,12 @@
 </div>
 
 <s:if test="onEditContent"><h3><s:text name="title.chooseAttach" /></h3><div class="list-group"></s:if>
-<s:if test="!onEditContent"><ul></s:if>	
+<s:if test="!onEditContent"><ul></s:if>
 <s:iterator var="resourceid" status="status">
 <s:set name="resource" value="%{loadResource(#resourceid)}"></s:set>
 <s:set name="resourceInstance" value="%{#resource.getInstance()}"></s:set>
-	<s:if test="onEditContent">	
-	<a href="<s:url action="joinResource" namespace="/do/jacms/Content/Resource"><s:param name="resourceId" value="%{#resourceid}" /><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>" 
+	<s:if test="onEditContent">
+	<a href="<s:url action="joinResource" namespace="/do/jacms/Content/Resource"><s:param name="resourceId" value="%{#resourceid}" /><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>"
 	title="<s:text name="label.use"/>" class="list-group-item" >
 		<s:if test="!#resource.categories.empty">
 		<div class="row"><div class="col-lg-12">
@@ -157,8 +155,8 @@
 					<span class="label label-default label-sm pull-left padding-small-top padding-small-bottom margin-small-right margin-small-bottom">
 						<span class="icon icon-tag"></span>&#32;
 						<s:property value="%{#category_resource.getTitle(currentLang.code)}"/></span>
-			</s:iterator>	
-		</div></div>				
+			</s:iterator>
+		</div></div>
 		</s:if>
 		<div class="row">
 		<div class="col-lg-12">
@@ -195,7 +193,7 @@
 						<span class="label label-default label-sm pull-left padding-small-top padding-small-bottom margin-small-right margin-small-bottom">
 							<span class="icon icon-tag"></span>&#32;
 						<s:property value="%{#category_resource.getTitle(currentLang.code)}"/></span>
-					</s:iterator>						
+					</s:iterator>
 			</s:if>
 			</div>
 			<div class="col-xs-2 col-lg-4 text-right no-margin">
@@ -236,7 +234,7 @@
 	</s:if>
 </s:iterator>
 <s:if test="onEditContent"></div></s:if>
-<s:if test="!onEditContent"></ul></s:if>	
+<s:if test="!onEditContent"></ul></s:if>
 <div class="pager clear margin-more-top">
 	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 </div>
