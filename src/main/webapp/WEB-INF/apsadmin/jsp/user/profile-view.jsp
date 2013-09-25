@@ -93,6 +93,6 @@
 	</s:if>
 	
 	<p>
-		<a href="<s:url namespace="/do/userprofile" action="list" />" ><s:text name="note.userprofile.returnTo.search" /></a> 
+		<a href="<s:url namespace="/do/User" action="list" />" ><s:text name="note.userprofile.returnTo.search" /></a> 
 	</p>
 </div>
