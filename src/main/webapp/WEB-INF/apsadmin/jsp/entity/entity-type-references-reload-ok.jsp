@@ -3,8 +3,7 @@
 
 <h1 class="panel panel-default title-page">
 	<span class="panel-body display-block">
-		<a href="<s:url action="viewManagers" namespace="/do/Entity" />" title="<s:text name="note.goToSomewhere" />: <s:text name="title.entityManagement" />">
-		<s:text name="title.entityAdmin.manage" /></a>
+		<s:property value="%{'title.' + entityManagerName + '.management'}" />
 	</span>
 </h1>
 

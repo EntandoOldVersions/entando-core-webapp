@@ -5,11 +5,9 @@
 
 <s:if test="#entityPrototypes != null && #entityPrototypes.size() > 0">
 
-<div class="panel panel-info">
-	<div class="panel-heading">
-		<h3 id="fagiano_startReloadReferences" class="panel-title"><s:text name="title.entityAdmin.entityTypes.references" /></h3>
-	</div>
-	<div class="panel-body">
+<div class="alert alert-info">
+	<h3 class="margin-none" id="fagiano_startReloadReferences"><s:text name="title.entityAdmin.entityTypes.references" /></h3>
+	
 		<s:text name="note.entityAdmin.entityTypes.references" />
 
 		<s:set var="entityTypesReferencesStatusOk" value="%{false}" />
@@ -40,6 +38,5 @@
 		<s:else>
 			<span class="label label-info"><s:text name="note.entity.all.references.ok" /></label>
 		</s:else>
-	</div>
 </div>
 </s:if>

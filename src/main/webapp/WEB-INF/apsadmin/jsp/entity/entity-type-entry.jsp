@@ -4,9 +4,7 @@
 
 <h1 class="panel panel-default title-page">
 	<span class="panel-body display-block">
-		<a href="<s:url action="viewManagers" namespace="/do/Entity" />" title="<s:text name="note.goToSomewhere" />: <s:text name="title.entityManagement" />">
-		<s:text name="title.entityAdmin.manage" /></a>&#32;/&#32;
-		<a href="<s:url action="initViewEntityTypes" namespace="/do/Entity"><s:param name="entityManagerName"><s:property value="entityManagerName" /></s:param></s:url>" title="<s:text name="note.goToSomewhere" />:<s:property value="entityManagerName" />"><s:property value="entityManagerName" /></a>&#32;/&#32;
+		<s:property value="%{'title.' + entityManagerName + '.management'}" />&#32;/&#32;
 		<s:if test="operationId == 1">
 			<s:text name="title.entityTypes.editType.new" />
 		</s:if>
