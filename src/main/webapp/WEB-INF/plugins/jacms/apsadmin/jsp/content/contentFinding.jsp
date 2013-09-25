@@ -148,15 +148,15 @@
 						</div>
 						<div class="form-group">
 							<div class="btn-group col-sm-5 col-sm-offset-2" data-toggle="buttons">
-								<label class="btn btn-default">
+								<label class="btn btn-default <s:if test="('yes' == onLineState)"> active </s:if>" >
 									<input type="radio" name="onLineState" id="approved" <s:if test="('yes' == onLineState)">checked="checked"</s:if> value="yes" />&#32;
 									<s:text name="name.isApprovedContent"/>
 								</label>
-								<label class="btn btn-default">
+								<label class="btn btn-default <s:if test="('no' == onLineState)"> active </s:if>">
 									<input type="radio" name="onLineState" id="notApproved" <s:if test="('no' == onLineState)">checked="checked"</s:if> value="no" />&#32;
 									<s:text name="name.isNotApprovedContent"/>
 								</label>
-								<label class="btn btn-default active">
+								<label class="btn btn-default <s:if test="('yes' != onLineState) && ('no' != onLineState)"> active </s:if>">
 									<input type="radio" name="onLineState" id="bothApproved" <s:if test="('yes' != onLineState) && ('no' != onLineState)">checked="checked"</s:if> value="" />&#32;
 									<s:text name="name.isApprovedOrNotContent" />
 								</label>
