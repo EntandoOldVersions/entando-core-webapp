@@ -1,4 +1,29 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
+<s:set var="currentThreestateAttributeNameVar" value="%{#attributeTracer.getFormFieldName(#attribute)}" />
+<label class="radio-inline" for="true_<s:property value="#currentThreestateAttributeNameVar" />">
+	<wpsf:radio 
+		name="%{#currentThreestateAttributeNameVar}" 
+		id="true_%{#currentThreestateAttributeNameVar}" 
+		value="true" 
+		checked="%{#attribute.booleanValue != null && #attribute.booleanValue == true}" />
+	<s:text name="label.yes"/>
+</label>
 
-<wpsf:radio useTabindexAutoIncrement="true" name="%{#attributeTracer.getFormFieldName(#attribute)}" id="true_%{#attributeTracer.getFormFieldName(#attribute)}" value="true" checked="%{#attribute.booleanValue != null && #attribute.booleanValue == true}"/><label for="true_<s:property value="#attributeTracer.getFormFieldName(#attribute)" />"><s:text name="label.yes"/></label><span class="sr-only">&nbsp;,&nbsp;</span><wpsf:radio useTabindexAutoIncrement="true" name="%{#attributeTracer.getFormFieldName(#attribute)}" id="false_%{#attributeTracer.getFormFieldName(#attribute)}" value="false" checked="%{#attribute.booleanValue != null && #attribute.booleanValue == false}" /><label for="false_<s:property value="#attributeTracer.getFormFieldName(#attribute)" />"><s:text name="label.no"/></label><span class="sr-only">&nbsp;,&nbsp;</span><wpsf:radio useTabindexAutoIncrement="true" name="%{#attributeTracer.getFormFieldName(#attribute)}" id="none_%{#attributeTracer.getFormFieldName(#attribute)}" value="" checked="%{#attribute.booleanValue == null}"/><label for="none_<s:property value="#attributeTracer.getFormFieldName(#attribute)" />" ><s:text name="label.bothYesAndNo"/></label>
+<label class="radio-inline" for="false_<s:property value="#currentThreestateAttributeNameVar" />">
+	<wpsf:radio 
+		name="%{#currentThreestateAttributeNameVar}" 
+		id="false_%{#currentThreestateAttributeNameVar}" 
+		value="false" 
+		checked="%{#attribute.booleanValue != null && #attribute.booleanValue == false}" />
+	<s:text name="label.no"/>
+</label>
+
+<label class="radio-inline" for="none_<s:property value="#currentThreestateAttributeNameVar" />">
+	<wpsf:radio 
+		name="%{#currentThreestateAttributeNameVar}" 
+		id="none_%{#currentThreestateAttributeNameVar}" 
+		value="" 
+		checked="%{#attribute.booleanValue == null}"/>
+	<s:text name="label.bothYesAndNo"/>
+</label>

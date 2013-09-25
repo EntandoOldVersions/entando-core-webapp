@@ -1,18 +1,29 @@
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
-<%@ taglib prefix="s" uri="/struts-tags" %>
-
+<%@ taglib uri="/struts-tags" prefix="s" %>
 <s:if test="#lang.default">
-	<wpsf:select useTabindexAutoIncrement="true" name="%{#attributeTracer.getFormFieldName(#attribute)}" id="%{#attributeTracer.getFormFieldName(#attribute)}" 
-		headerKey="" headerValue="%{getText('label.none')}" 
-		list="#attribute.items" value="%{#attribute.getText()}" />
+	<s:set var="currentEnumeratorAttributeName" value="%{#attributeTracer.getFormFieldName(#attribute)}" />
+	<wpsf:select 
+		name="%{#currentEnumeratorAttributeName}" 
+		id="%{#currentEnumeratorAttributeName}" 
+		headerKey="" 
+		headerValue="%{getText('label.none')}" 
+		list="#attribute.items" 
+		value="%{#attribute.getText()}" 
+		cssClass="form-control" />
 </s:if>
 <s:else>
 	<s:if test="#attributeTracer.listElement">
-		<wpsf:select useTabindexAutoIncrement="true" name="%{#attributeTracer.getFormFieldName(#attribute)}" id="%{#attributeTracer.getFormFieldName(#attribute)}" 
-			headerKey="" headerValue="%{getText('label.none')}" 
-			list="#attribute.items" value="%{#attribute.getText()}" />
+		<s:set var="currentEnumeratorAttributeName" value="%{#attributeTracer.getFormFieldName(#attribute)}" />
+		<wpsf:select 
+			name="%{#currentEnumeratorAttributeName}" 
+			id="%{#currentEnumeratorAttributeName}" 
+			headerKey="" 
+			headerValue="%{getText('label.none')}" 
+			list="#attribute.items" 
+			value="%{#attribute.getText()}" 
+			cssClass="form-control" />
 	</s:if>
 	<s:else>
-		<s:text name="note.editContent.doThisInTheDefaultLanguage.must" />.
+		<span class="form-control-static text-info"><s:text name="note.editContent.doThisInTheDefaultLanguage.must" />.</span>
 	</s:else>
 </s:else>

@@ -1,14 +1,12 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
-
-<s:if test="#attribute.failedDateString == null">
-<s:set name="dateAttributeValue" value="#attribute.getFormattedDate('dd/MM/yyyy')"></s:set>
-</s:if>
+<s:set var="currentDateAttributeName" value="%{#attributeTracer.getFormFieldName(#attribute)}" />
+<s:if test="#attribute.failedDateString == null"></s:if>
+	<s:set var="dateAttributeValue" value="#attribute.getFormattedDate('dd/MM/yyyy')" />
 <s:else>
-<s:set name="dateAttributeValue" value="#attribute.failedDateString"></s:set>
+	<s:set name="dateAttributeValue" value="#attribute.failedDateString"></s:set>
 </s:else>
-<wpsf:textfield useTabindexAutoIncrement="true" id="%{#attributeTracer.getFormFieldName(#attribute)}" 
-		name="%{#attributeTracer.getFormFieldName(#attribute)}" value="%{#dateAttributeValue}"
-		maxlength="254" cssClass="text"></wpsf:textfield>
-
-<span class="inlineNote">dd/MM/yyyy</span>
+<wpsf:textfield id="%{#currentDateAttributeName}" 
+		name="%{#currentDateAttributeName}" value="%{#dateAttributeValue}" 
+		maxlength="254" cssClass="form-control datepicker" />
+<span class="help help-block">dd/MM/yyyy</span>

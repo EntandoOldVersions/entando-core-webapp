@@ -1,6 +1,8 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
-
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <s:set name="checkedValue" value="%{#attribute.booleanValue != null && #attribute.booleanValue ==true}" />
-<wpsf:checkbox useTabindexAutoIncrement="true" name="%{#attributeTracer.getFormFieldName(#attribute)}" id="%{#attributeTracer.getFormFieldName(#attribute)}" value="#checkedValue" />&#32;
-<label for="<s:property value="#attributeTracer.getFormFieldName(#attribute)" />"><s:text name="label.true" /></label>
+<s:set var="currentCheckboxAttributeName" value="%{#attributeTracer.getFormFieldName(#attribute)}" />
+<label class="checkbox-inline" for="<s:property value="#currentCheckboxAttributeName" />">
+	<wpsf:checkbox name="%{#currentCheckboxAttributeName}" id="%{#currentCheckboxAttributeName}" value="#checkedValue" />
+	<s:text name="label.true" />
+</label>

@@ -1,5 +1,4 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-
 <s:if test="#lang.default">
 	<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/threeStateAttributeInputField.jsp" />
 </s:if>
@@ -8,9 +7,9 @@
 		<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/threeStateAttributeInputField.jsp" />
 	</s:if>
 	<s:elseif test="#attributeTracer.compositeElement">
-		<s:text name="note.editContent.doThisInTheDefaultLanguage.must" />.
-	</s:elseif>	
+		<span class="form-control-static text-info"><s:text name="note.editContent.doThisInTheDefaultLanguage.must" />.</span>
+	</s:elseif>
 	<s:else>
-		<s:text name="note.editContent.doThisInTheDefaultLanguage.must" />.
+		<span class="form-control-static text-info"><s:text name="note.editContent.doThisInTheDefaultLanguage.must" />.</span>
 	</s:else>
 </s:else>
