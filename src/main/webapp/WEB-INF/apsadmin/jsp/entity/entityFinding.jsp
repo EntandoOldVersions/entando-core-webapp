@@ -2,7 +2,7 @@
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
-
+<%-- //TODO: refactor all this section -->
 <%--
 http://localhost:8080/PortalExample/do/Entity/search.action?entityManagerName=jacmsContentManager
  --%>
