@@ -32,14 +32,14 @@
 
 <p>
 <s:if test="strutsAction != 2">
-	<s:text name="title.newShowletType.from" />:&#32;
+	<s:text name="title.newWidgetType.from" />:&#32;
 	<s:if test="strutsAction == 1">
 		<wpsa:widgetType var="parentShowletTypeVar" key="%{parentShowletTypeCode}" />
 		<em><s:property value="%{getTitle(#parentShowletTypeVar.code, #parentShowletTypeVar.titles)}" /></em>
 	</s:if>
 	<s:elseif test="strutsAction == 3">
 	<s:property value="%{getTitle(showletToCopy.type.code, showletToCopy.type.titles)}" />	<wpsa:page var="pageVar" key="%{pageCode}" />
-	<s:text name="note.showletType.page"/>:&#32;<em class="important"><s:property value="%{getTitle(#pageVar.code, #pageVar.titles)}" /></em>,&#32;<s:text name="note.showletType.position" />:&#32;<em class="important"><s:property value="framePos" /></em>
+	<s:text name="note.widgetType.page"/>:&#32;<em class="important"><s:property value="%{getTitle(#pageVar.code, #pageVar.titles)}" /></em>,&#32;<s:text name="note.widgetType.position" />:&#32;<em class="important"><s:property value="framePos" /></em>
 	</s:elseif>
 </s:if>
 </p>

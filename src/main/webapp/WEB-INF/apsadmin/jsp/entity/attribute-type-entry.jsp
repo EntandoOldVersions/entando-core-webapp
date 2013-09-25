@@ -3,13 +3,20 @@
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 <%@ taglib uri="/aps-core" prefix="wp" %>
 
-
 <h1 class="panel panel-default title-page">
 	<span class="panel-body display-block">
-		<s:property value="%{'title.' + entityManagerName + '.management'}" />&#32;/&#32;
-		<a href="<s:url action="initEditEntityType" namespace="/do/Entity"><s:param name="entityManagerName"><s:property value="entityManagerName" /></s:param><s:param name="entityTypeCode"><s:property value="entityType.typeCode" /></s:param></s:url>" title="<s:text name="note.goToSomewhere" />: <s:text name="title.entityTypes.editType.edit" />"><s:text name="title.entityTypes.editType.edit" />: <code><s:property value="entityType.typeCode" /> - <s:property value="entityType.typeDescr" /></code></a>
+		<a href="<s:url action="initViewEntityTypes" namespace="/do/Entity"><s:param name="entityManagerName"><s:property value="entityManagerName" /></s:param></s:url>" title="<s:text name="note.goToSomewhere" />: <s:text name="title.entityAdmin.manager" />&#32;<s:property value="entityManagerName" />">
+		<s:text name="%{'title.' + entityManagerName + '.management'}" />
+		</a>&#32;/&#32;
+		<s:if test="strutsAction == 2">
+			<s:text name="title.attribute.edit"/>
+		</s:if>
+		<s:else>
+			<s:text name="title.attribute.new"/>
+		</s:else>
 	</span>
 </h1>
+
 
 <s:if test="hasFieldErrors()">
 	<div class="alert alert-danger alert-dismissable">
@@ -98,35 +105,43 @@
 <fieldset class="col-xs-12"><legend><s:text name="name.roles" /></legend>
 	<s:set var="freeAttributeRoles" value="%{getFreeAttributeRoleNames()}" />
 	<s:if test="null == #freeAttributeRoles || #freeAttributeRoles.isEmpty()">
-		<p><s:text name="note.entityAdmin.entityTypes.attribute.roles.none" /></p> 
+		<s:text name="note.entityAdmin.entityTypes.attribute.roles.none" />
 	</s:if>
 	<s:else>
 
 		<div class="form-group">
-			<label for="attributeRoleName"><s:text name="name.role" />:</label>
-			<wpsf:select name="attributeRoleName" id="attributeRoleName" list="#freeAttributeRoles" 
-				listKey="name" listValue="%{name + ' - ' + description}" cssClass="text" />
-			<wpsf:submit action="addAttributeRole" value="%{getText('label.add')}" cssClass="button" />
+			<label for="attributeRoleName"><s:text name="name.role" /></label>
+			<div class="input-group">
+				<s:select name="attributeRoleName" id="attributeRoleName" list="#freeAttributeRoles" 
+					listKey="name" listValue="%{name + ' - ' + description}" cssClass="form-control" />
+				<span class="input-group-btn">
+				<s:submit type="button" action="addAttributeRole" value="%{getText('label.add')}" cssClass="btn btn-info" />
+				</span>
+			</div>
 		</div>
 
 		<s:if test="null != attributeRoles && attributeRoles.size() > 0">
-		<table class="generic">
-			<tr>
-				<th><s:text name="label.name" /></th>
-				<th><s:text name="label.description" /></th>
-				<th class="icon"><abbr title="<s:text name="label.remove" />">&ndash;</abbr></th>
-			</tr>
+		<h3 class="margin-none"><s:text name="label.roles.assigned" /></h3>
+		<ul class="list-group">
 		<s:iterator value="attributeRoles" id="attributeRole">
 			<wpsa:actionParam action="removeAttributeRole" var="actionName" >
 				<wpsa:actionSubParam name="attributeRoleName" value="%{#attributeRole}" />
 			</wpsa:actionParam>
-			<tr>
-				<td class="monospace"><s:property value="attributeRole" /></td>
-				<td><s:property value="%{getAttributeRole(#attributeRole).description}" /></td>
-				<td><wpsf:submit action="%{#actionName}" type="button" value="%{getText('label.remove')}" title="%{getText('label.remove')}" /></td>
-			</tr>
+			<li class="list-group-item">
+			<div class="row">
+				<div class="col-sm-10">
+					<code><s:property value="attributeRole" /></code>
+					<s:property value="%{getAttributeRole(#attributeRole).description}" />
+				</div>
+				<div class="col-sm-2 text-right">
+					<s:submit type="button" action="%{#actionName}" cssClass="btn btn-xs btn-warning" title="%{getText('label.remove')}" >
+						<span class="icon icon-remove-circle"></span>
+					</s:submit>
+				</div>
+			</div>
+			</li>
 		</s:iterator>
-		</table>
+		</ul>
 		</s:if>
 	
 	</s:else>
@@ -138,8 +153,12 @@
 <fieldset class="col-xs-12"><legend><s:text name="name.disablingCodes" /></legend>
 	<div class="form-group">
 		<label for="disablingCode"><s:text name="label.code" />:</label>
-		<wpsf:select name="disablingCode" id="disablingCode" list="#attributeDisablingCodesVar" />
-		<wpsf:submit action="addAttributeDisablingCode" value="%{getText('label.add')}" cssClass="button" />
+		<div class="input-group">
+			<s:select name="disablingCode" id="disablingCode" list="#attributeDisablingCodesVar" />
+			<span class="input-group-btn">
+			<s:submit type="button" action="addAttributeDisablingCode" value="%{getText('label.add')}" cssClass="btn btn-info" />
+			</span>
+		</div>
 	</div>
 	
 	<s:if test="null != disablingCodes && disablingCodes.size() > 0">
@@ -188,9 +207,6 @@
 
 <s:include value="/WEB-INF/apsadmin/jsp/entity/include/validation-rules-ognl.jsp" />
 
-<p class="centerText">
-	<wpsf:submit value="%{getText('label.continue')}" cssClass="button" />
-</p>
 <div class="form-group">
   <div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
     <s:submit type="button" cssClass="btn btn-primary btn-block">

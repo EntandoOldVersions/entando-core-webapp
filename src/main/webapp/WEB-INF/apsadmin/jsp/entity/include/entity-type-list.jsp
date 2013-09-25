@@ -5,7 +5,7 @@
 
 <h1 class="panel panel-default title-page">
 	<span class="panel-body display-block">
-		<s:property value="%{'title.' + entityManagerName + '.management'}" />
+		<s:text name="%{'title.' + entityManagerName + '.management'}" />
 	</span>
 </h1>
 
