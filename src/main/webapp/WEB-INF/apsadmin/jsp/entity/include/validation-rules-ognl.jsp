@@ -1,7 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 
-<fieldset class="col-xs-12"><legend><s:text name="name.ognlCodes" /></legend>
+<fieldset class="col-xs-12 margin-base-top"><legend><s:text name="name.ognlCodes" /></legend>
 
 <p><s:text name="note.ognlCodes.intro.1" /></p>
 

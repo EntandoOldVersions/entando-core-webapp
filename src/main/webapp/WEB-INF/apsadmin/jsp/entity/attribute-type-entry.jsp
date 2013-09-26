@@ -58,7 +58,7 @@
 	<s:set name="attribute" value="entityType.getAttribute(attributeName)" />
 </s:else>
 
-<fieldset class="col-xs-12"><legend><s:text name="label.info" /></legend>
+<fieldset class="col-xs-12 margin-base-top"><legend><s:text name="label.info" /></legend>
 	<div class="form-group">
 		<label><s:text name="label.type" /></label>
 		<wpsf:textfield cssClass="form-control" name="attributeTypeCode" value="%{attributeTypeCode}" disabled="true" />
@@ -102,7 +102,7 @@
 	</ul>
 </fieldset>
 
-<fieldset class="col-xs-12"><legend><s:text name="name.roles" /></legend>
+<fieldset class="col-xs-12 margin-base-top"><legend><s:text name="name.roles" /></legend>
 	<s:set var="freeAttributeRoles" value="%{getFreeAttributeRoleNames()}" />
 	<s:if test="null == #freeAttributeRoles || #freeAttributeRoles.isEmpty()">
 		<s:text name="note.entityAdmin.entityTypes.attribute.roles.none" />
@@ -150,7 +150,7 @@
 <s:set var="attributeDisablingCodesVar" value="getAttributeDisablingCodes()" ></s:set>
 
 <s:if test="null != #attributeDisablingCodesVar && #attributeDisablingCodesVar.size()>0">
-<fieldset class="col-xs-12"><legend><s:text name="name.disablingCodes" /></legend>
+<fieldset class="col-xs-12 margin-base-top"><legend><s:text name="name.disablingCodes" /></legend>
 	<div class="form-group">
 		<label for="disablingCode"><s:text name="label.code" />:</label>
 		<div class="input-group">
@@ -197,10 +197,10 @@
 </s:elseif>
 
 <s:if test="#attribute.type == 'List' || #attribute.type == 'Monolist'">
-<fieldset class="col-xs-12"><legend><s:text name="label.settings" /></legend>
+<fieldset class="col-xs-12 margin-base-top"><legend><s:text name="label.settings" /></legend>
 <div class="form-group">
 	<label for="listNestedType"><s:text name="Entity.attribute.setting.listType" />:</label>	
-	<wpsf:select list="getAllowedNestedTypes(#attribute)" name="listNestedType" id="listNestedType" listKey="type" listValue="type" />
+	<wpsf:select list="getAllowedNestedTypes(#attribute)" name="listNestedType" id="listNestedType" listKey="type" listValue="type" cssClass="form-control" />
 </div>
 </fieldset>
 </s:if>

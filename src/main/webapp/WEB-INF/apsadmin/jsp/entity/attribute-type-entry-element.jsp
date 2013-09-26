@@ -5,23 +5,33 @@
 	<span class="panel-body display-block">
 		<a href="<s:url action="initViewEntityTypes" namespace="/do/Entity"><s:param name="entityManagerName"><s:property value="entityManagerName" /></s:param></s:url>" title="<s:text name="note.goToSomewhere" />: <s:text name="title.entityAdmin.manager" />&#32;<s:property value="entityManagerName" />">
 		<s:text name="%{'title.' + entityManagerName + '.management'}" />
+		</a>&#32;|&#32;
+		<s:if test="strutsAction == 2">
+		<a href="<s:url action="initEditEntityType" namespace="/do/Entity"><s:param name="entityManagerName"><s:property value="entityManagerName" /></s:param><s:param name="entityTypeCode"><s:property value="entityType.typeCode" /></s:param></s:url>" title="<s:text name="note.goToSomewhere" />: <s:text name="title.entityTypes.editType.edit" />">
+		</s:if>
+
+		<s:text name="title.entityTypes.editType.edit" />: 
+		<code><s:property value="entityType.typeCode" /> - <s:property value="entityType.typeDescr" /></code>
+		
+		<s:if test="strutsAction == 2">
 		</a>
+		</s:if>
 	</span>
 </h1>
 
 <div id="main">
 
-<h3><a href="<s:url action="initEditEntityType" namespace="/do/Entity"><s:param name="entityManagerName"><s:property value="entityManagerName" /></s:param><s:param name="entityTypeCode"><s:property value="entityType.typeCode" /></s:param></s:url>" title="<s:text name="note.goToSomewhere" />: <s:text name="title.entityTypes.editType.edit" />"><s:text name="title.entityTypes.editType.edit" />: <span class="monospace"><s:property value="entityType.typeCode" /> - <s:property value="entityType.typeDescr" /></span></a></h3>
-
 <s:set name="listAttribute" value="listAttribute" />
 <s:set name="attributeElement" value="attributeElement" />
-<p class="margin-more-bottom"><s:text name="note.workingOnAttribute" />:&#32;<span class="monospace"><s:property value="#attributeElement.type" /></span>,&#32;<s:text name="note.workingOnAttributeIn" />&#32;<span class="monospace"><s:property value="#listAttribute.name" /> (<s:property value="#listAttribute.type" />)</span></p>
+<div class="alert alert-info">
+<s:text name="note.workingOnAttribute" />:&#32;<s:property value="#attributeElement.type" />,&#32;<s:text name="note.workingOnAttributeIn" />&#32;<code><s:property value="#listAttribute.name" /></code> (<s:property value="#listAttribute.type" />)
+</div>
 
 <s:form action="saveListElement">
 
 <s:if test="hasFieldErrors()">
-	<div class="message message_error">	
-	<h4><s:text name="message.title.FieldErrors" /></h4>
+	<div class="alert alert-danger alert-dismissable">
+		<button type="button" class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
 			<ul>
 				<s:iterator value="fieldErrors">
 					<s:iterator value="value">
@@ -39,15 +49,15 @@
 </p>
 
 <s:if test="isEntityManagerSearchEngineUser() && isIndexableOptionSupported(attributeTypeCode)">
-<fieldset><legend><s:text name="label.info" /></legend>
+<fieldset class="col-xs-12"><legend><s:text name="label.info" /></legend>
 
-	<p>
-		<label for="attributeTypeCode" class="basic-mint-label"><s:text name="label.type" />:</label>
-		<wpsf:textfield useTabindexAutoIncrement="true" id="attributeTypeCode" name="attributeTypeCode" value="%{attributeTypeCode}" disabled="true" cssClass="text" />
-	</p>
-	<p>
-		<wpsf:checkbox useTabindexAutoIncrement="true" name="indexable" id="indexable" cssClass="radiocheck" /><label for="indexable"><s:text name="Entity.attribute.flag.indexed.full" /></label>
-	</p>
+	<div class="form-group">
+		<label for="attributeTypeCode"><s:text name="label.type" />:</label>
+		<wpsf:textfield id="attributeTypeCode" name="attributeTypeCode" value="%{attributeTypeCode}" disabled="true" cssClass="form-control" />
+	</div>
+	<div class="form-group">
+		<wpsf:checkbox name="indexable" id="indexable" cssClass="radiocheck" /><label for="indexable"><s:text name="Entity.attribute.flag.indexed.full" /></label>
+	</div>
 
 </fieldset>
 </s:if>
@@ -67,10 +77,13 @@
 
 <s:include value="/WEB-INF/apsadmin/jsp/entity/include/validation-rules-ognl.jsp"/>
 
-<p class="centerText">
-	<wpsf:submit useTabindexAutoIncrement="true" value="%{getText('label.continue')}" cssClass="button" />
-</p>
-
+<div class="form-group">
+	<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+		<s:submit type="button" cssClass="btn btn-primary btn-block">
+			<s:text name="label.continue" />
+		</s:submit>
+	</div>
+</div>
 </s:form>
 
 </div>
