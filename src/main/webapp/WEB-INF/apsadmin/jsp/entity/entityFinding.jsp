@@ -38,18 +38,76 @@ http://localhost:8080/PortalExample/do/Entity/search.action?entityManagerName=ja
 					listKey="typeCode" listValue="typeDescr"></wpsf:select>
 			</s:else>
 			
-			<s:set var="searcheableAttributes" value="searcheableAttributes" ></s:set>
+			<s:set var="attributeRolesVar" value="attributeRoles" ></s:set>
 			
-			<s:if test="null != #searcheableAttributes && #searcheableAttributes.size() > 0">
+			<s:if test="null != #attributeRolesVar && #attributeRolesVar.size() > 0">
 				
-				<s:iterator var="attribute" value="#searcheableAttributes">
+				<s:iterator var="attributeRoleVar" value="#attributeRolesVar">
+					<s:set var="currentFieldIdVar">entityFinding_<s:property value="#attributeRoleVar.name" /></s:set> 
+					
+					<s:if test="%{#attributeRoleVar.formFieldType.toString().equals('TEXT')}">
+						<p>
+							<label for="<s:property value="%{#currentFieldIdVar}" />"><s:property value="#attributeRoleVar.name" /></label><br />
+							<s:set name="textInputFieldName"><s:property value="#attributeRoleVar.name" />_textFieldName</s:set>
+							<wpsf:textfield useTabindexAutoIncrement="true" id="%{#currentFieldIdVar}" cssClass="text" name="%{#textInputFieldName}" value="%{getSearchFormFieldValue(#textInputFieldName)}" /><br />
+						</p>
+					</s:if>
+					
+					<s:elseif test="%{#attributeRoleVar.formFieldType.toString().equals('DATE')}">
+						<s:set name="dateStartInputFieldName" ><s:property value="#attributeRoleVar.name" />_dateStartFieldName</s:set>
+						<s:set name="dateEndInputFieldName" ><s:property value="#attributeRoleVar.name" />_dateEndFieldName</s:set>
+						<p>
+							<label for="<s:property value="%{#currentFieldIdVar}" />_dateStartFieldName"><s:property value="#attributeRoleVar.name" /> ** from date **</label>:<br />
+							<wpsf:textfield useTabindexAutoIncrement="true" id="%{#currentFieldIdVar}_dateStartFieldName" cssClass="text" name="%{#dateStartInputFieldName}" value="%{getSearchFormFieldValue(#dateStartInputFieldName)}" /><span class="inlineNote">dd/MM/yyyy</span>
+						</p>
+						<p>
+							<label for="<s:property value="%{#currentFieldIdVar}" />_dateEndFieldName"><s:property value="#attributeRoleVar.name" />** to date **</label>:<br />
+							<wpsf:textfield useTabindexAutoIncrement="true" id="%{#currentFieldIdVar}_dateEndFieldName" cssClass="text" name="%{#dateEndInputFieldName}" value="%{getSearchFormFieldValue(#dateEndInputFieldName)}" /><span class="inlineNote">dd/MM/yyyy</span>
+						</p>
+					</s:elseif>
+					
+					<s:elseif test="%{#attributeRoleVar.formFieldType.toString().equals('NUMBER')}">
+						<s:set name="numberStartInputFieldName" ><s:property value="#attributeRoleVar.name" />_numberStartFieldName</s:set>
+						<s:set name="numberEndInputFieldName" ><s:property value="#attributeRoleVar.name" />_numberEndFieldName</s:set>
+						<p>
+							<label for="<s:property value="%{#currentFieldIdVar}" />_start"><s:property value="#attributeRoleVar.name" /> ** from value **</label>:<br />
+							<wpsf:textfield useTabindexAutoIncrement="true" id="%{#currentFieldIdVar}_start" cssClass="text" name="%{#numberStartInputFieldName}" value="%{getSearchFormFieldValue(#numberStartInputFieldName)}" /><br />
+						</p>
+						<p>
+							<label for="<s:property value="%{#currentFieldIdVar}" />_end"><s:property value="#attributeRoleVar.name" /> ** to value **</label>:<br />
+							<wpsf:textfield useTabindexAutoIncrement="true" id="%{#currentFieldIdVar}_end" cssClass="text" name="%{#numberEndInputFieldName}" value="%{getSearchFormFieldValue(#numberEndInputFieldName)}" /><br />
+						</p>
+					</s:elseif>
+					
+					<s:elseif test="%{#attributeRoleVar.formFieldType.toString().equals('NUMBER')}">
+						<p>
+							<span class="important"><s:property value="#attributeRoleVar.name" /></span><br />
+						</p>
+						<s:set name="booleanInputFieldName" ><s:property value="#attributeRoleVar.name" />_booleanFieldName</s:set>
+						<s:set name="booleanInputFieldValue" ><s:property value="%{getSearchFormFieldValue(#booleanInputFieldName)}" /></s:set>
+						<ul class="noBullet">
+							<li><wpsf:radio useTabindexAutoIncrement="true" id="none_%{#booleanInputFieldName}" name="%{#booleanInputFieldName}" value="" checked="%{!#booleanInputFieldValue.equals('true') && !#booleanInputFieldValue.equals('false')}" cssClass="radio" /><label for="none_<s:property value="#booleanInputFieldName" />" class="normal" ><s:text name="label.bothYesAndNo"/></label></li>
+							<li><wpsf:radio useTabindexAutoIncrement="true" id="true_%{#booleanInputFieldName}" name="%{#booleanInputFieldName}" value="true" checked="%{#booleanInputFieldValue == 'true'}" cssClass="radio" /><label for="true_<s:property value="#booleanInputFieldName" />" class="normal" ><s:text name="label.yes"/></label></li>
+							<li><wpsf:radio useTabindexAutoIncrement="true" id="false_%{#booleanInputFieldName}" name="%{#booleanInputFieldName}" value="false" checked="%{#booleanInputFieldValue == 'false'}" cssClass="radio" /><label for="false_<s:property value="#booleanInputFieldName" />" class="normal"><s:text name="label.no"/></label></li>
+						</ul>
+					</s:elseif>
+					
+				</s:iterator>
+			
+			</s:if>
+			
+			<s:set var="searcheableAttributesVar" value="searcheableAttributes" ></s:set>
+			
+			<s:if test="null != #searcheableAttributesVar && #searcheableAttributesVar.size() > 0">
+				
+				<s:iterator var="attribute" value="#searcheableAttributesVar">
 					<s:set var="currentFieldId">entityFinding_<s:property value="#attribute.name" /></s:set> 
 					
 					<s:if test="#attribute.textAttribute"> 
 						<p>
-							<label for="<s:property value="currentFieldId" />"><s:property value="#attribute.name" /></label><br />
+							<label for="<s:property value="%{#currentFieldId}" />"><s:property value="#attribute.name" /></label><br />
 							<s:set name="textInputFieldName"><s:property value="#attribute.name" />_textFieldName</s:set>
-							<wpsf:textfield useTabindexAutoIncrement="true" id="%{currentFieldId}" cssClass="text" name="%{#textInputFieldName}" value="%{getSearchFormFieldValue(#textInputFieldName)}" /><br />
+							<wpsf:textfield useTabindexAutoIncrement="true" id="%{#currentFieldId}" cssClass="text" name="%{#textInputFieldName}" value="%{getSearchFormFieldValue(#textInputFieldName)}" /><br />
 						</p>
 					</s:if>
 					
