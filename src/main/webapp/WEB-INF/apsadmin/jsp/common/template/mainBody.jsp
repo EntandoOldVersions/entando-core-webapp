@@ -223,6 +223,24 @@
 								<s:date name="#actionLogRecordVar.actionDate" nice="true" />
 							</time>
 						</p>
+
+						<wpsa:activityStreamLikeRecords recordId="%{#actionLogRecordIdVar}" var="activityStreamLikeRecordsVar" />
+						<s:set value="%{#activityStreamLikeRecordsVar.containsUser(#currentUsernameVar)}" var="likeRecordsContainsUserVar" />
+						<s:if test="%{#likeRecordsContainsUserVar}" >
+						    <a href="<s:url namespace="/do/ActivityStream" action="unlikeActivity"><s:param name="recordId" value="%{#actionLogRecordIdVar}" /></s:url>">UNLIKE</a>
+						</s:if>
+						<s:else>
+						    <a href="<s:url namespace="/do/ActivityStream" action="likeActivity"><s:param name="recordId" value="%{#actionLogRecordIdVar}" /></s:url>">LIKE</a>
+						</s:else>
+						<br />
+						SIZE <s:property value="#activityStreamLikeRecordsVar.size()" />
+						---------------------xxxxxxxxxxx------------------
+						<s:iterator value="#activityStreamLikeRecordsVar" var="activityStreamLikeRecordVar">
+						    <br />
+						    DISPLAY: <s:property value="#activityStreamLikeRecordVar.displayName" />
+						    USERNAME: <s:property value="#activityStreamLikeRecordVar.username" />
+						</s:iterator>
+
 					</div>
 				</div>
 			</div>
