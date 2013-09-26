@@ -148,6 +148,8 @@
 			<s:iterator value="userProfile.attributeList" var="attribute">
 				<%-- tracer start --%>
 				<wpsa:tracerFactory var="attributeTracer" lang="%{#lang.code}" />
+				<s:if test="null != #attribute.description"><s:set var="attributeLabelVar" value="#attribute.description" /></s:if>
+				<s:else><s:set var="attributeLabelVar" value="#attribute.name" /></s:else>
 				<s:set var="attributeFieldErrorsVar" value="%{fieldErrors[#attributeTracer.getFormFieldName(#attribute)]}" />
 				<s:set var="attributeHasFieldErrorVar" value="#attributeFieldErrorsVar != null && !#attributeFieldErrorsVar.isEmpty()" />
 				<s:set var="controlGroupErrorClassVar" value="%{''}" />
@@ -158,13 +160,13 @@
 				</s:if>
 				<div class="form-group<s:property value="controlGroupErrorClassVar" />">
 					<s:if test="#attribute.type == 'List' || #attribute.type == 'Monolist'">
-						<label class="display-block"><span class="icon icon-list"></span>&#32;<s:property value="#attribute.name" />&#32;<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" /></label>
+						<label class="display-block"><span class="icon icon-list"></span>&#32;<s:property value="#attributeLabelVar" />&#32;<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" /></label>
 					</s:if>
 					<s:elseif test="#attribute.type == 'Image' || #attribute.type == 'CheckBox' || #attribute.type == 'Boolean' || #attribute.type == 'ThreeState' || #attribute.type == 'Composite'">
-						<label class="display-block"><s:property value="#attribute.name" />&#32;<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" /></label>
+						<label class="display-block"><s:property value="#attributeLabelVar" />&#32;<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" /></label>
 					</s:elseif>
 					<s:else>
-						<label class="display-block" for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />"><s:property value="#attribute.name" /><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" /></label>
+						<label class="display-block" for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />"><s:property value="#attributeLabelVar" /><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" /></label>
 					</s:else>
 					<s:if test="#attribute.type == 'Attach'">
 						<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/attachAttribute.jsp" />
