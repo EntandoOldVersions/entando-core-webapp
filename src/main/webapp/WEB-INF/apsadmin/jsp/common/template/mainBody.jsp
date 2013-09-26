@@ -156,6 +156,8 @@
 
 <h1><s:text name="title.activityStream" /></h1>
 
+<s:set var="currentUsernameVar"><c:out value="${sessionScope.currentUser.username}" /></s:set>
+
 <wpsa:activityStream var="activityStreamVar" />
 
 <s:if test="null != #activityStreamVar && #activityStreamVar.size() != 0">
@@ -171,7 +173,10 @@
 
 		<%-- Temp gravatar untill Eu finishes the real feature --%>
 		<div class="col-xs-12 col-sm-1 margin-small-bottom">
-			<img src="https://2.gravatar.com/avatar/7330024b2d0a748d0a9cb67b1b7bd082?d=https%3A%2F%2Fidenticons.github.com%2Fcabd2c413c8e0382322a32fa6def938e.png&amp;s=56" class="img-circle media-object" />
+			<img src="<s:url action="avatarStream" namespace="/do/user/avatar">
+							<s:param name="gravatarSize">56</s:param>
+							<s:param name="username" value="#actionLogRecordVar.username" />
+						</s:url>" class="img-circle media-object" />
 		</div>
 
 		<div class="media-body col-xs-12 col-sm-11">
@@ -223,8 +228,9 @@
 								<s:date name="#actionLogRecordVar.actionDate" nice="true" />
 							</time>
 						</p>
-
+						
 						<wpsa:activityStreamLikeRecords recordId="%{#actionLogRecordIdVar}" var="activityStreamLikeRecordsVar" />
+						
 						<s:set value="%{#activityStreamLikeRecordsVar.containsUser(#currentUsernameVar)}" var="likeRecordsContainsUserVar" />
 						<s:if test="%{#likeRecordsContainsUserVar}" >
 						    <a href="<s:url namespace="/do/ActivityStream" action="unlikeActivity"><s:param name="recordId" value="%{#actionLogRecordIdVar}" /></s:url>">UNLIKE</a>
