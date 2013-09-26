@@ -4,7 +4,7 @@
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 
-<h1><s:text name="document.title.main" /></h1>
+<%-- <h1><s:text name="document.title.main" /></h1> --%>
 
 <div id="main">
 
@@ -153,55 +153,82 @@
 </s:elseif>
 
 --%>
+
+<h1><s:text name="title.activityStream" /></h1>
+
 <wpsa:activityStream var="activityStreamVar" />
 
 <s:if test="null != #activityStreamVar && #activityStreamVar.size() != 0">
+
+	<ul class="list-unstyled" id="activity-stream">
 	<s:iterator value="#activityStreamVar" var="actionLogRecordIdVar">
+		<li class="media row margin-large-vertical">
+
 		<wpsa:actionLogRecord key="%{#actionLogRecordIdVar}" var="actionLogRecordVar" />
 		<c:set var="usernameVar"><s:property value="#actionLogRecordVar.username" /></c:set>
 		<s:set var="fullnameVar"><wp:userProfileAttribute username="${usernameVar}" attributeRoleName="userprofile:fullname" /></s:set>
 		<s:set var="emailAttributeVar"><wp:userProfileAttribute username="${usernameVar}" attributeRoleName="userprofile:email" /></s:set>
-		<s:if test="null != #fullnameVar && #fullnameVar.length() > 0"><s:property value="#fullnameVar" /></s:if>
-		<s:else><s:property value="#actionLogRecordVar.username" /></s:else>
 
-		<%--
-		&nbsp;&dash;&nbsp;x<s:property value="#emailAttributeVar" />x&nbsp;
-		--%>
+		<%-- Temp gravatar untill Eu finishes the real feature --%>
+		<div class="col-xs-12 col-sm-1 margin-small-bottom">
+			<img src="https://2.gravatar.com/avatar/7330024b2d0a748d0a9cb67b1b7bd082?d=https%3A%2F%2Fidenticons.github.com%2Fcabd2c413c8e0382322a32fa6def938e.png&amp;s=56" class="img-circle media-object" />
+		</div>
 
-		&nbsp;&dash;&nbsp;
+		<div class="media-body col-xs-12 col-sm-11">
 
-		<s:set var="activityStreamInfoVar" value="#actionLogRecordVar.activityStreamInfo" />
+			<div class="popover right display-block">
+				<div class="arrow"></div>
+				<div class="popover-content">
 
-		<wpsa:activityTitle actionName="%{#actionLogRecordVar.actionName}" namespace="%{#actionLogRecordVar.namespace}" actionType="%{#activityStreamInfoVar.actionType}" />
+				<s:if test="null != #fullnameVar && #fullnameVar.length() > 0">
+					<s:property value="#fullnameVar" />
+				</s:if>
+				<s:else>
+					<s:property value="#actionLogRecordVar.username" />
+				</s:else>
 
-		<%--
-		<s:text name="%{#actionLogRecordVar.namespace + '_' + #actionLogRecordVar.actionName + '_' + #activityStreamInfoVar.actionType}" />
-		--%>
-		<c:set var="authGroupNameVar"><s:property value="#activityStreamInfoVar.linkAuthGroup" /></c:set>
-		<c:set var="authPermissionNameVar"><s:property value="#activityStreamInfoVar.linkAuthPermission" /></c:set>
-		<wp:ifauthorized groupName="${authGroupNameVar}" permission="${authPermissionNameVar}" var="isAuthorizedVar" />
+			<%--
+			&nbsp;&dash;&nbsp;x<s:property value="#emailAttributeVar" />x&nbsp;
+			--%>
 
-		&nbsp;:&nbsp;
+			&#32;&middot;&#32;
 
-		<s:set var="linkTitleVar" value="%{getTitle('view/edit', #activityStreamInfoVar.objectTitles)}" />
-		<c:choose>
-			<c:when test="${isAuthorizedVar}">
-				<s:url action="%{#activityStreamInfoVar.linkActionName}"
-					   namespace="%{#activityStreamInfoVar.linkNamespace}" var="actionUrlVar">
-					<wpsa:paramMap map="#activityStreamInfoVar.linkParameters" />
-				</s:url>
-				<a href="<s:property value="#actionUrlVar" escape="false" />"><s:property value="#linkTitleVar" /></a>
-			</c:when>
-			<c:otherwise>
-				<s:property value="#linkTitleVar" />
-			</c:otherwise>
-		</c:choose>
-		<br />
-		<s:date name="#actionLogRecordVar.actionDate" format="EEEE dd-MMMM-yyyy HH:mm" />
-		<br />
-		---------------------------------------
-		<br />
+			<s:set var="activityStreamInfoVar" value="#actionLogRecordVar.activityStreamInfo" />
+
+			<wpsa:activityTitle actionName="%{#actionLogRecordVar.actionName}" namespace="%{#actionLogRecordVar.namespace}" actionType="%{#activityStreamInfoVar.actionType}" />:&#32;
+
+			<%--
+			<s:text name="%{#actionLogRecordVar.namespace + '_' + #actionLogRecordVar.actionName + '_' + #activityStreamInfoVar.actionType}" />
+			--%>
+			<c:set var="authGroupNameVar"><s:property value="#activityStreamInfoVar.linkAuthGroup" /></c:set>
+			<c:set var="authPermissionNameVar"><s:property value="#activityStreamInfoVar.linkAuthPermission" /></c:set>
+			<wp:ifauthorized groupName="${authGroupNameVar}" permission="${authPermissionNameVar}" var="isAuthorizedVar" />
+
+			<s:set var="linkTitleVar" value="%{getTitle('view/edit', #activityStreamInfoVar.objectTitles)}" />
+			<c:choose>
+				<c:when test="${isAuthorizedVar}">
+					<s:url action="%{#activityStreamInfoVar.linkActionName}"
+						   namespace="%{#activityStreamInfoVar.linkNamespace}" var="actionUrlVar">
+						<wpsa:paramMap map="#activityStreamInfoVar.linkParameters" />
+					</s:url>
+					<a href="<s:property value="#actionUrlVar" escape="false" />"><s:property value="#linkTitleVar" /></a>
+				</c:when>
+				<c:otherwise>
+					<s:property value="#linkTitleVar" />
+				</c:otherwise>
+			</c:choose>
+
+						<p class="margin-small-vertical text-info">
+							<time datetime="<s:date name="#actionLogRecordVar.actionDate" format="yyyy-MM-dd HH:mm" />" title="<s:date name="#actionLogRecordVar.actionDate" format="yyyy-MM-dd HH:mm" />">
+								<s:date name="#actionLogRecordVar.actionDate" nice="true" />
+							</time>
+						</p>
+					</div>
+				</div>
+			</div>
+		</li>
 	</s:iterator>
+	</ul>
 </s:if>
 <s:else>
 	NO ONE ACTIVITY

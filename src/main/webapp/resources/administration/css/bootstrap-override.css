@@ -44,6 +44,34 @@ html {
 	padding: 0 6px;
 }
 
+#activity-stream img {
+	margin: 0 auto;
+}
+
+#activity-stream .popover {
+	position: relative;
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+#activity-stream .arrow {
+	display: none;
+}
+
+/* Small devices (tablets, 768px and up) */
+
+@media (min-width: 768px) {
+
+	#activity-stream .arrow {
+		margin-top: -24px;
+		display: block;
+	}
+
+	#activity-stream .popover {
+		margin: 0 0 0 20px;
+	}
+}
+
 /* Font Awesome */
 .popover-content .icons-ul,
 #categoryTree.icons-ul,
