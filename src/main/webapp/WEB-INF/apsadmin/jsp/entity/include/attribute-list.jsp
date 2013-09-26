@@ -4,7 +4,7 @@
 <%@ taglib uri="/aps-core" prefix="wp" %>
 
 <s:if test="null != entityType.attributeList && entityType.attributeList.size() > 0">
-
+<div class="table-responsive">
 <table class="table table-bordered">
 <tr>
 	<th class="text-center text-nowrap"><abbr title="<s:text name="label.actions" />">&ndash;</abbr></th>
@@ -68,5 +68,5 @@
 </s:iterator>
 
 </table>
-
+</div>
 </s:if>
