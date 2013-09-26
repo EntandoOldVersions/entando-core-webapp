@@ -5,28 +5,28 @@
 	<span class="panel-body display-block">
 		<a href="<s:url action="initViewEntityTypes" namespace="/do/Entity"><s:param name="entityManagerName"><s:property value="entityManagerName" /></s:param></s:url>" title="<s:text name="note.goToSomewhere" />: <s:text name="title.entityAdmin.manager" />&#32;<s:property value="entityManagerName" />">
 		<s:text name="%{'title.' + entityManagerName + '.management'}" />
-		</a>
+		</a>&#32;|&#32;
+		<s:text name="title.entityTypes.editType.delete" />: <span class="monospace"><s:property value="entityTypeCode" /> - <s:property value="%{getEntityPrototype(entityTypeCode).typeDescr}" /></span>
 	</span>
 </h1>
 
 <div id="main">
 
-<h3><s:text name="title.entityTypes.editType.delete" />: <span class="monospace"><s:property value="entityTypeCode" /> - <s:property value="%{getEntityPrototype(entityTypeCode).typeDescr}" /></span></h3>
-
-<div class="message message_error">	
-	<h4><s:text name="message.title.ActionErrors" /></h4>
-	<p>
+	<div class="alert alert-warning">
 		<s:property value="references.size()" />&#32;<s:text name="note.entityTypes.deleteType.references" />
-	</p>
-</div>
+	</div>
 
 	<p><s:text name="note.entityTypes.deleteType.references.outro" />:</p>
 
-	<ol>
-<s:iterator value="references" id="entityId">
-		<li><s:property value="#entityId" /></li>
-</s:iterator>
-	</ol>
+	<ul class="list-group">
+		<s:iterator value="references" id="entityId">
+			<li class="list-group-item">
+				<a href="<s:url action="edit" namespace="/do/jacms/Content"><s:param name="contentType"><s:property value="entityTypeCode" /></s:param><s:param name="viewCode"><s:property value="true" /></s:param><s:param name="viewTypeDescr"><s:property value="true" /></s:param><s:param name="contentId"><s:property value="entityId" /></s:param></s:url>">
+				<s:property value="#entityId" />
+				</a>
+			</li>
+		</s:iterator>
+	</ul>
 
 <s:if test="entityManagerName == 'jacmsContentManager'">
 	<p>

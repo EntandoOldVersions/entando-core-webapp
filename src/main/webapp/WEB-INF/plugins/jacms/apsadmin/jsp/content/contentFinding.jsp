@@ -261,6 +261,21 @@
 			</s:iterator>
 		</p>
 
+		<%-- New Content Button--%>
+
+		<div class="btn-group">
+		  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+		    <s:text name="label.newContent" /> <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu" role="menu">
+			<s:iterator var="contentTypeVar" value="#contentTypesVar">
+				<li><a href="<s:url action="createNew" namespace="/do/jacms/Content" >
+						   <s:param name="contentTypeCode" value="%{#contentTypeVar.typeCode}" />
+					   </s:url>" ><s:text name="label.new" />&#32;<s:property value="%{#contentTypeVar.typeDescr}" /></a></li>
+			</s:iterator>
+		  </ul>
+		</div>
+
 		<s:if test="hasActionErrors()">
 		<div class="alert alert-danger alert-dismissable fade in">
 			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
