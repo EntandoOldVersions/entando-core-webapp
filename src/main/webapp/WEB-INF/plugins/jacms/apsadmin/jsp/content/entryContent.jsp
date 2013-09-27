@@ -45,7 +45,7 @@
 				</li>
 			</s:iterator>
 		</ul>
-		<div class="panel panel-default"><%-- panel default --%>
+		<div class="panel panel-default"><%-- panel --%>
 			<div class="panel-body"><%-- panel body --%>
 				<div class="tab-content"><%-- tabs container --%>
 					<s:iterator value="langs" var="lang" status="langStatusVar"><%-- lang iterator --%>
@@ -163,43 +163,43 @@
 							</div>
 						</div><!-- tab -->
 					</s:iterator><%-- lang iterator --%>
-					<div id="info">
-						<h2 class="js_sr-only"><s:text name="title.contentInfo" /> <a href="#quickmenu" id="info_content_goBackToQuickMenu" title="<s:text name="note.goBackToQuickMenu" />"><span class="icon icon-circle-arrow-up"></span></a></h2>
-						<div class="subsection">
-							<!--  INIZIO BLOCCO SELEZIONE GRUPPI SUPPLEMENTARI ABILITATI ALLA VISUALIZZAZIONE -->
-							<fieldset>
-								<legend><s:text name="label.extraGroups" /></legend>
-								<s:if test="content.groups.size != 0">
-									<ul>
-									<s:iterator value="content.groups" id="groupName">
-										<li>
-											<wpsa:actionParam action="removeGroup" var="actionName" >
-												<wpsa:actionSubParam name="extraGroupName" value="%{#groupName}" />
-											</wpsa:actionParam>
-											<s:submit action="%{#actionName}" type="image" src="%{#removeIcon}" value="%{getText('label.remove')}" title="%{getText('label.remove')}" />: <s:property value="%{getGroupsMap()[#groupName].getDescr()}"/>
-										</li>
-									</s:iterator>
-									</ul>
-								</s:if>
-								<p>
-									<label for="extraGroups" class="basic-mint-label"><s:text name="label.join" />&#32;<s:text name="label.group" /></label>
-									<s:select name="extraGroupName" id="extraGroups" list="groups"
-										listKey="name" listValue="descr" cssClass="text" />
-									<s:submit action="joinGroup" value="%{getText('label.join')}" cssClass="button" />
-								</p>
-							</fieldset>
-							<s:action name="showCategoryBlockOnEntryContent" namespace="/do/jacms/Content" executeResult="true"><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:action>
-							<!-- FINE CATEGORIE -->
-						</div>
-						<wpsa:hookPoint key="jacms.entryContent.tabGeneral" objectName="hookPointElements_jacms_entryContent_tabGeneral">
-							<s:iterator value="#hookPointElements_jacms_entryContent_tabGeneral" var="hookPointElement">
-								<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
-							</s:iterator>
-						</wpsa:hookPoint>
-					</div>
 				</div><%-- tabs container --%>
+			</div><%-- panel body --%>
+		</div><%-- panel --%>
+		<div id="info"><%-- info section --%>
+			<h2 class="js_sr-only"><s:text name="title.contentInfo" /> <a href="#quickmenu" id="info_content_goBackToQuickMenu" title="<s:text name="note.goBackToQuickMenu" />"><span class="icon icon-circle-arrow-up"></span></a></h2>
+			<div class="subsection">
+				<!--  INIZIO BLOCCO SELEZIONE GRUPPI SUPPLEMENTARI ABILITATI ALLA VISUALIZZAZIONE -->
+				<fieldset>
+					<legend><s:text name="label.extraGroups" /></legend>
+					<s:if test="content.groups.size != 0">
+						<ul>
+						<s:iterator value="content.groups" id="groupName">
+							<li>
+								<wpsa:actionParam action="removeGroup" var="actionName" >
+									<wpsa:actionSubParam name="extraGroupName" value="%{#groupName}" />
+								</wpsa:actionParam>
+								<s:submit action="%{#actionName}" type="image" src="%{#removeIcon}" value="%{getText('label.remove')}" title="%{getText('label.remove')}" />: <s:property value="%{getGroupsMap()[#groupName].getDescr()}"/>
+							</li>
+						</s:iterator>
+						</ul>
+					</s:if>
+					<p>
+						<label for="extraGroups" class="basic-mint-label"><s:text name="label.join" />&#32;<s:text name="label.group" /></label>
+						<s:select name="extraGroupName" id="extraGroups" list="groups"
+							listKey="name" listValue="descr" cssClass="text" />
+						<s:submit action="joinGroup" value="%{getText('label.join')}" cssClass="button" />
+					</p>
+				</fieldset>
+				<s:action name="showCategoryBlockOnEntryContent" namespace="/do/jacms/Content" executeResult="true"><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:action>
+				<!-- FINE CATEGORIE -->
 			</div>
-		</div>
+			<wpsa:hookPoint key="jacms.entryContent.tabGeneral" objectName="hookPointElements_jacms_entryContent_tabGeneral">
+				<s:iterator value="#hookPointElements_jacms_entryContent_tabGeneral" var="hookPointElement">
+					<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
+				</s:iterator>
+			</wpsa:hookPoint>
+		</div><%-- info section --%>
 		<h2 class="sr-only"><s:text name="title.contentActionsIntro" /></h2>
 		<wpsa:hookPoint key="jacms.entryContent.actions" objectName="hookPointElements_jacms_entryContent_actions">
 			<s:iterator value="#hookPointElements_jacms_entryContent_actions" var="hookPointElement">
