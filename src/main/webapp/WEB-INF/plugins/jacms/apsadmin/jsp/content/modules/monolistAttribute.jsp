@@ -15,15 +15,20 @@
 <s:set name="elementIndex" value="#elementStatus.index" />
 
 	<s:if test="#attribute.type == 'Composite'">
-	<li class="list-group-item">	
-			<span class="important" title="<s:text name="label.compositeAttribute.element" />"><s:property value="#elementStatus.index + 1" /></span>
+		<li class="list-group-item">
+			<label title="<s:text name="label.compositeAttribute.element" />">
+				<s:property value="#elementStatus.index + 1" />
 			<s:if test="!#lang.default">
 				<s:set var="operationButtonDisabled" value="true" />
 			</s:if>
+			</label>
+			<div class="pull-right margin-small-bottom">
 				<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/listAttributes/allList_operationModule.jsp" />
+			</div>
+			<div class="clearfix"></div>
 	</s:if>
 	<s:else>
-		<li class="list-group-item">	
+		<li class="list-group-item">
 		<label for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />" class=""><s:property value="#elementStatus.index + 1" /></label>
 		<s:if test="!#lang.default">
 			<s:set var="operationButtonDisabled" value="true" />
@@ -32,8 +37,8 @@
 			<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/listAttributes/allList_operationModule.jsp" />
 		</div>
 		<div class="clearfix"></div>
-	</s:else>	 
-	
+	</s:else>
+
 	<s:if test="#attribute.type == 'Monotext'">
 		<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/monotextAttribute.jsp" />
 	</s:if>
@@ -79,13 +84,13 @@
 	<s:elseif test="#attribute.type == 'CheckBox'">
 		<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/checkBoxAttribute.jsp" />
 	</s:elseif>
-	
+
 	<wpsa:hookPoint key="jacms.entryContent.attributeExtra" objectName="hookPointElements_jacms_entryContent_attributeExtra">
 	<s:iterator value="#hookPointElements_jacms_entryContent_attributeExtra" var="hookPointElement">
 		<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
 	</s:iterator>
 	</wpsa:hookPoint>
-	
+
 </li>
 </s:iterator>
 
