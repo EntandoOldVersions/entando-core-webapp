@@ -3,7 +3,7 @@
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 <span class="sr-only"><s:text name="note.linkContent" /></span>
-<div class="input-group">
+<div class="input-group <s:if test="#attributeTracer.monoListElement||#attributeTracer.compositeElement"> margin-small-top </s:if>">
 	<s:if test="#attribute.symbolicLink != null">
 		<s:if test="#attribute.symbolicLink.destType == 2 || #attribute.symbolicLink.destType == 4">
 			<s:set var="linkedPage" value="%{getPage(#attribute.symbolicLink.pageDest)}" />
