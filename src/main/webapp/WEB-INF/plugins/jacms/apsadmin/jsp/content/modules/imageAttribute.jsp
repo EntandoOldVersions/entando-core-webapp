@@ -57,7 +57,7 @@
 <%-- non-default language --%>
 	<s:if test="#defaultResource == null">
 		<%-- if default language still has empty Attribute --%>
-		<s:text name="note.editContent.doThisInTheDefaultLanguage" />.
+		<span class="form-control-static text-info"><s:text name="note.editContent.doThisInTheDefaultLanguage" />.</span>
 	</s:if>
 	<s:else>
 	<div class="panel panel-default">

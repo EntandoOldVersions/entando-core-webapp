@@ -49,7 +49,7 @@
 <s:else>
 <%-- Not-default lang --%>
 	<s:if test="#defaultResource == null">
-		<s:text name="note.editContent.doThisInTheDefaultLanguage" />.
+		<span class="form-control-static text-info"><s:text name="note.editContent.doThisInTheDefaultLanguage" />.</span>
 	</s:if>
 	<s:else>
 		<s:if test="#currentResource == null">
