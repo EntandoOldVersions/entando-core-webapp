@@ -1,16 +1,19 @@
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-
+<script>
+	//tabs
+	jQuery(function(){
+		$('.tab-togglers a').click(function (e) {
+		e.preventDefault()
+		$(this).tab('show')
+	});
+</script>
 <s:include value="/WEB-INF/apsadmin/jsp/common/layouts/assets-common.jsp" />
-
 <script src="<wp:resourceURL />administration/js/bootstrap-swapon.js"></script>
-
 <s:if test="htmlEditorCode == 'fckeditor'">
-	<!-- per attributo Hypertext -->
 	<script type="text/javascript" src="<wp:resourceURL />administration/js/ckeditor/ckeditor.js"></script>
 </s:if>
-
 <script>
 //one domready to rule 'em all
 $(function() {
@@ -67,16 +70,11 @@ $(function() {
 
 //Hypertext Attribute
 <s:if test="htmlEditorCode != 'none'">
-
-	<s:iterator value="langs" var="lang">
-		<s:iterator value="content.attributeList" var="attribute">
-		<%-- Init tracer --%>
-		<wpsa:tracerFactory var="attributeTracer" lang="%{#lang.code}" />
-
-		<s:if test="#attribute.type == 'Hypertext'">
-			<s:if test="htmlEditorCode == 'fckeditor'">
+	var textareaElements = $('[data-toggle="entando-hypertext"]');
+	$.each(textareaElements, function(index, el) {
+		<s:if test="htmlEditorCode == 'fckeditor'">
 				$(function() {
-					var ofckeditor = CKEDITOR.replace("<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />", {
+					var ofckeditor = CKEDITOR.replace(el.id, {
 						customConfig : '<wp:resourceURL />administration/js/ckeditor/entando-ckeditor_config.js',
 						EntandoLinkActionPath: "<s:url namespace="/do/jacms/Content/Hypertext" action="entandoInternalLink"><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>",
 						language: '<s:property value="locale" />'
@@ -88,104 +86,17 @@ $(function() {
 						var ohoofed = new HoofEd({
 						basePath: '<wp:resourceURL />administration/js/moo-japs/hoofed',
 						lang: '<s:property value="currentLang.code" />',
-						textareaID: '<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />',
+						textareaID: el.id,
 						buttons: [ 'bold', 'italic', 'list', 'nlist', 'link', 'paragraph' ],
 						toolPosition: "after",
 						toolElement: "span"
 					});
 				});
 			</s:elseif>
-		</s:if>
-
-		<s:elseif test="#attribute.type == 'Monolist'">
-			<s:set name="masterAttributeTracer" value="#attributeTracer" />
-			<s:set name="masterAttribute" value="#attribute" />
-			<s:iterator value="#attribute.attributes" id="attribute" status="elementStatus">
-				<s:set name="attributeTracer" value="#masterAttributeTracer.getMonoListElementTracer(#elementStatus.index)"></s:set>
-				<s:set name="elementIndex" value="#elementStatus.index" />
-
-
-				<s:if test="#attribute.type == 'Composite'">
-					<s:set name="masterCompositeAttributeTracer" value="#attributeTracer" />
-					<s:set name="masterCompositeAttribute" value="#attribute" />
-					<s:iterator value="#attribute.attributes" id="attribute">
-						<s:set name="attributeTracer" value="#masterCompositeAttributeTracer.getCompositeTracer(#masterCompositeAttribute)"></s:set>
-						<s:set name="parentAttribute" value="#masterCompositeAttribute"></s:set>
-						<s:if test="#attribute.type == 'Hypertext'">
-							<s:if test="htmlEditorCode == 'fckeditor'">
-								$(function() {
-									var ofckeditor = CKEDITOR.replace("<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />", {
-										customConfig : '<wp:resourceURL />administration/js/ckeditor/entando-ckeditor_config.js',
-										EntandoLinkActionPath: "<s:url namespace="/do/jacms/Content/Hypertext" action="entandoInternalLink"><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>",
-										language: '<s:property value="locale" />'
-									});
-								});
-							</s:if>
-							<s:elseif test="htmlEditorCode == 'hoofed'">
-								$(function() {
-									var ohoofed = new HoofEd({
-										basePath: '<wp:resourceURL />administration/js/moo-japs/hoofed',
-										lang: '<s:property value="currentLang.code" />',
-										textareaID: '<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />',
-										buttons: [ 'bold', 'italic', 'list', 'nlist', 'link', 'paragraph' ],
-										toolPosition: "after",
-										toolElement: "span"
-									});
-								});
-							</s:elseif>
-						</s:if>
-					</s:iterator>
-					<s:set name="attributeTracer" value="#masterCompositeAttributeTracer" />
-					<s:set name="attribute" value="#masterCompositeAttribute" />
-					<s:set name="parentAttribute" value=""></s:set>
-				</s:if>
-
-
-				<s:elseif test="#attribute.type == 'Hypertext'">
-					<s:if test="htmlEditorCode == 'fckeditor'">
-						$(function() {
-							var ofckeditor = CKEDITOR.replace("<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />", {
-								customConfig : '<wp:resourceURL />administration/js/ckeditor/entando-ckeditor_config.js',
-								EntandoLinkActionPath: "<s:url namespace="/do/jacms/Content/Hypertext" action="entandoInternalLink"><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>",
-								language: '<s:property value="locale" />'
-							});
-						});
-					</s:if>
-					<s:elseif test="htmlEditorCode == 'hoofed'">
-						$(function() {
-							var ohoofed = new HoofEd({
-								basePath: '<wp:resourceURL />administration/js/moo-japs/hoofed',
-								lang: '<s:property value="currentLang.code" />',
-								textareaID: '<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />',
-								buttons: [ 'bold', 'italic', 'list', 'nlist', 'link', 'paragraph' ],
-								toolPosition: "after",
-								toolElement: "span"
-							});
-						});
-					</s:elseif>
-				</s:elseif>
-			</s:iterator>
-			<s:set name="attributeTracer" value="#masterAttributeTracer" />
-			<s:set name="attribute" value="#masterAttribute" />
-		</s:elseif>
-		</s:iterator>
-	</s:iterator>
-
+	});
 </s:if>
 //End Hypertext Attribute
-
-
-//tabs
-
 }); //End domready
-
-</script>
-<script>
-	jQuery(function(){
-		$('.tab-togglers a').click(function (e) {
-		e.preventDefault()
-		$(this).tab('show')
-	});
 </script>
 <s:include value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/inc/snippet-datepicker.jsp" />
 <%-- TEMPORARILY COMMENTED OUT EVERYTHING
@@ -310,7 +221,7 @@ window.addEvent('domready', function(){
 	var mainLabels = document.getElements('.attribute-main-label');
 	mainLabels.ellipsis();
 	$each(mainLabels, function(label) {
-		label.set('title', label.get('html')); 
+		label.set('title', label.get('html'));
 	});
 
 });
@@ -320,7 +231,7 @@ window.addEvent('domready', function(){
 --%>
 
 <wpsa:hookPoint key="jacms.entryContent.extraResources" objectName="hookPointElements_jacms_entryContent_extraResources">
-<s:iterator value="#hookPointElements_jacms_entryContent_extraResources" var="hookPointElement">
-	<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
-</s:iterator>
+	<s:iterator value="#hookPointElements_jacms_entryContent_extraResources" var="hookPointElement">
+		<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
+	</s:iterator>
 </wpsa:hookPoint>
