@@ -1,57 +1,67 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib uri="/aps-core" prefix="wp" %>
-<%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
-
+<%@ taglib prefix="wp" uri="/aps-core" %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
+<s:set var="thirdTitleVar">
+	<s:text name="title.configureLinkAttribute" />&#32;(<s:text name="title.step1of2" />)
+</s:set>
 <s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/linkAttribute/linkAttributeConfigIntro.jsp" />
-<h3 class="margin-more-bottom"><s:text name="title.configureLinkAttribute" />&#32;(<s:text name="title.step1of2" />)</h3>
-<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/linkAttribute/linkAttributeConfigReminder.jsp"/>
-
-<s:form action="configLink">
-<wpsf:hidden name="contentOnSessionMarker" />
-<s:if test="hasFieldErrors()">
-	<div class="message message_error">
-	<h4><s:text name="message.title.FieldErrors" /></h4>	
-	<ul>
-		<s:iterator value="fieldErrors">
-			<s:iterator value="value">
-	            <li><s:property escape="false" /></li>
-			</s:iterator>
-		</s:iterator>
-	</ul>
+<s:form action="configLink" cssClass="action-form">
+	<p class="sr-only"><wpsf:hidden name="contentOnSessionMarker" /></p>
+	<s:if test="hasFieldErrors()">
+		<div class="alert alert-danger alert-dismissable fade in">
+			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+			<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h4>
+			<ul class="margin-none margin-base-top">
+				<s:iterator value="fieldErrors">
+					<s:iterator value="value">
+						<li><s:property escape="false" /></li>
+					</s:iterator>
+				</s:iterator>
+			</ul>
+		</div>
+	</s:if>
+	<s:set var="linkDestinations" value="linkDestinations" />
+	<div class="col-xs-12">
+		<div class="form-group">
+			<label class="display-block"><s:text name="title.chooseLinkType" /></label>
+			<div class="btn-group" data-toggle="buttons">
+				<s:iterator value="#linkDestinations" var="typeId">
+					<s:if test="#typeId != 4">
+						<s:if test="#typeId == 1">
+							<s:set var="statusIconVar">icon icon-globe</s:set>
+							<s:set name="linkDestination" value="%{getText('note.URLLinkTo')}" />
+						</s:if>
+						<s:elseif test="#typeId == 2">
+							<s:set var="statusIconVar">icon icon-folder-close</s:set>
+							<s:set name="linkDestination" value="%{getText('note.pageLinkTo')}" />
+						</s:elseif>
+						<s:elseif test="#typeId == 3 || #typeId == 4">
+							<s:set var="statusIconVar">icon icon-file-text-alt</s:set>
+							<s:set name="linkDestination" value="%{getText('note.contentLinkTo')}" />
+						</s:elseif>
+						<label class="btn btn-default <s:if test="#typeId == symbolicLink.destType || (symbolicLink.destType == 4 && #typeId == 3)"> active </s:if>" for="linkType_<s:property value="#typeId"/>">
+							<input
+								type="radio"
+								<s:if test="#typeId == symbolicLink.destType || (symbolicLink.destType == 4 && #typeId == 3)"> checked="checked" </s:if>
+								name="linkType"
+								id="linkType_<s:property value="#typeId"/>"
+								value="<s:property value="#typeId"/>" />
+							 <span class="<s:property value="#statusIconVar" />"></span>&#32;<s:property value="linkDestination" />
+						</label>
+					</s:if>
+				</s:iterator>
+			</div>
+			<div class="help help-block">
+				<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/linkAttribute/linkAttributeConfigReminder.jsp"/>
+			</div>
+		</div>
 	</div>
-</s:if>
-<fieldset><legend><s:text name="title.chooseLinkType" /></legend>
-<ul class="noBullet radiocheck">
-<s:iterator id="typeId" value="linkDestinations">
-	<s:if test="#typeId != 4">
-		
-		<s:if test="#typeId == 1">
-			<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/22x22/link-url.png</s:set>
-			<s:set name="linkDestination" value="%{getText('note.URLLinkTo')}" />
-		</s:if>
-		
-		<s:if test="#typeId == 2">
-			<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/22x22/link-page.png</s:set>
-			<s:set name="linkDestination" value="%{getText('note.pageLinkTo')}" />
-		</s:if>
-		
-		<s:if test="#typeId == 3">
-			<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/22x22/link-content.png</s:set>
-			<s:set name="linkDestination" value="%{getText('note.contentLinkTo')}" />
-		</s:if>
-		
-		<li><input type="radio" <s:if test="#typeId == symbolicLink.destType">checked="checked"</s:if> name="linkType" id="linkType_<s:property value="#typeId"/>" value="<s:property value="#typeId"/>" /><label for="linkType_<s:property value="#typeId"/>"><img src="<s:property value="iconImagePath" />" alt=" " /> <s:property value="linkDestination" /></label></li>
-		
-	</s:if>	
-</s:iterator>
-</ul>
-
-<p class="centerText"><wpsf:submit useTabindexAutoIncrement="true" value="%{getText('label.continue')}" title="%{getText('label.continue')}" cssClass="button" /></p>
-
-</fieldset>
+	<div class="form-group">
+		<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+			<s:submit type="button" title="%{getText('label.continue')}" cssClass="btn btn-primary btn-block">
+				<span class="icon  icon-long-arrow-right"></span>&#32;
+				<s:text name="label.continue" />
+			</s:submit>
+		</div>
+	</div>
 </s:form>
-<%--
-<p><a href="<s:url action="backToEntryContent" />" ><s:text name="label.backTo.Content" /></a></p>
- --%>
- 
-</div>
