@@ -26,7 +26,7 @@
 </s:if>
 <div class="panel panel-default">
 	<div class="panel-body">
-		<h3 class="h3 margin-none margin-small-bottom"><s:text name="title.userManagement.userList" /></h3>
+		<h3 class="margin-none margin-small-bottom"><s:text name="title.userManagement.userList" /></h3>
 		<s:form>
 			<p class="sr-only">
 				<wpsf:hidden name="username" />

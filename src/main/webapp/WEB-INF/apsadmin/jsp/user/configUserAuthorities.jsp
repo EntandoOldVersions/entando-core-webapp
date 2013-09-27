@@ -4,69 +4,104 @@
 <%@ taglib uri="/aps-core" prefix="wp" %>
 
 <s:set var="targetNS" value="%{'/do/User'}" />
-<h1><s:text name="title.userManagement" /><s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></h1>
+<h1 class="panel panel-default title-page">
+	<span class="panel-body display-block">
+		<a href="<s:url namespace="/do/BaseAdmin" action="settings" />"><s:text name="menu.configure" /></a>
+		&#32;/&#32;
+		<a href="<s:url namespace="/do/User" action="list" />"><s:text name="title.userManagement" /></a>
+		&#32;/&#32;
+		<s:text name="title.userManagement.userAuthorizations" />&#32;<s:text name="note.userAuthorizations.intro" />:&#32;<code><s:property value="userAuthsFormBean.username"/></code>
+	</span>
+</h1>
 
 <div id="main">
 
-<h2><s:text name="title.userManagement.userAuthorizations" /></h2>
-
 <p class="margin-more-bottom">
-	<s:text name="note.userAuthorizations.intro" />&#32;<strong><s:property value="userAuthsFormBean.username"/></strong>, <s:text name="note.userAuthorizations.youCan" />&#32;<a href="#groups"><s:text name="note.userAuthorizations.configureGroups" /></a>&#32;<s:text name="label.or" />&#32;<a href="#roles"><s:text name="note.userAuthorizations.configureRoles" /></a>.
+	<s:text name="note.userAuthorizations.intro" />&#32;<code><s:property value="userAuthsFormBean.username"/></code>, <s:text name="note.userAuthorizations.youCan" />&#32;<a href="#groups"><s:text name="note.userAuthorizations.configureGroups" /></a>&#32;<s:text name="label.or" />&#32;<a href="#roles"><s:text name="note.userAuthorizations.configureRoles" /></a>.
 </p>
 
-<s:set name="addIcon" id="addIcon"><wp:resourceURL/>administration/common/img/icons/list-add.png</s:set>
-<s:set name="removeIcon" id="removeIcon"><wp:resourceURL/>administration/common/img/icons/list-remove.png</s:set>
-	
 <s:form action="save">
 <p class="sr-only">
 	<wpsf:hidden name="username" value="%{getUserAuthsFormBean().getUsername()}"/>
 </p>
 
-<fieldset id="groups"><legend><s:text name="note.userAuthorizations.chooseGroup" /></legend>
-<p class="important"><s:text name="note.userAuthorizations.groupList" />:</p>
-<s:if test="%{getUserAuthsFormBean().getGroups().size() > 0}">
-	<ul>
-	<s:iterator id="group" value="userAuthsFormBean.groups">
-		<li>
-			<wpsa:actionParam action="removeGroup" var="actionName" >
-				<wpsa:actionSubParam name="groupName" value="%{#group.name}" />
-			</wpsa:actionParam>
-			<wpsf:submit useTabindexAutoIncrement="true" action="%{#actionName}" type="image" src="%{#removeIcon}" value="%{getText('label.remove')}" title="%{getText('label.remove')}" />: <s:property value="descr" /> 
-		</li>
-	</s:iterator>
-	</ul>
-</s:if>
-<p>
-	<label for="groupName" class="basic-mint-label"><s:text name="label.group" />:</label>
-	<wpsf:select useTabindexAutoIncrement="true" name="groupName" id="groupName" list="groups" listKey="name" listValue="descr" cssClass="text" />
-	<wpsf:submit useTabindexAutoIncrement="true" action="addGroup" type="image" src="%{#addIcon}" value="%{getText('label.add')}" title="%{getText('label.add')}" />
-</p>
-</fieldset>
+<div class="panel panel-default margin-none margin-small-bottom">
+	<div class="panel-body">
+	<h3 class="margin-none margin-base-bottom"><s:text name="note.userAuthorizations.groupList" /></h3>
+	<s:if test="%{getUserAuthsFormBean().getGroups().size() > 0}">
+		<ul class="list-unstyled">
+		<s:iterator id="group" value="userAuthsFormBean.groups">
+			<li>
+				<wpsa:actionParam action="removeGroup" var="actionName" >
+					<wpsa:actionSubParam name="groupName" value="%{#group.name}" />
+				</wpsa:actionParam>
+				<span class="label label-default label-sm pull-left padding-small-top padding-small-bottom margin-small-right margin-small-bottom">
+				  <s:property value="descr" />&#32;
+					<s:submit type="button" action="%{#actionName}" title="%{getText('label.remove') +' '+ descr}" cssClass="btn btn-default btn-xs badge">
+						<span class="icon icon-remove"></span>
+						<span class="sr-only">x</span>
+					</s:submit>
+				</span>
+			</li>
+		</s:iterator>
+		</ul>
+	</s:if>
+	<s:else><span class="text-warning"><s:text name="note.userAuthorizations.groupList.empty" /></span></s:else>
+	</div>
+</div>
+<div class="form-group margin-large-bottom">
+	<label for="groupName" ><s:text name="label.group" />:</label>
+	<div class="input-group">
+		<wpsf:select name="groupName" id="groupName" list="groups" listKey="name" listValue="descr" cssClass="form-control" />
+		<span class="input-group-btn">
+		<wpsf:submit action="addGroup" type="button" value="%{getText('label.add')}" title="%{getText('label.add')}" cssClass="btn btn-warning"/>
+		</span>
+	</div>
+</div>
 
-<fieldset id="roles"><legend><s:text name="note.userAuthorizations.chooseRole" /></legend>
-<p class="important"><s:text name="note.userAuthorizations.roleList" />:</p>
-<s:if test="%{getUserAuthsFormBean().getRoles().size() > 0}">
-	<ul>
-	<s:iterator id="role" value="userAuthsFormBean.roles">
-		<li>
-			<wpsa:actionParam action="removeRole" var="actionName" >
-				<wpsa:actionSubParam name="roleName" value="%{#role.name}" />
-			</wpsa:actionParam>
-			<wpsf:submit useTabindexAutoIncrement="true" action="%{#actionName}" type="image" src="%{#removeIcon}" value="%{getText('label.remove')}" title="%{getText('label.remove')}" />: <s:property value="description" /> 
-		</li>
-	</s:iterator>
-	</ul>
-</s:if>
-<p>
-	<label for="roleName" class="basic-mint-label"><s:text name="name.role" />:</label>
-	<wpsf:select useTabindexAutoIncrement="true" name="roleName" id="roleName" list="roles" listKey="name" listValue="description" cssClass="text" />
-	<wpsf:submit useTabindexAutoIncrement="true" action="addRole" type="image" src="%{#addIcon}" value="%{getText('label.add')}" title="%{getText('label.add')}" />
-</p>
-</fieldset>
+<hr />
 
-<p class="centerText">	
-	<wpsf:submit useTabindexAutoIncrement="true" value="%{getText('label.save')}" cssClass="button" />
-</p>	
+<div class="panel panel-default margin-none margin-small-bottom margin-large-top" >
+	<div class="panel-body">
+	<h3 class="margin-none margin-base-bottom"><s:text name="note.userAuthorizations.roleList" /></h3>
+	<s:if test="%{getUserAuthsFormBean().getRoles().size() > 0}">
+		<ul class="list-unstyled">
+		<s:iterator id="role" value="userAuthsFormBean.roles">
+			<li>
+				<wpsa:actionParam action="removeRole" var="actionName" >
+					<wpsa:actionSubParam name="roleName" value="%{#role.name}" />
+				</wpsa:actionParam>
+				<span class="label label-default label-sm pull-left padding-small-top padding-small-bottom margin-small-right margin-small-bottom">
+				  <s:property value="description" />&#32;
+					<s:submit type="button" action="%{#actionName}" title="%{getText('label.remove') +' '+ description}" cssClass="btn btn-default btn-xs badge">
+						<span class="icon icon-remove"></span>
+						<span class="sr-only">x</span>
+					</s:submit>
+				</span>
+			</li>
+		</s:iterator>
+		</ul>
+	</s:if>
+	<s:else><span class="text-warning"><s:text name="note.userAuthorizations.roleList.empty" /></span></s:else>
+	</div>
+</div>
+<div class="form-group">
+	<label for="roleName"><s:text name="name.role" />:</label>
+	<div class="input-group">
+		<wpsf:select name="roleName" id="roleName" list="roles" listKey="name" listValue="description" cssClass="form-control" />
+		<span class="input-group-btn">
+		<wpsf:submit action="addRole" type="button" value="%{getText('label.add')}" title="%{getText('label.add')}" cssClass="btn btn-warning" />
+		</span>
+	</div>
+</div>
+
+<div class="form-group">
+	<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+		<s:submit type="button" cssClass="btn btn-primary btn-block">
+			<s:text name="label.save" />
+		</s:submit>
+	</div>
+</div>
 </s:form>
 
 </div>

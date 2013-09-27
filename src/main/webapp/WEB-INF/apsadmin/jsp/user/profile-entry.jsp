@@ -6,8 +6,7 @@
 	<span class="panel-body display-block">
 		<a href="<s:url namespace="/do/BaseAdmin" action="settings" />"><s:text name="menu.configure" /></a>
 		&#32;/&#32;
-		<a href="<s:url namespace="do/User/" action="list" />">
-		<s:text name="title.userManagement" /></a>
+		<a href="<s:url namespace="/do/User" action="list" />"><s:text name="title.userManagement" /></a>
 		&#32;/&#32;
 		<s:text name="title.editUserProfile.currentUser" />
 	</span>
