@@ -70,7 +70,7 @@
 									<s:if test="null != #attribute.description"><s:set var="attributeLabelVar" value="#attribute.description" /></s:if>
 									<s:else><s:set var="attributeLabelVar" value="#attribute.name" /></s:else>
 
-									<div class="form-group<s:property value="controlGroupErrorClassVar" />"><!-- form group -->
+									<div class="form-group<s:property value="controlGroupErrorClassVar" />"><%-- form group --%>
 										<s:if test="#attribute.type == 'List' || #attribute.type == 'Monolist'">
 												<label class="display-block"><span class="icon icon-list"></span>&#32;<s:property value="#attributeLabelVar" />&#32;<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" /></label>
 										</s:if>
