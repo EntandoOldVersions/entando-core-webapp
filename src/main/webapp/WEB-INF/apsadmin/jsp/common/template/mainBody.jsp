@@ -176,38 +176,51 @@
 			<img src="<s:url action="avatarStream" namespace="/do/user/avatar">
 							<s:param name="gravatarSize">56</s:param>
 							<s:param name="username" value="#actionLogRecordVar.username" />
-						</s:url>" class="img-circle media-object" />
+						</s:url>" width="56" height="56" class="img-circle media-object" />
 		</div>
 
 		<div class="media-body col-xs-12 col-sm-11">
+			<s:set var="activityStreamInfoVar" value="#actionLogRecordVar.activityStreamInfo" />
+			<c:set var="authGroupNameVar"><s:property value="#activityStreamInfoVar.linkAuthGroup" /></c:set>
+			<c:set var="authPermissionNameVar"><s:property value="#activityStreamInfoVar.linkAuthPermission" /></c:set>
+			<wp:ifauthorized groupName="${authGroupNameVar}" permission="${authPermissionNameVar}" var="isAuthorizedVar" />
 
 			<div class="popover right display-block">
 				<div class="arrow"></div>
 				<div class="popover-content">
-
-				<s:if test="null != #fullnameVar && #fullnameVar.length() > 0">
-					<s:property value="#fullnameVar" />
-				</s:if>
-				<s:else>
-					<s:property value="#actionLogRecordVar.username" />
-				</s:else>
-
+				<c:choose>
+					<c:when test="${isAuthorizedVar}">
+					<a
+						href="<s:url action="view" namespace="/do/userprofile"><s:param name="username" value="#actionLogRecordVar.username"/></s:url>"
+						title="<s:text name="label.viewProfile" />: <s:property value="#actionLogRecordVar.username" />">
+							<s:if test="null != #fullnameVar && #fullnameVar.length() > 0">
+								<s:property value="#fullnameVar" />
+							</s:if>
+							<s:else>
+								<s:property value="#actionLogRecordVar.username" />
+							</s:else>
+					</a>
+					</c:when>
+					<c:otherwise>
+						<s:if test="null != #fullnameVar && #fullnameVar.length() > 0">
+							<s:property value="#fullnameVar" />
+						</s:if>
+						<s:else>
+							<s:property value="#actionLogRecordVar.username" />
+						</s:else>
+					</c:otherwise>
+				</c:choose>
 			<%--
 			&nbsp;&dash;&nbsp;x<s:property value="#emailAttributeVar" />x&nbsp;
 			--%>
 
 			&#32;&middot;&#32;
 
-			<s:set var="activityStreamInfoVar" value="#actionLogRecordVar.activityStreamInfo" />
-
 			<wpsa:activityTitle actionName="%{#actionLogRecordVar.actionName}" namespace="%{#actionLogRecordVar.namespace}" actionType="%{#activityStreamInfoVar.actionType}" />:&#32;
 
 			<%--
 			<s:text name="%{#actionLogRecordVar.namespace + '_' + #actionLogRecordVar.actionName + '_' + #activityStreamInfoVar.actionType}" />
 			--%>
-			<c:set var="authGroupNameVar"><s:property value="#activityStreamInfoVar.linkAuthGroup" /></c:set>
-			<c:set var="authPermissionNameVar"><s:property value="#activityStreamInfoVar.linkAuthPermission" /></c:set>
-			<wp:ifauthorized groupName="${authGroupNameVar}" permission="${authPermissionNameVar}" var="isAuthorizedVar" />
 
 			<s:set var="linkTitleVar" value="%{getTitle('view/edit', #activityStreamInfoVar.objectTitles)}" />
 			<c:choose>
@@ -223,32 +236,38 @@
 				</c:otherwise>
 			</c:choose>
 
-						<p class="margin-small-vertical text-info">
-							<time datetime="<s:date name="#actionLogRecordVar.actionDate" format="yyyy-MM-dd HH:mm" />" title="<s:date name="#actionLogRecordVar.actionDate" format="yyyy-MM-dd HH:mm" />">
+						<wpsa:activityStreamLikeRecords recordId="%{#actionLogRecordIdVar}" var="activityStreamLikeRecordsVar" />
+						<p class="margin-small-vertical">
+							<time datetime="<s:date name="#actionLogRecordVar.actionDate" format="yyyy-MM-dd HH:mm" />" title="<s:date name="#actionLogRecordVar.actionDate" format="yyyy-MM-dd HH:mm" />" class="text-info">
 								<s:date name="#actionLogRecordVar.actionDate" nice="true" />
 							</time>
+							<s:if test="#activityStreamLikeRecordsVar.size() > 0">&#32;&middot;&#32;<s:property value="#activityStreamLikeRecordsVar.size()" /><s:text name="label.like.number" /></s:if>
+							&#32;&middot;&#32;
+							<s:set value="%{#activityStreamLikeRecordsVar.containsUser(#currentUsernameVar)}" var="likeRecordsContainsUserVar" />
+							<s:if test="%{#likeRecordsContainsUserVar}" >
+								<a href="<s:url namespace="/do/ActivityStream" action="unlikeActivity"><s:param name="recordId" value="%{#actionLogRecordIdVar}" /></s:url>"><s:text name="label.like.unlike" /></a>
+							</s:if>
+							<s:else>
+								<a href="<s:url namespace="/do/ActivityStream" action="likeActivity"><s:param name="recordId" value="%{#actionLogRecordIdVar}" /></s:url>"><s:text name="label.like.like" /></a>
+							</s:else>
 						</p>
-						
-						<wpsa:activityStreamLikeRecords recordId="%{#actionLogRecordIdVar}" var="activityStreamLikeRecordsVar" />
-						
-						<s:set value="%{#activityStreamLikeRecordsVar.containsUser(#currentUsernameVar)}" var="likeRecordsContainsUserVar" />
-						<s:if test="%{#likeRecordsContainsUserVar}" >
-						    <a href="<s:url namespace="/do/ActivityStream" action="unlikeActivity"><s:param name="recordId" value="%{#actionLogRecordIdVar}" /></s:url>">UNLIKE</a>
-						</s:if>
-						<s:else>
-						    <a href="<s:url namespace="/do/ActivityStream" action="likeActivity"><s:param name="recordId" value="%{#actionLogRecordIdVar}" /></s:url>">LIKE</a>
-						</s:else>
-						<br />
-						SIZE <s:property value="#activityStreamLikeRecordsVar.size()" />
-						---------------------xxxxxxxxxxx------------------
-						<s:iterator value="#activityStreamLikeRecordsVar" var="activityStreamLikeRecordVar">
-						    <br />
-						    DISPLAY: <s:property value="#activityStreamLikeRecordVar.displayName" />
-						    USERNAME: <s:property value="#activityStreamLikeRecordVar.username" />
-						</s:iterator>
 
 					</div>
 				</div>
+				<s:if test="#activityStreamLikeRecordsVar.size() > 0">
+				<ul class="list-unstyled padding-base-top padding-base-bottom padding-base-left">
+				<s:iterator value="#activityStreamLikeRecordsVar" var="activityStreamLikeRecordVar">
+					<li class="margin-small-vertical">
+						<a
+							href="<s:url action="view" namespace="/do/userprofile"><s:param name="username" value="#activityStreamLikeRecordVar.username"/></s:url>"
+							title="<s:text name="label.viewProfile" />: <s:property value="#activityStreamLikeRecordVar.username" />">
+								<s:property value="#activityStreamLikeRecordVar.displayName" />
+						</a>
+						&#32;<s:text name="label.like.likesthis" />
+					</li>
+				</s:iterator>
+				</ul>
+				</s:if>
 			</div>
 		</li>
 	</s:iterator>

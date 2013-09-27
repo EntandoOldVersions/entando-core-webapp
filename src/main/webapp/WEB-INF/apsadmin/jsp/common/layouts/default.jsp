@@ -56,7 +56,7 @@
 							<c:out value="${sessionScope.currentUser}" />
 							<img src="<s:url action="avatarStream" namespace="/do/currentuser/avatar">
 							<s:param name="gravatarSize">34</s:param>
-						</s:url>" alt=" " class="img-rounded" />
+						</s:url>" width="34" height="34" alt=" " class="img-rounded" />
 						</a>
 					</div>
 					<div id="submenu-user" class="panel-collapse collapse">

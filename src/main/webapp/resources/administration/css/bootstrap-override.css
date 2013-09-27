@@ -58,12 +58,17 @@ html {
 	display: none;
 }
 
+#activity-stream ul {
+	border-bottom: 1px dashed #ccc;
+	margin-left: 20px;
+}
+
 /* Small devices (tablets, 768px and up) */
 
 @media (min-width: 768px) {
 
 	#activity-stream .arrow {
-		margin-top: -24px;
+		top: 28px;
 		display: block;
 	}
 
