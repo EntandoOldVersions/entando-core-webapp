@@ -82,7 +82,7 @@
 			</s:if>
 		</span>
 	</s:if>
-	<s:else>
-		<span class="form-control-static text-info"><s:text name="note.editContent.doThisInTheDefaultLanguage.must" />.</span>
-	</s:else>
 </div>
+<s:if test="!#lang.default">
+	<span class="display-block form-control-static text-info"><s:text name="note.editContent.doThisInTheDefaultLanguage.must" />.</span>
+</s:if>
