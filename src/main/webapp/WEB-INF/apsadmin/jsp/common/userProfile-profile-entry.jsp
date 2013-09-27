@@ -5,8 +5,8 @@
 
 <s:form>
 	<s:if test="hasFieldErrors()">
-		<div class="message message_error">
-			<h3><s:text name="message.title.FieldErrors" /></h3>
+		<div class="alert alert-danger alert-dismissable fade in">
+			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
 			<ul>
 				<s:iterator value="fieldErrors">
 					<s:iterator value="value">
@@ -19,8 +19,12 @@
 	
 	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/profile-formFields.jsp" />
 	
-	<p>
-		<wpsf:submit useTabindexAutoIncrement="true" value="%{getText('label.save')}" cssClass="button" action="save" />
-	</p>
-	
+	<div class="form-group">
+		<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+			<s:submit type="button" cssClass="btn btn-primary btn-block">
+				<s:text name="label.save" />
+			</s:submit>
+		</div>
+	</div>
+		
 </s:form>

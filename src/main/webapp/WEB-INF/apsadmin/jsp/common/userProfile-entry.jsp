@@ -3,13 +3,18 @@
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 
-<h1><s:text name="title.myProfile" /></h1>
+<h1 class="panel panel-default title-page">
+	<span class="panel-body display-block">
+		<s:text name="title.myProfile" />
+	</span>
+</h1>
 
 <div id="main">
 
 <s:if test="hasFieldErrors()">
-	<div class="message message_error">
-	<h3><s:text name="message.title.FieldErrors" /></h3>	
+	<div class="alert alert-danger alert-dismissable fade in">
+		<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+		<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h2>	
 		<ul>
 		<s:iterator value="fieldErrors">
 			<s:iterator value="value">
@@ -21,8 +26,9 @@
 </s:if>
 	
 <s:if test="hasActionErrors()">
-	<div class="message message_error">
-	<h3><s:text name="message.title.ActionErrors" /></h3>	
+	<div class="alert alert-danger alert-dismissable fade in">
+		<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+		<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>	
 		<ul>
 		<s:iterator value="actionErrors">
 			<li><s:property escape="false" /></li>
@@ -32,50 +38,55 @@
 </s:if>
 
 <s:if test="hasActionMessages()">
-<div class="message message_confirm">
-<h3><s:text name="messages.confirm" /></h3>	
-<ul>
-	<s:iterator value="actionMessages">
-		<li><s:property escape="false" /></li>
-	</s:iterator>
-</ul>
-</div>
+	<div class="alert alert-danger alert-dismissable fade in">
+		<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+		<h2 class="h4 margin-none">><s:text name="messages.confirm" /></h3>	
+		<ul>
+			<s:iterator value="actionMessages">
+				<li><s:property escape="false" /></li>
+			</s:iterator>
+		</ul>
+	</div>
 </s:if>
 
-<h2 class="margin-more-bottom"><s:text name="title.changePassword" /></h2>
 <s:form namespace="/do/CurrentUser" action="changePassword">
 
-<p class="sr-only">
-	<wpsf:hidden name="username" />
-</p>
+<div class="col-xs-12">
 
-<fieldset><legend><s:text name="label.info" /></legend>
-<p>
-	<label for="oldPassword" class="basic-mint-label"><s:text name="label.oldPassword" />:</label>
-	<wpsf:password useTabindexAutoIncrement="true" name="oldPassword" id="oldPassword" cssClass="text" />
-</p>
+	<p class="sr-only">
+		<wpsf:hidden name="username" />
+	</p>
 
-<p>
-	<label for="password" class="basic-mint-label"><s:text name="label.password" />:</label>
-	<wpsf:password useTabindexAutoIncrement="true" name="password" id="password" cssClass="text" />
-</p>
+	<div class="form-group">
+		<label for="oldPassword"><s:text name="label.oldPassword" /></label>
+		<wpsf:password name="oldPassword" id="oldPassword" cssClass="form-control" />
+	</div>
 
-<p>
-	<label for="passwordConfirm" class="basic-mint-label"><s:text name="label.passwordConfirm" />:</label>
-	<wpsf:password useTabindexAutoIncrement="true" name="passwordConfirm" id="passwordConfirm" cssClass="text" />
-</p>
+	<div class="form-group">
+		<label for="password" ><s:text name="label.password" /></label>
+		<wpsf:password name="password" id="password" cssClass="form-control" />
+	</div>
 
-<p><wpsf:submit useTabindexAutoIncrement="true" value="%{getText('label.save')}" cssClass="button" /></p>
+	<div class="form-group">
+		<label for="passwordConfirm"><s:text name="label.passwordConfirm" /></label>
+		<wpsf:password name="passwordConfirm" id="passwordConfirm" cssClass="form-control" />
+	</div>
+	
+</div>	
 
-</fieldset>
+<div class="form-group">
+	<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+		<s:submit type="button" cssClass="btn btn-primary btn-block">
+			<s:text name="label.save" />
+		</s:submit>
+	</div>
+</div>
 
 </s:form>
 
-<h2 class="margin-more-bottom"><s:text name="title.editUserProfile" /></h2>
-<fieldset>
-<legend><span><s:text name="label.info" /></span></legend>
+<div class="clearfix"></div>
+
 <s:action name="edit" namespace="/do/currentuser/profile" executeResult="true"></s:action>
-</fieldset>
 
 <wpsa:hookPoint key="core.userProfile.entry" objectName="hookPointElements_core_userProfile_entry">
 <s:iterator value="#hookPointElements_core_userProfile_entry" var="hookPointElement">

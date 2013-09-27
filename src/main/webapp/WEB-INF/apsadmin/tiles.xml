@@ -32,17 +32,17 @@
     </definition>
 
     <definition extends="layout.default" name="admin.Common.Password.entry">
-        <put-attribute name="title" value="title.myProfile" />
+        <put-attribute name="title" value="title.userManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/common/entryUserPassword.jsp" />
     </definition>
 
     <definition extends="layout.default" name="admin.Common.Password.changingConfirm">
-        <put-attribute name="title" value="title.myProfile" />
+        <put-attribute name="title" value="title.userManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/common/passwordChangingConfirm.jsp" />
     </definition>
 
     <definition extends="layout.default" name="admin.common.profile.entry">
-        <put-attribute name="title" value="title.myProfile" />
+        <put-attribute name="title" value="title.userManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/common/userProfile-entry.jsp" />
     </definition>
 
@@ -71,15 +71,15 @@
     </definition>
 
 	<definition extends="layout.settings" name="admin.UserProfile.view">
-        <put-attribute name="title" value="title.userProfileManagement" />
+        <put-attribute name="title" value="title.userManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/user/profile-view.jsp" />
     </definition>
     <definition extends="layout.settings" name="admin.UserProfile.chooseType">
-        <put-attribute name="title" value="title.userProfileManagement" />
+        <put-attribute name="title" value="title.userManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/user/profile-chooseType.jsp" />
     </definition>
     <definition extends="layout.settings" name="admin.UserProfile.entry">
-        <put-attribute name="title" value="title.userProfileManagement" />
+        <put-attribute name="title" value="title.userManagement" />
         <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/template/extraresources/profile-entry.jsp" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/user/profile-entry.jsp" />
     </definition>

@@ -4,10 +4,10 @@
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 
 <s:set name="lang" value="defaultLang" />
-
+<div class="col-xs-12 margin-large-top">
 <%-- START CICLO ATTRIBUTI --%> 
 <s:iterator value="userProfile.attributeList" var="attribute">
-	<div class="contentAttributeBox contentAttribute-<s:property value="#attribute.type" />" id="<s:property value="%{'contentedit_'+#lang.code+'_'+#attribute.name}" />">
+	<div class="form-group contentAttribute-<s:property value="#attribute.type" />" id="<s:property value="%{'contentedit_'+#lang.code+'_'+#attribute.name}" />">
 	<%-- INIZIALIZZAZIONE TRACCIATORE --%>
 	<wpsa:tracerFactory var="attributeTracer" lang="%{#lang.code}" />
 
@@ -110,4 +110,4 @@
 	</div>
 </s:iterator>
 <%-- END CICLO ATTRIBUTI --%>
-</fieldset>
+</div>

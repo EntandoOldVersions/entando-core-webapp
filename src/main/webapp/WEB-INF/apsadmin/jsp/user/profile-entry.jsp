@@ -8,7 +8,7 @@
 		&#32;/&#32;
 		<a href="<s:url namespace="/do/User" action="list" />"><s:text name="title.userManagement" /></a>
 		&#32;/&#32;
-		<s:text name="title.editUserProfile.currentUser" />
+		<s:text name="title.userProfile.edit" />
 	</span>
 </h1>
 <div id="main">
