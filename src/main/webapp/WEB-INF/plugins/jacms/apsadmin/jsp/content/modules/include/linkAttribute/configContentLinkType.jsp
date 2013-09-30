@@ -194,8 +194,7 @@
 						<label for="contentId_<s:property value="#content.id"/>"><s:property value="#content.descr" /></label></td>
 						<td class="text-center text-nowrap"><code><s:property value="#content.id" /></code></td>
 						<td>
-							<%-- //TODO: groupsMap is null?? --%>
-							<s:property value="groupsMap[#content.mainGroupCode].descr" />
+							<s:property value="%{getGroup(#content.mainGroupCode).descr}" />
 						</td>
 						<td class="text-center text-nowrap"><code><s:date name="#content.create" format="dd/MM/yyyy HH:mm" /></code></td>
 						<td class="text-center text-nowrap"><code><s:date name="#content.modify" format="dd/MM/yyyy HH:mm" /></code></td>
