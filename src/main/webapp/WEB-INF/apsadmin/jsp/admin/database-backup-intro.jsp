@@ -11,8 +11,8 @@
 </h1>
 <s:set var="subFolderNameVar" value="subFolderName" />
 <s:if test="managerStatus != 0" >
-	<div class="alert alert-warning alert-dismissable fade in">
-			<s:text name="database.management.note.dump.in.progress" /> ( <a href="<s:url namespace="/do/Admin/Database" action="entry" />"><s:text name="database.management.refresh" /></a> )
+	<div class="alert alert-info">
+			<s:text name="database.management.note.dump.in.progress" /> ( <a href="<s:url namespace="/do/Admin/Database" action="entry" />" class="alert-link"><s:text name="database.management.refresh" /></a> )
 	</div>
 </s:if>
 <s:else>
@@ -39,13 +39,13 @@
 				</dd>
 		</s:iterator>
 	</dl>
-	<div class="row">
-		<s:form action="executeBackup" namespace="/do/Admin/Database" method="get" cssClass="col-md-offset-2 col-lg-offset-2 col-md-10 col-lg-10">
+	<div class="text-center">
+		<s:form action="executeBackup" namespace="/do/Admin/Database" method="get">
 			<s:submit
 				type="button"
 				action="executeBackup"
 				value="%{getText('database.management.label.backup.execute')}"
-				cssClass="btn btn-default">
+				cssClass="btn btn-primary">
 					<span class="icon icon-ok"></span>
 					<s:text name="database.management.label.backup.execute" />
 			</s:submit>

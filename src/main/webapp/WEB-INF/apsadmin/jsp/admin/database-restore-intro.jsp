@@ -14,8 +14,8 @@
 	</span>
 </h1>
 <s:if test="managerStatus != 0" >
-	<div class="alert alert-warning alert-dismissable fade in">
-			<s:text name="database.management.note.dump.in.progress" /> ( <a href="<s:url namespace="/do/Admin/Database" action="entry" />"><s:text name="database.management.refresh" /></a> )
+	<div class="alert alert-info">
+			<s:text name="database.management.note.dump.in.progress" /> ( <a href="<s:url namespace="/do/Admin/Database" action="entry" />" class="alert-link"><s:text name="database.management.refresh" /></a> )
 	</div>
 </s:if>
 <s:else>
@@ -98,7 +98,7 @@
 			<s:form action="restoreBackup" method="get" namespace="/do/Admin/Database">
 				<p class="text-center">
 					<s:hidden name="subFolderName" value="%{subFolderName}" />
-					<s:submit type="button" cssClass="btn btn-%{#restoreCheckVar ? 'default' : 'warning'}">
+					<s:submit type="button" cssClass="btn btn-%{#restoreCheckVar ? 'success' : 'warning'}">
 							<s:text name="database.management.label.restore" />
 					</s:submit>
 				</p>

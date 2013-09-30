@@ -47,8 +47,8 @@
 	</div>
 </s:if>
 <s:if test="managerStatus != 0" >
-	<div class="alert alert-warning alert-dismissable fade in">
-			<s:text name="database.management.note.dump.in.progress" /> ( <a href="<s:url namespace="/do/Admin/Database" action="entry" />"><s:text name="database.management.refresh" /></a> )
+	<div class="alert alert-info">
+			<s:text name="database.management.note.dump.in.progress" /> ( <a href="<s:url namespace="/do/Admin/Database" action="entry" />" class="alert-link"><s:text name="database.management.refresh" /></a> )
 	</div>
 </s:if>
 <s:else>
@@ -73,20 +73,19 @@
 
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-condensed table-striped">
-				<caption><s:text name="database.management.label.components.backup" /></caption>
 				<tr>
 					<th>Component Name</th>
-					<th>Dump Date</th>
+					<th class="text-center">Dump Date</th>
 				</tr>
 				<s:iterator var="componentHistoryVar" value="#dumpReportVar.componentsHistory">
 					<tr>
-						<th>
+						<td>
 							<s:set var="labelComponentDescrVar" value="%{#componentHistoryVar.componentCode + '.name'}" />
 							<s:text name="%{#labelComponentDescrVar}" var="componentDescrVar" />
 							<s:if test="%{#componentDescrVar.equals(#labelComponentDescrVar)}"><s:property value="#componentHistoryVar.componentCode" /></s:if>
 							<s:else><s:property value="#componentDescrVar" /></s:else>
-						</th>
-						<td class="text-right">
+						</td>
+						<td class="text-center">
 							<code><s:date name="#componentHistoryVar.date" format="dd/MM/yyyy HH:mm:ss" /></code>
 						</td>
 					</tr>
@@ -183,7 +182,7 @@
 		<s:form namespace="/do/Admin/Database" method="get" cssClass="margin-more-top">
 			<p class="text-center">
 				<s:hidden name="subFolderName" value="%{#dumpReportVar.subFolderName}" />
-				<s:submit type="button" action="restoreIntro" cssClass="btn btn-default">
+				<s:submit type="button" action="restoreIntro" cssClass="btn btn-primary">
 					<s:text name="database.management.label.restore" />
 				</s:submit>
 			</p>

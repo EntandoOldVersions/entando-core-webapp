@@ -43,14 +43,14 @@
 	</div>
 </s:if>
 <s:if test="managerStatus != 0" >
-	<div class="alert alert-warning alert-dismissable fade in">
-			<s:text name="database.management.note.dump.in.progress" /> ( <a href="<s:url namespace="/do/Admin/Database" action="entry" />"><s:text name="database.management.refresh" /></a> )
+	<div class="alert alert-info">
+			<s:text name="database.management.note.dump.in.progress" /> ( <a href="<s:url namespace="/do/Admin/Database" action="entry" />" class="alert-link"><s:text name="database.management.refresh" /></a> )
 	</div>
 </s:if>
 <s:else>
 		<s:set var="dumpReportsVar" value="dumpReports" />
 		<s:if test="null == #dumpReportsVar || #dumpReportsVar.isEmpty()">
-			<p>
+			<p class="alert alert-info">
 				<s:text name="database.management.note.no.backups" />
 			</p>
 		</s:if>
@@ -60,9 +60,9 @@
 					<caption><span><s:text name="database.management.label.backup.list" /></span></caption>
 					<tr>
 						<th class="text-center"><abbr title="<s:text name="label.remove" />">&ndash;</abbr></th>
-						<th><abbr title="<s:text name="database.management.label.number" />"><s:text name="database.management.label.number.short" /></abbr></th>
-						<th><s:text name="database.management.label.date" /></th>
-						<th><s:text name="database.management.label.time.required" /></th>
+						<th class="text-right"><abbr title="<s:text name="database.management.label.number" />"><s:text name="database.management.label.number.short" /></abbr></th>
+						<th class="text-center"><s:text name="database.management.label.date" /></th>
+						<th class="text-right"><s:text name="database.management.label.time.required" /></th>
 					<tr>
 					<s:iterator var="dumpReportVar" value="#dumpReportsVar" status="status">
 						<tr>
@@ -71,19 +71,19 @@
 									title="<s:text name="database.management.label.remove" />:&#32;<s:property value="#status.count" />&#32;&ndash;&#32;<s:date name="#dumpReportVar.date" format="dd/MM/yyyy HH:mm:ss" />"
 									href="<s:url namespace="/do/Admin/Database" action="trashBackup" >
 									   <s:param name="subFolderName" value="#dumpReportVar.subFolderName" />
-								   </s:url>">
+								   </s:url>" class="btn btn-warning btn-xs">
 								   <span class="icon icon-remove-circle"></span>
 								  </a>
 							</td>
-							<td class="text-nowrap"><s:property value="#status.count" /></td>
-							<td class="text-nowrap">
+							<td class="text-nowrap text-right"><s:property value="#status.count" /></td>
+							<td class="text-nowrap text-center">
 								<a
 									title="<s:text name="database.management.label.details" />:&#32;<s:property value="#status.count" />&#32;&ndash;&#32;<s:date name="#dumpReportVar.date" format="dd/MM/yyyy HH:mm:ss" />"
 									href="<s:url namespace="/do/Admin/Database" action="entryBackupDetails" >
 								   <s:param name="subFolderName" value="#dumpReportVar.subFolderName" />
-							   		</s:url>"><s:date name="#dumpReportVar.date" format="dd/MM/yyyy HH:mm:ss" /></a>
+							   		</s:url>"><code><s:date name="#dumpReportVar.date" format="dd/MM/yyyy HH:mm:ss" /></code></a>
 							</td>
-							<td class="text-center text-nowrap">
+							<td class="text-nowrap text-right">
 								<code><s:property value="#dumpReportVar.requiredTime" /></code>&#32;<s:text name="database.management.label.milliseconds" />
 							</td>
 						</tr>
@@ -93,7 +93,7 @@
 		</s:else>
 		<form action="<s:url namespace="/do/Admin/Database" action="backupIntro" />" method="get">
 			<p class="text-center">
-				<button type="submit" class="btn btn-default">
+				<button type="submit" class="btn btn-primary">
 					<s:text name="database.management.label.backup.create" />
 				</button>
 			</p>
