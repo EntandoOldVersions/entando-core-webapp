@@ -45,7 +45,7 @@
 				</li>
 			</s:iterator>
 		</ul>
-		<div class="panel"><%-- panel --%>
+		<div class="panel panel-default" id="tab-container"><%-- panel --%>
 			<div class="panel-body"><%-- panel body --%>
 				<div class="tab-content"><%-- tabs container --%>
 					<s:iterator value="langs" var="lang" status="langStatusVar"><%-- lang iterator --%>

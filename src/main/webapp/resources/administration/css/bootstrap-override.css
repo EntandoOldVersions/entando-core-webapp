@@ -63,6 +63,12 @@ html {
 	margin-left: 20px;
 }
 
+#tab-container {
+	border-top: none;
+	-webkit-border-radius: 0px 0px 4px 4px;
+	        border-radius: 0px 0px 4px 4px;
+}
+
 /* Small devices (tablets, 768px and up) */
 
 @media (min-width: 768px) {
