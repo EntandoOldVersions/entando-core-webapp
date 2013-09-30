@@ -241,7 +241,7 @@
 							<time datetime="<s:date name="#actionLogRecordVar.actionDate" format="yyyy-MM-dd HH:mm" />" title="<s:date name="#actionLogRecordVar.actionDate" format="yyyy-MM-dd HH:mm" />" class="text-info">
 								<s:date name="#actionLogRecordVar.actionDate" nice="true" />
 							</time>
-							<s:if test="#activityStreamLikeRecordsVar.size() > 0">&#32;&middot;&#32;<s:property value="#activityStreamLikeRecordsVar.size()" /><s:text name="label.like.number" /></s:if>
+							<s:if test="#activityStreamLikeRecordsVar.size() > 0">&#32;&middot;&#32;<s:property value="#activityStreamLikeRecordsVar.size()" />&#32;<s:text name="label.like.number" /></s:if>
 							&#32;&middot;&#32;
 							<s:set value="%{#activityStreamLikeRecordsVar.containsUser(#currentUsernameVar)}" var="likeRecordsContainsUserVar" />
 							<s:if test="%{#likeRecordsContainsUserVar}" >
