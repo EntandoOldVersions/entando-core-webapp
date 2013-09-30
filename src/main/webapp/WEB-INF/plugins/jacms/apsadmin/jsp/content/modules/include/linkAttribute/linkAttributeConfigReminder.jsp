@@ -6,12 +6,12 @@
 		<s:text name="note.URLLinkTo"></s:text>: <s:property value="symbolicLink.urlDest"/>.
 	</s:if>
 	<s:if test="symbolicLink.destType == 2 || symbolicLink.destType == 4">
-		<%-- //TODO: missing the titles from getPage() are not working --%>
-		<s:text name="note.pageLinkTo"></s:text>: <s:property value="%{getPage(symbolicLink.pageDest).titles[currentLang.code]}"/>
+		<s:set var="prevTargetPageVar" value="%{getPage(symbolicLink.pageDest)}" />
+		<s:text name="note.pageLinkTo"></s:text>: <s:property value="getTitle(#prevTargetPageVar.code, #prevTargetPageVar.titles)" />
 	</s:if>
 	<s:if test="symbolicLink.destType == 3 || symbolicLink.destType == 4">
-		<%-- //TODO: getContentVo() is null? --%>
-		<s:text name="note.contentLinkTo"></s:text>: <s:property value="symbolicLink.contentDest"/> &ndash; <s:property value="%{getContentVo(symbolicLink.contentDest).descr}"/>.
+		<s:set var="prevTargetContentVoVar" value="%{getContentVo(symbolicLink.contentDest)}" />
+		<s:text name="note.contentLinkTo"></s:text>: <s:property value="symbolicLink.contentDest"/> &ndash; <s:property value="#prevTargetContentVoVar.descr"/>.
 	</s:if>
 </p>
 </s:if>
