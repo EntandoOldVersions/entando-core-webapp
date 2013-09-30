@@ -100,7 +100,7 @@
 							</s:param>
 							<s:param name="contentIdToken">
 								<s:property value="#request.contentIdToken"/>
-							</s:param>		
+							</s:param>
 							<s:param name="contentType">
 								<s:property value="#request.contentType"/>
 							</s:param>
@@ -187,7 +187,7 @@
 						</s:url>
 					"><s:text name="label.lastEdit" /></a></th>
 					</tr>
-					<s:iterator id="contentId">
+					<s:iterator var="contentId">
 						<s:set var="content" value="%{getContentVo(#contentId)}"></s:set>
 						<tr>
 						<td><input type="radio" name="contentId" id="contentId_<s:property value="#content.id"/>" value="<s:property value="#content.id"/>" />
