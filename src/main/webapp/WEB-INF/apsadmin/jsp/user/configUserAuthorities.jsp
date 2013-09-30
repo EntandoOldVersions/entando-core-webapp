@@ -20,8 +20,7 @@
 	<s:text name="note.userAuthorizations.intro" />&#32;<code><s:property value="userAuthsFormBean.username"/></code>, <s:text name="note.userAuthorizations.youCan" />&#32;<a href="#groups"><s:text name="note.userAuthorizations.configureGroups" /></a>&#32;<s:text name="label.or" />&#32;<a href="#roles"><s:text name="note.userAuthorizations.configureRoles" /></a>.
 </p>
 
-<s:form action="save" >
-<div class="col-xs-12">
+<s:form action="save" cssClass="form-horizontal">
 	<p class="sr-only">
 		<wpsf:hidden name="username" value="%{getUserAuthsFormBean().getUsername()}"/>
 	</p>
@@ -51,12 +50,14 @@
 		</div>
 	</div>
 	<div class="form-group margin-large-bottom">
-		<label for="groupName" ><s:text name="label.group" />:</label>
-		<div class="input-group">
-			<wpsf:select name="groupName" id="groupName" list="groups" listKey="name" listValue="descr" cssClass="form-control" />
-			<span class="input-group-btn">
-			<wpsf:submit action="addGroup" type="button" value="%{getText('label.add')}" title="%{getText('label.add')}" cssClass="btn btn-info"/>
-			</span>
+		<div class="col-xs-12">
+			<label for="groupName" ><s:text name="label.group" />:</label>
+			<div class="input-group">
+				<wpsf:select name="groupName" id="groupName" list="groups" listKey="name" listValue="descr" cssClass="form-control" />
+				<span class="input-group-btn">
+				<wpsf:submit action="addGroup" type="button" value="%{getText('label.add')}" title="%{getText('label.add')}" cssClass="btn btn-info"/>
+				</span>
+			</div>
 		</div>
 	</div>
 
@@ -88,15 +89,16 @@
 	</div>
 
 	<div class="form-group">
-		<label for="roleName"><s:text name="name.role" />:</label>
-		<div class="input-group">
-			<wpsf:select name="roleName" id="roleName" list="roles" listKey="name" listValue="description" cssClass="form-control" />
-			<span class="input-group-btn">
-			<wpsf:submit action="addRole" type="button" value="%{getText('label.add')}" title="%{getText('label.add')}" cssClass="btn btn-info" />
-			</span>
+		<div class="col-xs-12">
+			<label for="roleName"><s:text name="name.role" />:</label>
+			<div class="input-group">
+				<wpsf:select name="roleName" id="roleName" list="roles" listKey="name" listValue="description" cssClass="form-control" />
+				<span class="input-group-btn">
+				<wpsf:submit action="addRole" type="button" value="%{getText('label.add')}" title="%{getText('label.add')}" cssClass="btn btn-info" />
+				</span>
+			</div>
 		</div>
 	</div>
-</div>
 
 	<div class="form-group">
 		<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
