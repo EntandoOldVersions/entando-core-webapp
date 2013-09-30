@@ -7,8 +7,15 @@
 <br /><s:text name="note.lastApprovedIntro" />&#32;<a href="<s:url action="inspect" namespace="/do/jacms/Content" ><s:param name="contentId" value="content.id" /><s:param name="currentPublicVersion" value="'true'" /></s:url>"><s:text name="note.lastApproved" /></a>
 </s:if><span class="sr-only">.</span></p>
 --%>
-
-<div class="panel panel-default">
+<s:set var="attributeFieldErrorsVar" value="%{fieldErrors['descr']}" />
+<s:set var="attributeHasFieldErrorVar" value="#attributeFieldErrorsVar != null && !#attributeFieldErrorsVar.isEmpty()" />
+<s:set var="controlGroupErrorClassVar" value="' panel-default'" />
+<s:set var="inputErrorClassVar" value="''" />
+<s:if test="#attributeHasFieldErrorVar">
+	<s:set var="controlGroupErrorClassVar" value="' panel-danger'" />
+	<s:set var="inputErrorClassVar" value="' input-with-feedback'" />
+</s:if>
+<div class="panel<s:property value="#controlGroupErrorClassVar" />">
 	<div class="panel-body">
 		<s:if test="!#myNameIsJack"><a href="<s:url action="backToEntryContent" ><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>" title="<s:text name="note.content.backToEdit" />" ></s:if><s:property value="content.descrDisablingTemporarily" /><s:if test="!#myNameIsJack"></a></s:if>
 			<span id="contentDescription-text">
