@@ -21,45 +21,52 @@
 		</div>
 	</s:if>
 	<div class="form-group">
-		<label class="control-label col-lg-3 col-md-3" for="langCode"><s:text name="name.chooseALanguage" /></label>
-		<div class="input-group col-md-9 col-lg-9">
-			<select name="langCode" id="langCode" class="form-control">
-				<s:iterator id="lang" value="assignableLangs">
-				<option value="<s:property value="#lang.code"/>"><s:property value="#lang.code"/> &ndash; <s:property value="#lang.descr"/></option>
-				</s:iterator>
-			</select>
-			<div class="input-group-btn">
-				<s:submit type="button" cssClass="btn btn-primary" >
-					<s:text name="label.add" />
-				</s:submit>
+		<div class="col-xs-12">
+			<label for="langCode"><s:text name="name.chooseALanguage" /></label>
+			<div class="input-group">
+				<select name="langCode" id="langCode" class="form-control">
+					<s:iterator id="lang" value="assignableLangs">
+					<option value="<s:property value="#lang.code"/>"><s:property value="#lang.code"/> &ndash; <s:property value="#lang.descr"/></option>
+					</s:iterator>
+				</select>
+				<div class="input-group-btn">
+					<s:submit type="button" cssClass="btn btn-primary" >
+						<span class="icon icon-plus-sign-alt"></span>&#32;
+						<s:text name="label.add" />
+					</s:submit>
+				</div>
 			</div>
 		</div>
 	</div>
-	<table class="table table-bordered table-hover" summary="<s:text name="note.generalSettings.lang.summary" />">
-		<caption><span><s:text name="note.generalSettings.lang.definedLangs" /></span></caption>
+	<table class="table table-bordered table-hover margin-large-top">
 		<tr>
+			<th class="text-center"><abbr title="<s:text name="label.remove" />">&ndash;</abbr></th>
 			<th><s:text name="label.code" /></th>
 			<th><s:text name="label.description" /></th>
-			<th class="text-center"><abbr title="<s:text name="label.remove" />">&ndash;</abbr></th>
 		</tr>
 		<s:iterator id="lang" value="langs">
 		<tr>
-			<td class="monospace">
-				<s:if test="#lang.default">
-				(<em><s:text name="label.default" /></em>)
-				</s:if>
-				<s:property value="#lang.code" />
-			</td>
-			<td><s:property value="#lang.descr" /></td>
 			<td class="text-center">
-				<a 
-					class="btn btn-xs btn-warning" 
-					href="<s:url action="remove"><s:param name="langCode" value="#lang.code"/></s:url>" 
-					title="<s:text name="label.remove" />: <s:property value="#lang.descr" />"> 
+				<a
+					class="btn btn-xs btn-warning"
+					href="<s:url action="remove"><s:param name="langCode" value="#lang.code"/></s:url>"
+					title="<s:text name="label.remove" />: <s:property value="#lang.descr" />">
 					<span class="icon icon-remove-circle"></span>
 					<span class="sr-only"><s:text name="label.alt.clear" /></span>
 				</a>
 			</td>
+			<td>
+				<s:set var="labelModifier" value="'default'" />
+				<s:set var="labelTitle" value="''" />
+				<s:if test="#lang.default">
+					<s:set var="labelModifier" value="'success'" />
+					<s:set var="labelTitle">
+						title="<s:text name="label.default" />"
+					</s:set>
+				</s:if>
+				<code class="label label-<s:property value="labelModifier" />" <s:property value="labelTitle" />><s:property value="#lang.code" /></code>
+			</td>
+			<td><s:property value="#lang.descr" /></td>
 		</tr>
 		</s:iterator>
 	</table>
