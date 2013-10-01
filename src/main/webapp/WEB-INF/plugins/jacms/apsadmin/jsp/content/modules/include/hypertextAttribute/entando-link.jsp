@@ -75,18 +75,11 @@
 			var entandoApplyLinkToEditor = function (href) {
 				var editor = window.opener.entandoCKEditor[window.name];
 				var selection = editor.getSelection();
-				var ranges = selection.getRanges(true);
-				if (ranges.length == 1 && ranges[0].collapsed) {
-					var text = new CKEDITOR.dom.text('', editor.document);
-					ranges[0].insertNode(text);
-					ranges[0].selectNodeContents(text);
-					selection.selectRanges(ranges);
-				}
+				var range = selection.getRanges( 1 )[ 0 ];
 				var style = new CKEDITOR.style({"element": "a", "attributes": { "data-cke-saved-href": href, "href": href } });
-				style.type = CKEDITOR.STYLE_INLINE;	// need to override... dunno why.
-				window.opener.console.log('style', style);
-				style.apply(editor.document);
-				//style.applyToObject(editor.document);
+				style.type = CKEDITOR.STYLE_INLINE; // need to override... dunno why.
+				style.applyToRange( range );
+				range.select();
 			};
 			var insertAlert = function(text, target) {
 				$('<div class="alert alert-danger alert-dismissable fade in">'+
