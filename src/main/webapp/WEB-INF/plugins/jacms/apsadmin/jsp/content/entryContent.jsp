@@ -35,7 +35,7 @@
 			<s:hidden name="contentOnSessionMarker" />
 		</p>
 		<h2 class="sr-only" id="quickmenu"><s:text name="title.quickMenu" /></h2>
-		<ul class="nav nav-tabs tab-togglers">
+		<ul class="nav nav-tabs tab-togglers" id="tab-togglers">
 			<li class="sr-only"><a data-toggle="tab" href="#info_tab"><s:text name="title.contentInfo" /></a></li>
 			<s:iterator value="langs" var="lang" status="langStatusVar">
 				<li <s:if test="#langStatusVar.first"> class="active" </s:if>>

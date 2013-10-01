@@ -1,14 +1,34 @@
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%-- tabs --%>
 <script>
-	//tabs
 	jQuery(function(){
+		<%--
+		when the dom is ready we try to read the hash
+		and recognize what is the tab to open.
+		--%>
+		if (document.location.hash.length > 0) {
+			var tabContainer = $('#tab-container'); //tab conainer
+			var tabTogglersContainer = $('#tab-togglers'); //toggler container
+			//find the parent with class .tab-pane inside the tab container (and get its id)
+			var tabContainerId = $($(document.location.hash).parent('.tab-pane'), tabContainer).first().attr('id');
+			if (tabContainerId!==undefined) {
+				//find the element with [href][data-toggle] matching our hash
+				var toggler = $('[href="#'+ tabContainerId +'"][data-toggle="tab"]', tabTogglersContainer).first();
+				if (toggler.length==1) {
+					$(toggler).tab('show');
+				}
+			}
+		}
+		//enable the clickable togglers (as required by bootstrap)
 		$('.tab-togglers a').click(function (e) {
-		e.preventDefault()
-		$(this).tab('show')
-	});
+			e.preventDefault()
+			$(this).tab('show')
+		});
+	})
 </script>
+<%-- tabs //end --%>
 <s:include value="/WEB-INF/apsadmin/jsp/common/layouts/assets-common.jsp" />
 <script src="<wp:resourceURL />administration/js/bootstrap-swapon.js"></script>
 <s:if test="htmlEditorCode == 'fckeditor'">
