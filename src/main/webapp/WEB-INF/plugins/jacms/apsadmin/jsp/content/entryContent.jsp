@@ -24,9 +24,6 @@
 		</div>
 	</s:if>
 	<p class="sr-only"><s:text name="note.editContent" /></p>
-	<!--
-	<ul class="menu horizontal tab-toggle-bar"><li><a href="#info" id="info_tab_quickmenu" class="tab-toggle"><abbr title="<s:text name="title.contentInfo" />"><s:text name="label.general" /></abbr></a></li><s:iterator value="langs" id="lang"><li><a href="#<s:property value="#lang.code" />_tab" class="tab-toggle"><s:property value="#lang.descr" /></a></li></s:iterator></ul>
-	-->
 	<s:set var="removeIcon" id="removeIcon"><wp:resourceURL/>administration/common/img/icons/delete.png</s:set>
 	<s:form cssClass="tab-container action-form">
 		<s:set var="myNameIsJack" value="true" />

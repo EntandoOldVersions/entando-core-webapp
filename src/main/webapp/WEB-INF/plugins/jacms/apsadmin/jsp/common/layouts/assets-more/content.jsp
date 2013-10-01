@@ -12,10 +12,13 @@
 			var tabContainer = $('#tab-container'); //tab conainer
 			var tabTogglersContainer = $('#tab-togglers'); //toggler container
 			//find the parent with class .tab-pane inside the tab container (and get its id)
-			var tabContainerId = $($(document.location.hash).parent('.tab-pane'), tabContainer).first().attr('id');
-			if (tabContainerId!==undefined) {
+			var tabId = $($(document.location.hash).parent('.tab-pane'), tabContainer).first().attr('id');
+			if (tabId == undefined) {
+				var tabId = $(document.location.hash+'.tab-pane', tabContainer).first().attr('id');
+			}
+			if (tabId!==undefined) {
 				//find the element with [href][data-toggle] matching our hash
-				var toggler = $('[href="#'+ tabContainerId +'"][data-toggle="tab"]', tabTogglersContainer).first();
+				var toggler = $('[href="#'+ tabId +'"][data-toggle="tab"]', tabTogglersContainer).first();
 				if (toggler.length==1) {
 					$(toggler).tab('show');
 				}
@@ -33,6 +36,7 @@
 <script src="<wp:resourceURL />administration/js/bootstrap-swapon.js"></script>
 <s:if test="htmlEditorCode == 'fckeditor'">
 	<script type="text/javascript" src="<wp:resourceURL />administration/js/ckeditor/ckeditor.js"></script>
+	<script type="text/javascript" src="<wp:resourceURL />administration/js/ckeditor/adapters/jquery.js"></script>
 </s:if>
 <script>
 //one domready to rule 'em all
@@ -91,6 +95,12 @@ $(function() {
 //Hypertext Attribute
 <s:if test="htmlEditorCode != 'none'">
 	var textareaElements = $('[data-toggle="entando-hypertext"]');
+	textareaElements.ckeditor({
+		customConfig : '<wp:resourceURL />administration/js/ckeditor/entando-ckeditor_config.js',
+		EntandoLinkActionPath: "<s:url namespace="/do/jacms/Content/Hypertext" action="entandoInternalLink"><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>",
+		language: '<s:property value="locale" />'
+	});
+	<%--
 	$.each(textareaElements, function(index, el) {
 		<s:if test="htmlEditorCode == 'fckeditor'">
 				$(function() {
@@ -114,6 +124,7 @@ $(function() {
 				});
 			</s:elseif>
 	});
+	--%>
 </s:if>
 //End Hypertext Attribute
 }); //End domready
