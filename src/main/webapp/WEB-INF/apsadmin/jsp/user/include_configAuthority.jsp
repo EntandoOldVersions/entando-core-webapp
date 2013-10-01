@@ -99,7 +99,7 @@
 										<th class="text-center"><s:text name="label.date.registration" /></th>
 										<th class="text-center"><s:text name="label.date.lastLogin" /></th>
 										<th class="text-center"><s:text name="label.date.lastPasswordChange" /></th>
-										<th class="icon"><abbr title="<s:text name="label.state" />">S</abbr></th>	
+										<th class="text-center"><abbr title="<s:text name="label.state" />">S</abbr></th>	
 									</tr>
 									<s:iterator var="usernameVar">
 										<s:set var="userVar" value="%{getUser(#usernameVar)}" />
@@ -160,7 +160,7 @@
 														<s:else><abbr title="<s:text name="label.none" />">&ndash;</abbr></s:else>
 													</code>
 											</td>
-											<td class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+											<td class="text-center col-xs-1 col-sm-1 col-md-1 col-lg-1">
 												<span 
 													class="icon <s:property value="#statusIconImagePath" />"
 													title="<s:property value="#statusIconText" />"

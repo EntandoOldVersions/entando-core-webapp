@@ -43,6 +43,7 @@
 
     <definition extends="layout.default" name="admin.common.profile.entry">
         <put-attribute name="title" value="title.userManagement" />
+        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/template/extraresources/profile-entry.jsp" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/common/userProfile-entry.jsp" />
     </definition>
 

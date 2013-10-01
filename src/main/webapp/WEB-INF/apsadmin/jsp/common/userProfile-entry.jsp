@@ -49,7 +49,7 @@
 	</div>
 </s:if>
 
-<s:form namespace="/do/CurrentUser" action="changePassword">
+<s:form namespace="/do/CurrentUser" action="changePassword" cssClass="form-horizontal">
 
 <div class="col-xs-12">
 
@@ -58,17 +58,17 @@
 	</p>
 
 	<div class="form-group">
-		<label for="oldPassword"><s:text name="label.oldPassword" /></label>
+		<label for="oldPassword"><s:text name="label.oldPassword" />&#32;<span class="icon-li icon-asterisk text-muted" title="<s:text name="Entity.attribute.flag.mandatory.full" />"></span></label>
 		<wpsf:password name="oldPassword" id="oldPassword" cssClass="form-control" />
 	</div>
 
 	<div class="form-group">
-		<label for="password" ><s:text name="label.password" /></label>
+		<label for="password" ><s:text name="label.password" />&#32;<span class="icon-li icon-asterisk text-muted" title="<s:text name="Entity.attribute.flag.mandatory.full" />"></span></label>
 		<wpsf:password name="password" id="password" cssClass="form-control" />
 	</div>
 
 	<div class="form-group">
-		<label for="passwordConfirm"><s:text name="label.passwordConfirm" /></label>
+		<label for="passwordConfirm"><s:text name="label.passwordConfirm" />&#32;<span class="icon-li icon-asterisk text-muted" title="<s:text name="Entity.attribute.flag.mandatory.full" />"></span></label>
 		<wpsf:password name="passwordConfirm" id="passwordConfirm" cssClass="form-control" />
 	</div>
 	

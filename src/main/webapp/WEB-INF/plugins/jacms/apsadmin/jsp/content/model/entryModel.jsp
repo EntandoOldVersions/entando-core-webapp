@@ -18,7 +18,7 @@
 
 <div id="main">        
 
-<s:form action="save" namespace="/do/jacms/ContentModel" >
+<s:form action="save" namespace="/do/jacms/ContentModel" cssClass="form-horizontal" >
 <s:if test="hasFieldErrors()">
 	<div class="alert alert-danger alert-dismissable">
 		<button type="button" class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
@@ -32,31 +32,32 @@
 	</s:if>
 </p>
 
-<div class="col-xs-12">
-	
-	<div class="panel panel-default">
-		<div class="panel-body">
-			<div class="form-group<s:if test="strutsAction == 1 && null == contentType"> has-warning</s:if>">
-				<label for="contentType" class="control-label"><s:text name="contentModel.type" /></label>
-				<div class="input-group">
-				<s:select id="contentType" list="smallContentTypes" name="contentType" 
-					listKey="code" listValue="descr" cssClass="form-control" />
-					<span class="input-group-btn">
-					<s:if test="strutsAction == 1 && null == contentType">
-						<s:submit type="button" action="lockContentType" cssClass="btn btn-warning" value="%{getText('label.set')}"/>
-					</s:if>
-					<s:else>
-						<s:submit type="button" action="lockContentType" cssClass="btn btn-info" value="%{getText('label.change')}"/>						
-					</s:else>
-					</span>
-				</div>
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="form-group<s:if test="strutsAction == 1 && null == contentType"> has-warning</s:if>">
+		<div class="col-xs-12">
+			<label for="contentType" class="control-label"><s:text name="contentModel.type" /></label>
+			<div class="input-group">
+			<s:select id="contentType" list="smallContentTypes" name="contentType" 
+				listKey="code" listValue="descr" cssClass="form-control" />
+				<span class="input-group-btn">
 				<s:if test="strutsAction == 1 && null == contentType">
-				<span class="help-block"><span class="icon icon-info-sign"></span>&#32;<s:text name="note.contentModel.assist.intro" /></span>
+					<s:submit type="button" action="lockContentType" cssClass="btn btn-warning" value="%{getText('label.set')}"/>
 				</s:if>
+				<s:else>
+					<s:submit type="button" action="lockContentType" cssClass="btn btn-info" value="%{getText('label.change')}"/>						
+				</s:else>
+				</span>
 			</div>
+			<s:if test="strutsAction == 1 && null == contentType">
+			<span class="help-block"><span class="icon icon-info-sign"></span>&#32;<s:text name="note.contentModel.assist.intro" /></span>
+			</s:if>
+		</div>
 		</div>
 	</div>
-	<div class="form-group<s:property value="controlGroupErrorClassVar" />">
+</div>
+<div class="form-group<s:property value="controlGroupErrorClassVar" />">
+	<div class="col-xs-12">
 		<s:set var="modelIdFieldErrorsVar" value="%{fieldErrors['modelId']}" />
 		<s:set var="modelIdHasFieldErrorVar" value="#modelIdFieldErrorsVar!= null && !#modelIdFieldErrorsVar.isEmpty()" />
 		<s:set var="controlGroupErrorClassVar" value="%{#modelIdHasFieldErrorVar ? ' has-error' : ''}" />
@@ -65,8 +66,10 @@
 		<s:if test="#modelIdHasFieldErrorVar">
 		  <p class="text-danger padding-small-vertical"><s:iterator value="#modelIdFieldErrorsVar"><s:property /> </s:iterator></p>
 		</s:if>
-	</div>
-	<div class="form-group<s:property value="controlGroupErrorClassVar" />">
+	</div>	
+</div>
+<div class="form-group<s:property value="controlGroupErrorClassVar" />">
+	<div class="col-xs-12">
 		<s:set var="descriptionFieldErrorsVar" value="%{fieldErrors['description']}" />
 		<s:set var="descriptionHasFieldErrors" value="#descriptionFieldErrorsVar!= null && !#descriptionFieldErrorsVar.isEmpty()" />
 		<s:set var="controlGroupErrorClassVar" value="%{#descriptionHasFieldErrors ? ' has-error' : ''}" />
@@ -76,7 +79,9 @@
 		  <p class="text-danger padding-small-vertical"><s:iterator value="#descriptionFieldErrorsVar"><s:property /> </s:iterator></p>
 		</s:if>
 	</div>
-	<div class="form-group<s:property value="controlGroupErrorClassVar" />">
+</div>
+<div class="form-group<s:property value="controlGroupErrorClassVar" />">
+	<div class="col-xs-12">
 		<s:set var="contentShapeFieldErrorsVar" value="%{fieldErrors['contentShape']}" />
 		<s:set var="contentShapeHasFieldErrorVar" value="#contentShapeFieldErrorsVar != null && !#contentShapeFieldErrorsVar.isEmpty()" />
 		<label for="contentShape"><s:text name="contentModel.label.shape" /></label>
@@ -93,7 +98,9 @@
 		  <p class="text-danger padding-small-vertical"><s:iterator value="#contentShapeFieldErrorsVar"><s:property /> </s:iterator></p>
 		</s:if>
 	</div>
-	<div class="form-group">
+</div>
+<div class="form-group">
+	<div class="col-xs-12">
 		<label for="newModel_stylesheet"><s:text name="contentModel.label.stylesheet" /></label>
 		<s:textfield name="stylesheet" id="newModel_stylesheet" cssClass="form-control" />
 	</div>

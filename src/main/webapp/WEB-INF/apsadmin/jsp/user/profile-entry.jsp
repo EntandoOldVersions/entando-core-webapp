@@ -147,8 +147,10 @@
 			<s:iterator value="userProfile.attributeList" var="attribute">
 				<%-- tracer start --%>
 				<wpsa:tracerFactory var="attributeTracer" lang="%{#lang.code}" />
+
 				<s:if test="null != #attribute.description"><s:set var="attributeLabelVar" value="#attribute.description" /></s:if>
 				<s:else><s:set var="attributeLabelVar" value="#attribute.name" /></s:else>
+				
 				<s:set var="attributeFieldErrorsVar" value="%{fieldErrors[#attributeTracer.getFormFieldName(#attribute)]}" />
 				<s:set var="attributeHasFieldErrorVar" value="#attributeFieldErrorsVar != null && !#attributeFieldErrorsVar.isEmpty()" />
 				<s:set var="controlGroupErrorClassVar" value="%{''}" />

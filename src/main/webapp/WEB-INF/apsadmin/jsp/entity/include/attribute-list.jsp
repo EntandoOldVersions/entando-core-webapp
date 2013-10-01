@@ -26,10 +26,11 @@
 		<span class="icon icon-edit"></span>
 		<span class="sr-only"><s:text name="label.edit" />: <s:property value="#attribute.name" /></span>
 		</wpsf:submit>
-	
-		<s:set name="elementIndex" value="#elementStatus.index" />
-		<s:include value="/WEB-INF/apsadmin/jsp/entity/include/attribute-operations-misc.jsp" />
 	</div>
+	
+	<s:set name="elementIndex" value="#elementStatus.index" />
+	<s:include value="/WEB-INF/apsadmin/jsp/entity/include/attribute-operations-misc.jsp" />
+	
 	</td>
 	<td class="text-right"><code><s:property value="#attribute.name" /></code></td>
 	<td>
@@ -50,18 +51,18 @@
 	
 	<td class="text-center">
 		<s:if test="#attribute.required">
-			<span class="icon icon-ok" title="<s:text name="label.yes" />"></span>
+			<span class="icon icon-check" title="<s:text name="label.yes" />"></span>
 		</s:if> 
 		<s:else>
-			<span class="icon icon-minus" title="<s:text name="label.no" />"></span>
+			<span class="icon icon-check-empty" title="<s:text name="label.no" />"></span>
 		</s:else>
 	</td>
 	<td class="text-center">
 		<s:if test="#attribute.searcheable">
-			<span class="icon icon-ok" title="<s:text name="label.yes" />"></span>
+			<span class="icon icon-check" title="<s:text name="label.yes" />"></span>
 		</s:if> 
 		<s:else>
-			<span class="icon icon-minus" title="<s:text name="label.no" />"></span>
+			<span class="icon icon-check-empty" title="<s:text name="label.no" />"></span>
 		</s:else>
 	</td>
 </tr>

@@ -314,7 +314,7 @@
 		<s:if test="%{#contentIdsVar.size() > 0}">
 
 		<div class="table-responsive">
-			<table class="table table-bordered" id="contentListTable" summary="<s:text name="note.content.contentList.summary" />">
+			<table class="table table-bordered" id="contentListTable">
 			<caption class="sr-only"><s:text name="title.contentList" /></caption>
 			<tr>
 				<th class="text-center padding-large-left padding-large-right"><abbr title="<s:text name="label.actions" />">&ndash;</abbr></th>
