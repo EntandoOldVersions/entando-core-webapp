@@ -94,37 +94,11 @@ $(function() {
 
 //Hypertext Attribute
 <s:if test="htmlEditorCode != 'none'">
-	var textareaElements = $('[data-toggle="entando-hypertext"]');
-	textareaElements.ckeditor({
+	$('[data-toggle="entando-hypertext"]').ckeditor({
 		customConfig : '<wp:resourceURL />administration/js/ckeditor/entando-ckeditor_config.js',
 		EntandoLinkActionPath: "<s:url namespace="/do/jacms/Content/Hypertext" action="entandoInternalLink"><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>",
 		language: '<s:property value="locale" />'
 	});
-	<%--
-	$.each(textareaElements, function(index, el) {
-		<s:if test="htmlEditorCode == 'fckeditor'">
-				$(function() {
-					var ofckeditor = CKEDITOR.replace(el.id, {
-						customConfig : '<wp:resourceURL />administration/js/ckeditor/entando-ckeditor_config.js',
-						EntandoLinkActionPath: "<s:url namespace="/do/jacms/Content/Hypertext" action="entandoInternalLink"><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>",
-						language: '<s:property value="locale" />'
-					});
-				});
-			</s:if>
-			<s:elseif test="htmlEditorCode == 'hoofed'">
-				$(function() {
-						var ohoofed = new HoofEd({
-						basePath: '<wp:resourceURL />administration/js/moo-japs/hoofed',
-						lang: '<s:property value="currentLang.code" />',
-						textareaID: el.id,
-						buttons: [ 'bold', 'italic', 'list', 'nlist', 'link', 'paragraph' ],
-						toolPosition: "after",
-						toolElement: "span"
-					});
-				});
-			</s:elseif>
-	});
-	--%>
 </s:if>
 //End Hypertext Attribute
 }); //End domready
