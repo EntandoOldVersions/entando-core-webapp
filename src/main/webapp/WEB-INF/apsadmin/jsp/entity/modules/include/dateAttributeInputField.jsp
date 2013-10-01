@@ -6,7 +6,8 @@
 <s:else>
 	<s:set name="dateAttributeValue" value="#attribute.failedDateString"></s:set>
 </s:else>
-<wpsf:textfield id="%{#currentDateAttributeName}" 
-		name="%{#currentDateAttributeName}" value="%{#dateAttributeValue}" 
+<wpsf:textfield id="%{#currentDateAttributeName}"
+		name="%{#currentDateAttributeName}" value="%{#dateAttributeValue}"
 		maxlength="254" cssClass="form-control datepicker" />
+<%-- //TODO: create label for dd/MM/yyyy --%>
 <span class="help help-block">dd/MM/yyyy</span>
