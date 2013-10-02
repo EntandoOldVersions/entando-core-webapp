@@ -2,7 +2,7 @@
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <s:set var="thirdTitleVar">
-	<s:text name="title.configureLinkAttribute" />&#32;(<s:text name="title.step1of2" />)
+	<s:text name="title.configureLinkAttribute" />
 </s:set>
 <s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/linkAttribute/linkAttributeConfigIntro.jsp" />
 <s:form action="configLink" cssClass="action-form">
@@ -59,8 +59,8 @@
 	<div class="form-group">
 		<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 			<s:submit type="button" title="%{getText('label.continue')}" cssClass="btn btn-primary btn-block">
-				<span class="icon  icon-long-arrow-right"></span>&#32;
-				<s:text name="label.continue" />
+				<s:text name="label.continue" />&#32;
+				<span class="icon icon-long-arrow-right"></span>
 			</s:submit>
 		</div>
 	</div>

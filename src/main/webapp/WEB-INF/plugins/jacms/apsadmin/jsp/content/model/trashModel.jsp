@@ -15,15 +15,19 @@
 	<p class="sr-only">	
 		<s:hidden name="modelId"/>
 	</p>
-	<div class="panel panel-default">
-	<span class="panel-body display-block">
-		<a href="<s:url action="list" namespace="/do/jacms/ContentModel"/>" 
-		title="<s:text name="note.goToSomewhere" />: <s:text name="title.contentModels" />"><span class="icon icon-reply"></span></a>
-
-		<s:text name="note.deleteContentModel.areYouSure" />:&#32;<code><s:property value="modelId" /></code>&#32;<s:property value="description" /> (<s:property value="%{getSmallContentType(getContentModel(modelId).contentType).descr}" />)? 
-		<div class="text-center margin-small-top">
-		<s:submit action="delete" value="%{getText('label.remove')}" cssClass="btn btn-default" />
-		</div>
-	</span>
+	<div class="alert alert-warning">
+		<p>
+			<s:text name="note.deleteContentModel.areYouSure" />:&#32;
+			
+			<code><s:property value="modelId" /></code>&#32;
+			<span class="text-strong text-info"><s:property value="description" /></span>
+			?
+		<a class="pull-right text-info" href="<s:url action="list" namespace="/do/jacms/ContentModel"/>" 
+			title="<s:text name="note.goToSomewhere" />: <s:text name="title.contentModels" />"><span class="icon icon-remove"></span></a>
+			
+		</p>
+	</div>
+	<div class="text-center margin-large-top">
+	<s:submit action="delete" value="%{getText('label.remove')}" cssClass="btn btn-primary" />
 	</div>
 </s:form>

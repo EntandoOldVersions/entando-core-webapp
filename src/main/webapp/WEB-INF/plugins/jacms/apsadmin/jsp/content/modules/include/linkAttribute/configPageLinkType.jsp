@@ -3,7 +3,7 @@
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <s:set var="thirdTitleVar">
-	<s:text name="title.configureLinkAttribute" />&#32;(<s:text name="title.step2of2" />)
+	<s:text name="title.configureLinkAttribute" />
 </s:set>
 <s:include value="linkAttributeConfigIntro.jsp"/>
 <s:form>
@@ -66,7 +66,7 @@
 	<div class="form-group">
 		<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 			<s:submit type="button" action="joinPageLink" cssClass="btn btn-primary btn-block">
-				<span class="icon  icon-save"></span>&#32;
+				<span class="icon icon-save"></span>&#32;
 				<s:text name="label.confirm" />
 			</s:submit>
 		</div>

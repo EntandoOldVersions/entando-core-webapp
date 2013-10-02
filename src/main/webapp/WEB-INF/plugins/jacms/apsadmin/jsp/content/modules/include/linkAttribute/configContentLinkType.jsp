@@ -3,7 +3,7 @@
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <s:set var="thirdTitleVar">
-	<s:text name="title.configureLinkAttribute" />&#32;(<s:text name="title.step2of2" />)
+	<s:text name="title.configureLinkAttribute" />
 </s:set>
 <s:include value="linkAttributeConfigIntro.jsp" />
 <s:include value="linkAttributeConfigReminder.jsp"/>

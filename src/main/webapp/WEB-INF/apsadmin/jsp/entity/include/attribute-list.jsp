@@ -8,7 +8,7 @@
 <table class="table table-bordered">
 <tr>
 	<th class="text-center text-nowrap"><abbr title="<s:text name="label.actions" />">&ndash;</abbr></th>
-	<th class="text-right"><s:text name="label.code" /></th>
+	<th><s:text name="label.code" /></th>
 	<th><s:text name="label.type" /></th>
 	<th><s:text name="name.roles" /></th>
 	<th class="text-center text-nowrap" class="text-center text-nowrap"><abbr title="<s:text name="Entity.attribute.flag.mandatory.full" />"><s:text name="Entity.attribute.flag.mandatory.short" /></abbr></th>
@@ -32,7 +32,7 @@
 	<s:include value="/WEB-INF/apsadmin/jsp/entity/include/attribute-operations-misc.jsp" />
 	
 	</td>
-	<td class="text-right"><code><s:property value="#attribute.name" /></code></td>
+	<td><code><s:property value="#attribute.name" /></code></td>
 	<td>
 	<s:property value="#attribute.type" />
 	<s:if test="#attribute.type == 'Monolist' || #attribute.type == 'List'">: <s:property value="#attribute.nestedAttributeTypeCode" /></s:if>

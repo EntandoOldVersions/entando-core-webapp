@@ -11,7 +11,7 @@
 
 <div class="panel panel-default">
 	<div class="panel-body">
-		<s:text name="note.entityTypes.intro.2" />
+		<s:text name="%{'note.' + entityManagerName + '.intro.2'}" />
 	</div>
 </div>
 
@@ -40,7 +40,7 @@
 	<tr>
 		<th class="text-center padding-large-left padding-large-right col-xs-4 col-sm-3 col-md-2 col-lg-2"><abbr title="<s:text name="label.actions" />">&ndash;</abbr></th>
 		<th class="text-center"><abbr title="<s:text name="label.state" />">S</abbr></th>
-		<th class="text-center"><s:text name="label.code" /></th>
+		<th><s:text name="label.code" /></th>
 		<th><s:text name="label.description" /></th>
 	</tr> 
 
@@ -96,7 +96,7 @@
 			</span>			
 		</s:elseif>
 		</td>
-		<td class="text-center text-nowrap">
+		<td>
 			<code><s:property value="#entityType.typeCode" /></code>
 		</td>
 		<td><s:property value="#entityType.typeDescr" /></td>
@@ -106,7 +106,9 @@
 </div>
 </s:if>
 <s:else>
-	<p><s:text name="note.entityTypes.modelList.empty" /></p> 
+	<p>
+		<s:text name="%{'note.' + entityManagerName + '.empty'}" />
+	</p> 
 </s:else>
 
 <s:include value="/WEB-INF/apsadmin/jsp/entity/include/entity-type-references-operations-reload.jsp" />

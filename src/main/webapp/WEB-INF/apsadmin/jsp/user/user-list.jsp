@@ -297,7 +297,7 @@
 												<%-- edit profile --%>
 												<a
 													href="<s:property value="#editUserProfileActionVar" escapeHtml="false" />"
-													title="<s:text name="label.editProfile" />:&#32;<s:property value="#userProfileVar.getValue(#userProfileVar.firstNameAttributeName)"/>&#32;<s:property value="#userProfileVar.getValue(#userProfileVar.surnameAttributeName)"/>">
+													title="<s:text name="label.editProfile" />: <s:property value="#usernameVar" />">
 														<span class="icon-fixed-width icon icon-user"></span>&#32;
 														<s:text name="label.editProfile" />: <s:property value="#usernameVar" />
 												</a>
@@ -310,7 +310,7 @@
 													href="<s:property value="#viewUserProfileActionVar" escapeHtml="false" />"
 													title="<s:text name="label.viewProfile" />: <s:property value="#usernameVar" />">
 														<span class="icon-fixed-width icon icon-info"></span>&#32;
-														<s:text name="label.viewProfile" />
+														<s:text name="label.viewProfile" />: <s:property value="#usernameVar" />
 												</a>
 											</li>
 										</s:if>

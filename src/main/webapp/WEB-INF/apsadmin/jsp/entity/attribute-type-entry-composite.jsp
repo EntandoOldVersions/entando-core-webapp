@@ -20,7 +20,7 @@
 </h1>
 <div id="main">
 
-<s:form action="saveCompositeAttribute">
+<s:form action="saveCompositeAttribute" cssClass="form-horizontal">
 
 <s:if test="hasFieldErrors()">
 	<div class="alert alert-danger alert-dismissable">
@@ -46,13 +46,16 @@
 
 <fieldset class="margin-more-top"><legend><s:text name="label.info" /></legend>
 	<div class="form-group">
-		<label for="compositeAttribute.type"><s:text name="label.type" />:</label>
-		<wpsf:textfield cssClass="form-control" id="compositeAttribute.type" name="compositeAttribute.type" value="%{#compositeAttribute.type}" disabled="true" />
+		<div class="col-xs-12">
+			<label for="compositeAttribute.type"><s:text name="label.type" />:</label>
+			<wpsf:textfield cssClass="form-control" id="compositeAttribute.type" name="compositeAttribute.type" value="%{#compositeAttribute.type}" disabled="true" />
+		</div>
 	</div>
 </fieldset>
 
 <fieldset><legend><s:text name="label.attributes" /></legend>
 	<div class="form-group">
+	<div class="col-xs-12">
 		<label for="attributeTypeCode"><s:text name="label.type" />:</label>
 	
 		<div class="input-group">
@@ -61,6 +64,7 @@
 				<s:submit type="button" value="%{getText('label.add')}" action="addAttributeElement" cssClass="btn btn-default" />
 			</span>
 		</div>
+	</div>
 	</div>
 
 <s:if test="#compositeAttribute.attributes.size > 0">
@@ -94,9 +98,14 @@
 </s:if>
 </fieldset>
 
-<p class="centerText">
-	<wpsf:submit useTabindexAutoIncrement="true" value="%{getText('label.save')}" action="saveCompositeAttribute" cssClass="button" />
-</p>
+<div class="form-group">
+  <div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+    <s:submit type="button" cssClass="btn btn-primary btn-block" action="saveCompositeAttribute" >
+      <span class="icon icon-save"></span>&#32;
+      <s:text name="label.save" />
+    </s:submit>
+  </div>
+</div>
 
 </s:form>
 </div>

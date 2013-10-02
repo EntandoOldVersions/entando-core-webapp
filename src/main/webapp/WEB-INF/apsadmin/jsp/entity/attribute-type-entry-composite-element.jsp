@@ -5,25 +5,23 @@
 	<span class="panel-body display-block">
 		<a href="<s:url action="initViewEntityTypes" namespace="/do/Entity"><s:param name="entityManagerName"><s:property value="entityManagerName" /></s:param></s:url>" title="<s:text name="note.goToSomewhere" />: <s:text name="title.entityAdmin.manager" />&#32;<s:property value="entityManagerName" />">
 		<s:text name="%{'title.' + entityManagerName + '.management'}" />
-		</a>
+		</a>&#32;|&#32;
+		<a href="<s:url action="initEditEntityType" namespace="/do/Entity"><s:param name="entityManagerName"><s:property value="entityManagerName" /></s:param><s:param name="entityTypeCode"><s:property value="entityType.typeCode" /></s:param></s:url>" title="<s:text name="note.goToSomewhere" />: <s:text name="title.entityTypes.editType.edit" />"><s:text name="title.entityTypes.editType.edit" />: <code><s:property value="entityType.typeCode" /> - <s:property value="entityType.typeDescr" /></code></a>
 	</span>
 </h1>
 
 <div id="main">
 
-
-<h3><a href="<s:url action="initEditEntityType" namespace="/do/Entity"><s:param name="entityManagerName"><s:property value="entityManagerName" /></s:param><s:param name="entityTypeCode"><s:property value="entityType.typeCode" /></s:param></s:url>" title="<s:text name="note.goToSomewhere" />: <s:text name="title.entityTypes.editType.edit" />"><s:text name="title.entityTypes.editType.edit" />: <span class="monospace"><s:property value="entityType.typeCode" /> - <s:property value="entityType.typeDescr" /></span></a></h3>
-
 <s:set name="listAttribute" value="listAttribute" />
 <s:set name="compositeAttribute" value="compositeAttributeOnEdit" />
 <p><s:text name="note.workingOnAttribute" />:&#32;
-<s:if test="null != #listAttribute"><span class="monospace"><s:property value="#compositeAttribute.type" /></span>,&#32;<s:text name="note.workingOnAttributeIn" />&#32;<span class="monospace"><s:property value="#listAttribute.name" /> (<s:property value="#listAttribute.type" />)</span></s:if>
-<s:else><span class="monospace"><s:property value="#compositeAttribute.name" /></span></s:else>
+<s:if test="null != #listAttribute"><code><s:property value="#compositeAttribute.type" /></code>,&#32;<s:text name="note.workingOnAttributeIn" />&#32;<code><s:property value="#listAttribute.name" /> (<s:property value="#listAttribute.type" />)</code></s:if>
+<s:else><code><s:property value="#compositeAttribute.name" /></code></s:else>
 </p>
 
 <s:set name="attribute" value="getAttributePrototype(attributeTypeCode)" />
 
-<s:form action="saveAttributeElement">
+<s:form action="saveAttributeElement" cssClass="form-horizontal">
 
 <s:if test="hasFieldErrors()">
 	<div class="message message_error">	
@@ -39,31 +37,32 @@
 </s:if>	
 
 <p class="sr-only">
-	<wpsf:hidden name="attributeTypeCode" />
-	<wpsf:hidden name="strutsAction" />
+	<s:hidden name="attributeTypeCode" />
+	<s:hidden name="strutsAction" />
 </p>
-
-<fieldset class="margin-more-top"><legend><s:text name="label.info" /></legend>
-	<p>
-		<label for="attributeType" class="basic-mint-label"><s:text name="label.type" />:</label>
-		<wpsf:textfield useTabindexAutoIncrement="true" cssClass="text" id="attributeType" name="attributeType" value="%{attributeTypeCode}" disabled="true" />
-	</p>
-	<p>
-		<label for="attributeName" class="basic-mint-label"><s:text name="label.code" />:</label>
-		<wpsf:textfield useTabindexAutoIncrement="true" name="attributeName" id="attributeName" cssClass="text"/> 
-	</p>
-	<p>
-		<label for="attributeDescription" class="basic-mint-label"><s:text name="label.description" />:</label>
-		<wpsf:textfield useTabindexAutoIncrement="true" name="attributeDescription" id="attributeDescription" cssClass="text"/> 
-	</p>
-	<p>
-		<wpsf:checkbox useTabindexAutoIncrement="true" name="required" id="required" cssClass="radiocheck"/>&#32;<label for="required"><s:text name="Entity.attribute.flag.mandatory.full" /></label>
-	</p>
+<fieldset class="col-xs-12"><legend><s:text name="label.info" /></legend>
+	<div class="form-group">
+		<label for="attributeType"><s:text name="label.type" /></label>
+		<wpsf:textfield  cssClass="form-control" id="attributeType" name="attributeType" value="%{attributeTypeCode}" disabled="true" />
+	</div>
+	<div class="form-group">
+		<label for="attributeName"><s:text name="label.code" /></label>
+		<wpsf:textfield name="attributeName" id="attributeName" cssClass="form-control"/> 
+	</div>
+	<div class="form-group">
+		<label for="attributeDescription"><s:text name="label.description" /></label>
+		<wpsf:textfield name="attributeDescription" id="attributeDescription" cssClass="form-control"/> 
+	</div>
+	<ul>
+	<li class="checkbox">
+		<label for="required"><s:text name="Entity.attribute.flag.mandatory.full" /><wpsf:checkbox name="required" id="required"/></label>
+	</li>
 	<s:if test="isEntityManagerSearchEngineUser() && isIndexableOptionSupported(attributeTypeCode)">
-	<p>
-		<wpsf:checkbox useTabindexAutoIncrement="true" name="indexable" id="indexable" cssClass="radiocheck"/>&#32;<label for="indexable"><s:text name="Entity.attribute.flag.indexed.full" /></label>
-	</p>
+	<li class="checkbox">
+		<label for="indexable"><s:text name="Entity.attribute.flag.indexed.full" /><wpsf:checkbox name="indexable" id="indexable"/></label>
+	</li>
 	</s:if>
+	</ul>
 </fieldset>
 
 <s:if test="#attribute.textAttribute">
@@ -80,9 +79,14 @@
 
 <s:include value="/WEB-INF/apsadmin/jsp/entity/include/validation-rules-ognl.jsp" />
 
-<p class="centerText">
-	<wpsf:submit useTabindexAutoIncrement="true" value="%{getText('label.save')}" cssClass="button" />
-</p>
+<div class="form-group">
+  <div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+    <s:submit type="button" cssClass="btn btn-primary btn-block" action="saveEntityType" >
+      <span class="icon icon-save"></span>&#32;
+      <s:text name="label.save" />
+    </s:submit>
+  </div>
+</div>
 
 </s:form>
 </div>

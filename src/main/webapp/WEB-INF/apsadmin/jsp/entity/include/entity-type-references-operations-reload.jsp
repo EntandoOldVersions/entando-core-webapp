@@ -8,7 +8,7 @@
 <div class="alert alert-info">
 	<h3 class="margin-none" id="fagiano_startReloadReferences"><s:text name="title.entityAdmin.entityTypes.references" /></h3>
 	
-		<s:text name="note.entityAdmin.entityTypes.references" />
+		<s:text name="%{'note.entityAdmin.' + entityManagerName + '.references'}" />
 
 		<s:set var="entityTypesReferencesStatusOk" value="%{false}" />
 		<s:iterator value="#entityPrototypes" var="entityTypeTest"><s:if test="getEntityManagerStatus(entityManagerName, #entityTypeTest.typeCode) > 0"><s:set var="entityTypesReferencesStatusOk" value="%{true}" /></s:if></s:iterator>
