@@ -20,14 +20,16 @@
 			<s:text name="note.deleteContentModel.areYouSure" />:&#32;
 			
 			<code><s:property value="modelId" /></code>&#32;
-			<span class="text-strong text-info"><s:property value="description" /></span>
+			<span><s:property value="description" /></span>
 			?
-		<a class="pull-right text-info" href="<s:url action="list" namespace="/do/jacms/ContentModel"/>" 
-			title="<s:text name="note.goToSomewhere" />: <s:text name="title.contentModels" />"><span class="icon icon-remove"></span></a>
-			
 		</p>
-	</div>
 	<div class="text-center margin-large-top">
-	<s:submit action="delete" value="%{getText('label.remove')}" cssClass="btn btn-primary" />
+	<s:submit type="button" action="delete" cssClass="btn btn-warning btn-lg">
+		<span class="icon icon-remove-sign"></span>&#32;
+		<s:text name="label.remove" />
+	</s:submit>
+	<a class="btn btn-link" href="<s:url action="list" namespace="/do/jacms/ContentModel"/>" ><s:text name="note.goToSomewhere" />: <s:text name="title.contentModels" /></a>
+	
+	</div>
 	</div>
 </s:form>
