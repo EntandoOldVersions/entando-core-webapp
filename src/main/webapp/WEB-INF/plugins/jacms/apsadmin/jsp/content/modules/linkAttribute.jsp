@@ -3,7 +3,7 @@
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 <span class="sr-only"><s:text name="note.linkContent" /></span>
-<div class="input-group <s:if test="#attributeTracer.monoListElement||#attributeTracer.compositeElement"> margin-small-top </s:if>">
+<div class="input-group<s:if test="#attributeTracer.monoListElement||#attributeTracer.compositeElement"> margin-small-top</s:if>">
 	<s:if test="#attribute.symbolicLink != null">
 		<s:if test="#attribute.symbolicLink.destType == 2 || #attribute.symbolicLink.destType == 4">
 			<s:set var="linkedPage" value="%{getPage(#attribute.symbolicLink.pageDest)}" />
@@ -61,7 +61,7 @@
 			<wpsa:actionSubParam name="elementIndex" value="%{#elementIndex}" />
 			<wpsa:actionSubParam name="langCode" value="%{#lang.code}" />
 		</wpsa:actionParam>
-		<span class="input-group-btn">
+		<s:if test="#attribute.symbolicLink != null || ((#attributeTracer.monoListElement) || (#attributeTracer.compositeElement))"><span class="input-group-btn"></s:if>
 			<s:submit cssClass="btn btn-default" type="button" action="%{#chooseLinkActionName}" title="%{#attribute.name + ': ' + getText('label.configure')}">
 				<span class="icon icon-link"></span>&#32;
 				<span class="sr-only"><s:property value="#attribute.name" />:</span>
@@ -80,7 +80,7 @@
 						<span class="sr-only"><s:text name="label.remove" /></span>
 					</s:submit>
 			</s:if>
-		</span>
+		<s:if test="#attribute.symbolicLink != null || ((#attributeTracer.monoListElement) || (#attributeTracer.compositeElement))"></span></s:if>
 	</s:if>
 </div>
 <s:if test="!#lang.default">

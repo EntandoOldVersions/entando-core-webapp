@@ -35,7 +35,7 @@
 				</s:else>
 			</div>
 			<div class="clearfix"></div>
-			<div class="row panel-body"><%-- row panel-body --%>
+			<div class="panel-body"><%-- row panel-body --%>
 				<s:if test="#attribute.type == 'Boolean'">
 					<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/booleanAttribute.jsp" />
 				</s:if>

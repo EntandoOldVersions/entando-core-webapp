@@ -7,11 +7,12 @@
 		</a>
 		&#32;/&#32;
 		<s:if test="#thirdTitleVar==null">
-			<s:text name="title.contentEditing" />
+			<s:text name="label.edit" />
 		</s:if>
 		<s:else>
-			<%--//TODO: we need a back to content link here --%>
-			<s:text name="title.contentEditing" />
+			<a href="<s:url action="backToEntryContent" ><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>">
+			<s:text name="label.edit" />
+			</a>
 			&#32;/&#32;
 			<s:property value="#thirdTitleVar" escapeXml="false" escapeHtml="false" />
 		</s:else>

@@ -204,7 +204,7 @@
 				</s:if>
 				<s:else>
 					<a href="<s:property value="URLuse" escape="false" />"
-						 class="btn btn-primary"
+						 class="btn btn-default"
 						 title="<s:text name="note.joinThisToThat" />:	<s:property value="content.descr" />" >
 						<span class="icon icon-picture"></span>&#32;
 						<s:text name="label.use"/>
