@@ -190,7 +190,13 @@
 									listValue="descr"
 									cssClass="form-control" />
 								<span class="input-group-btn">
-									<s:submit action="joinGroup" value="%{getText('label.join')}" cssClass="btn btn-warning" />
+									<s:submit
+										type="button"
+										action="joinGroup"
+										cssClass="btn btn-default">
+											<span class="icon icon-plus"></span>&#32;
+											<s:text name="label.join" />
+									</s:submit>
 								</span>
 							</div>
 						</div>
