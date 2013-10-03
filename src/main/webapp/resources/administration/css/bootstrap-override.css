@@ -69,6 +69,11 @@ html {
 	        border-radius: 0px 0px 4px 4px;
 }
 
+fieldset.col-xs-12 {
+	padding-left: 0;
+	padding-right: 0;
+}
+
 /* Small devices (tablets, 768px and up) */
 
 @media (min-width: 768px) {
