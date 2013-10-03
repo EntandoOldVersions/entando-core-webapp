@@ -147,12 +147,14 @@
 		</s:iterator>
 	</wpsa:hookPoint>
 
-  <div class="form-group">
-    <div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-      <s:submit type="button" cssClass="btn btn-primary btn-block">
-        <s:text name="label.save" />
-      </s:submit>
-    </div>
-  </div>
+	<div class="form-horizontal">
+		<div class="form-group">
+			<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+				<s:submit type="button" cssClass="btn btn-primary btn-block">
+					<s:text name="label.save" />
+				</s:submit>
+			</div>
+		</div>
+	</div>
 
 </s:form>
