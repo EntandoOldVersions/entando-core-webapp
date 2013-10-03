@@ -136,11 +136,11 @@
 					<%-- content here --%>
 						<h1 class="panel panel-default title-page">
 							<span class="panel-body display-block">
-								<s:text name="title.contentManagement" />
+								<s:text name="jacms.menu.contentAdmin" />
 								&#32;/&#32;
-								<s:text name="title.contentEditing" />
+								<s:text name="label.edit" />
 								&#32;/&#32;
-								<s:text name="note.chooseLinkType" />
+								<s:text name="title.link" />
 							</span>
 						</h1>
 						<ul class="nav nav-tabs tab-togglers" id="tab-togglers">
