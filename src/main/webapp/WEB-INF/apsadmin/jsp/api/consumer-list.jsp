@@ -31,11 +31,11 @@
 
 	<s:form action="search" cssClass="form-horizontal">
 		<div class="form-group">
-			<label for="search_consumer_description" class="sr-only"><s:text name="label.search.by"/>&#32;<s:text name="label.consumer.description"/></label>
 			<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<span class="input-group-addon">
 					<span class="icon icon-file-text-alt icon-large" title="<s:text name="label.search.by"/>&#32;<s:text name="label.consumer.description"/>"></span>
 				</span>
+				<label for="search_consumer_description" class="sr-only"><s:text name="label.search.by"/>&#32;<s:text name="label.consumer.description"/></label>
 				<s:textfield name="text" id="search_consumer_description" cssClass="form-control input-lg" placeholder="%{getText('label.description')}" title="%{getText('label.search.by')} %{getText('label.consumer.description')}" />
 				<span class="input-group-btn">
 					<s:submit type="button" cssClass="btn btn-primary btn-lg" title="%{getText('label.search')}">

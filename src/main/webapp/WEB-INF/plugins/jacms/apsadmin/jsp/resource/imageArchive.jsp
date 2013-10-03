@@ -43,11 +43,11 @@
 		<s:hidden name="contentOnSessionMarker" />
 	</p>
 	<div class="form-group">
-		<label for="text" class="sr-only"><s:text name="label.search.by"/>&#32;<s:text name="label.description"/></label>
 		<div class="input-group col-sm-12">
 			<span class="input-group-addon">
 				<span class="icon icon-file-text-alt icon-large"></span>
 			</span>
+			<label for="text" class="sr-only"><s:text name="label.search.by"/>&#32;<s:text name="label.description"/></label>
 			<s:textfield name="text" id="text" cssClass="form-control input-lg" placeholder="%{getText('label.description')}" title="%{getText('label.search.by')} %{getText('label.description')}" />
 			<div class="input-group-btn">
 				<s:submit type="button" cssClass="btn btn-primary btn-lg" title="%{getText('label.search')}">

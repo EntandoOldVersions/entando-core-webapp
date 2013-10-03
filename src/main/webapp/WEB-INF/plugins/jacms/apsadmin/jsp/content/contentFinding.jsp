@@ -18,11 +18,11 @@
 			</p>
 
 			<div class="form-group">
-				<label for="text" class="sr-only"><s:text name="label.search.by"/>&#32;<s:text name="label.description"/></label>
 				<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					<span class="input-group-addon">
 						<span class="icon icon-file-text-alt icon-large" title="<s:text name="label.search.by"/>&#32;<s:text name="label.description"/>"></span>
 					</span>
+					<label for="text" class="sr-only"><s:text name="label.search.by"/>&#32;<s:text name="label.description"/></label>
 					<s:textfield name="text" id="text" cssClass="form-control input-lg" placeholder="%{getText('label.description')}" title="%{getText('label.search.by')} %{getText('label.description')}" />
 					<span class="input-group-btn">
 						<wpsa:actionParam action="search" var="searchActionName" >

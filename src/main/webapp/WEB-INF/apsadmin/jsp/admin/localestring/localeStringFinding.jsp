@@ -24,10 +24,10 @@
 		</s:if>
 		<div class="form-group">
 			<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
-					<label class="sr-only" for="text"><s:text name="label.search.by" />&#32;<s:text name="label.text" /></label>
 					<span class="input-group-addon" title="<s:text name="label.search.by" />&#32;<s:text name="label.text" />">
 						<span class="icon icon-file-text-alt icon-large"></span>
 					</span>
+					<label class="sr-only" for="text"><s:text name="label.search.by" />&#32;<s:text name="label.text" /></label>
 					<s:textfield name="text" id="text" cssClass="form-control input-lg" title="%{getText('label.search.by') +' '+ getText('label.text')}" placeholder="%{getText('label.search.by') +' '+ getText('label.text')}" />
 					<span class="input-group-btn">
 						<s:submit type="button" title="%{getText('label.search')}" cssClass="btn btn-primary btn-lg">

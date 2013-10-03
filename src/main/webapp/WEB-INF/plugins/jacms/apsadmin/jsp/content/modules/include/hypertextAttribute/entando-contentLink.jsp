@@ -13,10 +13,10 @@
 		</p>
 		<div class="form-group">
 			<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<label class="sr-only" for="text"><s:text name="label.search.by" />&#32;<s:text name="label.description" /></label>
 				<span class="input-group-addon" title="<s:text name="label.search.by" />&#32;<s:text name="label.description" />">
 					<span class="icon icon-file-text-alt icon-large"></span>
 				</span>
+				<label class="sr-only" for="text"><s:text name="label.search.by" />&#32;<s:text name="label.description" /></label>
 				<wpsf:textfield name="text" id="text" cssClass="form-control input-lg" placeholder="%{getText('label.description')}" title="%{getText('label.search.by')+' '+getText('label.description')}" />
 				<span class="input-group-btn">
 					<s:submit type="button" title="%{getText('label.search')}" cssClass="btn btn-primary btn-lg">

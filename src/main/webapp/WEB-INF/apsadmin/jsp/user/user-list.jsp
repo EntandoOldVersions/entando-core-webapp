@@ -23,11 +23,11 @@
 		</div>
 	</s:if>
 	<div class="form-group">
-		<label for="search-username" class="sr-only"><s:text name="label.search.by"/>&#32;<s:text name="label.username"/></label>
 		<div class="input-group col-sm-12 col-md-12">
 			<span class="input-group-addon">
 				<span class="icon icon-file-text-alt icon-large" title="<s:text name="label.search.by"/>&#32;<s:text name="label.username"/>"></span>
 			</span>
+			<label for="search-username" class="sr-only"><s:text name="label.search.by"/>&#32;<s:text name="label.username"/></label>
 			<s:textfield
 				name="text"
 				id="text"
