@@ -1,27 +1,33 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="jacmswpsa" uri="/jacms-apsadmin-core" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
-<%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
-<%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="jacmswpsa" uri="/jacms-apsadmin-core" %>
-
-<s:set var="targetNS" value="%{'/do/jacms/Content'}" />
-<h1><s:text name="jacms.menu.contentAdmin" /><s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></h1>
-
-<div id="main">
+<%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
+<h1 class="panel panel-default title-page">
+	<span class="panel-body display-block">
+		<a href="<s:url action="list" namespace="/do/jacms/Content"/>">
+			<s:text name="jacms.menu.contentAdmin" />
+		</a>&#32;/&#32;
+		<s:text name="title.inspection" />&#32;
+		<s:if test="currentPublicVersion"><s:text name="name.version.onLine" /></s:if>
+		<s:else><s:text name="name.version.work" /></s:else>
+	</span>
+</h1>
+<div id="main"><%-- #main --%>
 
 <h2><s:text name="title.inspection" />&#32;<s:if test="currentPublicVersion"><s:text name="name.version.onLine" /></s:if><s:else><s:text name="name.version.work" /></s:else></h2>
 
-<s:if test="content == null">
+<s:if test="content == null"><%-- content is null --%>
 	<div class="message message_error">
-		<h3><s:text name="title.error" /></h3>	
+		<h3><s:text name="title.error" /></h3>
 		<p>
 			<s:text name="message.noContentToInspect.found" />
 		</p>
 	</div>
-</s:if>
-<s:else>
-	<p><s:text name="note.workingOn" />:&#32;<em class="important"><s:property value="content.descr"/></em> (<s:property value="content.typeDescr"/>)</p>  
+</s:if><%-- content is null --%>
+<s:else><%-- content not null --%>
+	<p><s:text name="note.workingOn" />:&#32;<em class="important"><s:property value="content.descr"/></em> (<s:property value="content.typeDescr"/>)</p>
 	<h3 class="sr-only"><s:text name="title.quickMenu" /></h3>
 	<ul class="sr-only">
 		<li><a href="#jpcontentinspection_metadata"><abbr title="<s:text name="metadata.full" />"><s:text name="metadata" /></abbr></a></li>
@@ -31,9 +37,9 @@
 		<li><a href="#jpcontentinspection_contents"><s:text name="title.content" /></a></li>
 		<li><a href="#jpcontentinspection_referencing_pages"><s:text name="title.referencingPages" /></a></li>
 	</ul>
-	
+
 	<p class="sr-only" id="jpcontentinspection_metadata"><s:text name="title.metadata" /></p>
-	
+
 	<dl class="dl-horizontal">
 		<dt><s:text name="label.key" /></dt>
 			<dd><s:property value="content.id" /></dd>
@@ -50,7 +56,7 @@
 		<dt><s:text name="label.mainGroup" /></dt>
 			<dd><s:property value="content.mainGroup" /></dd>
 	</dl>
-	
+
 <fieldset><legend><s:text name="label.info" /></legend>
 	<p><span class="important"><s:text name="label.viewgroups" /></span></p>
 	<s:if test="!content.groups.empty">
@@ -66,7 +72,7 @@
 	<s:else>
 		<p><s:text name="note.noViewGroups"/></p>
 	</s:else>
-	
+
 	<p><span class="important"><s:text name="label.categories" /></span></p>
 	<s:if test="!content.categories.empty">
 		<ul class="noBullet">
@@ -82,7 +88,7 @@
 
 <fieldset><legend><s:text name="title.references" /></legend>
 	<p class="important" id="jpcontentinspection_referral_contents"><s:text name="title.referencedContents" /></p>
-	
+
 	<s:set var="referencedContentsIdVar" value="referencedContentsId" ></s:set>
 	<s:if test="!#referencedContentsIdVar.empty">
 		<ul class="noBullet">
@@ -95,7 +101,7 @@
 					</s:if>
 					<s:else>
 						<s:property value="#curReferencedContent.descr" />&#32;(<s:property value="#curReferencedContent.id" />)
-					</s:else>			
+					</s:else>
 				</li>
 			</s:iterator>
 		</ul>
@@ -103,11 +109,11 @@
 	<s:else>
 		<p><s:text name="label.none" /></p>
 	</s:else>
-	
+
 	<p class="important" id="jpcontentinspection_pages"><s:text name="title.referencedPages" /></p>
-	
+
 	<s:set var="referencedPagesVar" value="referencedPages" ></s:set>
-	
+
 	<s:if test="!#referencedPagesVar.empty">
 		<ul class="noBullet">
 			<s:iterator var="curReferencedPage" value="#referencedPagesVar">
@@ -129,15 +135,15 @@
 	<s:else>
 		<p><s:text name="label.none" /></p>
 	</s:else>
-	
+
 </fieldset>
 
 <fieldset><legend><s:text name="title.referencesExternal" /></legend>
-	
+
 	<p class="important" id="jpcontentinspection_referring_conts"><s:text name="title.referencingContents" /></p>
-	
+
 	<s:set var="referencingContentsIdVar" value="referencingContentsId" ></s:set>
-	
+
 	<s:if test="!#referencingContentsIdVar.empty">
 		<ul class="noBullet">
 			<s:iterator var="curReferencingContentId" value="#referencingContentsIdVar">
@@ -157,11 +163,11 @@
 	<s:else>
 		<p><s:text name="label.none" /></p>
 	</s:else>
-	
+
 	<p class="important" id="jpcontentinspection_referencing_pages"><s:text name="title.referencingPages" /></p>
-	
+
 	<s:set var="referencingPagesVar" value="referencingPages" ></s:set>
-	
+
 	<s:if test="!#referencingPagesVar.empty">
 		<ul class="noBullet">
 			<s:iterator var="curReferencingPage" value="#referencingPagesVar">
@@ -183,100 +189,85 @@
 	<s:else>
 		<p><s:text name="label.none" /></p>
 	</s:else>
-	
+
 </fieldset>
 
-	<p class="sr-only" id="jpcontentinspection_contents"><s:text name="title.content" /></p>
-	<ul class="menu horizontal tab-toggle-bar">
-		<s:iterator var="curLang" value="langs">
-			<li><a href="#<s:property value="#curLang.code"/>_tab" class="tab-toggle"><s:property value="#curLang.descr"/></a></li>
-		</s:iterator>
-	</ul>
-	
-	<div class="tab-container">
-		<%-- START CICLO LINGUA --%>
-		
-		<s:iterator var="lang" value="langs">
-			<div id="<s:property value="#lang.code" />_tab" class="tab">
-				<h3 class="js_sr-only"><s:property value="#lang.descr" /> (<a class="backLink" href="#quickmenu" id="<s:property value="#lang.code" />_tab_quickmenu">Torna al menù di scelta rapida delle sezioni del contenuto</a>)</h3>
-				
-				<s:iterator value="content.attributeList" var="attribute">
-					<div class="contentAttributeBox contentAttribute-<s:property value="#attribute.type" />">
-						<div class="contentAttributeBox-inspection">
-		
-							<%-- INIZIALIZZAZIONE TRACCIATORE --%>
-							<s:set name="attributeTracer" value="initAttributeTracer(#attribute, #lang)" />
-							 
-							<h4 class="jpcontentinspection_entitytitle"><s:property value="#attribute.name" /></h4>
-							
-							<s:if test="#attribute.type == 'Monotext' || #attribute.type == 'Text' || #attribute.type == 'Longtext' || #attribute.type == 'Enumerator'">
-								<%-- ############# ATTRIBUTO TESTO MONOLINGUA ############# --%>
-								<p>
-									<s:include value="/WEB-INF/apsadmin/jsp/entity/view/textAttribute.jsp" />
-								</p>
-							</s:if>
-							
-							<s:if test="#attribute.type == 'Hypertext'">
-								<%-- ############# ATTRIBUTO TESTO MONOLINGUA ############# --%>
-								<s:include value="/WEB-INF/apsadmin/jsp/entity/view/hypertextAttribute.jsp" />
-							</s:if>			
-							
-							<s:elseif test="#attribute.type == 'Boolean' || #attribute.type == 'CheckBox'">
-								<%-- ############# ATTRIBUTO Boolean ############# --%>
-								<s:include value="/WEB-INF/apsadmin/jsp/entity/view/checkBoxAttribute.jsp" />
-							</s:elseif>
-								
-							<s:elseif test="#attribute.type == 'ThreeState'">
-								<%-- ############# ATTRIBUTO ThreeState ############# --%>
-								<s:include value="/WEB-INF/apsadmin/jsp/entity/view/threeStateAttribute.jsp" />
-							</s:elseif>
-							
-							<s:elseif test="#attribute.type == 'Date'">
-								<%-- ############# ATTRIBUTO Date ############# --%>
-								<p><s:include value="/WEB-INF/apsadmin/jsp/entity/view/dateAttribute.jsp" /></p>
-							</s:elseif>
-							
-							<s:elseif test="#attribute.type == 'Number'">
-								<%-- ############# ATTRIBUTO Number ############# --%>
-								<p><s:include value="/WEB-INF/apsadmin/jsp/entity/view/numberAttribute.jsp" /></p>
-							</s:elseif>
-							
-							<s:elseif test="#attribute.type == 'Link'">
-							<%-- ############# ATTRIBUTO Link ############# --%>
-							<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/view/linkAttribute.jsp" />
-							</s:elseif>
-							
-							<s:elseif test="#attribute.type == 'Image'">
-								<%-- ############# ATTRIBUTO Image ############# --%>
-								<p><s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/view/imageAttribute.jsp" /></p>
-							</s:elseif>
-							
-							<s:elseif test="#attribute.type == 'Attach'">
-								<%-- ############# ATTRIBUTO Attach ############# --%>
-								<p><s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/view/attachAttribute.jsp" /></p>
-							</s:elseif>
-							
-							<s:elseif test="#attribute.type == 'Composite'">
-								<%-- ############# ATTRIBUTO Composite ############# --%>
-								<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/view/compositeAttribute.jsp" />
-							</s:elseif>
-							
-							<s:elseif test="#attribute.type == 'Monolist'">
-								<%-- ############# ATTRIBUTO Monolist ############# --%>
-								<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/view/monolistAttribute.jsp" />
-							</s:elseif>
-							
-							<s:elseif test="#attribute.type == 'List'">
-								<%-- ############# ATTRIBUTO Monolist ############# --%>
-								<s:include value="/WEB-INF/apsadmin/jsp/entity/view/listAttribute.jsp" />
-							</s:elseif>
-							
-						</div>
-					</div>
-				</s:iterator>
-				
-			</div> 
-		</s:iterator>
-	</div>
-</s:else>
-</div>
+	<div class="tab-container"><%-- tab container --%>
+		<p class="sr-only" id="jpcontentinspection_contents"><s:text name="title.content" /></p>
+		<ul class="nav nav-tabs tab-togglers" id="tab-togglers">
+			<s:iterator value="langs" var="lang" status="langStatusVar">
+				<li <s:if test="#langStatusVar.first"> class="active" </s:if>>
+					<a data-toggle="tab" href="#<s:property value="#lang.code" />_tab">
+						<s:property value="#lang.descr" />
+					</a>
+				</li>
+			</s:iterator>
+		</ul>
+
+			<div class="panel panel-default" id="tab-container"><%-- panel --%>
+				<div class="panel-body"><%-- panel body --%>
+					<div class="tab-content"><%-- tabs content --%>
+						<s:iterator var="lang" value="langs" status="langStatusVar"><%-- lang iterator --%>
+							<div id="<s:property value="#lang.code" />_tab" class="tab-pane <s:if test="#langStatusVar.first"> active </s:if>"><%-- tab --%>
+								<h3 class="sr-only"><s:property value="#lang.descr" /> (<a class="backLink" href="#quickmenu" id="<s:property value="#lang.code" />_tab_quickmenu"><s:text name="note.goBackToQuickMenu" /></a>)</h3>
+								<s:iterator value="content.attributeList" var="attribute"><%-- content.attributeList iterator --%>
+									<div class="form-group"><%-- form-group --%>
+										<s:set name="attributeTracer" value="initAttributeTracer(#attribute, #lang)" />
+										<s:if test="null != #attribute.description"><s:set var="attributeLabelVar" value="#attribute.description" /></s:if>
+									<s:else><s:set var="attributeLabelVar" value="#attribute.name" /></s:else>
+										<label><s:property value="#attributeLabelVar" /></label>
+									 	<div class="input-group"><%--input-group --%>
+											<s:if test="#attribute.type == 'Monotext' || #attribute.type == 'Text' || #attribute.type == 'Longtext' || #attribute.type == 'Enumerator'">
+												<p>
+													<s:include value="/WEB-INF/apsadmin/jsp/entity/view/textAttribute.jsp" />
+												</p>
+											</s:if>
+											<s:elseif test="#attribute.type == 'Attach'">
+												<p><s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/view/attachAttribute.jsp" /></p>
+											</s:elseif>
+											<s:elseif test="#attribute.type == 'Boolean' || #attribute.type == 'CheckBox'">
+												<s:include value="/WEB-INF/apsadmin/jsp/entity/view/checkBoxAttribute.jsp" />
+											</s:elseif>
+											<s:elseif test="#attribute.type == 'Date'">
+												<p><s:include value="/WEB-INF/apsadmin/jsp/entity/view/dateAttribute.jsp" /></p>
+											</s:elseif>
+											<s:elseif test="#attribute.type == 'Hypertext'">
+												<s:include value="/WEB-INF/apsadmin/jsp/entity/view/hypertextAttribute.jsp" />
+											</s:elseif>
+											<s:elseif test="#attribute.type == 'Image'">
+												<p><s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/view/imageAttribute.jsp" /></p>
+											</s:elseif>
+											<s:elseif test="#attribute.type == 'Link'">
+												<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/view/linkAttribute.jsp" />
+											</s:elseif>
+											<s:elseif test="#attribute.type == 'Number'">
+												<p><s:include value="/WEB-INF/apsadmin/jsp/entity/view/numberAttribute.jsp" /></p>
+											</s:elseif>
+											<s:elseif test="#attribute.type == 'ThreeState'">
+												<s:include value="/WEB-INF/apsadmin/jsp/entity/view/threeStateAttribute.jsp" />
+											</s:elseif>
+											<s:elseif test="#attribute.type == 'Timestamp'">
+												<s:include value="/WEB-INF/apsadmin/jsp/entity/view/timestampAttribute.jsp" />
+											</s:elseif>
+
+											<s:elseif test="#attribute.type == 'Composite'">
+												<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/view/compositeAttribute.jsp" />
+											</s:elseif>
+											<s:elseif test="#attribute.type == 'List'">
+												<s:include value="/WEB-INF/apsadmin/jsp/entity/view/listAttribute.jsp" />
+											</s:elseif>
+											<s:elseif test="#attribute.type == 'Monolist'">
+												<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/view/monolistAttribute.jsp" />
+											</s:elseif>
+										</div><%--input-group --%>
+									</div><%-- form-group --%>
+									<hr />
+								</s:iterator><%-- content.attributeList iterator --%>
+							</div><%-- tab --%>
+						</s:iterator><%-- lang iterator --%>
+					</div><%-- tabs content --%>
+				</div><%-- panel body --%>
+		</div><%-- panel --%>
+	</div><%-- tabs container --%>
+	</s:else><%-- content is not null --%>
+</div><%-- #main --%>

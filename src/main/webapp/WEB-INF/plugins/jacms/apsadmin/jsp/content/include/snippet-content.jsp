@@ -21,7 +21,7 @@
 			<span id="contentDescription-text">
 				<a data-container="contentDescription-text" href="#contentDescription-input" data-swapon="contentDescription-input" class="text-warning" id="contentDescription-readonly"><span class="icon icon-edit"></span>&#32;
 						<%/* FIXME: substitute the value of contentDescriptionVar with something... */%>
-						<s:set var="contentDescriptionVar" value="contentDescription" />
+						<s:set var="contentDescriptionVar" value="%{descr}" />
 						<s:set var="contentDescriptionVar" value="%{''}" />
 						<s:property value="#contentDescriptionVar" />
 						<span data-swapon-role="text"><s:if test="#contentDescriptionVar"><s:property value="#contentDescriptionVar" /></s:if><s:else>Provide a description</s:else></span></a><span class="text-warning" <s:if test="#contentDescriptionVar"> style="display: none;" </s:if> >, or I will use the title as a default.</span>
@@ -30,7 +30,7 @@
 			</span>
 
 			<div id="contentDescription-input" style="display: none;" class="input-group has-warning">
-				<input class="form-control" type="text" name="contentDescription" value="<s:property value="#contentDescriptionVar" />" id="contentDescription" />
+				<input class="form-control" type="text" name="descr" value="<s:property value="#contentDescriptionVar" />" id="contentDescription" />
 				<span class="input-group-btn">
 					<button class="btn btn-warning" id="contentDescription-confirm" data-swapon="contentDescription-text" data-container="contentDescription-input" value="Set Description" >Set Description</button>
 				</span>
