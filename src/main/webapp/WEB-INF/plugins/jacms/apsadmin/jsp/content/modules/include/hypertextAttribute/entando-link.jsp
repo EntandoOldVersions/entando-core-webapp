@@ -154,15 +154,17 @@
 									<%-- link to url --%>
 										<div id="url-link" class="tab-pane">
 											<form id="form_externalUrl">
-												<div class="form-group">
-													<label class="display-block" for="txtName">
-														<s:text name="label.url" />
-													</label>
-													<input type="hidden" name="contentOnSessionMarker" value="<s:property value="contentOnSessionMarker" />" />
-													<s:textfield id="txtName" name="txtName" maxlength="255" cssClass="form-control" />
-													<span class="help help-block">
-														<s:text name="note.typeValidURL" />
-													</span>
+												<div class="col-xs-12">
+													<div class="form-group">
+														<label class="display-block" for="txtName">
+															<s:text name="label.url" />
+														</label>
+														<input type="hidden" name="contentOnSessionMarker" value="<s:property value="contentOnSessionMarker" />" />
+														<s:textfield id="txtName" name="txtName" maxlength="255" cssClass="form-control" />
+														<span class="help help-block">
+															<s:text name="note.typeValidURL" />
+														</span>
+													</div>
 												</div>
 												<div class="form-group">
 													<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
@@ -176,7 +178,6 @@
 										</div>
 									<%-- link to page --%>
 										<s:action name="entandoPageLink" executeResult="true" />
-
 									<%-- link to content --%>
 										<s:if test="#request.activeTab == 2 && null != #request.internalActionName">
 											<s:set var="introContentLinkActionName" value="#request.internalActionName" />
@@ -185,11 +186,9 @@
 											<s:set var="introContentLinkActionName" value="%{'entandoIntroContentLink'}" />
 										</s:else>
 										<s:action name="%{#introContentLinkActionName}" executeResult="true" />
-
 								</div><%-- panel body --%>
 							</div><%-- tabs container --%>
 						</div><%-- panel --%>
-
 					<%-- content here --%>
 				</div><%-- container-content --%>
 				<div class="clearfix"></div>

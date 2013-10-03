@@ -60,82 +60,92 @@
 		</div>
 	</s:form>
 	<s:form action="entandoInternalLink" >
-		<p class="sr-only">
-			<wpsf:hidden name="text" />
-			<wpsf:hidden name="contentType" />
-			<wpsf:hidden name="state" />
-			<wpsf:hidden name="categoryCode" />
-			<wpsf:hidden name="viewTypeDescr" />
-			<wpsf:hidden name="viewGroup" />
-			<wpsf:hidden name="viewCode" />
-			<wpsf:hidden name="viewStatus" />
-			<wpsf:hidden name="viewCreationDate" />
-			<wpsf:hidden name="lastGroupBy" />
-			<wpsf:hidden name="lastOrder" />
-			<wpsf:hidden name="contentIdToken" />
-			<wpsf:hidden name="activeTab" value="2" />
-			<wpsf:hidden name="internalActionName" value="entandoSearch" />
-			<wpsf:hidden name="contentOnSessionMarker" />
-		</p>
-		<wpsa:subset source="contents" count="10" objectName="groupContent" advanced="true" offset="5">
-			<s:set name="group" value="#groupContent" />
-			<div class="pager">
-				<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
-				<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
-			</div>
-			<s:if test="%{getContents().size() > 0}">
-				<table class="table table-bordered" id="contentListTable">
-					<caption class="sr-only"><s:text name="title.contentList" /></caption>
-					<tr>
-						<th><a href="<s:url action="entandoInternalLink" includeParams="all" >
-							<s:param name="activeTab">2</s:param>
-							<s:param name="lastGroupBy"><s:property value="lastGroupBy"/></s:param>
-							<s:param name="lastOrder"><s:property value="lastOrder"/></s:param>
-							<s:param name="groupBy">descr</s:param>
-							<s:param name="internalActionName">entandoChangeOrder</s:param>
-						</s:url>#divContentLink"><s:text name="label.description" /></a></th>
-						<th class="text-center"><a href="<s:url action="entandoInternalLink" includeParams="all" >
-							<s:param name="activeTab">2</s:param>
-							<s:param name="lastGroupBy"><s:property value="lastGroupBy"/></s:param>
-							<s:param name="lastOrder"><s:property value="lastOrder"/></s:param>
-							<s:param name="groupBy">code</s:param>
-							<s:param name="internalActionName">entandoChangeOrder</s:param>
-						</s:url>#divContentLink"><s:text name="label.code" /></a></th>
-						<th class="text-center"><s:text name="label.creationDate" /></th>
-						<th class="text-center"><s:text name="label.lastEdit" /></th>
-					</tr>
-					<s:iterator var="contentId">
-						<s:set name="content" value="%{getContentVo(#contentId)}" />
+		<div class="col-xs-12">
+			<p class="sr-only">
+				<wpsf:hidden name="text" />
+				<wpsf:hidden name="contentType" />
+				<wpsf:hidden name="state" />
+				<wpsf:hidden name="categoryCode" />
+				<wpsf:hidden name="viewTypeDescr" />
+				<wpsf:hidden name="viewGroup" />
+				<wpsf:hidden name="viewCode" />
+				<wpsf:hidden name="viewStatus" />
+				<wpsf:hidden name="viewCreationDate" />
+				<wpsf:hidden name="lastGroupBy" />
+				<wpsf:hidden name="lastOrder" />
+				<wpsf:hidden name="contentIdToken" />
+				<wpsf:hidden name="activeTab" value="2" />
+				<wpsf:hidden name="internalActionName" value="entandoSearch" />
+				<wpsf:hidden name="contentOnSessionMarker" />
+			</p>
+			<wpsa:subset source="contents" count="10" objectName="groupContent" advanced="true" offset="5">
+				<s:set name="group" value="#groupContent" />
+				<div class="pager">
+					<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
+					<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
+				</div>
+				<s:if test="%{getContents().size() > 0}">
+					<table class="table table-bordered" id="contentListTable">
+						<caption class="sr-only"><s:text name="title.contentList" /></caption>
 						<tr>
-							<td>
-								<label for="contentId_<s:property value="#content.id"/>">
-									<input type="radio" name="contentId" id="contentId_<s:property value="#content.id"/>" value="<s:property value="#content.id"/>" />&nbsp;
-									<s:property value="#content.descr" />
-								</label>
-							</td>
-							<td class="text-center">
-								<code><s:property value="#content.id"/></code>
-							</td>
-							<td class="text-right">
-								<abbr title="<s:date name="#content.create" format="EEEE dd MMMM yyyy, HH:mm" />">
-									<code><s:date name="#content.create" format="dd/MM/yyyy" /></code>
-								</abbr>
-							</td>
-							<td class="text-right">
-								<abbr title="<s:date name="#content.modify" format="EEEE dd MMMM yyyy, HH:mm" />">
-									<code>
-										<s:date name="#content.modify" format="dd/MM/yyyy HH:mm" />
-									</code>
-								</abbr>
-							</td>
+							<%-- description --%>
+							<th><a href="<s:url action="entandoInternalLink" includeParams="all" >
+								<s:param name="activeTab">2</s:param>
+								<s:param name="lastGroupBy"><s:property value="lastGroupBy"/></s:param>
+								<s:param name="lastOrder"><s:property value="lastOrder"/></s:param>
+								<s:param name="groupBy">descr</s:param>
+								<s:param name="internalActionName">entandoChangeOrder</s:param>
+							</s:url>#divContentLink"><s:text name="label.description" /></a></th>
+							<%-- key --%>
+							<th class="text-left"><a href="<s:url action="entandoInternalLink" includeParams="all" >
+								<s:param name="activeTab">2</s:param>
+								<s:param name="lastGroupBy"><s:property value="lastGroupBy"/></s:param>
+								<s:param name="lastOrder"><s:property value="lastOrder"/></s:param>
+								<s:param name="groupBy">code</s:param>
+								<s:param name="internalActionName">entandoChangeOrder</s:param>
+							</s:url>#divContentLink"><s:text name="label.code" /></a></th>
+							<%-- creation date --%>
+							<th class="text-center"><s:text name="label.creationDate" /></th>
+							<%-- last edit --%>
+							<th class="text-center"><s:text name="label.lastEdit" /></th>
 						</tr>
-					</s:iterator>
-				</table>
-			</s:if>
-			<div class="text-center">
-				<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
-			</div>
-		</wpsa:subset>
+						<s:iterator var="contentId">
+							<s:set name="content" value="%{getContentVo(#contentId)}" />
+							<tr>
+								<%-- description --%>
+								<td>
+									<label for="contentId_<s:property value="#content.id"/>">
+										<input type="radio" name="contentId" id="contentId_<s:property value="#content.id"/>" value="<s:property value="#content.id"/>" />&nbsp;
+										<s:property value="#content.descr" />
+									</label>
+								</td>
+								<%-- key --%>
+								<td class="text-left">
+									<code><s:property value="#content.id"/></code>
+								</td>
+								<%-- creation date --%>
+								<td class="text-center">
+									<abbr title="<s:date name="#content.create" format="EEEE dd MMMM yyyy, HH:mm" />">
+										<code><s:date name="#content.create" format="dd/MM/yyyy" /></code>
+									</abbr>
+								</td>
+								<%-- last edit --%>
+								<td class="text-center">
+									<abbr title="<s:date name="#content.modify" format="EEEE dd MMMM yyyy, HH:mm" />">
+										<code>
+											<s:date name="#content.modify" format="dd/MM/yyyy HH:mm" />
+										</code>
+									</abbr>
+								</td>
+							</tr>
+						</s:iterator>
+					</table>
+				</s:if>
+				<div class="text-center">
+					<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
+				</div>
+			</wpsa:subset>
+		</div>
 		<div class="form-group">
 			<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 				<button type="submit" id="button_contentLink" name="button_contentLink" class="btn btn-primary btn-block">
