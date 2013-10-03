@@ -5,7 +5,7 @@
 
 <s:if test="null != entityType.attributeList && entityType.attributeList.size() > 0">
 <div class="table-responsive">
-<table class="table table-bordered">
+<table class="table table-bordered" id="fagiano_entityTypesList">
 <tr>
 	<th class="text-center text-nowrap"><abbr title="<s:text name="label.actions" />">&ndash;</abbr></th>
 	<th><s:text name="label.code" /></th>

@@ -8,7 +8,7 @@
 			<span class="input-group-addon">
 				<span class="icon icon-file-text-alt icon-large"></span>
 			</span>
-			<s:textfield name="pageCodeToken" id="pageCodeToken" value="%{pageCodeToken}" cssClass="form-control input-lg" placeholder="page_code_sample TODO label" />
+			<s:textfield name="pageCodeToken" id="pageCodeToken" value="%{pageCodeToken}" cssClass="form-control input-lg" placeholder="%{getText('label.pageCode')}" />
 			<div class="input-group-btn">
 				<s:submit type="button" cssClass="btn btn-primary btn-lg">
 					<span class="icon icon-search" title="<s:text name="label.search" />"></span>
