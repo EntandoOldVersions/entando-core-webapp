@@ -31,7 +31,7 @@
 		<p class="sr-only">
 			<s:hidden name="contentOnSessionMarker" />
 		</p>
-		<h2 class="sr-only" id="quickmenu"><s:text name="title.quickMenu" /></h2>
+		<p class="sr-only" id="quickmenu"><s:text name="title.quickMenu" /></p>
 		<ul class="nav nav-tabs tab-togglers" id="tab-togglers">
 			<li class="sr-only"><a data-toggle="tab" href="#info_tab"><s:text name="title.contentInfo" /></a></li>
 			<s:iterator value="langs" var="lang" status="langStatusVar">
@@ -166,43 +166,77 @@
 				</div><%-- tabs container --%>
 			</div><%-- panel body --%>
 		</div><%-- panel --%>
-		<div id="info"><%-- info section --%>
-			<h2 class="js_sr-only"><s:text name="title.contentInfo" /> <a href="#quickmenu" id="info_content_goBackToQuickMenu" title="<s:text name="note.goBackToQuickMenu" />"><span class="icon icon-circle-arrow-up"></span></a></h2>
-			<div class="subsection">
-				<fieldset><%-- extra groups --%>
-					<legend><s:text name="label.extraGroups" /></legend>
-					<s:if test="content.groups.size != 0">
-						<ul>
-						<s:iterator value="content.groups" id="groupName">
-							<li>
-								<wpsa:actionParam action="removeGroup" var="actionName" >
-									<wpsa:actionSubParam name="extraGroupName" value="%{#groupName}" />
-								</wpsa:actionParam>
-								<s:submit action="%{#actionName}" type="image" src="%{#removeIcon}" value="%{getText('label.remove')}" title="%{getText('label.remove')}" />: <s:property value="%{getGroupsMap()[#groupName].getDescr()}"/>
-							</li>
-						</s:iterator>
-						</ul>
-					</s:if>
-					<p>
-						<label for="extraGroups" class="basic-mint-label"><s:text name="label.join" />&#32;<s:text name="label.group" /></label>
-						<s:select name="extraGroupName" id="extraGroups" list="groups"
-							listKey="name" listValue="descr" cssClass="text" />
-						<s:submit action="joinGroup" value="%{getText('label.join')}" cssClass="button" />
-					</p>
-				</fieldset><%-- extra groups --%>
-				<s:action name="showCategoryBlockOnEntryContent" namespace="/do/jacms/Content" executeResult="true"><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:action>
+		<div id="info" class="panel panel-default"><%-- info section --%>
+			<div class="panel-heading">
+				<h2 class="h4 margin-none">
+					<s:text name="title.contentInfo" /> 
+					<a href="#quickmenu" id="info_content_goBackToQuickMenu" class="pull-right" title="<s:text name="note.goBackToQuickMenu" />"><span class="icon icon-circle-arrow-up"></span><span class="sr-only"><s:text name="note.goBackToQuickMenu" /></span></a>
+				</h2>
 			</div>
-			<wpsa:hookPoint key="jacms.entryContent.tabGeneral" objectName="hookPointElements_jacms_entryContent_tabGeneral">
-				<s:iterator value="#hookPointElements_jacms_entryContent_tabGeneral" var="hookPointElement">
+			<div class="panel-body">
+				<fieldset class="col-xs-12"><%-- extra groups --%>
+					<legend><s:text name="label.extraGroups" /></legend>
+					<%-- group add --%>
+						<div class="form-group">
+							<label for="extraGroups" class="basic-mint-label">
+								<s:text name="label.join" />&#32;<s:text name="label.group" />
+							</label>
+							<div class="input-group">
+								<s:select
+									name="extraGroupName"
+									id="extraGroups"
+									list="groups"
+									listKey="name"
+									listValue="descr"
+									cssClass="form-control" />
+								<span class="input-group-btn">
+									<s:submit action="joinGroup" value="%{getText('label.join')}" cssClass="btn btn-warning" />
+								</span>
+							</div>
+						</div>
+					<%-- groups added --%>
+						<s:if test="content.groups.size != 0">
+							<div class="form-group">
+								<div class="input-group">
+								<s:iterator value="content.groups" var="groupName">
+									<wpsa:actionParam action="removeGroup" var="actionName" >
+										<wpsa:actionSubParam name="extraGroupName" value="%{#groupName}" />
+									</wpsa:actionParam>
+									<span class="label label-default label-sm pull-left padding-small-top padding-small-bottom margin-small-right margin-small-bottom">
+										<span class="icon icon-tag"></span>&#32;
+										<s:property value="%{getGroupsMap()[#groupName].getDescr()}"/>&#32;
+										<s:submit type="button" cssClass="btn btn-default btn-xs badge" action="%{#actionName}" title="%{getText('label.remove')+' '+getGroupsMap()[#groupName].getDescr()}">
+											<span class="icon icon-remove"></span>
+											<span class="sr-only">x</span>
+										</s:submit>
+									</span>
+								</s:iterator>
+								</div>
+							</div>
+						</s:if>
+				</fieldset><%-- extra groups --%>
+			</div>
+			<%-- categories --%>
+				<div class="panel-body">
+					<s:action name="showCategoryBlockOnEntryContent" namespace="/do/jacms/Content" executeResult="true">
+						<s:param name="contentOnSessionMarker" value="contentOnSessionMarker" />
+					</s:action>
+				</div>
+			<%-- hookpoint general section --%>
+				<wpsa:hookPoint key="jacms.entryContent.tabGeneral" objectName="hookPointElements_jacms_entryContent_tabGeneral">
+					<s:iterator value="#hookPointElements_jacms_entryContent_tabGeneral" var="hookPointElement">
+						<div class="panel-body">
+							<wpsa:include value="%{#hookPointElement.filePath}" />
+						</div>
+					</s:iterator>
+				</wpsa:hookPoint>
+		</div><%-- info section --%>
+		<%-- actions --%>
+			<h2 class="sr-only"><s:text name="title.contentActionsIntro" /></h2>
+			<wpsa:hookPoint key="jacms.entryContent.actions" objectName="hookPointElements_jacms_entryContent_actions">
+				<s:iterator value="#hookPointElements_jacms_entryContent_actions" var="hookPointElement">
 					<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
 				</s:iterator>
 			</wpsa:hookPoint>
-		</div><%-- info section --%>
-		<h2 class="sr-only"><s:text name="title.contentActionsIntro" /></h2>
-		<wpsa:hookPoint key="jacms.entryContent.actions" objectName="hookPointElements_jacms_entryContent_actions">
-			<s:iterator value="#hookPointElements_jacms_entryContent_actions" var="hookPointElement">
-				<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
-			</s:iterator>
-		</wpsa:hookPoint>
 	</s:form>
 </div><%-- main --%>
