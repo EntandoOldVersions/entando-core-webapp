@@ -5,13 +5,12 @@
 	<span class="panel-body display-block">
 		<a href="<s:url action="initViewEntityTypes" namespace="/do/Entity"><s:param name="entityManagerName"><s:property value="entityManagerName" /></s:param></s:url>" title="<s:text name="note.goToSomewhere" />: <s:text name="title.entityAdmin.manager" />&#32;<s:property value="entityManagerName" />">
 		<s:text name="%{'title.' + entityManagerName + '.management'}" />
-		</a>&#32;|&#32;
+		</a>&#32;/&#32;
 		<s:if test="strutsAction == 2">
 		<a href="<s:url action="initEditEntityType" namespace="/do/Entity"><s:param name="entityManagerName"><s:property value="entityManagerName" /></s:param><s:param name="entityTypeCode"><s:property value="entityType.typeCode" /></s:param></s:url>" title="<s:text name="note.goToSomewhere" />: <s:text name="title.entityTypes.editType.edit" />">
 		</s:if>
 
-		<s:text name="title.entityTypes.editType.edit" />: 
-		<code><s:property value="entityType.typeCode" /> - <s:property value="entityType.typeDescr" /></code>
+		<s:text name="title.entityTypes.editType.edit" />
 		
 		<s:if test="strutsAction == 2">
 		</a>
@@ -38,11 +37,13 @@
 <s:set name="listAttribute" value="listAttribute" />
 <s:set name="compositeAttribute" value="compositeAttributeOnEdit" />
 
+<p>
 <s:text name="note.workingOnAttribute" />:&#32;
 <code>
 <s:if test="null != #listAttribute"><s:property value="#compositeAttribute.type" />,&#32;<s:text name="note.workingOnAttributeIn" />&#32;<s:property value="#listAttribute.name" /> (<s:property value="#listAttribute.type" />)</s:if>
 <s:else><s:property value="#compositeAttribute.name" /></s:else>
-</code>
+</code>&#32;of <code><s:property value="entityType.typeDescr" /></code>
+</p>
 
 <fieldset class="margin-more-top"><legend><s:text name="label.info" /></legend>
 	<div class="form-group">

@@ -20,7 +20,7 @@
 			<s:text name="note.deleteContentModel.areYouSure" />:&#32;
 			
 			<code><s:property value="modelId" /></code>&#32;
-			<span><s:property value="description" /></span>
+			<s:property value="description" />
 			?
 		</p>
 	<div class="text-center margin-large-top">
