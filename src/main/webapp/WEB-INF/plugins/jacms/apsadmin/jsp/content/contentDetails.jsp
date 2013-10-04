@@ -15,15 +15,13 @@
 	</span>
 </h1>
 <div id="main"><%-- #main --%>
-
+<%--
 <h2><s:text name="title.inspection" />&#32;<s:if test="currentPublicVersion"><s:text name="name.version.onLine" /></s:if><s:else><s:text name="name.version.work" /></s:else></h2>
-
+--%>
 <s:if test="content == null"><%-- content is null --%>
-	<div class="message message_error">
-		<h3><s:text name="title.error" /></h3>
-		<p>
-			<s:text name="message.noContentToInspect.found" />
-		</p>
+	<div class="alert alert-warning">
+		<h2 class="h3 margin-none"><s:text name="title.error" /></h2>
+		<p class="margin-base-top"><s:text name="message.noContentToInspect.found" /></p>
 	</div>
 </s:if><%-- content is null --%>
 <s:else><%-- content not null --%>
