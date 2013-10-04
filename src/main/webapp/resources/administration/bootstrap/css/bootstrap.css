@@ -6956,3 +6956,7 @@ td.visible-print {
 .display-block {
   display: block;
 }
+
+.text-strong {
+  font-weight: bold;
+}
