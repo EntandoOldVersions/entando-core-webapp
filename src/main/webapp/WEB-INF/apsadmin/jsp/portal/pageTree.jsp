@@ -23,7 +23,9 @@
 
 <hr />
 
+<%--
 <h2 class="margin-base-vertical"><s:text name="title.pageTree" /></h2>
+--%>
 
 <s:form cssClass="action-form">
 

@@ -25,7 +25,9 @@
 
 <hr />
 
+<%--
 <h2 class="margin-base-vertical"><s:text name="title.pageManagement.pages" /></h2>
+--%>
 
 <s:form action="search" cssClass="action-form">
 
