@@ -22,7 +22,7 @@
 
 	<style>
 		body {
-			padding-top: 3em;
+			padding-top: 60px;
 		}
 	</style>
 
