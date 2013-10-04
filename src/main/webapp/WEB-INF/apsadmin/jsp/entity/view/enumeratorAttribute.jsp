@@ -1,5 +1,4 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-
 <s:if test="#lang.default">
 	<s:property value="%{#attribute.getText()}" />
 </s:if>

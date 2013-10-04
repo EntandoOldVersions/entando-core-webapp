@@ -208,11 +208,11 @@
 						<s:iterator var="lang" value="langs" status="langStatusVar"><%-- lang iterator --%>
 							<div id="<s:property value="#lang.code" />_tab" class="tab-pane <s:if test="#langStatusVar.first"> active </s:if>"><%-- tab --%>
 								<h3 class="sr-only"><s:property value="#lang.descr" /> (<a class="backLink" href="#quickmenu" id="<s:property value="#lang.code" />_tab_quickmenu"><s:text name="note.goBackToQuickMenu" /></a>)</h3>
-								<s:iterator value="content.attributeList" var="attribute"><%-- content.attributeList iterator --%>
+								<s:iterator value="content.attributeList" var="attribute" status="attributeListStatus"><%-- content.attributeList iterator --%>
 									<div class="form-group"><%-- form-group --%>
-										<s:set name="attributeTracer" value="initAttributeTracer(#attribute, #lang)" />
+										<wpsa:tracerFactory var="attributeTracer" lang="%{#lang.code}" /><%-- tracer init --%>
 										<s:if test="null != #attribute.description"><s:set var="attributeLabelVar" value="#attribute.description" /></s:if>
-									<s:else><s:set var="attributeLabelVar" value="#attribute.name" /></s:else>
+										<s:else><s:set var="attributeLabelVar" value="#attribute.name" /></s:else>
 										<label><s:property value="#attributeLabelVar" /></label>
 									 	<div class="input-group"><%--input-group --%>
 											<s:if test="#attribute.type == 'Monotext' || #attribute.type == 'Text' || #attribute.type == 'Longtext' || #attribute.type == 'Enumerator'">
@@ -273,7 +273,7 @@
 											</s:elseif>
 										</div><%--input-group --%>
 									</div><%-- form-group --%>
-									<hr />
+									<s:if test="!#attributeListStatus.last"><hr /></s:if>
 								</s:iterator><%-- content.attributeList iterator --%>
 							</div><%-- tab --%>
 						</s:iterator><%-- lang iterator --%>

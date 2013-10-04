@@ -1,6 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <p class="sr-only"><s:text name="note.monolist.intro" /></p>
 <s:if test="#attribute.attributes.size() != 0">
+<div class="clearfix"></div>
 <ul class="media-list">
 </s:if>
 <s:set var="masterListAttributeTracer" value="#attributeTracer" />
@@ -8,17 +9,16 @@
 <s:iterator value="#attribute.attributes" var="attribute" status="elementStatus">
 	<s:set var="attributeTracer" value="#masterListAttributeTracer.getMonoListElementTracer(#elementStatus.index)" />
 	<s:set var="elementIndex" value="#elementStatus.index" />
-	<li class="media">
-		 <span class="pull-left">
-			<span class="media-object">
-				<span class="h3 text-info margin-small-right padding-small-vertical">
-					<span class="label label-primary"><s:property value="#elementStatus.count" /></span>
-					<s:if test="#attribute.type == 'Composite'">
-						<span class="sr-only"><s:text name="label.compositeAttribute.element" />:</span>
-					</s:if>
-				</span>
-			</span>
-    </span>
+	<li class="media padding-small-bottom padding-top-bottom">
+		<div class="pull-left">
+			<div class="media-object">
+				<h3 class="display-block margin-none">
+					<span class="label label-default">
+						<s:property value="#elementStatus.count" />
+					</span>
+				</h3>
+			</div>
+    </div>
 		<div class="media-body">
 			<s:if test="#attribute.type == 'Monotext'">
 				<s:include value="/WEB-INF/apsadmin/jsp/entity/view/monotextAttribute.jsp" />
@@ -67,10 +67,10 @@
 			</s:elseif>
 		</div>
 	</li>
+	<s:set var="attributeTracer" value="#masterListAttributeTracer" />
+	<s:set var="attribute" value="#masterListAttribute" />
+	<s:set var="elementIndex" value="" />
 </s:iterator>
-<s:set var="attributeTracer" value="#masterListAttributeTracer" />
-<s:set var="attribute" value="#masterListAttribute" />
-<s:set var="elementIndex" value="" />
 <s:if test="#attribute.attributes.size() != 0">
 </ul>
 </s:if>

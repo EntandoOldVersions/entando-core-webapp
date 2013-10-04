@@ -1,5 +1,5 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<s:if test="%{#lang.default || #attributeTracer.listElement}">
+<s:if test="#lang.default || #attributeTracer.listElement">
 	<s:if test="#attribute.value==null">
 		<s:text name="label.none" />
 	</s:if>
