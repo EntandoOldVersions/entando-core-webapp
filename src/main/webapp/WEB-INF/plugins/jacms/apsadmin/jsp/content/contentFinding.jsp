@@ -41,10 +41,10 @@
 				</p>
 			</div>
 
-			<div id="search-advanced" class="collapse in">
+			<div id="search-advanced" class="collapse">
 
 				<div class="form-group">
-					<label for="contentType" class="form-label col-sm-2 text-right">
+					<label for="contentType" class="control-label col-sm-2 text-right">
 						<s:text name="label.type"/>
 					</label>
 					<div class="col-sm-5 input-group">
@@ -64,19 +64,20 @@
 
 				<s:if test="null != #searcheableAttributes && #searcheableAttributes.size() > 0">
 
+					<%-- restore when we can dimiss it with a timeout
 					<div class="alert alert-info alert-dismissable fade in">
 						<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
 						<p>Content type successfully set. TODO label.</p>
 					</div>
-
+					--%>
 					<s:iterator var="attribute" value="#searcheableAttributes">
 						<s:set var="currentFieldId">entityFinding_<s:property value="#attribute.name" /></s:set>
 
 						<s:if test="#attribute.textAttribute">
 							<div class="form-group">
 								<s:set name="textInputFieldName"><s:property value="#attribute.name" />_textFieldName</s:set>
-								<label for="<s:property value="currentFieldId" />" class="form-label col-sm-2 text-right"><s:property value="#attribute.name" /></label>
-								<div class="col-sm-5">
+								<label for="<s:property value="currentFieldId" />" class="control-label col-sm-3 text-right"><s:property value="#attribute.name" /></label>
+								<div class="col-sm-4">
 									<s:textfield id="%{currentFieldId}" name="%{#textInputFieldName}" value="%{getSearchFormFieldValue(#textInputFieldName)}" cssClass="form-control" />
 								</div>
 							</div>
@@ -130,59 +131,108 @@
 
 				</s:if>
 
+				<div class="form-group">
+					<label for="contentType" class="control-label col-sm-2 text-right">
+						<s:text name="label.category" />
+					</label>
+					<div class="col-sm-5">
+						<s:action name="showCategoryTreeOnContentFinding" namespace="/do/jacms/Content" executeResult="true"></s:action>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="contentIdToken" class="control-label col-sm-2 text-right"><s:text name="label.code"/></label>
+					<div class="col-sm-5">
+						<s:textfield name="contentIdToken" id="contentIdToken" cssClass="form-control" placeholder="CNG12" />
+					</div>
+				</div>
+
+				<s:set var="allowedGroupsVar" value="allowedGroups"></s:set>
+				<s:if test="null != #allowedGroupsVar && #allowedGroupsVar.size()>1">
+				<div class="form-group">
+					<label for="ownerGroupName" class="control-label col-sm-2 text-right"><s:text name="label.group" /></label>
+					<div class="col-sm-5">
+						<s:select name="ownerGroupName" id="ownerGroupName" list="#allowedGroupsVar" headerKey="" headerValue="%{getText('label.all')}" listKey="name" listValue="descr" cssClass="form-control" />
+					</div>
+				</div>
+				</s:if>
+
+				<div class="form-group">
+					<label for="state" class="control-label col-sm-2 text-right"><s:text name="label.state"/></label>
+					<div class="col-sm-5">
+						<s:select name="state" id="state" list="avalaibleStatus" headerKey="" headerValue="%{getText('label.all')}" listKey="key" listValue="%{getText(value)}" cssClass="form-control" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="btn-group col-sm-5 col-sm-offset-2" data-toggle="buttons">
+						<label class="btn btn-default">
+							<input type="radio" name="onLineState" id="approved" <s:if test="('yes' == onLineState)">checked="checked"</s:if> value="yes" />&#32;
+							<s:text name="name.isApprovedContent"/>
+						</label>
+						<label class="btn btn-default">
+							<input type="radio" name="onLineState" id="notApproved" <s:if test="('no' == onLineState)">checked="checked"</s:if> value="no" />&#32;
+							<s:text name="name.isNotApprovedContent"/>
+						</label>
+						<label class="btn btn-default active">
+							<input type="radio" name="onLineState" id="bothApproved" <s:if test="('yes' != onLineState) && ('no' != onLineState)">checked="checked"</s:if> value="" />&#32;
+							<s:text name="name.isApprovedOrNotContent" />
+						</label>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-5 col-sm-offset-2">
+						<s:submit action="%{#searchActionName}" type="button" cssClass="btn btn-primary">
+							<span class="icon icon-search"></span>&#32;<s:text name="label.search" />
+						</s:submit>
+					</div>
+				</div>
 
 			</div><!--// search-advanced -->
 
-<%--
+			<hr />
 
-<div class="subsection-light">
-<p class="important">
-	<s:text name="label.category" />:<br />
-</p>
+			<p class="help-block text-right">
+				<button type="button" data-toggle="collapse" data-target="#search-configure-results" class="btn btn-link">
+					<s:text name="title.searchResultOptions" />&#32;<span class="icon-chevron-down"></span>
+				</button>
+			</p>
 
-<!-- INIZIO CATEGORIE -->
-<s:action name="showCategoryTreeOnContentFinding" namespace="/do/jacms/Content" executeResult="true"></s:action>
-<!-- FINE CATEGORIE -->
+			<div id="search-configure-results" class="collapse">
 
-</div>
+				<div class="form-group">
+					<div class="btn-group" data-toggle="buttons">
+						<label class="btn btn-default">
+							<s:checkbox name="viewCode" id="viewCode"></s:checkbox>&#32;
+							<s:text name="label.code" />
+						</label>
+						<label class="btn btn-default">
+							<s:checkbox name="viewTypeDescr" id="viewTypeDescr"></s:checkbox>&#32;
+							<s:text name="name.contentType" />
+						</label>
+						<label class="btn btn-default">
+							<s:checkbox name="viewStatus" id="viewStatus"></s:checkbox>&#32;
+							<s:text name="name.contentStatus" />
+						</label>
+						<label class="btn btn-default">
+							<s:checkbox name="viewGroup" id="viewGroup"></s:checkbox>&#32;
+							<s:text name="label.group"/>
+						</label>
+						<label class="btn btn-default">
+							<s:checkbox name="viewCreationDate" id="viewCreationDate"></s:checkbox>&#32;
+							<s:text name="label.creationDate"/>
+						</label>
+					</div>
+				</div>
 
-<div class="subsection-light">
-<p><label for="contentIdToken"><s:text name="label.code"/>:</label>
-<s:textfield name="contentIdToken" id="contentIdToken" /></p>
+				<div class="form-group">
+					<s:submit action="%{#searchActionName}" type="button" cssClass="btn btn-primary">
+							<span class="icon icon-search"></span>&#32;<s:text name="label.search" />
+					</s:submit>
+				</div>
 
-<s:set var="allowedGroupsVar" value="allowedGroups"></s:set>
-<s:if test="null != #allowedGroupsVar && #allowedGroupsVar.size()>1">
-<p>
-	<label for="ownerGroupName"><s:text name="label.group" />:</label>
-	<s:select name="ownerGroupName" id="ownerGroupName" list="#allowedGroupsVar" headerKey="" headerValue="%{getText('label.all')}" listKey="name" listValue="descr" />
-</p>
-</s:if>
-
-<p>
-	<label for="state"><s:text name="label.state"/>:</label>
-	<s:select name="state" id="state" list="avalaibleStatus" headerKey="" headerValue="%{getText('label.all')}" listKey="key" listValue="%{getText(value)}" />
-</p>
-<p>
-	<input type="radio" class="radiocheck" name="onLineState" id="approved" <s:if test="('yes' == onLineState)">checked="checked"</s:if> value="yes" /><label for="approved"><s:text name="name.isApprovedContent"/></label>&#32;<input type="radio" name="onLineState" id="notApproved" <s:if test="('no' == onLineState)">checked="checked"</s:if> value="no" /><label for="notApproved"><s:text name="name.isNotApprovedContent"/></label>&#32;<input type="radio" name="onLineState" id="bothApproved" <s:if test="('yes' != onLineState) && ('no' != onLineState)">checked="checked"</s:if> value="" /><label for="bothApproved"><s:text name="name.isApprovedOrNotContent" /></label>
-</p>
-</div>
-
-</div>
-</fieldset>
-
-<fieldset><legend class="accordion_toggler"><s:text name="title.searchResultOptions" /></legend>
-<div class="accordion_element">
-<ul class="radiocheck noBullet">
-	<li><s:checkbox name="viewCode" id="viewCode"></s:checkbox><label for="viewCode"><s:text name="label.code"/></label></li>
-	<li><s:checkbox name="viewTypeDescr" id="viewTypeDescr"></s:checkbox><label for="viewTypeDescr"><s:text name="name.contentType"/></label></li>
-	<li><s:checkbox name="viewStatus" id="viewStatus"></s:checkbox><label for="viewStatus"><s:text name="name.contentStatus"/></label></li>
-	<li><s:checkbox name="viewGroup" id="viewGroup"></s:checkbox><label for="viewGroup"><s:text name="label.group"/></label></li>
-	<li><s:checkbox name="viewCreationDate" id="viewCreationDate"></s:checkbox><label for="viewCreationDate"><s:text name="label.creationDate"/></label></li>
-</ul>
-</div>
-</fieldset>
-
---%>
+			</div>
 
 		</s:form>
 

@@ -14,7 +14,26 @@
 <script>
 //one domready to rule 'em all
 $(function() {
-	$('[data-toggle="popover"	]').popover();
+	$('[data-toggle="popover"]').popover();
+
+	/* contentDescription routine //start */
+	var fillText = $( '[data-swapon-role="text"]' , '#contentDescription-readonly' ).text();
+	$( '#contentDescription-confirm' ).on('swapon', function(ev, action){
+		if (action == 'hide') { //when description is filled, update the read only text...
+			var contentDescriptionReadOnlyEl = $( '#contentDescription-readonly' );
+			var newValue = $( '#contentDescription' ).val();
+			$('#contentDescription').val(newValue);
+			if (newValue.length<=0) { //if text is an empty string show the default text
+				newValue = fillText;
+				contentDescriptionReadOnlyEl.next( 'span' ).show();
+			}
+			else { //otherwise go ahead and hide the second message
+				contentDescriptionReadOnlyEl.next( 'span' ).hide();
+			}
+			$('[data-swapon-role="text"]', '#contentDescription-readonly' ).text( newValue );
+		}
+	})
+	/* contentDescription routine //end */
 
 <s:set var="categoryTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_category" /></s:set>
 
