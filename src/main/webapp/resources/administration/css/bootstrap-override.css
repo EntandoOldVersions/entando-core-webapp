@@ -29,7 +29,9 @@ html {
 }
 
 /* Font Awesome */
-.popover-content .icons-ul {
+.popover-content .icons-ul,
+#categoryTree.icons-ul,
+#categoryTree .icons-ul {
 	margin-left: 0;
 	-webkit-padding-start: 20px;
 }

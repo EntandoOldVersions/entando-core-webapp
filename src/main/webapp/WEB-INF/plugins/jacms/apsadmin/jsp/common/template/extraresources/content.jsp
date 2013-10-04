@@ -12,24 +12,6 @@ $(function() {
 
 //for content categories
 <s:if test="#categoryTreeStyleVar == 'classic'">
-<%--
-	var catTree  = new Wood({
-		menuToggler: "subTreeToggler",
-		rootId: "categoryTree",
-		openClass: "node_open",
-		closedClass: "node_closed",
-		showTools: "true",
-		expandAllLabel: "<s:text name="label.expandAll" />",
-		collapseAllLabel: "<s:text name="label.collapseAll" />",
-		type: "tree",
-		<s:if test="%{categoryCode != null && !(categoryCode.equalsIgnoreCase(''))}">
-		startIndex: "fagianonode_<s:property value="categoryCode" />",
-		</s:if>
-		toolTextIntro: "<s:text name="label.introExpandAll" />",
-		toolexpandAllLabelTitle: "<s:text name="label.expandAllTitle" />",
-		toolcollapseLabelTitle: "<s:text name="label.collapseAllTitle" />"
-	});
---%>
 
 	var catTree = jQuery("#categoryTree").EntandoWoodMenu({
 		menuToggler: "subTreeToggler",
@@ -38,7 +20,7 @@ $(function() {
 		},
 		openClass: "node_open",
 		closedClass: "node_closed",
-		showTools: true, 
+		showTools: true,
 		onStart: function() {
 			this.collapseAll();
 		},

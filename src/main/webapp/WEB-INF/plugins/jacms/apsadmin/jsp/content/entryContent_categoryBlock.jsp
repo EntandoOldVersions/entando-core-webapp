@@ -11,28 +11,29 @@
 </p>
 </s:if>
 
-<fieldset>
-	<legend><s:text name="title.categoriesManagement"/></legend>
-<ul id="categoryTree">
+<fieldset class="margin-base-vertical">
+	<legend><span class="icon icon-tags"></span>&#32;<s:text name="title.categoriesManagement"/></legend>
+<ul id="categoryTree" class="icons-ul list-unstyled">
 	<s:set name="inputFieldName" value="'categoryCode'" />
 	<s:set name="selectedTreeNode" value="categoryCode" />
 	<s:set name="liClassName" value="'category'" />
+	<s:set name="treeItemIconName" value="'icon-folder-close'" />
+
 	<s:if test="#categoryTreeStyleVar == 'classic'">
-	<s:set name="currentRoot" value="categoryRoot" />
-	<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder.jsp" />
+		<s:set name="currentRoot" value="categoryRoot" />
+	 	<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder.jsp" />
 	</s:if>
 	<s:elseif test="#categoryTreeStyleVar == 'request'">
-	<s:set name="currentRoot" value="showableTree" />
-	<s:set name="openTreeActionName" value="'entryContent'" />
-	<s:set name="closeTreeActionName" value="'entryContent'" />
-	<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder-request-submits.jsp" />
+		<s:set name="currentRoot" value="showableTree" />
+		<s:set name="openTreeActionName" value="'entryContent'" />
+		<s:set name="closeTreeActionName" value="'entryContent'" />
+		<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder-request-submits.jsp" />
 	</s:elseif>
 </ul>
 <div id="actions-container">
-	<p class="buttons">
-		<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL />administration/common/img/icons/32x32/join-to-content.png</s:set>
-		<wpsf:submit useTabindexAutoIncrement="true" action="joinCategory" type="image" src="%{#iconImagePath}" value="%{getText('label.join')}" title="%{getText('label.join')}" />
-	</p>
+	<s:submit useTabindexAutoIncrement="true" action="joinCategory" type="button" value="%{getText('label.join')}" cssClass="btn btn-default btn-small">
+		<span class="icon icon-plus"></span>&nbsp;&nbsp;<s:text name="label.join" />
+	</s:submit>
 </div>
 <s:set var="contentCategories" value="content.categories" />
 

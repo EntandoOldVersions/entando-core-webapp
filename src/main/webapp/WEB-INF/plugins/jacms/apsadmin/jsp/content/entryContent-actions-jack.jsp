@@ -1,8 +1,8 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/aps-core" prefix="wp" %>
 
-<div class="row">
-	<div class="input-group col-12 col-sm-4 margin-small-vertical">
+<div class="row margin-large-vertical">
+	<div class="input-group col-12 col-sm-3 margin-small-vertical">
 		<label for="status" class="noscreen"><s:text name="label.state" /></label>
 		<s:select name="status" id="status" list="avalaibleStatus" value="%{content.status}" listKey="key" listValue="%{getText(value)}" cssClass="form-control" />
 		<span class="input-group-btn">
