@@ -21,20 +21,24 @@
 
 <s:set name="attribute" value="getAttributePrototype(attributeTypeCode)" />
 
-<s:form action="saveAttributeElement" cssClass="form-horizontal">
+<s:form action="saveAttributeElement">
+
 
 <s:if test="hasFieldErrors()">
-	<div class="message message_error">	
-	<h5><s:text name="message.title.FieldErrors" /></h5>
-			<ul>
-				<s:iterator value="fieldErrors">
-					<s:iterator value="value">
-			            <li><s:property escape="false" /></li>
-					</s:iterator>
+	<div class="alert alert-danger alert-dismissable">
+		<button type="button" class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+		<h2 class="h4 margin-none">
+			<s:text name="message.title.FieldErrors" />
+   		</h2>
+		<ul>
+			<s:iterator value="fieldErrors">
+				<s:iterator value="value">
+		            <li><s:property escape="false" /></li>
 				</s:iterator>
-			</ul>
+			</s:iterator>
+		</ul>
 	</div>
-</s:if>	
+</s:if>
 
 <p class="sr-only">
 	<s:hidden name="attributeTypeCode" />
@@ -79,14 +83,15 @@
 
 <s:include value="/WEB-INF/apsadmin/jsp/entity/include/validation-rules-ognl.jsp" />
 
-<div class="form-group">
-  <div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-    <s:submit type="button" cssClass="btn btn-primary btn-block" >
-      <span class="icon icon-save"></span>&#32;
-      <s:text name="label.save" />
-    </s:submit>
-  </div>
+<div class="form-horizontal">
+	<div class="form-group">
+	  <div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+	    <s:submit type="button" cssClass="btn btn-primary btn-block" >
+	      <span class="icon icon-save"></span>&#32;
+	      <s:text name="label.save" />
+	    </s:submit>
+	  </div>
+	</div>
 </div>
-
 </s:form>
 </div>

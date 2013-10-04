@@ -24,6 +24,9 @@
 <s:if test="hasFieldErrors()">
 	<div class="alert alert-danger alert-dismissable">
 		<button type="button" class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+		<h2 class="h4 margin-none">
+			<s:text name="message.title.FieldErrors" />
+   		</h2>
 		<ul>
 			<s:iterator value="fieldErrors">
 				<s:iterator value="value">
@@ -72,7 +75,7 @@
 	<div class="table-responsive margin-base-vertical">
 	<table class="table table-bordered" id="fagiano_compositeTypesList">
 	<tr>
-		<th class="text-center text-nowrap"><abbr title="<s:text name="label.actions" />">&ndash;</abbr></th>
+		<th class="text-center padding-large-left padding-large-right col-xs-4 col-sm-3 col-md-2 col-lg-2"><abbr title="<s:text name="label.actions" />">&ndash;</abbr></th>
 		<th><s:text name="label.code" /></th>
 		<th><s:text name="label.type" /></th>
 		<th class="text-center text-nowrap" class="text-center text-nowrap"><abbr title="<s:text name="Entity.attribute.flag.mandatory.full" />"><s:text name="Entity.attribute.flag.mandatory.short" /></abbr></th>
@@ -84,16 +87,16 @@
 				<s:set name="elementIndex" value="#elementStatus.index" />
 				<s:include value="/WEB-INF/apsadmin/jsp/entity/include/attribute-operations-misc-composite.jsp" />
 			</td>
-			<td><s:property value="#attribute.name" /></td>
+			<td><code><s:property value="#attribute.name" /></code></td>
 	 		<td><s:property value="#attribute.type" /></td>
-	 		
-			<s:if test="#attribute.required">
-				<s:set var="tmpStatus">yes</s:set>
-			</s:if>
-			<s:else>
-				<s:set var="tmpStatus">no</s:set>
-			</s:else>
-			<td class="icon"><img src="<wp:resourceURL />administration/common/img/icons/<s:property value="#attribute.required" />.png" alt="<s:text name="label.%{#tmpStatus}" />" title="<s:text name="label.%{#tmpStatus}" />" /></td>
+			<td class="text-center">
+				<s:if test="#attribute.required">
+					<span class="icon icon-check" title="<s:text name="label.yes" />"></span>
+				</s:if> 
+				<s:else>
+					<span class="icon icon-check-empty" title="<s:text name="label.no" />"></span>
+				</s:else>
+			</td>
 		</tr>
 	</s:iterator>
 

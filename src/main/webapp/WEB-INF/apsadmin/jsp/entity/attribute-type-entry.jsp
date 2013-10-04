@@ -152,7 +152,7 @@
 <s:if test="null != #attributeDisablingCodesVar && #attributeDisablingCodesVar.size()>0">
 <fieldset class="col-xs-12 margin-base-top"><legend><s:text name="name.disablingCodes" /></legend>
 	<div class="form-group">
-		<label for="disablingCode"><s:text name="label.code" />:</label>
+		<label for="disablingCode"><s:text name="label.code" /></label>
 		<div class="input-group">
 			<s:select name="disablingCode" id="disablingCode" list="#attributeDisablingCodesVar" cssClass="form-control"/>
 			<span class="input-group-btn">
@@ -162,23 +162,27 @@
 	</div>
 	
 	<s:if test="null != disablingCodes && disablingCodes.size() > 0">
-	<table class="generic">
-		<tr>
-			<th><s:text name="label.name" /></th>
-			<th><s:text name="label.description" /></th>
-			<th class="icon"><abbr title="<s:text name="label.remove" />">&ndash;</abbr></th>
-		</tr>
+	<h3 class="margin-none"><s:text name="label.disablingCodes.assigned" /></h3>
+	<ul class="list-group">
 		<s:iterator value="disablingCodes" id="disablingCode">
 			<wpsa:actionParam action="removeAttributeDisablingCode" var="actionName" >
 				<wpsa:actionSubParam name="attributeRoleName" value="%{#disablingCode}" />
 			</wpsa:actionParam>
-			<tr>
-				<td class="monospace"><s:property value="#disablingCode" /></td>
-				<td><s:property value="%{#attributeDisablingCodesVar[#disablingCode]}" /></td>
-				<td><wpsf:submit action="%{#actionName}" value="%{getText('label.remove')}" title="%{getText('label.remove')}" /></td>
-			</tr>
+			<li class="list-group-item">
+			<div class="row">
+				<div class="col-sm-10">
+					<code><s:property value="#disablingCode" /></code>
+					<s:property value="%{#attributeDisablingCodesVar[#disablingCode]}" />
+				</div>
+				<div class="col-sm-2 text-right">
+				<s:submit type="button" action="%{#actionName}" cssClass="btn btn-xs btn-warning" title="%{getText('label.remove')}" >
+					<span class="icon icon-remove-circle"></span>
+				</s:submit>
+				</div>
+			</div>
+			</li>
 		</s:iterator>
-	</table>
+	</ul>
 	</s:if>
 	
 </fieldset>
@@ -199,20 +203,21 @@
 <s:if test="#attribute.type == 'List' || #attribute.type == 'Monolist'">
 <fieldset class="col-xs-12 margin-base-top"><legend><s:text name="label.settings" /></legend>
 <div class="form-group">
-	<label for="listNestedType"><s:text name="Entity.attribute.setting.listType" />:</label>	
+	<label for="listNestedType"><s:text name="Entity.attribute.setting.listType" /></label>	
 	<wpsf:select list="getAllowedNestedTypes(#attribute)" name="listNestedType" id="listNestedType" listKey="type" listValue="type" cssClass="form-control" />
 </div>
 </fieldset>
 </s:if>
 
 <s:include value="/WEB-INF/apsadmin/jsp/entity/include/validation-rules-ognl.jsp" />
-
-<div class="form-group">
-  <div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-    <s:submit type="button" cssClass="btn btn-primary btn-block">
-      <s:text name="label.continue" />
-    </s:submit>
-  </div>
+<div class="form-horizontal">
+	<div class="form-group">
+	  <div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+	    <s:submit type="button" cssClass="btn btn-primary btn-block">
+	      <s:text name="label.continue" />
+	    </s:submit>
+	  </div>
+	</div>
 </div>
 
 </s:form>
