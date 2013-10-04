@@ -36,9 +36,9 @@
 			</div>
 
 		<s:if test="content.onLine">
-		<br /><s:text name="note.lastApprovedIntro" />&#32;<a href="<s:url action="inspect" namespace="/do/jacms/Content" ><s:param name="contentId" value="content.id" /><s:param name="currentPublicVersion" value="'true'" /></s:url>"><s:text name="note.lastApproved" /></a>
-		</s:if>.
-		<s:if test="%{null != content.mainGroup}">Main group: <s:property value="%{getGroup(content.mainGroup).descr}" /></s:if>
+		&#32;&middot;&#32;<s:text name="note.lastApprovedIntro" />&#32;<a href="<s:url action="inspect" namespace="/do/jacms/Content" ><s:param name="contentId" value="content.id" /><s:param name="currentPublicVersion" value="'true'" /></s:url>"><s:text name="note.lastApproved" /></a>
+		</s:if>
+		<s:if test="%{null != content.mainGroup}">&#32;&middot;&#32;Main group: <s:property value="%{getGroup(content.mainGroup).descr}" /></s:if>
 
 	<s:if test="%{null == content.mainGroup}">
 	<hr />
