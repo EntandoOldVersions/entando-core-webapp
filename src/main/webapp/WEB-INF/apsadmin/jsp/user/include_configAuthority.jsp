@@ -58,7 +58,7 @@
 	</div>
 </div>
 
-		<s:form action="search" cssClass="margin-base-top">
+		<s:form action="search" cssClass="margin-base-top" cssClass="form-horizontal">
 			<h3 class="h4 margin-none  margin-base-bottom"><s:text name="title.userManagement.searchUsers" /></h3>
 			<p class="sr-only">
 				<s:hidden name="authName" />
@@ -79,7 +79,7 @@
 			</div>
 		</s:form>
 
-		<s:form action="search">
+		<s:form action="search" cssClass="form-horizontal">
 			<p class="sr-only">
 				<wpsf:hidden name="username" />
 				<wpsf:hidden name="authName" />
@@ -99,7 +99,7 @@
 										<th class="text-center"><s:text name="label.date.registration" /></th>
 										<th class="text-center"><s:text name="label.date.lastLogin" /></th>
 										<th class="text-center"><s:text name="label.date.lastPasswordChange" /></th>
-										<th class="text-center"><abbr title="<s:text name="label.state" />">S</abbr></th>	
+										<th class="text-center"><abbr title="<s:text name="label.state" />">S</abbr></th>
 									</tr>
 									<s:iterator var="usernameVar">
 										<s:set var="userVar" value="%{getUser(#usernameVar)}" />
@@ -161,7 +161,7 @@
 													</code>
 											</td>
 											<td class="text-center col-xs-1 col-sm-1 col-md-1 col-lg-1">
-												<span 
+												<span
 													class="icon <s:property value="#statusIconImagePath" />"
 													title="<s:property value="#statusIconText" />"
 													>
@@ -178,14 +178,14 @@
 						</wpsa:subset>
 				</div>
 			</div>
-			<p class="text-center">
-				<s:submit 
-					type="button" 
-					action="addUser" 
-					cssClass="btn btn-primary">
+			<div class="form-group">
+			  <div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+			    <s:submit type="button" action="addUser" cssClass="btn btn-primary btn-block">
+			      <span class="icon icon-plus"></span>&#32;
 						<s:text name="label.add" />
-				</s:submit>
-			</p>
+			    </s:submit>
+			  </div>
+			</div>
 		</s:form>
 
 
