@@ -14,33 +14,29 @@
 			<a class="btn btn-default" style="display: none;" id="swapto" href="#swapme" data-swapon="swapme">swapped to. click to swap me back</a>
 		</div>
 
-<%--
-<p>
-	<s:text name="label.ownerGroup" />:&#32;<s:property value="content.mainGroup" />
-</p>
---%>
+<div class="panel">
+		<s:if test="!#myNameIsJack"><a href="<s:url action="backToEntryContent" ><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>" title="<s:text name="note.content.backToEdit" />" ></s:if><s:property value="content.descrDisablingTemporarily" /><s:if test="!#myNameIsJack"></a></s:if>
+		<a href="#" class="text-warning"><span class="icon icon-edit"></span>&#32;Provide a description</a><span class="text-warning">, or I will use the title as a default.</span> (<s:property value="content.typeDescr" />) <abbr title="<s:text name="name.version" />">v</abbr><s:property value="content.version" />&#32;<s:text name="note.lastEditor" />&#32;<wp:ifauthorized permission="superuser"><a href="<s:url action="edit" namespace="/do/User"><s:param name="username" value="content.lastEditor"/></s:url>" title="<s:text name="label.edit" />: <s:property value="content.lastEditor" />"></wp:ifauthorized><s:property value="content.lastEditor" /> you<%-- TODO content.lastEditor should be == current user if this is a new content --%><wp:ifauthorized permission="superuser"></a></wp:ifauthorized>
+		<s:if test="content.onLine">
+		<br /><s:text name="note.lastApprovedIntro" />&#32;<a href="<s:url action="inspect" namespace="/do/jacms/Content" ><s:param name="contentId" value="content.id" /><s:param name="currentPublicVersion" value="'true'" /></s:url>"><s:text name="note.lastApproved" /></a>
+		</s:if>.
+		<s:if test="%{null != content.mainGroup}">Main group: <s:property value="%{getGroup(content.mainGroup).descr}" /></s:if>
 
+	<s:if test="%{null == content.mainGroup}">
+	<hr />
 	<div class="control-group has-warning">
 		<label class="control-label" for="contentMainGroup"><s:text name="label.ownerGroup" /></label>
 		<div class="controls">
 			<div class="input-group">
-				<s:set name="lockGroupSelectVar" value="%{content.id != null || content.mainGroup != null}" />
-				<s:select name="mainGroup" id="contentMainGroup" list="allowedGroups" value="content.mainGroup" 
-					listKey="name" listValue="descr" disabled="%{#lockGroupSelectVar}" cssClass="input-with-feedback" />
-				<%--
-				<select class="input-with-feedback" id="contentMainGroup">
-					<option>free</option>
-					<option>a different group</option>
-					<option>why not this other</option>
-				</select>
-				--%>
+				<s:select name="mainGroup" id="contentMainGroup" list="allowedGroups" value="%{'free'}"
+					listKey="name" listValue="descr" cssClass="input-with-feedback" />
 				<span class="input-group-btn">
 					<s:submit action="configureMainGroup" type="button" value="Set Group" title="Set Group" cssClass="btn btn-warning" />
-					<%-- <button  class="btn btn-warning" type="button">Set Group</button> --%>
 				</span>
 			</div>
-			<span class="help-block"><span class="icon icon-info-sign"></span>&#32;You should set the owner group right now, or I won't be able to know who can see this content.</span>
+			<span class="help-block"><span class="icon icon-info-sign"></span>&#32;You should set the owner group right now, or some things will get sketchy.</span>
 		</div>
 	</div>
+	</s:if>
 
 </div>
