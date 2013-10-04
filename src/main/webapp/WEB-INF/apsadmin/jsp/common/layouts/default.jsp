@@ -20,33 +20,42 @@
   <script src="<wp:resourceURL />administration/js/respond.min.js"></script>
 <![endif]-->
 
+	<style>
+		body {
+			padding-top: 3em;
+		}
+	</style>
+
 	<!-- QUA' FUORI LE COSE COMUNI. DENTRO L'EXTRA LE DIFFERENZE -->
 	<tiles:insertAttribute name="extraResources"/>
 
 </head>
 <body>
 
-<div id="topbar">
-<tiles:insertAttribute name="topbar"/>
-</div>
-
-<div id="header" class="clear">
-<h1 class="noscreen" id="fagiano_start"><s:text name="title.mainFunctions" /></h1>
 <tiles:insertAttribute name="header"/>
-</div>
-<div id="corpo">
-	<div id="colonna1">
+
+<div class="container">
+
+	<tiles:insertAttribute name="shortcuts-quickbar"/>
+
+<%--
+	<h1 id="fagiano_start"><s:text name="title.mainFunctions" /></h1>
+--%>
 	<tiles:insertAttribute name="menu"/>
-	</div>
-	<div id="colonna2">
-	<p class="noscreen"><a href="#fagiano_start" id="fagiano_mainContent"><s:text name="note.backToStart" /></a></p>
+
+	<p class="noscreen">
+		<a href="#fagiano_start" id="fagiano_mainContent"><s:text name="note.backToStart" /></a>
+	</p>
+
 	<tiles:insertAttribute name="body"/>
-	<p class="noscreen"><a href="#fagiano_mainContent"><s:text name="note.backToMainContent" /></a></p>
-	<p class="noscreen"><a href="#fagiano_start"><s:text name="note.backToStart" /></a></p>
-	</div>
-</div>
-<div id="footer">
-<tiles:insertAttribute name="footer"/>
+
+	<ul class="noscreen">
+		<li><a href="#fagiano_mainContent"><s:text name="note.backToMainContent" /></a></li>
+		<li><a href="#fagiano_start"><s:text name="note.backToStart" /></a></li>
+	</ul>
+
+	<tiles:insertAttribute name="footer"/>
+
 </div>
 
 <!-- Bootstrap core JavaScript

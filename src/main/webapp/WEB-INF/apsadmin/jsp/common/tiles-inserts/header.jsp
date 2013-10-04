@@ -3,15 +3,52 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 
-<div id="header-1">
-	<a href="<s:url action="main" namespace="/do" />" class="noborder outlineNone" title="<s:text name="note.goToMainPage" />"><img src="<wp:resourceURL/>administration/common/img/menu-button-round.png" width="51" height="49" alt="<s:text name="note.goToMainPage" />" /></a>
-</div>
+<div class="navbar navbar-fixed-top navbar-inverse">
+	<div class="container">
+
+		<!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+
+		<!-- Be sure to leave the brand out there if you want it shown -->
+
+		<a class="navbar-brand">
+			<img src="<wp:resourceURL/>administration/img/entando-logo.png" width="91" height="20" alt="Entando Enterprise Edition" />
+		</a>
+
+		<!-- Place everything within .navbar-collapse to hide it until above 768px -->
+		<div class="nav-collapse collapse navbar-responsive-collapse">
+
+			<p class="navbar-text pull-left col-12 col-lg-3">
+				<a class="navbar-link" href="http://www.entando.com/<s:property value="currentLang.code"/>/updates/" title="<s:text name="note.checkForUpdates" />">version <wp:info key="systemParam" paramName="version" /></a>
+			</p>
+
+			<ul class="nav navbar-nav pull-right col-2">
+				<li>
+					<a href="<s:url action="main" namespace="/do" />" title="<s:text name="note.goToMainPage" />"><span class="glyphicon glyphicon-home"></span></a>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">bla bla admin <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Action</a></li>
+						<li><a href="#">Another action</a></li>
+						<li><a href="#">Something else here</a></li>
+						<li class="divider"></li>
+						<li><a href="#">Separated link</a></li>
+					</ul>
+				</li>
+			</ul>
+
+		</div><!-- /.nav-collapse -->
+	</div><!-- /.container -->
+</div><!-- /.navbar -->
+
 
 <div id="header-2">
 <p>
-	<a class="noborder" href="http://www.entando.com/<s:property value="currentLang.code"/>/updates/" title="<s:text name="note.checkForUpdates" />">
-		<img src="<wp:resourceURL/>administration/common/img/entando-logo.png" width="97" height="60" alt="Entando" /> <span class="monospace version">version <wp:info key="systemParam" paramName="version" /></span>
-	</a>
 	<a href="<s:url namespace="/do/BaseAdmin" action="configSystemParams" />" style="display: inline-block; background-color: #5bb75b; text-transform: uppercase; float: right; padding: 8px; line-height: 1; margin: 26px 28px 0 0; border-bottom: none;">** <s:text name="menu.configure" /> **</a>
 </p>
 </div>
