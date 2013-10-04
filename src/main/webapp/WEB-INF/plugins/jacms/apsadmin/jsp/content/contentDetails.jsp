@@ -36,53 +36,91 @@
 		<li><a href="#jpcontentinspection_referencing_pages"><s:text name="title.referencingPages" /></a></li>
 	</ul>
 
-	<p class="sr-only" id="jpcontentinspection_metadata"><s:text name="title.metadata" /></p>
+	<p class="margin-base-vertical text-right">
+		<button type="button" data-toggle="collapse" data-target="#jpcontentinspection_metadata" class="btn btn-link">
+			<s:text name="title.metadata" />
+			<span class="icon-chevron-down"></span>
+		</button>
+	</p>
+	<div class="collapse" id="jpcontentinspection_metadata">
+		<table class="table table-bordered">
+			<tr>
+				<th class="text-right"><s:text name="label.description" /></th>
+				<td><s:property value="content.descr" /></td>
+			</tr>
+			<tr>
+				<th class="text-right"><s:text name="label.key" /></th>
+				<td><code><s:property value="content.id" /></code></td>
+			</tr>
+			<tr>
+				<th class="text-right"><s:text name="label.lastEdit" /></th>
+				<td title="<s:date name="content.lastModified" format="EEEE d MMMM yyyy, HH:mm" />">
+					<abbr title="<s:date name="content.lastModified" format="EEEE d MMMM yyyy, HH:mm" />"><s:date name="content.lastModified" format="dd/MM/yyyy HH:mm" nice="true" /></abbr>
+				</td>
+			</tr>
+			<tr>
+				<th class="text-right"><s:text name="label.creationDate" /></th>
+				<td><s:date name="content.created" format="dd/MM/yyyy HH:mm" /></td>
+			</tr>
+			<tr>
+				<th class="text-right"><s:text name="label.editor" /></th>
+				<td><s:property value="content.lastEditor" /></td>
+			</tr>
+			<tr>
+				<th class="text-right"><s:text name="name.version" /></th>
+				<td><code><s:property value="content.version" /></code></td>
+			</tr>
+			<tr>
+				<th class="text-right"><s:text name="label.mainGroup" /></th>
+				<td>
+					<s:property value="%{getGroupsMap()[content.mainGroup].getDescr()}"/>&#32;
+				</td>
+			</tr>
+			<tr>
+				<th class="text-right"><s:text name="label.viewgroups" /></th>
+				<td>
+					<s:if test="!content.groups.empty">
+						<s:set var="groupsVar" value="%{''}" />
+						<s:set var="firstVar" value="%{true}" />
+						<s:iterator var="curViewGroupCode" value="content.groups">
+							<s:set var="curViewGroup" value="getGroup(#curViewGroupCode)" />
+							<s:if test="null != #curViewGroup">
+									<s:if test="!#firstVar">
+										<s:set var="groupsVar" value="%{#groupsVar + ', ' + #curViewGroup.descr}"/>
+									</s:if>
+									<s:else>
+										<s:set var="groupsVar" value="%{#curViewGroup.descr}"/>
+									</s:else>
+									<s:if test="#firstVar"><s:set var="firstVar" value="%{false}" /></s:if>
+							</s:if>
+						</s:iterator>
+						<s:property value="#groupsVar" />
+						<s:if test="#groupsVar==''">
+							<span class="text-muted"><s:text name="note.noViewGroups"/></span>
+						</s:if>
+					</s:if>
+					<s:else>
+						<span class="text-muted"><s:text name="note.noViewGroups"/></span>
+					</s:else>
+				</td>
+			</tr>
+			<tr>
+				<th class="text-right"><s:text name="label.categories" /></th>
+				<td>
+					<s:if test="!content.categories.empty">
+						<ul class="list-unstyled">
+							<s:iterator var="curCategory" value="content.categories" status="catStatus">
+								<li><s:property value="%{#curCategory.getFullTitle(currentLang.code)}"/></li>
+							</s:iterator>
+						</ul>
+					</s:if>
+					<s:else>
+						<span class="text-muted"><s:text name="label.none" /></span>
+					</s:else>
+				</td>
+		</table>
+	</div>
 
-	<dl class="dl-horizontal">
-		<dt><s:text name="label.key" /></dt>
-			<dd><s:property value="content.id" /></dd>
-		<dt><s:text name="label.description" /></dt>
-			<dd><s:property value="content.descr" /></dd>
-		<dt><s:text name="label.lastEdit" /></dt>
-			<dd><s:date name="content.lastModified" format="dd/MM/yyyy HH:mm" /></dd>
-		<dt><s:text name="label.creationDate" /></dt>
-			<dd><s:date name="content.created" format="dd/MM/yyyy HH:mm" /></dd>
-		<dt><s:text name="label.editor" /></dt>
-			<dd><s:property value="content.lastEditor" /></dd>
-		<dt><s:text name="name.version" /></dt>
-			<dd><s:property value="content.version" /></dd>
-		<dt><s:text name="label.mainGroup" /></dt>
-			<dd><s:property value="content.mainGroup" /></dd>
-	</dl>
-
-<fieldset><legend><s:text name="label.info" /></legend>
-	<p><span class="important"><s:text name="label.viewgroups" /></span></p>
-	<s:if test="!content.groups.empty">
-		<ul class="noBullet">
-		<s:iterator var="curViewGroupCode" value="content.groups" >
-			<s:set var="curViewGroup" value="getGroup(#curViewGroupCode)" ></s:set>
-			<s:if test="null != #curViewGroup">
-				<li><s:property value="#curViewGroup.descr" /> (<s:property value="#curViewGroup.name"/>)</li>
-			</s:if>
-		</s:iterator>
-		</ul>
-	</s:if>
-	<s:else>
-		<p><s:text name="note.noViewGroups"/></p>
-	</s:else>
-
-	<p><span class="important"><s:text name="label.categories" /></span></p>
-	<s:if test="!content.categories.empty">
-		<ul class="noBullet">
-		<s:iterator var="curCategory" value="content.categories">
-			<li><s:property value="%{#curCategory.getFullTitle(currentLang.code)}"/></li>
-		</s:iterator>
-		</ul>
-	</s:if>
-	<s:else>
-		<p><s:text name="label.none" /></p>
-	</s:else>
-</fieldset>
 
 <fieldset><legend><s:text name="title.references" /></legend>
 	<p class="important" id="jpcontentinspection_referral_contents"><s:text name="title.referencedContents" /></p>
