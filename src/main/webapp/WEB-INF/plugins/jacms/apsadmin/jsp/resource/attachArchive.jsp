@@ -5,7 +5,7 @@
 
 <s:if test="onEditContent">
 	<s:set var="targetNS" value="%{'/do/jacms/Content'}" />
-	<h1 class="panel title-page"><span class="panel-body display-block">
+	<h1 class="panel panel-default title-page"><span class="panel-body display-block">
 	<s:text name="jacms.menu.contentAdmin" />&#32;/&#32;
 	<s:if test="getStrutsAction() == 1"><s:text name="label.new" /></s:if><s:else><s:text name="label.edit" /></s:else>&#32;/&#32;
 	<s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />
@@ -16,7 +16,7 @@
 	<s:set var="targetNS" value="%{'/do/jacms/Resource'}" />
 	<s:set var="targetParamName" value="%{'resourceTypeCode'}" />
 	<s:set var="targetParamValue" value="resourceTypeCode" />
-	<h1 class="panel title-page"><span class="panel-body display-block"><s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />
+	<h1 class="panel panel-default title-page"><span class="panel-body display-block"><s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />
 	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></span></h1>
 </s:if>
 

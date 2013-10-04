@@ -45,9 +45,8 @@
 <div class="row row-offcanvas row-offcanvas-right">
 	<div class="col-sm-3 sidebar-offcanvas col-sm-push-9 col-md-push-9 col-lg-push-9" id="sidebar">
 
-
 		<div class="panel-group margin-base-bottom">
-			<div class="panel">
+			<div class="panel panel-default">
 				<div class="panel-heading">
 					<a data-toggle="collapse" href="#submenu-user" class="display-block">
 						<c:out value="${sessionScope.currentUser}"/>

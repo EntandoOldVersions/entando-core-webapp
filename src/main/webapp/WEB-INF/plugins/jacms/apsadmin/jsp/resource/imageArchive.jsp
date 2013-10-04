@@ -6,12 +6,12 @@
 
 <s:if test="onEditContent">
 	<s:set var="targetNS" value="%{'/do/jacms/Content'}" />
-	<h1 class="panel title-page"><span class="panel-body display-block">
+	<h1 class="panel panel-default title-page"><span class="panel-body display-block">
 	<s:text name="jacms.menu.contentAdmin" />&#32;/&#32;
 	<s:if test="getStrutsAction() == 1"><s:text name="label.new" /></s:if><s:else><s:text name="label.edit" /></s:else>&#32;/&#32;
 	<s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />
 	</span></h1>
-	
+
 	<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/include/snippet-content.jsp" />
 </s:if>
 
@@ -19,7 +19,7 @@
 	<s:set var="targetNS" value="%{'/do/jacms/Resource'}" />
 	<s:set var="targetParamName" value="%{'resourceTypeCode'}" />
 	<s:set var="targetParamValue" value="resourceTypeCode" />
-	<h1 class="panel title-page"><span class="panel-body display-block"><s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />
+	<h1 class="panel panel-default title-page"><span class="panel-body display-block"><s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />
 	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></span></h1>
 </s:if>
 
@@ -86,7 +86,7 @@
 <s:if test="onEditContent">
 	<wp:ifauthorized permission="manageResources">
 		<p><a href="<s:url action="new" >
-		<s:param name="resourceTypeCode" >Image</s:param><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>" 
+		<s:param name="resourceTypeCode" >Image</s:param><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>"
 		class="btn btn-default" title="<s:text name="label.new" />&#32;<s:text name="label.image" />"><span class="icon icon-plus-sign"></span>&#32;<s:text name="label.new" />&#32;<s:text name="label.image" /></a></p>
 	</wp:ifauthorized>
 </s:if>
@@ -128,27 +128,27 @@
 		<s:param name="ownerGroupName" value="%{ownerGroupName}" />
 		<s:param name="treeNodesToOpen" value="%{treeNodesToOpen}" /></s:url>
 		<div class="col-lg-3">
-		<div class="panel text-center">
+		<div class="panel panel-default text-center">
 		<s:if test="!onEditContent">
 			<div class="panel-heading text-right padding-small-vertical padding-small-right">
 			<a href="<s:property value="URLtrash" escape="false" />" class="icon icon-remove text-warning"><span class="sr-only">Delete</span></a>
 			</div>
 		</s:if>
 		<%-- Dimension forced for img on thumbnail --%>
-			<img src="<s:property value="%{#resource.getImagePath(1)}"/>" alt=" " style="height:90px;max-width:130px" class="margin-small-top" />	
+			<img src="<s:property value="%{#resource.getImagePath(1)}"/>" alt=" " style="height:90px;max-width:130px" class="margin-small-top" />
 				<s:if test="onEditContent">
 					<div class="caption">
 					<p class="btn-group margin-small-vertical">
 						<a href="<s:url action="joinResource" namespace="/do/jacms/Content/Resource">
 						<s:param name="resourceId" value="%{#resourceid}" />
-						<s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>" 
-						class="btn btn-primary" 
-						title="<s:text name="note.joinThisToThat" />: 
+						<s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>"
+						class="btn btn-primary"
+						title="<s:text name="note.joinThisToThat" />:
 						<s:property value="content.descr" />" ><span class="icon icon-picture"></span>&#32;<s:text name="label.use"/></a>
-						
+
 						<s:set var="info-img"><s:property value="#resource.descr" /></s:set>
-						<button type="submit" class="btn btn-info" data-toggle="popover" 
-						data-html="true" data-content="Ciao" title="" 
+						<button type="submit" class="btn btn-info" data-toggle="popover"
+						data-html="true" data-content="Ciao" title=""
 						data-original-title="Image info"><span class="icon icon-info"></span>
 						<span class="sr-only"><s:text name="label.info" /></span>
 						</button>
@@ -168,7 +168,7 @@
 					 --%>
 					<p class="btn-group margin-small-vertical">
 					<a href="<s:property value="URLedit" escape="false" />" class="btn btn-default" ><span class="icon icon-edit"></span>&#32;Edit</a>
-					
+
 					<a href="#" class="btn btn-info"><span class="icon icon-info"></span><span class="sr-only">Info</span></a>
 					</p>
 					<%--
@@ -204,7 +204,7 @@
 								<s:if test="#resourceInstance != null">
 							<li>
 									<a href="<s:property value="%{#resource.getImagePath(#dimensionId)}" />"><span class="filehandler"><s:property value="#dimInfo.dimx" />x<s:property value="#dimInfo.dimy" />&nbsp;px</span><span class="filesize"><s:property value='#resourceInstance.fileLength.replaceAll(" ", "&nbsp;")' escapeXml="false" escapeHtml="false" escapeJavaScript="false" /></span></a>
-									<%//TODO check if reaplaceAll of spaces with &nbsp; is a good thing  %>				
+									<%//TODO check if reaplaceAll of spaces with &nbsp; is a good thing  %>
 							</li>
 								</s:if>
 							</s:iterator>

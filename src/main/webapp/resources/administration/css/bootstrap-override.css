@@ -22,10 +22,6 @@ html {
 	margin-top: 6px;
 }
 
-.panel .nav {
-	padding-right: 0;
-}
-
 .title-page {
 	font-size: 18px; /* like Bootstrap .h4 */
 	text-transform: uppercase;

@@ -6,7 +6,7 @@
 
 <s:if test="onEditContent">
 	<s:set var="targetNS" value="%{'/do/jacms/Content'}" />
-	<h1 class="panel title-page"><span class="panel-body display-block">
+	<h1 class="panel panel-default title-page"><span class="panel-body display-block">
 	<s:text name="jacms.menu.contentAdmin" />&#32;/&#32;
 	<s:if test="getStrutsAction() == 1"><s:text name="label.new" /></s:if><s:else><s:text name="label.edit" /></s:else>&#32;/&#32;
 	<s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />&#32;/&#32;
@@ -18,8 +18,8 @@
 <s:if test="!onEditContent">
 	<s:set var="targetNS" value="%{'/do/jacms/Resource'}" />
 	<s:set var="targetParamName" value="%{'resourceTypeCode'}" />
-	<s:set var="targetParamValue" value="resourceTypeCode" />	
-	<h1 class="panel title-page"><span class="panel-body display-block">
+	<s:set var="targetParamValue" value="resourceTypeCode" />
+	<h1 class="panel panel-default title-page"><span class="panel-body display-block">
 	<s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />&#32;/&#32;
 	<s:if test="getStrutsAction() == 1"><s:text name="label.new" /></s:if><s:else><s:text name="label.edit" /></s:else>
 	</span></h1>
@@ -58,7 +58,7 @@
 	</s:if>
 </p>
 
-<div class="panel">
+<div class="panel panel-default">
 	<div class="panel-body">
 	 	<div class="form-group">
 			<label class="control-label" for="descr"><s:text name="label.description" /></label>
@@ -109,7 +109,7 @@
 <div id="actions-container">
 	<p class="buttons">
 		<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/join-to-resource.png</s:set>
-		<wpsf:submit useTabindexAutoIncrement="true" action="joinCategory" type="image" src="%{#iconImagePath}" value="%{getText('label.join')}" title="%{getText('label.join')}" />		
+		<wpsf:submit useTabindexAutoIncrement="true" action="joinCategory" type="image" src="%{#iconImagePath}" value="%{getText('label.join')}" title="%{getText('label.join')}" />
 	</p>
 </div>
 
@@ -117,7 +117,7 @@
 
 <table class="generic" summary="<s:text name="note.resourceCategories.summary"/>">
 <caption><span><s:text name="title.resourceCategories.list"/></span></caption>
-<tr>	
+<tr>
 	<th><s:text name="label.category"/></th>
 	<th class="icon"><abbr title="<s:text name="label.remove" />">&ndash;</abbr></th>
 </tr>

@@ -8,13 +8,7 @@
 </s:if><span class="sr-only">.</span></p>
 --%>
 
-		<div class="alert alert-danger">
-			<p><strong>Not working, needs Andrea :F</strong></p>
-			<a class="btn btn-default" id="swapme" href="#swapto" data-swapon="swapto">swap me</a>
-			<a class="btn btn-default" style="display: none;" id="swapto" href="#swapme" data-swapon="swapme">swapped to. click to swap me back</a>
-		</div>
-
-<div class="panel">
+<div class="panel panel-default">
 	<div class="panel-body">
 		<s:if test="!#myNameIsJack"><a href="<s:url action="backToEntryContent" ><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>" title="<s:text name="note.content.backToEdit" />" ></s:if><s:property value="content.descrDisablingTemporarily" /><s:if test="!#myNameIsJack"></a></s:if>
 			<span id="contentDescription-text">

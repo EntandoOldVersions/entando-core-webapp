@@ -22,7 +22,7 @@
 
 		<s:if test="#pluginsSubMenus.size > 0">
 			<li class="panel-group">
-				<div class="panel">
+				<div class="panel panel-default">
 					<div class="panel-heading">
 						<a data-toggle="collapse" href="#submenu-plugins" class="display-block">
 							<s:text name="menu.plugins" />&#32;
@@ -54,7 +54,7 @@
 </wp:ifauthorized>
 <wp:ifauthorized permission="superuser">
 	<li class="panel-group">
-		<div class="panel">
+		<div class="panel panel-default">
 			<div class="panel-heading">
 				<a data-toggle="collapse" href="#submenu-api" class="display-block">
 					<s:text name="menu.apisAdmin" />&#32;
@@ -81,7 +81,7 @@
 	<wp:ifauthorized permission="editContents">
 
 		<li class="panel-group">
-			<div class="panel">
+			<div class="panel panel-default">
 				<div class="panel-heading">
 					<a data-toggle="collapse" href="#submenu-contents" class="display-block">
 						<s:text name="jacms.menu.contentAdmin" />&#32;
@@ -105,7 +105,7 @@
 	<wp:ifauthorized permission="manageResources">
 
 		<li class="panel-group">
-			<div class="panel">
+			<div class="panel panel-default">
 				<div class="panel-heading">
 					<a data-toggle="collapse" href="#submenu-resources" class="display-block">
 						<s:text name="jacms.menu.resourceAdmin" />&#32;
