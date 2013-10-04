@@ -32,7 +32,7 @@
 <div class="container">
 
 	<div class="row">
-		<div class="col-sm-6 col-offset-3">
+		<div class="col-lg-6 col-sm-6 col-lg-offset-3 col-sm-offset-3">
 
 			<h1 class="margin-base-top padding-small-top margin-small-bottom text-center">LOGO</h1>
 
@@ -161,8 +161,8 @@
 				</div>
 
 				<div class="row">
-					<p class="padding-base-top col-sm-8 col-offset-2">
-							<s:submit cssClass="btn btn-success btn-large btn-block" name="backend_client_gui" value="advanced" />
+					<p class="padding-base-top col-lg-8 col-sm-8 col-lg-offset-2 col-sm-offset-2">
+							<s:submit cssClass="btn btn-success btn-lg btn-block" name="backend_client_gui" value="advanced" />
 					</p>
 				</div>
 
