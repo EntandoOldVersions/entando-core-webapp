@@ -1,10 +1,11 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 <s:set var="currentDateAttributeName" value="%{#attributeTracer.getFormFieldName(#attribute)}" />
-<s:if test="#attribute.failedDateString == null"></s:if>
+<s:if test="#attribute.failedDateString == null">
 	<s:set var="dateAttributeValue" value="#attribute.getFormattedDate('dd/MM/yyyy')" />
+</s:if>
 <s:else>
-	<s:set name="dateAttributeValue" value="#attribute.failedDateString"></s:set>
+	<s:set var="dateAttributeValue" value="#attribute.failedDateString" />
 </s:else>
 <wpsf:textfield id="%{#currentDateAttributeName}"
 		name="%{#currentDateAttributeName}" value="%{#dateAttributeValue}"
