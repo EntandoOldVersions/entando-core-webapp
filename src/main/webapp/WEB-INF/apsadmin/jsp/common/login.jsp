@@ -114,18 +114,16 @@
 				<s:set var="usernameFieldErrorsVar" value="%{fieldErrors['username']}" />
 				<s:set var="usernameHasFieldErrorVar" value="#usernameFieldErrorsVar != null && !#usernameFieldErrorsVar.isEmpty()" />
 				<s:set var="controlGroupErrorClassVar" value="''" />
-				<s:set var="inputErrorClassVar" value="''" />
 
 				<s:if test="#usernameHasFieldErrorVar">
 					<s:set var="controlGroupErrorClassVar" value="' has-error'" />
-					<s:set var="inputErrorClassVar" value="' input-with-feedback'" />
 				</s:if>
 
 				<div class="margin-base-vertical form-group<s:property value="controlGroupErrorClassVar" />">
 					<label for="username" class="noscreen"><s:text name="label.username" /></label>
 					<div class="input-group">
 						<div class="input-group-addon"><span class="icon icon-user"></span></div>
-						<s:textfield name="username" id="username" cssClass="%{'form-control input-large' + #inputErrorClassVar}" placeholder="%{getText('label.username')}" />
+						<s:textfield name="username" id="username" cssClass="form-control input-large" placeholder="%{getText('label.username')}" />
 					</div>
 					<s:if test="#usernameHasFieldErrorVar">
 						<p class="text-danger padding-small-vertical"><s:iterator value="#usernameFieldErrorsVar"><s:property /> </s:iterator></p>
@@ -135,18 +133,16 @@
 				<s:set var="passwordFieldErrorsVar" value="%{fieldErrors['password']}" />
 				<s:set var="passwordHasFieldErrorVar" value="#passwordFieldErrorsVar != null && !#passwordFieldErrorsVar.isEmpty()" />
 				<s:set var="controlGroupErrorClassVar" value="''" />
-				<s:set var="inputErrorClassVar" value="''" />
 
 				<s:if test="#passwordHasFieldErrorVar">
 					<s:set var="controlGroupErrorClassVar" value="' has-error'" />
-					<s:set var="inputErrorClassVar" value="' input-with-feedback'" />
 				</s:if>
 
 				<div class="margin-base-vertical form-group<s:property value="controlGroupErrorClassVar" />">
 					<label for="password" class="noscreen"><s:text name="label.password" /></label>
 					<div class="input-group">
 						<div class="input-group-addon"><span class="icon icon-lock"></span></div>
-						<s:password name="password" id="password" cssClass="%{'form-control input-large' + #inputErrorClassVar}" placeholder="%{getText('label.password')}" />
+						<s:password name="password" id="password" cssClass="form-control input-large" placeholder="%{getText('label.password')}" />
 					</div>
 					<s:if test="#passwordHasFieldErrorVar">
 						<p class="text-danger padding-small-vertical"><s:iterator value="#passwordFieldErrorsVar"><s:property /> </s:iterator></p>
