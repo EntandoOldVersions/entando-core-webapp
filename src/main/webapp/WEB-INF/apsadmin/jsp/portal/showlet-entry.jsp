@@ -51,6 +51,11 @@
 		<div class="alert alert-danger alert-dismissable">
 			<button type="button" class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
 			<p><s:text name="message.title.ActionErrors" /></p>
+		    <ul>
+            	<s:iterator value="actionErrors">
+                    <li><s:property escape="false" /></li>
+            	</s:iterator>
+            </ul>
 		</div>
 	</s:if>
 	<s:if test="hasFieldErrors()">

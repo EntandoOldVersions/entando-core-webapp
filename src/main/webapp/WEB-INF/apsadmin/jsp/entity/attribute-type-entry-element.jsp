@@ -56,7 +56,8 @@
 		<wpsf:textfield id="attributeTypeCode" name="attributeTypeCode" value="%{attributeTypeCode}" disabled="true" cssClass="form-control" />
 	</div>
 	<div class="form-group">
-		<wpsf:checkbox name="indexable" id="indexable" cssClass="radiocheck" /><label for="indexable"><s:text name="Entity.attribute.flag.indexed.full" /></label>
+		<wpsf:checkbox name="indexable" id="indexable" />
+		<label for="indexable"><s:text name="Entity.attribute.flag.indexed.full" /></label>
 	</div>
 
 </fieldset>

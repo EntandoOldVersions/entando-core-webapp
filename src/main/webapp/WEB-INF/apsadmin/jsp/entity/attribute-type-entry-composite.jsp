@@ -69,31 +69,33 @@
 	</div>
 
 <s:if test="#compositeAttribute.attributes.size > 0">
-	<table class="generic" id="fagiano_compositeTypesList">
+	<div class="table-responsive margin-base-vertical">
+	<table class="table table-bordered" id="fagiano_compositeTypesList">
 	<tr>
+		<th class="text-center text-nowrap"><abbr title="<s:text name="label.actions" />">&ndash;</abbr></th>
 		<th><s:text name="label.code" /></th>
 		<th><s:text name="label.type" /></th>
-		<th class="icon"><abbr title="<s:text name="Entity.attribute.flag.mandatory.full" />"><s:text name="Entity.attribute.flag.mandatory.short" /></abbr></th>
-		<th class="icon" colspan="3"><abbr title="<s:text name="label.actions" />">&ndash;</abbr></th>
+		<th class="text-center text-nowrap" class="text-center text-nowrap"><abbr title="<s:text name="Entity.attribute.flag.mandatory.full" />"><s:text name="Entity.attribute.flag.mandatory.short" /></abbr></th>
 	</tr>
 
-<s:iterator value="#compositeAttribute.attributes" var="attribute" status="elementStatus">
-	<tr>
-		<td class="monospace"><s:property value="#attribute.name" /></td>
- 		<td class="monospace"><s:property value="#attribute.type" /></td>
- 		
-		<s:if test="#attribute.required">
-			<s:set var="tmpStatus">yes</s:set>
-		</s:if>
-		<s:else>
-			<s:set var="tmpStatus">no</s:set>
-		</s:else>
-		<td class="icon"><img src="<wp:resourceURL />administration/common/img/icons/<s:property value="#attribute.required" />.png" alt="<s:text name="label.%{#tmpStatus}" />" title="<s:text name="label.%{#tmpStatus}" />" /></td>
- 		
-		<s:set name="elementIndex" value="#elementStatus.index" />
-		<s:include value="/WEB-INF/apsadmin/jsp/entity/include/attribute-operations-misc-composite.jsp" />
-	</tr>
-</s:iterator>
+	<s:iterator value="#compositeAttribute.attributes" var="attribute" status="elementStatus">
+		<tr>
+			<td>
+				<s:set name="elementIndex" value="#elementStatus.index" />
+				<s:include value="/WEB-INF/apsadmin/jsp/entity/include/attribute-operations-misc-composite.jsp" />
+			</td>
+			<td><s:property value="#attribute.name" /></td>
+	 		<td><s:property value="#attribute.type" /></td>
+	 		
+			<s:if test="#attribute.required">
+				<s:set var="tmpStatus">yes</s:set>
+			</s:if>
+			<s:else>
+				<s:set var="tmpStatus">no</s:set>
+			</s:else>
+			<td class="icon"><img src="<wp:resourceURL />administration/common/img/icons/<s:property value="#attribute.required" />.png" alt="<s:text name="label.%{#tmpStatus}" />" title="<s:text name="label.%{#tmpStatus}" />" /></td>
+		</tr>
+	</s:iterator>
 
 	</table>
 </s:if>

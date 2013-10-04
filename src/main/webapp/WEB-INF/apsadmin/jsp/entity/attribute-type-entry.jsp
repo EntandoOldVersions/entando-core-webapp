@@ -154,7 +154,7 @@
 	<div class="form-group">
 		<label for="disablingCode"><s:text name="label.code" />:</label>
 		<div class="input-group">
-			<s:select name="disablingCode" id="disablingCode" list="#attributeDisablingCodesVar" />
+			<s:select name="disablingCode" id="disablingCode" list="#attributeDisablingCodesVar" cssClass="form-control"/>
 			<span class="input-group-btn">
 			<s:submit type="button" action="addAttributeDisablingCode" value="%{getText('label.add')}" cssClass="btn btn-info" />
 			</span>

@@ -2,7 +2,7 @@
 <%@ taglib uri="/aps-core" prefix="wp" %>
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
-
+AAA
 <s:set var="label_moveup"><wp:i18n key="userprofile_ITEM_MOVEUP" /></s:set>
 <s:set var="label_moveup_in_number"><wp:i18n key="userprofile_ITEM_MOVEUP_IN" /></s:set>
 <s:set var="label_movedown"><wp:i18n key="userprofile_ITEM_MOVEDOWN" /></s:set>

@@ -20,6 +20,7 @@
 	<span class="icon icon-sort-down"></span>
 	</wpsf:submit>
 </div>
+
 <div class="btn-group btn-group-xs">
 	<wpsa:actionParam action="removeAttribute" var="actionName" >
 		<wpsa:actionSubParam name="attributeIndex" value="%{#elementIndex}" />
