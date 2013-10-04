@@ -1,8 +1,3 @@
 target
 nb-configuration.xml
-derby.log
-nb-configuration.xml
-.project
-.classpath
-nbactions.xml
-.settings/
+.DS_Store
