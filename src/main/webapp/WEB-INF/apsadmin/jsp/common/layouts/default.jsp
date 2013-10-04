@@ -36,25 +36,34 @@
 
 <div class="container">
 
+<%--
 	<tiles:insertAttribute name="shortcuts-quickbar"/>
+--%>
 
 <%--
 	<h1 id="fagiano_start"><s:text name="title.mainFunctions" /></h1>
 --%>
-	<tiles:insertAttribute name="menu"/>
+<div class="row">
+	<div class="col-9">
+		<tiles:insertAttribute name="body"/>
+	</div>
+	<div class="col-3">
+		<tiles:insertAttribute name="menu"/>
+		<p class="noscreen">
+			<a href="#fagiano_start" id="fagiano_mainContent"><s:text name="note.backToStart" /></a>
+		</p>
+	</div>
+</div>
 
-	<p class="noscreen">
-		<a href="#fagiano_start" id="fagiano_mainContent"><s:text name="note.backToStart" /></a>
-	</p>
-
-	<tiles:insertAttribute name="body"/>
-
+<div class="row margin-large-top">
 	<ul class="noscreen">
 		<li><a href="#fagiano_mainContent"><s:text name="note.backToMainContent" /></a></li>
 		<li><a href="#fagiano_start"><s:text name="note.backToStart" /></a></li>
 	</ul>
-
-	<tiles:insertAttribute name="footer"/>
+	<div class="text-center">
+		<tiles:insertAttribute name="footer"/>
+	</div>
+</div>
 
 </div>
 
