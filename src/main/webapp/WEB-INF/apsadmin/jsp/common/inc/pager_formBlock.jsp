@@ -1,61 +1,66 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 <%@ taglib uri="/aps-core" prefix="wp" %>
 
 <s:if test="#group.size > #group.max">
-	<s:if test="%{1 == #group.currItem}">
-		<s:set id="goFirst" name="goFirst"><wp:resourceURL/>administration/common/img/icons/transparent.png</s:set>
+
+<ul class="pagination">
+	<s:if test="null != #group.pagerId">
+		<s:set var="pagerIdMarker" value="#group.pagerId" />
 	</s:if>
 	<s:else>
-		<s:set id="goFirst" name="goFirst"><wp:resourceURL/>administration/common/img/icons/go-first.png</s:set>
+		<s:set var="pagerIdMarker">pagerItem</s:set>
 	</s:else>
 
-	<s:if test="%{1 == #group.beginItemAnchor}">
-		<s:set id="jumpBackward" name="jumpBackward"><wp:resourceURL/>administration/common/img/icons/transparent.png</s:set>
+	<s:if test="#group.advanced">
+	<li>
+		<s:submit name="%{#pagerIdMarker + '_1'}" type="button" disabled="%{1 == #group.currItem}" title="%{getText('label.goToFirst')}">
+			<span class="icon icon-step-backward"></span>
+		</s:submit>
+	</li>
+	<li>
+		<s:submit name="%{#pagerIdMarker + '_' + (#group.currItem - #group.offset) }" type="button" disabled="%{1 == #group.beginItemAnchor}" title="%{getText('label.jump') + ' ' + #group.offset + ' ' + getText('label.backward')}">
+			<span class="icon icon-fast-backward"></span>
+		</s:submit>
+	</li>
 	</s:if>
-	<s:else>
-		<s:set id="jumpBackward" name="jumpBackward"><wp:resourceURL/>administration/common/img/icons/go-jump-backward.png</s:set>
-	</s:else>
 
-	<s:if test="%{1 == #group.currItem}">
-		<s:set id="goPrevious" name="goPrevious"><wp:resourceURL/>administration/common/img/icons/transparent.png</s:set>
-	</s:if>
-	<s:else>
-		<s:set id="goPrevious" name="goPrevious"><wp:resourceURL/>administration/common/img/icons/previous.png</s:set>
-	</s:else>
+	<li>
+		<s:submit name="%{#pagerIdMarker + '_' + #group.prevItem}" type="button" title="%{getText('label.prev.full')}" disabled="%{1 == #group.currItem}">
+			<span class="icon icon-long-arrow-left"></span>
+		</s:submit>
+	</li>
 
-	<s:if test="%{#group.maxItem == #group.currItem}">
-		<s:set id="goNext" name="goNext"><wp:resourceURL/>administration/common/img/icons/transparent.png</s:set>
-	</s:if>
-	<s:else>
-		<s:set id="goNext" name="goNext"><wp:resourceURL/>administration/common/img/icons/next.png</s:set>
-	</s:else>
-
-	<s:if test="%{#group.maxItem == #group.endItemAnchor}">
-		<s:set id="jumpForward" name="jumpForward"><wp:resourceURL/>administration/common/img/icons/transparent.png</s:set>
-	</s:if>
-	<s:else>
-		<s:set id="jumpForward" name="jumpForward"><wp:resourceURL/>administration/common/img/icons/go-jump-forward.png</s:set>
-	</s:else>
-
-	<s:if test="%{#group.maxItem == #group.currItem}">
-		<s:set id="goLast" name="goLast"><wp:resourceURL/>administration/common/img/icons/transparent.png</s:set>
-	</s:if>
-	<s:else>
-		<s:set id="goLast" name="goLast"><wp:resourceURL/>administration/common/img/icons/go-last.png</s:set>
-	</s:else>
- 	
-<p>
-	<s:if test="null != #group.pagerId"><s:set var="pagerIdMarker" value="#group.pagerId" /></s:if>
-	<s:else><s:set var="pagerIdMarker">pagerItem</s:set></s:else>
-	<s:if test="#group.advanced"><wpsf:submit useTabindexAutoIncrement="true" type="image" name="%{#pagerIdMarker + '_1'}" value="%{getText('label.goToFirst')}" title="%{getText('label.goToFirst')}" src="%{#goFirst}" disabled="%{1 == #group.currItem}" /><wpsf:submit useTabindexAutoIncrement="true" type="image" name="%{#pagerIdMarker + '_' + (#group.currItem - #group.offset) }" value="%{getText('label.jump') + ' ' + #group.offset + ' ' + getText('label.backward')}" title="%{getText('label.jump') + ' ' + #group.offset + ' ' + getText('label.backward')}" src="%{#jumpBackward}" disabled="%{1 == #group.beginItemAnchor}" /></s:if>	
-	<wpsf:submit useTabindexAutoIncrement="true" type="image" name="%{#pagerIdMarker + '_' + #group.prevItem}" value="%{getText('label.prev')}" title="%{getText('label.prev.full')}" src="%{#goPrevious}" disabled="%{1 == #group.currItem}" />	
 	<s:subset source="#group.items" count="#group.endItemAnchor-#group.beginItemAnchor+1" start="#group.beginItemAnchor-1">
-		<s:iterator id="item"><wpsf:submit useTabindexAutoIncrement="true" name="%{#pagerIdMarker + '_' + #item}" value="%{#item}" disabled="%{#item == #group.currItem}" cssClass="paddingLateral05 disabled-%{#item == #group.currItem}" /></s:iterator>
+		<s:iterator id="item">
+			<li>
+				<s:submit name="%{#pagerIdMarker + '_' + #item}" type="button" disabled="%{#item == #group.currItem}">
+					<s:property value="%{#item}" />
+				</s:submit>
+			</li>
+		</s:iterator>
 	</s:subset>
-	<wpsf:submit useTabindexAutoIncrement="true" type="image" name="%{#pagerIdMarker + '_' + #group.nextItem}" value="%{getText('label.next')}" title="%{getText('label.next.full')}" src="%{#goNext}" disabled="%{#group.maxItem == #group.currItem}" />
-	<s:if test="#group.advanced"><s:set name="jumpForwardStep" value="#group.currItem + #group.offset"></s:set><wpsf:submit useTabindexAutoIncrement="true" type="image" name="%{#pagerIdMarker + '_' + (#jumpForwardStep)}" value="%{getText('label.jump') + ' ' + #group.offset + ' ' + getText('label.forward')}" title="%{getText('label.jump') + ' ' + #group.offset + ' ' + getText('label.forward')}" src="%{#jumpForward}" disabled="%{#group.maxItem == #group.endItemAnchor}" /><wpsf:submit useTabindexAutoIncrement="true" type="image" name="%{#pagerIdMarker + '_' + #group.size}" value="%{getText('label.goToLast')}" title="%{getText('label.goToLast')}" src="%{#goLast}" disabled="%{#group.maxItem == #group.currItem}" /></s:if>
+
+	<li>
+		<s:submit name="%{#pagerIdMarker + '_' + #group.nextItem}" type="button" title="%{getText('label.next.full')}" disabled="%{#group.maxItem == #group.currItem}">
+			<span class="icon icon-long-arrow-right"></span>
+		</s:submit>
+	</li>
+
+	<s:if test="#group.advanced">
+	<s:set name="jumpForwardStep" value="#group.currItem + #group.offset"></s:set>
+	<li>
+		<s:submit name="%{#pagerIdMarker + '_' + (#jumpForwardStep)}" type="button" disabled="%{#group.maxItem == #group.endItemAnchor}" title="%{getText('label.jump') + ' ' + #group.offset + ' ' + getText('label.forward')}">
+			<span class="icon icon-fast-forward"></span>
+		</s:submit>
+	</li>
+	<li>
+		<s:submit name="%{#pagerIdMarker + '_' + #group.size}" type="button" disabled="%{#group.maxItem == #group.currItem}" title="%{getText('label.goToLast')}">
+			<span class="icon icon-step-forward"></span>
+		</s:submit>
+	</li>
+	</s:if>
+
 	<s:set var="pagerIdMarker" value="null" />
-</p>
+</ul>
 
 </s:if>
