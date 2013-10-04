@@ -43,8 +43,8 @@
 
 	<!-- START CICLO ATTRIBUTI -->
 	<s:iterator value="content.attributeList" var="attribute">
-	<div class="margin-base-vertical" id="<s:property value="%{'contentedit_'+#lang.code+'_'+#attribute.name}" />">
-	<%-- INIZIALIZZAZIONE TRACCIATORE --%> 
+	<div class="margin-base-vertica" id="<s:property value="%{'contentedit_'+#lang.code+'_'+#attribute.name}" />">
+	<%-- INIZIALIZZAZIONE TRACCIATORE --%>
 	<wpsa:tracerFactory var="attributeTracer" lang="%{#lang.code}" />
 
 	<s:if test="null != #attribute.description"><s:set var="attributeLabelVar" value="#attribute.description" /></s:if>
@@ -61,92 +61,78 @@
 
 	</s:elseif>
 	<s:elseif test="#attribute.type == 'Monotext' || #attribute.type == 'Text' || #attribute.type == 'Longtext' || #attribute.type == 'Hypertext' || #attribute.type == 'Attach' || #attribute.type == 'Number' || #attribute.type == 'Date' || #attribute.type == 'Timestamp' || #attribute.type == 'Link' || #attribute.type == 'Enumerator'">
-	<p>
-		<label class="display-block" for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />"><s:property value="#attributeLabelVar" />&#32;<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" /></label>
+	<div class="form-group<s:property value="controlGroupErrorClassVar" />">
+		<label class="control-label display-block" for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />"><s:property value="#attributeLabelVar" />&#32;<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" /></label>
 	</s:elseif>
 
 	<s:if test="#attribute.type == 'Monotext'">
 	<!-- ############# ATTRIBUTO TESTO MONOLINGUA ############# -->
-	<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/monotextAttribute.jsp" />
-	</p>
+		<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/monotextAttribute.jsp" />
 	</s:if>
 
 	<s:elseif test="#attribute.type == 'Text'">
 	<!-- ############# ATTRIBUTO TESTO SEMPLICE MULTILINGUA ############# -->
-	<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/textAttribute.jsp" />
-	</p>
+		<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/textAttribute.jsp" />
 	</s:elseif>
 
 	<s:elseif test="#attribute.type == 'Longtext'">
 	<!-- ############# ATTRIBUTO TESTOLUNGO ############# -->
-	<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/longtextAttribute.jsp" />
-	</p>
+		<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/longtextAttribute.jsp" />
 	</s:elseif>
 
 	<s:elseif test="#attribute.type == 'Hypertext'">
 	<!-- ############# ATTRIBUTO HYPERTEXT ############# -->
-	<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/hypertextAttribute.jsp" />
-	</p>
+		<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/hypertextAttribute.jsp" />
 	</s:elseif>
 
 	<s:elseif test="#attribute.type == 'Image'">
 	<!-- ############# ATTRIBUTO Image ############# -->
-	<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/imageAttribute.jsp" />
-	</p>
+		<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/imageAttribute.jsp" />
 	</s:elseif>
 
 	<s:elseif test="#attribute.type == 'Attach'">
 	<!-- ############# ATTRIBUTO Attach ############# -->
-	<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/attachAttribute.jsp" />
-	</p>
+		<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/attachAttribute.jsp" />
 	</s:elseif>
 
 	<s:elseif test="#attribute.type == 'CheckBox'">
 	<!-- ############# ATTRIBUTO CheckBox ############# -->
-	<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/checkBoxAttribute.jsp" />
-	</p>
+		<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/checkBoxAttribute.jsp" />
 	</s:elseif>
 
 	<s:elseif test="#attribute.type == 'Boolean'">
 	<!-- ############# ATTRIBUTO Boolean ############# -->
-	<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/booleanAttribute.jsp" />
-	</p>
+		<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/booleanAttribute.jsp" />
 	</s:elseif>
 
 	<s:elseif test="#attribute.type == 'ThreeState'">
 	<!-- ############# ATTRIBUTO ThreeState ############# -->
-	<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/threeStateAttribute.jsp" />
-	</p>
+		<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/threeStateAttribute.jsp" />
 	</s:elseif>
 
 	<s:elseif test="#attribute.type == 'Number'">
 	<!-- ############# ATTRIBUTO Number ############# -->
-	<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/numberAttribute.jsp" />
-	</p>
+		<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/numberAttribute.jsp" />
 	</s:elseif>
 
 	<s:elseif test="#attribute.type == 'Date'">
 	<!-- ############# ATTRIBUTO Date ############# -->
-	<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/dateAttribute.jsp" />
-	</p>
+		<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/dateAttribute.jsp" />
 	</s:elseif>
 
 	<s:elseif test="#attribute.type == 'Timestamp'">
 	<!-- ############# ATTRIBUTO Timestamp ############# -->
-	<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/timestampAttribute.jsp" />
-	</p>
+		<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/timestampAttribute.jsp" />
 	</s:elseif>
 
 	<s:elseif test="#attribute.type == 'Link'">
 	<!-- ############# ATTRIBUTO Link ############# -->
-	<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/linkAttribute.jsp" />
-	</p>
+		<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/linkAttribute.jsp" />
 	</s:elseif>
 
 	<s:elseif test="#attribute.type == 'Enumerator'">
 	<!-- ############# ATTRIBUTO TESTO Enumerator ############# -->
-	<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/enumeratorAttribute.jsp" />
-	</p>
+		<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/enumeratorAttribute.jsp" />
 	</s:elseif>
 	 
 	<s:elseif test="#attribute.type == 'Monolist'">
@@ -161,8 +147,7 @@
 
 	<s:elseif test="#attribute.type == 'Composite'">
 	<!-- ############# ATTRIBUTO Composite ############# -->
-	<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/compositeAttribute.jsp" />
-	</p>
+		<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/compositeAttribute.jsp" />
 	</s:elseif>
 
 	<wpsa:hookPoint key="jacms.entryContent.attributeExtra" objectName="hookPointElements_jacms_entryContent_attributeExtra">
@@ -170,6 +155,15 @@
 		<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
 	</s:iterator>
 	</wpsa:hookPoint>
+
+	<s:if test="#attribute.type == 'Monotext' || #attribute.type == 'Text' || #attribute.type == 'Longtext' || #attribute.type == 'Hypertext' || #attribute.type == 'Attach' || #attribute.type == 'Number' || #attribute.type == 'Date' || #attribute.type == 'Timestamp' || #attribute.type == 'Link' || #attribute.type == 'Enumerator'">
+
+		<s:if test="#attributeFieldErrorsVar">
+		  <p class="text-danger padding-small-vertical"><s:iterator value="#attributeFieldErrorsVar"><s:property /> </s:iterator></p>
+		</s:if>
+
+		</div> <!-- form-group -->
+	</s:if>
 
 	</div>
 	</s:iterator>

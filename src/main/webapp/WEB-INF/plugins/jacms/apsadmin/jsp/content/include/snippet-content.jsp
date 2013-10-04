@@ -17,7 +17,7 @@
 <div class="panel">
 		<s:if test="!#myNameIsJack"><a href="<s:url action="backToEntryContent" ><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>" title="<s:text name="note.content.backToEdit" />" ></s:if><s:property value="content.descrDisablingTemporarily" /><s:if test="!#myNameIsJack"></a></s:if>
 			<span id="contentDescription-text">
-				<a data-container="contentDescription-text" href="#contentDescription-input" data-swapon="contentDescription-input" class="text-warning"id="contentDescription-readonly"><span class="icon icon-edit"></span>&#32;
+				<a data-container="contentDescription-text" href="#contentDescription-input" data-swapon="contentDescription-input" class="text-warning" id="contentDescription-readonly"><span class="icon icon-edit"></span>&#32;
 						<%/* FIXME: substitute the value of contentDescriptionVar with something... */%>
 						<s:set var="contentDescriptionVar" value="contentDescription" />
 						<s:set var="contentDescriptionVar" value="%{''}" />
@@ -30,7 +30,7 @@
 			<div id="contentDescription-input" style="display: none;" class="input-group has-warning">
 				<input class="form-control" type="text" name="contentDescription" value="<s:property value="#contentDescriptionVar" />" id="contentDescription" />
 				<span class="input-group-btn">
-					<button class="btn btn-warning" id="contentDescription-confirm" data-swapon="contentDescription-text" data-container="contentDescription-input" value="Set Description" >Set Description</button></button>
+					<button class="btn btn-warning" id="contentDescription-confirm" data-swapon="contentDescription-text" data-container="contentDescription-input" value="Set Description" >Set Description</button>
 				</span>
 			</div>
 
