@@ -13,7 +13,7 @@
 	</definition>
     <definition extends="layout.default" name="admin.jacms.content.list">
 		<put-attribute name="title" value="title.contentManagement" />
-		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/template/extraresources/content_contentFinding.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/layouts/assets-more/content_contentFinding.jsp" />
 		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/contentFinding.jsp" />
 	</definition>
 	<definition extends="layout.default" name="admin.jacms.content.trash">
@@ -22,16 +22,12 @@
 	</definition>
 	<definition extends="layout.default" name="admin.jacms.content.inspect">
 		<put-attribute name="title" value="title.contentManagement" />
-		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/template/extraresources/content.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/layouts/assets-more/content.jsp" />
 		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/contentDetails.jsp" />
-	</definition>
-	<definition extends="layout.default" name="admin.jacms.content.new">
-		<put-attribute name="title" value="title.contentManagement" />
-		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/newContent.jsp" />
 	</definition>
 	<definition extends="layout.default" name="admin.jacms.content.entry">
 		<put-attribute name="title" value="title.contentManagement" />
-		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/template/extraresources/content.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/layouts/assets-more/content.jsp" />
 		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/entryContent.jsp" />
 	</definition>
 	<definition extends="layout.default" name="admin.jacms.content.references">
@@ -42,12 +38,12 @@
 	<!-- *** Inizio Area Gestione Risorse Contenuti *** -->
 	<definition extends="layout.default" name="admin.jacms.content.findResource.Image">
 		<put-attribute name="title" value="title.contentManagement" />
-		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/template/extraresources/resource.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/layouts/assets-more/resource.jsp" />
 		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/resource/imageArchive.jsp" />
 	</definition>
 	<definition extends="layout.default" name="admin.jacms.content.findResource.Attach">
 		<put-attribute name="title" value="title.contentManagement" />
-		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/template/extraresources/resource.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/layouts/assets-more/resource.jsp" />
 		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/resource/attachArchive.jsp" />
 	</definition>
 	<!-- *** Fine Area Gestione Risorse Contenuti *** -->
@@ -63,7 +59,7 @@
 	</definition>
 	<definition extends="layout.default" name="admin.jacms.content.link.configPageLinkType">
 		<put-attribute name="title" value="title.contentManagement" />
-		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/template/extraresources/pageTree.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/layouts/assets-more/pageTree.jsp" />
 		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/linkAttribute/configPageLinkType.jsp" />
 	</definition>
 	<definition extends="layout.default" name="admin.jacms.content.link.configContentLinkType">
@@ -85,7 +81,7 @@
 	</definition>
     <definition extends="layout.default" name="admin.jacms.contentModel.entry">
 		<put-attribute name="title" value="title.generalSettings.contentModels" />
-		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/template/extraresources/content_entryModel.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/layouts/assets-more/content_entryModel.jsp" />
 		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/model/entryModel.jsp" />
 	</definition>
     <definition extends="layout.default" name="admin.jacms.contentModel.reference">
@@ -111,17 +107,17 @@
 	</definition>
     <definition extends="layout.default" name="admin.jacms.resource.Image.list">
 		<put-attribute name="title" value="title.resourceManagement" />
-		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/template/extraresources/resource.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/layouts/assets-more/resource.jsp" />
 		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/resource/imageArchive.jsp" />
 	</definition>
 	<definition extends="layout.default" name="admin.jacms.resource.Attach.list">
 		<put-attribute name="title" value="title.resourceManagement" />
-		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/template/extraresources/resource.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/layouts/assets-more/resource.jsp" />
 		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/resource/attachArchive.jsp" />
 	</definition>
 	<definition extends="layout.default" name="admin.jacms.resource.entry">
 		<put-attribute name="title" value="title.resourceManagement" />
-		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/template/extraresources/resource.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/layouts/assets-more/resource.jsp" />
 		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/resource/entryResource.jsp" />
 	</definition>
 	<definition extends="layout.default" name="admin.jacms.resource.references">
@@ -173,8 +169,8 @@
 	</definition>
 	<definition extends="layout.default" name="admin.jacms.page.showlet.contentListViewer.entryFilter">
 		<put-attribute name="title" value="title.pageManagement" />
-		<put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/template/extraresources/entryFilter.jsp" />
-		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/specialwidget/contentListViewer/entryFilter.jsp" />
+		<put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/entryFilter.jsp" />
+		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/specialshowlet/contentListViewer/entryFilter.jsp" />
 	</definition>
 
 	<!-- FINE Area Gestione Configurazione Showlet Speciali -->
