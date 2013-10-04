@@ -1,52 +1,18 @@
 <%@ taglib prefix="wp" uri="/aps-core" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 
 <script src="<wp:resourceURL />administration/js/bootstrap-swapon.js"></script>
+<script src="<wp:resourceURL />administration/js/jquery.entando.js"></script>
 <script>
 //one domready to rule 'em all
 $(function() {
 	$('[data-toggle="popover"	]').popover();
 
-	//events captured when swapped, they are not necessary
-	$('#swapme').on('swapon', function(ev, action) {
-		console.log('element #swapme doing...', action);
-	});
-
-	$('#swapto').on('swapon', function(ev, action) {
-		console.log('element #swapto ...', action);
-	});
-});
-</script>
-
-<%-- TEMPORARILY COMMENTED OUT EVERYTHING
-
-<%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
-
-<s:include value="/WEB-INF/apsadmin/jsp/common/template/defaultExtraResources.jsp" />
-<s:include value="/WEB-INF/apsadmin/jsp/common/template/extraresources/inc/snippet-calendar.jsp" />
-
-<s:if test="htmlEditorCode == 'fckeditor'">
-	<!-- per attributo Hypertext -->
-	<script type="text/javascript" src="<wp:resourceURL />administration/common/js/ckeditor/ckeditor.js"></script>
-</s:if>
-	
 <s:set var="categoryTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_category" /></s:set>
 
-<script type="text/javascript">
-<!--//--><![CDATA[//><!--
-
-//for content tabs
-window.addEvent('domready', function(){
-	 var tabSet = new Taboo({
-			tabs: "tab",
-			tabTogglers: "tab-toggle",
-			activeTabClass: "tab-current"
-		});
-});
-
 //for content categories
-window.addEvent('domready', function(){
 <s:if test="#categoryTreeStyleVar == 'classic'">
+<%--
 	var catTree  = new Wood({
 		menuToggler: "subTreeToggler",
 		rootId: "categoryTree",
@@ -63,13 +29,50 @@ window.addEvent('domready', function(){
 		toolexpandAllLabelTitle: "<s:text name="label.expandAllTitle" />",
 		toolcollapseLabelTitle: "<s:text name="label.collapseAllTitle" />"
 	});
+--%>
+
+	var catTree = jQuery("#categoryTree").EntandoWoodMenu({
+		menuToggler: "subTreeToggler",
+		menuRetriever: function(toggler) {
+			return $(toggler).parent().children("ul");
+		},
+		openClass: "node_open",
+		closedClass: "node_closed",
+		showTools: true, 
+		onStart: function() {
+			this.collapseAll();
+		},
+		expandAllLabel: "<s:text name="label.expandAll" />",
+		collapseAllLabel: "<s:text name="label.collapseAll" />",
+	<s:if test="%{categoryCode != null && !(categoryCode.equalsIgnoreCase(''))}">
+		startIndex: "fagianonode_<s:property value="categoryCode" />",
+		toolTextIntro: "<s:text name="label.introExpandAll" />",
+		toolexpandAllLabelTitle: "<s:text name="label.expandAllTitle" />",
+		toolcollapseLabelTitle: "<s:text name="label.collapseAllTitle" />"
+	</s:if>
+	});
+
 </s:if>
 
-<s:if test="#myClient == 'advanced'">
-	<s:include value="/WEB-INF/apsadmin/jsp/common/template/extraresources/inc/js_trees_context_menu.jsp" />
-</s:if>
+<s:include value="/WEB-INF/apsadmin/jsp/common/template/extraresources/inc/js_trees_context_menu.jsp" />
+
 });
 
+
+</script>
+
+<%-- TEMPORARILY COMMENTED OUT EVERYTHING
+
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
+
+<s:include value="/WEB-INF/apsadmin/jsp/common/template/defaultExtraResources.jsp" />
+<s:include value="/WEB-INF/apsadmin/jsp/common/template/extraresources/inc/snippet-calendar.jsp" />
+
+<s:if test="htmlEditorCode == 'fckeditor'">
+	<!-- per attributo Hypertext -->
+	<script type="text/javascript" src="<wp:resourceURL />administration/common/js/ckeditor/ckeditor.js"></script>
+</s:if>
 
 //per attributo Date
 <s:iterator value="content.attributeList" id="attribute">

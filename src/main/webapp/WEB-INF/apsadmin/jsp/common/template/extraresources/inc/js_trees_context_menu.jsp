@@ -11,6 +11,8 @@ if (array_actionForm != null && array_actionForm.length > 0) {
 	var currentForm = array_actionForm[i];
 */
 
+console.log("\n\n@nkjoep: please translate Mootoolsian --> jQuerian in /WEB-INF/apsadmin/jsp/common/template/extraresources/inc/js_trees_context_menu.jsp :F\n\n")
+
 		var iconPath = "<wp:resourceURL />administration/mint/img/icons/16x16/";
 		var currentForm = document.getElement("form.action-form");
 		if (null != currentForm) {
