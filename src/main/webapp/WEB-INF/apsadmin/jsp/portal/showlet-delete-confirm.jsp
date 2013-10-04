@@ -6,8 +6,8 @@
 
 <h2><s:text name="title.showletManagement.type.delete" /></h2>
 
-<s:form namespace="/do/Portal/WidgetType" action="delete">
-<p class="noscreen">
+<s:form namespace="/do/Portal/ShowletType" action="delete">
+<p class="sr-only">
 	<wpsf:hidden name="showletTypeCode" />
 </p>
 

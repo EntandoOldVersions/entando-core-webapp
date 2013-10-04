@@ -51,7 +51,7 @@
 </fieldset>
 
 <fieldset id="actions-container"><legend><s:text name="title.categoryActions" /></legend>
-<p class="noscreen"><s:text name="title.categoryActionsIntro" /></p>
+<p class="sr-only"><s:text name="title.categoryActionsIntro" /></p>
 
 <p class="buttons">
 	<s:set var="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/page-new.png</s:set>

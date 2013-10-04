@@ -22,7 +22,7 @@
 
 <s:form action="searchContents" >
 
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="pageCode" />
 	<wpsf:hidden name="frame" />
 	<wpsf:hidden name="showletTypeCode" />
@@ -76,7 +76,7 @@
 	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 </div>
 
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="lastGroupBy" />
 	<wpsf:hidden name="lastOrder" />
 </p>

@@ -31,11 +31,11 @@
 </div>
 	</s:if>
 
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="strutsAction" />
 </p>
 <s:if test="getStrutsAction() == 2"><wpsf:hidden name="categoryCode" /></s:if>
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="parentCategoryCode" />
 </p>
 

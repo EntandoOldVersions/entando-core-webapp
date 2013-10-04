@@ -9,7 +9,7 @@
 <h2><s:text name="title.pageManagement.pageTrash" /></h2>
 
 <s:form action="delete">
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="selectedNode"/>
 	<wpsf:hidden name="nodeToBeDelete" />
 </p>

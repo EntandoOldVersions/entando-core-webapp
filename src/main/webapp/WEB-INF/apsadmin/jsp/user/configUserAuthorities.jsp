@@ -18,7 +18,7 @@
 <s:set name="removeIcon" id="removeIcon"><wp:resourceURL/>administration/common/img/icons/list-remove.png</s:set>
 	
 <s:form action="save">
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="username" value="%{getUserAuthsFormBean().getUsername()}"/>
 </p>
 

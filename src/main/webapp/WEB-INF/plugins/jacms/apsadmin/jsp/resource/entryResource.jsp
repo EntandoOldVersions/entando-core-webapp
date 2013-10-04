@@ -52,7 +52,7 @@
 </ul>
 </div>
 </s:if>
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="strutsAction" />
 	<wpsf:hidden name="resourceTypeCode" />
 	<wpsf:hidden name="contentOnSessionMarker" />
@@ -81,7 +81,7 @@
 </p>
 
 <s:if test="%{lockGroupSelect}">
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="mainGroup" />
 </p>
 </s:if>

@@ -1,6 +1,6 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
-<p class="noscreen"><s:text name="note.monolist.intro" /></p>
+<p class="sr-only"><s:text name="note.monolist.intro" /></p>
 
 <s:if test="#attribute.attributes.size() != 0">
 <ul>

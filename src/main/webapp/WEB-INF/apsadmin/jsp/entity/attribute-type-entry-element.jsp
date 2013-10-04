@@ -27,7 +27,7 @@
 	</div>
 </s:if>	
 
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="attributeName"/>
 	<wpsf:hidden name="attributeTypeCode"/>
 	<wpsf:hidden name="strutsAction"/>

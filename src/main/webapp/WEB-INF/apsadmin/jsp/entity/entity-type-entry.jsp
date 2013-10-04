@@ -34,7 +34,7 @@
 
 <s:set var="entityType" value="entityType" />
 <s:if test="operationId != 1">
-	<p class="noscreen">	
+	<p class="sr-only">	
 		<wpsf:hidden name="entityTypeCode" value="%{#entityType.typeCode}" />
 	</p>
 </s:if>

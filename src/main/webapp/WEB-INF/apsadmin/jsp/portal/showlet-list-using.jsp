@@ -23,7 +23,7 @@
 
 <s:form action="viewShowletUtilizers" >
 
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="showletTypeCode" />
 </p>
 

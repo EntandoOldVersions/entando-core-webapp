@@ -46,11 +46,11 @@
 	<div id="colonna1">
 	</div>
 	<div id="colonna2">
-	<p class="noscreen"><a href="#fagiano_start" id="fagiano_mainContent"><s:text name="note.backToStart" /></a></p>
+	<p class="sr-only"><a href="#fagiano_start" id="fagiano_mainContent"><s:text name="note.backToStart" /></a></p>
 	<tiles:insertAttribute name="menu"/>
 	<tiles:insertAttribute name="body"/>
-	<p class="noscreen"><a href="#fagiano_mainContent"><s:text name="note.backToMainContent" /></a></p>
-	<p class="noscreen"><a href="#fagiano_start"><s:text name="note.backToStart" /></a></p>
+	<p class="sr-only"><a href="#fagiano_mainContent"><s:text name="note.backToMainContent" /></a></p>
+	<p class="sr-only"><a href="#fagiano_start"><s:text name="note.backToStart" /></a></p>
 	</div>
 </div>
 <div id="footer">

@@ -5,7 +5,7 @@
 <s:set var="categoryTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_category" /></s:set>
 
 <s:if test="#categoryTreeStyleVar == 'request'">
-<p class="noscreen">
+<p class="sr-only">
 <s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar"><wpsf:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"></wpsf:hidden></s:iterator>
 </p>
 </s:if>

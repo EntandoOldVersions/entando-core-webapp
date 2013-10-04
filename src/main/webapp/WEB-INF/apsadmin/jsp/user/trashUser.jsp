@@ -10,7 +10,7 @@
 <h2><s:text name="title.userManagement.userTrash" /></h2>
  
 <s:form action="delete" namespace="/do/User" >
-	<p class="noscreen"><wpsf:hidden name="username"/></p>
+	<p class="sr-only"><wpsf:hidden name="username"/></p>
 	
 	<p>
 		<s:text name="note.userConfirm.trash" />&#32;<em class="important"><s:property value="username" /></em>?

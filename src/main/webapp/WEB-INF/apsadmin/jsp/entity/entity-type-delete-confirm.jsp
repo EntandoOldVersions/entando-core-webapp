@@ -6,7 +6,7 @@
 <h3><s:text name="title.entityTypes.editType.delete" />: <span class="monospace"><s:property value="entityTypeCode" /> - <s:property value="%{getEntityPrototype(entityTypeCode).typeDescr}" /></span></h3>
 
 <s:form action="removeEntityType">
-	<p class="noscreen">
+	<p class="sr-only">
 		<wpsf:hidden name="entityManagerName" />
 		<wpsf:hidden name="entityTypeCode" />
 	</p>

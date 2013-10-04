@@ -9,7 +9,7 @@
 <%-- CATEGORIA padre = <s:property value="getCategory(selectedNode).parent.code" />  --%>
 
 <s:form action="delete">
-	<p class="noscreen">
+	<p class="sr-only">
 		<wpsf:hidden name="selectedNode" />
 	</p>
 	<p>

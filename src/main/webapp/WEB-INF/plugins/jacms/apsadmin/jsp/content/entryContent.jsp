@@ -12,10 +12,10 @@
 			<p>Please review the content and fix the errors.</p>
 		</div>
 	</s:if>
-<p class="noscreen"><s:text name="note.editContent" /></p> 	
+<p class="sr-only"><s:text name="note.editContent" /></p>
 
 <%--
-<h3 class="noscreen" id="quickmenu"><s:text name="title.quickMenu" /></h3>
+<h3 class="sr-only" id="quickmenu"><s:text name="title.quickMenu" /></h3>
 <ul class="menu horizontal tab-toggle-bar"><li><a href="#info" id="info_tab_quickmenu" class="tab-toggle"><abbr title="<s:text name="title.contentInfo" />"><s:text name="label.general" /></abbr></a></li><s:iterator value="langs" id="lang"><li><a href="#<s:property value="#lang.code" />_tab" class="tab-toggle"><s:property value="#lang.descr" /></a></li></s:iterator></ul>
 --%>
 
@@ -26,7 +26,7 @@
 <s:set var="myNameIsJack" value="true" />
 <s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/include/snippet-content.jsp" />
 
-<p class="noscreen">
+<p class="sr-only">
 	<s:hidden name="contentOnSessionMarker" />
 </p>
 
@@ -38,7 +38,7 @@
 
 	<div id="<s:property value="#lang.code" />_tab" class="tab">
 	<%--
-	<h3 class="js_noscreen"><s:property value="#lang.descr" /> (<a class="backLink" href="#quickmenu" id="<s:property value="#lang.code" />_tab_quickmenu"><s:text name="note.goBackToQuickMenu" /></a>)</h3>
+	<h3 class="js_sr-only"><s:property value="#lang.descr" /> (<a class="backLink" href="#quickmenu" id="<s:property value="#lang.code" />_tab_quickmenu"><s:text name="note.goBackToQuickMenu" /></a>)</h3>
 	--%>
 
 	<!-- START CICLO ATTRIBUTI -->
@@ -197,7 +197,7 @@
 
 
 <div id="info" class="tab">
-<h3 class="js_noscreen"><s:text name="title.contentInfo" /> <a href="#quickmenu" id="info_content_goBackToQuickMenu" title="<s:text name="note.goBackToQuickMenu" />"><span class="icon icon-circle-arrow-up"></span></a></h3>
+<h3 class="js_sr-only"><s:text name="title.contentInfo" /> <a href="#quickmenu" id="info_content_goBackToQuickMenu" title="<s:text name="note.goBackToQuickMenu" />"><span class="icon icon-circle-arrow-up"></span></a></h3>
 
 <div class="subsection">
 <!--  INIZIO BLOCCO SELEZIONE GRUPPI SUPPLEMENTARI ABILITATI ALLA VISUALIZZAZIONE -->
@@ -237,7 +237,7 @@
 
 </div>
 
-<h3 class="noscreen"><s:text name="title.contentActionsIntro" /></h3>
+<h3 class="sr-only"><s:text name="title.contentActionsIntro" /></h3>
 
 <wpsa:hookPoint key="jacms.entryContent.actions" objectName="hookPointElements_jacms_entryContent_actions">
 <s:iterator value="#hookPointElements_jacms_entryContent_actions" var="hookPointElement">

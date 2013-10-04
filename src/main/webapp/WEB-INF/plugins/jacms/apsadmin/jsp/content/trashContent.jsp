@@ -7,7 +7,7 @@
 
 <s:form action="deleteContentGroup">
 
-<p class="noscreen">
+<p class="sr-only">
 	<s:iterator var="contentIdToDelete" value="contentIds"><wpsf:hidden name="contentIds" value="%{#contentIdToDelete}" /></s:iterator>
 	<wpsf:hidden name="text" />
 	<wpsf:hidden name="contentType" />

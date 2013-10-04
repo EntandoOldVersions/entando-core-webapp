@@ -22,8 +22,8 @@
 </s:if>
 <s:else>
 	<p><s:text name="note.workingOn" />:&#32;<em class="important"><s:property value="content.descr"/></em> (<s:property value="content.typeDescr"/>)</p>  
-	<h3 class="noscreen"><s:text name="title.quickMenu" /></h3>
-	<ul class="noscreen">
+	<h3 class="sr-only"><s:text name="title.quickMenu" /></h3>
+	<ul class="sr-only">
 		<li><a href="#jpcontentinspection_metadata"><abbr title="<s:text name="metadata.full" />"><s:text name="metadata" /></abbr></a></li>
 		<li><a href="#jpcontentinspection_referral_contents"><s:text name="title.referencingContents" /></a></li>
 		<li><a href="#jpcontentinspection_referring_conts"><s:text name="title.referencedContents" /></a></li>
@@ -32,7 +32,7 @@
 		<li><a href="#jpcontentinspection_referencing_pages"><s:text name="title.referencingPages" /></a></li>
 	</ul>
 	
-	<p class="noscreen" id="jpcontentinspection_metadata"><s:text name="title.metadata" /></p>
+	<p class="sr-only" id="jpcontentinspection_metadata"><s:text name="title.metadata" /></p>
 	
 	<dl class="table-display">
 		<dt><s:text name="label.key" /></dt>
@@ -186,7 +186,7 @@
 	
 </fieldset>
 
-	<p class="noscreen" id="jpcontentinspection_contents"><s:text name="title.content" /></p>
+	<p class="sr-only" id="jpcontentinspection_contents"><s:text name="title.content" /></p>
 	<ul class="menu horizontal tab-toggle-bar">
 		<s:iterator var="curLang" value="langs">
 			<li><a href="#<s:property value="#curLang.code"/>_tab" class="tab-toggle"><s:property value="#curLang.descr"/></a></li>
@@ -198,7 +198,7 @@
 		
 		<s:iterator var="lang" value="langs">
 			<div id="<s:property value="#lang.code" />_tab" class="tab">
-				<h3 class="js_noscreen"><s:property value="#lang.descr" /> (<a class="backLink" href="#quickmenu" id="<s:property value="#lang.code" />_tab_quickmenu">Torna al menù di scelta rapida delle sezioni del contenuto</a>)</h3>
+				<h3 class="js_sr-only"><s:property value="#lang.descr" /> (<a class="backLink" href="#quickmenu" id="<s:property value="#lang.code" />_tab_quickmenu">Torna al menù di scelta rapida delle sezioni del contenuto</a>)</h3>
 				
 				<s:iterator value="content.attributeList" var="attribute">
 					<div class="contentAttributeBox contentAttribute-<s:property value="#attribute.type" />">

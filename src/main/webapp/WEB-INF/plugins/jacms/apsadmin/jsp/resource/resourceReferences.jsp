@@ -16,7 +16,7 @@
 </div>
 
 <s:form>
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="resourceId" />
 </p>
 

@@ -31,7 +31,7 @@
 </div>
 	</s:if>
 
-	<p class="noscreen">
+	<p class="sr-only">
 		<wpsf:hidden value="%{getStrutsAction()}" name="strutsAction"/>
 	<s:if test="getStrutsAction() == 2">
 		<wpsf:hidden value="%{key}" name="key" />

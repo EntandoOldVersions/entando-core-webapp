@@ -29,7 +29,7 @@
 
 <s:set var="categoryTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_category" /></s:set>
 
-<p class="noscreen">
+<p class="sr-only">
 <wpsf:hidden name="resourceTypeCode" />
 <s:if test="#categoryTreeStyleVar == 'request'">
 <s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar"><wpsf:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"></wpsf:hidden></s:iterator>
@@ -91,7 +91,7 @@
 	</wp:ifauthorized>
 </s:if>
 <s:form action="search">
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="text" />
 	<wpsf:hidden name="categoryCode" />
 	<wpsf:hidden name="resourceTypeCode" />
@@ -145,9 +145,9 @@
 				<s:else>
 					<a href="<s:property value="%{#resource.documentPath}" />" title="<s:text name="label.download" />: <s:property value="#resource.descr" />"><s:text name="label.download" /></a><br />
 				</s:else>
-				<span class="noscreen">, </span>
+				<span class="sr-only">, </span>
 				<a href="<s:url action="edit" namespace="/do/jacms/Resource"><s:param name="resourceId" value="%{#resourceid}" /></s:url>" ><img src="<wp:resourceURL />administration/common/img/icons/edit-content.png" alt="<s:text name="label.edit" />" title="<s:text name="label.edit" />" /></a>
-				<span class="noscreen">, </span>
+				<span class="sr-only">, </span>
 				<a href="<s:url action="trash" namespace="/do/jacms/Resource" >
 						<s:param name="resourceId" value="%{#resourceid}" />
 						<s:param name="resourceTypeCode" value="%{#resource.type}" />

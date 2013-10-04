@@ -17,7 +17,7 @@
 
 <h3 class="margin-more-bottom margin-more-top"><s:text name="name.showlet" />:&#32;<s:property value="%{getTitle(showlet.type.code, showlet.type.titles)}" /></h3>
 <s:form action="saveConfigSimpleParameter">
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="pageCode" />
 	<wpsf:hidden name="frame" />
 	<wpsf:hidden name="showletTypeCode" value="%{showlet.type.code}" />

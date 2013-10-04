@@ -47,10 +47,10 @@
 
 </fieldset>
 
-<p class="noscreen"><wpsf:hidden name="copyingPageCode" /></p>
+<p class="sr-only"><wpsf:hidden name="copyingPageCode" /></p>
 
 <fieldset id="actions-container"><legend><s:text name="title.pageActions" /></legend>
-<p class="noscreen"><s:text name="title.pageActionsIntro" /></p>
+<p class="sr-only"><s:text name="title.pageActionsIntro" /></p>
 
 <div id="actions-container">
 	<div class="buttons btn-toolbar">

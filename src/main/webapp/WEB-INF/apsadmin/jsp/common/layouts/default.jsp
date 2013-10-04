@@ -84,7 +84,7 @@
 
 		<nav role="navigation">
 			<tiles:insertAttribute name="menu"/>
-			<p class="noscreen">
+			<p class="sr-only">
 				<a href="#fagiano_start" id="fagiano_mainContent"><s:text name="note.backToStart" /></a>
 			</p>
 		</nav>
@@ -104,7 +104,7 @@
 		<tiles:insertAttribute name="body"/>
 	</div>
 	<div class="col-12 margin-large-top">
-		<ul class="noscreen">
+		<ul class="sr-only">
 			<li><a href="#fagiano_mainContent"><s:text name="note.backToMainContent" /></a></li>
 			<li><a href="#fagiano_start"><s:text name="note.backToStart" /></a></li>
 		</ul>

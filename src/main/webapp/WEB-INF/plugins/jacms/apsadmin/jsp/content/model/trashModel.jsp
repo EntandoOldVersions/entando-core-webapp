@@ -9,7 +9,7 @@
 <h2><s:text name="title.generalSettings.contentModels.remove" /></h2>
 
 <s:form>
-	<p class="noscreen">	
+	<p class="sr-only">	
 		<wpsf:hidden name="modelId"/>
 	</p>
 <p><s:text name="note.deleteContentModel.areYouSure" />&#32;<em class="important"><span class="monospace"><s:property value="modelId" /></span> &ndash; <s:property value="description" /> (<s:property value="%{getSmallContentType(getContentModel(modelId).contentType).descr}" />)</em>? <wpsf:submit useTabindexAutoIncrement="true" action="delete" value="%{getText('label.remove')}" cssClass="button" /></p>

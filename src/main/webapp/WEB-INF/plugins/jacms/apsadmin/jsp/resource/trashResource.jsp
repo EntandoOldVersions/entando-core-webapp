@@ -14,7 +14,7 @@
 <h2><s:text name="title.resourceManagement.resourceTrash" /></h2>
 
 <s:form action="delete">
-	<p class="noscreen">
+	<p class="sr-only">
 		<wpsf:hidden name="resourceId" />
 		<wpsf:hidden name="text" value="%{#parameters['text']}" />
 		<wpsf:hidden name="categoryCode" value="%{#parameters['categoryCode']}" />

@@ -3,7 +3,7 @@
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 
-<span class="noscreen"><s:text name="note.linkContent" /></span>
+<span class="sr-only"><s:text name="note.linkContent" /></span>
 
 <s:if test="#attribute.symbolicLink != null">
 	

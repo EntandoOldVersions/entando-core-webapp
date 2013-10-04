@@ -102,7 +102,7 @@ http://localhost:8080/PortalExample/do/Entity/search.action?entityManagerName=ja
 </s:form>
 
 <s:form action="search">
-	<p class="noscreen">
+	<p class="sr-only">
 		<wpsf:hidden name="entityTypeCode" />
 		<s:iterator var="attribute" value="#searcheableAttributes">
 			<s:if test="#attribute.textAttribute">

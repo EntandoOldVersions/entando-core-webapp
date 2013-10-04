@@ -6,7 +6,7 @@
 <s:set name="currentResource" value="#attribute.resources[#lang.code]"></s:set>
 <s:set name="defaultResource" value="#attribute.resource"></s:set>
 
-<span class="noscreen"><s:text name="note.imageContent" /></span>
+<span class="sr-only"><s:text name="note.imageContent" /></span>
 <s:if test="#lang.default">
 <%-- Lingua di DEFAULT --%>
 	<s:if test="#currentResource != null">

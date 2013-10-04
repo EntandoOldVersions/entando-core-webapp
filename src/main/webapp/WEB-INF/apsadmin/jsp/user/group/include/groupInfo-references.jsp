@@ -5,7 +5,7 @@
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 
 <s:form>
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="name" />
 </p>
 <div class="subsection-light">

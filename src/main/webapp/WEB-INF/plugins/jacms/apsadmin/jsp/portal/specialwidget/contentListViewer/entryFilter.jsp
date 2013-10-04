@@ -18,8 +18,8 @@
 <h3 class="margin-more-top"><s:text name="name.showlet" />:&#32;<s:property value="%{getTitle(#showletType.code, #showletType.titles)}" /></h3>
 <h4 class="margin-bit-bottom"><s:text name="title.filterAdd" /></h4>
 
-<s:form namespace="/do/jacms/Page/SpecialWidget/ListViewer">
-<p class="noscreen">
+<s:form namespace="/do/jacms/Page/SpecialShowlet/ListViewer">
+<p class="sr-only">
 	<wpsf:hidden name="pageCode" />
 	<wpsf:hidden name="frame" />
 	<wpsf:hidden name="showletTypeCode" />
@@ -38,7 +38,7 @@
 </div>
 	</s:if>
 
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="contentType" />
 	<wpsf:hidden name="categories" value="%{#parameters['categories']}" />
 	<wpsf:hidden name="orClauseCategoryFilter" value="%{#parameters['orClauseCategoryFilter']}" />
@@ -65,7 +65,7 @@
 
 </s:if>
 <s:else>
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="filterKey" />
 	<wpsf:hidden name="filterTypeId" />
 	<wpsf:hidden name="attributeFilter" value="%{filterTypeId>0 && filterTypeId<5}"/>

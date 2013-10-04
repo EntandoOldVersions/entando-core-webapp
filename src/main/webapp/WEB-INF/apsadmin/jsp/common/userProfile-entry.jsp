@@ -45,7 +45,7 @@
 <h2 class="margin-more-bottom"><s:text name="title.changePassword" /></h2>
 <s:form namespace="/do/CurrentUser" action="changePassword">
 
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="username" />
 </p>
 

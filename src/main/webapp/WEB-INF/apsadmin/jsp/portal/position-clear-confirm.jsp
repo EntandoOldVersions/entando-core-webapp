@@ -16,7 +16,7 @@
 <h2><s:text name="title.showletManagement.position.clear" /></h2>
 
 <s:form action="deleteShowletFromPage">
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="pageCode"/>
 	<wpsf:hidden name="frame" />
 	<wpsf:hidden name="showletTypeCode" />

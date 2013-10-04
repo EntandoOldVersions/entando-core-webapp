@@ -57,7 +57,7 @@
 		</ul>
 	</div>
 </s:if>
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="strutsAction" />
 	<s:if test="strutsAction == 1">
 	<wpsf:hidden name="parentShowletTypeCode" />

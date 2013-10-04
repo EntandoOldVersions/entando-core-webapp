@@ -120,7 +120,7 @@
 				</s:if>
 
 				<div class="margin-base-vertical form-group<s:property value="controlGroupErrorClassVar" />">
-					<label for="username" class="noscreen"><s:text name="label.username" /></label>
+					<label for="username" class="sr-only"><s:text name="label.username" /></label>
 					<div class="input-group">
 						<div class="input-group-addon"><span class="icon icon-user"></span></div>
 						<s:textfield name="username" id="username" cssClass="form-control input-large" placeholder="%{getText('label.username')}" />
@@ -139,7 +139,7 @@
 				</s:if>
 
 				<div class="margin-base-vertical form-group<s:property value="controlGroupErrorClassVar" />">
-					<label for="password" class="noscreen"><s:text name="label.password" /></label>
+					<label for="password" class="sr-only"><s:text name="label.password" /></label>
 					<div class="input-group">
 						<div class="input-group-addon"><span class="icon icon-lock"></span></div>
 						<s:password name="password" id="password" cssClass="form-control input-large" placeholder="%{getText('label.password')}" />

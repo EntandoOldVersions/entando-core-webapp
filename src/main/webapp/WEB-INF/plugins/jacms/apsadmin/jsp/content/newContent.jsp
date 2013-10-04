@@ -8,7 +8,7 @@
 
 <div id="main">
 <h2 class="margin-more-bottom"><s:text name="title.contentEditing" /></h2>
-<h3 class="noscreen"><s:text name="title.contentInfo" /></h3>
+<h3 class="sr-only"><s:text name="title.contentInfo" /></h3>
 
 	<s:if test="hasFieldErrors()">
 <div class="message message_error">

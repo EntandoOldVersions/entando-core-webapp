@@ -47,7 +47,7 @@
 	</ul>
 </div>
 	</s:if>
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="selectedNode" />
 	<wpsf:hidden name="strutsAction" />
 	<wpsf:hidden name="copyPageCode" />

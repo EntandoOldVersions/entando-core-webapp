@@ -31,7 +31,7 @@
 <s:form action="search">
 <s:set var="categoryTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_category" /></s:set>
 
-<p class="noscreen">
+<p class="sr-only">
 <wpsf:hidden name="resourceTypeCode" />
 <s:if test="#categoryTreeStyleVar == 'request'">
 <s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar"><wpsf:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"></wpsf:hidden></s:iterator>
@@ -93,7 +93,7 @@
 	</wp:ifauthorized>
 </s:if>
 <s:form action="search">
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="text" />
 	<wpsf:hidden name="categoryCode" />
 	<wpsf:hidden name="resourceTypeCode" />
@@ -154,9 +154,9 @@
 						<s:else>
 							<a href="<s:property value="%{#resource.getImagePath(0)}" />" ><s:text name="label.size.original" /></a><br />
 						</s:else>
-						<span class="noscreen">, </span>
+						<span class="sr-only">, </span>
 						<a href="<s:property value="URLedit" escape="false" />"><img src="<wp:resourceURL />administration/common/img/icons/edit-content.png" alt="<s:text name="label.edit" />" title="<s:text name="label.edit" />" /></a>
-						<span class="noscreen">, </span>
+						<span class="sr-only">, </span>
 						<a href="<s:property value="URLtrash" escape="false" />"><img src="<wp:resourceURL />administration/common/img/icons/delete.png" alt="<s:text name="label.remove" />" title="<s:text name="label.remove" />" /></a>
 					</s:if>
 				</span>

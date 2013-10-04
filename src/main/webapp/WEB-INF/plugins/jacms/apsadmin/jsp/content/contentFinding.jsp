@@ -11,7 +11,7 @@
 <s:url action="search" var="formAction" namespace="do/jacms/Content" />
 <s:form action="%{'/' + #formAction}">
 
-<p class="noscreen">
+<p class="sr-only">
 	<input type="hidden" name="lastGroupBy" />
 	<input type="hidden" name="lastOrder" />
 </p>
@@ -155,7 +155,7 @@
 <div class="subsection-light">
 
 <s:form action="search" >
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="text" />
 	<wpsf:hidden name="contentType" />
 	<wpsf:hidden name="state" />
@@ -315,7 +315,7 @@
 </s:else>
 
 <fieldset><legend><s:text name="title.contentActions" /></legend>
-<p class="noscreen"><s:text name="title.contentActionsIntro" /></p>
+<p class="sr-only"><s:text name="title.contentActionsIntro" /></p>
 <p class="buttons">
 <wp:ifauthorized permission="validateContents">
 	<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/approve.png</s:set>	

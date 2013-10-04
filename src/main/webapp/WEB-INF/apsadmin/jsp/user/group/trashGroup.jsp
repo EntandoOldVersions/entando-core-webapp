@@ -10,7 +10,7 @@
 <h2><s:text name="title.groupManagement.groupTrash" /></h2>
  
 <s:form action="delete">
-	<p class="noscreen"><wpsf:hidden name="name"/></p>
+	<p class="sr-only"><wpsf:hidden name="name"/></p>
 
 	<p>
 		<s:text name="note.groupConfirm.trash" />&#32;<em class="important"><s:property value="name" /></em>? 

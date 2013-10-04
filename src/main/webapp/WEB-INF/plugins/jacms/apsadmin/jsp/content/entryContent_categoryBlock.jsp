@@ -6,8 +6,8 @@
 <s:set var="categoryTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_category" /></s:set>
 
 <s:if test="#categoryTreeStyleVar == 'request'">
-<p class="noscreen">
-<s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar"><wpsf:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"></wpsf:hidden></s:iterator>
+<p class="sr-only">
+<s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar"><s:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"></s:hidden></s:iterator>
 </p>
 </s:if>
 
@@ -54,10 +54,11 @@
 		<wpsa:actionParam action="removeCategory" var="actionName" >
 			<wpsa:actionSubParam name="categoryCode" value="%{#contentCategory.code}" />
 		</wpsa:actionParam>
-		<s:set name="iconImagePath" id="iconImagePath"><wp:resourceURL />administration/common/img/icons/delete.png</s:set>
-		<wpsf:submit useTabindexAutoIncrement="true" type="image" src="%{#iconImagePath}" action="%{#actionName}" value="%{getText('label.remove')}" title="%{getText('label.remove') + ' ' + #contentCategory.defaultFullTitle}" />
-	</td>
-</tr>
+		<s:submit useTabindexAutoIncrement="true" type="button" action="%{#actionName}" value="%{getText('label.remove')}" title="%{getText('label.remove') + ' ' + #contentCategory.defaultFullTitle}" cssClass="btn btn-default btn-xs badge">
+			<span class="icon icon-remove"></span>
+			<span class="sr-only">x</span>
+		</s:submit>
+	</span>
 </s:iterator>
 </table>
 </s:if>

@@ -2,7 +2,7 @@
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 
 <s:set var="operationButtonDisabled" value="false" />
-<p class="noscreen"><s:text name="note.monolist.intro" /></p>
+<p class="sr-only"><s:text name="note.monolist.intro" /></p>
 
 <s:if test="#attribute.attributes.size() != 0">
 <ul>

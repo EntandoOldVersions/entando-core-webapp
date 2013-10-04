@@ -26,7 +26,7 @@
 	</div>
 </s:if>
 
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="contentOnSessionMarker" />
 	<s:if test="contentId == null">
 		<wpsf:hidden name="linkType" value="2"/>

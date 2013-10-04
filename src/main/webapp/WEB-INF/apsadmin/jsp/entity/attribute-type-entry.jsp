@@ -25,7 +25,7 @@
 
 <s:form action="saveAttribute">
 
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="attributeTypeCode" />
 	<wpsf:hidden name="strutsAction" />
 	<s:if test="null != attributeRoles && attributeRoles.size() > 0">
@@ -37,7 +37,7 @@
 </p>
 
 <s:if test="strutsAction == 2">
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="attributeName" />
 </p>
 </s:if>

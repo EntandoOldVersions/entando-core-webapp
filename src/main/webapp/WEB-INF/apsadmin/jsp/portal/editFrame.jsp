@@ -3,7 +3,7 @@
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 
 <h1><a href="<s:url action="viewTree" namespace="/do/Page" />" title="<s:text name="note.goToSomewhere" />: <s:text name="title.pageManagement" />"><s:text name="title.pageManagement" /></a></h1>
-<p class="noscreen"><a href="#editFrame"><s:text name="note.goToEditFrame" /></a></p>
+<p class="sr-only"><a href="#editFrame"><s:text name="note.goToEditFrame" /></a></p>
 
 <div id="main">
 
@@ -42,7 +42,7 @@
 <p class="margin-more-bottom"><s:text name="note.editFrame.chooseAShowlet" /></p>
 
 <s:form action="joinShowlet">
-	<p class="noscreen">
+	<p class="sr-only">
 		<wpsf:hidden name="pageCode" />
 		<wpsf:hidden name="frame" />
 	</p>

@@ -64,7 +64,7 @@
 			<s:set var="serviceGroupVar" value="#resourceFlavour.get(0).getSectionCode()" />
 			<s:set var="servicesByGroupVar" value="#serviceFlavoursVar[#serviceGroupVar]" />
 				<s:if test="null != #servicesByGroupVar && #servicesByGroupVar.size() > 0">
-					<p class="noscreen">
+					<p class="sr-only">
 						<wpsf:hidden name="serviceGroup" value="%{#serviceGroupVar}" />
 					</p>
 						<table class="generic <s:property value="%{(!#varStatus.first) ? ' margin-more-bottom ' : ''}" />">

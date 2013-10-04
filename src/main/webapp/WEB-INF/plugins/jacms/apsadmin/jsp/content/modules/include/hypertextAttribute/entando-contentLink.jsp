@@ -5,7 +5,7 @@
 	<s:form action="entandoInternalLink" cssClass="searchForm">
 		<p  class="margin-bit-bottom"><s:text name="note.chooseContentToLink" />.</p>
 
-		<p class="noscreen">
+		<p class="sr-only">
 			<wpsf:hidden name="lastGroupBy" />
 			<wpsf:hidden name="lastOrder" />
 			<wpsf:hidden name="activeTab" value="2" />
@@ -40,7 +40,7 @@
 	</s:form>
 
 	<s:form action="entandoInternalLink" >
-		<p class="noscreen">
+		<p class="sr-only">
 			<wpsf:hidden name="text" />
 			<wpsf:hidden name="contentType" />
 			<wpsf:hidden name="state" />

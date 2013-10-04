@@ -18,8 +18,8 @@
 
 <h3 class="margin-more-top margin-bit-bottom"><s:text name="name.showlet" />:&#32;<s:property value="%{getTitle(showlet.type.code, showlet.type.titles)}" /></h3>
 
-<s:form action="saveViewerConfig" namespace="/do/jacms/Page/SpecialWidget/Viewer">
-<p class="noscreen">
+<s:form action="saveViewerConfig" namespace="/do/jacms/Page/SpecialShowlet/Viewer">
+<p class="sr-only">
 	<wpsf:hidden name="pageCode" />
 	<wpsf:hidden name="frame" />
 	<wpsf:hidden name="showletTypeCode" value="%{showlet.type.code}" />
@@ -66,7 +66,7 @@
 	
 </dl>
 </div>
-<p class="noscreen clear">
+<p class="sr-only clear">
 	<wpsf:hidden name="contentId" value="%{getShowlet().getConfig().get('contentId')}" />
 </p>
 

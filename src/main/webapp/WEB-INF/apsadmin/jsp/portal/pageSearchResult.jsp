@@ -28,7 +28,7 @@
 <div class="subsection-light">
 <s:form action="search" cssClass="action-form">
 
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="pageCodeToken" />
 </p>
 
@@ -69,12 +69,12 @@
 	</div>
 	</wpsa:subset>
 
-<p class="noscreen">	
+<p class="sr-only">	
 	<wpsf:hidden name="copyingPageCode" />
 </p>
 
 <fieldset id="actions-container"><legend><s:text name="title.pageActions" /></legend>
-<p class="noscreen"><s:text name="title.pageActionsIntro" /></p>
+<p class="sr-only"><s:text name="title.pageActionsIntro" /></p>
 
 <p class="buttons">
 

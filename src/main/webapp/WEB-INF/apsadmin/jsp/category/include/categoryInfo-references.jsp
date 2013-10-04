@@ -3,7 +3,7 @@
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 
 <s:form>
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="selectedNode" />
 </p>
 

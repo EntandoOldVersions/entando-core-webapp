@@ -28,8 +28,8 @@
 </s:if>
 
 <s:form>
-<p class="noscreen">
-	<wpsf:hidden name="username" />
+<p class="sr-only">
+	<wpsf:hidden name="text" />
 	<wpsf:hidden name="authName" />
 </p>
 
@@ -55,7 +55,7 @@
 <s:form action="search">
 
 <h4><s:text name="title.userManagement.searchUsers" /></h4>
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="authName" />
 </p>
 <p><label for="username" class="basic-mint-label label-search"><s:text name="label.search.by"/>&#32;<s:text name="label.username"/>:</label>
@@ -67,8 +67,8 @@
 </s:form>
 
 <s:form action="search">
-<p class="noscreen">
-	<wpsf:hidden name="username" />
+<p class="sr-only">
+	<wpsf:hidden name="text" />
 	<wpsf:hidden name="authName" />
 </p>
 <div class="subsection-light">

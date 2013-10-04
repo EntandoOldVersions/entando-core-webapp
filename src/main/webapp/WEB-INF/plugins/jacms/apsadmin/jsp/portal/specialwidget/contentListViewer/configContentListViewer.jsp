@@ -18,8 +18,8 @@
 
 <h3 class="margin-more-top margin-more-bottom"><s:text name="name.showlet" />:&#32;<s:property value="%{getTitle(showlet.type.code, showlet.type.titles)}" /></h3>
 
-<s:form action="saveListViewerConfig" namespace="/do/jacms/Page/SpecialWidget/ListViewer">
-<p class="noscreen">
+<s:form action="saveListViewerConfig" namespace="/do/jacms/Page/SpecialShowlet/ListViewer">
+<p class="sr-only">
 	<wpsf:hidden name="pageCode" />
 	<wpsf:hidden name="frame" />
 	<wpsf:hidden name="showletTypeCode" value="%{showlet.type.code}" />
@@ -56,7 +56,7 @@
 	<wpsf:select useTabindexAutoIncrement="true" name="contentType" id="contentType" list="contentTypes" listKey="code" listValue="descr" disabled="true" value="%{getShowlet().getConfig().get('contentType')}" cssClass="text" />
 	<wpsf:submit useTabindexAutoIncrement="true" action="changeContentType" value="%{getText('label.change')}" cssClass="button" />	
 </p>
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="contentType" value="%{getShowlet().getConfig().get('contentType')}" />
 	<wpsf:hidden name="categories" value="%{getShowlet().getConfig().get('categories')}" />
 	<s:iterator value="categoryCodes" var="categoryCodeVar" status="rowstatus">
@@ -111,7 +111,7 @@
 	<wpsf:submit useTabindexAutoIncrement="true" action="setFilterType" value="%{getText('label.add')}" cssClass="button" />
 </p>
 
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="filters" value="%{getShowlet().getConfig().get('filters')}" />
 </p>
 
@@ -251,7 +251,7 @@
 		<wpsf:submit useTabindexAutoIncrement="true" action="addUserFilter" value="%{getText('label.add')}" cssClass="button" />
 	</p>
 
-	<p class="noscreen">
+	<p class="sr-only">
 		<wpsf:hidden name="userFilters" value="%{getShowlet().getConfig().get('userFilters')}" />
 	</p>
 	

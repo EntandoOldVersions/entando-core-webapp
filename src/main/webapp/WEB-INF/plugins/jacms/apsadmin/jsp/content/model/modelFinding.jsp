@@ -24,7 +24,7 @@
 
 <s:form action="search">
 
-<p class="noscreen"><wpsf:hidden name="contentType" /></p>
+<p class="sr-only"><wpsf:hidden name="contentType" /></p>
 
 	<s:if test="%{contentModels.size > 0}" >
 	

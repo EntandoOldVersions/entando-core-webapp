@@ -3,7 +3,7 @@
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<h2 id="manage" class="noscreen"><s:text name="note.userbar.intro" />:</h2>
+<h2 id="manage" class="sr-only"><s:text name="note.userbar.intro" />:</h2>
 
 <!-- <h3 id="menubar-components"><span><s:text name="menu.componentsAdmin" /></span></h3> -->
 

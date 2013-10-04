@@ -5,7 +5,7 @@
 <div id="main">
 	<h2><s:text name="title.api.apiService.trash" /></h2>
 	<s:form action="delete">
-		<p class="noscreen"><wpsf:hidden name="serviceKey" /></p>
+		<p class="sr-only"><wpsf:hidden name="serviceKey" /></p>
 		
 		<p>
 			<s:text name="note.api.apiService.trash" />&#32;<em class="important"><s:property value="serviceKey" /></em>?

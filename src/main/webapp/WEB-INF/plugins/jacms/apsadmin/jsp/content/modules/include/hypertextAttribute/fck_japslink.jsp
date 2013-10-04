@@ -240,7 +240,7 @@ window.close();
 <form id="form_externalURL">
 <input type="hidden" name="contentOnSessionMarker" value="<s:property value="contentOnSessionMarker" />" />
 <div id="divURLLink" class="tab">
-<h3 class="noscreen"><s:text name="note.URLLinkTo" /></h3>
+<h3 class="sr-only"><s:text name="note.URLLinkTo" /></h3>
 <p>
 	<label for="txtName"><s:text name="note.typeValidURL" />:</label><br />
 	<wpsf:textfield useTabindexAutoIncrement="true" id="txtName" name="txtName" maxlength="255" cssClass="text" />
