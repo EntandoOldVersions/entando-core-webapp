@@ -31,11 +31,11 @@
 	</s:elseif>
 </ul>
 <div id="actions-container">
-	<p class="buttons margin-small-vertical">
-		<s:submit useTabindexAutoIncrement="true" action="joinCategory" type="button" value="%{getText('label.join')}" cssClass="btn btn-info btn-small">
-			<span class="icon icon-plus"></span>&nbsp;&nbsp;<s:text name="label.join" />
+	<div class="buttons">
+		<s:submit action="joinCategory" type="button" title="%{getText('label.join')}" cssClass="btn btn-info margin-small-vertical" data-toggle="tooltip">
+			<span class="icon icon-plus"></span>
 		</s:submit>
-	</p>
+	</div>
 </div>
 <s:set var="contentCategories" value="content.categories" />
 

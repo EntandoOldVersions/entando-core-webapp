@@ -15,41 +15,59 @@ jQuery.each($('form.action-form'), function(index, currentForm){
 			$(this).css('left', '-9999px');
 		});
 
-	//the action container 
-	var myActionMenu = $('#actions-container p.buttons', currentForm);
-		$('#actions-container', currentForm).remove();
-		//myActionMenu.attr('id','actions-menu'); // prop() ?
-		myActionMenu.removeClass('margin-small-vertical');
-		myActionMenu.addClass('margin-small-horizontal');
-		myActionMenu.css('display', 'none');
-	//for each button remove class btn-small and add class btn-mini
-	$('button',myActionMenu).each(function() {
-		$(this).removeClass("btn-small");
-		$(this).addClass("btn-mini");
+	//the action container
+	var myActionMenu = $('#actions-container .buttons', currentForm);
+
+	$('#actions-container', currentForm).remove();
+	myActionMenu.removeClass('margin-small-vertical');
+
+	//for each button add class btn-sm
+	$('button', myActionMenu).each(function() {
+		$(this).addClass("btn-sm");
 	});
 
 	//the labels
-	var labels = $('li.tree_node_flag label',currentForm);
+	var labels = $('li.tree_node_flag label', currentForm);
+
+	//prepare and attach popover to labels
+	labels.popover({
+		html: true,
+		content: myActionMenu,
+		placement: "right",
+		animation: false,
+		container: currentForm
+	});
+
 	//for each label if checked just show the menu
 	jQuery.each(labels, function(index, myLabel){
 		var myLabel = $(myLabel);
 		var myInput = $('#'+myLabel.attr('for'));
 		if (myInput.attr('checked') == 'checked') {
 			myLabel.addClass('highlight');
-			myActionMenu.insertAfter(myLabel);
-			myActionMenu.css('display', 'inline-block');
+			$(myLabel).popover('show');
 		}
 		myLabel.css("cursor","pointer");
 	});
+
 
 	//onclick event delegation for the labels
 	$(currentForm).delegate('li.tree_node_flag label', 'click', function() {
 		//e.stop();
 		var clickedLabel = this;
-		//insert the menu and show it
-		myActionMenu.insertAfter(clickedLabel);
-		myActionMenu.css('display', 'inline-block');
-		//remove the class text-info from the other labels  
+
+		//prepare and attach tooltips to action buttons
+		$(myActionMenu).tooltip({
+			container: myActionMenu,
+		  selector: "[data-toggle=tooltip]"
+		});
+
+		//hide any popover except for the one of the clicked label
+		//hide proved to be asynchronous, that's why we are excluding the unwanted label using .not()
+		labels.not(clickedLabel).popover('hide');
+		//show the popover for the clicked label
+		$(clickedLabel).popover('show');
+
+		//remove the class text-info from the other labels
 		labels.removeClass('text-info');
 		//add the class to the clicked label
 		$(clickedLabel).addClass('text-info');
