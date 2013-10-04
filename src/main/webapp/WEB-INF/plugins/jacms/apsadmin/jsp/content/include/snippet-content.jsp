@@ -15,6 +15,7 @@
 		</div>
 
 <div class="panel">
+	<div class="panel-body">
 		<s:if test="!#myNameIsJack"><a href="<s:url action="backToEntryContent" ><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>" title="<s:text name="note.content.backToEdit" />" ></s:if><s:property value="content.descrDisablingTemporarily" /><s:if test="!#myNameIsJack"></a></s:if>
 			<span id="contentDescription-text">
 				<a data-container="contentDescription-text" href="#contentDescription-input" data-swapon="contentDescription-input" class="text-warning" id="contentDescription-readonly"><span class="icon icon-edit"></span>&#32;
@@ -54,4 +55,5 @@
 	</div>
 	</s:if>
 
+	</div>
 </div>
