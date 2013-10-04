@@ -1,3 +1,4 @@
+<%-- //TODO: composite --%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
 <s:set name="masterCompositeAttributeTracer" value="#attributeTracer" />
