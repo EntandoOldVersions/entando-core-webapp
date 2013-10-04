@@ -6,16 +6,11 @@
 <%-- TODO new | edit --%>
 
 	<s:if test="hasFieldErrors()">
-<div class="message message_error">
-<h2><s:text name="message.title.FieldErrors" /></h2>	
-	<ul>
-	<s:iterator value="fieldErrors">
-		<s:iterator value="value">
-		<li><s:property escape="false" /></li>
-		</s:iterator>
-	</s:iterator>
-	</ul>
-</div>
+		<div class="alert alert-danger fade in">
+			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+			<h2 class="h4 margin-small-vertical"><s:text name="message.title.FieldErrors" /></h2>
+			<p>Please review the content and fix the errors.</p>
+		</div>
 	</s:if>
 <p class="noscreen"><s:text name="note.editContent" /></p> 	
 
