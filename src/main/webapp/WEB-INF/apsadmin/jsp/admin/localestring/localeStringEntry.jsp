@@ -56,7 +56,7 @@
 					<label for="lang<s:property value="#l.code"/>">
 						<%-- (<s:property value="#l.code" />)&#32;<s:text name="label.description" /> --%>
 						<span lang="<s:property value="#l.code" />"><s:property value="#l.descr" /></span>&#32;
-						<span class="label label-default"><s:text name="label.default" /></span>
+						<span class="label label-success"><s:text name="label.default" /></span>
 					</label>
 					<s:textarea cols="50" rows="3" name="%{code}" id="%{'lang'+code}" value="%{labels[#l.code]}" cssClass="form-control" />
 					<s:if test="#currentHasFieldErrorVar">
