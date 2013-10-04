@@ -30,7 +30,7 @@
 			</span>
 
 			<div id="contentDescription-input" style="display: none;" class="input-group has-warning">
-				<input class="form-control" type="text" name="descr" value="<s:property value="#contentDescriptionVar" />" id="contentDescription" />
+				<input class="form-control" type="text" name="descr" value="<s:property value="#descr" />" id="contentDescription" />
 				<span class="input-group-btn">
 					<button class="btn btn-warning" id="contentDescription-confirm" data-swapon="contentDescription-text" data-container="contentDescription-input" value="Set Description" >Set Description</button>
 				</span>
