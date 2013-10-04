@@ -218,9 +218,23 @@
 										<label><s:property value="#attributeLabelVar" /></label>
 									 	<div class="input-group"><%--input-group --%>
 											<s:if test="#attribute.type == 'Monotext' || #attribute.type == 'Text' || #attribute.type == 'Longtext' || #attribute.type == 'Enumerator'">
-												<p>
-													<s:include value="/WEB-INF/apsadmin/jsp/entity/view/textAttribute.jsp" />
-												</p>
+												<s:if test="#lang.default">
+													<div>
+														<s:include value="/WEB-INF/apsadmin/jsp/entity/view/textAttribute.jsp" />
+													</div>
+												</s:if>
+												<s:else>
+													<s:if test="%{(#attribute.isMultilingual()) && (#attribute.getTextForLang(#lang.code)!=null)}">
+															<div>
+																<s:include value="/WEB-INF/apsadmin/jsp/entity/view/textAttribute.jsp" />
+															</div>
+													</s:if>
+													<s:else>
+															<div class="text-muted">
+																<s:property value="#attribute.getText()" />
+														</div>
+													</s:else>
+												</s:else>
 											</s:if>
 											<s:elseif test="#attribute.type == 'Attach'">
 												<p><s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/view/attachAttribute.jsp" /></p>
@@ -232,7 +246,7 @@
 												<p><s:include value="/WEB-INF/apsadmin/jsp/entity/view/dateAttribute.jsp" /></p>
 											</s:elseif>
 											<s:elseif test="#attribute.type == 'Hypertext'">
-												<s:include value="/WEB-INF/apsadmin/jsp/entity/view/hypertextAttribute.jsp" />
+												<div><s:include value="/WEB-INF/apsadmin/jsp/entity/view/hypertextAttribute.jsp" /></div>
 											</s:elseif>
 											<s:elseif test="#attribute.type == 'Image'">
 												<p><s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/view/imageAttribute.jsp" /></p>

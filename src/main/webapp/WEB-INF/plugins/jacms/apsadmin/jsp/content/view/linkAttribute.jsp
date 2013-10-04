@@ -36,11 +36,15 @@
 			<s:set var="statusIconVar">btn btn-default icon icon-file-text</s:set>
 			<s:set var="linkDestination" value="%{getText('note.contentLinkTo') + ': ' + #attribute.symbolicLink.contentDest + ' - ' + #linkedContent.descr + ', ' + getText('note.contentOnPageLinkTo') + ': ' + #linkedPage.titles[currentLang.code]}" />
 		</s:elseif>
-		<a href="<s:property value="#attribute.symbolicLink.contentDest" />" class="<s:property value="#statusIconVar" />" title="<s:property value="#linkDestination" />">
-			<span class="sr-only"><s:property value="#linkDestination" /></span>
-		</a>&#32;
-		<%-- CAMPO DI TESTO --%>
-		<s:include value="/WEB-INF/apsadmin/jsp/entity/view/textAttribute.jsp" />
+		<%-- link icon --%>
+			<a href="<s:property value="#attribute.symbolicLink.contentDest" />" class="<s:property value="#statusIconVar" />" title="<s:property value="#linkDestination" />"><span class="sr-only"><s:property value="#linkDestination" /></span></a>
+		<%-- text of the link --%>
+			<s:if test="%{#attribute.getTextForLang(#lang.code)==null}">
+				<span class="text-muted">&#32;<s:property value="#attribute.getText()" /></span>
+			</s:if>
+			<s:else>
+				&#32;<s:include value="/WEB-INF/apsadmin/jsp/entity/view/textAttribute.jsp" />
+			</s:else>
 	</s:if><%-- valid link --%>
 </s:if>
 <s:else><s:text name="label.none" /></s:else>
