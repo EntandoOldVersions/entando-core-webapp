@@ -38,8 +38,6 @@
 </head>
 <body>
 
-<tiles:insertAttribute name="header"/>
-
 <div class="container">
 
 <%--

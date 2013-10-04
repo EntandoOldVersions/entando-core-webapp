@@ -9,7 +9,6 @@
         <put-attribute name="title" value="document.title.main" />
         <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/template/defaultExtraResources.jsp" />
         <put-attribute name="shortcuts-quickbar" value="/WEB-INF/apsadmin/jsp/common/tiles-inserts/shortcuts-quickbar.jsp" />
-        <put-attribute name="header" value="/WEB-INF/apsadmin/jsp/common/tiles-inserts/header.jsp" />
         <put-attribute name="menu" value="/WEB-INF/apsadmin/jsp/common/tiles-inserts/menu.jsp" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/common/template/mainBody.jsp" />
         <put-attribute name="footer" value="/WEB-INF/apsadmin/jsp/common/template/footer.jsp" />
@@ -19,7 +18,6 @@
         <put-attribute name="title" value="document.title.main" />
         <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/template/defaultExtraResources.jsp" />
         <put-attribute name="shortcuts-quickbar" value="/WEB-INF/apsadmin/jsp/common/tiles-inserts/shortcuts-quickbar.jsp" />
-        <put-attribute name="header" value="/WEB-INF/apsadmin/jsp/common/tiles-inserts/header.jsp" />
         <put-attribute name="menu" value="/WEB-INF/apsadmin/jsp/common/layouts/settings-menu.jsp" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/common/template/mainBody.jsp" />
         <put-attribute name="footer" value="/WEB-INF/apsadmin/jsp/common/template/footer.jsp" />

@@ -6,6 +6,11 @@
 <h2 id="manage" class="noscreen"><s:text name="note.userbar.intro" />:</h2>
 
 <!-- <h3 id="menubar-components"><span><s:text name="menu.componentsAdmin" /></span></h3> -->
+
+<p>
+	<a class="btn btn-info btn-block" href="<s:url namespace="/do/BaseAdmin" action="configSystemParams" />"><span class="icon icon-cog"></span>&#32;<s:text name="menu.configure" /></a>
+</p>
+
 <ul class="nav nav-pills nav-stacked" id="backoffice-menu-main">
 	<wp:ifauthorized permission="superuser">
 		<li><a href="<s:url action="intro" namespace="/do/Group" />"><s:text name="menu.accountAdmin.groups" /></a></li>
