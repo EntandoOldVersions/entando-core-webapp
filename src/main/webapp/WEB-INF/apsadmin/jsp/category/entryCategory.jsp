@@ -3,10 +3,9 @@
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <h1 class="panel panel-default title-page">
 	<span class="panel-body display-block">
-		<a href="<s:url action="viewTree" namespace="/do/Category" />" 
+		<a href="<s:url action="viewTree" namespace="/do/Category" />"
 		title="<s:text name="note.goToSomewhere" />: <s:text name="title.categoryManagement" />">
-		<s:text name="title.categoryManagement" />
-		</a>
+		<s:text name="title.categoryManagement" /></a>
 		&#32;/&#32;
 		<s:if test="strutsAction == 1">
 			<s:text name="title.newCategory" />
@@ -21,7 +20,7 @@
 	<s:else><s:set var="breadcrumbs_pivotCategoryCode" value="parentCategoryCode" /></s:else>
 	<s:include value="/WEB-INF/apsadmin/jsp/category/include/categoryInfo_breadcrumbs.jsp" />
 
-	<s:form action="save">
+	<s:form action="save" cssClass="form-horizontal">
 		<s:if test="hasFieldErrors()">
 			<div class="alert alert-danger alert-dismissable fade in">
 				<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
@@ -42,13 +41,13 @@
 			<s:if test="getStrutsAction() == 2"><wpsf:hidden name="categoryCode" /></s:if>
 			<wpsf:hidden name="parentCategoryCode" />
 		</p>
-		<fieldset class="col-xs-12">
-			<%-- category code --%>
-				<s:set var="currentFieldFieldErrorsVar" value="%{fieldErrors['categoryCode']}" />
-				<s:set var="currentFieldHasFieldErrorVar" value="#currentFieldFieldErrorsVar != null && !#currentFieldFieldErrorsVar.isEmpty()" />
-				<s:set var="controlGroupErrorClassVar" value="%{#currentFieldHasFieldErrorVar ? ' has-error' : ''}" />
-				<div class="form-group<s:property value="controlGroupErrorClassVar" />">
-					<label class="control-label" for="categoryCode"><s:text name="name.categoryCode" /></label>
+		<%-- category code --%>
+			<s:set var="currentFieldFieldErrorsVar" value="%{fieldErrors['categoryCode']}" />
+			<s:set var="currentFieldHasFieldErrorVar" value="#currentFieldFieldErrorsVar != null && !#currentFieldFieldErrorsVar.isEmpty()" />
+			<s:set var="controlGroupErrorClassVar" value="%{#currentFieldHasFieldErrorVar ? ' has-error' : ''}" />
+			<div class="form-group<s:property value="controlGroupErrorClassVar" />">
+				<div class="col-xs-12">
+					<label for="categoryCode"><s:text name="name.categoryCode" /></label>
 						<s:textfield name="categoryCode" id="categoryCode" disabled="%{getStrutsAction() == 2}" cssClass="form-control" />
 						<s:if test="getStrutsAction() != 2">
 							<s:hidden name="selectedNode" value="%{parentCategoryCode}" />
@@ -60,12 +59,14 @@
 							<p class="help help-block"><s:iterator value="#currentFieldFieldErrorsVar"><s:property />&#32;</s:iterator></p>
 						</s:if>
 				</div>
-				<s:iterator value="langs">
-					<s:set var="currentFieldFieldErrorsVar" value="%{fieldErrors['lang'+code]}" />
-					<s:set var="currentFieldHasFieldErrorVar" value="#currentFieldFieldErrorsVar != null && !#currentFieldFieldErrorsVar.isEmpty()" />
-					<s:set var="controlGroupErrorClassVar" value="%{#currentFieldHasFieldErrorVar ? ' has-error' : ''}" />
-					<div class="form-group<s:property value="controlGroupErrorClassVar" />">
-						<label class="control-label" for="lang<s:property value="code" />">
+			</div>
+			<s:iterator value="langs">
+				<s:set var="currentFieldFieldErrorsVar" value="%{fieldErrors['lang'+code]}" />
+				<s:set var="currentFieldHasFieldErrorVar" value="#currentFieldFieldErrorsVar != null && !#currentFieldFieldErrorsVar.isEmpty()" />
+				<s:set var="controlGroupErrorClassVar" value="%{#currentFieldHasFieldErrorVar ? ' has-error' : ''}" />
+				<div class="form-group<s:property value="controlGroupErrorClassVar" />">
+					<div class="col-xs-12">
+						<label for="lang<s:property value="code" />">
 							<abbr class="label label-info" title="<s:property value="descr" />"><s:property value="code" /></abbr>&#32;
 							<s:text name="name.categoryTitle" />
 						</label>
@@ -74,8 +75,8 @@
 							<p class="help help-block"><s:iterator value="#currentFieldFieldErrorsVar"><s:property />&#32;</s:iterator></p>
 						</s:if>
 					</div>
-				</s:iterator>
-		</fieldset>
+				</div>
+			</s:iterator>
 		<div class="form-group">
 			<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 				<s:submit type="button" cssClass="btn btn-primary btn-block">

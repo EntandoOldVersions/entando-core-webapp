@@ -75,7 +75,7 @@
 											<abbr title="<s:text name="label.actions" />">&ndash;</abbr>
 										</th>
 										<th><s:text name="label.username" /></th>
-										<th><s:text name="label.date.lastLogin" /></th>
+										<th class="text-center"><s:text name="label.date.lastLogin" /></th>
 										<th class="text-center col-xs-1 col-sm-1 col-md-1 col-lg-1"><abbr title="<s:text name="label.state" />">S</abbr></th>
 									</tr>
 									<s:iterator var="usernameVar">
@@ -128,7 +128,7 @@
 											<%-- username --%>
 												<td><code><s:property value="#usernameVar.username" /></code>
 											<%-- last login --%>
-												<td>
+												<td class="text-center">
 													<s:if test="#usernameVar.entandoUser && #usernameVar.lastAccess != null">
 														<code title="<s:date name="#usernameVar.lastAccess" format="EEEE d MMMM yyyy" />">
 															<s:date name="#usernameVar.lastAccess" format="dd/MM/yyyy" />

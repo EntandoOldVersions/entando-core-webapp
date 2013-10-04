@@ -3,10 +3,9 @@
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 <h1 class="panel panel-default title-page">
 	<span class="panel-body display-block">
-		<a href="<s:url action="list" namespace="/do/Group"></s:url>" 
+		<a href="<s:url action="list" namespace="/do/Group"></s:url>"
 		title="<s:text name="note.goToSomewhere" />: <s:text name="title.groupManagement" />">
-			<s:text name="title.groupManagement" />
-		</a>
+			<s:text name="title.groupManagement" /></a>
 		&#32;/&#32;
 		<s:if test="getStrutsAction() == 1">
 			<s:text name="title.groupManagement.groupNew" />
@@ -52,8 +51,8 @@
 	<s:set var="fieldHasFieldErrorVar" value="#fieldErrorsVar != null && !#fieldErrorsVar.isEmpty()" />
 	<s:set var="controlGroupErrorClassVar" value="%{#fieldHasFieldErrorVar ? ' has-error' : ''}" />
 	<div class="form-group<s:property value="#controlGroupErrorClassVar" />">
-		<label class="control-label col-lg-3 col-md-3" for="name"><s:text name="name" /></label>
-		<div class="col-md-9 col-lg-9">
+		<div class="col-xs-12">
+			<label for="name"><s:text name="name" /></label>
 			<s:textfield name="name" id="name" disabled="%{getStrutsAction() == 2}" cssClass="form-control" />
 			<s:if test="#fieldHasFieldErrorVar">
 				<span class="help-block text-danger">
@@ -67,8 +66,8 @@
 		<s:set var="fieldHasFieldErrorVar" value="#fieldErrorsVar != null && !#fieldErrorsVar.isEmpty()" />
 		<s:set var="controlGroupErrorClassVar" value="%{#fieldHasFieldErrorVar ? ' has-error' : ''}" />
 		<div class="form-group<s:property value="#controlGroupErrorClassVar" />">
-			<label class="control-label col-lg-3 col-md-3" for="description"><s:text name="description" /></label>
-			<div class="col-md-9 col-lg-9">
+			<div class="col-xs-12">
+				<label for="description"><s:text name="description" /></label>
 				<s:textfield name="description" id="description" cssClass="form-control" />
 				<s:if test="#fieldHasFieldErrorVar">
 				<span class="help-block text-danger">
@@ -78,11 +77,12 @@
 			</div>
 		</div>
 	<%-- save --%>
-	<div class="form-group">
-		<div class="col-md-offset-3 col-lg-offset-3 col-md-9 col-lg-9">
-			<s:submit type="button" cssClass="btn btn-primary">
-				<s:text name="label.save" />
-			</s:submit>
-		</div>
-	</div>
+    <div class="form-group">
+      <div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+        <s:submit type="button" cssClass="btn btn-primary btn-block">
+          <span class="icon icon-save"></span>&#32;
+          <s:text name="label.save" />
+        </s:submit>
+      </div>
+    </div>
 </s:form>
