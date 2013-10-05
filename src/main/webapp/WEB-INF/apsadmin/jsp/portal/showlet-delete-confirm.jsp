@@ -6,7 +6,7 @@
 		title="<s:text name="note.goToSomewhere" />: <s:text name="title.showletManagement" />">
 		<s:text name="title.showletManagement" />
 		</a>
-		&#32;/&#32;<s:text name="title.showletManagement.type.delete" />
+		&#32;/&#32;<s:text name="title.widgetManagement.type.delete" />
 	</span>
 </h1>
 
