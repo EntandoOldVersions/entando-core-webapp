@@ -89,16 +89,16 @@
 	</div>
 	
 	<s:if test="#showletTypeVar.logic && strutsAction == 2">
-	<p>
-		<em class="important"><s:text name="label.widgetType.parentType" /></em>:<br />
-		<s:property value="#showletTypeVar.parentType.titles[currentLang.code]" />
-	</p>
+	<div class="form-group">
+	    <label class="control-label"><s:text name="label.showletType.parentType" /></label>
+		<p class="form-control-static"><s:property value="#showletTypeVar.parentType.titles[currentLang.code]" /></p>
+	</div>
 	</s:if>
 	
 </fieldset>
 
 <s:if test="strutsAction != 2 || #showletTypeVar.logic">
-<fieldset><legend><s:text name="title.widgetType.settings" /></legend>
+<fieldset class="col-xs-12"><legend><s:text name="title.showletType.settings" /></legend>
 	<s:if test="strutsAction == 1">
 		<s:set var="parentShowletType" value="%{getShowletType(parentShowletTypeCode)}" />
 		<s:iterator value="#parentShowletType.typeParameters" var="showletParam" >
@@ -113,31 +113,31 @@
 	</s:if>
 	<s:elseif test="strutsAction == 2">
 		<s:iterator value="#showletTypeVar.parentType.typeParameters" var="showletParam" >
-		<p>
-			<s:if test="#showletParam.descr != ''">
-				<em><s:property value="#showletParam.descr" />:</em><br />
-			</s:if>
-			<s:if test="#isSuperuserVar && #showletTypeVar.userType">
-			<label for="<s:property value="#showletParam.name" />" class="control-label"><s:property value="#showletParam.name" /></label>
-			<s:textfield id="%{#showletParam.name}" name="%{#showletParam.name}" value="%{#showletTypeVar.config[#showletParam.name]}" cssClass="form-control" />
-			</s:if>
-			<s:else>
-			<em class="important"><s:property value="#showletParam.name" /></em>:&#32;
-			<s:property value="%{#showletTypeVar.config[#showletParam.name]}" />
-			</s:else>
-		</p>
+			<p>
+				<s:if test="#showletParam.descr != ''">
+					<em><s:property value="#showletParam.descr" />:</em><br />
+				</s:if>
+				<s:if test="#isSuperuserVar && #showletTypeVar.userType">
+				<label for="<s:property value="#showletParam.name" />" class="control-label"><s:property value="#showletParam.name" /></label>
+				<s:textfield id="%{#showletParam.name}" name="%{#showletParam.name}" value="%{#showletTypeVar.config[#showletParam.name]}" cssClass="form-control" />
+				</s:if>
+				<s:else>
+				<em class="important"><s:property value="#showletParam.name" /></em>:&#32;
+				<s:property value="%{#showletTypeVar.config[#showletParam.name]}" />
+				</s:else>
+			</p>
 		</s:iterator>
 		<s:set var="isSuperuserVar" value="%{false}" />
 	</s:elseif>
 	<s:elseif test="strutsAction == 3">
 		<s:iterator value="showletToCopy.type.typeParameters" var="showletParam" >
-		<p>
-			<s:if test="#showletParam.descr != ''">
-				<em><s:property value="#showletParam.descr" />:</em><br />
-			</s:if>
-			<em class="important"><s:property value="#showletParam.name" /></em>:&#32;
-			<s:property value="%{showletToCopy.config[#showletParam.name]}" />
-		</p>
+			<p>
+				<s:if test="#showletParam.descr != ''">
+					<em><s:property value="#showletParam.descr" />:</em><br />
+				</s:if>
+				<em class="important"><s:property value="#showletParam.name" /></em>:&#32;
+				<s:property value="%{showletToCopy.config[#showletParam.name]}" />
+			</p>
 		</s:iterator>
 	</s:elseif>
 </fieldset>
@@ -149,7 +149,14 @@
 </s:iterator>
 </wpsa:hookPoint>
 
-<p class="centerText"><s:submit value="%{getText('label.save')}" cssClass="button" />
+<div class="form-group">
+  <div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+    <s:submit type="button" cssClass="btn btn-primary btn-block">
+      <span class="icon icon-save"></span>&#32;
+      <s:text name="label.save" />
+    </s:submit>
+  </div>
+</div>
 <s:if test="strutsAction == 3">
 <wpsa:actionParam action="save" var="actionName" >
 	<wpsa:actionSubParam name="replaceOnPage" value="true" />

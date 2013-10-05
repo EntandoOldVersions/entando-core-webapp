@@ -22,7 +22,7 @@
 
 		<s:text name="note.deleteContentModel.areYouSure" />:&#32;<code><s:property value="modelId" /></code>&#32;<s:property value="description" /> (<s:property value="%{getSmallContentType(getContentModel(modelId).contentType).descr}" />)? 
 		<div class="text-center margin-small-top">
-		<s:submit useTabindexAutoIncrement="true" action="delete" value="%{getText('label.remove')}" cssClass="btn btn-default" />
+		<s:submit action="delete" value="%{getText('label.remove')}" cssClass="btn btn-default" />
 		</div>
 	</span>
 	</div>
