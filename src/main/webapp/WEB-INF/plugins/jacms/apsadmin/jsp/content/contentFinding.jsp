@@ -60,7 +60,7 @@
 						<s:if test="null != #searcheableAttributes && #searcheableAttributes.size() > 0">
 							<%-- restore when we can dimiss it with a timeout
 							<div class="alert alert-info alert-dismissable fade in">
-								<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+								<button class="close" data-dismiss="alert">&times;</button>
 								<p>Content type successfully set. TODO label.</p>
 							</div>
 							--%>
@@ -263,7 +263,7 @@
 
 		<s:if test="hasActionErrors()">
 		<div class="alert alert-danger alert-dismissable fade in">
-			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+			<button class="close" data-dismiss="alert">&times;</button>
 			<h2 class="h4 margin-none">
 				<s:text name="message.title.ActionErrors" />
 			</h2>
@@ -276,7 +276,7 @@
 		</s:if>
 		<s:if test="hasActionMessages()">
 		<div class="alert alert-success alert-dismissable fade in">
-			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+			<button class="close" data-dismiss="alert">&times;</button>
 			<h2 class="h4 margin-none"><s:text name="messages.confirm" /></h2>
 			<ul class="margin-base-top">
 				<s:iterator value="actionMessages">

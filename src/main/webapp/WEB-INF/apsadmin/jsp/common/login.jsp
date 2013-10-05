@@ -36,12 +36,17 @@
 			<div class="alert alert-danger alert-dismissable">
 				<button type="button" class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
 				<s:if test="hasActionErrors()">
-				<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
-				<ul class="margin-base-vertical">
-					<s:iterator value="actionErrors">
-					<li><s:property /></li>
-					</s:iterator>
-				</ul>
+				<div class="alert alert-danger alert-dismissable">
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+					<s:if test="hasActionErrors()">
+					<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
+					<ul class="margin-base-vertical">
+						<s:iterator value="actionErrors">
+						<li><s:property /></li>
+						</s:iterator>
+					</ul>
+					</s:if>
+				</div>
 				</s:if>
 			</div>
 			</s:if>

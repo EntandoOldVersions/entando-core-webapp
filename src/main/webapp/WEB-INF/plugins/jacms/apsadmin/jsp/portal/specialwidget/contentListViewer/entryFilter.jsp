@@ -13,8 +13,140 @@
 <s:set var="breadcrumbs_pivotPageCode" value="pageCode" />
 <s:include value="/WEB-INF/apsadmin/jsp/portal/include/pageInfo_breadcrumbs.jsp" />
 
-<div class="subsection-light">
-<h3><s:text name="title.configPage.youAreDoing" /></h3>
+<s:action namespace="/do/Page" name="printPageDetails" executeResult="true" ignoreContextParams="true"><s:param name="selectedNode" value="pageCode"></s:param></s:action>
+
+<s:form namespace="/do/jacms/Page/SpecialWidget/ListViewer" cssClass="form-horizontal">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<s:include value="/WEB-INF/apsadmin/jsp/portal/include/frameInfo.jsp" />
+		</div>
+
+		<div class="panel-body">
+
+			<s:set var="showletType" value="%{getShowletType(showletTypeCode)}"></s:set>
+			<h2 class="h5 margin-small-vertical">
+				<label class="sr-only"><s:text name="name.showlet" /></label>
+				<span class="icon icon-puzzle-piece" title="<s:text name="name.showlet" />"></span>&#32;
+				<s:property value="%{getTitle(#showletType.code, #showletType.titles)}" />
+			</h2>
+
+			<p class="sr-only">
+				<wpsf:hidden name="pageCode" />
+				<wpsf:hidden name="frame" />
+				<wpsf:hidden name="showletTypeCode" />
+			</p>
+
+			<s:if test="hasFieldErrors()">
+			<div class="alert alert-danger alert-dismissable">
+				<button class="close" data-dismiss="alert">&times;</button>
+				<h3 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h3>
+				<ul>
+				<s:iterator value="fieldErrors">
+					<s:iterator value="value">
+					<li><s:property escape="false" /></li>
+					</s:iterator>
+				</s:iterator>
+				</ul>
+			</div>
+			</s:if>
+
+			<p class="sr-only">
+				<wpsf:hidden name="contentType" />
+				<wpsf:hidden name="categories" value="%{#parameters['categories']}" />
+				<wpsf:hidden name="orClauseCategoryFilter" value="%{#parameters['orClauseCategoryFilter']}" />
+				<wpsf:hidden name="userFilters" value="%{#parameters['userFilters']}" />
+				<wpsf:hidden name="filters" />
+				<wpsf:hidden name="modelId" />
+				<wpsf:hidden name="maxElemForItem" />
+				<wpsf:hidden name="pageLink" value="%{#parameters['pageLink']}" />
+				<s:iterator id="lang" value="langs">
+				<wpsf:hidden name="%{'linkDescr_' + #lang.code}" value="%{#parameters['linkDescr_' + #lang.code]}" />
+				<wpsf:hidden name="%{'title_' + #lang.code}" value="%{#parameters['title_' + #lang.code]}" />
+				</s:iterator>
+			</p>
+
+			<s:if test="filterTypeId < 0">
+
+			<fieldset class="margin-base-top"><legend><s:text name="label.info" /></legend>
+			<p>
+				<label for="filterKey" class="control-label"><s:text name="label.type"/>:</label>
+				<wpsf:select name="filterKey" id="filterKey" list="filterTypes" listKey="key" listValue="value" cssClass="form-control" />
+				<wpsf:submit action="setFilterType" value="%{getText('label.continue')}" cssClass="button" />
+			</p>
+			</fieldset>
+
+			</s:if>
+			<s:else>
+			<p class="sr-only">
+				<wpsf:hidden name="filterKey" />
+				<wpsf:hidden name="filterTypeId" />
+				<wpsf:hidden name="attributeFilter" value="%{filterTypeId>0 && filterTypeId<5}"/>
+			</p>
+
+			<s:set name="filterDescription" value="%{filterKey}" />
+			<s:if test="%{filterKey == 'created'}">
+				<s:set name="filterDescription" value="%{getText('label.creationDate')}" />
+			</s:if>
+			<s:elseif test="%{filterKey == 'modified'}">
+				<s:set name="filterDescription" value="%{getText('label.lastModifyDate')}" />
+			</s:elseif>
+
+			<p>
+				<span class="icon icon-filter" title="<s:text name="note.filterTypes.intro" />"></span>&#32;
+			 	<s:property value="filterDescription" />
+			 	<span class="label label-info">
+			<s:if test="filterTypeId == 0">
+				<s:text name="note.filterTypes.metadata" /></span>
+			</p>
+			</s:if>
+
+			<s:elseif test="filterTypeId==1">
+			<%-- INIZIO FILTRO PER ATTRIBUTO TIPO STRINGA --%>
+				<s:text name="note.filterTypes.TextAttribute" /><span>
+			</p>
+			<fieldset class="margin-base-top"><legend><s:text name="label.settings"/></legend>
+			<p>
+				<label for="filterOptionId" class="control-label"><s:text name="label.option"/>:</label>
+				<wpsf:select id="filterOptionId" name="filterOptionId" list="#{3:getText('label.presenceOptionFilter'),4:getText('label.absenceOptionFilter'),1:getText('label.valueLikeOptionFilter'),2:getText('label.rangeOptionFilter')}" disabled="filterOptionId>-1" cssClass="form-control" />
+				<s:if test="filterOptionId>-1"><wpsf:hidden name="filterOptionId" /></s:if>
+				<s:else><wpsf:submit action="setFilterOption" value="%{getText('label.continue')}" cssClass="button" /></s:else>
+			</p>
+
+			<s:if test="filterOptionId==1">
+			<p>
+				<label for="stringValue" class="control-label"><s:text name="label.filterValue" />:</label>
+				<wpsf:textfield name="stringValue" id="stringValue" cssClass="form-control" />
+			</p>
+			<p>
+				<wpsf:checkbox name="like" id="like" cssClass="radiocheck" /><label for="like"><s:text name="label.filterValue.isLike" /></label>
+			</p>
+			</s:if>
+
+			<s:if test="filterOptionId==2">
+			<p>
+				<label for="stringStart" class="control-label"><s:text name="label.filterFrom" />:</label>
+				<wpsf:textfield name="stringStart" id="stringStart" cssClass="form-control" />
+			</p>
+			<p>
+				<label for="stringEnd" class="control-label"><s:text name="label.filterTo" />:</label>
+				<wpsf:textfield name="stringEnd" id="stringEnd" cssClass="form-control" />
+			</p>
+			</s:if>
+			</fieldset>
+			<%-- FINE FILTRO PER ATTRIBUTO TIPO STRINGA --%>
+			</s:elseif>
+
+			<s:elseif test="filterTypeId==2">
+			<%-- INIZIO FILTRO PER ATTRIBUTO TIPO NUMERO --%>
+				<s:text name="note.filterTypes.NumberAttribute" /><span>
+			</p>
+			<fieldset class="margin-base-top"><legend><s:text name="label.settings"/></legend>
+			<p>
+				<label for="filterOptionId" class="control-label"><s:text name="label.option"/>:</label>
+				<wpsf:select name="filterOptionId" id="filterOptionId" list="#{3:getText('label.presenceOptionFilter'),4:getText('label.absenceOptionFilter'),1:getText('label.valueOptionFilter'),2:getText('label.rangeOptionFilter')}" disabled="filterOptionId>-1" cssClass="form-control" />
+				<s:if test="filterOptionId>-1"><wpsf:hidden name="filterOptionId" /></s:if>
+				<s:else><wpsf:submit action="setFilterOption" value="%{getText('label.continue')}" cssClass="button" /></s:else>
+			</p>
 
 <s:action namespace="/do/Page" name="printPageDetails" executeResult="true" ignoreContextParams="true"><s:param name="selectedNode" value="pageCode"></s:param></s:action>
 <s:include value="/WEB-INF/apsadmin/jsp/portal/include/frameInfo.jsp" />

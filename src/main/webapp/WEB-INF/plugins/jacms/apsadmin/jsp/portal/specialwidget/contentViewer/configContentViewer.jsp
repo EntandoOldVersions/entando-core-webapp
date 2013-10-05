@@ -20,81 +20,114 @@
 <s:include value="/WEB-INF/apsadmin/jsp/portal/include/pageInfo_breadcrumbs.jsp" />
 
 <s:action namespace="/do/Page" name="printPageDetails" executeResult="true" ignoreContextParams="true"><s:param name="selectedNode" value="pageCode"></s:param></s:action>
-<s:include value="/WEB-INF/apsadmin/jsp/portal/include/frameInfo.jsp" />
 
-<h3 class="margin-more-top margin-bit-bottom"><s:text name="name.widget" />:&#32;<s:property value="%{getTitle(showlet.type.code, showlet.type.titles)}" /></h3>
+<s:form action="saveViewerConfig" namespace="/do/jacms/Page/SpecialWidget/Viewer" cssClass="form-horizontal">
 
-<s:form action="saveViewerConfig" namespace="/do/jacms/Page/SpecialWidget/Viewer">
-<p class="noscreen">
-	<wpsf:hidden name="pageCode" />
-	<wpsf:hidden name="frame" />
-	<wpsf:hidden name="showletTypeCode" value="%{showlet.type.code}" />
-</p>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<s:include value="/WEB-INF/apsadmin/jsp/portal/include/frameInfo.jsp" />
+	</div>
 
-	<s:if test="hasFieldErrors()">
-<div class="message message_error">
-<h4><s:text name="message.title.FieldErrors" /></h4>	
-	<ul>
-	<s:iterator value="fieldErrors">
-		<s:iterator value="value">
-		<li><s:property escape="false" /></li>
-		</s:iterator>
-	</s:iterator>
-	</ul>
-</div>
-	</s:if>
+	<div class="panel-body">
 
-<s:set name="showletParams" value="showlet.type.parameter" />
+		<h2 class="h5 margin-small-vertical">
+			<label class="sr-only"><s:text name="name.showlet" /></label>
+			<span class="icon icon-puzzle-piece" title="<s:text name="name.showlet" />"></span>&#32;
+			<s:property value="%{getTitle(showlet.type.code, showlet.type.titles)}" />
+		</h2>
 
-<s:property value="#showletParams['contentId'].descr" />
-<h4><s:text name="title.configContentViewer.settings" /></h4>
+		<p class="sr-only">
+			<s:hidden name="pageCode" />
+			<s:hidden name="frame" />
+			<s:hidden name="showletTypeCode" value="%{showlet.type.code}" />
+		</p>
 
-<s:if test="showlet.config['contentId'] != null">
-<s:set name="content" value="%{getContentVo(showlet.config['contentId'])}"></s:set>
-<div class="centerText">
-<dl class="table-display">
-	<dt><s:text name="label.code" /></dt>
-	<dd><s:property value="#content.id" /></dd>
+			<s:if test="hasFieldErrors()">
+		<div class="alert alert-danger alert-dismissable">
+			<button class="close" data-dismiss="alert">&times;</button>
+			<h3 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h3>
+			<ul class="margin-base-vertical">
+			<s:iterator value="fieldErrors">
+				<s:iterator value="value">
+				<li><s:property escape="false" /></li>
+				</s:iterator>
+			</s:iterator>
+			</ul>
+		</div>
+			</s:if>
 
-	<dt><s:text name="label.description" /></dt>
-	
-<s:set var="canEditCurrentContent" value="%{false}" />
-<c:set var="currentContentGroup"><s:property value="#content.mainGroupCode" escape="false"/></c:set>
+		<s:set name="showletParams" value="showlet.type.parameter" />
 
-<wp:ifauthorized groupName="${currentContentGroup}" permission="editContents"><s:set var="canEditCurrentContent" value="%{true}" /></wp:ifauthorized>
+<%--
+		<s:property value="#showletParams['contentId'].descr" />
 
-<s:if test="#canEditCurrentContent">
-	<dd><a href="<s:url action="edit" namespace="/do/jacms/Content"><s:param name="contentId" value="#content.id" /></s:url>" title="<s:text name="label.edit" />:&#32;<s:property value="#content.descr"/>"><s:property value="#content.descr"/></a></dd>
-</s:if>
-<s:else>
-	<dd><s:property value="#content.descr" /></dd>
-</s:else>
-	
-</dl>
-</div>
-<p class="noscreen clear">
-	<wpsf:hidden name="contentId" value="%{getShowlet().getConfig().get('contentId')}" />
-</p>
+		<h4><s:text name="title.configContentViewer.settings" /></h4>
+--%>
 
-<p class="margin-more-bottom"><wpsf:submit useTabindexAutoIncrement="true" action="searchContents" value="%{getText('label.change')}" cssClass="button" /></p>
+		<s:if test="showlet.config['contentId'] != null">
+			<s:set name="content" value="%{getContentVo(showlet.config['contentId'])}"></s:set>
+			<s:set var="canEditCurrentContent" value="%{false}" />
+			<c:set var="currentContentGroup"><s:property value="#content.mainGroupCode" escape="false"/></c:set>
 
-<fieldset><legend><s:text name="title.publishingOptions" /></legend>
-<p>
-	<label for="modelId" clasS="basic-mint-label"><s:text name="label.contentModel" />:</label>
-	<wpsf:select useTabindexAutoIncrement="true" id="modelId" name="modelId" value="%{getShowlet().getConfig().get('modelId')}" 
-	list="%{getModelsForContent(showlet.config['contentId'])}" headerKey="" headerValue="%{getText('label.default')}" listKey="id" listValue="description" cssClass="text" />
-</p>
-</fieldset>
+			<wp:ifauthorized groupName="${currentContentGroup}" permission="editContents"><s:set var="canEditCurrentContent" value="%{true}" /></wp:ifauthorized>
 
-<s:set var="showletTypeParameters" value="showlet.type.typeParameters"></s:set>
-<s:if test="#showletTypeParameters.size()>2">
-<fieldset><legend><s:text name="label.otherSettings" /></legend>
-	<s:iterator value="#showletTypeParameters" id="showletParam" >
-		<s:if test="!#showletParam.name.equals('contentId') && !#showletParam.name.equals('modelId')">
-			<p>
-				<label for="fagianoParam_<s:property value="#showletParam.name" />"><s:property value="#showletParam.descr" />:</label><br />
-				<wpsf:textfield useTabindexAutoIncrement="true" cssClass="text" id="%{'fagianoParam_'+#showletParam.name}" name="%{#showletParam.name}" value="%{showlet.config[#showletParam.name]}" />
-			</p>
+			<fieldset class="margin-large-top"><legend><s:text name="label.info" /></legend>
+
+				<div class="form-group">
+					<div class="col-xs-12">
+						<label class="control-label"><s:text name="label.content" /></label>
+						<p class="form-control-static">
+							<code><s:property value="#content.id" /></code>&#32;&mdash;&#32;
+							<s:if test="#canEditCurrentContent">
+								<a href="<s:url action="edit" namespace="/do/jacms/Content"><s:param name="contentId" value="#content.id" /></s:url>" title="<s:text name="label.edit" />:&#32;<s:property value="#content.descr"/>"><s:property value="#content.descr"/></a>
+							</s:if>
+							<s:else>
+								<s:property value="#content.descr" />
+							</s:else>
+						</p>
+					</div>
+				</div>
+
+				<p class="sr-only">
+					<s:hidden name="contentId" value="%{getShowlet().getConfig().get('contentId')}" />
+				</p>
+
+				<div class="form-group">
+					<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+						<s:submit action="searchContents" value="%{getText('label.change')}" cssClass="btn btn-info btn-block" />
+					</div>
+				</div>
+
+			</fieldset>
+
+			<fieldset class="margin-large-top"><legend><s:text name="title.publishingOptions" /></legend>
+			<div class="form-group">
+				<div class="col-xs-12">
+					<label for="modelId" class="control-label"><s:text name="label.contentModel" /></label>
+					<s:select id="modelId" name="modelId" value="%{getShowlet().getConfig().get('modelId')}"
+					list="%{getModelsForContent(showlet.config['contentId'])}" headerKey="" headerValue="%{getText('label.default')}" listKey="id" listValue="description" cssClass="form-control" />
+				</div>
+			</div>
+			</fieldset>
+
+			<%--
+				Uncomment this if you add some custom parameters to this Widget
+
+			<s:set var="showletTypeParameters" value="showlet.type.typeParameters"></s:set>
+			<s:if test="#showletTypeParameters.size()>2">
+			<fieldset class="col-xs-12 margin-large-top"><legend><s:text name="label.otherSettings" /></legend>
+				<s:iterator value="#showletTypeParameters" id="showletParam" >
+					<s:if test="!#showletParam.name.equals('contentId') && !#showletParam.name.equals('modelId')">
+						<div class="form-group">
+							<label for="fagianoParam_<s:property value="#showletParam.name" />" class="control-label"><s:property value="#showletParam.descr" /></label>
+							<s:textfield cssClass="form-control" id="%{'fagianoParam_'+#showletParam.name}" name="%{#showletParam.name}" value="%{showlet.config[#showletParam.name]}" />
+						</div>
+					</s:if>
+				</s:iterator>
+			</fieldset>
+			</s:if>
+			--%>
+
 		</s:if>
 		<s:else>
 

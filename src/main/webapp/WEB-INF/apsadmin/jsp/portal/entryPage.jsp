@@ -28,13 +28,13 @@
 
 	<s:if test="hasActionErrors()">
 		<div class="alert alert-danger alert-dismissable">
-			<button type="button" class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
 			<p><s:text name="message.title.ActionErrors" /></p>
 		</div>
 	</s:if>
 	<s:if test="hasFieldErrors()">
 		<div class="alert alert-danger alert-dismissable">
-			<button type="button" class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
 			<p><s:text name="message.title.FieldErrors" /></p>
 		</div>
 	</s:if>

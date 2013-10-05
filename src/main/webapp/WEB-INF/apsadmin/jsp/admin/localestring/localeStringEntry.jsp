@@ -13,7 +13,7 @@
 <s:form action="save" namespace="/do/LocaleString" cssClass="form-horizontal">
 	<s:if test="hasFieldErrors()">
 		<div class="alert alert-warning">
-			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+			<button class="close" data-dismiss="alert">&times;</button>
 			<h2 class="h4 margin-none">
 				<s:text name="message.title.FieldErrors" />
 			</h2>
