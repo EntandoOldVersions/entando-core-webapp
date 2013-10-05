@@ -3,7 +3,7 @@
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 
-<h1><s:text name="title.showletManagement" /></h1>
+<h1 class="panel panel-default title-page"><span class="panel-body display-block"><s:text name="title.showletManagement" /></a></span></h1>
 
 <div id="main">
 

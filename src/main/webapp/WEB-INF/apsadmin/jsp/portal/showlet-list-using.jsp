@@ -3,7 +3,14 @@
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 
-<h1><a href="<s:url action="viewShowlets" namespace="/do/Portal/WidgetType" />" title="<s:text name="note.goToSomewhere" />: <s:text name="title.showletManagement" />"><s:text name="title.showletManagement" /></a></h1>
+<h1 class="panel panel-default title-page">
+	<span class="panel-body display-block">
+		<a href="<s:url action="viewShowlets" namespace="/do/Portal/ShowletType" />" 
+		title="<s:text name="note.goToSomewhere" />: <s:text name="title.showletManagement" />">
+		<s:text name="title.showletManagement" />
+		</a>
+	</span>
+</h1>
 
 <div id="main">
 
