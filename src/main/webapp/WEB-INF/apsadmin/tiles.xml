@@ -14,18 +14,19 @@
         <put-attribute name="footer" value="/WEB-INF/apsadmin/jsp/common/template/footer.jsp" />
     </definition>
 
-    <definition name="layout.settings" template="/WEB-INF/apsadmin/jsp/common/layouts/settings.jsp">
+    <definition extends="layout.default" name="layout.settings">
         <put-attribute name="title" value="document.title.main" />
+        <put-attribute name="cssSpecial" value="/WEB-INF/apsadmin/jsp/common/tiles-inserts/settings.jsp" />
         <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-common.jsp" />
         <put-attribute name="shortcuts-quickbar" value="/WEB-INF/apsadmin/jsp/common/tiles-inserts/shortcuts-quickbar.jsp" />
         <put-attribute name="menu" value="/WEB-INF/apsadmin/jsp/common/tiles-inserts/menu.jsp" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/common/template/mainBody.jsp" />
         <put-attribute name="footer" value="/WEB-INF/apsadmin/jsp/common/template/footer.jsp" />
     </definition>
-	
+
 	<!-- temporary addition -->
 	<definition extends="layout.default" name="main.layout" />
-	
+
     <definition extends="layout.default" name="admin.intro">
         <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/startPage.jsp" />
     </definition>
@@ -68,7 +69,7 @@
         <put-attribute name="title" value="title.userManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/user/configUserAuthorities.jsp" />
     </definition>
-	
+
 	<definition extends="layout.settings" name="admin.UserProfile.view">
         <put-attribute name="title" value="title.userProfileManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/user/profile-view.jsp" />
@@ -82,7 +83,7 @@
         <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/template/extraresources/profile-entry.jsp" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/user/profile-entry.jsp" />
     </definition>
-    
+
     <!-- ********* FINE Area Gestione Utenti ********* -->
 
     <!-- ********* INIZIO Area Gestione Ruoli ********* -->
