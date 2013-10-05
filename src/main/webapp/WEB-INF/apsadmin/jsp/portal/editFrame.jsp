@@ -118,13 +118,13 @@
 							<s:if test="#showletType.optgroup != #tmpShowletType">
 
 								<s:if test="#showletType.optgroup == 'stockShowletCode'">
-									<wpsa:set var="optgroupLabel"><s:text name="title.showletManagement.showlets.stock" /></wpsa:set>
+									<wpsa:set var="optgroupLabel"><s:text name="title.widgetManagement.widgets.stock" /></wpsa:set>
 								</s:if>
 								<s:elseif test="#showletType.optgroup == 'customShowletCode'">
-									<wpsa:set var="optgroupLabel"><s:text name="title.showletManagement.showlets.custom" /></wpsa:set>
+									<wpsa:set var="optgroupLabel"><s:text name="title.widgetManagement.widgets.custom" /></wpsa:set>
 								</s:elseif>
 								<s:elseif test="#showletType.optgroup == 'userShowletCode'">
-									<wpsa:set var="optgroupLabel"><s:text name="title.showletManagement.showlets.user" /></wpsa:set>
+									<wpsa:set var="optgroupLabel"><s:text name="title.widgetManagement.widgets.user" /></wpsa:set>
 								</s:elseif>
 								<s:else>
 									<wpsa:set var="pluginPropertyName" value="%{getText(#showletType.optgroup + '.name')}" />

@@ -18,7 +18,7 @@
 
 	<div class="panel panel-default">
 		<span class="panel-body display-block">
-			<s:text name="note.deleteType.areYouSure" />&#32;<code><s:property value="showletTypeCode" /></code>? 
+			<s:text name="note.deleteType.areYouSure" />&#32;<code><s:property value="widgetTypeCode" /></code>? 
 			<div class="text-center margin-small-top">
 				<s:submit value="%{getText('label.remove')}" cssClass="btn btn-default" />
 			</div>

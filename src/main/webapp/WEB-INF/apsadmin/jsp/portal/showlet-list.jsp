@@ -3,7 +3,7 @@
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 
-<h1><s:text name="title.widgetManagement" /></h1>
+<h1 class="panel panel-default title-page"><span class="panel-body display-block"><s:text name="title.widgetManagement" /></span></h1>
 
 <div id="main">
 
@@ -35,17 +35,17 @@
 	<div class="panel-heading">
 		<h2 class="panel-title">
 			<s:if test="%{#firstType.optgroup == 'stockShowletCode'}">
-				<s:text name="title.showletManagement.showlets.stock" />
+				<s:text name="title.widgetManagement.widgets.stock" />
 			</s:if>
 			<s:elseif test="%{#firstType.optgroup == 'customShowletCode'}">
-				<s:text name="title.showletManagement.showlets.custom" />
+				<s:text name="title.widgetManagement.widgets.custom" />
 			</s:elseif>
 			<s:elseif test="%{#firstType.optgroup == 'userShowletCode'}">
-				<s:text name="title.showletManagement.showlets.user" />
+				<s:text name="title.widgetManagement.widgets.user" />
 			</s:elseif>
 			<s:else>
 				<s:if test="#pluginTitleCheck.equals('false')">
-					<s:text name="title.showletManagement.showlets.plugin" />
+					<s:text name="title.widgetManagement.widgets.plugin" />
 				</s:if>
 				<s:set var="pluginTitleCheck" value="'true'" ></s:set>
 				<wpsa:set var="pluginPropertyName" value="%{getText(#firstType.optgroup + '.name')}" />	

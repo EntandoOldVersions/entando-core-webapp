@@ -4,16 +4,26 @@
 
 <h1 class="panel panel-default title-page">
 	<span class="panel-body display-block">
-		<a href="<s:url action="viewShowlets" namespace="/do/Portal/WidgetType" />" 
-		title="<s:text name="note.goToSomewhere" />: <s:text name="title.showletManagement" />">
-		<s:text name="title.showletManagement" /></a>
-		<s:if test="strutsAction == 2">
-		&#32;/&#32;<s:text name="title.showletManagement.edit" />
-		&#32;/&#32;<wpsa:widgetType key="%{showletTypeCode}" var="showletTypeVar" />
+		<a href="<s:url action="viewWidgets" namespace="/do/Portal/WidgetType" />" 
+		title="<s:text name="note.goToSomewhere" />: <s:text name="title.widgetManagement" />">
+		<s:if test="strutsAction == 2"><s:text name="title.widgetManagement" /></s:if>
+		<s:else><s:text name="title.newWidgetType" /></s:else>
+		</a>
+		<s:if test="strutsAction == 2">&#32;/&#32;<s:text name="title.widgetManagement.edit" /></s:if>
+		<s:if test="strutsAction == 2">&#32;/&#32;
+			<wpsa:widgetType key="%{widgetTypeCode}" var="showletTypeVar" />
 			<s:property value="#showletTypeVar.titles[currentLang.code]" />
 		</s:if>
 		<s:else>&#32;/&#32;
-			<s:text name="title.newShowletType" />
+			<s:text name="title.newWidgetType.from" />:&#32;
+			<s:if test="strutsAction == 1">
+				<wpsa:widgetType var="parentShowletTypeVar" key="%{parentShowletTypeCode}" />
+				<em><s:property value="%{getTitle(#parentShowletTypeVar.code, #parentShowletTypeVar.titles)}" /></em>
+			</s:if>
+			<s:elseif test="strutsAction == 3">
+			<s:property value="%{getTitle(showletToCopy.type.code, showletToCopy.type.titles)}" />	<wpsa:page var="pageVar" key="%{pageCode}" />
+			<s:text name="note.widgetType.page"/>:&#32;<em class="important"><s:property value="%{getTitle(#pageVar.code, #pageVar.titles)}" /></em>,&#32;<s:text name="note.widgetType.position" />:&#32;<em class="important"><s:property value="framePos" /></em>
+			</s:elseif>
 		</s:else>
 	</span>
 </h1>
