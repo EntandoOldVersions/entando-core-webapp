@@ -3,191 +3,200 @@
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
-
-<s:form>
-<p class="sr-only">
-	<wpsf:hidden name="name" />
-</p>
-<div class="subsection-light">
-<h3><s:text name="title.group.referencedPages" /></h3>
-
-<s:if test="null != references['PageManagerUtilizers']">
-<wpsa:subset source="references['PageManagerUtilizers']" count="10" objectName="pageReferences" advanced="true" offset="5" pagerId="pageManagerReferences">
-<s:set name="group" value="#pageReferences" />
-
-<div class="pager">
-	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
-	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
-</div>
-
-<table class="generic" id="pageListTable" summary="<s:text name="note.group.referencedPages.summary" />">
-<caption><span><s:text name="title.pageList" /></span></caption>
-	<tr>
-		<th><s:text name="label.page" /></th>
-	</tr>
-	<s:iterator var="currentPageVar" >
-		<s:set var="canEditCurrentPage" value="%{false}" />
-		<c:set var="currentPageGroup"><s:property value="#currentPageVar.group" escape="false"/></c:set>
-		<wp:ifauthorized groupName="${currentPageGroup}" permission="managePages"><s:set var="canEditCurrentPage" value="%{true}" /></wp:ifauthorized>
-		<tr>
-			<td>
-				<s:property value="%{#currentPageVar.getFullTitle(currentLang.code)}" />
-				<s:if test="#canEditCurrentPage">
-					<a href="<s:url namespace="/do/Page" action="viewTree"><s:param name="selectedNode" value="#currentPageVar.code" /></s:url>"><img src="<wp:resourceURL />administration/common/img/icons/node-leaf.png" alt="<s:text name="note.goToSomewhere" />: <s:property value="%{#currentPageVar.getFullTitle(currentLang.code)}" />" title="<s:text name="note.goToSomewhere" />: <s:property value="%{#currentPageVar.getFullTitle(currentLang.code)}" />" /></a>
-					<a href="<s:url namespace="/do/Page" action="configure"><s:param name="pageCode" value="#currentPageVar.code" /></s:url>"><img src="<wp:resourceURL />administration/common/img/icons/page-configure.png" alt="<s:text name="title.configPage" />: <s:property value="%{#currentPageVar.getFullTitle(currentLang.code)}" />" title="<s:text name="title.configPage" />: <s:property value="%{#currentPageVar.getFullTitle(currentLang.code)}" />" /></a>
+<s:form cssClass="form-horizontal">
+	<p class="sr-only">
+		<wpsf:hidden name="name" />
+	</p>
+	<%-- referenced pages --%>
+		<div class="panel panel-default">
+			<div class="panel-heading"><h3 class="margin-none"><s:text name="title.group.referencedPages" /></h3></div>
+			<div class="panel-body">
+				<s:if test="null != references['PageManagerUtilizers']">
+					<wpsa:subset source="references['PageManagerUtilizers']" count="10" objectName="pageReferences" advanced="true" offset="5" pagerId="pageManagerReferences">
+						<s:set name="group" value="#pageReferences" />
+						<div class="text-center">
+							<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
+							<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
+						</div>
+							<table class="table table-bordered" id="pageListTable">
+								<tr>
+									<!-- <th class="text-center text-nowrap col-xs-6 col-sm-3 col-md-3 col-lg-3"> -->
+									<th class="text-center col-xs-5 col-sm-3 col-md-2 col-lg-2">
+										<abbr title="<s:text name="label.actions" />">&ndash;</abbr>
+									</th>
+									<th><s:text name="label.page" /></th>
+								</tr>
+								<s:iterator var="currentPageVar">
+									<s:set var="canEditCurrentPage" value="%{false}" />
+									<s:set var="currentPageGroup" value="#currentPageVar.group" scope="page" />
+									<wp:ifauthorized groupName="${currentPageGroup}" permission="managePages"><s:set var="canEditCurrentPage" value="%{true}" /></wp:ifauthorized>
+									<tr>
+										<td class="text-center text-nowrap"><s:if test="#canEditCurrentPage"><div class="btn-group btn-group-xs"><a
+														class="btn btn-default" 
+														href="<s:url namespace="/do/Page" action="viewTree"><s:param name="selectedNode" value="#currentPageVar.code" /></s:url>"
+														title="<s:text name="note.goToSomewhere" />:&#32;<s:property value="%{#currentPageVar.getFullTitle(currentLang.code)}" />"><span class="icon icon-folder-close"></span><span class="sr-only"><s:text name="note.goToSomewhere" />:&#32;<s:property value="%{#currentPageVar.getFullTitle(currentLang.code)}" /></span></a><a
+														class="btn btn-default" 
+														href="<s:url namespace="/do/Page" action="configure"><s:param name="pageCode" value="#currentPageVar.code" /></s:url>"
+														title="<s:text name="title.configPage" />:&#32;<s:property value="%{#currentPageVar.getFullTitle(currentLang.code)}" />"><span class="icon icon-cog"></span><span class="sr-only"><s:text name="title.configPage" />:&#32;<s:property value="%{#currentPageVar.getFullTitle(currentLang.code)}" /></span></a></div></s:if></td>
+										<td>
+											<s:property value="%{#currentPageVar.getFullTitle(currentLang.code)}" />
+										</td>
+									</tr>
+								</s:iterator>
+							</table>
+						<div class="text-center">
+							<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
+						</div>
+					</wpsa:subset>
 				</s:if>
-				<s:else></s:else>
-			</td>
-		</tr>
-	</s:iterator>
-</table>
-
-<div class="pager">
-	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
-</div>
-
-</wpsa:subset>
-</s:if>
-<s:else>
-<p><s:text name="note.group.referencedPages.empty" /></p>
-</s:else>
-</div>
-
-<div class="subsection-light">
-<h3><s:text name="title.group.referencedUsers" /></h3>
-<s:if test="null != references['UserManagerUtilizers']">
-<wpsa:subset source="references['UserManagerUtilizers']" count="10" objectName="userReferences" advanced="true" offset="5" pagerId="userManagerReferences">
-<s:set name="group" value="#userReferences" />
-
-<div class="pager">
-	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
-	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
-</div>
-
-<wp:ifauthorized permission="superuser" var="canEditUser" />
-<table class="generic" id="userListTable" summary="<s:text name="note.group.referencedUsers.summary" />">
-<caption><span><s:text name="title.userList" /></span></caption>
-	<tr>
-		<th><s:text name="label.username" /></th>
-		<th><s:text name="label.date.registration" /></th>
-		<th><s:text name="label.date.lastLogin" /></th>
-		<th><s:text name="label.date.lastPasswordChange" /></th>
-		<th class="icon"><abbr title="<s:text name="label.state" />">S</abbr></th>	
-		<c:if test="${canEditUser == 'true'}">
-		<th class="icon"><abbr title="<s:text name="label.authorizations" />">A</abbr></th>	
-		</c:if>
-	</tr>
-	<s:iterator var="currentUserVar" >
-		<s:if test="!#currentUserVar.japsUser">
-			<s:set name="statusIconImagePath" id="statusIconImagePath"><wp:resourceURL/>administration/common/img/icons/user-status-notjAPSUser.png</s:set>
-			<s:set name="statusIconText" id="statusIconText"><s:text name="note.userStatus.notEntandoUser" /></s:set>
-		</s:if>
-		<s:elseif test="#currentUserVar.disabled">
-			<s:set name="statusIconImagePath" id="statusIconImagePath"><wp:resourceURL/>administration/common/img/icons/user-status-notActive.png</s:set>
-			<s:set name="statusIconText" id="statusIconText"><s:text name="note.userStatus.notActive" /></s:set>	
-		</s:elseif>
-		<s:elseif test="!#currentUserVar.accountNotExpired">
-			<s:set name="statusIconImagePath" id="statusIconImagePath"><wp:resourceURL/>administration/common/img/icons/user-status-expiredAccount.png</s:set>
-			<s:set name="statusIconText" id="statusIconText"><s:text name="note.userStatus.expiredAccount" /></s:set>	
-		</s:elseif>
-		<s:elseif test="!#currentUserVar.credentialsNotExpired">
-			<s:set name="statusIconImagePath" id="statusIconImagePath"><wp:resourceURL/>administration/common/img/icons/user-status-expiredPassword.png</s:set>
-			<s:set name="statusIconText" id="statusIconText"><s:text name="note.userStatus.expiredPassword" /></s:set>	
-		</s:elseif>
-		<s:elseif test="!#currentUserVar.disabled">
-			<s:set name="statusIconImagePath" id="statusIconImagePath"><wp:resourceURL/>administration/common/img/icons/user-status-active.png</s:set>
-			<s:set name="statusIconText" id="statusIconText"><s:text name="note.userStatus.active" /></s:set>
-		</s:elseif>
-		<tr>
-			<td>
-				<c:if test="${canEditUser == 'true'}">
-					<a href="<s:url namespace="/do/User/" action="edit"><s:param name="username" value="#currentUserVar.username"/></s:url>" title="<s:text name="label.edit" />: <s:property value="#currentUserVar.username" />" ><s:property value="#currentUserVar" /></a>
-				</c:if>
-				<c:if test="${canEditUser == 'false'}"><s:property value="#currentUserVar" /></c:if>
-			</td>
-			<td class="centerText monospace">
-				<s:if test="#currentUserVar.japsUser">
-					<s:date name="#currentUserVar.creationDate" format="dd/MM/yyyy" />
+				<s:else>
+					<p class="margin-none"><s:text name="note.group.referencedPages.empty" /></p>
+				</s:else>
+			</div>
+		</div>
+	<%-- referenced users --%>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="margin-none"><s:text name="title.group.referencedUsers" /></h3>
+			</div>
+				<div class="panel-body">
+					<s:if test="null != references['UserManagerUtilizers']">
+						<wpsa:subset source="references['UserManagerUtilizers']" count="10" objectName="userReferences" advanced="true" offset="5" pagerId="userManagerReferences">
+							<s:set name="group" value="#userReferences" />
+							<div class="text-center">
+								<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
+								<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
+							</div>
+							<wp:ifauthorized permission="superuser" var="canEditUser" />
+							<div class="table-responsive">
+								<table class="table table-bordered" id="userListTable">
+									<tr>
+										<th class="text-center col-xs-5 col-sm-3 col-md-2 col-lg-2 <c:out value="${canEditUser ? '' : ' hide'}" />">
+											<abbr title="<s:text name="label.actions" />">&ndash;</abbr>
+										</th>
+										<th><s:text name="label.username" /></th>
+										<th><s:text name="label.date.lastLogin" /></th>
+										<th class="text-center col-xs-1 col-sm-1 col-md-1 col-lg-1"><abbr title="<s:text name="label.state" />">S</abbr></th>
+									</tr>
+									<s:iterator var="usernameVar">
+										<s:if test="null == #usernameVar || #usernameVar.disabled">
+											<s:set var="statusIconClassVar" value="%{'icon icon-pause text-warning'}" />
+											<s:set var="statusTextVar" value="%{getText('note.userStatus.notActive')}" />
+										</s:if>
+										<s:elseif test="!#usernameVar.entandoUser">
+											<s:set var="statusIconClassVar" value="%{'icon icon-minus'}" />
+											<s:set var="statusTextVar" value="%{getText('note.userStatus.notEntandoUser')}" />
+										</s:elseif>
+										<s:elseif test="!#usernameVar.accountNotExpired">
+											<s:set var="statusIconClassVar" value="%{'icon icon-circle-blank text-danger'}" />
+											<s:set var="statusTextVar" value="%{getText('note.userStatus.expiredAccount')}" />
+										</s:elseif>
+										<s:elseif test="!#usernameVar.credentialsNotExpired">
+											<s:set var="statusIconClassVar" value="%{'icon icon-adjust text-warning'}" />
+											<s:set var="statusTextVar" value="%{getText('note.userStatus.expiredPassword')}" />
+										</s:elseif>
+										<s:elseif test="!#usernameVar.disabled">
+											<s:set var="statusIconClassVar" value="%{'icon icon-ok text-success'}" />
+											<s:set var="statusTextVar" value="%{getText('note.userStatus.active')}" />
+										</s:elseif>
+										<tr>
+											<%-- actions --%>
+												<td class="text-center text-nowrap <c:out value="${canEditUser ? '' : ' hide'}" />">
+													<div class="btn-group btn-group-xs">
+														<c:if test="${canEditUser == 'true'}">
+															<%-- edit user button --%>
+																<a 
+																	class="btn btn-default"
+																	href="<s:url namespace="/do/User" action="edit"><s:param name="username" value="#usernameVar.username"/></s:url>" 
+																	title="<s:text name="label.edit" />: <s:property value="#usernameVar.username" />" >
+																		<span class="sr-only"><s:text name="label.edit" /></span>
+																		<span class="icon icon-edit"></span>
+																</a>
+															<%-- edit authorization button --%>
+																	<a
+																		class="btn btn-default"
+																		href="<s:url action="edit" namespace="/do/User/Auth"><s:param name="username" value="#usernameVar"/></s:url>"
+																		title="<s:text name="note.configureAuthorizationsFor" />: <s:property value="#usernameVar" />">
+																			<span class="sr-only">
+																				<s:text name="note.configureAuthorizationsFor" />: <s:property value="#usernameVar" />
+																			</span>
+																			<span class="icon-fixed-width icon icon-unlock"></span>
+																	</a>
+														</c:if>
+													</div>
+												</td>
+											<%-- username --%>
+												<td><code><s:property value="#usernameVar.username" /></code>
+											<%-- last login --%>
+												<td>
+													<s:if test="#usernameVar.entandoUser && #usernameVar.lastAccess != null">
+														<code title="<s:date name="#usernameVar.lastAccess" format="EEEE d MMMM yyyy" />">
+															<s:date name="#usernameVar.lastAccess" format="dd/MM/yyyy" />
+														</code>
+													</s:if>
+													<s:else>
+														<span class="icon icon-minus text-muted" title="<s:text name="label.none" />"></span>
+														<span class="sr-only"><s:text name="label.none" /></span>
+													</s:else>
+												</td>
+											<%-- status --%>
+												<td class="text-center">
+													<span class="sr-only"><s:property value="#statusTextVar" /></span>
+													<span class="<s:property value="#statusIconClassVar" />" title="<s:property value="#statusTextVar" />"></span>
+												</td>
+										</tr>
+									</s:iterator>
+								</table>
+							</div>
+							<div class="text-center">
+								<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
+							</div>
+						</wpsa:subset>
+					</s:if>
+					<s:else>
+						<p class="margin-none"><s:text name="note.group.referencedUsers.empty" /></p>
+					</s:else>
+				</div>
+		</div>
+	<%-- referenced widgets --%>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="margin-none"><s:text name="title.group.referencedShowletTypes" /></h3>
+			</div>
+			<div class="panel-body">
+				<s:if test="null != references['WidgetTypeManagerUtilizers']">
+					<wpsa:subset source="references['WidgetTypeManagerUtilizers']" count="10" objectName="showletTypeReferences" advanced="true" offset="5" pagerId="widgetTypeReferences">
+						<s:set name="group" value="#showletTypeReferences" />
+						<div class="text-center">
+							<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
+							<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
+						</div>
+						<table class="table table-bordered" id="showletTypeListTable">
+							<tr>
+								<th><s:text name="label.title" /></th>
+								<th><s:text name="label.code" /></th>
+							</tr>
+							<s:iterator var="currentWidgetVar">
+								<tr>
+									<td><s:property value="%{getTitle(#currentWidgetVar.code, #currentWidgetVar.titles)}" /></td>
+									<td><code><s:property value="#currentWidgetVar.code" /></code></td>
+								</tr>
+							</s:iterator>
+						</table>
+						<div class="text-center">
+							<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
+						</div>
+					</wpsa:subset>
 				</s:if>
-				<s:else><abbr title="<s:text name="label.none" />">&ndash;</abbr></s:else>
-			</td>
-			<td class="centerText monospace">
-				<s:if test="#currentUserVar.japsUser && #currentUserVar.lastAccess != null">
-					<s:date name="#currentUserVar.lastAccess" format="dd/MM/yyyy" />
-				</s:if>
-				<s:else><abbr title="<s:text name="label.none" />">&ndash;</abbr></s:else>
-			</td>
-			<td class="centerText monospace">
-				<s:if test="#currentUserVar.japsUser && #currentUserVar.lastPasswordChange != null">
-					<s:date name="#currentUserVar.lastPasswordChange" format="dd/MM/yyyy" />
-				</s:if>
-				<s:else><abbr title="<s:text name="label.none" />">&ndash;</abbr></s:else>
-			</td>
-			<td class="icon"><img src="<s:property value="#statusIconImagePath" />" alt="<s:property value="#statusIconText" />" title="<s:property value="#statusIconText" />" /></td>
-			<c:if test="${canEditUser == 'true'}">
-			<td class="icon">
-				<a href="<s:url namespace="/do/User/Auth" action="edit"><s:param name="username" value="#currentUserVar.username"/></s:url>" title="<s:text name="note.configureAuthorizationsFor" />: <s:property value="#currentUserVar.username" />"><img src="<wp:resourceURL />administration/common/img/icons/authorizations.png" alt="<s:text name="note.configureAuthorizationsFor" />: <s:property value="#currentUserVar.username" />" /></a>
-			</td>
-			</c:if>
-		</tr>
-	</s:iterator>
-</table>
-
-<div class="pager">
-	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
-</div>
-
-</wpsa:subset>
-</s:if>
-<s:else>
-<p><s:text name="note.group.referencedUsers.empty" /></p>
-</s:else>
-</div>
-
-<div class="subsection-light">
-<h3><s:text name="title.group.referencedWidgetTypes" /></h3>
-
-<s:if test="null != references['ShowletTypeManagerUtilizers']">
-<wpsa:subset source="references['ShowletTypeManagerUtilizers']" count="10" objectName="showletTypeReferences" advanced="true" offset="5" pagerId="showletTypeReferences">
-<s:set name="group" value="#showletTypeReferences" />
-
-<div class="pager">
-	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
-	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
-</div>
-
-<table class="generic" id="showletTypeListTable" summary="<s:text name="note.group.referencedWidgetTypes.summary" />">
-<caption><span><s:text name="title.showletTypeList" /></span></caption>
-	<tr>
-		<th><s:text name="label.code" /></th>
-		<th><s:text name="label.title" /></th>
-	</tr>
-	<s:iterator var="currentShowletTypeVar" >
-	<tr>
-		<td>
-			<s:property value="#currentShowletTypeVar.code" />
-		</td>
-		<td>
-			<s:property value="getTitle(#currentShowletTypeVar.code, #currentShowletTypeVar.titles)" />
-		</td>
-	</tr>
-	</s:iterator>
-</table>
-
-<div class="pager">
-	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
-</div>
-
-</wpsa:subset>
-</s:if>
-<s:else>
-<p><s:text name="note.group.referencedWidgetTypes.empty" /></p>
-</s:else>
-</div>
-
-<wpsa:hookPoint key="core.groupReferences" objectName="hookPointElements_core_groupReferences">
-<s:iterator value="#hookPointElements_core_groupReferences" var="hookPointElement">
-	<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
-</s:iterator>
-</wpsa:hookPoint>
+				<s:else>
+					<p class="margin-none"><s:text name="note.group.referencedShowletTypes.empty" /></p>
+				</s:else>
+			</div>
+		</div>
+	<%-- hoookpoint core.groupReferences --%>
+		<wpsa:hookPoint key="core.groupReferences" objectName="hookPointElements_core_groupReferences">
+			<s:iterator value="#hookPointElements_core_groupReferences" var="hookPointElement">
+				<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
+			</s:iterator>
+		</wpsa:hookPoint>
 </s:form>

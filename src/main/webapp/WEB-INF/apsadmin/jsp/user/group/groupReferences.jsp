@@ -1,5 +1,4 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-
 <h1 class="panel panel-default title-page">
 	<span class="panel-body display-block">
 		<a href="<s:url action="list" namespace="/do/Group"></s:url>" 

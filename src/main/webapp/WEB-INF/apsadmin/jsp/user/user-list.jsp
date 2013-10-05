@@ -264,40 +264,40 @@
 									<button type="submit" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 										<span class="caret"></span>
 									</button>
-								<ul class="dropdown-menu text-left"  role="menu">
-									<li>
-										<%-- edit auth --%>
-										<a
-											href="<s:property value="#editUserAuthActionVar" escapeHtml="false" />"
-											title="<s:text name="note.configureAuthorizationsFor" />: <s:property value="#usernameVar" />"
-											>
-												<span class="icon-fixed-width icon icon-unlock"></span>&#32;
-												<s:text name="note.configureAuthorizationsFor" />: <s:property value="#usernameVar" />
-										</a>
-									</li>
-									<s:if test="#hasEditProfilePermission">
+									<ul class="dropdown-menu text-left"  role="menu">
 										<li>
-											<%-- edit profile --%>
-											<a 
-												href="<s:property value="#editUserProfileActionVar" escapeHtml="false" />" 
-												title="<s:text name="label.editProfile" />:&#32;<s:property value="#userProfileVar.getValue(#userProfileVar.firstNameAttributeName)"/>&#32;<s:property value="#userProfileVar.getValue(#userProfileVar.surnameAttributeName)"/>">
-													<span class="icon-fixed-width icon icon-user"></span>&#32;
-													<s:text name="label.editProfile" />: <s:property value="#usernameVar" />
+											<%-- edit auth --%>
+											<a
+												href="<s:property value="#editUserAuthActionVar" escapeHtml="false" />"
+												title="<s:text name="note.configureAuthorizationsFor" />: <s:property value="#usernameVar" />"
+												>
+													<span class="icon-fixed-width icon icon-unlock"></span>&#32;
+													<s:text name="note.configureAuthorizationsFor" />: <s:property value="#usernameVar" />
 											</a>
 										</li>
-									</s:if>
-									<s:if test="null != #userProfileVar">
-										<li>
-											<%-- view profile --%>
-											<a 
-												href="<s:property value="#viewUserProfileActionVar" escapeHtml="false" />" 
-												title="<s:text name="label.viewProfile" />: <s:property value="#usernameVar" />">
-													<span class="icon-fixed-width icon icon-info"></span>&#32;
-													<s:text name="label.viewProfile" />
-											</a>
-										</li>
-									</s:if>
-								</ul>
+										<s:if test="#hasEditProfilePermission">
+											<li>
+												<%-- edit profile --%>
+												<a 
+													href="<s:property value="#editUserProfileActionVar" escapeHtml="false" />" 
+													title="<s:text name="label.editProfile" />:&#32;<s:property value="#userProfileVar.getValue(#userProfileVar.firstNameAttributeName)"/>&#32;<s:property value="#userProfileVar.getValue(#userProfileVar.surnameAttributeName)"/>">
+														<span class="icon-fixed-width icon icon-user"></span>&#32;
+														<s:text name="label.editProfile" />: <s:property value="#usernameVar" />
+												</a>
+											</li>
+										</s:if>
+										<s:if test="null != #userProfileVar">
+											<li>
+												<%-- view profile --%>
+												<a 
+													href="<s:property value="#viewUserProfileActionVar" escapeHtml="false" />" 
+													title="<s:text name="label.viewProfile" />: <s:property value="#usernameVar" />">
+														<span class="icon-fixed-width icon icon-info"></span>&#32;
+														<s:text name="label.viewProfile" />
+												</a>
+											</li>
+										</s:if>
+									</ul>
 							</div>
 							<%-- remove --%>
 								<div class="btn-group btn-group-xs">

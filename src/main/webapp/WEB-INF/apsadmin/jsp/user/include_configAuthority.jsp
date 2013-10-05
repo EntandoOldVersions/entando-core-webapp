@@ -32,7 +32,6 @@
 				<wpsf:hidden name="username" />
 				<wpsf:hidden name="authName" />
 			</p>
-			<s:set name="removeIcon" id="removeIcon"><wp:resourceURL/>administration/common/img/icons/list-remove.png</s:set>
 			<s:set var="authorizedUsersVar" value="authorizedUsers" />
 			<s:if test="%{#authorizedUsersVar.size() > 0}">
 				<ul class="list-unstyled">
@@ -52,6 +51,9 @@
 					</s:iterator>
 				</ul>
 			</s:if>
+			<s:else>
+				<p class="text-warning">No users yet.</p><%--//TODO please add a label here --%>
+			</s:else>
 		</s:form>
 	</div>
 </div>
@@ -180,7 +182,7 @@
 				<s:submit 
 					type="button" 
 					action="addUser" 
-					cssClass="btn btn-default">
+					cssClass="btn btn-primary">
 						<s:text name="label.add" />
 				</s:submit>
 			</p>

@@ -1,4 +1,4 @@
-<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib uri="/struts-tags" prefix="s" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 <h1 class="panel panel-default title-page">
@@ -11,8 +11,8 @@
 	</span>
 </h1>
 <s:form action="delete" namespace="/do/User">
-<p class="sr-only"><wpsf:hidden name="username"/></p>
-<div class="panel panel-default">
+	<p class="sr-only"><wpsf:hidden name="username"/></p>
+	<div class="panel panel-default">
 		<span class="panel-body display-block">
 			<a
 				href="<s:url action="list" namespace="/do/User" />"
@@ -31,4 +31,5 @@
 					<s:text name="label.confirm" />
 				</s:submit>
 		</p>
+	</div>
 </s:form>
