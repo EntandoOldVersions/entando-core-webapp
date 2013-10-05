@@ -140,8 +140,8 @@
 										<s:if test="#attributeFieldErrorsVar">
 											<p class="text-danger padding-small-vertical"><s:iterator value="#attributeFieldErrorsVar"><s:property /> </s:iterator></p>
 										</s:if>
-									</div><!-- form group -->
-								</div><!-- contentedit div -->
+									</div><%-- form group --%>
+								</div><%-- contentedit div --%>
 							</s:iterator><%-- attributes iterator --%>
 							<s:set var="showingPageSelectItems" value="showingPageSelectItems" />
 							<s:set var="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/content-preview.png</s:set>
@@ -161,7 +161,7 @@
 									<p><wpsf:submit cssClass="button" disabled="true" action="%{#previewActionName}" value="%{getText('label.preview')}" title="%{getText('note.button.previewContent')}" /></p>
 								</s:else>
 							</div>
-						</div><!-- tab -->
+						</div><%-- tab --%>
 					</s:iterator><%-- lang iterator --%>
 				</div><%-- tabs container --%>
 			</div><%-- panel body --%>
@@ -169,8 +169,7 @@
 		<div id="info"><%-- info section --%>
 			<h2 class="js_sr-only"><s:text name="title.contentInfo" /> <a href="#quickmenu" id="info_content_goBackToQuickMenu" title="<s:text name="note.goBackToQuickMenu" />"><span class="icon icon-circle-arrow-up"></span></a></h2>
 			<div class="subsection">
-				<!--  INIZIO BLOCCO SELEZIONE GRUPPI SUPPLEMENTARI ABILITATI ALLA VISUALIZZAZIONE -->
-				<fieldset>
+				<fieldset><%-- extra groups --%>
 					<legend><s:text name="label.extraGroups" /></legend>
 					<s:if test="content.groups.size != 0">
 						<ul>
@@ -190,9 +189,8 @@
 							listKey="name" listValue="descr" cssClass="text" />
 						<s:submit action="joinGroup" value="%{getText('label.join')}" cssClass="button" />
 					</p>
-				</fieldset>
+				</fieldset><%-- extra groups --%>
 				<s:action name="showCategoryBlockOnEntryContent" namespace="/do/jacms/Content" executeResult="true"><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:action>
-				<!-- FINE CATEGORIE -->
 			</div>
 			<wpsa:hookPoint key="jacms.entryContent.tabGeneral" objectName="hookPointElements_jacms_entryContent_tabGeneral">
 				<s:iterator value="#hookPointElements_jacms_entryContent_tabGeneral" var="hookPointElement">
@@ -207,4 +205,4 @@
 			</s:iterator>
 		</wpsa:hookPoint>
 	</s:form>
-</div>
+</div><%-- main -- %>
