@@ -8,8 +8,6 @@
 	<wpsf:hidden name="selectedNode" />
 </p>
 
-<h3><s:text name="title.publishedContent" /></h3>
-
 <s:set var="publishedContents" value="getPublishedContents(selectedNode)" />
 
 <s:if test="!#publishedContents.empty">
@@ -21,14 +19,16 @@
 	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 </div>
 
-<table class="generic" id="contentListTable" summary="<s:text name="note.content.publishedContent.summary" />">
-<caption><span><s:text name="title.contentList" /></span></caption>
-	<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/contentReferencesTable_header.jsp" />
-	<s:iterator var="currentContentVar" value="#publishedContents">
-	<jacmswpsa:content contentId="%{#currentContentVar.id}" var="currentContentRecordVar" record="true" />
-	<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/contentReferencesTable_row.jsp" />
-	</s:iterator>
-</table>
+<div class="table-responsive">
+	<table class="table table-bordered" id="contentListTable" summary="<s:text name="note.content.publishedContent.summary" />">
+	<caption class="text-strong margin-base-vertical"><s:text name="title.publishedContent" /></caption>
+		<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/contentReferencesTable_header.jsp" />
+		<s:iterator var="currentContentVar" value="#publishedContents">
+		<jacmswpsa:content contentId="%{#currentContentVar.id}" var="currentContentRecordVar" record="true" />
+		<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/common/contentReferencesTable_row.jsp" />
+		</s:iterator>
+	</table>
+</div>
 
 <div class="pager">
 	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
@@ -37,11 +37,11 @@
 
 </s:if>
 <s:else>
-<p><s:text name="note.publishedContent.empty" /></p>
+<p class="alert alert-info"><s:text name="note.publishedContent.empty" /></p>
 </s:else>
 
-<div class="subsection-light">
+<hr />
+
 <s:set var="referencingContentsId" value="getReferencingContentsId(selectedNode)" />
 <s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/include/referencingContents.jsp" />
-</div>
 </s:form>
