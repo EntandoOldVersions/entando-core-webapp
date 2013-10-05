@@ -82,7 +82,7 @@
 	<wp:ifauthorized permission="editContents">
 
 		<li class="panel-group">
-			<div class="panel panel-default">
+			<div class="panel panel-default overflow-visible">
 				<div class="panel-heading">
 					<a data-toggle="collapse" href="#submenu-contents" class="display-block">
 						<s:text name="jacms.menu.contentAdmin" />&#32;
@@ -93,14 +93,30 @@
 					<ul class="panel-body nav nav-pills nav-stacked">
 						<li><a href="<s:url action="list" namespace="/do/jacms/Content" />"><s:text name="jacms.menu.contentAdmin.list" /></a></li>
 						<wpsa:entityTypes entityManagerName="jacmsContentManager" var="contentTypesVar" />
+						<li class="dropdown hidden-xs hidden-sm visible-md visible-lg">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+								<s:text name="label.new" />&#32;<s:text name="label.content" />&#32;<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<s:iterator var="contentTypeVar" value="#contentTypesVar">
+									<jacmswpsa:contentType typeCode="%{#contentTypeVar.typeCode}" property="isAuthToEdit" var="isAuthToEditVar" />
+									<s:if test="%{#isAuthToEditVar}">
+									<li class="hidden-xs hidden-sm visible-md visible-lg"><a href="<s:url action="createNew" namespace="/do/jacms/Content" >
+											   <s:param name="contentTypeCode" value="%{#contentTypeVar.typeCode}" />
+										   </s:url>" ><s:text name="label.new" />&#32;<s:property value="%{#contentTypeVar.typeDescr}" /></a></li>
+									</s:if>
+								</s:iterator>
+							</ul>
+						</li>
 						<s:iterator var="contentTypeVar" value="#contentTypesVar">
 							<jacmswpsa:contentType typeCode="%{#contentTypeVar.typeCode}" property="isAuthToEdit" var="isAuthToEditVar" />
 							<s:if test="%{#isAuthToEditVar}">
-							<li><a href="<s:url action="createNew" namespace="/do/jacms/Content" >
+							<li class="visible-xs visible-sm hidden-md hidden-lg"><a href="<s:url action="createNew" namespace="/do/jacms/Content" >
 									   <s:param name="contentTypeCode" value="%{#contentTypeVar.typeCode}" />
 								   </s:url>" ><s:text name="label.new" />&#32;<s:property value="%{#contentTypeVar.typeDescr}" /></a></li>
 							</s:if>
 						</s:iterator>
+						<li class="divider visible-xs visible-sm hidden-md hidden-lg"><hr class="margin-none" />
 						<wp:ifauthorized permission="superuser">
 						<li><a href="<s:url action="list" namespace="/do/jacms/ContentModel" />"><s:text name="jacms.menu.contentModelAdmin" /></a></li>
 						<li><a href="<s:url action="initViewEntityTypes" namespace="/do/Entity"><s:param name="entityManagerName">jacmsContentManager</s:param></s:url>"><s:text name="jacms.menu.contentTypeAdmin" /></a></li>

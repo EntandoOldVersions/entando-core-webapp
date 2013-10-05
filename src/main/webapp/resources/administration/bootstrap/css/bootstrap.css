@@ -8339,3 +8339,11 @@ td.visible-print {
 .text-nowrap {
   white-space: nowrap !important;
 }
+
+.overflow-hidden {
+  overflow: hidden !important;
+}
+
+.overflow-visible {
+  overflow: visible !important;
+}
