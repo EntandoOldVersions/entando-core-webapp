@@ -149,31 +149,31 @@
 
 	<!-- ********* FINE Area Amministrazione Contenuti ********* -->
 
-	<!-- INIZIO Area Gestione Configurazione Showlet Speciali -->
+	<!-- INIZIO Area Gestione Configurazione Widget Speciali -->
 
-	<definition extends="layout.default" name="admin.jacms.page.showlet.contentViewer.config">
+	<definition extends="main.layout" name="admin.jacms.page.widget.contentViewer.config">
 		<put-attribute name="title" value="title.pageManagement" />
 		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/specialwidget/contentViewer/configContentViewer.jsp" />
 	</definition>
-	<definition extends="layout.default" name="admin.jacms.page.showlet.contentListViewer.config">
+	<definition extends="main.layout" name="admin.jacms.page.widget.contentListViewer.config">
 		<put-attribute name="title" value="title.pageManagement" />
 		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/specialwidget/contentListViewer/configContentListViewer.jsp" />
 	</definition>
-	<definition extends="layout.default" name="admin.jacms.page.showlet.contentListViewer.config.userfilter.category">
+	<definition extends="main.layout" name="admin.jacms.page.widget.contentListViewer.config.userfilter.category">
 		<put-attribute name="title" value="title.pageManagement" />
 		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/specialwidget/contentListViewer/userFilter/entryCategory.jsp" />
 	</definition>
-	<definition extends="layout.default" name="admin.jacms.page.showlet.contentViewer.searchContents">
+	<definition extends="main.layout" name="admin.jacms.page.widget.contentViewer.searchContents">
 		<put-attribute name="title" value="title.pageManagement" />
 		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/specialwidget/contentViewer/contentFinding.jsp" />
 	</definition>
-	<definition extends="layout.default" name="admin.jacms.page.showlet.contentListViewer.entryFilter">
+	<definition extends="main.layout" name="admin.jacms.page.widget.contentListViewer.entryFilter">
 		<put-attribute name="title" value="title.pageManagement" />
 		<put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/entryFilter.jsp" />
 		<put-attribute name="body" value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/specialshowlet/contentListViewer/entryFilter.jsp" />
 	</definition>
 
-	<!-- FINE Area Gestione Configurazione Showlet Speciali -->
+	<!-- FINE Area Gestione Configurazione Widget Speciali -->
 
 	<!-- ********* INIZIO Area Gestione Entità ********* -->
 	<definition extends="layout.default" name="admin.jacms.entityManagement.viewEntityTypes">
