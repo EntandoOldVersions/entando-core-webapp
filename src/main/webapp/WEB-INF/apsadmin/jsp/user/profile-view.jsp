@@ -16,11 +16,14 @@
 				<dt><s:text name="label.username" /></dt>
 				<dd><s:property value="username" /> </dd>
 				<s:set name="lang" value="defaultLang" />
-				<s:iterator value="#userProfileVar.attributeList" id="attribute">
+				<s:iterator value="#userProfileVar.attributeList" var="attribute">
 				<%-- INIZIALIZZAZIONE TRACCIATORE --%>
 				<s:set name="attributeTracer" value="initAttributeTracer(#attribute, #lang)" />
-					<%-- VISUALIZZAZIONE CONTENUTO ATTRIBUTI  --%>	
-					<dt><s:property value="#attribute.name" />:</dt>
+					<s:if test="null != #attribute.description"><s:set var="attributeLabelVar" value="#attribute.description" /></s:if>
+					<s:else><s:set var="attributeLabelVar" value="#attribute.name" /></s:else>
+					
+					<%-- VISUALIZZAZIONE CONTENUTO ATTRIBUTI  --%>
+					<dt><s:property value="#attributeLabelVar" />:</dt>
 					<dd>
 						<%-- ############# ATTRIBUTO TESTO MONOLINGUA ############# --%>
 						<s:if test="#attribute.type == 'Monotext'">
