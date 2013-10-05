@@ -21,6 +21,8 @@
 
 <s:action namespace="/do/Page" name="printPageDetails" executeResult="true" ignoreContextParams="true"><s:param name="selectedNode" value="pageCode"></s:param></s:action>
 
+<s:form action="saveViewerConfig" namespace="/do/jacms/Page/SpecialShowlet/Viewer" cssClass="form-horizontal">
+
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<s:include value="/WEB-INF/apsadmin/jsp/portal/include/frameInfo.jsp" />
@@ -34,7 +36,6 @@
 			<s:property value="%{getTitle(showlet.type.code, showlet.type.titles)}" />
 		</h2>
 
-		<s:form action="saveViewerConfig" namespace="/do/jacms/Page/SpecialShowlet/Viewer">
 		<p class="sr-only">
 			<s:hidden name="pageCode" />
 			<s:hidden name="frame" />
@@ -70,34 +71,42 @@
 
 			<wp:ifauthorized groupName="${currentContentGroup}" permission="editContents"><s:set var="canEditCurrentContent" value="%{true}" /></wp:ifauthorized>
 
-			<fieldset class="col-xs-12 margin-large-top"><legend><s:text name="label.info" /></legend>
+			<fieldset class="margin-large-top"><legend><s:text name="label.info" /></legend>
 
 				<div class="form-group">
-					<label class="control-label"><s:text name="label.content" /></label>
-					<p class="form-control-static">
-						<code><s:property value="#content.id" /></code>&#32;&mdash;&#32;
-						<s:if test="#canEditCurrentContent">
-							<a href="<s:url action="edit" namespace="/do/jacms/Content"><s:param name="contentId" value="#content.id" /></s:url>" title="<s:text name="label.edit" />:&#32;<s:property value="#content.descr"/>"><s:property value="#content.descr"/></a>
-						</s:if>
-						<s:else>
-							<s:property value="#content.descr" />
-						</s:else>
-					</p>
+					<div class="col-xs-12">
+						<label class="control-label"><s:text name="label.content" /></label>
+						<p class="form-control-static">
+							<code><s:property value="#content.id" /></code>&#32;&mdash;&#32;
+							<s:if test="#canEditCurrentContent">
+								<a href="<s:url action="edit" namespace="/do/jacms/Content"><s:param name="contentId" value="#content.id" /></s:url>" title="<s:text name="label.edit" />:&#32;<s:property value="#content.descr"/>"><s:property value="#content.descr"/></a>
+							</s:if>
+							<s:else>
+								<s:property value="#content.descr" />
+							</s:else>
+						</p>
+					</div>
 				</div>
 
 				<p class="sr-only">
 					<s:hidden name="contentId" value="%{getShowlet().getConfig().get('contentId')}" />
 				</p>
 
-				<p class="margin-base-vertical"><s:submit action="searchContents" value="%{getText('label.change')}" cssClass="btn btn-info" /></p>
+				<div class="form-group">
+					<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+						<s:submit action="searchContents" value="%{getText('label.change')}" cssClass="btn btn-info btn-block" />
+					</div>
+				</div>
 
 			</fieldset>
 
-			<fieldset class="col-xs-12 margin-large-top"><legend><s:text name="title.publishingOptions" /></legend>
+			<fieldset class="margin-large-top"><legend><s:text name="title.publishingOptions" /></legend>
 			<div class="form-group">
-				<label for="modelId" clasS="control-label"><s:text name="label.contentModel" /></label>
-				<s:select id="modelId" name="modelId" value="%{getShowlet().getConfig().get('modelId')}"
-				list="%{getModelsForContent(showlet.config['contentId'])}" headerKey="" headerValue="%{getText('label.default')}" listKey="id" listValue="description" cssClass="form-control" />
+				<div class="col-xs-12">
+					<label for="modelId" class="control-label"><s:text name="label.contentModel" /></label>
+					<s:select id="modelId" name="modelId" value="%{getShowlet().getConfig().get('modelId')}"
+					list="%{getModelsForContent(showlet.config['contentId'])}" headerKey="" headerValue="%{getText('label.default')}" listKey="id" listValue="description" cssClass="form-control" />
+				</div>
 			</div>
 			</fieldset>
 
@@ -121,18 +130,20 @@
 
 		</s:if>
 		<s:else>
-			<div class="alert alert-info margin-base-vertical">
-				<s:text name="note.noContentSet" />&#32;
-				<s:submit action="searchContents" value="%{getText('label.choose')}" cssClass="btn btn-info" />
+
+			<div class="col-xs-12">
+				<div class="alert alert-info margin-base-vertical">
+					<s:text name="note.noContentSet" />&#32;
+					<s:submit action="searchContents" value="%{getText('label.choose')}" cssClass="btn btn-info" />
+				</div>
 			</div>
 		</s:else>
 
-			<div class="form-group">
-				<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-						<s:submit value="%{getText('label.confirm')}" cssClass="btn btn-primary btn-block" />
-				</div>
-			</div>
-
-		</s:form>
 	</div>
 </div>
+<div class="form-group">
+	<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+			<s:submit value="%{getText('label.confirm')}" cssClass="btn btn-primary btn-block" />
+	</div>
+</div>
+</s:form>
