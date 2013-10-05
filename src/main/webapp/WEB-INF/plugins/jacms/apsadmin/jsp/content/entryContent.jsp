@@ -1,9 +1,20 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/aps-core" prefix="wp" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
-<s:set var="targetNS" value="%{'/do/jacms/Content'}" />
-<h1 class="panel panel-default title-page"><span class="panel-body display-block"><s:text name="jacms.menu.contentAdmin" />&#32;/&#32;<s:text name="label.new" /></span></h1>
-<%-- TODO new | edit --%>
+
+<h1 class="panel panel-default title-page">
+	<span class="panel-body display-block">
+		<a href="<s:url action="list" namespace="/do/jacms/Content"/>">
+			<s:text name="jacms.menu.contentAdmin" />
+		</a>&#32;/&#32;
+		<s:if test="getStrutsAction() == 1">
+			<s:text name="label.new" />
+		</s:if>
+		<s:else>
+			<s:text name="label.edit" />
+		</s:else>
+	</span>
+</h1>
 
 	<s:if test="hasFieldErrors()">
 		<div class="alert alert-danger alert-dismissable fade in">

@@ -5,21 +5,30 @@
 <%@ taglib prefix="jacms" uri="/jacms-apsadmin-core" %>
 
 <s:if test="onEditContent">
-	<s:set var="targetNS" value="%{'/do/jacms/Content'}" />
-	<h1 class="panel panel-default title-page"><span class="panel-body display-block">
-	<s:text name="jacms.menu.contentAdmin" />&#32;/&#32;
-	<s:if test="getStrutsAction() == 1"><s:text name="label.new" /></s:if><s:else><s:text name="label.edit" /></s:else>&#32;/&#32;
-	<s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />
-	</span></h1>
-	<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/include/snippet-content.jsp" />
+	<h1 class="panel panel-default title-page">
+		<span class="panel-body display-block">
+			<a href="<s:url action="list" namespace="/do/jacms/Content"/>">
+				<s:text name="jacms.menu.contentAdmin" />
+			</a>&#32;/&#32;
+			<a href="<s:url action="backToEntryContent" ><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>">
+				<s:if test="getStrutsAction() == 1">
+					<s:text name="label.new" />
+				</s:if>
+				<s:else>
+					<s:text name="label.edit" />
+				</s:else>
+			</a>&#32;/&#32;
+			<s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />
+		</span>
+	</h1>
 </s:if>
 
 <s:if test="!onEditContent">
-	<s:set var="targetNS" value="%{'/do/jacms/Resource'}" />
-	<s:set var="targetParamName" value="%{'resourceTypeCode'}" />
-	<s:set var="targetParamValue" value="resourceTypeCode" />
-	<h1 class="panel panel-default title-page"><span class="panel-body display-block"><s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />
-	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></span></h1>
+	<h1 class="panel panel-default title-page">
+		<span class="panel-body display-block">
+			<s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />
+		</span>
+	</h1>
 </s:if>
 
 <s:form action="search" cssClass="form-horizontal">
