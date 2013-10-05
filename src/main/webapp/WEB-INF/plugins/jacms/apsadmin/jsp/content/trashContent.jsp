@@ -2,8 +2,13 @@
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 
 <s:set var="targetNS" value="%{'/do/jacms/Content'}" />
-<h1><s:text name="jacms.menu.contentAdmin" /><s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></h1>
-<h2><s:text name="title.contentManagement.trashContent" /></h2>
+<h1 class="panel panel-default title-page">
+	<span class="panel-body display-block">
+		<a href="<s:url action="list" namespace="/do/jacms/Content"/>"><s:text name="jacms.menu.contentAdmin" /></a>
+		&#32;/&#32;
+		<s:text name="title.contentManagement.trashContent" />
+	</span>
+</h1>
 
 <s:form action="deleteContentGroup">
 
@@ -50,12 +55,22 @@
 	</s:if>
 </p>
 
-<p><s:text name="note.trashContent.areYouSure" />?</p>
-<ul>
-<s:iterator id="contentIdToDelete" value="contentIds">
-<s:set name="content" value="%{getContentVo(#contentIdToDelete)}"></s:set>
-	<li><span class="monospace"><s:property value="#contentIdToDelete" /></span> &ndash; <s:property value="#content.descr" /> (<s:property value="%{getSmallContentType(#content.typeCode).descr}" />)</li>
-</s:iterator>
-</ul>
-<p><wpsf:submit useTabindexAutoIncrement="true" value="%{getText('label.remove')}" cssClass="button" /></p>
+	<div class="alert alert-warning">
+		<p>
+			<s:text name="note.trashContent.areYouSure" />
+		</p>
+		<ul class="margin-small-vertical">
+			<s:iterator id="contentIdToDelete" value="contentIds">
+			<s:set name="content" value="%{getContentVo(#contentIdToDelete)}"></s:set>
+				<li><code><s:property value="#contentIdToDelete" /></code> &ndash; <s:property value="#content.descr" /> (<s:property value="%{getSmallContentType(#content.typeCode).descr}" />)</li>
+			</s:iterator>
+		</ul>
+		<div class="text-center margin-large-top">
+		<s:submit type="button" action="delete" cssClass="btn btn-warning btn-lg">
+			<span class="icon icon-remove-sign"></span>&#32;
+			<s:text name="label.remove" />
+		</s:submit>
+		<a class="btn btn-link" href="<s:url action="list" namespace="/do/jacms/Content"/>" ><s:text name="note.goToSomewhere" />: <s:text name="title.contentList" /></a>
+		</div>
+	</div>
 </s:form>

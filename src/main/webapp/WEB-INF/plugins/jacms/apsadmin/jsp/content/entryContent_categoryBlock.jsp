@@ -1,7 +1,6 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
-<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 
 <s:set var="categoryTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_category" /></s:set>
 
@@ -11,7 +10,7 @@
 </p>
 </s:if>
 
-<fieldset class="margin-base-vertical">
+<fieldset class="margin-base-vertical" id="category-content-block">
 	<legend><span class="icon icon-tags"></span>&#32;<s:text name="title.categoriesManagement"/></legend>
 <ul id="categoryTree" class="icons-ul list-unstyled">
 	<s:set name="inputFieldName" value="'categoryCode'" />
@@ -41,16 +40,12 @@
 
 <s:if test="#contentCategories != null && #contentCategories.size() > 0">
 
-<table class="generic" summary="<s:text name="note.contentCategories.summary"/>: <s:property value="content.descr" />">
-<caption><span><s:text name="title.contentCategories.list"/></span></caption>
-<tr>
-	<th><s:text name="label.category"/></th>
-	<th class="icon"><abbr title="<s:text name="label.remove" />">&ndash;</abbr></th>
-</tr>
+<h4 class="margin-base-vertical"><s:text name="note.contentCategories.summary"/></h4>
+
 <s:iterator value="#contentCategories" id="contentCategory">
-<tr>
-	<td><s:property value="#contentCategory.getFullTitle(currentLang.code)"/></td>
-	<td class="icon">
+	<span class="label label-default label-sm pull-left padding-small-top padding-small-bottom margin-small-right margin-small-bottom">
+		<span class="icon icon-tag"></span>&#32;
+		<abbr title="<s:property value="#contentCategory.getFullTitle(currentLang.code)"/>"><s:property value="#contentCategory.getShortFullTitle(currentLang.code)" /></abbr>&#32;
 		<wpsa:actionParam action="removeCategory" var="actionName" >
 			<wpsa:actionSubParam name="categoryCode" value="%{#contentCategory.code}" />
 		</wpsa:actionParam>
@@ -60,6 +55,6 @@
 		</s:submit>
 	</span>
 </s:iterator>
-</table>
 </s:if>
+
 </fieldset>

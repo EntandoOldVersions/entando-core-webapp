@@ -7,7 +7,7 @@
 <h2 id="manage" class="sr-only"><s:text name="note.userbar.intro" />:</h2>
 
 <p>
-	<a class="btn btn-info btn-block" href="<s:url namespace="/do/BaseAdmin" action="configSystemParams" />"><span class="icon icon-cog"></span>&#32;<s:text name="menu.configure" /></a>
+	<a class="btn btn-info btn-block" href="<s:url namespace="/do/BaseAdmin" action="settings" />"><span class="icon icon-cog"></span>&#32;<s:text name="menu.configure" /></a>
 </p>
 
 <ul class="nav nav-pills nav-stacked" id="backoffice-menu-main">
@@ -51,7 +51,7 @@
 
 <wp:ifauthorized permission="managePages">
 	<li><a href="<s:url action="viewTree" namespace="/do/Page" />"><s:text name="menu.pageAdmin" /></a></li>
-	<li><a href="<s:url action="viewShowlets" namespace="/do/Portal/WidgetType" />"><s:text name="menu.showletAdmin" /></a></li>
+	<li><a href="<s:url action="viewWidgets" namespace="/do/Portal/WidgetType" />"><s:text name="menu.widgetAdmin" /></a></li>
 </wp:ifauthorized>
 <wp:ifauthorized permission="superuser">
 	<li class="panel-group">
@@ -139,8 +139,8 @@
 				</div>
 				<div id="submenu-resources" class="panel-collapse collapse">
 					<ul class="panel-body nav nav-pills nav-stacked">
-						<li><a href="<s:url action="intro" namespace="/do/jacms/Resource"><s:param name="resourceTypeCode" >Image</s:param></s:url>"><s:text name="jacms.menu.imageAdmin" /></a></li>
-						<li><a href="<s:url action="intro" namespace="/do/jacms/Resource"><s:param name="resourceTypeCode" >Attach</s:param></s:url>"><s:text name="jacms.menu.attachAdmin" /></a></li>
+						<li><a href="<s:url action="list" namespace="/do/jacms/Resource"><s:param name="resourceTypeCode" >Image</s:param></s:url>"><s:text name="jacms.menu.imageAdmin" /></a></li>
+						<li><a href="<s:url action="list" namespace="/do/jacms/Resource"><s:param name="resourceTypeCode" >Attach</s:param></s:url>"><s:text name="jacms.menu.attachAdmin" /></a></li>
 					</ul>
 				</div>
 			</div>

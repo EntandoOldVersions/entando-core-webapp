@@ -140,7 +140,7 @@
 
 <ul>
 	<li class="checkbox">
-		<label for="defaultShowlet"><s:text name="name.hasDefaultShowlets" /><wpsf:checkbox name="defaultShowlet" id="defaultShowlet" /></label>
+		<label for="defaultShowlet"><s:text name="name.hasDefaultWidgets" /><wpsf:checkbox name="defaultShowlet" id="defaultShowlet" /></label>
 	</li>
 	<li class="checkbox">
 		<label for="viewerPage"><s:text name="name.isViewerPage" /><wpsf:checkbox name="viewerPage" id="viewerPage" /></label>

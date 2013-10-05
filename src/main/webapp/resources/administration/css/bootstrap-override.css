@@ -16,6 +16,10 @@ html {
 	right: 0;
 }
 
+.navbar-brand {
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
 
 
 #sidebar > .panel-group {

@@ -11,7 +11,7 @@
         <put-attribute name="shortcuts-quickbar" value="/WEB-INF/apsadmin/jsp/common/tiles-inserts/shortcuts-quickbar.jsp" />
         <put-attribute name="menu" value="/WEB-INF/apsadmin/jsp/common/tiles-inserts/menu.jsp" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/common/template/mainBody.jsp" />
-        <put-attribute name="footer" value="/WEB-INF/apsadmin/jsp/common/template/footer.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/apsadmin/jsp/common/tiles-inserts/footer.jsp" />
     </definition>
 
     <definition extends="layout.default" name="layout.settings">
@@ -21,7 +21,7 @@
         <put-attribute name="shortcuts-quickbar" value="/WEB-INF/apsadmin/jsp/common/tiles-inserts/shortcuts-quickbar.jsp" />
         <put-attribute name="menu" value="/WEB-INF/apsadmin/jsp/common/tiles-inserts/menu.jsp" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/common/template/mainBody.jsp" />
-        <put-attribute name="footer" value="/WEB-INF/apsadmin/jsp/common/template/footer.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/apsadmin/jsp/common/tiles-inserts/footer.jsp" />
     </definition>
 
 	<!-- temporary addition -->
@@ -251,22 +251,22 @@
 
     <!-- ********* FINE Area Gestione Pagine ********* -->
 
-    <definition extends="main.layout" name="admin.Portal.viewShowlets">
+    <definition extends="layout.default" name="admin.Portal.viewShowlets">
         <put-attribute name="title" value="title.widgetManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/showlet-list.jsp" />
     </definition>
 
-    <definition extends="main.layout" name="admin.Portal.viewShowletUtilizers">
+    <definition extends="layout.default" name="admin.Portal.viewShowletUtilizers">
         <put-attribute name="title" value="title.widgetManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/showlet-list-using.jsp" />
     </definition>
 
-    <definition extends="main.layout" name="admin.Portal.showletType.trash">
+    <definition extends="layout.default" name="admin.Portal.showletType.trash">
         <put-attribute name="title" value="title.widgetManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/showlet-delete-confirm.jsp" />
     </definition>
 
-    <definition extends="main.layout" name="admin.Portal.showletType.entry">
+    <definition extends="layout.default" name="admin.Portal.showletType.entry">
         <put-attribute name="title" value="title.widgetManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/showlet-entry.jsp" />
     </definition>
@@ -301,6 +301,11 @@
 
 
     <!-- ********* INIZIO Area Amministrazione Sistema ********* -->
+
+    <definition extends="layout.settings" name="admin.BaseAdmin.settings">
+        <put-attribute name="title" value="title.generalSettings.settings" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/admin/settings.jsp" />
+    </definition>
 
     <definition extends="layout.settings" name="admin.BaseAdmin.reloadConfigResult">
         <put-attribute name="title" value="menu.reload.config" />

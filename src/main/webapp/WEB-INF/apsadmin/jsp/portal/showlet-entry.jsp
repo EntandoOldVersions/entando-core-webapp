@@ -6,35 +6,24 @@
 	<span class="panel-body display-block">
 		<a href="<s:url action="viewWidgets" namespace="/do/Portal/WidgetType" />" 
 		title="<s:text name="note.goToSomewhere" />: <s:text name="title.widgetManagement" />">
-		<s:if test="strutsAction == 2"><s:text name="title.widgetManagement" /></s:if>
-		<s:else><s:text name="title.newWidgetType" /></s:else>
-		</a>
-		<s:if test="strutsAction == 2">&#32;/&#32;<s:text name="title.widgetManagement.edit" /></s:if>
-		<s:if test="strutsAction == 2">&#32;/&#32;
-			<wpsa:widgetType key="%{widgetTypeCode}" var="showletTypeVar" />
+		<s:text name="title.widgetManagement" /></a>
+		<s:if test="strutsAction == 2">
+		&#32;/&#32;<s:text name="title.widgetManagement.edit" />
+		&#32;/&#32;<wpsa:widgetType key="%{widgetTypeCode}" var="showletTypeVar" />
 			<s:property value="#showletTypeVar.titles[currentLang.code]" />
 		</s:if>
 		<s:else>&#32;/&#32;
-			<s:text name="title.newWidgetType.from" />:&#32;
-			<s:if test="strutsAction == 1">
-				<wpsa:widgetType var="parentShowletTypeVar" key="%{parentShowletTypeCode}" />
-				<em><s:property value="%{getTitle(#parentShowletTypeVar.code, #parentShowletTypeVar.titles)}" /></em>
-			</s:if>
-			<s:elseif test="strutsAction == 3">
-			<s:property value="%{getTitle(showletToCopy.type.code, showletToCopy.type.titles)}" />	<wpsa:page var="pageVar" key="%{pageCode}" />
-			<s:text name="note.widgetType.page"/>:&#32;<em class="important"><s:property value="%{getTitle(#pageVar.code, #pageVar.titles)}" /></em>,&#32;<s:text name="note.widgetType.position" />:&#32;<em class="important"><s:property value="framePos" /></em>
-			</s:elseif>
+			<s:text name="title.newWidgetType" />
 		</s:else>
 	</span>
 </h1>
 
 <div id="main">
-
 <p>
 <s:if test="strutsAction != 2">
 	<s:text name="title.newWidgetType.from" />:&#32;
 	<s:if test="strutsAction == 1">
-		<wpsa:widgetType var="parentShowletTypeVar" key="%{parentShowletTypeCode}" />
+		<wpsa:widgetType var="parentShowletTypeVar" key="%{parentWidgetTypeCode}" />
 		<em><s:property value="%{getTitle(#parentShowletTypeVar.code, #parentShowletTypeVar.titles)}" /></em>
 	</s:if>
 	<s:elseif test="strutsAction == 3">
@@ -68,10 +57,10 @@
 <p class="sr-only">
 	<s:hidden name="strutsAction" />
 	<s:if test="strutsAction == 1">
-		<s:hidden name="parentShowletTypeCode" />
+		<s:hidden name="parentWidgetTypeCode" />
 	</s:if>
 	<s:elseif test="strutsAction == 2">
-		<s:hidden name="showletTypeCode" />
+		<s:hidden name="widgetTypeCode" />
 	</s:elseif>
 	<s:elseif test="strutsAction == 3">
 		<s:hidden name="pageCode" />
@@ -129,7 +118,7 @@
 	
 	<s:if test="#showletTypeVar.logic && strutsAction == 2">
 	<div class="form-group">    
-		<label class="control-label"><s:text name="label.showletType.parentType" /></label>
+		<label class="control-label"><s:text name="label.widgetType.parentType" /></label>
 		<p class="form-control-static"><s:property value="#showletTypeVar.parentType.titles[currentLang.code]" /></p>
 	</div>
 	</s:if>
@@ -137,7 +126,7 @@
 </fieldset>
 
 <s:if test="strutsAction != 2 || #showletTypeVar.logic">
-<fieldset class="col-xs-12"><legend><s:text name="title.showletType.settings" /></legend>
+<fieldset class="col-xs-12"><legend><s:text name="title.widgetType.settings" /></legend>
 	<s:if test="strutsAction == 1">
 		<s:set var="parentShowletType" value="%{getShowletType(parentShowletTypeCode)}" />
 		<s:iterator value="#parentShowletType.typeParameters" var="showletParam" >
@@ -217,5 +206,13 @@
 		
 	</div>
 </div>
+<s:if test="strutsAction == 3">
+<wpsa:actionParam action="save" var="actionName" >
+	<wpsa:actionSubParam name="replaceOnPage" value="true" />
+</wpsa:actionParam>
+<s:submit action="%{#actionName}" value="%{getText('label.save.replace')}" cssClass="button"/>
+</s:if>
+</p>
+
 </s:form>
 </div>

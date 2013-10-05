@@ -1,40 +1,57 @@
 +function ($) { "use strict";
 	var selector = '[data-swapon]';
+	
 	var Swapon = function(el) {
-		$(el).on('click', this.swap);
+		this.element = $(el);
 	}
 
-	Swapon.prototype.swap = function(el) {
-		var $this    = $(this)
-    	var selector = $this.attr('data-swapon');
-
-    	if (!selector) {
-			selector = $this.attr('href')
-			selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
+	Swapon.prototype.swap = function() {
+		var $this = this.element;
+		var target = $this.attr('data-swapon');
+ 
+		if (!target) {
+			target = $this.attr('data-href')
+			target = target && target.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
 		}
-		selector = '#'+selector;
-
-		$this.css('display', 'none');
+		target = $('#'+target);
+		
+		var current = $($this);
+		if ($this.attr('data-container')) {
+			current = $( '#'+$this.attr('data-container') )
+		}
+		current.css('display', 'none');
 		$this.trigger('swapon', ['hide']);
-
-		$(selector).css('display', "");
-		$(selector).trigger('swapon', ['show']);
+		target.css('display', "");
+		target.trigger('swapon', ['show']);
 	}
+
+	var old = $.fn.swapon;
 
 	$.fn.swapon = function (option) {
 		return this.each(function () {
 			var $this = $(this)
 			var data  = $this.data('bs.swapon');
-
 			if (!data) {
 				data = new Swapon(this);
 				$this.data('swapon', data);
 			}
+			if (typeof option == 'string') data[option]();
 		})
 	}
 
 	$.fn.swapon.Constructor = Swapon
 
-	$(selector).swapon();
+	// Swapon No Conflict
+	// ===============
+
+	$.fn.swapon.noConflict = function () {
+		$.fn.swapon = old
+		return this
+	}
+
+	$(document).on('click.bs.swapon', '[data-swapon]', function (e) {
+		e.preventDefault();
+		$(this).swapon('swap');
+	})
 
 }(window.jQuery);

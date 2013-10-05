@@ -62,7 +62,8 @@
 					</s:iterator>
 				</select>
 				<span class="input-group-btn">
-					<s:submit type="button" cssClass="btn btn-primary" action="newService"><s:text name="api.button.create" /></s:submit>
+					<s:submit type="button" cssClass="btn btn-primary" action="newService">
+					<span class="icon icon-plus-sign"></span>&#32;<s:text name="api.button.create" /></s:submit>
 				</span>
 			</div>
 		</div>
@@ -80,14 +81,20 @@
 						<div class="panel-body table-responsive">
 							<table class="table table-bordered margin-none">
 								<tr>
+									<th class="text-center"><abbr title="<s:text name="label.remove" />">&ndash;</abbr></th>
 									<th><s:text name="name.api.service" /></th>
 									<th><s:text name="label.description" /></th>
 									<th class="text-center"><abbr title="<s:text name="label.active" />">A</abbr></th>
 									<th class="text-center"><abbr title="<s:text name="label.public" />">P</abbr></th>
-									<th class="text-center"><abbr title="<s:text name="label.remove" />">&ndash;</abbr></th>
 								</tr>
 								<s:iterator value="#servicesByGroupVar" var="service">
 									<tr>
+										<td class="text-center">
+											<a href="<s:url action="trash"><s:param name="serviceKey"><s:property value="#service.key" /></s:param></s:url>" title="<s:text name="label.remove" />: <s:property value="#service.key" />" class="btn btn-xs btn-warning">
+												<span class="icon icon-remove-circle"></span>
+												<span class="sr-only"><s:text name="label.remove" />: <s:property value="#service.key" /></span>
+											</a>
+										</td>
 										<td>
 											<wpsf:hidden name="%{#service.key + '_checkField'}" value="true" />
 											<a title="<s:text name="label.edit" />: <s:property value="#service.key" />" href="<s:url action="edit"><s:param name="serviceKey"><s:property value="#service.key" /></s:param></s:url>">
@@ -116,12 +123,6 @@
 												<span title="<s:text name="label.api.notpublic" />" class="icon icon-minus text-muted"></span>
 												<span class="sr-only"><s:text name="label.api.notpublic" /></span>
 											</s:else>
-										</td>
-										<td class="text-center">
-											<a href="<s:url action="trash"><s:param name="serviceKey"><s:property value="#service.key" /></s:param></s:url>" title="<s:text name="label.remove" />: <s:property value="#service.key" />">
-												<span class="icon icon-remove-sign"></span>
-												<span class="sr-only"><s:text name="label.remove" />: <s:property value="#service.key" /></span>
-											</a>
 										</td>
 									</tr>
 								</s:iterator>

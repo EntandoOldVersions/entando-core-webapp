@@ -23,7 +23,7 @@
 
 <s:action namespace="/do/Page" name="printPageDetails" executeResult="true" ignoreContextParams="true"><s:param name="selectedNode" value="pageCode"></s:param></s:action>
 
-<h3 class="margin-more-top margin-more-bottom"><s:text name="name.widget" />:&#32;<s:property value="%{getTitle(showlet.type.code, showlet.type.titles)}" /></h3>
+<s:form action="saveListViewerConfig" namespace="/do/jacms/Page/SpecialWidget/ListViewer" cssClass="form-horizontal">
 
 <div class="panel panel-default">
 	<div class="panel-heading">
@@ -75,10 +75,12 @@
 			</div>
 
 		</fieldset>
+		</div>
+	</div>
 		</s:if>
 		<s:else>
 
-		<fieldset class="margin-medium-top"><legend><s:text name="title.contentInfo" /></legend>
+		<fieldset class="margin-base-top"><legend><s:text name="title.contentInfo" /></legend>
 			<div class="form-group">
 				<div class="col-xs-12">
 					<label for="contentType"><s:text name="label.type"/></label>
@@ -100,7 +102,7 @@
 
 		</fieldset>
 
-		<fieldset class="margin-medium-top">
+		<fieldset class="margin-base-top">
 			<legend data-toggle="collapse" data-target="#options-publishing"><s:text name="title.publishingOptions" />&#32;<span class="icon icon-chevron-down"></span></legend>
 
 			<div class="collapse" id="options-publishing">
@@ -130,7 +132,7 @@
 			</div>
 		</fieldset>
 
-		<fieldset class="margin-medium-top">
+		<fieldset class="margin-base-top">
 			<legend data-toggle="collapse" data-target="#filters"><s:text name="title.filterOptions" />&#32;<span class="icon icon-chevron-down"></span></legend>
 
 			<div class="collapse" id="filters">
@@ -315,7 +317,7 @@
 		</fieldset>
 
 		<%-- TITLES --%>
-		<fieldset class="margin-medium-top">
+		<fieldset class="margin-base-top">
 			<legend data-toggle="collapse" data-target="#options-extra"><s:text name="title.extraOption" />&#32;<span class="icon icon-chevron-down"></span></legend>
 		<div class="collapse" id="options-extra">
 			<p><s:text name="note.extraOption.intro" /></p>
@@ -356,7 +358,7 @@
 
 
 		<%-- USER FILTERS - START BLOCK --%>
-		<fieldset class="margin-medium-top">
+		<fieldset class="margin-base-top">
 			<legend data-toggle="collapse" data-target="#filters-frontend"><s:text name="title.filters.search" />&#32;<span class="icon icon-chevron-down"></span></legend>
 
 			<div class="collapse" id="filters-frontend">
@@ -439,9 +441,6 @@
 
 		</fieldset>
 		<%-- USER FILTERS - END BLOCK --%>
-
-		</s:else>
-
 	</div>
 </div>
 
@@ -450,6 +449,9 @@
 		<s:submit action="saveListViewerConfig" value="%{getText('label.save')}" cssClass="btn btn-primary btn-block" />
 	</div>
 </div>
+
+		</s:else>
+
 
 </s:form>
 

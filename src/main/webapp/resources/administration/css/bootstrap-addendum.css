@@ -20,6 +20,7 @@
 
 /* dl used as list/table
 ========================
+
 <div class="dl-list">
 	<dl class="dl-horizontal dl-striped panel">
 		<dt class="hidden-sm">Key</dt>
@@ -36,6 +37,7 @@
 	</dl>
 	[........]
 </div>
+
 */
 
 .dl-list > :nth-child(even) {
@@ -76,4 +78,5 @@
 		padding-bottom: 0.4em;
 		vertical-align: top;
 	}
+
 }

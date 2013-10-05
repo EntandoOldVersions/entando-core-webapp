@@ -25,12 +25,6 @@
 			<s:text name="label.saveAndApprove" />
 		</s:submit>
 	</div>
-	<div class="col-12 col-sm-4 margin-small-vertical">
-		<s:submit action="saveAndContinue" type="button" cssClass="btn btn-success btn-block" title="%{getText('note.button.saveAndContinue')}" >
-			<span class="icon icon-ok"></span>&#32;
-			<s:text name="label.saveAndContinue" />
-		</s:submit>
-	</div>
 	<s:if test="content.onLine">
 		<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 			<s:submit action="suspend" type="button" cssClass="btn btn-warning btn-block" title="%{getText('note.button.suspend')}">

@@ -63,10 +63,10 @@
 
 		<div class="col-sm-8 col-lg-8">
 			<div class="col-xs-2 col-md-1">
-				<span class="badge" title="<s:text name="title.showletManagement.howmanypages.long" />: <s:property value="#showletType.value" />"><s:property value="#showletUtilizers.size()" /></span>&#32;
+				<span class="badge" title="<s:text name="title.widgetManagement.howmanypages.long" />: <s:property value="#showletType.value" />"><s:property value="#showletUtilizers.size()" /></span>&#32;
 			</div>
 			<div class="col-xs-10 col-md-11">
-				<a href="<s:url namespace="/do/Portal/WidgetType" action="edit"><s:param name="showletTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.configWidget" />: <s:property value="#showletType.value" />" ><span class="icon icon-cog"></span>
+				<a href="<s:url namespace="/do/Portal/WidgetType" action="edit"><s:param name="widgetTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.configWidget" />: <s:property value="#showletType.value" />" ><span class="icon icon-cog"></span>
 				<s:property value="#showletType.value" /></a>
 				
 				<%--<span class="label label-default label-sm padding-small-top padding-small-bottom margin-small-right margin-small-bottom"><s:property value="%{getGroup(getShowletType(#showletType.key).mainGroup).descr}" /></span>--%>
@@ -77,7 +77,7 @@
 		<div class="btn-group btn-group-xs pull-right">
 		
 		<s:if test="#showletUtilizers != null && #showletUtilizers.size() > 0">
-			<a href="<s:url namespace="/do/Portal/WidgetType" action="viewShowletUtilizers"><s:param name="showletTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="title.showletManagement.howmanypages.goToSee" />: <s:property value="#showletType.value" />" class="btn btn-default"><span class="icon icon-info"></span></a>
+			<a href="<s:url namespace="/do/Portal/WidgetType" action="viewWidgetUtilizers"><s:param name="widgetTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="title.widgetManagement.howmanypages.goToSee" />: <s:property value="#showletType.value" />" class="btn btn-default"><span class="icon icon-info"></span></a>
 		</s:if>
 		
 		<wp:ifauthorized permission="superuser">
@@ -94,7 +94,7 @@
 					<s:url action="newService" namespace="/do/Api/Service" var="newServiceUrlVar">
 						<s:param name="resourceName" value="#relatedApiMethodVar.resourceName" />
 						<s:param name="namespace" value="#relatedApiMethodVar.namespace" />
-						<s:param name="showletTypeCode" value="#concreteShowletTypeVar.code" />
+						<s:param name="widgetTypeCode" value="#concreteShowletTypeVar.code" />
 					</s:url>
 				</s:if>
 				<s:else>
@@ -109,10 +109,10 @@
 			<s:set var="relatedApiMethodVar" value="null" />
 		
 			<s:if test="null != #concreteShowletTypeVar.typeParameters && #concreteShowletTypeVar.typeParameters.size() > 0">
-				<a href="<s:url namespace="/do/Portal/WidgetType" action="new"><s:param name="parentShowletTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.userShowlet.new.from" />: <s:property value="#showletType.value" />" class="btn btn-default"><span class="icon icon-puzzle-piece"></span></a>
+				<a href="<s:url namespace="/do/Portal/WidgetType" action="new"><s:param name="parentShowletTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.userWidget.new.from" />: <s:property value="#showletType.value" />" class="btn btn-default"><span class="icon icon-puzzle-piece"></span></a>
 			</s:if>
 			<s:if test="#firstType.optgroup == 'userShowletCode' && !#concreteShowletTypeVar.isLocked() && (#showletUtilizers == null || #showletUtilizers.size() == 0)">
-				<a href="<s:url namespace="/do/Portal/WidgetType" action="trash"><s:param name="showletTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.remove" />: <s:property value="#showletType.value" />" class="btn btn-warning" ><span class="icon icon-remove-circle"></span></a>
+				<a href="<s:url namespace="/do/Portal/WidgetType" action="trash"><s:param name="widgetTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.remove" />: <s:property value="#showletType.value" />" class="btn btn-warning" ><span class="icon icon-remove-circle"></span></a>
 			</s:if>
 			</wp:ifauthorized>
 			<wpsa:hookPoint key="core.showletType.list.table.td" objectName="hookPointElements_core_showletType_list_table_td">

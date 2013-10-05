@@ -17,10 +17,6 @@
 
 <div id="main">
 
-<s:set var="showletTypeVar" value="getShowletType(widgetTypeCode)"></s:set>
-
-<h2 class="margin-more-bottom"><s:text name="title.widgetManagement.pages" />: <s:property value="getTitle(#showletTypeVar.code, #showletTypeVar.titles)" /></h2>
-
 <s:if test="!#showletTypeVar.isLogic()">
 	<s:set var="relatedApiMethodVar" value="#showletTypeApiMappingsVar[#showletTypeVar.code]" />
 </s:if>
@@ -29,9 +25,9 @@
 </s:else>
 <s:if test="#showletUtilizers != null && #showletUtilizers.size() > 0">
 
-<s:form action="viewShowletUtilizers" >
+<s:form action="viewWidgetUtilizers" >
 
-<p class="noscreen">
+<p class="sr-only">
 	<wpsf:hidden name="widgetTypeCode" />
 </p>
 
@@ -187,12 +183,12 @@
 		<s:if test="#showlet != null && #showlet.type != null && #showlet.type.code.equals(widgetTypeCode)">
 			<li>
 			<s:if test="null != #showlet.type.typeParameters && #showlet.type.typeParameters.size() > 0">
-				<a href="<s:url namespace="/do/Portal/WidgetType" action="copy" ><s:param name="pageCode" value="#singlePage.code" /><s:param name="framePos" value="#rowstatus.index" /></s:url>" title="<s:text name="label.userWidget.new" />" class="noborder"><img src="<wp:resourceURL/>administration/common/img/icons/16x16/showlet-user-new.png" alt="<s:text name="label.userWidget.new" />" /></a>
+				<a href="<s:url namespace="/do/Portal/WidgetType" action="copy" ><s:param name="pageCode" value="#singlePage.code" /><s:param name="framePos" value="#rowstatus.index" /></s:url>" title="<s:text name="label.userShowlet.new" />" class="noborder"><img src="<wp:resourceURL/>administration/common/img/icons/16x16/showlet-user-new.png" alt="<s:text name="label.userShowlet.new" />" /></a>
 			</s:if>
 			<s:if test="%{isUserAllowed(#singlePage)}">
 				<s:if test="null != #relatedApiMethodVar && !#showletTypeVar.isLogic()">
 				<wp:ifauthorized permission="superuser">
-				<a class="noborder" href="<s:url action="copyFromShowlet" namespace="/do/Api/Service">
+				<a class="noborder" href="<s:url action="copyFromWidget" namespace="/do/Api/Service">
 						<s:param name="pageCode" value="#singlePage.code" />
 						<s:param name="framePos" value="#rowstatus.index" />
 						<s:param name="resourceName" value="#relatedApiMethodVar.resourceName" />
@@ -209,7 +205,7 @@
 				</s:url>" title="<s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#relatedApiMethodVar.methodName" />"><img src="<wp:resourceURL />administration/common/img/icons/16x16/api-service-new.png" alt="<s:text name="label.new" />" /></a>				
 				</wp:ifauthorized>
 				</s:if>
-				<a class="noborder" href="<s:url action="trashShowletFromPage" namespace="/do/Portal/WidgetType">
+				<a class="noborder" href="<s:url action="trashWidgetFromPage" namespace="/do/Portal/WidgetType">
 					<s:param name="pageCode"><s:property value="#singlePage.code"/></s:param>
 					<s:param name="frame"><s:property value="#rowstatus.index"/></s:param>
 					<s:param name="widgetTypeCode"><s:property value="#showletTypeVar.code"/></s:param>

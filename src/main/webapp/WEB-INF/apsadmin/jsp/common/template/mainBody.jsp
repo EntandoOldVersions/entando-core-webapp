@@ -22,8 +22,8 @@
 </div>
 </s:if>
 
-<p class="noscreen"><s:text name="note.Entando.intro" />.</p>
-<p class="noscreen"><s:text name="note.maxiButtons.intro" />:</p>
+<p class="sr-only"><s:text name="note.Entando.intro" />.</p>
+<p class="sr-only"><s:text name="note.maxiButtons.intro" />:</p>
 
 <s:set var="userConfigVar" value="userConfig" />
 
@@ -56,7 +56,7 @@
 		<a title="<s:text name="label.move" />&#32;<s:text name="name.position" />&#32;<s:property value="%{#rowstatus.index + 1}" />" href="<s:url action="configPosition" namespace="/do/MyShortcut"><s:param name="positionTarget" value="%{#rowstatus.index}" /><s:param name="strutsAction" value="2" /></s:url>"><img class="move" src="<wp:resourceURL />administration/common/img/icons/22x22/shortcut-move.png" width="19" height="22" alt="<s:text name="label.move" />" /></a>
 		</span>
 	</dt>
-	<dd class="noscreen">
+	<dd class="sr-only">
 		<p><s:property value="%{#userShortcutLongDescr}" /></p>
 	</dd>
 </s:if>
@@ -72,7 +72,7 @@
 		<a title="<s:text name="label.move" />&#32;<s:text name="name.position" />&#32;<s:property value="%{#rowstatus.index + 1}" />" href="<s:url action="configPosition" namespace="/do/MyShortcut" anchor="shortcut-swap"><s:param name="positionTarget" value="%{#rowstatus.index}" /><s:param name="strutsAction" value="2" /></s:url>"><img class="move" src="<wp:resourceURL />administration/common/img/icons/22x22/shortcut-move.png" width="19" height="22" alt="<s:text name="label.move" />" /></a>
 		</span>
 	</dt>
-	<dd class="noscreen">
+	<dd class="sr-only">
 		<p>&#32;</p>
 	</dd>
 </s:else>
@@ -88,7 +88,7 @@
 	<div class="subsection-light clear" id="shortcut-configure-container">
 		<h2 class="margin-bit-bottom" id="shortcut-configure"><s:text name="label.configure" />&#32;<s:text name="name.position" />&#32;<span class="position-name"><s:property value="%{position + 1}" /></span></h2>
 		<s:form namespace="/do/MyShortcut" action="joinMyShortcut">
-			<p class="noscreen">
+			<p class="sr-only">
 				<wpsf:hidden name="position" />
 				<wpsf:hidden name="strutsAction" value="1" />
 			</p>
@@ -126,7 +126,7 @@
 	<s:else><s:text name="label.empty.f" /></s:else>
 	</h2>
 	<s:form namespace="/do/MyShortcut" action="swapMyShortcut">
-	<p class="noscreen">
+	<p class="sr-only">
 		<wpsf:hidden name="positionTarget" />
 		<wpsf:hidden name="strutsAction" value="2" />
 	</p>
