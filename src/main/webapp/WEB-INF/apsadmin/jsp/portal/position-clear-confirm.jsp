@@ -19,13 +19,13 @@
 <p class="sr-only">
 	<wpsf:hidden name="pageCode"/>
 	<wpsf:hidden name="frame" />
-	<wpsf:hidden name="showletTypeCode" />
+	<wpsf:hidden name="widgetTypeCode" />
 </p>
 
 <p>
 	<s:text name="note.clearPosition.areYouSure.position" />&#32;<em class="important">&#32;<s:property value="frame" />&#32;&ndash;&#32;<s:property value="%{getPage(pageCode).model.getFrames()[frame]}"/></em>
 	<s:text name="note.clearPosition.areYouSure.page" />&#32;<em class="important"><s:property value="%{getPage(pageCode).getTitle(currentLang.getCode())}" /></em>
-	<s:set var="showletType" value="%{getShowletType(showletTypeCode)}"></s:set>
+	<s:set var="showletType" value="%{getShowletType(widgetTypeCode)}"></s:set>
 	<s:if test="null != #showletType">
 		<s:text name="note.clearPosition.areYouSure.widget" />&#32;<em class="important"><s:property value="%{getTitle(#showletType.getCode(), #showletType.getTitles())}" /></em>
 	</s:if>	

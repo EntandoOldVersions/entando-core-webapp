@@ -7,13 +7,7 @@
 
 <div id="main">
 
-<h1 class="panel panel-default title-page">
-	<span class="panel-body display-block">
-		<a href="<s:url action="viewShowlets" namespace="/do/Portal/ShowletType" />" title="<s:text name="note.goToSomewhere" />: <s:text name="title.showletManagement" />">
-		<s:text name="title.showletManagement" /></a>&#32;/&#32;
-		<s:text name="title.showletManagement.pages" />: <s:property value="getTitle(#showletTypeVar.code, #showletTypeVar.titles)" />
-	</span>
-</h1>
+<s:set var="showletTypeVar" value="getShowletType(widgetTypeCode)"></s:set>
 
 <h2 class="margin-more-bottom"><s:text name="title.widgetManagement.pages" />: <s:property value="getTitle(#showletTypeVar.code, #showletTypeVar.titles)" /></h2>
 
@@ -27,8 +21,8 @@
 
 <s:form action="viewShowletUtilizers" >
 
-<p class="sr-only">
-	<wpsf:hidden name="showletTypeCode" />
+<p class="noscreen">
+	<wpsf:hidden name="widgetTypeCode" />
 </p>
 
 <wpsa:subset source="#showletUtilizers" count="10" objectName="groupShowletUtilizers" advanced="true" offset="5">
@@ -59,7 +53,7 @@
 	<td>
 		<ul class="noBullet">
 	<s:iterator value="#singlePage.showlets" id="showlet" status="rowstatus">
-		<s:if test="#showlet != null && #showlet.type != null && #showlet.type.code.equals(showletTypeCode)">
+		<s:if test="#showlet != null && #showlet.type != null && #showlet.type.code.equals(widgetTypeCode)">
 			<li>
 			<s:if test="null != #showlet.type.typeParameters && #showlet.type.typeParameters.size() > 0">
 				<a href="<s:url namespace="/do/Portal/WidgetType" action="copy" ><s:param name="pageCode" value="#singlePage.code" /><s:param name="framePos" value="#rowstatus.index" /></s:url>" title="<s:text name="label.userWidget.new" />" class="noborder"><img src="<wp:resourceURL/>administration/common/img/icons/16x16/showlet-user-new.png" alt="<s:text name="label.userWidget.new" />" /></a>
@@ -78,7 +72,7 @@
 				<s:if test="null != #relatedApiMethodVar && #showletTypeVar.isLogic()">
 				<wp:ifauthorized permission="superuser">				
 				<a class="noborder" href="<s:url action="newService" namespace="/do/Api/Service">
-						<s:param name="showletTypeCode" value="showletTypeCode" />
+						<s:param name="widgetTypeCode" value="widgetTypeCode" />
 						<s:param name="resourceName" value="#relatedApiMethodVar.resourceName" />
 						<s:param name="namespace" value="#relatedApiMethodVar.namespace" />
 				</s:url>" title="<s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#relatedApiMethodVar.methodName" />"><img src="<wp:resourceURL />administration/common/img/icons/16x16/api-service-new.png" alt="<s:text name="label.new" />" /></a>				
@@ -87,7 +81,7 @@
 				<a class="noborder" href="<s:url action="trashShowletFromPage" namespace="/do/Portal/WidgetType">
 					<s:param name="pageCode"><s:property value="#singlePage.code"/></s:param>
 					<s:param name="frame"><s:property value="#rowstatus.index"/></s:param>
-					<s:param name="showletTypeCode"><s:property value="#showletTypeVar.code"/></s:param>
+					<s:param name="widgetTypeCode"><s:property value="#showletTypeVar.code"/></s:param>
 				</s:url>
 				" title="<s:text name="label.clear" />: <s:property value="#rowstatus.index"/> &ndash; <s:property value="#singlePage.model.getFrames()[#rowstatus.index]"/>"><img src="<wp:resourceURL/>administration/common/img/icons/16x16/clear.png" alt="<s:text name="label.alt.clear" />" /></a>			
 				&#32;<a href="<s:url action="editFrame" namespace="/do/Page"><s:param name="pageCode"><s:property value="#singlePage.code"/></s:param><s:param name="frame"><s:property value="#rowstatus.index"/></s:param></s:url>" title="<s:text name="title.editFrame" />: <s:property value="#rowstatus.index"/> &ndash; <s:property value="#singlePage.model.getFrames()[#rowstatus.index]"/>"><s:property value="#rowstatus.index"/> &ndash; <s:property value="#singlePage.model.getFrames()[#rowstatus.index]"/></a>

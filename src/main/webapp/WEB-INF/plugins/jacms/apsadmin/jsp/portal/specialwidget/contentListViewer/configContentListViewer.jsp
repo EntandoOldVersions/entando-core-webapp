@@ -25,17 +25,12 @@
 
 <h3 class="margin-more-top margin-more-bottom"><s:text name="name.widget" />:&#32;<s:property value="%{getTitle(showlet.type.code, showlet.type.titles)}" /></h3>
 
-		<h2 class="h5 margin-small-vertical">
-			<label class="sr-only"><s:text name="name.showlet" /></label>
-			<span class="icon icon-puzzle-piece" title="<s:text name="name.showlet" />"></span>&#32;
-			<s:property value="%{getTitle(showlet.type.code, showlet.type.titles)}" />
-		</h2>
-
-		<p class="sr-only">
-			<s:hidden name="pageCode" />
-			<s:hidden name="frame" />
-			<s:hidden name="showletTypeCode" value="%{showlet.type.code}" />
-		</p>
+<s:form action="saveListViewerConfig" namespace="/do/jacms/Page/SpecialWidget/ListViewer">
+<p class="noscreen">
+	<wpsf:hidden name="pageCode" />
+	<wpsf:hidden name="frame" />
+	<wpsf:hidden name="widgetTypeCode" value="%{showlet.type.code}" />
+</p>
 
 	<s:if test="hasFieldErrors()">
 		<div class="alert alert-danger alert-dismissable">

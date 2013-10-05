@@ -11,7 +11,7 @@
 <div id="main">
 
 <s:if test="strutsAction == 2">
-<wpsa:widgetType key="%{showletTypeCode}" var="showletTypeVar" />
+<wpsa:widgetType key="%{widgetTypeCode}" var="showletTypeVar" />
 <h2><s:text name="title.widgetManagement.edit" />:&#32;<s:property value="#showletTypeVar.titles[currentLang.code]" /></h2>
 </s:if>
 <s:else>
@@ -64,7 +64,7 @@
 	<wpsf:hidden name="parentShowletTypeCode" />
 	</s:if>
 	<s:elseif test="strutsAction == 2">
-	<wpsf:hidden name="showletTypeCode" />
+	<wpsf:hidden name="widgetTypeCode" />
 	</s:elseif>
 	<s:elseif test="strutsAction == 3">
 	<wpsf:hidden name="pageCode" />
@@ -75,8 +75,8 @@
 <fieldset class="margin-more-top"><legend><s:text name="label.info" /></legend>
 	<s:if test="strutsAction != 2">
 	<p>
-		<label for="showletTypeCode" class="basic-mint-label"><s:text name="label.code" />:</label>
-		<wpsf:textfield useTabindexAutoIncrement="true" id="showletTypeCode" name="showletTypeCode" cssClass="text" />
+		<label for="widgetTypeCode" class="basic-mint-label"><s:text name="label.code" />:</label>
+		<wpsf:textfield useTabindexAutoIncrement="true" id="widgetTypeCode" name="widgetTypeCode" cssClass="text" />
 	</p>
 	</s:if>
 	<p>

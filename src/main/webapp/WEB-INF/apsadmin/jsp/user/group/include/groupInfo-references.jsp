@@ -227,8 +227,8 @@
 <h3><s:text name="title.group.referencedWidgetTypes" /></h3>
 
 <s:if test="null != references['WidgetTypeManagerUtilizers']">
-<wpsa:subset source="references['WidgetTypeManagerUtilizers']" count="10" objectName="widgetTypeReferencesVar" advanced="true" offset="5" pagerId="showletTypeReferences">
-<s:set name="group" value="#widgetTypeReferencesVar" />
+<wpsa:subset source="references['WidgetTypeManagerUtilizers']" count="10" objectName="showletTypeReferences" advanced="true" offset="5" pagerId="showletTypeReferences">
+<s:set name="group" value="#showletTypeReferences" />
 
 <div class="pager">
 	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />

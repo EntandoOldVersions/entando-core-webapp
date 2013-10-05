@@ -26,14 +26,16 @@
 			<s:include value="/WEB-INF/apsadmin/jsp/portal/include/frameInfo.jsp" />
 		</div>
 
-		<div class="panel-body">
+<s:set var="showletType" value="%{getShowletType(widgetTypeCode)}"></s:set>
+<h3 class="margin-more-top"><s:text name="name.widget" />:&#32;<s:property value="%{getTitle(#showletType.code, #showletType.titles)}" /></h3>
+<h4 class="margin-bit-bottom"><s:text name="title.userFilterCategoryConfigure" /></h4>
 
-			<s:set var="showletType" value="%{getShowletType(showletTypeCode)}"></s:set>
-			<h2 class="h5 margin-small-vertical">
-				<label class="sr-only"><s:text name="name.showlet" /></label>
-				<span class="icon icon-puzzle-piece" title="<s:text name="name.showlet" />"></span>&#32;
-				<s:property value="%{getTitle(#showletType.code, #showletType.titles)}" />
-			</h2>
+<s:form namespace="/do/jacms/Page/SpecialWidget/ListViewer">
+<p class="noscreen">
+	<wpsf:hidden name="pageCode" />
+	<wpsf:hidden name="frame" />
+	<wpsf:hidden name="widgetTypeCode" />
+</p>
 
 			<p class="sr-only">
 				<wpsf:hidden name="pageCode" />

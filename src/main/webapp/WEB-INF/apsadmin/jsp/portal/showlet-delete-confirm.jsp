@@ -6,11 +6,11 @@
 
 <h2><s:text name="title.widgetManagement.type.delete" /></h2>
 
-<s:form namespace="/do/Portal/ShowletType" action="delete">
-<p class="sr-only">
-	<wpsf:hidden name="showletTypeCode" />
+<s:form namespace="/do/Portal/WidgetType" action="delete">
+<p class="noscreen">
+	<wpsf:hidden name="widgetTypeCode" />
 </p>
 
-<p><s:text name="note.deleteType.areYouSure" />&#32;<em class="important"><s:property value="showletTypeCode" /></em>? <wpsf:submit useTabindexAutoIncrement="true" value="%{getText('label.remove')}" cssClass="button" /></p>
+<p><s:text name="note.deleteType.areYouSure" />&#32;<em class="important"><s:property value="widgetTypeCode" /></em>? <wpsf:submit useTabindexAutoIncrement="true" value="%{getText('label.remove')}" cssClass="button" /></p>
 </s:form>
 </div>

@@ -57,7 +57,7 @@
 	<legend><s:text name="title.editFrame.chooseAWidget" /></legend>
 	<p>
 	<label for="showletCode" class="basic-mint-label"><s:text name="name.widget" />:</label>
-	<select name="showletTypeCode" tabindex="<wpsa:counter />" id="showletCode">
+	<select name="widgetTypeCode" tabindex="<wpsa:counter />" id="showletCode">
 	<s:iterator var="showletFlavour" value="showletFlavours">
 		
 		<wpsa:set var="tmpShowletType">tmpShowletTypeValue</wpsa:set>

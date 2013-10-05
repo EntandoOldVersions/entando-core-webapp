@@ -20,7 +20,7 @@
 <p class="sr-only">
 	<wpsf:hidden name="pageCode" />
 	<wpsf:hidden name="frame" />
-	<wpsf:hidden name="showletTypeCode" value="%{showlet.type.code}" />
+	<wpsf:hidden name="widgetTypeCode" value="%{showlet.type.code}" />
 </p>
 
 <fieldset><legend><s:text name="title.editFrame.settings" /></legend>

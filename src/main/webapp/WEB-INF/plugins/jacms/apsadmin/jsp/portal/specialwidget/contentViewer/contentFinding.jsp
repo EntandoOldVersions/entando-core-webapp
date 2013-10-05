@@ -23,7 +23,7 @@
 <s:action namespace="/do/Page" name="printPageDetails" executeResult="true" ignoreContextParams="true"><s:param name="selectedNode" value="pageCode"></s:param></s:action>
 <s:include value="/WEB-INF/apsadmin/jsp/portal/include/frameInfo.jsp" />
 
-<s:set var="showletType" value="%{getShowletType(showletTypeCode)}"></s:set>
+<s:set var="showletType" value="%{getShowletType(widgetTypeCode)}"></s:set>
 <h3 class="margin-more-top margin-more-bottom"><s:text name="name.widget" />:&#32;<s:property value="%{getTitle(#showletType.code, #showletType.titles)}" /></h3>
 
 <s:form action="searchContents" >
@@ -31,7 +31,7 @@
 <p class="noscreen">
 	<wpsf:hidden name="pageCode" />
 	<wpsf:hidden name="frame" />
-	<wpsf:hidden name="showletTypeCode" />
+	<wpsf:hidden name="widgetTypeCode" />
 	<wpsf:hidden name="modelId" />
 </p>
 
@@ -83,7 +83,155 @@
 
 	<div class="panel-body">
 
-		<s:set var="showletType" value="%{getShowletType(showletTypeCode)}"></s:set>
+<table class="generic" summary="<s:text name="note.page.contentViewer.summary" />">
+<caption><span><s:text name="title.contentList" /></span></caption>
+<tr>
+	<th><a href="
+	<s:url action="changeContentListOrder">
+		<s:param name="text">
+			<s:property value="#request.text"/>
+		</s:param>
+		<s:param name="contentIdToken">
+			<s:property value="#request.contentIdToken"/>
+		</s:param>
+		<s:param name="contentType">
+			<s:property value="#request.contentType"/>
+		</s:param>
+		<s:param name="state">
+			<s:property value="#request.state"/>
+		</s:param>
+		<s:param name="pagerItem">
+			<s:property value="#groupContent.currItem"/>
+		</s:param>
+		<s:param name="pageCode">
+			<s:property value="#request.pageCode"/>
+		</s:param>
+		<s:param name="frame">
+			<s:property value="#request.frame"/>
+		</s:param>
+		<s:param name="modelId">
+			<s:property value="#request.modelId"/>
+		</s:param>
+		<s:param name="widgetTypeCode"><s:property value="widgetTypeCode" /></s:param>
+		<s:param name="lastGroupBy"><s:property value="lastGroupBy"/></s:param>
+		<s:param name="lastOrder"><s:property value="lastOrder"/></s:param>
+		<s:param name="groupBy">descr</s:param>
+	</s:url>
+"><s:text name="label.description" /></a></th>
+	<th><a href="
+	<s:url action="changeContentListOrder">
+		<s:param name="text">
+			<s:property value="#request.text"/>
+		</s:param>
+		<s:param name="contentIdToken">
+			<s:property value="#request.contentIdToken"/>
+		</s:param>
+		<s:param name="contentType">
+			<s:property value="#request.contentType"/>
+		</s:param>
+		<s:param name="state">
+			<s:property value="#request.state"/>
+		</s:param>
+		<s:param name="pagerItem">
+			<s:property value="#groupContent.currItem"/>
+		</s:param>
+		<s:param name="pageCode">
+			<s:property value="#request.pageCode"/>
+		</s:param>
+		<s:param name="frame">
+			<s:property value="#request.frame"/>
+		</s:param>
+		<s:param name="modelId">
+			<s:property value="#request.modelId"/>
+		</s:param>
+		<s:param name="widgetTypeCode"><s:property value="widgetTypeCode" /></s:param>
+		<s:param name="lastGroupBy"><s:property value="lastGroupBy"/></s:param>
+		<s:param name="lastOrder"><s:property value="lastOrder"/></s:param>
+		<s:param name="groupBy">code</s:param>
+	</s:url>
+"><s:text name="label.code" /></a></th>
+	<th><s:text name="label.group" /></th>
+	<th><a href="
+	<s:url action="changeContentListOrder">
+		<s:param name="text">
+			<s:property value="#request.text"/>
+		</s:param>
+		<s:param name="contentIdToken">
+			<s:property value="#request.contentIdToken"/>
+		</s:param>		
+		<s:param name="contentType">
+			<s:property value="#request.contentType"/>
+		</s:param>
+		<s:param name="state">
+			<s:property value="#request.state"/>
+		</s:param>
+		<s:param name="pagerItem">
+			<s:property value="#groupContent.currItem"/>
+		</s:param>
+		<s:param name="pageCode">
+			<s:property value="#request.pageCode"/>
+		</s:param>
+		<s:param name="frame">
+			<s:property value="#request.frame"/>
+		</s:param>
+		<s:param name="modelId">
+			<s:property value="#request.modelId"/>
+		</s:param>
+		<s:param name="widgetTypeCode"><s:property value="widgetTypeCode" /></s:param>
+		<s:param name="lastGroupBy"><s:property value="lastGroupBy"/></s:param>
+		<s:param name="lastOrder"><s:property value="lastOrder"/></s:param>
+		<s:param name="groupBy">created</s:param>
+	</s:url>
+"><s:text name="label.creationDate" /></a></th>
+	<th><a href="
+	<s:url action="changeContentListOrder">
+		<s:param name="text">
+			<s:property value="#request.text"/>
+		</s:param>
+		<s:param name="contentIdToken">
+			<s:property value="#request.contentIdToken"/>
+		</s:param>		
+		<s:param name="contentType">
+			<s:property value="#request.contentType"/>
+		</s:param>
+		<s:param name="state">
+			<s:property value="#request.state"/>
+		</s:param>
+		<s:param name="pagerItem">
+			<s:property value="#groupContent.currItem"/>
+		</s:param>
+		<s:param name="pageCode">
+			<s:property value="#request.pageCode"/>
+		</s:param>
+		<s:param name="frame">
+			<s:property value="#request.frame"/>
+		</s:param>
+		<s:param name="modelId">
+			<s:property value="#request.modelId"/>
+		</s:param>
+		<s:param name="widgetTypeCode"><s:property value="widgetTypeCode" /></s:param>
+		<s:param name="lastGroupBy"><s:property value="lastGroupBy"/></s:param>
+		<s:param name="lastOrder"><s:property value="lastOrder"/></s:param>
+		<s:param name="groupBy">lastModified</s:param>
+	</s:url>
+"><s:text name="label.lastEdit" /></a></th>
+</tr>
+<s:iterator id="contentId">
+<s:set name="content" value="%{getContentVo(#contentId)}"></s:set>
+<tr>
+<td><input type="radio" name="contentId" id="contentId_<s:property value="#content.id"/>" value="<s:property value="#content.id"/>" />
+<label for="contentId_<s:property value="#content.id"/>"><s:property value="#content.descr" /></label></td>
+<td><span class="monospace"><s:property value="#content.id" /></span></td>
+<td><s:property value="%{getGroup(#content.mainGroupCode).descr}" /></td>
+<td><s:date name="#content.create" format="dd/MM/yyyy HH:mm" /></td>
+<td><s:date name="#content.modify" format="dd/MM/yyyy HH:mm" /></td>
+</tr>
+</s:iterator>
+</table>
+
+<div class="pager">
+	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
+</div>
 
 		<h3 class="h5 margin-small-top margin-large-bottom">
 			<label class="sr-only"><s:text name="name.showlet" /></label>

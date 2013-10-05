@@ -45,7 +45,7 @@
 	</td>
 	<td>
 		<s:if test="null != #showletType.code">
-		<a class="noborder" href="<s:url namespace="/do/Portal/WidgetType" action="viewWidgetUtilizers"><s:param name="showletTypeCode" value="{#showletType.getCode()}" /></s:url>" title="<s:text name="title.widgetManagement.howmanypages.goToSee" />: <s:property value="%{getTitle(#showletType.getCode(), #showletType.getTitles())}" />"><img src="<wp:resourceURL />administration/common/img/icons/16x16/detail.png" alt=" " /></a>
+		<a class="noborder" href="<s:url namespace="/do/Portal/WidgetType" action="viewWidgetUtilizers"><s:param name="widgetTypeCode" value="{#showletType.getCode()}" /></s:url>" title="<s:text name="title.widgetManagement.howmanypages.goToSee" />: <s:property value="%{getTitle(#showletType.getCode(), #showletType.getTitles())}" />"><img src="<wp:resourceURL />administration/common/img/icons/16x16/detail.png" alt=" " /></a>
 		</s:if>
 		<s:property value="%{getTitle(#showletType.getCode(), #showletType.getTitles())}" />
 	</td>
@@ -124,8 +124,33 @@
 				</div>
 			</div><!-- // list-group-item-text -->
 		</s:if>
-	</li>
-	<s:set var="showletType" />
+		<s:else>
+			<s:set var="relatedApiMethodVar" value="#showletTypeApiMappingsVar[#showletType.parentType.code]" />
+		</s:else>
+		<s:if test="null != #relatedApiMethodVar">		
+			<a href="
+			<s:url action="copyFromWidget" namespace="/do/Api/Service">
+				<s:param name="pageCode" value="currentPage.code" />
+				<s:param name="framePos" value="#rowstatus.index" />
+				<s:param name="resourceName" value="#relatedApiMethodVar.resourceName" />
+				<s:param name="namespace" value="#relatedApiMethodVar.namespace" />
+			</s:url>
+			" title="<s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#relatedApiMethodVar.methodName" />" class="noborder"><img src="<wp:resourceURL />administration/common/img/icons/22x22/api-service-new.png" alt="<s:text name="label.new" />" /></a>
+		</s:if>
+		<s:set var="relatedApiMethodVar" />
+		</wp:ifauthorized>
+		<a href="
+		<s:url action="trashWidgetFromPage" namespace="/do/Page">
+			<s:param name="pageCode" value="currentPage.code" />
+			<s:param name="frame" value="#rowstatus.index" />
+			<s:param name="widgetTypeCode" value="#showletType.code" />
+		</s:url>
+		" title="<s:text name="label.clear" />: <s:property value="%{getTitle(#showletType.code, #showletType.titles)}" />" class="noborder"><img src="<wp:resourceURL/>administration/common/img/icons/clear.png" alt="<s:text name="label.alt.clear" />" /></a>
+		</s:if>
+		<s:else>&#32;</s:else>
+	</td>
+</tr>
+<s:set var="showletType" />
 </s:iterator>
 
 </ol>
