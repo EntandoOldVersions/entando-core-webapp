@@ -18,10 +18,25 @@
 	<s:set var="targetNS" value="%{'/do/jacms/Resource'}" />
 	<s:set var="targetParamName" value="%{'resourceTypeCode'}" />
 	<s:set var="targetParamValue" value="resourceTypeCode" />
-	<h1 class="panel panel-default title-page"><span class="panel-body display-block">
-	<s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />&#32;/&#32;
-	<s:if test="getStrutsAction() == 1"><s:text name="label.new" /></s:if><s:else><s:text name="label.edit" /></s:else>
-	</span></h1>
+	<h1 class="panel panel-default title-page">
+		<span class="panel-body display-block">
+			<a href="<s:url action="list" namespace="/do/jacms/Resource">
+			<s:param name="resourceTypeCode">
+				<s:property value="resourceTypeCode" />
+			</s:param>
+			</s:url>" 
+			title="<s:text name="note.goToSomewhere" />: 
+			<s:text name="title.resourceManagement" />">
+			<s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" /></a>
+			&#32;/&#32;
+			<s:if test="getStrutsAction() == 1">
+				<s:text name="label.new" />
+			</s:if>
+			<s:else>
+				<s:text name="label.edit" />
+			</s:else>
+		</span>
+	</h1>
 </s:if>
 
 <s:form action="save" method="post" enctype="multipart/form-data" cssClass="action-form">
