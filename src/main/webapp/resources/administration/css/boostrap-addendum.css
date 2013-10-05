@@ -36,11 +36,22 @@
 	overflow-x: hidden;
 }
 
+#user-avatar {
+	position: relative;
+}
+
+#user-avatar img {
+	position: absolute;
+	top: 3px;
+	right: 3px;
+}
+
 @media (max-width: 768px) {
 	.dl-striped > dt {
 		padding-top: 0.4em;
 		vertical-align: bottom;
 	}
+
 	.dl-striped > dd {
 		padding-bottom: 0.4em;
 		vertical-align: top;
