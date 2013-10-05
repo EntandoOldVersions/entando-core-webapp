@@ -11,7 +11,7 @@
 <%--
 <s:if test="hasFieldErrors()">
 <div class="message message_error">
-<h2><s:text name="message.title.FieldErrors" /></h2>	
+<h2><s:text name="message.title.FieldErrors" /></h2>
 	<ul>
 	<s:iterator value="fieldErrors">
 		<s:iterator value="value">
@@ -42,8 +42,8 @@
 
 	<dt class="name <s:property value="#userShortcut.menuSectionCode" />">
 		<%-- SCRIVERE TAG PER AGGIUNGERE MAPPA PARAMETRI ALLA URL
-		<a class="shortcut-link" 
-				href="<s:url action="%{#userShortcut.actionName}" namespace="%{#userShortcut.namespace}"><wpsa:paramMap map="#userShortcut.parameters" /></s:url>" 
+		<a class="shortcut-link"
+				href="<s:url action="%{#userShortcut.actionName}" namespace="%{#userShortcut.namespace}"><wpsa:paramMap map="#userShortcut.parameters" /></s:url>"
 				lang="en" title="<s:property value="%{#userShortcutShortDescr}" />">
 			<span class="up"><s:property value="%{#userShortcutSectionShortDescr}" /></span>
 			<span class="down"><s:property value="%{#userShortcutShortDescr}" /></span>
@@ -54,7 +54,7 @@
 		<a rel="shortcut-configure" title="<s:text name="label.configure" />&#32;<s:text name="name.position" />&#32;<s:property value="%{#rowstatus.index + 1}" />" href="<s:url action="configPosition" namespace="/do/MyShortcut" anchor="shortcut-configure"><s:param name="position" value="%{#rowstatus.index}" /><s:param name="strutsAction" value="1" /></s:url>"><img src="<wp:resourceURL />administration/common/img/icons/22x22/shortcut-configure.png" width="19" height="22" alt="<s:text name="label.set" />" /></a>
 		<img src="<wp:resourceURL />administration/common/img/shortcut-pipe.png" width="2" height="22" alt=" " />
 		<a title="<s:text name="label.move" />&#32;<s:text name="name.position" />&#32;<s:property value="%{#rowstatus.index + 1}" />" href="<s:url action="configPosition" namespace="/do/MyShortcut"><s:param name="positionTarget" value="%{#rowstatus.index}" /><s:param name="strutsAction" value="2" /></s:url>"><img class="move" src="<wp:resourceURL />administration/common/img/icons/22x22/shortcut-move.png" width="19" height="22" alt="<s:text name="label.move" />" /></a>
-		</span>		
+		</span>
 	</dt>
 	<dd class="noscreen">
 		<p><s:property value="%{#userShortcutLongDescr}" /></p>
@@ -69,7 +69,7 @@
 			<img src="<wp:resourceURL />administration/common/img/icons/22x22/shortcut-configure.png" width="19" height="22" alt="<s:text name="label.set" />" />
 		</a>
 		<img src="<wp:resourceURL />administration/common/img/shortcut-pipe.png" width="2" height="22" alt=" " />
-		<a title="<s:text name="label.move" />&#32;<s:text name="name.position" />&#32;<s:property value="%{#rowstatus.index + 1}" />" href="<s:url action="configPosition" namespace="/do/MyShortcut" anchor="shortcut-swap"><s:param name="positionTarget" value="%{#rowstatus.index}" /><s:param name="strutsAction" value="2" /></s:url>"><img class="move" src="<wp:resourceURL />administration/common/img/icons/22x22/shortcut-move.png" width="19" height="22" alt="<s:text name="label.move" />" /></a>		
+		<a title="<s:text name="label.move" />&#32;<s:text name="name.position" />&#32;<s:property value="%{#rowstatus.index + 1}" />" href="<s:url action="configPosition" namespace="/do/MyShortcut" anchor="shortcut-swap"><s:param name="positionTarget" value="%{#rowstatus.index}" /><s:param name="strutsAction" value="2" /></s:url>"><img class="move" src="<wp:resourceURL />administration/common/img/icons/22x22/shortcut-move.png" width="19" height="22" alt="<s:text name="label.move" />" /></a>
 		</span>
 	</dt>
 	<dd class="noscreen">
@@ -94,7 +94,7 @@
 			</p>
 			<p>
 				<label for="shortcutCode" class="basic-mint-label"><s:text name="label.choose" />:</label>
-				
+
 				<select name="shortcutCode" id="shortcutCode" tabindex="<wpsa:counter />" >
 				<s:set var="tmpShortcutGroup" value="null" />
 				<s:iterator value="allowedShortcutSelectItems" var="allowedShortcutItem">
@@ -109,7 +109,7 @@
 				</s:iterator>
 				</optgroup>
 				</select>
-				
+
 				<wpsf:submit useTabindexAutoIncrement="true" value="%{getText('label.set')}" cssClass="button" />
 			</p>
 		</s:form>
@@ -118,7 +118,7 @@
 <%-- else show the swap form
 <s:elseif test="null != positionTarget">
 	<div class="subsection-light clear" id="shortcut-swap-container">
-	<h2 class="margin-bit-bottom" id="shortcut-swap"><s:text name="label.swap" />&#32;<s:text name="name.position" />: <s:property value="%{positionTarget + 1}" /> &ndash; 
+	<h2 class="margin-bit-bottom" id="shortcut-swap"><s:text name="label.swap" />&#32;<s:text name="name.position" />: <s:property value="%{positionTarget + 1}" /> &ndash;
 	<s:set var="userShortcutToMove" value="%{getShortcut(#userConfigVar[positionTarget])}" />
 	<s:if test="null != #userShortcutToMove">
 		<s:if test="null != #userShortcutToMove.descriptionKey"><s:text name="%{#userShortcutToMove.descriptionKey}" /></s:if><s:else><s:property value="%{#userShortcutToMove.description}" /></s:else>
@@ -130,7 +130,7 @@
 		<wpsf:hidden name="positionTarget" />
 		<wpsf:hidden name="strutsAction" value="2" />
 	</p>
-	
+
 	<p>
 	<label for="positionDest" class="basic-mint-label"><s:text name="label.choose" />:</label>
 	<select name="positionDest" id="positionDest" tabindex="<wpsa:counter />" >
@@ -145,7 +145,7 @@
 		<option value="<s:property value="#rowstatus.index" />"><s:property value="%{#rowstatus.index + 1}" /> &ndash; <s:property value="%{#userShortcutShortDestDescr}" /></option>
 	</s:iterator>
 	</select>
-	
+
 	<wpsf:submit useTabindexAutoIncrement="true" value="%{getText('label.set')}" cssClass="button" />
 	</p>
 	</s:form>
@@ -167,26 +167,26 @@
 		<%--
 		&nbsp;&dash;&nbsp;x<s:property value="#emailAttributeVar" />x&nbsp;
 		--%>
-		
+
 		&nbsp;&dash;&nbsp;
-		
+
 		<s:set var="activityStreamInfoVar" value="#actionLogRecordVar.activityStreamInfo" />
-		
+
 		<wpsa:activityTitle actionName="%{#actionLogRecordVar.actionName}" namespace="%{#actionLogRecordVar.namespace}" actionType="%{#activityStreamInfoVar.actionType}" />
-		
+
 		<%--
 		<s:text name="%{#actionLogRecordVar.namespace + '_' + #actionLogRecordVar.actionName + '_' + #activityStreamInfoVar.actionType}" />
 		--%>
 		<c:set var="authGroupNameVar"><s:property value="#activityStreamInfoVar.linkAuthGroup" /></c:set>
 		<c:set var="authPermissionNameVar"><s:property value="#activityStreamInfoVar.linkAuthPermission" /></c:set>
 		<wp:ifauthorized groupName="${authGroupNameVar}" permission="${authPermissionNameVar}" var="isAuthorizedVar" />
-		
+
 		&nbsp;:&nbsp;
-		
+
 		<s:set var="linkTitleVar" value="%{getTitle('view/edit', #activityStreamInfoVar.objectTitles)}" />
 		<c:choose>
 			<c:when test="${isAuthorizedVar}">
-				<s:url action="%{#activityStreamInfoVar.linkActionName}" 
+				<s:url action="%{#activityStreamInfoVar.linkActionName}"
 					   namespace="%{#activityStreamInfoVar.linkNamespace}" var="actionUrlVar">
 					<wpsa:paramMap map="#activityStreamInfoVar.linkParameters" />
 				</s:url>
@@ -201,10 +201,10 @@
 		<br />
 		---------------------------------------
 		<br />
-	</s:iterator> 
+	</s:iterator>
 </s:if>
 <s:else>
 	NO ONE ACTIVITY
 </s:else>
-	
+
 </div>
