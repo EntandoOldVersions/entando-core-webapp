@@ -188,15 +188,85 @@
 						</div>
 					</wpsa:subset>
 				</s:if>
-				<s:else>
-					<p class="margin-none"><s:text name="note.group.referencedShowletTypes.empty" /></p>
-				</s:else>
-			</div>
-		</div>
-	<%-- hoookpoint core.groupReferences --%>
-		<wpsa:hookPoint key="core.groupReferences" objectName="hookPointElements_core_groupReferences">
-			<s:iterator value="#hookPointElements_core_groupReferences" var="hookPointElement">
-				<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
-			</s:iterator>
-		</wpsa:hookPoint>
+				<s:else><abbr title="<s:text name="label.none" />">&ndash;</abbr></s:else>
+			</td>
+			<td class="centerText monospace">
+				<s:if test="#currentUserVar.japsUser && #currentUserVar.lastAccess != null">
+					<s:date name="#currentUserVar.lastAccess" format="dd/MM/yyyy" />
+				</s:if>
+				<s:else><abbr title="<s:text name="label.none" />">&ndash;</abbr></s:else>
+			</td>
+			<td class="centerText monospace">
+				<s:if test="#currentUserVar.japsUser && #currentUserVar.lastPasswordChange != null">
+					<s:date name="#currentUserVar.lastPasswordChange" format="dd/MM/yyyy" />
+				</s:if>
+				<s:else><abbr title="<s:text name="label.none" />">&ndash;</abbr></s:else>
+			</td>
+			<td class="icon"><img src="<s:property value="#statusIconImagePath" />" alt="<s:property value="#statusIconText" />" title="<s:property value="#statusIconText" />" /></td>
+			<c:if test="${canEditUser == 'true'}">
+			<td class="icon">
+				<a href="<s:url namespace="/do/User/Auth" action="edit"><s:param name="username" value="#currentUserVar.username"/></s:url>" title="<s:text name="note.configureAuthorizationsFor" />: <s:property value="#currentUserVar.username" />"><img src="<wp:resourceURL />administration/common/img/icons/authorizations.png" alt="<s:text name="note.configureAuthorizationsFor" />: <s:property value="#currentUserVar.username" />" /></a>
+			</td>
+			</c:if>
+		</tr>
+	</s:iterator>
+</table>
+
+<div class="pager">
+	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
+</div>
+
+</wpsa:subset>
+</s:if>
+<s:else>
+<p><s:text name="note.group.referencedUsers.empty" /></p>
+</s:else>
+</div>
+
+<div class="subsection-light">
+<h3><s:text name="title.group.referencedWidgetTypes" /></h3>
+
+<s:if test="null != references['WidgetTypeManagerUtilizers']">
+<wpsa:subset source="references['WidgetTypeManagerUtilizers']" count="10" objectName="widgetTypeReferencesVar" advanced="true" offset="5" pagerId="showletTypeReferences">
+<s:set name="group" value="#widgetTypeReferencesVar" />
+
+<div class="pager">
+	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
+	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
+</div>
+
+<table class="generic" id="widgetTypeListTable" summary="<s:text name="note.group.referencedWidgetTypes.summary" />">
+<caption><span><s:text name="title.widgetTypeList" /></span></caption>
+	<tr>
+		<th><s:text name="label.code" /></th>
+		<th><s:text name="label.title" /></th>
+	</tr>
+	<s:iterator var="currentWidgetTypeVar" >
+	<tr>
+		<td>
+			<s:property value="#currentWidgetTypeVar.code" />
+		</td>
+		<td>
+			<s:property value="getTitle(#currentWidgetTypeVar.code, #currentWidgetTypeVar.titles)" />
+		</td>
+	</tr>
+	</s:iterator>
+</table>
+
+<div class="pager">
+	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
+</div>
+
+</wpsa:subset>
+</s:if>
+<s:else>
+<p><s:text name="note.group.referencedWidgetTypes.empty" /></p>
+</s:else>
+</div>
+
+<wpsa:hookPoint key="core.groupReferences" objectName="hookPointElements_core_groupReferences">
+<s:iterator value="#hookPointElements_core_groupReferences" var="hookPointElement">
+	<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
+</s:iterator>
+</wpsa:hookPoint>
 </s:form>
