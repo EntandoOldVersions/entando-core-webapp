@@ -174,8 +174,18 @@ $(function() {
 </s:if>
 //End Hypertext Attribute
 
+
+//tabs
+
 }); //End domready
 
+</script>
+<script>
+	jQuery(function(){
+		$('.tab-togglers a').click(function (e) {
+		e.preventDefault()
+		$(this).tab('show')
+	});
 </script>
 <s:include value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/inc/snippet-datepicker.jsp" />
 <%-- TEMPORARILY COMMENTED OUT EVERYTHING
