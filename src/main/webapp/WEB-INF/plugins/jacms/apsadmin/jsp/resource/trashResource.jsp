@@ -7,10 +7,19 @@
 <s:set var="targetParamName" value="%{'resourceTypeCode'}" />
 <s:set var="targetParamValue" value="resourceTypeCode" />
 
-<h1 class="panel panel-default title-page"><span class="panel-body display-block">
-<s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />&#32;/&#32;
-<s:text name="title.resourceManagement.resourceTrash" />
-<s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></span></h1>
+<h1 class="panel panel-default title-page">
+	<span class="panel-body display-block">
+		<a href="<s:url action="list" namespace="/do/jacms/Resource">
+		<s:param name="resourceTypeCode">
+			<s:property value="resourceTypeCode" />
+		</s:param>
+		</s:url>" 
+		title="<s:text name="note.goToSomewhere" />: <s:text name="title.resourceManagement" />"> <s:property value="%{getText('title.' + resourceTypeCode + 'Management')}" />
+		</a>
+		&#32;/&#32;
+		<s:text name="title.resourceManagement.resourceTrash" />
+	</span>
+</h1>
 
 <s:form action="delete">
 	<p class="sr-only">
