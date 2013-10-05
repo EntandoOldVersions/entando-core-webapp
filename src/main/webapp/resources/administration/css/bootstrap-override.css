@@ -54,6 +54,6 @@ html {
 	-webkit-padding-start: 20px;
 }
 
-#pageTree .btn-group .btn {
+.btn-group-xs .btn {
 	min-width: 35px;
 }
