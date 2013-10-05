@@ -2,7 +2,7 @@
 <%@ taglib uri="/aps-core" prefix="wp" %>
 
 <div class="row margin-large-vertical">
-	<div class="input-group col-12 col-lg-3 col-sm-4 margin-small-vertical">
+	<div class="input-group col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 		<label for="status" class="sr-only"><s:text name="label.state" /></label>
 		<s:select name="status" id="status" list="avalaibleStatus" value="%{content.status}" listKey="key" listValue="%{getText(value)}" cssClass="form-control" />
 		<span class="input-group-btn">
@@ -11,9 +11,15 @@
 			</s:submit>
 		</span>
 	</div>
+	<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+		<s:submit action="saveAndContinue" type="button" cssClass="btn btn-default btn-block" title="%{getText('note.button.saveAndContinue')}" >
+			<span class="icon icon-play-circle"></span>&#32;
+			<s:text name="label.saveAndContinue" />
+		</s:submit>
+	</div>
 
 <wp:ifauthorized permission="validateContents">
-	<div class="col-12 col-sm-4 margin-small-vertical">
+	<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 		<s:submit action="saveAndApprove" type="button" cssClass="btn btn-success btn-block" title="%{getText('note.button.saveAndApprove')}" >
 			<span class="icon icon-ok"></span>&#32;
 			<s:text name="label.saveAndApprove" />
@@ -26,7 +32,7 @@
 		</s:submit>
 	</div>
 	<s:if test="content.onLine">
-		<div class="col-12 col-sm-4 margin-small-vertical">
+		<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 			<s:submit action="suspend" type="button" cssClass="btn btn-warning btn-block" title="%{getText('note.button.suspend')}">
 				<span class="icon icon-pause"></span>&#32;
 				<s:text name="label.suspend" />
