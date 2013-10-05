@@ -13,6 +13,7 @@
 						</s:url>
 			 " title="<s:text name="note.goToSomewhere" />: <s:text name="title.configPage" />"><s:text name="title.configPage" /></a>&#32;/&#32;
 		<s:text name="name.showlet" />
+	</span>
 </h1>
 
 <div id="main">
