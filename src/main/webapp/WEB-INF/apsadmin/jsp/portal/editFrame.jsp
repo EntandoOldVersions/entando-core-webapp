@@ -22,6 +22,17 @@
 
 <s:action namespace="/do/Page" name="printPageDetails" executeResult="true" ignoreContextParams="true"><s:param name="selectedNode" value="currentPage.code"></s:param></s:action>
 
+<s:if test="showlet != null">
+
+<s:include value="/WEB-INF/apsadmin/jsp/portal/include/frameInfo.jsp" />
+<h3><s:text name="name.widget" />:&#32;<s:property value="%{getTitle(showlet.type.code, showlet.type.titles)}" /></h3>
+
+<p><s:text name="note.editFrame.noConfigNeeded" /></p>
+</s:if>
+<s:else>
+
+<h2 id="editFrame"><s:text name="title.editFrame" />: <s:property value="frame" /> &ndash; <s:property value="currentPage.getModel().getFrames()[frame]"/></h2>
+
 <%-- Error message handling --%>
 	<s:if test="hasActionErrors()">
 <div class="alert alert-danger alert-dismissable">
@@ -35,24 +46,52 @@
 </div>
 	</s:if>
 
-<div id="editFrame" class="panel panel-default">
-	<div class="panel-heading">
-		<s:include value="/WEB-INF/apsadmin/jsp/portal/include/frameInfo.jsp" />
-	</div>
+<p class="margin-more-bottom"><s:text name="note.editFrame.chooseAWidget" /></p>
 
-	<div class="panel-body">
-
-	<s:if test="showlet != null">
-
-		<h3 class="h5 margin-small-vertical">
-			<label class="sr-only"><s:text name="name.showlet" /></label>
-			<span class="icon icon-puzzle-piece" title="<s:text name="name.showlet" />"></span>&#32;
-			<s:property value="%{getTitle(showlet.type.code, showlet.type.titles)}" />
-		</h3>
-
-		<p><s:text name="note.editFrame.noConfigNeeded" /></p>
-	</s:if>
-	<s:else>
+<s:form action="joinWidget">
+	<p class="noscreen">
+		<wpsf:hidden name="pageCode" />
+		<wpsf:hidden name="frame" />
+	</p>
+<fieldset>
+	<legend><s:text name="title.editFrame.chooseAWidget" /></legend>
+	<p>
+	<label for="showletCode" class="basic-mint-label"><s:text name="name.widget" />:</label>
+	<select name="showletTypeCode" tabindex="<wpsa:counter />" id="showletCode">
+	<s:iterator var="showletFlavour" value="showletFlavours">
+		
+		<wpsa:set var="tmpShowletType">tmpShowletTypeValue</wpsa:set>
+		
+		<s:iterator var="showletType" value="#showletFlavour" >
+					
+			<s:if test="#showletType.optgroup != #tmpShowletType">
+			
+				<s:if test="#showletType.optgroup == 'stockShowletCode'">
+					<wpsa:set var="optgroupLabel"><s:text name="title.widgetManagement.showlets.stock" /></wpsa:set>
+				</s:if>
+				<s:elseif test="#showletType.optgroup == 'customShowletCode'">
+					<wpsa:set var="optgroupLabel"><s:text name="title.widgetManagement.showlets.custom" /></wpsa:set>
+				</s:elseif>
+				<s:elseif test="#showletType.optgroup == 'userShowletCode'">
+					<wpsa:set var="optgroupLabel"><s:text name="title.widgetManagement.showlets.user" /></wpsa:set>
+				</s:elseif>
+				<s:else>
+					<wpsa:set var="pluginPropertyName" value="%{getText(#showletType.optgroup + '.name')}" />		
+					<wpsa:set var="pluginPropertyCode" value="%{getText(#showletType.optgroup + '.code')}" />					
+					<wpsa:set var="optgroupLabel"><s:text name="#pluginPropertyName" /></wpsa:set>
+				</s:else>
+						
+			<optgroup label="<s:property value="#optgroupLabel" />">
+			</s:if>
+				<option value="<s:property value="#showletType.key" />"><s:property value="#showletType.value" /></option>
+		
+			<wpsa:set var="tmpShowletType"><s:property value="#showletType.optgroup" /></wpsa:set>
+		
+		</s:iterator>
+			</optgroup>	
+	</s:iterator>
+	</select>
+	</p>
 
 		<p class="sr-only"><s:text name="note.editFrame.chooseAShowlet" /></p>
 

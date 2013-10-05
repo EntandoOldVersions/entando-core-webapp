@@ -246,23 +246,23 @@
 
     <!-- ********* FINE Area Gestione Pagine ********* -->
 
-    <definition extends="layout.default" name="admin.Portal.viewShowlets">
-        <put-attribute name="title" value="title.showletManagement" />
+    <definition extends="main.layout" name="admin.Portal.viewShowlets">
+        <put-attribute name="title" value="title.widgetManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/showlet-list.jsp" />
     </definition>
 
-    <definition extends="layout.default" name="admin.Portal.viewShowletUtilizers">
-        <put-attribute name="title" value="title.showletManagement" />
+    <definition extends="main.layout" name="admin.Portal.viewShowletUtilizers">
+        <put-attribute name="title" value="title.widgetManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/showlet-list-using.jsp" />
     </definition>
 
-    <definition extends="layout.default" name="admin.Portal.showletType.trash">
-        <put-attribute name="title" value="title.showletManagement" />
+    <definition extends="main.layout" name="admin.Portal.showletType.trash">
+        <put-attribute name="title" value="title.widgetManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/showlet-delete-confirm.jsp" />
     </definition>
 
-    <definition extends="layout.default" name="admin.Portal.showletType.entry">
-        <put-attribute name="title" value="title.showletManagement" />
+    <definition extends="main.layout" name="admin.Portal.showletType.entry">
+        <put-attribute name="title" value="title.widgetManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/showlet-entry.jsp" />
     </definition>
 

@@ -145,7 +145,7 @@
 </div>
 
 <div class="subsection-light">
-<h3><s:text name="title.group.referencedShowletTypes" /></h3>
+<h3><s:text name="title.group.referencedWidgetTypes" /></h3>
 
 <s:if test="null != references['ShowletTypeManagerUtilizers']">
 <wpsa:subset source="references['ShowletTypeManagerUtilizers']" count="10" objectName="showletTypeReferences" advanced="true" offset="5" pagerId="showletTypeReferences">
@@ -156,7 +156,7 @@
 	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 </div>
 
-<table class="generic" id="showletTypeListTable" summary="<s:text name="note.group.referencedShowletTypes.summary" />">
+<table class="generic" id="showletTypeListTable" summary="<s:text name="note.group.referencedWidgetTypes.summary" />">
 <caption><span><s:text name="title.showletTypeList" /></span></caption>
 	<tr>
 		<th><s:text name="label.code" /></th>
@@ -181,7 +181,7 @@
 </wpsa:subset>
 </s:if>
 <s:else>
-<p><s:text name="note.group.referencedShowletTypes.empty" /></p>
+<p><s:text name="note.group.referencedWidgetTypes.empty" /></p>
 </s:else>
 </div>
 

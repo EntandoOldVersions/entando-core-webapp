@@ -1,10 +1,10 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 
-<h1><s:text name="title.showletManagement" /></h1>
+<h1><s:text name="title.widgetManagement" /></h1>
 <div id="main">
 
-<h2><s:text name="title.showletManagement.type.delete" /></h2>
+<h2><s:text name="title.widgetManagement.type.delete" /></h2>
 
 <s:form namespace="/do/Portal/ShowletType" action="delete">
 <p class="sr-only">

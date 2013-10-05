@@ -21,6 +21,58 @@
 <s:include value="/WEB-INF/apsadmin/jsp/portal/include/pageInfo_breadcrumbs.jsp" />
 
 <s:action namespace="/do/Page" name="printPageDetails" executeResult="true" ignoreContextParams="true"><s:param name="selectedNode" value="pageCode"></s:param></s:action>
+<s:include value="/WEB-INF/apsadmin/jsp/portal/include/frameInfo.jsp" />
+
+<s:set var="showletType" value="%{getShowletType(showletTypeCode)}"></s:set>
+<h3 class="margin-more-top margin-more-bottom"><s:text name="name.widget" />:&#32;<s:property value="%{getTitle(#showletType.code, #showletType.titles)}" /></h3>
+
+<s:form action="searchContents" >
+
+<p class="noscreen">
+	<wpsf:hidden name="pageCode" />
+	<wpsf:hidden name="frame" />
+	<wpsf:hidden name="showletTypeCode" />
+	<wpsf:hidden name="modelId" />
+</p>
+
+	<s:if test="hasFieldErrors()">
+<div class="message message_error">
+<h4><s:text name="message.title.FieldErrors" /></h4>	
+	<ul>
+	<s:iterator value="fieldErrors">
+		<s:iterator value="value">
+		<li><s:property escape="false" /></li>
+		</s:iterator>
+	</s:iterator>
+	</ul>
+</div>
+	</s:if>
+	
+<p><label for="text" class="basic-mint-label label-search"><s:text name="label.search.by"/>&#32;<s:text name="label.description"/>:</label>
+<wpsf:textfield useTabindexAutoIncrement="true" name="text" id="text" cssClass="text" /></p>
+
+<fieldset><legend class="accordion_toggler"><s:text name="title.searchFilters" /></legend>
+<div class="accordion_element">
+<p>
+	<label for="contentIdToken"><s:text name="label.code"/>:</label><br />
+	<wpsf:textfield useTabindexAutoIncrement="true" name="contentIdToken" id="contentIdToken" cssClass="text" />
+</p>
+
+<p>
+	<label for="contentType"><s:text name="label.type"/>:</label><br />
+	<wpsf:select useTabindexAutoIncrement="true" name="contentType" id="contentType" 
+		list="contentTypes" listKey="code" listValue="descr" 
+		headerKey="" headerValue="%{getText('label.all')}" cssClass="text"></wpsf:select>
+</p>
+
+<p>
+	<label for="state"><s:text name="label.state"/>:</label><br />
+	<wpsf:select useTabindexAutoIncrement="true" name="state" id="state" list="avalaibleStatus" 
+		headerKey="" headerValue="%{getText('label.all')}" cssClass="text" listKey="key" listValue="%{getText(value)}" />
+</p>
+</div>
+</fieldset>
+<p><wpsf:submit useTabindexAutoIncrement="true" value="%{getText('label.search')}" cssClass="button" /></p>
 
 <s:form action="searchContents" cssClass="form-horizontal">
 

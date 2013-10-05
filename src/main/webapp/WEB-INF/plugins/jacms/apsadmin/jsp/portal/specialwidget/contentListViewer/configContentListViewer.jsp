@@ -22,14 +22,7 @@
 
 <s:action namespace="/do/Page" name="printPageDetails" executeResult="true" ignoreContextParams="true"><s:param name="selectedNode" value="pageCode"></s:param></s:action>
 
-<s:form action="saveListViewerConfig" namespace="/do/jacms/Page/SpecialShowlet/ListViewer" cssClass="form-horizontal">
-
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<s:include value="/WEB-INF/apsadmin/jsp/portal/include/frameInfo.jsp" />
-	</div>
-
-	<div class="panel-body">
+<h3 class="margin-more-top margin-more-bottom"><s:text name="name.widget" />:&#32;<s:property value="%{getTitle(showlet.type.code, showlet.type.titles)}" /></h3>
 
 		<h2 class="h5 margin-small-vertical">
 			<label class="sr-only"><s:text name="name.showlet" /></label>

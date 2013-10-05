@@ -15,7 +15,7 @@
 <s:action namespace="/do/Page" name="printPageDetails" executeResult="true" ignoreContextParams="true"><s:param name="selectedNode" value="pageCode"></s:param></s:action>
 <s:include value="/WEB-INF/apsadmin/jsp/portal/include/frameInfo.jsp" />
 
-<h3 class="margin-more-bottom margin-more-top"><s:text name="name.showlet" />:&#32;<s:property value="%{getTitle(showlet.type.code, showlet.type.titles)}" /></h3>
+<h3 class="margin-more-bottom margin-more-top"><s:text name="name.widget" />:&#32;<s:property value="%{getTitle(showlet.type.code, showlet.type.titles)}" /></h3>
 <s:form action="saveConfigSimpleParameter">
 <p class="sr-only">
 	<wpsf:hidden name="pageCode" />

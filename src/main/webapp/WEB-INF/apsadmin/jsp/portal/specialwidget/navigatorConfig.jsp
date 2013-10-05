@@ -16,7 +16,7 @@
 <s:action namespace="/do/Page" name="printPageDetails" executeResult="true" ignoreContextParams="true"><s:param name="selectedNode" value="pageCode"></s:param></s:action>
 <s:include value="/WEB-INF/apsadmin/jsp/portal/include/frameInfo.jsp" />
 
-<h3 class="margin-more-top"><s:text name="name.showlet" />:&#32;<s:property value="%{getTitle(showlet.type.code, showlet.type.titles)}" /></h3>
+<h3 class="margin-more-top"><s:text name="name.widget" />:&#32;<s:property value="%{getTitle(showlet.type.code, showlet.type.titles)}" /></h3>
 
 <s:url action="saveNavigatorConfig" namespace="do/Page/SpecialWidget/Navigator" id="formAction" anchor="expressions" />
 <s:form action="%{'/' + #formAction}">
@@ -51,16 +51,16 @@
 	<wpsf:hidden name="navSpec" />
 </p>
 
-<h4 id="expressions"><s:text name="Showlet.configNavigator.expressionList" /></h4>
+<h4 id="expressions"><s:text name="widget.configNavigator.expressionList" /></h4>
 
 <s:if test="expressions.size != 0">
 
 <table class="generic" summary="<s:text name="note.page.navigator.summary" />">
-<caption><span><s:text name="Showlet.configNavigator.expressionList" /></span></caption>
+<caption><span><s:text name="widget.configNavigator.expressionList" /></span></caption>
 <tr>
 	<th><abbr title="<s:text name="label.number" />">N</abbr></th>
-	<th><s:text name="Showlet.configNavigator.navSpec" /></th> 
-	<th><s:text name="Showlet.configNavigator.operator" /></th>
+	<th><s:text name="widget.configNavigator.navSpec" /></th> 
+	<th><s:text name="widget.configNavigator.operator" /></th>
 	<th class="icon" colspan="3"><abbr title="<s:text name="label.actions" />">&ndash;</abbr></th> 
 </tr>
 
@@ -68,11 +68,11 @@
 <tr>
 	<td class="rightText"><s:property value="#rowstatus.index + 1"/></td>
 	<td>
-		<s:if test="#expression.specId == 1"><s:text name="Showlet.configNavigator.currentPage" /></s:if>
-		<s:elseif test="#expression.specId == 2"><s:text name="Showlet.configNavigator.parentCurrent" /></s:elseif>
-		<s:elseif test="#expression.specId == 3"><s:text name="Showlet.configNavigator.parentFromCurrent" />: <s:property value="specSuperLevel" /></s:elseif>
-		<s:elseif test="#expression.specId == 4"><s:text name="Showlet.configNavigator.parentFromRoot" />: <s:property value="specAbsLevel" /></s:elseif>
-		<s:elseif test="#expression.specId == 5"><s:text name="Showlet.configNavigator.specifiedPage" />: 
+		<s:if test="#expression.specId == 1"><s:text name="widget.configNavigator.currentPage" /></s:if>
+		<s:elseif test="#expression.specId == 2"><s:text name="widget.configNavigator.parentCurrent" /></s:elseif>
+		<s:elseif test="#expression.specId == 3"><s:text name="widget.configNavigator.parentFromCurrent" />: <s:property value="specSuperLevel" /></s:elseif>
+		<s:elseif test="#expression.specId == 4"><s:text name="widget.configNavigator.parentFromRoot" />: <s:property value="specAbsLevel" /></s:elseif>
+		<s:elseif test="#expression.specId == 5"><s:text name="widget.configNavigator.specifiedPage" />: 
 			<s:set var="specPageVar" value="%{getPage(specCode)}" ></s:set>
 			<s:property value="#specPageVar.getFullTitle(currentLang.code)" /><s:if test="!#specPageVar.showable"> [i]</s:if>
 			<s:if test="null == #specPageVar" ><s:text name="note.noPageSet" /></s:if>
@@ -80,10 +80,10 @@
 		<s:else>ERROR</s:else>
 	</td>
 	<td>
-		<s:if test="#expression.operatorId == -1"><s:text name="Showlet.configNavigator.none" /></s:if>
-		<s:elseif test="#expression.operatorId == 1"><s:text name="Showlet.configNavigator.allChildren" /></s:elseif>
-		<s:elseif test="#expression.operatorId == 2"><s:text name="Showlet.configNavigator.allNodes" /></s:elseif>
-		<s:elseif test="#expression.operatorId == 3"><abbr title="<s:text name="Showlet.configNavigator.levelOfNodesTothisLevel" />"><s:text name="Showlet.configNavigator.nodesTothisLevel" /></abbr>: <s:property value="operatorSubtreeLevel" /></s:elseif>
+		<s:if test="#expression.operatorId == -1"><s:text name="widget.configNavigator.none" /></s:if>
+		<s:elseif test="#expression.operatorId == 1"><s:text name="widget.configNavigator.allChildren" /></s:elseif>
+		<s:elseif test="#expression.operatorId == 2"><s:text name="widget.configNavigator.allNodes" /></s:elseif>
+		<s:elseif test="#expression.operatorId == 3"><abbr title="<s:text name="widget.configNavigator.levelOfNodesTothisLevel" />"><s:text name="widget.configNavigator.nodesTothisLevel" /></abbr>: <s:property value="operatorSubtreeLevel" /></s:elseif>
 		<s:else>ERROR</s:else>
 	</td>
 	<td class="icon">
@@ -118,17 +118,17 @@
 <p><s:text name="note.noRuleSet" /></p>
 </s:else>
 
-<h4 class="margin-more-bottom"><s:text name="Showlet.configNavigator.addExpression" /></h4>
+<h4 class="margin-more-bottom"><s:text name="widget.configNavigator.addExpression" /></h4>
 
 <fieldset>
-<legend><s:text name="Showlet.configNavigator.navSpec" /></legend>
+<legend><s:text name="widget.configNavigator.navSpec" /></legend>
 
 <ul class="noBullet radiocheck">
-	<li><input type="radio" name="specId" id="specId1" value="1" /> <label for="specId1"><s:text name="Showlet.configNavigator.currentPage" /></label></li>
-	<li><input type="radio" name="specId" id="specId2" value="2" /> <label for="specId2"><s:text name="Showlet.configNavigator.parentCurrent" /></label></li>
-	<li><input type="radio" name="specId" id="specId3" value="3" /> <label for="specId3"><s:text name="Showlet.configNavigator.parentFromCurrent" />:</label> <wpsf:select useTabindexAutoIncrement="true" name="specSuperLevel" headerKey="-1" list="#{1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9,10:10}" /></li>
-	<li><input type="radio" name="specId" id="specId4" value="4" /> <label for="specId4"><s:text name="Showlet.configNavigator.parentFromRoot" />:</label> <wpsf:select useTabindexAutoIncrement="true" name="specAbsLevel" headerKey="-1" list="#{1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9,10:10}" /></li>
-	<li><input type="radio" name="specId" id="specId5" value="5" /> <label for="specId5"><s:text name="Showlet.configNavigator.specifiedPage" />:</label> <select name="specCode">
+	<li><input type="radio" name="specId" id="specId1" value="1" /> <label for="specId1"><s:text name="widget.configNavigator.currentPage" /></label></li>
+	<li><input type="radio" name="specId" id="specId2" value="2" /> <label for="specId2"><s:text name="widget.configNavigator.parentCurrent" /></label></li>
+	<li><input type="radio" name="specId" id="specId3" value="3" /> <label for="specId3"><s:text name="widget.configNavigator.parentFromCurrent" />:</label> <wpsf:select useTabindexAutoIncrement="true" name="specSuperLevel" headerKey="-1" list="#{1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9,10:10}" /></li>
+	<li><input type="radio" name="specId" id="specId4" value="4" /> <label for="specId4"><s:text name="widget.configNavigator.parentFromRoot" />:</label> <wpsf:select useTabindexAutoIncrement="true" name="specAbsLevel" headerKey="-1" list="#{1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9,10:10}" /></li>
+	<li><input type="radio" name="specId" id="specId5" value="5" /> <label for="specId5"><s:text name="widget.configNavigator.specifiedPage" />:</label> <select name="specCode">
 	<s:iterator var="page" value="pages">
 		<option value="<s:property value="#page.code"/>"><s:property value="#page.getShortFullTitle(currentLang.code)"/><s:if test="!#page.showable"> [i]</s:if></option>
 	</s:iterator>
@@ -138,18 +138,18 @@
 </fieldset>
 
 <fieldset>
-<legend><s:text name="Showlet.configNavigator.operator" /></legend>
+<legend><s:text name="widget.configNavigator.operator" /></legend>
 <p>
-	<label for="operatorId" class="basic-mint-label"><s:text name="Showlet.configNavigator.operatorType" />:</label>
+	<label for="operatorId" class="basic-mint-label"><s:text name="widget.configNavigator.operatorType" />:</label>
 	<select name="operatorId" id="operatorId">
-		<option value="0"><s:text name="Showlet.configNavigator.none" /></option>
-		<option value="1"><s:text name="Showlet.configNavigator.allChildren" /></option>
-		<option value="2"><s:text name="Showlet.configNavigator.allNodes" /></option>
-		<option value="3"><s:text name="Showlet.configNavigator.nodesTothisLevel" /></option>
+		<option value="0"><s:text name="widget.configNavigator.none" /></option>
+		<option value="1"><s:text name="widget.configNavigator.allChildren" /></option>
+		<option value="2"><s:text name="widget.configNavigator.allNodes" /></option>
+		<option value="3"><s:text name="widget.configNavigator.nodesTothisLevel" /></option>
 	</select>
 </p>
 <p>
-	<label for="operatorSubtreeLevel" class="basic-mint-label"><s:text name="Showlet.configNavigator.levelOfNodesTothisLevel" />:</label>
+	<label for="operatorSubtreeLevel" class="basic-mint-label"><s:text name="widget.configNavigator.levelOfNodesTothisLevel" />:</label>
 	<wpsf:select useTabindexAutoIncrement="true" name="operatorSubtreeLevel" id="operatorSubtreeLevel" headerKey="-1" list="#{1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9,10:10}" />
 </p>
 </fieldset>

@@ -131,26 +131,17 @@
 
 </fieldset>
 
-<fieldset class="col-xs-12"><legend><s:text name="label.settings" /></legend>
+<fieldset><legend><s:text name="label.settings" /></legend>
+<p>
+	<label for="model" class="basic-mint-label"><s:text name="name.pageModel" />:</label>
+	<wpsf:select useTabindexAutoIncrement="true" name="model" id="model" list="pageModels" listKey="code" listValue="descr" cssClass="text"></wpsf:select>
+</p>
 
-<div class="form-group">
-	<label class="control-label" for="model"><s:text name="name.pageModel" /></label>
-	<s:select name="model" id="model" list="pageModels" listKey="code" listValue="descr" cssClass="form-control"></s:select>
-</div>
-
-<ul>
-	<li class="checkbox">
-		<label class="control-label" for="defaultShowlet"><s:text name="name.hasDefaultShowlets" /><wpsf:checkbox name="defaultShowlet" id="defaultShowlet" /></label>
-	</li>
-	<li class="checkbox">
-		<label class="control-label" for="viewerPage"><s:text name="name.isViewerPage" /><wpsf:checkbox name="viewerPage" id="viewerPage" /></label>
-	</li>
-	<li class="checkbox">
-		<label class="control-label" for="showable"><s:text name="name.isShowablePage" /><wpsf:checkbox name="showable" id="showable" /></label>
-	</li>
-	<li class="checkbox">
-		<label class="control-label" for="useExtraTitles"><abbr lang="en" title="<s:text name="name.SEO.full" />"><s:text name="name.SEO.short" /></abbr>:&#32;<s:text name="name.useBetterTitles" /><wpsf:checkbox name="useExtraTitles" id="useExtraTitles" /></label>
-	</li>
+<ul class="noBullet">
+	<li><wpsf:checkbox useTabindexAutoIncrement="true" name="defaultShowlet" id="defaultShowlet" cssClass="radiocheck" /><label for="defaultShowlet"><s:text name="name.hasDefaultWidgets" /></label></li>
+	<li><wpsf:checkbox useTabindexAutoIncrement="true" name="viewerPage" id="viewerPage" cssClass="radiocheck" /><label for="viewerPage"><s:text name="name.isViewerPage" /></label></li>
+	<li><wpsf:checkbox useTabindexAutoIncrement="true" name="showable" id="showable" cssClass="radiocheck" /><label for="showable"><s:text name="name.isShowablePage" /></label></li>
+	<li><wpsf:checkbox useTabindexAutoIncrement="true" name="useExtraTitles" id="useExtraTitles" cssClass="radiocheck" /> <label for="useExtraTitles"><abbr lang="en" title="<s:text name="name.SEO.full" />"><s:text name="name.SEO.short" /></abbr>:&#32;<s:text name="name.useBetterTitles" /></label></li>
 </ul>
 
 <div class="form-group">

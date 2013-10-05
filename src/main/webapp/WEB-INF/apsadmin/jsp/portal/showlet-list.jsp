@@ -3,7 +3,7 @@
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 
-<h1 class="panel panel-default title-page"><span class="panel-body display-block"><s:text name="title.showletManagement" /></span></h1>
+<h1><s:text name="title.widgetManagement" /></h1>
 
 <div id="main">
 
@@ -38,30 +38,30 @@
 <s:set var="firstType" value="%{#showletFlavour.get(0)}"></s:set>
 
 <s:if test="%{#firstType.optgroup == 'stockShowletCode'}">
-	<h2><span lang="en"><s:text name="title.showletManagement.showlets.stock" /></span></h2>
-	<table class="generic" summary="<s:text name="note.showletManagement.showlets.summary" />">
-		<caption><span><s:text name="name.showlets" /></span></caption>
+	<h2><span lang="en"><s:text name="title.widgetManagement.showlets.stock" /></span></h2>
+	<table class="generic" summary="<s:text name="note.widgetManagement.showlets.summary" />">
+		<caption><span><s:text name="name.widgets" /></span></caption>
 </s:if>
 
 <s:elseif test="%{#firstType.optgroup == 'customShowletCode'}">
-	<h2><span lang="en"><s:text name="title.showletManagement.showlets.custom" /></span></h2>
-	<table class="generic" summary="<s:text name="note.showletManagement.showlets.summary" />">
-		<caption><span><s:text name="name.showlets" /></span></caption>
+	<h2><span lang="en"><s:text name="title.widgetManagement.showlets.custom" /></span></h2>
+	<table class="generic" summary="<s:text name="note.widgetManagement.showlets.summary" />">
+		<caption><span><s:text name="name.widgets" /></span></caption>
 
 </s:elseif>
 
 <s:elseif test="%{#firstType.optgroup == 'userShowletCode'}">
-	<h2><span lang="en"><s:text name="title.showletManagement.showlets.user" /></span></h2>
-	<table class="generic" summary="<s:text name="note.showletManagement.showlets.summary" />">
-		<caption><span><s:text name="name.showlets" /></span></caption>
+	<h2><span lang="en"><s:text name="title.widgetManagement.showlets.user" /></span></h2>
+	<table class="generic" summary="<s:text name="note.widgetManagement.showlets.summary" />">
+		<caption><span><s:text name="name.widgets" /></span></caption>
 
 </s:elseif>
 
 <s:else>
 	<s:if test="#pluginTitleCheck.equals('false')">
-		<h2><span lang="en"><s:text name="title.showletManagement.showlets.plugin" /></span></h2>
+		<h2><span lang="en"><s:text name="title.widgetManagement.showlets.plugin" /></span></h2>
 	</s:if>
-	<table class="generic" summary="<s:text name="note.showletManagement.showlets.summary" />">
+	<table class="generic" summary="<s:text name="note.widgetManagement.showlets.summary" />">
 	<s:set var="pluginTitleCheck" value="'true'" ></s:set>
 
 	<wpsa:set var="pluginPropertyName" value="%{getText(#firstType.optgroup + '.name')}" />	
@@ -71,7 +71,7 @@
 </s:else>
 
 <tr>
-	<th class="tinyColumn60"><abbr title="<s:text name="title.showletManagement.howmanypages.long" />"><s:text name="title.showletManagement.howmanypages.short" /></abbr></th>
+	<th class="tinyColumn60"><abbr title="<s:text name="title.widgetManagement.howmanypages.long" />"><s:text name="title.widgetManagement.howmanypages.short" /></abbr></th>
 	<th><s:text name="label.description" /></th>
 
 <wpsa:hookPoint key="core.showletType.list.table.th" objectName="hookPointElements_core_showletType_list_table_th">
@@ -91,7 +91,7 @@
 	<s:set var="showletUtilizers" value="getShowletUtilizers(#showletType.key)" ></s:set>
 	<s:if test="#showletUtilizers != null && #showletUtilizers.size() > 0">
 		<td class="tinyColumn60 rightText">
-			<a href="<s:url namespace="/do/Portal/WidgetType" action="viewShowletUtilizers"><s:param name="showletTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="title.showletManagement.howmanypages.goToSee" />: <s:property value="#showletType.value" />"><s:property value="#showletUtilizers.size()" />&#32;<img src="<wp:resourceURL />administration/common/img/icons/16x16/detail.png" alt=" " /></a>
+			<a href="<s:url namespace="/do/Portal/WidgetType" action="viewWidgetUtilizers"><s:param name="showletTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="title.widgetManagement.howmanypages.goToSee" />: <s:property value="#showletType.value" />"><s:property value="#showletUtilizers.size()" />&#32;<img src="<wp:resourceURL />administration/common/img/icons/16x16/detail.png" alt=" " /></a>
 		</td>
 	</s:if>
 	<s:else>
@@ -137,7 +137,7 @@
 		<s:set var="relatedApiMethodVar" value="null" />
 		
 		<s:if test="null != #concreteShowletTypeVar.typeParameters && #concreteShowletTypeVar.typeParameters.size() > 0">
-			<a href="<s:url namespace="/do/Portal/WidgetType" action="new"><s:param name="parentShowletTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.userShowlet.new.from" />: <s:property value="#showletType.value" />" ><img src="<wp:resourceURL/>administration/common/img/icons/22x22/showlet-user-new.png" alt="<s:text name="label.userShowlet.new" />" /></a>
+			<a href="<s:url namespace="/do/Portal/WidgetType" action="new"><s:param name="parentShowletTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.userWidget.new.from" />: <s:property value="#showletType.value" />" ><img src="<wp:resourceURL/>administration/common/img/icons/22x22/showlet-user-new.png" alt="<s:text name="label.userWidget.new" />" /></a>
 		</s:if>
 		<s:if test="#firstType.optgroup == 'userShowletCode' && !#concreteShowletTypeVar.isLocked() && (#showletUtilizers == null || #showletUtilizers.size() == 0)">
 			<a href="<s:url namespace="/do/Portal/WidgetType" action="trash"><s:param name="showletTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.remove" />: <s:property value="#showletType.value" />" ><img src="<wp:resourceURL/>administration/common/img/icons/delete.png" alt="<s:text name="label.remove" />" /></a>
