@@ -5,6 +5,8 @@
 
 <h1><s:text name="title.widgetManagement" /></h1>
 
+<div id="main">
+
 <s:if test="hasFieldErrors()">
 	<div class="alert alert-danger alert-dismissable">
 		<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
@@ -107,7 +109,7 @@
 				<a href="<s:url namespace="/do/Portal/WidgetType" action="new"><s:param name="parentShowletTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.userShowlet.new.from" />: <s:property value="#showletType.value" />" class="btn btn-default"><span class="icon icon-puzzle-piece"></span></a>
 			</s:if>
 			<s:if test="#firstType.optgroup == 'userShowletCode' && !#concreteShowletTypeVar.isLocked() && (#showletUtilizers == null || #showletUtilizers.size() == 0)">
-				<a href="<s:url namespace="/do/Portal/WidgetType" action="trash"><s:param name="showletTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.remove" />: <s:property value="#showletType.value" />" class="btn btn-default" >Delete</a>
+				<a href="<s:url namespace="/do/Portal/WidgetType" action="trash"><s:param name="showletTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.remove" />: <s:property value="#showletType.value" />" class="btn btn-warning" ><span class="icon icon-remove-circle"></span></a>
 			</s:if>
 			</wp:ifauthorized>
 			<wpsa:hookPoint key="core.showletType.list.table.td" objectName="hookPointElements_core_showletType_list_table_td">

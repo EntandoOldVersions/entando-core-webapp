@@ -1,103 +1,92 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 
-<h1>
-<s:if test="strutsAction == 2"><a href="<s:url action="viewWidgets" namespace="/do/Portal/WidgetType" />" title="<s:text name="note.goToSomewhere" />: <s:text name="title.widgetManagement" />"><s:text name="title.widgetManagement" /></a></s:if>
-<s:else><s:text name="title.newWidgetType" /></s:else>
+<h1 class="panel panel-default title-page">
+	<span class="panel-body display-block">
+		<a href="<s:url action="viewShowlets" namespace="/do/Portal/WidgetType" />" 
+		title="<s:text name="note.goToSomewhere" />: <s:text name="title.showletManagement" />">
+		<s:if test="strutsAction == 2"><s:text name="title.showletManagement" /></s:if>
+		<s:else><s:text name="title.newShowletType" /></s:else>
+		</a>
+		<s:if test="strutsAction == 2">&#32;/&#32;<s:text name="title.showletManagement.edit" /></s:if>
+		<s:if test="strutsAction == 2">&#32;/&#32;
+			<wpsa:widgetType key="%{showletTypeCode}" var="showletTypeVar" />
+			<s:property value="#showletTypeVar.titles[currentLang.code]" />
+		</s:if>
+		<s:else>&#32;/&#32;
+			<s:text name="title.newShowletType.from" />:&#32;
+			<s:if test="strutsAction == 1">
+				<wpsa:widgetType var="parentShowletTypeVar" key="%{parentShowletTypeCode}" />
+				<em><s:property value="%{getTitle(#parentShowletTypeVar.code, #parentShowletTypeVar.titles)}" /></em>
+			</s:if>
+			<s:elseif test="strutsAction == 3">
+			<s:property value="%{getTitle(showletToCopy.type.code, showletToCopy.type.titles)}" />	<wpsa:page var="pageVar" key="%{pageCode}" />
+			<s:text name="note.showletType.page"/>:&#32;<em class="important"><s:property value="%{getTitle(#pageVar.code, #pageVar.titles)}" /></em>,&#32;<s:text name="note.showletType.position" />:&#32;<em class="important"><s:property value="framePos" /></em>
+			</s:elseif>
+		</s:else>
+	</span>
 </h1>
 
 <div id="main">
-
-<s:if test="strutsAction == 2">
-<wpsa:widgetType key="%{widgetTypeCode}" var="showletTypeVar" />
-<h2><s:text name="title.widgetManagement.edit" />:&#32;<s:property value="#showletTypeVar.titles[currentLang.code]" /></h2>
-</s:if>
-<s:else>
-<h2><s:text name="title.newWidgetType.from" />:&#32;
-<s:if test="strutsAction == 1">
-<wpsa:widgetType var="parentShowletTypeVar" key="%{parentShowletTypeCode}" />
-<em><s:property value="%{getTitle(#parentShowletTypeVar.code, #parentShowletTypeVar.titles)}" /></em>
-</s:if>
-<s:elseif test="strutsAction == 3">
-<em><s:property value="%{getTitle(showletToCopy.type.code, showletToCopy.type.titles)}" /></em>
-</s:elseif>
-</h2>
-<s:if test="strutsAction == 3">
-	<wpsa:page var="pageVar" key="%{pageCode}" />
-	<p>
-		<s:text name="note.widgetType.page"/>:&#32;<em class="important"><s:property value="%{getTitle(#pageVar.code, #pageVar.titles)}" /></em>,&#32;<s:text name="note.widgetType.position" />:&#32;<em class="important"><s:property value="framePos" /></em>
-	</p>
-</s:if>
-</s:else>
-
-<s:form action="save" namespace="/do/Portal/WidgetType" >
+<s:form action="save" namespace="/do/Portal/WidgetType" class="form-horizontal" >
 
 <wp:ifauthorized permission="superuser"><s:set var="isSuperuserVar" value="%{true}" /></wp:ifauthorized>
 
-<s:if test="hasActionErrors()">
-	<div class="message message_error">
-	<h3><s:text name="message.title.ActionErrors" /></h3>	
-		<ul>
-		<s:iterator value="actionErrors">
-			<li><s:property escape="false" /></li>
-		</s:iterator>
-		</ul>
-	</div>
-</s:if>
-<s:if test="hasFieldErrors()">
-	<div class="message message_error">
-	<h3><s:text name="message.title.FieldErrors" /></h3>	
-		<ul>
-		<s:iterator value="fieldErrors">
-			<s:iterator value="value">
-			<li><s:property escape="false" /></li>
-			</s:iterator>
-		</s:iterator>
-		</ul>
-	</div>
-</s:if>
+	<s:if test="hasActionErrors()">
+		<div class="alert alert-danger alert-dismissable">
+			<button type="button" class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+			<p><s:text name="message.title.ActionErrors" /></p>
+		</div>
+	</s:if>
+	<s:if test="hasFieldErrors()">
+		<div class="alert alert-danger alert-dismissable">
+			<button type="button" class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+			<p><s:text name="message.title.FieldErrors" /></p>
+		</div>
+	</s:if>
+
 <p class="sr-only">
-	<wpsf:hidden name="strutsAction" />
+	<s:hidden name="strutsAction" />
 	<s:if test="strutsAction == 1">
-	<wpsf:hidden name="parentShowletTypeCode" />
+		<s:hidden name="parentShowletTypeCode" />
 	</s:if>
 	<s:elseif test="strutsAction == 2">
-	<wpsf:hidden name="widgetTypeCode" />
+		<s:hidden name="showletTypeCode" />
 	</s:elseif>
 	<s:elseif test="strutsAction == 3">
-	<wpsf:hidden name="pageCode" />
-	<wpsf:hidden name="framePos" />
+		<s:hidden name="pageCode" />
+		<s:hidden name="framePos" />
 	</s:elseif>
 </p>
 
-<fieldset class="margin-more-top"><legend><s:text name="label.info" /></legend>
+<fieldset class="col-xs-12"><legend><s:text name="label.info" /></legend>
+	<s:set var="controlGroupErrorClassVar" value="''" />
+	<s:if test="#pageCodeHasFieldErrorVar">
+	  <s:set var="controlGroupErrorClassVar" value="' has-error'" />
+	</s:if>
+
 	<s:if test="strutsAction != 2">
-	<p>
-		<label for="widgetTypeCode" class="basic-mint-label"><s:text name="label.code" />:</label>
-		<wpsf:textfield useTabindexAutoIncrement="true" id="widgetTypeCode" name="widgetTypeCode" cssClass="text" />
-	</p>
+		<p>
+			<label for="showletTypeCode" class="control-label"><s:text name="label.code" />:</label>
+			<s:textfield id="showletTypeCode" name="showletTypeCode" cssClass="form-control" />
+		</p>
 	</s:if>
-	<p>
-		<label for="showlet-title-en" class="basic-mint-label"><span class="monospace">(en)</span> <s:text name="label.title" />:</label>
-		<wpsf:textfield useTabindexAutoIncrement="true" id="showlet-title-en" name="englishTitle" cssClass="text" />
-	</p>
 	
-	<p>
-		<label for="showlet-title-it" class="basic-mint-label"><span class="monospace">(it)</span> <s:text name="label.title" />:</label>
-		<wpsf:textfield useTabindexAutoIncrement="true" id="showlet-title-it" name="italianTitle" cssClass="text" />
-	</p>
+	<div class="form-group">
+		<label for="showlet-title-en" class="control-label"><code class="label label-info">en</code>&#32;<s:text name="label.title" />:</label>
+		<s:textfield id="showlet-title-en" name="englishTitle" cssClass="form-control" />
+	</div>
 	
-	<p>
-		<label for="showlet-maingroup" class="basic-mint-label"><s:text name="label.group" />:</label>
-	<s:if test="#isSuperuserVar">
-		<wpsf:select useTabindexAutoIncrement="true" name="mainGroup" id="showlet-maingroup" list="groups" listKey="name" listValue="descr" cssClass="text" />
-	</s:if>
-	<s:else>
-		<s:property value="%{getGroup(mainGroup).descr}" />
-	</s:else>
-	</p>
+	<div class="form-group">
+		<label for="showlet-title-it" class="control-label"><code class="label label-info">it</code>&#32;<s:text name="label.title" />:</label>
+		<s:textfield id="showlet-title-it" name="italianTitle" cssClass="form-control" />
+	</div>
+
+	<div class="form-group">
+		<label for="showlet-maingroup" class="control-label"><s:text name="label.group" /></label>
+		<s:select name="mainGroup" id="showlet-maingroup" list="groups" listKey="name" listValue="descr" cssClass="form-control" disabled="%{!#isSuperuserVar}" />
+	</div>
 	
 	<s:if test="#showletTypeVar.logic && strutsAction == 2">
 	<p>
@@ -117,8 +106,8 @@
 				<s:if test="#showletParam.descr != ''">
 					<em><s:property value="#showletParam.descr" />:</em><br />
 				</s:if>
-				<label for="<s:property value="#showletParam.name" />" class="basic-mint-label"><s:property value="#showletParam.name" /></label>
-				<wpsf:textfield useTabindexAutoIncrement="true" id="%{#showletParam.name}" name="%{#showletParam.name}" value="%{#request.parameters[#showletParam.name]}" cssClass="text" />
+				<label for="<s:property value="#showletParam.name" />" class="control-label"><s:property value="#showletParam.name" /></label>
+				<s:textfield id="%{#showletParam.name}" name="%{#showletParam.name}" value="%{#request.parameters[#showletParam.name]}" cssClass="form-control" />
 			</p>
 		</s:iterator>
 	</s:if>
@@ -129,8 +118,8 @@
 				<em><s:property value="#showletParam.descr" />:</em><br />
 			</s:if>
 			<s:if test="#isSuperuserVar && #showletTypeVar.userType">
-			<label for="<s:property value="#showletParam.name" />" class="basic-mint-label"><s:property value="#showletParam.name" /></label>
-			<wpsf:textfield useTabindexAutoIncrement="true" id="%{#showletParam.name}" name="%{#showletParam.name}" value="%{#showletTypeVar.config[#showletParam.name]}" cssClass="text" />
+			<label for="<s:property value="#showletParam.name" />" class="control-label"><s:property value="#showletParam.name" /></label>
+			<s:textfield id="%{#showletParam.name}" name="%{#showletParam.name}" value="%{#showletTypeVar.config[#showletParam.name]}" cssClass="form-control" />
 			</s:if>
 			<s:else>
 			<em class="important"><s:property value="#showletParam.name" /></em>:&#32;
@@ -160,12 +149,12 @@
 </s:iterator>
 </wpsa:hookPoint>
 
-<p class="centerText"><wpsf:submit useTabindexAutoIncrement="true" value="%{getText('label.save')}" cssClass="button" />
+<p class="centerText"><s:submit value="%{getText('label.save')}" cssClass="button" />
 <s:if test="strutsAction == 3">
 <wpsa:actionParam action="save" var="actionName" >
 	<wpsa:actionSubParam name="replaceOnPage" value="true" />
 </wpsa:actionParam>
-<wpsf:submit useTabindexAutoIncrement="true" action="%{#actionName}" value="%{getText('label.save.replace')}" cssClass="button"/>
+<s:submit action="%{#actionName}" value="%{getText('label.save.replace')}" cssClass="button"/>
 </s:if>
 </p>
 
