@@ -11,12 +11,12 @@
 		<s:set var="isAuthToEditVar" value="%{false}" />
 	</td>
 	<td>
-		<span class="monospace"><s:property value="#currentContentVar.id"/></span>
+		<code><s:property value="#currentContentVar.id"/></code>
 	</td>
 	<td>
 		<s:property value="#currentContentVar.typeDescr"/>
 	</td>
-	<td class="icon">
-		<span class="monospace"><s:date name="#currentContentRecordVar.modify" format="dd/MM/yyyy" /></span>
+	<td class="text-center text-nowrap">
+		<code><s:date name="#currentContentRecordVar.modify" format="dd/MM/yyyy" /></code>
 	</td>
 </tr>

@@ -9,7 +9,7 @@
 	<th>
 		<s:text name="label.type" />
 	</th>
-	<th>
+	<th class="text-center">
 		<s:text name="label.lastEdit" />
 	</th>
 </tr>

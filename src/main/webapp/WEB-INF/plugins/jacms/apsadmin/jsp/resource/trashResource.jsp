@@ -24,13 +24,15 @@
 			<s:iterator value="%{#parameters['treeNodesToOpen']}" var="treeNodeToOpenVar"><s:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"/></s:iterator>
 		</s:if>
 	</p>
-	<div class="alert">
+	<div class="panel panel-default">
+	<span class="panel-body display-block">
 		<a href="<s:url action="list" namespace="/do/jacms/Resource"><s:param name="resourceTypeCode"><s:property value="resourceTypeCode" /></s:param></s:url>" 
 		title="<s:text name="note.goToSomewhere" />: <s:text name="title.resourceManagement" />"><span class="icon icon-reply"></span></a>
 		<s:text name="note.deleteResource.areYouSure" />:&#32;<code><s:property value="%{loadResource(resourceId).descr}" /></code>?
-	<div class="text-center margin-small-top">
-		<s:submit value="%{getText('label.remove')}" cssClass="btn btn-default" />
-	</div>
+		<div class="text-center margin-small-top">
+			<s:submit value="%{getText('label.remove')}" cssClass="btn btn-default" />
+		</div>
+	</span>
 	</div>
 </s:form>
 

@@ -12,10 +12,12 @@
 
 <div id="main">
 
-<div class="message message_error">
-<h2><s:text name="message.title.ActionErrors" /></h2>
-<p><s:text name="message.note.resolveReferences" />:</p>
-
+<div class="alert alert-danger alert-dismissable fade in">
+	<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+	<h2 class="h4 margin-none">
+		<s:text name="message.title.ActionErrors" />
+	</h2>
+	<p class="margin-base-vertical"><s:text name="message.note.resolveReferences" /></p>
 </div>
 
 <s:form>
