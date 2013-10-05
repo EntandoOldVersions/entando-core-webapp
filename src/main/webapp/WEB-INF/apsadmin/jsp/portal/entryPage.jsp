@@ -24,7 +24,7 @@
 <s:else><s:set var="breadcrumbs_pivotPageCode" value="parentPageCode" /></s:else>
 <s:include value="/WEB-INF/apsadmin/jsp/portal/include/pageInfo_breadcrumbs.jsp" />
 
-<s:form action="save" cssClass="form-horizontal">
+<s:form action="save">
 
 	<s:if test="hasActionErrors()">
 		<div class="alert alert-danger alert-dismissable">
@@ -68,7 +68,7 @@
 	<div class="form-group<s:property value="controlGroupErrorClassVar" />">
 		<s:set var="pageCodeFieldErrorsVar" value="%{fieldErrors['pageCode']}" />
 		<s:set var="pageCodeHasFieldErrorVar" value="#pageCodeFieldErrorsVar != null && !#pageCodeFieldErrorsVar.isEmpty()" />
-		<label class="control-label" for="pageCode"><s:text name="name.pageCode" /></label>
+		<label for="pageCode"><s:text name="name.pageCode" /></label>
 		<s:textfield name="pageCode" id="pageCode" disabled="%{getStrutsAction() == 2}" cssClass="form-control" />
 		<s:if test="#pageCodeHasFieldErrorVar">
 		  <p class="text-danger padding-small-vertical"><s:iterator value="#pageCodeFieldErrorsVar"><s:property /> </s:iterator></p>
@@ -78,7 +78,7 @@
 	<div class="form-group">
 		<s:set var="titleFieldErrorsVar" value="%{fieldErrors['lang'+code]}" />
 		<s:set var="titleHasFieldErrorVar" value="#titleFieldErrorsVar != null && !#titleFieldErrorsVar.isEmpty()" />
-		<label class="control-label" for="lang<s:property value="code" />"><code class="label label-info"><s:property value="code" /></code>&#32;<s:text name="name.pageTitle" /></label>
+		<label for="lang<s:property value="code" />"><code class="label label-info"><s:property value="code" /></code>&#32;<s:text name="name.pageTitle" /></label>
 		<s:textfield name="%{'lang'+code}" id="%{'lang'+code}" value="%{titles.get(code)}" cssClass="form-control" />
 		<s:if test="#titleHasFieldErrorVar">
 		  <p class="text-danger padding-small-vertical"><s:iterator value="#titleFieldErrorsVar"><s:property /> </s:iterator></p>
@@ -93,7 +93,7 @@
 <s:if test="strutsAction != 3">
 
 	<div class="form-group">
-		<label class="control-label" for="group"><s:text name="label.ownerGroup" /></label>
+		<label for="group"><s:text name="label.ownerGroup" /></label>
 		<s:select name="group" id="group" list="allowedGroups" listKey="name" listValue="descr" disabled="%{groupSelectLock}" cssClass="form-control"></s:select>
 		<s:if test="groupSelectLock"><p class="sr-only"><s:hidden name="group" /></p></s:if>
 	</div>
@@ -101,7 +101,7 @@
 
 <fieldset class="col-xs-12"><legend><s:text name="label.extraGroups" /></legend>
 <div class="form-group">
-	<label class="control-label" for="extraGroups"><s:text name="label.join" />&#32;<s:text name="label.group" /></label>
+	<label for="extraGroups"><s:text name="label.join" />&#32;<s:text name="label.group" /></label>
 	<div class="input-group">
 		<s:select name="extraGroupName" id="extraGroups" list="groups"
 			listKey="name" listValue="descr" cssClass="form-control" />
@@ -131,27 +131,36 @@
 
 </fieldset>
 
-<fieldset><legend><s:text name="label.settings" /></legend>
-<p>
-	<label for="model" class="basic-mint-label"><s:text name="name.pageModel" />:</label>
-	<wpsf:select useTabindexAutoIncrement="true" name="model" id="model" list="pageModels" listKey="code" listValue="descr" cssClass="text"></wpsf:select>
-</p>
+<fieldset class="col-xs-12"><legend><s:text name="label.settings" /></legend>
 
-<ul class="noBullet">
-	<li><wpsf:checkbox useTabindexAutoIncrement="true" name="defaultShowlet" id="defaultShowlet" cssClass="radiocheck" /><label for="defaultShowlet"><s:text name="name.hasDefaultWidgets" /></label></li>
-	<li><wpsf:checkbox useTabindexAutoIncrement="true" name="viewerPage" id="viewerPage" cssClass="radiocheck" /><label for="viewerPage"><s:text name="name.isViewerPage" /></label></li>
-	<li><wpsf:checkbox useTabindexAutoIncrement="true" name="showable" id="showable" cssClass="radiocheck" /><label for="showable"><s:text name="name.isShowablePage" /></label></li>
-	<li><wpsf:checkbox useTabindexAutoIncrement="true" name="useExtraTitles" id="useExtraTitles" cssClass="radiocheck" /> <label for="useExtraTitles"><abbr lang="en" title="<s:text name="name.SEO.full" />"><s:text name="name.SEO.short" /></abbr>:&#32;<s:text name="name.useBetterTitles" /></label></li>
+<div class="form-group">
+	<label for="model"><s:text name="name.pageModel" /></label>
+	<s:select name="model" id="model" list="pageModels" listKey="code" listValue="descr" cssClass="form-control"></s:select>
+</div>
+
+<ul>
+	<li class="checkbox">
+		<label for="defaultShowlet"><s:text name="name.hasDefaultShowlets" /><wpsf:checkbox name="defaultShowlet" id="defaultShowlet" /></label>
+	</li>
+	<li class="checkbox">
+		<label for="viewerPage"><s:text name="name.isViewerPage" /><wpsf:checkbox name="viewerPage" id="viewerPage" /></label>
+	</li>
+	<li class="checkbox">
+		<label for="showable"><s:text name="name.isShowablePage" /><wpsf:checkbox name="showable" id="showable" /></label>
+	</li>
+	<li class="checkbox">
+		<label for="useExtraTitles"><abbr lang="en" title="<s:text name="name.SEO.full" />"><s:text name="name.SEO.short" /></abbr>:&#32;<s:text name="name.useBetterTitles" /><wpsf:checkbox name="useExtraTitles" id="useExtraTitles" /></label>
+	</li>
 </ul>
 
 <div class="form-group">
-	<label class="control-label" for="charset"><s:text name="name.charset" /></label>
+	<label for="charset"><s:text name="name.charset" /></label>
 	<s:select name="charset" id="charset"
 				 headerKey="" headerValue="%{getText('label.default')}" list="allowedCharsets" cssClass="form-control" />
 </div>
 
 <div class="form-group">
-	<label class="control-label" for="mimeType"><s:text name="name.mimeType" /></label>
+	<label for="mimeType"><s:text name="name.mimeType" /></label>
 	<s:select name="mimeType" id="mimeType"
 				 headerKey="" headerValue="%{getText('label.default')}" list="allowedMimeTypes" cssClass="form-control" />
 </div>
