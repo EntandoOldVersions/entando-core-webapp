@@ -14,28 +14,28 @@
 
 	<wp:ifauthorized permission="superuser">
 			<li>
-				<a href="<s:url action="intro" namespace="/do/User" />" classs="btn btn-default btn-block text-left" title="<s:text name="menu.accountAdmin.users.keyworkds" />">
+				<a href="<s:url action="intro" namespace="/do/User" />" title="<s:text name="menu.accountAdmin.users.keyworkds" />">
 					<span class="icon icon-user"></span>&#32;
 					<s:text name="menu.accountAdmin.users" />
 				</a>
 			</li>
 
 			<li>
-				<a href="<s:url action="intro" namespace="/do/Role" />" classs="btn btn-default btn-block text-left">
+				<a href="<s:url action="intro" namespace="/do/Role" />">
 					<span class="icon icon-group"></span>&#32; 
 					<s:text name="menu.accountAdmin.roles" />
 				</a>
 			</li>
 
 			<li <s:if test="%{#activeItem=='languages'}">class="active"</s:if>>
-				<a href="<s:url action="list" namespace="/do/Lang" />" classs="btn btn-default btn-block text-left">
+				<a href="<s:url action="list" namespace="/do/Lang" />">
 					<span class="icon icon-globe"></span>&#32;
 					<s:text name="menu.languageAdmin.languages" />
 				</a>
 			</li>
 
-			<li>
-				<a href="<s:url action="intro" namespace="/do/LocaleString" />" classs="btn btn-default btn-block text-left">
+			<li <s:if test="%{#activeItem=='localeStrings'}">class="active"</s:if>>
+				<a href="<s:url action="list" namespace="/do/LocaleString" />">
 					<span class="icon icon-th-list"></span>&#32;
 					<s:text name="menu.languageAdmin.labels" />
 				</a>
@@ -45,7 +45,7 @@
 
 	<wp:ifauthorized permission="editContents">
 			<li>
-				<a href="<s:url action="openIndexProspect" namespace="/do/jacms/Content/Admin" />" classs="btn btn-default btn-block text-left">
+				<a href="<s:url action="openIndexProspect" namespace="/do/jacms/Content/Admin" />">
 					<span class="icon icon-rotate-left"></span>&#32;
 						<s:text name="menu.reload.contents" />
 				</a>
@@ -53,22 +53,22 @@
 	</wp:ifauthorized>
 	
 	<wp:ifauthorized permission="superuser">
-			<li>
-				<a href="<s:url namespace="/do/BaseAdmin" action="reloadConfig" />" classs="btn btn-default btn-block text-left">
+			<li <s:if test="%{#activeItem=='reloadConfig'}">class="active"</s:if>>
+				<a href="<s:url namespace="/do/BaseAdmin" action="reloadConfig" />">
 					<span class="icon icon-refresh"></span>&#32;
 						<s:text name="menu.reload.config" />
 				</a>
 			</li>
 
 			<li>
-				<a href="<s:url namespace="/do/Admin/Database" action="entry" />" classs="btn btn-default btn-block text-left">
+				<a href="<s:url namespace="/do/Admin/Database" action="entry" />">
 					<span class="icon icon-archive"></span>&#32;
 					<s:text name="menu.settings.database" />
 				</a>
 			</li>
 		<%--
 			<li>
-				<a href="<s:url namespace="/do/Entity" action="viewManagers" />" classs="btn btn-default btn-block text-left">
+				<a href="<s:url namespace="/do/Entity" action="viewManagers" />">
 					<span class="icon icon-cog"></span>&#32;
 					<s:text name="menu.entityAdmin" />
 				</a>
