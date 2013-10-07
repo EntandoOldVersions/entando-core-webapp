@@ -51,11 +51,14 @@
 	</div>
 	<div class="form-group margin-large-bottom">
 		<div class="col-xs-12">
-			<label for="groupName" ><s:text name="label.group" />:</label>
+			<label for="groupName" ><s:text name="label.group" /></label>
 			<div class="input-group">
 				<wpsf:select name="groupName" id="groupName" list="groups" listKey="name" listValue="descr" cssClass="form-control" />
 				<span class="input-group-btn">
-				<wpsf:submit action="addGroup" type="button" value="%{getText('label.add')}" title="%{getText('label.add')}" cssClass="btn btn-info"/>
+				<wpsf:submit action="addGroup" type="button" cssClass="btn btn-info">
+					<span class="icon icon-plus"></span>&#32;
+					<s:text name="label.add" />
+				</wpsf:submit>
 				</span>
 			</div>
 		</div>
@@ -94,7 +97,10 @@
 			<div class="input-group">
 				<wpsf:select name="roleName" id="roleName" list="roles" listKey="name" listValue="description" cssClass="form-control" />
 				<span class="input-group-btn">
-				<wpsf:submit action="addRole" type="button" value="%{getText('label.add')}" title="%{getText('label.add')}" cssClass="btn btn-info" />
+				<wpsf:submit action="addRole" type="button" cssClass="btn btn-info">
+					<span class="icon icon-plus"></span>&#32;
+					<s:text name="label.add" />
+				</wpsf:submit>
 				</span>
 			</div>
 		</div>
@@ -103,6 +109,7 @@
 	<div class="form-group">
 		<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 			<s:submit type="button" cssClass="btn btn-primary btn-block">
+				<span class="icon icon-save"></span>&#32;
 				<s:text name="label.save" />
 			</s:submit>
 		</div>
