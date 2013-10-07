@@ -2,7 +2,7 @@
 
 <h1 class="panel panel-default title-page">
 	<span class="panel-body display-block">
-		<a href="<s:url action="list" namespace="/do/Group"></s:url>" 
+		<a href="<s:url action="list" namespace="/do/Group"></s:url>"
 		title="<s:text name="note.goToSomewhere" />: <s:text name="title.groupManagement" />">
 		<s:text name="title.groupManagement" />
 		</a>
@@ -15,4 +15,4 @@
 
 <s:include value="/WEB-INF/apsadmin/jsp/user/include_configAuthority.jsp" />
 
-</div> 
+</div>
