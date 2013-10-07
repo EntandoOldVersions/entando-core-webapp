@@ -23,7 +23,7 @@ CKEDITOR.plugins.add('entandolink', {
 									width = window.innerWidth;
 							}
 							var height = window.innerHeight - (window.innerHeight / 100 * 2);
-							window.open(editor.config.EntandoLinkActionPath, id, 'width=' + width + ',height=' + height + ',location=no,scrollbars=yes,toolbar=no');
+							window.open(editor.config.EntandoLinkActionPath, id, 'width=' + width + ',height=' + height + ',location=no,scrollbars=yes,toolbar=no,resizable=1');
 						}
 					}
 				});
