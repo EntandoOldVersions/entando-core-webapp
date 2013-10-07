@@ -110,7 +110,7 @@
 					else {
 						var hrefValue = "#!U;" + $('#txtName').val() + "!#";
 						entandoApplyLinkToEditor(hrefValue);
-						//window.close();
+						window.close();
 					}
 				});
 			//link to page
@@ -123,7 +123,7 @@
 					else {
 						var hrefValue = "#!P;" + checkedPage.val() + "!#";
 						entandoApplyLinkToEditor(hrefValue);
-						//window.close();
+						window.close();
 					}
 				});
 			//link to content
@@ -136,7 +136,7 @@
 						else {
 							var hrefValue = "#!C;" + checkedContent.val() + "!#";
 							entandoApplyLinkToEditor(hrefValue);
-							//window.close();
+							window.close();
 						}
 				});
 		});
