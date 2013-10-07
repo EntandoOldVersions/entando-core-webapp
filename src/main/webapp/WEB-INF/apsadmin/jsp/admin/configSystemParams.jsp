@@ -18,7 +18,7 @@
 			</ul>
 		</div>
 	</s:if>
-	
+
 	<fieldset class="col-xs-12">
 		<legend><s:text name="name.pages" /></legend>
 		<%--
@@ -26,7 +26,7 @@
 			<span class="label label-default"><s:text name="sysconfig.legend.systemPages" /></span>
 		</p>
 		--%>
-		
+
 		<div class="form-group">
 			<label for="admin-settings-area-homePageCode"><s:text name="sysconfig.homePageCode" /></label>
 			<s:set name="paramName" value="'homePageCode'" />
@@ -74,9 +74,9 @@
 			</div>
 		</div>
 	</fieldset>
-	
+
 	<fieldset class="col-xs-12 margin-large-top"><legend><s:text name="sysconfig.legend.featuresOnDemand" /></legend>
-		
+
 		<div class="form-group">
 			<s:set name="paramName" value="'groupsOnDemand'" />
 			<div class="checkbox-inline">
@@ -86,7 +86,7 @@
 				</label>
 			</div>
 		</div>
-		
+
 		<div class="form-group">
 			<s:set name="paramName" value="'categoriesOnDemand'" />
 			<div class="checkbox-inline">
@@ -96,7 +96,7 @@
 				</label>
 			</div>
 		</div>
-		
+
 		<div class="form-group">
 			<s:set name="paramName" value="'contentTypesOnDemand'" />
 			<div class="checkbox-inline">
@@ -106,7 +106,7 @@
 				</label>
 			</div>
 		</div>
-		
+
 		<div class="form-group">
 			<s:set name="paramName" value="'contentModelsOnDemand'" />
 			<div class="checkbox-inline">
@@ -116,7 +116,7 @@
 				</label>
 			</div>
 		</div>
-		
+
 		<div class="form-group">
 			<s:set name="paramName" value="'apisOnDemand'" />
 			<div class="checkbox-inline">
@@ -126,7 +126,7 @@
 				</label>
 			</div>
 		</div>
-		
+
 		<div class="form-group">
 			<s:set name="paramName" value="'resourceArchivesOnDemand'" />
 			<div class="checkbox-inline">
@@ -136,9 +136,9 @@
 				</label>
 			</div>
 		</div>
-		
+
 	</fieldset>
-	
+
 	<fieldset class="col-xs-12 margin-large-top"><legend><s:text name="sysconfig.legend.privacyModule" /></legend>
 		<div class="form-group">
 			<s:set name="paramName" value="'extendedPrivacyModuleEnabled'" />
