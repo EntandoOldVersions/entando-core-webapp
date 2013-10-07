@@ -1,7 +1,7 @@
 CKEDITOR.editorConfig = function(config) {
-	config.removePlugins = 'link'; //this plugin is disabled because we have entandolink
+	config.removePlugins = 'link'; //the link plugin is disabled because we have entandolink
 	config.extraPlugins = 'entandolink';
-	config.toolbar = [['Bold', 'Italic', '-', 'NumberedList','BulletedList', '-', 'entandolink', '-', 'Undo','Redo', '-', 'Table', '-', 'Source']];
+	config.toolbar = [['Bold', 'Italic', '-', 'NumberedList','BulletedList', '-', 'entandolink', 'entandounlink', '-', 'Undo','Redo', '-', 'Table', '-', 'Source']];
 	config.height = 250;
 	config.forcePasteAsPlainText = true;
 	config.docType = '<!DOCTYPE html>';
