@@ -19,6 +19,43 @@
 		</div>
 	</s:if>
 
+	<fieldset class="col-xs-12 margin-large-top"><legend><s:text name="sysconfig.legend.featuresOnDemand" /></legend>
+
+		<div class="form-group">
+			<s:set name="paramName" value="'groupsOnDemand'" />
+			<label class="checkbox">
+				<s:include value="/WEB-INF/apsadmin/jsp/admin/simpleCheckboxParamBlock.jsp" />
+				&#32;<s:text name="menu.accountAdmin.groups" />
+			</label>
+			<s:set name="paramName" value="'categoriesOnDemand'" />
+			<label class="checkbox">
+				<s:include value="/WEB-INF/apsadmin/jsp/admin/simpleCheckboxParamBlock.jsp" />
+				&#32;<s:text name="menu.categoryAdmin" />
+			</label>
+			<s:set name="paramName" value="'contentTypesOnDemand'" />
+			<label class="checkbox">
+				<s:include value="/WEB-INF/apsadmin/jsp/admin/simpleCheckboxParamBlock.jsp" />
+				&#32;<s:text name="jacms.menu.contentTypeAdmin" />
+			</label>
+			<s:set name="paramName" value="'contentModelsOnDemand'" />
+			<label class="checkbox">
+				<s:include value="/WEB-INF/apsadmin/jsp/admin/simpleCheckboxParamBlock.jsp" />
+				&#32;<s:text name="jacms.menu.contentModelAdmin" />
+			</label>
+			<s:set name="paramName" value="'apisOnDemand'" />
+			<label class="checkbox">
+				<s:include value="/WEB-INF/apsadmin/jsp/admin/simpleCheckboxParamBlock.jsp" />
+				&#32;<s:text name="menu.apisAdmin" />
+			</label>
+			<s:set name="paramName" value="'resourceArchivesOnDemand'" />
+			<label class="checkbox">
+				<s:include value="/WEB-INF/apsadmin/jsp/admin/simpleCheckboxParamBlock.jsp" />
+				&#32;<s:text name="jacms.menu.resourceAdmin" />
+			</label>
+		</div>
+
+	</fieldset>
+
 	<fieldset class="col-xs-12">
 		<legend><s:text name="name.pages" /></legend>
 		<%--
@@ -73,70 +110,6 @@
 				<s:include value="/WEB-INF/apsadmin/jsp/admin/booleanParamBlock.jsp" />
 			</div>
 		</div>
-	</fieldset>
-
-	<fieldset class="col-xs-12 margin-large-top"><legend><s:text name="sysconfig.legend.featuresOnDemand" /></legend>
-
-		<div class="form-group">
-			<s:set name="paramName" value="'groupsOnDemand'" />
-			<div class="checkbox-inline">
-				<label>
-					<s:include value="/WEB-INF/apsadmin/jsp/admin/simpleCheckboxParamBlock.jsp" />
-					&#32;<s:text name="sysconfig.groupsOnDemand" />
-				</label>
-			</div>
-		</div>
-
-		<div class="form-group">
-			<s:set name="paramName" value="'categoriesOnDemand'" />
-			<div class="checkbox-inline">
-				<label>
-					<s:include value="/WEB-INF/apsadmin/jsp/admin/simpleCheckboxParamBlock.jsp" />
-					&#32;<s:text name="sysconfig.categoriesOnDemand" />
-				</label>
-			</div>
-		</div>
-
-		<div class="form-group">
-			<s:set name="paramName" value="'contentTypesOnDemand'" />
-			<div class="checkbox-inline">
-				<label>
-					<s:include value="/WEB-INF/apsadmin/jsp/admin/simpleCheckboxParamBlock.jsp" />
-					&#32;<s:text name="sysconfig.contentTypesOnDemand" />
-				</label>
-			</div>
-		</div>
-
-		<div class="form-group">
-			<s:set name="paramName" value="'contentModelsOnDemand'" />
-			<div class="checkbox-inline">
-				<label>
-					<s:include value="/WEB-INF/apsadmin/jsp/admin/simpleCheckboxParamBlock.jsp" />
-					&#32;<s:text name="sysconfig.contentModelsOnDemand" />
-				</label>
-			</div>
-		</div>
-
-		<div class="form-group">
-			<s:set name="paramName" value="'apisOnDemand'" />
-			<div class="checkbox-inline">
-				<label>
-					<s:include value="/WEB-INF/apsadmin/jsp/admin/simpleCheckboxParamBlock.jsp" />
-					&#32;<s:text name="sysconfig.apisOnDemand" />
-				</label>
-			</div>
-		</div>
-
-		<div class="form-group">
-			<s:set name="paramName" value="'resourceArchivesOnDemand'" />
-			<div class="checkbox-inline">
-				<label>
-					<s:include value="/WEB-INF/apsadmin/jsp/admin/simpleCheckboxParamBlock.jsp" />
-					&#32;<s:text name="sysconfig.resourceArchivesOnDemand" />
-				</label>
-			</div>
-		</div>
-
 	</fieldset>
 
 	<fieldset class="col-xs-12 margin-large-top"><legend><s:text name="sysconfig.legend.privacyModule" /></legend>
