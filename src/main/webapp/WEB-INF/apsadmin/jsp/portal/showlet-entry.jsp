@@ -32,7 +32,7 @@
 	</s:elseif>
 </s:if>
 </p>
-<s:form action="save" namespace="/do/Portal/WidgetType" class="form-horizontal" >
+<s:form action="save" namespace="/do/Portal/WidgetType" >
 
 <wp:ifauthorized permission="superuser"><s:set var="isSuperuserVar" value="%{true}" /></wp:ifauthorized>
 

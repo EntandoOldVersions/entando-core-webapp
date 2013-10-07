@@ -3,17 +3,20 @@
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
 
-<h1><s:text name="title.userprofileManagement" /></h1>
+<h1 class="panel panel-default title-page">
+	<span class="panel-body display-block">
+		<s:text name="title.userprofileManagement" />
+	</span>
+</h1>
 
 <div id="main">
-	<h2><s:text name="title.chooseUserProfileType" />:&#32;<em><s:property value="username" /></em></h2>
+	<p><s:text name="title.chooseUserProfileType" />:&#32;<code><s:property value="username" /></code></p>
 
-	<s:form action="new">
-		<p><s:text name="" /></p>
-
+	<s:form action="new" cssClass="form-horizontal">
 		<s:if test="hasFieldErrors()">
-			<div class="message message_error">
-				<h3><s:text name="message.title.FieldErrors" /></h3>
+			<div class="alert alert-danger alert-dismissable fade in">
+				<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+				<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h2>
 					<ul>
 						<s:iterator value="fieldErrors">
 							<s:iterator value="value">
@@ -23,12 +26,22 @@
 					</ul>
 			</div>
 		</s:if>
-
-		<p>
+		<p class="sr-only">
 			<wpsf:hidden name="username" />
-			<label for="profileTypeCode"><s:text name="name.profile" />:</label>
-			<wpsf:select useTabindexAutoIncrement="true" list="userProfileTypes" id="profileTypeCode" name="profileTypeCode" listKey="typeCode" listValue="typeDescr" cssClass="text" />
-			&#32;<wpsf:submit useTabindexAutoIncrement="true" value="%{getText('label.next')}" cssClass="button"/>
 		</p>
+		<div class="form-group">
+			<div class="col-xs-12">
+				<label for="profileTypeCode"><s:text name="label.profile" />:</label>
+				<wpsf:select list="userProfileTypes" id="profileTypeCode" name="profileTypeCode" listKey="typeCode" listValue="typeDescr" cssClass="form-control" />
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+				<s:submit type="button" title="%{getText('label.continue')}" cssClass="btn btn-primary btn-block">
+					<s:text name="label.continue" />&#32;
+					<span class="icon icon-long-arrow-right"></span>
+				</s:submit>
+			</div>
+		</div>
 	</s:form>
 </div>
