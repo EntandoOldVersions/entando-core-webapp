@@ -55,7 +55,7 @@ CKEDITOR.plugins.add('entandolink', {
 						editor.document.$.execCommand('unlink', false, null);
 						selection.selectBookmarks(bookmarks);
 					},
-					startDisabled: true
+					startDisabled: false
 				});
 				editor.ui.addButton('entandolink', {
 					label: editor.lang.link.toolbar,

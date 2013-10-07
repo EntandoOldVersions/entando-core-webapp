@@ -73,14 +73,27 @@
 		})
 		jQuery(function(){
 			var entandoApplyLinkToEditor = function (href) {
+				// var editor = window.opener.entandoCKEditor[window.name];
+				// var selection = editor.getSelection();
+				// var range = selection.getRanges( 1 )[ 0 ];
+				// var style = new CKEDITOR.style({"element": "a", "attributes": { "data-cke-saved-href": href, "href": href } });
+				// style.type = CKEDITOR.STYLE_INLINE; // need to override... dunno why.
+				// style.applyToRange( range );
+				// range.select();
 				var editor = window.opener.entandoCKEditor[window.name];
 				var selection = editor.getSelection();
-				var range = selection.getRanges( 1 )[ 0 ];
+				var ranges = selection.getRanges(true);
+				if (ranges.length == 1 && ranges[0].collapsed) {
+					var text = new CKEDITOR.dom.text('creato', editor.document);
+					ranges[0].insertNode(text);
+					ranges[0].selectNodeContents(text);
+					selection.selectRanges(ranges);
+				}
 				var style = new CKEDITOR.style({"element": "a", "attributes": { "data-cke-saved-href": href, "href": href } });
-				style.type = CKEDITOR.STYLE_INLINE; // need to override... dunno why.
-				style.applyToRange( range );
-				range.select();
+				style.type = CKEDITOR.STYLE_INLINE;	// need to override... dunno why.
+				style.apply(editor.document);
 			};
+
 			var insertAlert = function(text, target) {
 				$('<div class="alert alert-danger alert-dismissable fade in">'+
 					  '<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>'+
@@ -97,7 +110,7 @@
 					else {
 						var hrefValue = "#!U;" + $('#txtName').val() + "!#";
 						entandoApplyLinkToEditor(hrefValue);
-						window.close();
+						//window.close();
 					}
 				});
 			//link to page
@@ -110,7 +123,7 @@
 					else {
 						var hrefValue = "#!P;" + checkedPage.val() + "!#";
 						entandoApplyLinkToEditor(hrefValue);
-						window.close();
+						//window.close();
 					}
 				});
 			//link to content
@@ -123,7 +136,7 @@
 						else {
 							var hrefValue = "#!C;" + checkedContent.val() + "!#";
 							entandoApplyLinkToEditor(hrefValue);
-							window.close();
+							//window.close();
 						}
 				});
 		});
