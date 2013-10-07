@@ -11,39 +11,45 @@
 </p>
 
 <ul class="nav nav-pills nav-stacked" id="backoffice-menu-main">
+	
+	<wp:info key="systemParam" paramName="groupsOnDemand" var="groupsOnDemandVar" />
+	<c:if test="${groupsOnDemandVar}" >
 	<wp:ifauthorized permission="superuser">
 		<li><a href="<s:url action="list" namespace="/do/Group" />"><s:text name="menu.accountAdmin.groups" /></a></li>
 	</wp:ifauthorized>
-
+	</c:if>
+	
+	<wp:info key="systemParam" paramName="categoriesOnDemand" var="categoriesOnDemandVar" />
+	<c:if test="${categoriesOnDemandVar}" >
 	<wp:ifauthorized permission="manageCategories">
 		<li><a href="<s:url action="viewTree" namespace="/do/Category" />"><s:text name="menu.categoryAdmin" /></a></li>
 	</wp:ifauthorized>
+	</c:if>
 
 	<wpsa:pluginsSubMenu objectName="pluginsSubMenus" />
-
-		<s:if test="#pluginsSubMenus.size > 0">
-			<li class="panel-group">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<a data-toggle="collapse" href="#submenu-plugins" class="display-block">
-							<s:text name="menu.plugins" />&#32;
-							<span class="icon icon-chevron-down pull-right"></span>
-						</a>
-					</div>
-					<div id="submenu-plugins" class="panel-collapse collapse">
-						<ul class="panel-body nav nav-pills nav-stacked">
-							<s:iterator value="#pluginsSubMenus" id="pluginSubMenu">
-								<wpsa:include value="%{#pluginSubMenu.subMenuFilePath}"></wpsa:include>
-							</s:iterator>
-						</ul>
-					</div>
+	<s:if test="#pluginsSubMenus.size > 0">
+		<li class="panel-group">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<a data-toggle="collapse" href="#submenu-plugins" class="display-block">
+						<s:text name="menu.plugins" />&#32;
+						<span class="icon icon-chevron-down pull-right"></span>
+					</a>
 				</div>
-			</li>
-		</s:if>
-		<s:else>
-			<li><a href="#"><s:text name="menu.plugins" /></a></li>
-		</s:else>
-
+				<div id="submenu-plugins" class="panel-collapse collapse">
+					<ul class="panel-body nav nav-pills nav-stacked">
+						<s:iterator value="#pluginsSubMenus" id="pluginSubMenu">
+							<wpsa:include value="%{#pluginSubMenu.subMenuFilePath}"></wpsa:include>
+						</s:iterator>
+					</ul>
+				</div>
+			</div>
+		</li>
+	</s:if>
+	<s:else>
+		<li><a href="#"><s:text name="menu.plugins" /></a></li>
+	</s:else>
+	
 <wp:ifauthorized permission="managePages" var="isEditPages" />
 <wp:ifauthorized permission="superuser" var="isSuperuser" />
 
@@ -53,6 +59,9 @@
 	<li><a href="<s:url action="viewTree" namespace="/do/Page" />"><s:text name="menu.pageAdmin" /></a></li>
 	<li><a href="<s:url action="viewWidgets" namespace="/do/Portal/WidgetType" />"><s:text name="menu.widgetAdmin" /></a></li>
 </wp:ifauthorized>
+
+<wp:info key="systemParam" paramName="apisOnDemand" var="apisOnDemandVar" />
+<c:if test="${apisOnDemandVar}" >
 <wp:ifauthorized permission="superuser">
 	<li class="panel-group">
 		<div class="panel panel-default">
@@ -72,6 +81,7 @@
 		</div>
 	</li>
 </wp:ifauthorized>
+</c:if>
 
 </c:if>
 
@@ -118,8 +128,14 @@
 						</s:iterator>
 						<li class="divider visible-xs visible-sm hidden-md hidden-lg"><hr class="margin-none" />
 						<wp:ifauthorized permission="superuser">
+						<wp:info key="systemParam" paramName="contentModelsOnDemand" var="contentModelsOnDemandVar" />
+						<c:if test="${contentModelsOnDemandVar}" >
 						<li><a href="<s:url action="list" namespace="/do/jacms/ContentModel" />"><s:text name="jacms.menu.contentModelAdmin" /></a></li>
+						</c:if>
+						<wp:info key="systemParam" paramName="contentTypesOnDemand" var="contentTypesOnDemandVar" />
+						<c:if test="${contentTypesOnDemandVar}" >
 						<li><a href="<s:url action="initViewEntityTypes" namespace="/do/Entity"><s:param name="entityManagerName">jacmsContentManager</s:param></s:url>"><s:text name="jacms.menu.contentTypeAdmin" /></a></li>
+						</c:if>
 						</wp:ifauthorized>
 					</ul>
 				</div>
@@ -127,8 +143,10 @@
 		</li>
 
 	</wp:ifauthorized>
+	
+	<wp:info key="systemParam" paramName="resourceArchivesOnDemand" var="resourceArchivesOnDemandVar" />
+	<c:if test="${resourceArchivesOnDemandVar}" >
 	<wp:ifauthorized permission="manageResources">
-
 		<li class="panel-group">
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -145,8 +163,8 @@
 				</div>
 			</div>
 		</li>
-
 	</wp:ifauthorized>
-
+	</c:if>
+	
 </c:if>
 </ul>

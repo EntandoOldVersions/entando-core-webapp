@@ -18,7 +18,7 @@
 			</ul>
 		</div>
 	</s:if>
-
+	
 	<fieldset class="col-xs-12">
 		<legend><s:text name="name.pages" /></legend>
 		<%--
@@ -26,7 +26,7 @@
 			<span class="label label-default"><s:text name="sysconfig.legend.systemPages" /></span>
 		</p>
 		--%>
-
+		
 		<div class="form-group">
 			<label for="admin-settings-area-homePageCode"><s:text name="sysconfig.homePageCode" /></label>
 			<s:set name="paramName" value="'homePageCode'" />
@@ -74,18 +74,77 @@
 			</div>
 		</div>
 	</fieldset>
-
+	
+	<fieldset class="col-xs-12 margin-large-top"><legend><s:text name="sysconfig.legend.featuresOnDemand" /></legend>
+		
+		<div class="form-group">
+			<s:set name="paramName" value="'groupsOnDemand'" />
+			<div class="checkbox-inline">
+				<label>
+					<s:include value="/WEB-INF/apsadmin/jsp/admin/simpleCheckboxParamBlock.jsp" />
+					&#32;<s:text name="sysconfig.groupsOnDemand" />
+				</label>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<s:set name="paramName" value="'categoriesOnDemand'" />
+			<div class="checkbox-inline">
+				<label>
+					<s:include value="/WEB-INF/apsadmin/jsp/admin/simpleCheckboxParamBlock.jsp" />
+					&#32;<s:text name="sysconfig.categoriesOnDemand" />
+				</label>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<s:set name="paramName" value="'contentTypesOnDemand'" />
+			<div class="checkbox-inline">
+				<label>
+					<s:include value="/WEB-INF/apsadmin/jsp/admin/simpleCheckboxParamBlock.jsp" />
+					&#32;<s:text name="sysconfig.contentTypesOnDemand" />
+				</label>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<s:set name="paramName" value="'contentModelsOnDemand'" />
+			<div class="checkbox-inline">
+				<label>
+					<s:include value="/WEB-INF/apsadmin/jsp/admin/simpleCheckboxParamBlock.jsp" />
+					&#32;<s:text name="sysconfig.contentModelsOnDemand" />
+				</label>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<s:set name="paramName" value="'apisOnDemand'" />
+			<div class="checkbox-inline">
+				<label>
+					<s:include value="/WEB-INF/apsadmin/jsp/admin/simpleCheckboxParamBlock.jsp" />
+					&#32;<s:text name="sysconfig.apisOnDemand" />
+				</label>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<s:set name="paramName" value="'resourceArchivesOnDemand'" />
+			<div class="checkbox-inline">
+				<label>
+					<s:include value="/WEB-INF/apsadmin/jsp/admin/simpleCheckboxParamBlock.jsp" />
+					&#32;<s:text name="sysconfig.resourceArchivesOnDemand" />
+				</label>
+			</div>
+		</div>
+		
+	</fieldset>
+	
 	<fieldset class="col-xs-12 margin-large-top"><legend><s:text name="sysconfig.legend.privacyModule" /></legend>
 		<div class="form-group">
 			<s:set name="paramName" value="'extendedPrivacyModuleEnabled'" />
 			<div class="checkbox-inline">
 				<label>
-					<input type="checkbox" class="radiocheck"
-						id="admin-settings-area-extendedPrivacyModuleEnabled"
-						name="extendedPrivacyModuleEnabled"
-						value="true"
-						<s:if test="systemParams['extendedPrivacyModuleEnabled']"> checked="checked" </s:if>
-						/>
+					<s:include value="/WEB-INF/apsadmin/jsp/admin/simpleCheckboxParamBlock.jsp" />
 					&#32;<s:text name="label.active" />
 				</label>
 			</div>
