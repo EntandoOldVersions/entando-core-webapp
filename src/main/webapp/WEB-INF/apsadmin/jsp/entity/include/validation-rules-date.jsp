@@ -6,7 +6,7 @@
 	<s:set var="sameAttributesList" value="sameAttributes" />
 	
 	<div class="form-group">
-		<label for="rangeStartDate_cal"><s:text name="note.range.from" />:</label>
+		<label for="rangeStartDate_cal"><s:text name="note.range.from" /></label>
 		<s:date name="rangeStartDate" format="dd/MM/yyyy" var="rangeStartDateValue" />
 		<wpsf:textfield name="rangeStartDate" id="rangeStartDate_cal" value="%{#rangeStartDateValue}" cssClass="form-control"/>
 		<span class="help-block"><s:text name="label.date.format" /></span>
@@ -20,7 +20,7 @@
 	</s:if>
 	
 	<div class="form-group">
-		<label for="rangeEndDate_cal"><s:text name="note.range.to" />:</label>
+		<label for="rangeEndDate_cal"><s:text name="note.range.to" /></label>
 		<s:date name="rangeEndDate" format="dd/MM/yyyy" var="rangeEndDateValue" />
 		<wpsf:textfield name="rangeEndDate" id="rangeEndDate_cal" value="%{#rangeEndDateValue}" cssClass="form-control" />
 		<span class="help-block"><s:text name="label.date.format" /></span>
@@ -34,7 +34,7 @@
 	</s:if>
 	
 	<div class="form-group">
-		<label for="equalDate_cal"><s:text name="note.equals.to" />:</label>
+		<label for="equalDate_cal"><s:text name="note.equals.to" /></label>
 		<s:date name="equalDate" format="dd/MM/yyyy" var="equalDateValue" />
 		<wpsf:textfield name="equalDate" id="equalDate_cal" value="%{#equalDateValue}" cssClass="form-control" />
 		<span class="help-block"><s:text name="label.date.format" /></span>

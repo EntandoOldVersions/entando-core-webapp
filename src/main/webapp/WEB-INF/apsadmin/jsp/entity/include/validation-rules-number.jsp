@@ -6,7 +6,7 @@
 	<s:set var="sameAttributesList" value="sameAttributes" />
 	
 	<div class="form-group">
-		<label for="rangeStartNumber"><s:text name="note.range.from" />:</label>
+		<label for="rangeStartNumber"><s:text name="note.range.from" /></label>
 		<wpsf:textfield name="rangeStartNumber" id="rangeStartNumber" cssClass="form-control"/>
 	</div>
 	<s:if test="#sameAttributesList != null && #sameAttributesList.size() > 0">
@@ -18,7 +18,7 @@
 	</s:if>
 		
 	<div class="form-group">
-		<label for="rangeEndNumber"><s:text name="note.range.to" />:</label>
+		<label for="rangeEndNumber"><s:text name="note.range.to" /></label>
 		<wpsf:textfield name="rangeEndNumber" id="rangeEndNumber" cssClass="form-control" />
 	</div>
 	<s:if test="#sameAttributesList != null && #sameAttributesList.size() > 0">
@@ -30,7 +30,7 @@
 	</s:if>
 	
 	<div class="form-group">
-		<label for="equalNumber"><s:text name="note.equals.to" />:</label>	
+		<label for="equalNumber"><s:text name="note.equals.to" /></label>	
 		<wpsf:textfield name="equalNumber" id="equalNumber" cssClass="form-control" />
 	</div>
 	<s:if test="#sameAttributesList != null && #sameAttributesList.size() > 0">

@@ -93,7 +93,7 @@
 
 	<div class="form-group">
 		<div class="col-xs-12">
-			<label for="roleName"><s:text name="name.role" />:</label>
+			<label for="roleName"><s:text name="name.userRole" />:</label>
 			<div class="input-group">
 				<wpsf:select name="roleName" id="roleName" list="roles" listKey="name" listValue="description" cssClass="form-control" />
 				<span class="input-group-btn">
