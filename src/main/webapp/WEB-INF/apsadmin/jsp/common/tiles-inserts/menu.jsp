@@ -11,14 +11,14 @@
 </p>
 
 <ul class="nav nav-pills nav-stacked" id="backoffice-menu-main">
-	
+
 	<wp:info key="systemParam" paramName="groupsOnDemand" var="groupsOnDemandVar" />
 	<c:if test="${groupsOnDemandVar}" >
 	<wp:ifauthorized permission="superuser">
 		<li><a href="<s:url action="list" namespace="/do/Group" />"><s:text name="menu.accountAdmin.groups" /></a></li>
 	</wp:ifauthorized>
 	</c:if>
-	
+
 	<wp:info key="systemParam" paramName="categoriesOnDemand" var="categoriesOnDemandVar" />
 	<c:if test="${categoriesOnDemandVar}" >
 	<wp:ifauthorized permission="manageCategories">
@@ -49,7 +49,7 @@
 	<s:else>
 		<li><a href="#"><s:text name="menu.plugins" /></a></li>
 	</s:else>
-	
+
 <wp:ifauthorized permission="managePages" var="isEditPages" />
 <wp:ifauthorized permission="superuser" var="isSuperuser" />
 
@@ -143,7 +143,7 @@
 		</li>
 
 	</wp:ifauthorized>
-	
+
 	<wp:info key="systemParam" paramName="resourceArchivesOnDemand" var="resourceArchivesOnDemandVar" />
 	<c:if test="${resourceArchivesOnDemandVar}" >
 	<wp:ifauthorized permission="manageResources">
@@ -165,6 +165,6 @@
 		</li>
 	</wp:ifauthorized>
 	</c:if>
-	
+
 </c:if>
 </ul>
