@@ -17,7 +17,7 @@
 <s:set var="contentModelsVar" value="%{getContentModels(#entityType.typeCode)}" />
 
 <div class="form-group">
-	<label for="defaultModelId"><s:text name="name.defaultModelId" />:</label> 
+	<label for="defaultModelId"><s:text name="name.defaultModelId" /></label> 
 	<s:if test="#contentModelsVar.size() > 0">
 	<wpsf:select name="defaultModelId" id="defaultModelId" list="#contentModelsVar" listKey="id" listValue="description" value="%{#entityType.defaultModel}" cssClass="form-control" />
 	</s:if>
@@ -25,7 +25,7 @@
 </div>
 
 <div class="form-group">
-	<label for="listModelId"><s:text name="name.listModelId" />:</label> 
+	<label for="listModelId"><s:text name="name.listModelId" /></label> 
 	<s:if test="#contentModelsVar.size() > 0">
 	<wpsf:select name="listModelId" id="listModelId" list="#contentModelsVar" listKey="id" listValue="description" value="%{#entityType.listModel}" cssClass="form-control" />
 	</s:if>

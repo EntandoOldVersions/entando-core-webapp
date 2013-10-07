@@ -34,7 +34,6 @@
 
 <div class="panel panel-default">
 	<div class="panel-body">
-		<s:text name="note.entityTypes.editType.intro.1" /><br />
 		<s:text name="note.entityTypes.editType.intro.2" />
 	</div>
 </div>
@@ -82,13 +81,15 @@
 	<s:include value="/WEB-INF/apsadmin/jsp/entity/include/attribute-list.jsp" />
 </fieldset>
 
-<div class="form-group">
-  <div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-    <s:submit type="button" cssClass="btn btn-primary btn-block" action="saveEntityType" >
-      <span class="icon icon-save"></span>&#32;
-      <s:text name="label.save" />
-    </s:submit>
-  </div>
+<div class="form-horizontal">
+	<div class="form-group">
+	  <div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+	    <s:submit type="button" cssClass="btn btn-primary btn-block" action="saveEntityType" >
+	      <span class="icon icon-save"></span>&#32;
+	      <s:text name="label.save" />
+	    </s:submit>
+	  </div>
+	</div>
 </div>
 
 </s:form>
