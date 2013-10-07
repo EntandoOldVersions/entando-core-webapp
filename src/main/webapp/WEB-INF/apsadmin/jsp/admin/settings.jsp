@@ -3,6 +3,12 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
+
+<h1 class="panel panel-default title-page">
+	<span class="panel-body display-block">
+		<s:text name="menu.configure" />
+</h1>
+
 <div class="row settings-row">
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 margin-large-bottom">
 			<a href="<s:url namespace="/do/BaseAdmin" action="configSystemParams" />" class="btn btn-default btn-lg btn-block">
