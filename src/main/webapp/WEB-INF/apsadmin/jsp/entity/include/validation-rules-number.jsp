@@ -13,7 +13,7 @@
 	<div class="form-group">
 		<label for="rangeStartNumberAttribute"><s:text name="note.or" />&#32;<s:text name="note.range.from.attribute" />:</label>
 		<wpsf:select name="rangeStartNumberAttribute" id="rangeStartNumberAttribute" 
-			list="#sameAttributesList" headerKey="" headerValue="%{getText('label.none')}" listKey="name" listValue="name" />
+			list="#sameAttributesList" headerKey="" headerValue="%{getText('label.none')}" listKey="name" listValue="name" cssClass="form-control"/>
 	</div>			
 	</s:if>
 		
@@ -25,7 +25,7 @@
 	<div class="form-group">
 		<label for="rangeEndNumberAttribute"><s:text name="note.or" />&#32;<s:text name="note.range.to.attribute" />:</label>	
 		<wpsf:select name="rangeEndNumberAttribute" id="rangeEndNumberAttribute" 
-			list="#sameAttributesList" headerKey="" headerValue="%{getText('label.none')}" listKey="name" listValue="name" />
+			list="#sameAttributesList" headerKey="" headerValue="%{getText('label.none')}" listKey="name" listValue="name" cssClass="form-control"/>
 	</div>
 	</s:if>
 	
@@ -37,7 +37,7 @@
 	<div class="form-group">
 		<label for="equalNumberAttribute"><s:text name="note.or" />&#32;<s:text name="note.equals.to.attribute" />:</label>	
 		<wpsf:select name="equalNumberAttribute" id="equalNumberAttribute" 
-			list="#sameAttributesList" headerKey="" headerValue="%{getText('label.none')}" listKey="name" listValue="name" />
+			list="#sameAttributesList" headerKey="" headerValue="%{getText('label.none')}" listKey="name" listValue="name" cssClass="form-control"/>
 	</div>
 	</s:if>
 	
