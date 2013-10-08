@@ -13,23 +13,21 @@
 <s:set var="subFolderNameVar" value="subFolderName" />
 <s:set var="dumpReportVar" value="getDumpReport(#subFolderNameVar)" />
 <s:form action="deleteBackup">
-	<div class="panel panel-default">
-		<span class="panel-body display-block">
-			<s:hidden name="subFolderName" />
-			<a
-				href="<s:url namespace="/do/Admin/Database" action="entry" />"
-				title="<s:text name="title.databaseManagement" />">
-				<span class="icon icon-reply"></span></a>
-				&#32;
-				<s:text name="database.management.label.remove.areyousure" />&#32;
-				<code><s:date name="#dumpReportVar.date" format="dd/MM/yyyy HH:mm:ss" /></code>?
-		</span>
-		<p class="panel-body display-block text-center">
-				<s:submit
-					type="button"
-					cssClass="btn btn-default">
-					<s:text name="label.confirm" />
-				</s:submit>
+	<p class="sr-only">
+		<s:hidden name="subFolderName" />
+	</p>
+	<div class="alert alert-warning">
+		<p>
+			<s:text name="database.management.label.remove.areyousure" />&#32;
+			<code><s:date name="#dumpReportVar.date" format="dd/MM/yyyy HH:mm:ss" /></code>?
 		</p>
+		<div class="text-center margin-large-top">
+			<s:submit type="button" cssClass="btn btn-warning btn-lg">
+				<span class="icon icon-remove-sign"></span>&#32;
+				<s:text name="label.confirm" />
+			</s:submit>
+			<a class="btn btn-link"	href="<s:url namespace="/do/Admin/Database" action="entry" />">
+			<s:text name="note.goToSomewhere" />&#32;<s:text name="title.databaseManagement" /></a>
+		</div>
 	</div>
 </s:form>
