@@ -18,4 +18,3 @@
 		</s:else>
 	</span>
 </h1>
-<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/include/snippet-content.jsp" />

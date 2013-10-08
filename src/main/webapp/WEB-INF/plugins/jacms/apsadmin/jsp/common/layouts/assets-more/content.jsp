@@ -60,6 +60,13 @@ $(function() {
 			$('[data-swapon-role="text"]', '#contentDescription-readonly' ).text( newValue );
 		}
 	})
+
+	$('#contentDescription-input').on('swapon', function(ev, action) {
+		if (action == 'show') {
+			$('#contentDescription').val($.trim($( '#contentDescription-readonly' ).text()));
+		}
+	})
+
 	/* contentDescription routine //end */
 
 <s:set var="categoryTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_category" /></s:set>
