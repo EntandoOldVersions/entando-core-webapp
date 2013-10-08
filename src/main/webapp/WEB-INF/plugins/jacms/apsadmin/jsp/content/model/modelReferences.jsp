@@ -25,7 +25,7 @@
 <div class="panel panel-default">
 <div class="panel-heading"><h3 class="margin-none"><s:text name="title.contentModels.references" /></h3></div>
 <div class="panel-body">
-<table class="table table-bordered" summary="<s:text name="note.contentModels.reference.summary" />">
+<table class="table table-bordered">
 	<tr>
 		<th class="text-center padding-large-left padding-large-right col-xs-4 col-sm-3 col-md-2 col-lg-2"><abbr title="<s:text name="label.actions" />">&ndash;</abbr></th>
 		<th>Page</th>

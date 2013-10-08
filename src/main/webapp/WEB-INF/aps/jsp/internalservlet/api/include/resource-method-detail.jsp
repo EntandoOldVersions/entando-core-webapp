@@ -66,7 +66,7 @@
 	<s:if test="#methodVar != null">
 		<s:set var="methodParametersVar" value="#methodVar.parameters" />
 		<s:if test="null != #methodParametersVar && #methodParametersVar.size() > 0">
-			<table class="table table-striped table-bordered table-condensed" summary="<wp:i18n key="ENTANDO_API_METHOD_PARAMS_SUMM" />">
+			<table class="table table-striped table-bordered table-condensed">
 				<caption><wp:i18n key="ENTANDO_API_METHOD_REQUEST_PARAMS" /></caption>
 				<tr>
 					<th><wp:i18n key="ENTANDO_API_PARAM_NAME" /></th>

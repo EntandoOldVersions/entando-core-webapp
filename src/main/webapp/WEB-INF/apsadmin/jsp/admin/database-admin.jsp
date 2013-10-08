@@ -56,7 +56,7 @@
 		</s:if>
 		<s:else>
 			<div class="table-responsive">
-				<table class="table table-bordered table-hover table-condensed table-striped" summary="<s:text name="database.backup.list.summary" />">
+				<table class="table table-bordered table-hover table-condensed table-striped">
 					<caption><span><s:text name="database.management.label.backup.list" /></span></caption>
 					<tr>
 						<th class="text-center"><abbr title="<s:text name="label.remove" />">&ndash;</abbr></th>

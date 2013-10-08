@@ -35,7 +35,7 @@
 		<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 	</div>
 	
-	<table class="generic" id="pageListTable" summary="<s:text name="note.content.referencedPages.summary" />">
+	<table class="generic" id="pageListTable">
 	<caption><span><s:text name="name.pages" /></span></caption>
 		<tr>
 			<th><s:text name="title.pageActions" /></th>

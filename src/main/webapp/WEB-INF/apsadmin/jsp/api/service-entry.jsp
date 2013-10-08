@@ -98,7 +98,7 @@
 		<fieldset class="col-xs-12">
 			<legend><s:text name="label.parameters" /></legend>
 			<div class="table-responsive">
-			<table class="table table-bordered table-hover table-condensed table-striped" summary="<s:text name="note.api.apiServiceEntryParameters.summary" />">
+			<table class="table table-bordered table-hover table-condensed table-striped">
 				<caption><s:text name="label.parameters" /></caption>
 				<tr>
 					<th><s:text name="label.name" /></th>
