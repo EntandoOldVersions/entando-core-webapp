@@ -66,7 +66,7 @@
 							type="button"
 							title="Set Group"
 							cssClass="btn btn-warning">
-								Set Group
+								<s:text name="label.setGroup" />
 						</s:submit>
 					</span>
 				</div>
