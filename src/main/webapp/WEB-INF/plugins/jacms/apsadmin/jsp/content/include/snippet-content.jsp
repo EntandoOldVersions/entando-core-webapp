@@ -20,7 +20,7 @@
 			</a>
 		</s:if>
 			<span id="contentDescription-text">
-				<a data-container="contentDescription-text" href="#contentDescription-input" data-swapon="contentDescription-input" class="text-warning" id="contentDescription-readonly">
+				<a data-container="contentDescription-text" href="#contentDescription-input" data-swapon="contentDescription-input" data-swapon-fade="true" class="text-warning" id="contentDescription-readonly">
 					<span class="icon icon-edit"></span>&#32;
 					<span data-swapon-role="text">
 						<s:if test="#contentDescriptionVar!=null"><s:property value="#contentDescriptionVar" /></s:if>
@@ -33,7 +33,7 @@
 			<span id="contentDescription-input" style="display: none;" class="input-group has-warning margin-small-bottom">
 				<input class="form-control" type="text" name="descr" value="<s:property value="#descr" />" id="contentDescription" />
 				<span class="input-group-btn">
-					<button class="btn btn-warning" id="contentDescription-confirm" data-swapon="contentDescription-text" data-container="contentDescription-input" value="Set Description" ><s:text name="label.setDescription" /></button>
+					<button class="btn btn-warning" id="contentDescription-confirm" data-swapon="contentDescription-text" data-swapon-fade="true" data-container="contentDescription-input" value="Set Description" ><s:text name="label.setDescription" /></button>
 				</span>
 			</span>
 				(<s:property value="content.typeDescr" />)&#32;&middot;&#32;
