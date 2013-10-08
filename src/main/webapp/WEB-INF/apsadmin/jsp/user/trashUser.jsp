@@ -11,25 +11,21 @@
 	</span>
 </h1>
 <s:form action="delete" namespace="/do/User">
-	<p class="sr-only"><wpsf:hidden name="username"/></p>
-	<div class="panel panel-default">
-		<span class="panel-body display-block">
-			<a
-				href="<s:url action="list" namespace="/do/User" />"
-				title="<s:text name="note.userConfirm.trash.goBack" />&#32;<s:text name="menu.accountAdmin.users" />">
-				<span class="icon icon-reply"></span>
-			</a>
-			&#32;
+	<p class="sr-only">
+		<wpsf:hidden name="username"/>
+	</p>
+	<div class="alert alert-warning">
+		<p>
 			<s:text name="note.userConfirm.trash" />&#32;
-			<code><s:property value="%{username}" /></code>&#32;
-			?
-		</span>
-		<p class="panel-body display-block text-center">
-				<s:submit
-					type="button"
-					cssClass="btn btn-default">
-					<s:text name="label.confirm" />
-				</s:submit>
+			<code><s:property value="%{username}" /></code>?
 		</p>
+		<div class="text-center margin-large-top">
+			<s:submit type="button" cssClass="btn btn-warning btn-lg">
+			    <span class="icon icon-remove-sign"></span>&#32;
+				<s:text name="label.confirm" />
+			</s:submit>
+			<a class="btn btn-link" href="<s:url action="list" namespace="/do/User" />">
+			<s:text name="note.goToSomewhere" />:&#32;<s:text name="menu.accountAdmin.users" /></a>
+		</div>
 	</div>
 </s:form>
