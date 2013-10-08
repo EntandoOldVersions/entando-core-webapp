@@ -22,16 +22,16 @@
 			<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h2>
 			<p class="margin-base-vertical"><s:text name="message.content.error" /></p>
 			<ul class="unstyled">
-						<s:iterator value="fieldErrors">
-							<s:iterator value="value">
-								<li><s:property escape="false" /></li>
-								</s:iterator>
-							</s:iterator>
-					</ul>
+				<s:iterator value="fieldErrors">
+					<s:iterator value="value">
+						<li><s:property escape="false" /></li>
+						</s:iterator>
+					</s:iterator>
+			</ul>
 		</div>
 	</s:if>
 	<p class="sr-only"><s:text name="note.editContent" /></p>
-	<s:set var="removeIcon" id="removeIcon"><wp:resourceURL/>administration/common/img/icons/delete.png</s:set>
+	<s:set var="removeIcon"><wp:resourceURL/>administration/common/img/icons/delete.png</s:set>
 	<s:form cssClass="tab-container action-form">
 		<s:set var="myNameIsJack" value="true" />
 		<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/include/snippet-content.jsp" />
@@ -150,24 +150,45 @@
 									</div><%-- form group --%>
 								</div><%-- contentedit div --%>
 							</s:iterator><%-- attributes iterator --%>
-							<s:set var="showingPageSelectItems" value="showingPageSelectItems" />
-							<s:set var="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/content-preview.png</s:set>
-							<wpsa:actionParam action="preview" var="previewActionName" >
-								<wpsa:actionSubParam name="%{'jacmsPreviewActionLangCode_' + #lang.code}" value="%{#lang.code}" />
-							</wpsa:actionParam>
-							<div class="margin-base-vertical">
-								<s:if test="!#showingPageSelectItems.isEmpty()">
-									<s:set var="previewActionPageCodeLabelId">jacmsPreviewActionPageCode_<s:property value="#lang.code" /></s:set>
-									<p><label for="<s:property value="#previewActionPageCodeLabelId" />"><s:text name="name.preview.page" /></label>
-									<s:select name="%{'jacmsPreviewActionPageCode_' + #lang.code}" id="%{#previewActionPageCodeLabelId}" list="#showingPageSelectItems" listKey="key" listValue="value" />
-									<%-- <s:select name="jacmsPreviewActionPageCode" id="%{#previewActionPageCodeLabelId}" list="#showingPageSelectItems" listKey="key" listValue="value" /></p>  --%>
-									<wpsf:submit cssClass="button" action="%{#previewActionName}" value="%{getText('label.preview')}" title="%{getText('note.button.previewContent')}" /></p>
-								</s:if>
-								<s:else>
-									<p><s:text name="label.preview.noPreviewPages" /></p>
-									<p><wpsf:submit cssClass="button" disabled="true" action="%{#previewActionName}" value="%{getText('label.preview')}" title="%{getText('note.button.previewContent')}" /></p>
-								</s:else>
-							</div>
+							<%-- preview --%>
+								<s:set var="showingPageSelectItems" value="showingPageSelectItems" />
+								<s:set var="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/content-preview.png</s:set>
+								<wpsa:actionParam action="preview" var="previewActionName" >
+									<wpsa:actionSubParam name="%{'jacmsPreviewActionLangCode_' + #lang.code}" value="%{#lang.code}" />
+								</wpsa:actionParam>
+								<hr />
+								<div class="form-group  margin-none margin-large-top">
+									<s:if test="!#showingPageSelectItems.isEmpty()">
+										<div class="input-group input-group-lg">
+											<s:set var="previewActionPageCodeLabelId">jacmsPreviewActionPageCode_<s:property value="#lang.code" /></s:set>
+											<label class="sr-only" for="<s:property value="#previewActionPageCodeLabelId" />">
+												<s:text name="name.preview.page" />
+											</label>
+											<s:select
+												name="%{'jacmsPreviewActionPageCode_' + #lang.code}"
+												id="%{#previewActionPageCodeLabelId}"
+												list="#showingPageSelectItems"
+												listKey="key"
+												listValue="%{getText('name.preview.page') + ': ' +value}"
+												cssClass="form-control" />
+											<span class="input-group-btn">
+												<%-- <s:select name="jacmsPreviewActionPageCode" id="%{#previewActionPageCodeLabelId}" list="#showingPageSelectItems" listKey="key" listValue="value" /></p>  --%>
+												<s:submit
+													type="button"
+													cssClass="btn btn-info"
+													action="%{#previewActionName}"
+													title="%{getText('note.button.previewContent')}"
+													>
+													<span class="icon icon-eye-open"></span>&#32;<s:text name="label.preview" />
+												</s:submit>
+											</span>
+										</div>
+									</s:if>
+									<s:else>
+										<p class="static-control text-center text-info"><s:text name="label.preview.noPreviewPages" /></p>
+									</s:else>
+								</div>
+
 						</div><%-- tab --%>
 					</s:iterator><%-- lang iterator --%>
 				</div><%-- tabs container --%>
