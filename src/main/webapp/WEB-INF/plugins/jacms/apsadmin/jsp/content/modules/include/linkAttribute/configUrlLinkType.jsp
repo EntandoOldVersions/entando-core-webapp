@@ -8,7 +8,7 @@
 <s:include value="linkAttributeConfigIntro.jsp" />
 <s:include value="linkAttributeConfigReminder.jsp" />
 
-<s:form cssClass="action-form">
+<s:form cssClass="action-form" cssClass="form-horizontal">
 	<p class="sr-only"><wpsf:hidden name="contentOnSessionMarker" /></p>
 	<s:if test="hasFieldErrors()">
 		<div class="alert alert-danger alert-dismissable fade in">
@@ -26,11 +26,11 @@
 		</div>
 	</s:if>
 	<p class="sr-only"><s:text name="title.insertURL" /></legend></p>
-	<div class="col-xs-12">
-		<s:set var="currentFieldErrorsVar" value="%{fieldErrors['url']}" />
-		<s:set var="currentFieldHasFieldErrorVar" value="#currentFieldErrorsVar != null && !#currentFieldErrorsVar.isEmpty()" />
-		<s:set var="controlGroupErrorClassVar" value="%{#currentFieldHasFieldErrorVar ? ' has-error'  : ''}" />
-		<div class="form-group<s:property value="#controlGroupErrorClassVar" />">
+	<s:set var="currentFieldErrorsVar" value="%{fieldErrors['url']}" />
+	<s:set var="currentFieldHasFieldErrorVar" value="#currentFieldErrorsVar != null && !#currentFieldErrorsVar.isEmpty()" />
+	<s:set var="controlGroupErrorClassVar" value="%{#currentFieldHasFieldErrorVar ? ' has-error'  : ''}" />
+	<div class="form-group<s:property value="#controlGroupErrorClassVar" />">
+		<div class="col-xs-12">
 			<label class="display-block" for="url"><s:text name="label.url" /></label>
 			<wpsf:textfield name="url" id="url" cssClass="form-control" />
 			<span class="help help-block"><s:text name="note.typeValidURL" />
@@ -44,7 +44,7 @@
 	<div class="form-group">
 		<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 			<s:submit type="button" action="joinUrlLink" cssClass="btn btn-primary btn-block">
-				<span class="icon  icon-save"></span>&#32;
+				<span class="icon icon-save"></span>&#32;
 				<s:text name="label.confirm" />
 			</s:submit>
 		</div>
