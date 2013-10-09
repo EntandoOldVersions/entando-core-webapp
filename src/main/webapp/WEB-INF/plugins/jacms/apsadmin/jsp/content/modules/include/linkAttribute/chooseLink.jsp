@@ -5,7 +5,7 @@
 	<s:text name="title.configureLinkAttribute" />
 </s:set>
 <s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/linkAttribute/linkAttributeConfigIntro.jsp" />
-<s:form action="configLink" cssClass="action-form">
+<s:form action="configLink" cssClass="action-form form-horizontal">
 	<p class="sr-only"><wpsf:hidden name="contentOnSessionMarker" /></p>
 	<s:if test="hasFieldErrors()">
 		<div class="alert alert-danger alert-dismissable fade in">
@@ -21,47 +21,47 @@
 		</div>
 	</s:if>
 	<s:set var="linkDestinations" value="linkDestinations" />
-	<div class="col-xs-12">
 		<div class="form-group">
-			<label class="display-block"><s:text name="title.chooseLinkType" /></label>
-			<div class="btn-group" data-toggle="buttons">
-				<s:iterator value="#linkDestinations" var="typeId">
-					<s:if test="#typeId != 4">
-						<s:if test="#typeId == 1">
-							<s:set var="statusIconVar">icon icon-globe</s:set>
-							<s:set name="linkDestination" value="%{getText('note.URLLinkTo')}" />
+			<div class="col-xs-12">
+				<label class="display-block"><s:text name="title.chooseLinkType" /></label>
+				<div class="btn-group" data-toggle="buttons">
+					<s:iterator value="#linkDestinations" var="typeId">
+						<s:if test="#typeId != 4">
+							<s:if test="#typeId == 1">
+								<s:set var="statusIconVar">icon icon-globe</s:set>
+								<s:set name="linkDestination" value="%{getText('note.URLLinkTo')}" />
+							</s:if>
+							<s:elseif test="#typeId == 2">
+								<s:set var="statusIconVar">icon icon-folder-close</s:set>
+								<s:set name="linkDestination" value="%{getText('note.pageLinkTo')}" />
+							</s:elseif>
+							<s:elseif test="#typeId == 3 || #typeId == 4">
+								<s:set var="statusIconVar">icon icon-file-text-alt</s:set>
+								<s:set name="linkDestination" value="%{getText('note.contentLinkTo')}" />
+							</s:elseif>
+							<label class="btn btn-default <s:if test="#typeId == symbolicLink.destType || (symbolicLink.destType == 4 && #typeId == 3)"> active </s:if>" for="linkType_<s:property value="#typeId"/>">
+								<input
+									type="radio"
+									<s:if test="#typeId == symbolicLink.destType || (symbolicLink.destType == 4 && #typeId == 3)"> checked="checked" </s:if>
+									name="linkType"
+									id="linkType_<s:property value="#typeId"/>"
+									value="<s:property value="#typeId"/>" />
+								 <span class="<s:property value="#statusIconVar" />"></span>&#32;<s:property value="linkDestination" />
+							</label>
 						</s:if>
-						<s:elseif test="#typeId == 2">
-							<s:set var="statusIconVar">icon icon-folder-close</s:set>
-							<s:set name="linkDestination" value="%{getText('note.pageLinkTo')}" />
-						</s:elseif>
-						<s:elseif test="#typeId == 3 || #typeId == 4">
-							<s:set var="statusIconVar">icon icon-file-text-alt</s:set>
-							<s:set name="linkDestination" value="%{getText('note.contentLinkTo')}" />
-						</s:elseif>
-						<label class="btn btn-default <s:if test="#typeId == symbolicLink.destType || (symbolicLink.destType == 4 && #typeId == 3)"> active </s:if>" for="linkType_<s:property value="#typeId"/>">
-							<input
-								type="radio"
-								<s:if test="#typeId == symbolicLink.destType || (symbolicLink.destType == 4 && #typeId == 3)"> checked="checked" </s:if>
-								name="linkType"
-								id="linkType_<s:property value="#typeId"/>"
-								value="<s:property value="#typeId"/>" />
-							 <span class="<s:property value="#statusIconVar" />"></span>&#32;<s:property value="linkDestination" />
-						</label>
-					</s:if>
-				</s:iterator>
-			</div>
-			<div class="help help-block">
-				<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/linkAttribute/linkAttributeConfigReminder.jsp"/>
+					</s:iterator>
+				</div>
+				<div class="help help-block">
+					<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/modules/include/linkAttribute/linkAttributeConfigReminder.jsp"/>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="form-group">
-		<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-			<s:submit type="button" title="%{getText('label.continue')}" cssClass="btn btn-primary btn-block">
-				<s:text name="label.continue" />&#32;
-				<span class="icon icon-long-arrow-right"></span>
-			</s:submit>
+		<div class="form-group">
+			<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+				<s:submit type="button" title="%{getText('label.continue')}" cssClass="btn btn-primary btn-block">
+					<s:text name="label.continue" />&#32;
+					<span class="icon icon-long-arrow-right"></span>
+				</s:submit>
+			</div>
 		</div>
-	</div>
 </s:form>
