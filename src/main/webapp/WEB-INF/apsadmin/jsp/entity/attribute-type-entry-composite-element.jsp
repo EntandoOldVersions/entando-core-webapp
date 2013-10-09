@@ -14,10 +14,19 @@
 
 <s:set name="listAttribute" value="listAttribute" />
 <s:set name="compositeAttribute" value="compositeAttributeOnEdit" />
-<p><s:text name="note.workingOnAttribute" />:&#32;
-<s:if test="null != #listAttribute"><code><s:property value="#compositeAttribute.type" /></code>,&#32;<s:text name="note.workingOnAttributeIn" />&#32;<code><s:property value="#listAttribute.name" /> (<s:property value="#listAttribute.type" />)</code></s:if>
-<s:else><code><s:property value="#compositeAttribute.name" /></code></s:else>
-</p>
+
+<div class="alert alert-info">
+	<s:text name="note.workingOnAttribute" />:&#32;
+	<s:if test="null != #listAttribute">
+		<code><s:property value="#compositeAttribute.type" /></code>,&#32;
+		<s:text name="note.workingOnAttributeIn" />&#32;
+		<code><s:property value="#listAttribute.name" /></code>&#32;
+		(<code><s:property value="#listAttribute.type" /></code>)
+	</s:if>
+	<s:else>
+		<code><s:property value="#compositeAttribute.name" /></code>
+	</s:else>
+</div>
 
 <s:set name="attribute" value="getAttributePrototype(attributeTypeCode)" />
 

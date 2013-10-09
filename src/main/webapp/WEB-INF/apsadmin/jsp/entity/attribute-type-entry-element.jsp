@@ -23,8 +23,13 @@
 
 <s:set name="listAttribute" value="listAttribute" />
 <s:set name="attributeElement" value="attributeElement" />
+
 <div class="alert alert-info">
-<s:text name="note.workingOnAttribute" />:&#32;<s:property value="#attributeElement.type" />,&#32;<s:text name="note.workingOnAttributeIn" />&#32;<code><s:property value="#listAttribute.name" /></code> (<s:property value="#listAttribute.type" />)
+	<s:text name="note.workingOnAttribute" />:&#32;
+	<s:property value="#attributeElement.type" />,&#32;
+	<s:text name="note.workingOnAttributeIn" />&#32;
+	<code><s:property value="#listAttribute.name" /></code>&#32;
+		(<s:property value="#listAttribute.type" />)
 </div>
 
 <s:form action="saveListElement">

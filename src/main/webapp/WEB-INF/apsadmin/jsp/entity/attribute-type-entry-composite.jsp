@@ -6,15 +6,7 @@
 		<a href="<s:url action="initViewEntityTypes" namespace="/do/Entity"><s:param name="entityManagerName"><s:property value="entityManagerName" /></s:param></s:url>" title="<s:text name="note.goToSomewhere" />: <s:text name="title.entityAdmin.manager" />&#32;<s:property value="entityManagerName" />">
 		<s:text name="%{'title.' + entityManagerName + '.management'}" /></a>
 		&#32;/&#32;
-		<s:if test="strutsAction == 2">
-		<a href="<s:url action="initEditEntityType" namespace="/do/Entity"><s:param name="entityManagerName"><s:property value="entityManagerName" /></s:param><s:param name="entityTypeCode"><s:property value="entityType.typeCode" /></s:param></s:url>" title="<s:text name="note.goToSomewhere" />: <s:text name="title.entityTypes.editType.edit" />">
-		</s:if>
-
-		<s:text name="title.entityTypes.editType.edit" />
-		
-		<s:if test="strutsAction == 2">
-		</a>
-		</s:if>
+		<a href="<s:url action="initEditEntityType" namespace="/do/Entity"><s:param name="entityManagerName"><s:property value="entityManagerName" /></s:param><s:param name="entityTypeCode"><s:property value="entityType.typeCode" /></s:param></s:url>" title="<s:text name="note.goToSomewhere" />: <s:text name="title.entityTypes.editType.edit" />"><s:text name="title.entityTypes.editType.edit" />: <code><s:property value="entityType.typeCode" /> - <s:property value="entityType.typeDescr" /></code></a>
 	</span>
 </h1>
 <div id="main">
@@ -37,16 +29,21 @@
 	</div>
 </s:if>
 
-<s:set name="listAttribute" value="listAttribute" />
-<s:set name="compositeAttribute" value="compositeAttributeOnEdit" />
+<s:set var="listAttribute" value="listAttribute" />
+<s:set var="compositeAttribute" value="compositeAttributeOnEdit" />
 
-<p>
-<s:text name="note.workingOnAttribute" />:&#32;
-<code>
-<s:if test="null != #listAttribute"><s:property value="#compositeAttribute.type" />,&#32;<s:text name="note.workingOnAttributeIn" />&#32;<s:property value="#listAttribute.name" /> (<s:property value="#listAttribute.type" />)</s:if>
-<s:else><s:property value="#compositeAttribute.name" /></s:else>
-</code>&#32;of <code><s:property value="entityType.typeDescr" /></code>
-</p>
+<div class="alert alert-info">
+	<s:text name="note.workingOnAttribute" />:&#32;
+	<s:if test="null != #listAttribute">
+		<code><s:property value="#compositeAttribute.type" /></code>,&#32;
+		<s:text name="note.workingOnAttributeIn" />&#32;
+		<code><s:property value="#listAttribute.name" /></code>&#32;
+		(<code><s:property value="#listAttribute.type" /></code>)
+	</s:if>
+	<s:else>
+		<code><s:property value="#compositeAttribute.name" /></code>
+	</s:else>
+</div>
 
 <fieldset class="margin-more-top"><legend><s:text name="label.info" /></legend>
 	<div class="form-group">
@@ -84,7 +81,7 @@
 	<s:iterator value="#compositeAttribute.attributes" var="attribute" status="elementStatus">
 		<tr>
 			<td>
-				<s:set name="elementIndex" value="#elementStatus.index" />
+				<s:set var="elementIndex" value="#elementStatus.index" />
 				<s:include value="/WEB-INF/apsadmin/jsp/entity/include/attribute-operations-misc-composite.jsp" />
 			</td>
 			<td><code><s:property value="#attribute.name" /></code></td>
