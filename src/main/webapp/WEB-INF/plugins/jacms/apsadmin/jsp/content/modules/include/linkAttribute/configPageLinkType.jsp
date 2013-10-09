@@ -6,7 +6,7 @@
 	<s:text name="title.configureLinkAttribute" />
 </s:set>
 <s:include value="linkAttributeConfigIntro.jsp"/>
-<s:form>
+<s:form cssClass="form-horizontal">
 	<s:if test="hasFieldErrors()">
 		<div class="alert alert-danger alert-dismissable fade in">
 			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
@@ -33,9 +33,9 @@
 		</s:else>
 		<s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar"><wpsf:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"/></s:iterator>
 	</p>
-	<div class="col-xs-12">
 		<div class="form-group">
-			<%-- <fieldset><legend><s:text name="title.pageTree" /></legend> --%>
+			<div class="col-xs-12">
+				<%-- <fieldset><legend><s:text name="title.pageTree" /></legend> --%>
 				<label class="display-block">
 					<s:text name="note.choosePageToLink" />
 					<s:if test="contentId != null">&#32;<s:text name="note.choosePageToLink.forTheContent" />:
@@ -57,18 +57,17 @@
 					<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder-request-submits.jsp" />
 					</s:elseif>
 				</ul>
-			<%-- </fieldset> --%>
+				<%-- </fieldset> --%>
+			</div>
+			<div class="help help-block">
+				<s:include value="linkAttributeConfigReminder.jsp" />
+			</div>
 		</div>
-		<div class="help help-block">
-			<s:include value="linkAttributeConfigReminder.jsp" />
+		<div class="form-group">
+			<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+				<s:submit type="button" action="joinPageLink" cssClass="btn btn-primary btn-block">
+					<s:text name="label.confirm" />
+				</s:submit>
+			</div>
 		</div>
-	</div>
-	<div class="form-group">
-		<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-			<s:submit type="button" action="joinPageLink" cssClass="btn btn-primary btn-block">
-				<span class="icon icon-save"></span>&#32;
-				<s:text name="label.confirm" />
-			</s:submit>
-		</div>
-	</div>
 </s:form>
