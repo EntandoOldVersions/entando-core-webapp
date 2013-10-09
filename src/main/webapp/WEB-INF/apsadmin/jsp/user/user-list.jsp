@@ -45,61 +45,9 @@
 				</button>
 			</div>
 		</div>
-		
-		
-		<s:set var="attributeRolesVar" value="attributeRoles" ></s:set>
-		<s:if test="null != #attributeRolesVar && #attributeRolesVar.size() > 0">
-			<s:iterator var="attributeRoleVar" value="#attributeRolesVar">
-				<s:set var="currentFieldIdVar">userFinding_<s:property value="#attributeRoleVar.name" /></s:set> 
-				<s:if test="%{#attributeRoleVar.formFieldType.toString().equals('TEXT')}">
-					<p>
-						<label for="<s:property value="%{#currentFieldIdVar}" />"><s:property value="#attributeRoleVar.name" /></label><br />
-						<s:set name="textInputFieldName"><s:property value="#attributeRoleVar.name" />_textFieldName</s:set>
-						<wpsf:textfield useTabindexAutoIncrement="true" id="%{#currentFieldIdVar}" cssClass="text" name="%{#textInputFieldName}" value="%{getSearchFormFieldValue(#textInputFieldName)}" /><br />
-					</p>
-				</s:if>
-				<s:elseif test="%{#attributeRoleVar.formFieldType.toString().equals('DATE')}">
-					<s:set name="dateStartInputFieldName" ><s:property value="#attributeRoleVar.name" />_dateStartFieldName</s:set>
-					<s:set name="dateEndInputFieldName" ><s:property value="#attributeRoleVar.name" />_dateEndFieldName</s:set>
-					<p>
-						<label for="<s:property value="%{#currentFieldIdVar}" />_dateStartFieldName"><s:property value="#attributeRoleVar.name" /> ** from date **</label>:<br />
-						<wpsf:textfield useTabindexAutoIncrement="true" id="%{#currentFieldIdVar}_dateStartFieldName" cssClass="text" name="%{#dateStartInputFieldName}" value="%{getSearchFormFieldValue(#dateStartInputFieldName)}" /><span class="inlineNote">dd/MM/yyyy</span>
-					</p>
-					<p>
-						<label for="<s:property value="%{#currentFieldIdVar}" />_dateEndFieldName"><s:property value="#attributeRoleVar.name" />** to date **</label>:<br />
-						<wpsf:textfield useTabindexAutoIncrement="true" id="%{#currentFieldIdVar}_dateEndFieldName" cssClass="text" name="%{#dateEndInputFieldName}" value="%{getSearchFormFieldValue(#dateEndInputFieldName)}" /><span class="inlineNote">dd/MM/yyyy</span>
-					</p>
-				</s:elseif>
-				<s:elseif test="%{#attributeRoleVar.formFieldType.toString().equals('NUMBER')}">
-					<s:set name="numberStartInputFieldName" ><s:property value="#attributeRoleVar.name" />_numberStartFieldName</s:set>
-					<s:set name="numberEndInputFieldName" ><s:property value="#attributeRoleVar.name" />_numberEndFieldName</s:set>
-					<p>
-						<label for="<s:property value="%{#currentFieldIdVar}" />_start"><s:property value="#attributeRoleVar.name" /> ** from value **</label>:<br />
-						<wpsf:textfield useTabindexAutoIncrement="true" id="%{#currentFieldIdVar}_start" cssClass="text" name="%{#numberStartInputFieldName}" value="%{getSearchFormFieldValue(#numberStartInputFieldName)}" /><br />
-					</p>
-					<p>
-						<label for="<s:property value="%{#currentFieldIdVar}" />_end"><s:property value="#attributeRoleVar.name" /> ** to value **</label>:<br />
-						<wpsf:textfield useTabindexAutoIncrement="true" id="%{#currentFieldIdVar}_end" cssClass="text" name="%{#numberEndInputFieldName}" value="%{getSearchFormFieldValue(#numberEndInputFieldName)}" /><br />
-					</p>
-				</s:elseif>
-				<s:elseif test="%{#attributeRoleVar.formFieldType.toString().equals('NUMBER')}">
-					<p>
-						<span class="important"><s:property value="#attributeRoleVar.name" /></span><br />
-					</p>
-					<s:set name="booleanInputFieldName" ><s:property value="#attributeRoleVar.name" />_booleanFieldName</s:set>
-					<s:set name="booleanInputFieldValue" ><s:property value="%{getSearchFormFieldValue(#booleanInputFieldName)}" /></s:set>
-					<ul class="noBullet">
-						<li><wpsf:radio useTabindexAutoIncrement="true" id="none_%{#booleanInputFieldName}" name="%{#booleanInputFieldName}" value="" checked="%{!#booleanInputFieldValue.equals('true') && !#booleanInputFieldValue.equals('false')}" cssClass="radio" /><label for="none_<s:property value="#booleanInputFieldName" />" class="normal" ><s:text name="label.bothYesAndNo"/></label></li>
-						<li><wpsf:radio useTabindexAutoIncrement="true" id="true_%{#booleanInputFieldName}" name="%{#booleanInputFieldName}" value="true" checked="%{#booleanInputFieldValue == 'true'}" cssClass="radio" /><label for="true_<s:property value="#booleanInputFieldName" />" class="normal" ><s:text name="label.yes"/></label></li>
-						<li><wpsf:radio useTabindexAutoIncrement="true" id="false_%{#booleanInputFieldName}" name="%{#booleanInputFieldName}" value="false" checked="%{#booleanInputFieldValue == 'false'}" cssClass="radio" /><label for="false_<s:property value="#booleanInputFieldName" />" class="normal"><s:text name="label.no"/></label></li>
-					</ul>
-				</s:elseif>
-			</s:iterator>
-		</s:if>
-		
-		
+
 		<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<div id="search-advanced" class="collapse well collapse-input-group">
+			<div id="search-advanced" class="collapse well collapse-input-group in">
 				<s:set var="searcheableAttributesVar" value="searcheableAttributes" />
 				<s:set var="searcheableAttributesPageScope" value="%{#searcheableAttributesVar}" scope="page" />
 				<div class="form-group">
@@ -252,6 +200,72 @@
 						</s:else>
 					</s:iterator>
 				</s:if>
+
+				<%-- search by role --%>
+				<s:set var="attributeRolesVar" value="attributeRoles" />
+				<s:if test="null != #attributeRolesVar && #attributeRolesVar.size() > 0">
+					<s:iterator var="attributeRoleVar" value="#attributeRolesVar">
+						<s:set var="currentFieldIdVar">userFinding_<s:property value="#attributeRoleVar.name" /></s:set>
+						<s:if test="%{#attributeRoleVar.formFieldType.toString().equals('TEXT')}">
+							<div class="form-group">
+								<div class="col-sm-10 col-md-offset-2">
+									<label for="<s:property value="%{#currentFieldIdVar}" />">
+										<span class="label label-default"><s:text name="name.role" /></span>&#32;
+										<s:property value="#attributeRoleVar.name" />
+									</label>
+									<s:set name="textInputFieldName"><s:property value="#attributeRoleVar.name" />_textFieldName</s:set>
+									<wpsf:textfield id="%{#currentFieldIdVar}" name="%{#textInputFieldName}" value="%{getSearchFormFieldValue(#textInputFieldName)}" cssClass="form-control" />
+								</div>
+							</div>
+						</s:if>
+						<%-- COMMENTING OUT UNTIL WE ENCOUNTER SOME VALID USER STORY THAT MAKES US TEST IT
+						<s:elseif test="%{#attributeRoleVar.formFieldType.toString().equals('DATE')}">
+							<s:set name="dateStartInputFieldName"><s:property value="#attributeRoleVar.name" />_dateStartFieldName</s:set>
+							<s:set name="dateEndInputFieldName"><s:property value="#attributeRoleVar.name" />_dateEndFieldName</s:set>
+							<div class="form-group">
+								<div class="col-sm-10 col-md-offset-2">
+									<label for="<s:property value="%{#currentFieldIdVar}" />_dateStartFieldName"><s:property value="#attributeRoleVar.name" /> ** from date **</label>
+									<wpsf:textfield id="%{#currentFieldIdVar}_dateStartFieldName" name="%{#dateStartInputFieldName}" value="%{getSearchFormFieldValue(#dateStartInputFieldName)}" />
+									<span class="help-block">dd/MM/yyyy</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-10 col-md-offset-2">
+									<label for="<s:property value="%{#currentFieldIdVar}" />_dateEndFieldName"><s:property value="#attributeRoleVar.name" />** to date **</label>
+									<wpsf:textfield id="%{#currentFieldIdVar}_dateEndFieldName" name="%{#dateEndInputFieldName}" value="%{getSearchFormFieldValue(#dateEndInputFieldName)}" />
+									<span class="help-block">dd/MM/yyyy</span>
+								</div>
+							</div>
+						</s:elseif>
+						<s:elseif test="%{#attributeRoleVar.formFieldType.toString().equals('NUMBER')}">
+							<s:set name="numberStartInputFieldName" ><s:property value="#attributeRoleVar.name" />_numberStartFieldName</s:set>
+							<s:set name="numberEndInputFieldName" ><s:property value="#attributeRoleVar.name" />_numberEndFieldName</s:set>
+							<p>
+								<label for="<s:property value="%{#currentFieldIdVar}" />_start"><s:property value="#attributeRoleVar.name" /> ** from value **</label>
+								<wpsf:textfield id="%{#currentFieldIdVar}_start" name="%{#numberStartInputFieldName}" value="%{getSearchFormFieldValue(#numberStartInputFieldName)}" />
+							</p>
+							<p>
+								<label for="<s:property value="%{#currentFieldIdVar}" />_end"><s:property value="#attributeRoleVar.name" /> ** to value **</label>
+								<wpsf:textfield id="%{#currentFieldIdVar}_end" name="%{#numberEndInputFieldName}" value="%{getSearchFormFieldValue(#numberEndInputFieldName)}" />
+							</p>
+						</s:elseif>
+						<s:elseif test="%{#attributeRoleVar.formFieldType.toString().equals('BOOLEAN')}">
+							<p>
+								<span class="important"><s:property value="#attributeRoleVar.name" /></span>
+							</p>
+							<s:set name="booleanInputFieldName" ><s:property value="#attributeRoleVar.name" />_booleanFieldName</s:set>
+							<s:set name="booleanInputFieldValue" ><s:property value="%{getSearchFormFieldValue(#booleanInputFieldName)}" /></s:set>
+							<ul>
+								<li><wpsf:radio id="none_%{#booleanInputFieldName}" name="%{#booleanInputFieldName}" value="" checked="%{!#booleanInputFieldValue.equals('true') && !#booleanInputFieldValue.equals('false')}" /><label for="none_<s:property value="#booleanInputFieldName" />"><s:text name="label.bothYesAndNo"/></label></li>
+								<li><wpsf:radio id="true_%{#booleanInputFieldName}" name="%{#booleanInputFieldName}" value="true" checked="%{#booleanInputFieldValue == 'true'}" /><label for="true_<s:property value="#booleanInputFieldName" />"><s:text name="label.yes"/></label></li>
+								<li><wpsf:radio id="false_%{#booleanInputFieldName}" name="%{#booleanInputFieldName}" value="false" checked="%{#booleanInputFieldValue == 'false'}" /><label for="false_<s:property value="#booleanInputFieldName" />"><s:text name="label.no"/></label></li>
+							</ul>
+						</s:elseif>
+						--%>
+					</s:iterator>
+				</s:if>
+				<%-- //search by role --%>
+
 				<%-- second search button --%>
 				<div class="form-group">
 					<div class="col-sm-5 col-sm-offset-2">
