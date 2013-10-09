@@ -264,8 +264,10 @@
 		<%-- New Content Button--%>
 
 		<div class="btn-group">
-		  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-		    <s:text name="label.newContent" /> <span class="caret"></span>
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+				<span class="icon icon-plus-sign"></span>
+				<s:text name="label.newContent" />&#32;
+				<span class="caret"></span>
 		  </button>
 		  <ul class="dropdown-menu" role="menu">
 			<s:iterator var="contentTypeVar" value="#contentTypesVar">
