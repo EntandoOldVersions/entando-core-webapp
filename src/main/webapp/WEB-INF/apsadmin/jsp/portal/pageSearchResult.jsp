@@ -47,20 +47,22 @@
 		<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 	</div>
 
-	<ul id="pageTree" class="icons-ul list-unstyled">
-	<s:iterator var="singlePage">
+	<div class="well">
+		<ul id="pageTree" class="icons-ul list-unstyled">
+		<s:iterator var="singlePage">
 
-		<s:set name="pageFullPath">
-			<s:set value="%{getBreadCrumbsTargets(#singlePage.code)}" name="breadCrumbsTargets" ></s:set>
-			<s:iterator value="#breadCrumbsTargets" id="target" status="rowstatus">
-				<s:if test="%{#rowstatus.index != 0}"> | </s:if>
-				<s:property value="#target.titles[currentLang.code]" />
-			</s:iterator>
-		</s:set>
-		<li class="page tree_node_flag"><span class="icon icon-li icon-folder-close"></span>&#32;<wpsf:radio name="selectedNode" id="page_%{#singlePage.code}" value="%{#singlePage.code}" /><label for="page_<s:property value="%{#singlePage.code}" />" title="<s:property value="#pageFullPath" />"><s:property value="%{#singlePage.code}" /></label></li>
-		<%-- <s:property value="%{#singlePage.titles[currentLang.code]}" /> --%>
-	</s:iterator>
-	</ul>
+			<s:set name="pageFullPath">
+				<s:set value="%{getBreadCrumbsTargets(#singlePage.code)}" name="breadCrumbsTargets" ></s:set>
+				<s:iterator value="#breadCrumbsTargets" id="target" status="rowstatus">
+					<s:if test="%{#rowstatus.index != 0}"> | </s:if>
+					<s:property value="#target.titles[currentLang.code]" />
+				</s:iterator>
+			</s:set>
+			<li class="page tree_node_flag"><span class="icon icon-li icon-folder-close"></span>&#32;<wpsf:radio name="selectedNode" id="page_%{#singlePage.code}" value="%{#singlePage.code}" /><label for="page_<s:property value="%{#singlePage.code}" />" title="<s:property value="#pageFullPath" />"><s:property value="%{#singlePage.code}" /></label></li>
+			<%-- <s:property value="%{#singlePage.titles[currentLang.code]}" /> --%>
+		</s:iterator>
+		</ul>
+	</div>
 
 	<div class="text-center">
 		<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />

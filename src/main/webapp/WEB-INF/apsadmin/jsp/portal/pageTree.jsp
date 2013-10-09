@@ -31,22 +31,23 @@
 
 <s:set var="pageTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_page" /></s:set>
 
-<ul id="pageTree" class="icons-ul list-unstyled">
-	<s:set var="inputFieldName" value="%{'selectedNode'}" />
-	<s:set var="selectedTreeNode" value="%{selectedNode}" />
-	<s:set var="liClassName" value="'page'" />
-	<s:set var="treeItemIconName" value="'icon-folder-close'" />
+<div class="well">
+	<ul id="pageTree" class="icons-ul list-unstyled">
+		<s:set var="inputFieldName" value="%{'selectedNode'}" />
+		<s:set var="selectedTreeNode" value="%{selectedNode}" />
+		<s:set var="liClassName" value="'page'" />
+		<s:set var="treeItemIconName" value="'icon-folder-close'" />
 
-	<s:if test="#pageTreeStyleVar == 'classic'">
-	<s:set var="currentRoot" value="allowedTreeRootNode" />
-	<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder.jsp" />
-	</s:if>
-	<s:elseif test="#pageTreeStyleVar == 'request'">
-	<s:set var="currentRoot" value="showableTree" />
-	<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder-request-links.jsp" />
-	</s:elseif>
-</ul>
-
+		<s:if test="#pageTreeStyleVar == 'classic'">
+		<s:set var="currentRoot" value="allowedTreeRootNode" />
+		<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder.jsp" />
+		</s:if>
+		<s:elseif test="#pageTreeStyleVar == 'request'">
+		<s:set var="currentRoot" value="showableTree" />
+		<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder-request-links.jsp" />
+		</s:elseif>
+	</ul>
+</div>
 <p class="sr-only"><s:hidden name="copyingPageCode" /></p>
 
 <fieldset data-toggle="tree-toolbar"><legend><s:text name="title.pageActions" /></legend>

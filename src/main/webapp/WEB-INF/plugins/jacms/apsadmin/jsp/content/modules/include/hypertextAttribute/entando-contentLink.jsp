@@ -149,7 +149,6 @@
 		<div class="form-group">
 			<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 				<button type="submit" id="button_contentLink" name="button_contentLink" class="btn btn-primary btn-block">
-					<span class="icon  icon-save"></span>&#32;
 					<s:text name="label.confirm" />
 				</button>
 			</div>

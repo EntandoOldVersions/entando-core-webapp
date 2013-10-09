@@ -30,23 +30,26 @@
 
 	<s:set var="categoryTreeStyleVar"><wp:info key="systemParam" paramName="treeStyle_category" /></s:set>
 
-	<ul id="categoryTree" class="icons-ul list-unstyled">
-		<s:set name="inputFieldName" value="%{'selectedNode'}" />
-		<s:set name="selectedTreeNode" value="%{selectedNode}" />
-		<s:set name="liClassName" value="%{'category'}" />
-		<s:set var="treeItemIconName" value="'icon-folder-close'" />
+	<div class="well">
+		<ul id="categoryTree" class="icons-ul list-unstyled">
+			<s:set name="inputFieldName" value="%{'selectedNode'}" />
+			<s:set name="selectedTreeNode" value="%{selectedNode}" />
+			<s:set name="liClassName" value="%{'category'}" />
+			<s:set var="treeItemIconName" value="'icon-folder-close'" />
 
-		<s:if test="#categoryTreeStyleVar == 'classic'">
-		<s:set name="currentRoot" value="treeRootNode" />
-		<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder.jsp" />
-		</s:if>
-		<s:elseif test="#categoryTreeStyleVar == 'request'">
-		<s:set name="openTreeActionName" value="'openCloseCategoryTree'" />
-		<s:set name="closeTreeActionName" value="'openCloseCategoryTree'" />
-		<s:set name="currentRoot" value="showableTree" />
-		<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder-request-links.jsp" />
-		</s:elseif>
-	</ul>
+			<s:if test="#categoryTreeStyleVar == 'classic'">
+			<s:set name="currentRoot" value="treeRootNode" />
+			<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder.jsp" />
+			</s:if>
+			<s:elseif test="#categoryTreeStyleVar == 'request'">
+			<s:set name="openTreeActionName" value="'openCloseCategoryTree'" />
+			<s:set name="closeTreeActionName" value="'openCloseCategoryTree'" />
+			<s:set name="currentRoot" value="showableTree" />
+			<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder-request-links.jsp" />
+			</s:elseif>
+		</ul>
+	</div>
+
 	<p class="sr-only"><s:text name="title.categoryActionsIntro" /></p>
 	<fieldset data-toggle="tree-toolbar"><legend><s:text name="title.categoryActions" /></legend>
 		<div class="btn-toolbar" data-toggle="tree-toolbar-actions">
