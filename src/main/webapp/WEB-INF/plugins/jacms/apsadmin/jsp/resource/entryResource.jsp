@@ -144,7 +144,7 @@
 </div>
 
 <s:if test="categoryCodes != null && categoryCodes.size() > 0">
-<h4 class="margin-base-vertical"><s:text name="note.resourceCategories.summary"/></h4>
+<h2 class="h4 margin-base-vertical"><s:text name="note.resourceCategories.summary"/></h2>
 
 <s:iterator value="categoryCodes" id="categoryCode">
 <s:set name="resourceCategory" value="%{getCategory(#categoryCode)}"></s:set>
@@ -169,8 +169,14 @@
 	<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/include/referencingContents.jsp" />
 </s:if>
 
-<p class="text-center">
-	<s:submit value="%{getText('label.save')}" cssClass="btn btn-default" />
-</p>
-
+<div class="form-horizontal">
+	<div class="form-group">
+		<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+			<s:submit type="button" cssClass="btn btn-primary btn-block">
+			<span class="icon icon-save"></span>&#32;
+			<s:text name="label.save" />
+		</s:submit>
+	</div>
+</div>
+</div>
 </s:form>
