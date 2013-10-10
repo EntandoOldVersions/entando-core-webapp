@@ -14,7 +14,7 @@
 
 <s:include value="/WEB-INF/apsadmin/jsp/entity/include/entity-type-list.jsp" />
 
-<div class="alert alert-info">
+<div class="alert alert-success">
 	<h3 class="margin-none" id="fagiano_startReloadIndexes"><s:text name="title.entityAdmin.entityTypes.indexes" /></h3>
 		<s:text name="note.entityAdmin.entityTypes.indexes.intro" />
 		<s:if test="getSearcherManagerStatus() == 1">
@@ -30,7 +30,7 @@
 			"><s:text name="label.indexes.status.ko" /></a>
 		</s:elseif>
 		<s:elseif test="getSearcherManagerStatus() == 0">
-		<span class="label label-info"><s:text name="label.indexes.status.ok" /></span>
+		<span class="label label-success"><s:text name="label.indexes.status.ok" /></span>
 		</s:elseif>
 </div>
 </div>

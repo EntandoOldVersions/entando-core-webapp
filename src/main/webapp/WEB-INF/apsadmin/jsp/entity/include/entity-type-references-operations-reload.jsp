@@ -5,7 +5,7 @@
 
 <s:if test="#entityPrototypes != null && #entityPrototypes.size() > 0">
 
-<div class="alert alert-info">
+<div class="alert alert-success">
 	<h3 class="margin-none" id="fagiano_startReloadReferences"><s:text name="title.entityAdmin.entityTypes.references" /></h3>
 	
 		<s:text name="%{'note.entityAdmin.' + entityManagerName + '.references'}" />
@@ -36,7 +36,7 @@
 			</ul>
 		</s:if>
 		<s:else>
-			<span class="label label-info"><s:text name="note.entity.all.references.ok" /></label>
+			<span class="label label-success"><s:text name="note.entity.all.references.ok" /></label>
 		</s:else>
 </div>
 </s:if>
