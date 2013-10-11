@@ -10,21 +10,20 @@
 		"#set ($<VAR> = <VALUE>)": null
 	};
 </script>
+<link rel="stylesheet" href="<wp:resourceURL />administration/js/codemirror/lib/codemirror.css">
+<link rel="stylesheet" href="<wp:resourceURL />administration/js/codemirror/theme/eclipse.css">
+<link rel="stylesheet" href="<wp:resourceURL />administration/js/codemirror/addon/hint/show-hint.css">
 <%--
-	<script src="<wp:resourceURL />administration/mint/js/codemirror/codemirror-compressed.js"></script>
-	<link rel="stylesheet" href="<wp:resourceURL />administration/mint/js/codemirror/codemirror.css">
-	<script type="text/javascript" src="<wp:resourceURL />administration/mint/js/codemirror/overlay.js"></script>
-	<script src="<wp:resourceURL />administration/mint/js/codemirror/mode/xml/xml.js"></script>
-	<link rel="stylesheet" href="<wp:resourceURL />administration/mint/js/codemirror/mode/xml/xml-eclipse.css">
-	<script src="<wp:resourceURL />administration/mint/js/codemirror/mode/velocity/velocity-overlay-mode.js"></script>
-	<link rel="stylesheet" href="<wp:resourceURL />administration/mint/js/codemirror/mode/velocity/velocity.css"></script>
-	<script type="text/javascript" src="<wp:resourceURL />administration/mint/js/contentModels-editor.js"></script>
+<script src="<wp:resourceURL />administration/js/codemirror/lib/codemirror.js"></script>
+<script src="<wp:resourceURL />administration/js/codemirror/mode/velocity/velocity.js"></script>
+<script src="<wp:resourceURL />administration/js/codemirror/addon/hint/show-hint.js"></script>
 --%>
-<link rel="stylesheet" href="<wp:resourceURL />administration/js/codemirror/lib/codemirror.css" />
-<link rel="stylesheet" href="<wp:resourceURL />administration/js/codemirror/theme/neat.css" />
-<script type="text/javascript" src="<wp:resourceURL />administration/js/codemirror/lib/codemirror.js"></script>
-<script type="text/javascript" src="<wp:resourceURL />administration/js/codemirror/mode/velocity/velocity.js"></script>
+<script src="<wp:resourceURL />administration/js/codemirror/lib/codemirror-compressed.js"></script>
+<script src="<wp:resourceURL />administration/js/codemirror/addon/hint/entando-hint.js"></script>
 <script type="text/javascript">
+	CodeMirror.commands.autocomplete = function(cm) {
+		CodeMirror.showHint(cm);
+	}
 	jQuery(function(){
 		var divContainer = $('<div class="panel panel-default"></div>');
 		var textarea = $('#contentShape');
@@ -38,17 +37,15 @@
 
 		CodeMirror.fromTextArea(document.getElementById('contentShape'), {
 			value: document.getElementById('contentShape').value,
-			lineNumbers: false,
+			theme: 'eclipse',
+			lineNumbers: true,
+			tabSize: 2,
+			lineWrapping: true,
 			gutter: false,
 			tabMode: "indent",
 			indentUnit: 1,
-			mode: "velocity"
+			mode: "velocity",
+      extraKeys: {"Ctrl-Space": "autocomplete"}
 		});
 	});
-</script>
-	<script type="text/javascript">
-	/*
-	window.addEvent("domready", function(){
-		new CodeMirrorManager(document.id("newModel_contentShape"), {vocabulary : ENTANDO_MODEL_VOCABULARY});
-	});*/
 </script>

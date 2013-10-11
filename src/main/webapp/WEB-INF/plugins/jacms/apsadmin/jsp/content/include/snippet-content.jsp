@@ -33,7 +33,14 @@
 			<span id="contentDescription-input" style="display: none;" class="input-group has-warning margin-small-bottom">
 				<input class="form-control" type="text" name="descr" value="<s:property value="#descr" />" id="contentDescription" />
 				<span class="input-group-btn">
-					<button class="btn btn-warning" id="contentDescription-confirm" data-swapon="contentDescription-text" data-swapon-fade="true" data-container="contentDescription-input" value="Set Description" ><s:text name="label.setDescription" /></button>
+					<button
+						class="btn btn-warning"
+						id="contentDescription-confirm"
+						data-swapon="contentDescription-text"
+						data-swapon-fade="true"
+						data-container="contentDescription-input">
+							<s:text name="label.setDescription" />
+					</button>
 				</span>
 			</span>
 				(<s:property value="content.typeDescr" />)&#32;&middot;&#32;
