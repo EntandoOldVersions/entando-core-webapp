@@ -41,6 +41,8 @@
 <script>
 //one domready to rule 'em all
 $(function() {
+	var emtpyText= '<s:property value="%{getText('note.provide.description')}" escapeJavaScript="true" escapeHtml="false" escapeXml="false" />'
+
 	$('[data-toggle="popover"]').popover();
 
 	/* contentDescription routine //start */
@@ -63,7 +65,10 @@ $(function() {
 
 	$('#contentDescription-input').on('swapon', function(ev, action) {
 		if (action == 'show') {
-			$('#contentDescription').val($.trim($( '#contentDescription-readonly' ).text()));
+			var newValue = $.trim($( '#contentDescription-readonly' ).text());
+			if (newValue==emtpyText) { newValue = ''; }
+			$('#contentDescription').val();
+			$('#contentDescription').focus();
 		}
 	})
 
