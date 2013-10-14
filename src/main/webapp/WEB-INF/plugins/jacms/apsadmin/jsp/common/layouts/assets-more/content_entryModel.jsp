@@ -17,15 +17,16 @@
 <script src="<wp:resourceURL />administration/js/codemirror/lib/codemirror.js"></script>
 <script src="<wp:resourceURL />administration/js/codemirror/mode/velocity/velocity.js"></script>
 <script src="<wp:resourceURL />administration/js/codemirror/addon/hint/show-hint.js"></script>
+<script src="<wp:resourceURL />administration/js/codemirror/addon/hint/entando-hint.js"></script>
 --%>
 <script src="<wp:resourceURL />administration/js/codemirror/lib/codemirror-compressed.js"></script>
-<script src="<wp:resourceURL />administration/js/codemirror/addon/hint/entando-hint.js"></script>
+<script src="<wp:resourceURL />administration/js/codemirror/addon/hint/entando-hint-compressed.js"></script>
 <script type="text/javascript">
 	CodeMirror.commands.autocomplete = function(cm) {
 		CodeMirror.showHint(cm);
 	}
 	jQuery(function(){
-		var divContainer = $('<div class="panel panel-default"></div>');
+		var divContainer = $('<div class="panel panel-default margin-none"></div>');
 		var textarea = $('#contentShape');
 		divContainer.insertBefore(textarea);
 		divContainer.css('width', (textarea.width()+30)+"px");

@@ -1,9 +1,6 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%/*
-Andrea Dessì <a.dessi@agiletec.it>
-27/apr/2011 11.17.42
-
 This converter shall always return a json object like this: 
 	var ENTANDO_MODEL_VOCABULARY = {
 			"$content": {
