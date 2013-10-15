@@ -47,7 +47,7 @@
 		</div>
 
 		<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<div id="search-advanced" class="collapse well collapse-input-group in">
+			<div id="search-advanced" class="collapse well collapse-input-group">
 				<s:set var="searcheableAttributesVar" value="searcheableAttributes" />
 				<s:set var="searcheableAttributesPageScope" value="%{#searcheableAttributesVar}" scope="page" />
 				<div class="form-group">
