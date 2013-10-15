@@ -295,7 +295,6 @@
 		</div>
 		<div class="table-responsive">
 			<table class="table table-bordered">
-				<caption><span><s:text name="title.userManagement.userList" /></span></caption>
 				<tr>
 					<th class="text-center padding-large-left padding-large-right col-xs-4 col-sm-3 col-md-2 col-lg-2"><abbr title="<s:text name="label.actions" />">&ndash;</abbr></th>
 					<th><s:text name="label.username" /></th>
