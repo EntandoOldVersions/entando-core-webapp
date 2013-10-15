@@ -78,7 +78,7 @@
 	<div class="form-group">
 		<s:set var="titleFieldErrorsVar" value="%{fieldErrors['lang'+code]}" />
 		<s:set var="titleHasFieldErrorVar" value="#titleFieldErrorsVar != null && !#titleFieldErrorsVar.isEmpty()" />
-		<label for="lang<s:property value="code" />"><code class="label label-info"><s:property value="code" /></code>&#32;<s:text name="name.pageTitle" /></label>
+		<label for="lang<s:property value="code" />"><abbr title="<s:property value="descr" />"><code class="label label-info" ><s:property value="code" /></code></abbr>&#32;<s:text name="name.pageTitle" /></label>
 		<s:textfield name="%{'lang'+code}" id="%{'lang'+code}" value="%{titles.get(code)}" cssClass="form-control" />
 		<s:if test="#titleHasFieldErrorVar">
 		  <p class="text-danger padding-small-vertical"><s:iterator value="#titleFieldErrorsVar"><s:property /> </s:iterator></p>
@@ -169,20 +169,22 @@
 
 </s:if>
 
-<wpsa:hookPoint key="core.entryPage" objectName="hookPointElements_core_entryPage">
-<s:iterator value="#hookPointElements_core_entryPage" var="hookPointElement">
-	<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
-</s:iterator>
-</wpsa:hookPoint>
+	<wpsa:hookPoint key="core.entryPage" objectName="hookPointElements_core_entryPage">
+	<s:iterator value="#hookPointElements_core_entryPage" var="hookPointElement">
+		<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
+	</s:iterator>
+	</wpsa:hookPoint>
 
-<div class="form-group">
-	<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-		<s:submit type="button" cssClass="btn btn-primary btn-block">
-			<span class="icon icon-save"></span>&#32;
-			<s:text name="label.save" />
-		</s:submit>
+	<div class="form-horizontal">
+		<div class="form-group">
+			<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+				<s:submit type="button" cssClass="btn btn-primary btn-block">
+					<span class="icon icon-save"></span>&#32;
+					<s:text name="label.save" />
+				</s:submit>
+			</div>
+		</div>
 	</div>
-</div>
 </s:form>
 
 </div>

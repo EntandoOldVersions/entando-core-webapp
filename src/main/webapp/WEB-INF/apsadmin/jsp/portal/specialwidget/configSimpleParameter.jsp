@@ -1,40 +1,58 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 
-<h1><a href="<s:url action="viewTree" namespace="/do/Page" />" title="<s:text name="note.goToSomewhere" />: <s:text name="title.pageManagement" />"><s:text name="title.pageManagement" /></a></h1>
+<h1 class="panel panel-default title-page">
+	<span class="panel-body display-block">
+		<a href="<s:url action="viewTree" namespace="/do/Page" />" title="<s:text name="note.goToSomewhere" />: <s:text name="title.pageManagement" />">
+			<s:text name="title.pageManagement" /></a>&#32;/&#32;
+		<s:text name="title.configPage" />
+	</span>
+</h1>
 
 <div id="main">
-<h2><s:text name="title.configPage" /></h2>
 
-<s:set var="breadcrumbs_pivotPageCode" value="pageCode" />
+<s:set var="breadcrumbs_pivotPageCode" value="currentPage.code" />
 <s:include value="/WEB-INF/apsadmin/jsp/portal/include/pageInfo_breadcrumbs.jsp" />
 
-<div class="subsection-light">
-<h3><s:text name="title.configPage.youAreDoing" /></h3>
+<s:action namespace="/do/Page" name="printPageDetails" executeResult="true" ignoreContextParams="true">
+	<s:param name="selectedNode" value="currentPage.code"></s:param>
+</s:action>
 
-<s:action namespace="/do/Page" name="printPageDetails" executeResult="true" ignoreContextParams="true"><s:param name="selectedNode" value="pageCode"></s:param></s:action>
-<s:include value="/WEB-INF/apsadmin/jsp/portal/include/frameInfo.jsp" />
-
-<h3 class="margin-more-bottom margin-more-top"><s:text name="name.widget" />:&#32;<s:property value="%{getTitle(showlet.type.code, showlet.type.titles)}" /></h3>
-<s:form action="saveConfigSimpleParameter">
-<p class="sr-only">
-	<wpsf:hidden name="pageCode" />
-	<wpsf:hidden name="frame" />
-	<wpsf:hidden name="widgetTypeCode" value="%{showlet.type.code}" />
-</p>
-
-<fieldset><legend><s:text name="title.editFrame.settings" /></legend>
-<s:iterator value="showlet.type.typeParameters" id="showletParam" >
-<p>
-	<em><s:property value="#showletParam.descr" />:</em><br />
-	<label for="<s:property value="#showletParam.name" />" class="basic-mint-label"><s:property value="#showletParam.name" /></label>
-	<wpsf:textfield useTabindexAutoIncrement="true" id="%{#showletParam.name}" name="%{#showletParam.name}" value="%{showlet.config[#showletParam.name]}" />
-</p>
-</s:iterator>
-</fieldset>
-<p><wpsf:submit useTabindexAutoIncrement="true" cssClass="button" /></p>
-
+<s:form action="saveConfigSimpleParameter" cssClass="form-horizontal">
+	<p class="sr-only">
+		<wpsf:hidden name="pageCode" />
+		<wpsf:hidden name="frame" />
+		<wpsf:hidden name="widgetTypeCode" value="%{widget.type.code}" />
+	</p>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<s:include value="/WEB-INF/apsadmin/jsp/portal/include/frameInfo.jsp" />
+		</div>
+		<div class="panel-body">
+			<h2 class="h5 margin-small-vertical">
+				<label class="sr-only"><s:text name="name.widget" /></label>
+				<span class="icon icon-puzzle-piece" title="<s:text name="name.widget" />"></span>&#32;
+				<s:property value="%{getTitle(widget.type.code, widget.type.titles)}" />
+			</h2>
+			<fieldset class="margin-base-top">
+				<legend><s:text name="title.editFrame.settings" /></legend>
+				<s:iterator value="widget.type.typeParameters" var="widgetParam">
+					<div class="form-group">
+						<div class="col-xs-12">
+							<label for="config-simple-parameter-<s:property value="#widgetParam.name" />">
+								<code class="label label-info" ><s:property value="#widgetParam.name" /></code>
+								&#32;<s:property value="#widgetParam.descr" />
+							</label>
+							<s:textfield id="%{'config-simple-parameter-'+#widgetParam.name}" name="%{#widgetParam.name}" value="%{widget.config[#widgetParam.name]}" cssClass="form-control" />
+						</div>
+					</div>
+				</s:iterator>
+			</fieldset>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+			<s:submit type="button" cssClass="btn btn-primary btn-block"><s:text name="label.save" /></s:submit>
+		</div>
+	</div>
 </s:form>
-
-</div>
-</div>
