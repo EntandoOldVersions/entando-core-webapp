@@ -14,7 +14,7 @@
 <s:if test="hasFieldErrors()">
 	<div class="alert alert-danger alert-dismissable fade in">
 		<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
-		<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h2>	
+		<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h2>
 		<ul>
 		<s:iterator value="fieldErrors">
 			<s:iterator value="value">
@@ -24,11 +24,11 @@
 		</ul>
 	</div>
 </s:if>
-	
+
 <s:if test="hasActionErrors()">
 	<div class="alert alert-danger alert-dismissable fade in">
 		<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
-		<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>	
+		<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
 		<ul>
 		<s:iterator value="actionErrors">
 			<li><s:property escape="false" /></li>
@@ -40,7 +40,7 @@
 <s:if test="hasActionMessages()">
 	<div class="alert alert-danger alert-dismissable fade in">
 		<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
-		<h2 class="h4 margin-none">><s:text name="messages.confirm" /></h3>	
+		<h2 class="h4 margin-none">><s:text name="messages.confirm" /></h3>
 		<ul>
 			<s:iterator value="actionMessages">
 				<li><s:property escape="false" /></li>
@@ -71,8 +71,8 @@
 		<label for="passwordConfirm"><s:text name="label.passwordConfirm" />&#32;<span class="icon-li icon-asterisk text-muted" title="<s:text name="Entity.attribute.flag.mandatory.full" />"></span></label>
 		<wpsf:password name="passwordConfirm" id="passwordConfirm" cssClass="form-control" />
 	</div>
-	
-</div>	
+
+</div>
 
 <div class="form-group">
 	<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
