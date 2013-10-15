@@ -237,7 +237,10 @@
 </div>
 <div class="form-group">
 	<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-		<s:submit action="saveNavigatorConfig" value="%{getText('label.save')}" cssClass="btn btn-primary btn-block" />
+		<s:submit action="saveNavigatorConfig" type="button" cssClass="btn btn-primary btn-block">
+			<span class="icon icon-filter"></span>&#32;
+			<s:text name="label.save" />
+		</s:submit>
 	</div>
 </div>
 
