@@ -16,9 +16,9 @@
 			</ul>
 		</div>
 	</s:if>
-	
+
 	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/profile-formFields.jsp" />
-	
+
 	<div class="form-group">
 		<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 			<s:submit action="save" type="button" cssClass="btn btn-primary btn-block">
@@ -26,5 +26,5 @@
 			</s:submit>
 		</div>
 	</div>
-		
+
 </s:form>
