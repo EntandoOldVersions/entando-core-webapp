@@ -20,18 +20,19 @@
 		<div class="alert alert-danger alert-dismissable fade in">
 			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
 			<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h2>
-			<p class="margin-base-vertical"><s:text name="message.content.error" /></p>
+			<p class="margin-none margin-base-top"><s:text name="message.content.error" /></p>
+			<%--
 			<ul class="unstyled">
 				<s:iterator value="fieldErrors">
 					<s:iterator value="value">
-						<li><s:property escape="false" /></li>
+						<li><s:property value="key" escape="false" />|<s:property escape="false" /></li>
 						</s:iterator>
 					</s:iterator>
 			</ul>
+			--%>
 		</div>
 	</s:if>
 	<p class="sr-only"><s:text name="note.editContent" /></p>
-	<s:set var="removeIcon"><wp:resourceURL/>administration/common/img/icons/delete.png</s:set>
 	<s:form cssClass="tab-container action-form">
 		<s:set var="myNameIsJack" value="true" />
 		<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/include/snippet-content.jsp" />

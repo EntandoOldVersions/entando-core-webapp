@@ -10,8 +10,23 @@
 <s:iterator value="#attribute.attributes" var="attribute" status="elementStatus">
 	<s:set var="attributeTracer" value="#masterListAttributeTracer.getMonoListElementTracer(#elementStatus.index)" />
 	<s:set var="elementIndex" value="#elementStatus.index" />
+
+	<s:set var="masterAttributeFieldErrorsVar" value="#attributeFieldErrorsVar" />
+	<s:set var="masterAttributeHasFieldErrorVar" value="#attributeHasFieldErrorVar" />
+	<s:set var="masterAontrolGroupErrorClassVar" value="#controlGroupErrorClassVar" />
+	<s:set var="masterAnputErrorClassVar" value="#inputErrorClassVar" />
+
+	<s:set var="attributeFieldErrorsVar" value="%{fieldErrors[#attributeTracer.getFormFieldName(#attribute)]}" />
+	<s:set var="attributeHasFieldErrorVar" value="#attributeFieldErrorsVar != null && !#attributeFieldErrorsVar.isEmpty()" />
+	<s:set var="controlGroupErrorClassVar" value="''" />
+	<s:set var="inputErrorClassVar" value="''" />
+	<s:if test="#attributeHasFieldErrorVar">
+		<s:set var="controlGroupErrorClassVar" value="' panel-danger'" />
+		<s:set var="inputErrorClassVar" value="' input-with-feedback'" />
+	</s:if>
+
 	<li class="list-group-item">
-		<div class="panel panel-default"><%-- panel panel-default --%>
+		<div class="panel panel-default margin-none<s:property value="%{#controlGroupErrorClassVar}" />"><%-- panel panel-default --%>
 			<div class="panel-heading">
 			<%-- composite --%>
 				<s:if test="#attribute.type == 'Composite'">
@@ -86,6 +101,16 @@
 						<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
 					</s:iterator>
 				</wpsa:hookPoint>
+
+				<s:if test="#attributeFieldErrorsVar">
+					<p class="text-danger margin-none padding-none padding-small-top"><s:iterator value="#attributeFieldErrorsVar"><s:property /> </s:iterator></p>
+				</s:if>
+
+				<s:set var="attributeFieldErrorsVar" value="#masterAttributeFieldErrorsVar" />
+				<s:set var="attributeHasFieldErrorVar" value="#masterAttributeHasFieldErrorVar" />
+				<s:set var="controlGroupErrorClassVar" value="#masterAontrolGroupErrorClassVar" />
+				<s:set var="inputErrorClassVar" value="#masterAnputErrorClassVar" />
+
 			</div><%-- row panel-body --%>
 		</div><%-- panel panel-default --%>
 	</li>

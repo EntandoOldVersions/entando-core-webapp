@@ -7,7 +7,7 @@
 <s:set var="controlGroupErrorClassVar" value="' panel-default'" />
 <s:set var="inputErrorClassVar" value="''" />
 <s:if test="#attributeHasFieldErrorVar">
-	<s:set var="controlGroupErrorClassVar" value="' panel-danger'" />
+	<s:set var="controlGroupErrorClassVar" value="' margin-small-bottom panel-danger'" />
 	<s:set var="inputErrorClassVar" value="' input-with-feedback'" />
 </s:if>
 <div class="panel<s:property value="#controlGroupErrorClassVar" />">
@@ -83,3 +83,6 @@
 
 	</div>
 </div>
+	<s:if test="#attributeHasFieldErrorVar">
+		<p class="text-danger margin-none padding-small-bottom margin-base-bottom"><s:iterator value="#attributeFieldErrorsVar"><s:property /> </s:iterator></p>
+	</s:if>
