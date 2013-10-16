@@ -10,14 +10,12 @@ jQuery(function() {
 	$.each([permission, group], function(index, item){
 		item.on('change', function(ev) {
 			var value= $(ev.target).val();
-			console.log(this,value);
 			if (value!="") {
 				registered.prop('checked',true);
 			}
 		});
 	});
 	registered.on('change', function(ev) {
-		console.log('change registered', ev);
 		if (!ev.target.checked) {
 			permission.val('');
 			group.val('');
