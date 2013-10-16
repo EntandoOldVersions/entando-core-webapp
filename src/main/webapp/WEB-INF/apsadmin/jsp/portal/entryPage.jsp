@@ -133,7 +133,7 @@
 
 <fieldset class="col-xs-12"><legend><s:text name="label.settings" /></legend>
 
-<div class="form-group">
+<div class="form-group" id="pagemodel">
 	<label for="model"><s:text name="name.pageModel" /></label>
 	<s:select name="model" id="model" list="pageModels" listKey="code" listValue="descr" cssClass="form-control"></s:select>
 </div>
