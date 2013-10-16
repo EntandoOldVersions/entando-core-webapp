@@ -7,6 +7,9 @@
 		<s:set var="parentAttribute" value="#masterCompositeAttribute" />
 		<s:set var="attributeTracer" value="#masterCompositeAttributeTracer.getCompositeTracer(#masterCompositeAttribute)"></s:set>
 
+		<s:set var="nullValueVar" />
+		<s:property value="%{#attributeTracer.setLang(#nullValueVar)}" />
+
 		<s:set var="masterAttributeFieldErrorsVar" value="#attributeFieldErrorsVar" />
 		<s:set var="masterAttributeHasFieldErrorVar" value="#attributeHasFieldErrorVar" />
 		<s:set var="masterAontrolGroupErrorClassVar" value="#controlGroupErrorClassVar" />
@@ -20,6 +23,7 @@
 			<s:set var="controlGroupErrorClassVar" value="' has-error'" />
 			<s:set var="inputErrorClassVar" value="' input-with-feedback'" />
 		</s:if>
+		<s:property value="%{#attributeTracer.setLang(#lang)}" />
 
 		<li class="list-group-item<s:property value="#controlGroupErrorClassVar" />">
 			<s:if test="null != #attribute.description"><s:set var="compositeElementLabelVar" value="#attribute.description" /></s:if>
