@@ -2,32 +2,26 @@
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <s:include value="/WEB-INF/apsadmin/jsp/common/layouts/assets-common.jsp" />
-<script type="text/javascript">
-<!--//--><![CDATA[//><!--
-//for tabs
-window.addEvent('domready', function(){
-
-	var permission = document.getElement("#requiredPermission");
-	var group = document.getElement("#requiredGroup");
-	var registered =  document.getElement("#requiredAuth");
-	Array.each([permission, group], function(item, index) {
-		item.addEvent("change", function(ev) {
-			var value = ev.target.get("value");
-			if (value != "") {
-				registered.set("checked", "checked");
-				registered.set("checked", true);
+<script>
+jQuery(function() {
+	var permission = $("#requiredPermission");
+	var group = $("#requiredGroup");
+	var registered =  $("#requiredAuth");
+	$.each([permission, group], function(index, item){
+		item.on('change', function(ev) {
+			var value= $(ev.target).val();
+			console.log(this,value);
+			if (value!="") {
+				registered.prop('checked',true);
 			}
 		});
 	});
-
-	registered.addEvent("change", function(ev) {
-		if (!ev.target.get("checked")) {
-			permission.set("value", "");
-			group.set("value", "");
+	registered.on('change', function(ev) {
+		console.log('change registered', ev);
+		if (!ev.target.checked) {
+			permission.val('');
+			group.val('');
 		}
 	});
-
-
 });
-//--><!]]>
 </script>
