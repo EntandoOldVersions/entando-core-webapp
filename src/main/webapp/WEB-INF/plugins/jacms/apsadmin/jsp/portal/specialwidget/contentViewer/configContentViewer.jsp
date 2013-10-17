@@ -100,14 +100,18 @@
 
 			</fieldset>
 
-			<fieldset class="margin-large-top"><legend><s:text name="title.publishingOptions" /></legend>
-			<div class="form-group">
-				<div class="col-xs-12">
-					<label for="modelId" class="control-label"><s:text name="label.contentModel" /></label>
-					<s:select id="modelId" name="modelId" value="%{getShowlet().getConfig().get('modelId')}"
-					list="%{getModelsForContent(showlet.config['contentId'])}" headerKey="" headerValue="%{getText('label.default')}" listKey="id" listValue="description" cssClass="form-control" />
+			<fieldset class="margin-large-top">
+				<legend data-toggle="collapse" data-target="#options-publishing"><s:text name="title.publishingOptions" />&#32;<span class="icon icon-chevron-down"></span></legend>
+
+				<div class="collapse" id="options-publishing">
+					<div class="form-group">
+						<div class="col-xs-12">
+							<label for="modelId" class="control-label"><s:text name="label.contentModel" /></label>
+							<s:select id="modelId" name="modelId" value="%{getShowlet().getConfig().get('modelId')}"
+							list="%{getModelsForContent(showlet.config['contentId'])}" headerKey="" headerValue="%{getText('label.default')}" listKey="id" listValue="description" cssClass="form-control" />
+						</div>
+					</div>
 				</div>
-			</div>
 			</fieldset>
 
 			<%--
