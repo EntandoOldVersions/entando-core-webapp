@@ -140,7 +140,6 @@ $(function() {
 					var delay = 3000;
 					var data = gatherData(form,button);
 					if (oldData!=data) {
-						//console.log('something within the form has changed, sending...',' next:', delay);
 						$.ajax({
 							sentData: data,
 							url: action,
@@ -150,7 +149,6 @@ $(function() {
 								button.button('loading');
 							},
 							complete: function(resp, status) {
-								console.log('status: ', status, ' resp:', resp);
 								if (status == 'success') {
 									oldData = this.sentData;
 									setTimeout(function(){
@@ -189,7 +187,6 @@ $(function() {
 					}
 					else {
 						delay = 5000;
-						//console.log('form not changed, doing nothing. Next try: ',delay);
 					}
 					setTimeout(sendSave,delay);
 				}
