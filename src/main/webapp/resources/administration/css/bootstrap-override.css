@@ -99,7 +99,7 @@ fieldset.col-xs-12 {
 #pageTree.icons-ul,
 #pageTree .icons-ul {
 	margin-left: 0;
-	-webkit-padding-start: 20px;
+	padding-left: 22px;
 }
 
 .btn-group-xs .btn {
