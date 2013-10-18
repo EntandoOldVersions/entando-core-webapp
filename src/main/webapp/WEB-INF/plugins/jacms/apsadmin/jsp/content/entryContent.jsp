@@ -16,22 +16,25 @@
 	</span>
 </h1>
 <div id="main">
-	<s:if test="hasFieldErrors()">
-		<div class="alert alert-danger alert-dismissable fade in">
-			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
-			<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h2>
-			<p class="margin-none margin-base-top"><s:text name="message.content.error" /></p>
-			<ul class="unstyled">
-				<s:iterator value="fieldErrors">
-					<s:iterator value="value">
-						<li><s:property value="key" escape="false" /> | <s:property escape="false" /></li>
+	<div data-autosave="messages_container">
+		<s:if test="hasFieldErrors()">
+			<div class="alert alert-danger alert-dismissable fade in">
+				<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+				<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h2>
+				<p class="margin-none margin-base-top"><s:text name="message.content.error" /></p>
+				<ul class="unstyled">
+					<s:iterator value="fieldErrors">
+						<s:iterator value="value">
+							<li><s:property escape="false" /></li>
+							</s:iterator>
 						</s:iterator>
-					</s:iterator>
-			</ul>
-		</div>
-	</s:if>
+				</ul>
+			</div>
+		</s:if>
+	</div>
 	<p class="sr-only"><s:text name="note.editContent" /></p>
-	<s:form cssClass="tab-container action-form">
+	<s:url namespace="/do/jacms/Content/Ajax"  action="autosave" var="dataAutosaveActionVar" />
+	<s:form cssClass="tab-container action-form" data-form-type="autosave" data-autosave-action="%{#dataAutosaveActionVar}">
 		<s:set var="myNameIsJack" value="true" />
 		<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/include/snippet-content.jsp" />
 		<p class="sr-only">
@@ -196,7 +199,7 @@
 		<div id="info" class="panel panel-default"><%-- info section --%>
 			<div class="panel-heading">
 				<h2 class="h4 margin-none">
-					<s:text name="title.contentInfo" /> 
+					<s:text name="title.contentInfo" />
 					<a href="#quickmenu" id="info_content_goBackToQuickMenu" class="pull-right" title="<s:text name="note.goBackToQuickMenu" />"><span class="icon icon-circle-arrow-up"></span><span class="sr-only"><s:text name="note.goBackToQuickMenu" /></span></a>
 				</h2>
 			</div>

@@ -117,6 +117,88 @@ $(function() {
 </script>
 <s:include value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/inc/snippet-datepicker.jsp" />
 
+<script>
+	$(function(){
+		var gatherData = function(form, button) {
+			<%-- botton behavior just for test //return form.serialize()+'&'+escape(button.attr('name'))+'='+escape(button.val()); --%>
+			return form.serialize();
+		};
+		$.each($('[data-form-type="autosave"]'), function(index, form) {//each
+			var form = $(form);
+			var button = $('[data-button-type="autosave"]', form).first();
+			if (button.length==1) {
+				var method = form.attr('method');
+				var action = form.attr('data-autosave-action');
+				var strutsAction = button.attr('name');
+				var oldData = gatherData(form,button);
+				var savedDataEl = $('[data-autosave="last-save-time"]', form);
+				var messagesContainerEl = $('[data-autosave="messages_container"]');
+				var versionEl = $('[data-autosave="version"]');
+				var lastEditorEl = $('[data-autosave="lastEditor"]');
+				//debugger;
+				var sendSave = function() {
+					var delay = 3000;
+					var data = gatherData(form,button);
+					if (oldData!=data) {
+						//console.log('something within the form has changed, sending...',' next:', delay);
+						$.ajax({
+							sentData: data,
+							url: action,
+							cache: false,
+							crossoDomain: true,
+							beforeSend: function() {
+								button.button('loading');
+							},
+							complete: function(resp, status) {
+								console.log('status: ', status, ' resp:', resp);
+								if (status == 'success') {
+									oldData = this.sentData;
+									setTimeout(function(){
+										resp = $.parseJSON(resp.responseText);
+										var date = new Date();
+										var text = (date.getHours()<10 ? '0'+date.getHours():date.getHours())+':'+(date.getMinutes()<10?'0'+date.getMinutes():date.getMinutes())+':'+(date.getSeconds()<10?'0'+date.getSeconds():date.getSeconds());
+										if (resp.hasFieldErrors==true) {
+											if (resp.fieldErrorsKeys==='descr' && resp.id==null) {
+												text = '<s:property value="%{getText('note.autosave.skipped')}" escapeJavaScript="true" escapeHtml="false" escapeXml="false" />';
+											}
+											else {
+												messagesContainerEl.html(resp.fieldErrors);
+											}
+										}
+										button.button('reset');
+										savedDataEl.parent().removeClass('hide');
+										savedDataEl.text(text);
+										versionEl.text(resp.version);
+										lastEditorEl.html(resp.lastEditor);
+									}, 600);
+								}
+								else {
+									button.button('reset');
+									savedDataEl.parent().removeClass('hide');
+									savedDataEl.text('<s:property value="%{getText('note.autosave.skipped')}" escapeJavaScript="true" escapeHtml="false" escapeXml="false" />');
+								}
+							},
+							error: function(jqXHR, textStatus, errorThrown) {
+								window.location.reload(true);
+							},
+							processData: false,
+							data: data,
+							type: method,
+							dataType: 'json'
+						});
+					}
+					else {
+						delay = 5000;
+						//console.log('form not changed, doing nothing. Next try: ',delay);
+					}
+					setTimeout(sendSave,delay);
+				}
+				sendSave();
+			}
+		});//each
+	});
+</script>
+
 <wpsa:hookPoint key="jacms.entryContent.extraResources" objectName="hookPointElements_jacms_entryContent_extraResources">
 	<s:iterator value="#hookPointElements_jacms_entryContent_extraResources" var="hookPointElement">
 		<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>

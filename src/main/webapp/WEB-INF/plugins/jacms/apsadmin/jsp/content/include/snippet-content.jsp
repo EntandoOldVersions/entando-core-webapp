@@ -31,7 +31,7 @@
 				&#32;
 			</span>
 			<span id="contentDescription-input" style="display: none;" class="input-group has-warning margin-small-bottom">
-				<input class="form-control" type="text" name="descr" value="<s:property value="#descr" />" id="contentDescription" />
+				<input class="form-control" type="text" name="descr" value="<s:property value="#contentDescriptionVar" />" id="contentDescription" />
 				<span class="input-group-btn">
 					<button
 						class="btn btn-warning"
@@ -44,8 +44,9 @@
 				</span>
 			</span>
 				(<s:property value="content.typeDescr" />)&#32;&middot;&#32;
-				<abbr title="<s:text name="name.version" />">v</abbr><s:property value="content.version" />&#32;
+				<abbr title="<s:text name="name.version" />">v</abbr><span data-autosave="version"><s:property value="content.version" /></span>&#32;
 				<s:text name="note.lastEditor" />&#32;
+				<span data-autosave="lastEditor">
 				<s:set var="lastEditorVar" value="content.lastEditor" scope="page" />
 				<wp:ifauthorized permission="superuser" var="authorizedSuperUserVar" />
 				<c:if test="${!empty lastEditorVar && authorizedSuperUserVar}"><a href="<s:url action="edit" namespace="/do/User"><s:param name="username" value="content.lastEditor"/></s:url>" title="<s:text name="label.edit" />: <s:property value="content.lastEditor" />"></c:if>
@@ -54,6 +55,7 @@
 					<c:otherwise><s:property value="content.lastEditor" /></c:otherwise>
 				</c:choose>
 				<c:if test="${!empty lastEditorVar && authorizedSuperUserVar}"></a></c:if>
+				</span>
 
 		<s:if test="content.onLine">
 		&#32;&middot;&#32;<s:text name="note.lastApprovedIntro" />&#32;<a href="<s:url action="inspect" namespace="/do/jacms/Content" ><s:param name="contentId" value="content.id" /><s:param name="currentPublicVersion" value="'true'" /></s:url>"><s:text name="note.lastApproved" /></a>
