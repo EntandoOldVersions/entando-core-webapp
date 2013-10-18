@@ -44,33 +44,31 @@
 			<wpsf:hidden name="navSpec" />
 		</p>
 
-			<s:if test="hasActionErrors()">
-		<div class="alert alert-danger alert-dismissable">
-			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
-			<h3 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h3>
-			<ul class="margin-base-vertical">
-			<s:iterator value="actionErrors">
-				<s:iterator value="value">
-				<li><s:property escape="false" /></li>
+		<s:if test="hasActionErrors()">
+			<div class="alert alert-danger alert-dismissable">
+				<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+				<h3 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h3>
+				<ul class="margin-base-vertical">
+				<s:iterator value="actionErrors">
+					<li><s:property escape="false" /></li>
 				</s:iterator>
-			</s:iterator>
-			</ul>
-		</div>
-			</s:if>
+				</ul>
+			</div>
+		</s:if>
 
-			<s:if test="hasFieldErrors()">
-		<div class="alert alert-danger alert-dismissable">
-			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
-			<h3 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h3>
-			<ul class="margin-base-vertical">
-			<s:iterator value="fieldErrors">
-				<s:iterator value="value">
-				<li><s:property escape="false" /></li>
+		<s:if test="hasFieldErrors()">
+			<div class="alert alert-danger alert-dismissable">
+				<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+				<h3 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h3>
+				<ul class="margin-base-vertical">
+				<s:iterator value="fieldErrors">
+					<s:iterator value="value">
+					<li><s:property escape="false" /></li>
+					</s:iterator>
 				</s:iterator>
-			</s:iterator>
-			</ul>
-		</div>
-			</s:if>
+				</ul>
+			</div>
+		</s:if>
 
 		<h3 id="expressions"><s:text name="widget.configNavigator.expressionList" /></h3>
 
@@ -238,7 +236,7 @@
 <div class="form-group">
 	<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 		<s:submit action="saveNavigatorConfig" type="button" cssClass="btn btn-primary btn-block">
-			<span class="icon icon-filter"></span>&#32;
+			<span class="icon icon-save"></span>&#32;
 			<s:text name="label.save" />
 		</s:submit>
 	</div>
