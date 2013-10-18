@@ -12,12 +12,23 @@
 	<s:set var="masterAttributeHasFieldErrorVar" value="#attributeHasFieldErrorVar" />
 	<s:set var="masterAontrolGroupErrorClassVar" value="#controlGroupErrorClassVar" />
 	<s:set var="masterAnputErrorClassVar" value="#inputErrorClassVar" />
+	<s:set var="masterAttributeFieldNameErrorsVar" value="#attributeFieldNameErrorsVar" />
+	<s:set var="masterAttributeHasFieldNameErrorVar" value="#attributeHasFieldNameErrorVar" />
+	<s:set var="masterAttributeFieldNameErrorsVarV2" value="#attributeFieldNameErrorsVarV2" />
+	<s:set var="masterAttributeHasFieldNameErrorVarV2" value="#attributeHasFieldNameErrorVarV2" />
+	<s:set var="masterAttributeHasErrorVar" value="#attributeHasErrorVar" />
 
-	<s:set var="attributeFieldErrorsVar" value="%{fieldErrors[#attributeTracer.getFormFieldName(#attribute)]}" />
+	<s:set var="attributeFieldErrorsVar" value="%{fieldErrors[#attribute.name]}" />
 	<s:set var="attributeHasFieldErrorVar" value="#attributeFieldErrorsVar != null && !#attributeFieldErrorsVar.isEmpty()" />
+	<s:set var="attributeFieldNameErrorsVar" value="%{fieldErrors[#attributeTracer.getFormFieldName(#attribute)]}" />
+	<s:set var="attributeHasFieldNameErrorVar" value="#attributeFieldNameErrorsVar != null && !#attributeFieldNameErrorsVar.isEmpty()" />
+	<s:set var="attributeFieldNameErrorsVarV2" value="%{fieldErrors[#attribute.name+':'+#attribute.name]}" />
+	<s:set var="attributeHasFieldNameErrorVarV2" value="#attributeFieldNameErrorsVarV2 != null && !#attributeFieldNameErrorsVarV2.isEmpty()" />
+	<s:set var="attributeHasErrorVar" value="%{#attributeHasFieldErrorVar||#attributeHasFieldNameErrorVar||#attributeHasFieldNameErrorVarV2}" />
+
 	<s:set var="controlGroupErrorClassVar" value="''" />
 	<s:set var="inputErrorClassVar" value="''" />
-	<s:if test="#attributeHasFieldErrorVar">
+	<s:if test="#attributeHasErrorVar">
 		<s:set var="controlGroupErrorClassVar" value="' panel-danger'" />
 		<s:set var="inputErrorClassVar" value="' input-with-feedback'" />
 	</s:if>
@@ -57,14 +68,22 @@
 					<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/timestampAttribute.jsp" />
 				</s:elseif>
 
-				<s:if test="#attributeFieldErrorsVar">
-					<p class="text-danger margin-none padding-none padding-small-top"><s:iterator value="#attributeFieldErrorsVar"><s:property /> </s:iterator></p>
+				<s:if test="#attributeHasErrorVar">
+					<p class="text-danger margin-none padding-none padding-small-top">
+					<s:iterator value="#attributeFieldErrorsVar"><s:property /><br /></s:iterator>
+					<s:iterator value="#attributeFieldNameErrorsVar"><s:property /><br /></s:iterator>
+					<s:iterator value="#attributeFieldNameErrorsVarV2"><s:property /><br /></s:iterator>
 				</s:if>
 
 				<s:set var="attributeFieldErrorsVar" value="#masterAttributeFieldErrorsVar" />
 				<s:set var="attributeHasFieldErrorVar" value="#masterAttributeHasFieldErrorVar" />
 				<s:set var="controlGroupErrorClassVar" value="#masterAontrolGroupErrorClassVar" />
 				<s:set var="inputErrorClassVar" value="#masterAnputErrorClassVar" />
+				<s:set var="attributeFieldNameErrorsVar" value="#masterAttributeFieldNameErrorsVar" />
+				<s:set var="attributeHasFieldNameErrorVar" value="#masterAttributeHasFieldNameErrorVar" />
+				<s:set var="attributeFieldNameErrorsVarV2" value="#masterAttributeFieldNameErrorsVarV2" />
+				<s:set var="attributeHasFieldNameErrorVarV2" value="#masterAttributeHasFieldNameErrorVarV2" />
+				<s:set var="attributeHasErrorVar" value="#masterAttributeHasErrorVar" />
 
 			</div><%-- panel body --%>
 		</div><%-- panel panel-default --%>

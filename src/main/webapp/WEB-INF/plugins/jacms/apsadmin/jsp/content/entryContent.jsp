@@ -22,13 +22,15 @@
 				<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
 				<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h2>
 				<p class="margin-none margin-base-top"><s:text name="message.content.error" /></p>
+				<%--
 				<ul class="unstyled">
 					<s:iterator value="fieldErrors">
 						<s:iterator value="value">
-							<li><s:property escape="false" /></li>
+							<li><s:property value="key" escape="false" /> | <s:property escape="false" /></li>
 							</s:iterator>
 						</s:iterator>
 				</ul>
+				--%>
 			</div>
 		</s:if>
 	</div>
@@ -65,14 +67,21 @@
 							<s:iterator value="content.attributeList" var="attribute"><%-- attributes iterator --%>
 								<div id="<s:property value="%{'contentedit_'+#lang.code+'_'+#attribute.name}" />"><%-- contentedit div --%>
 									<wpsa:tracerFactory var="attributeTracer" lang="%{#lang.code}" /><%-- tracer init --%>
-									<s:set var="attributeFieldErrorsVar" value="%{fieldErrors[#attributeTracer.getFormFieldName(#attribute)]}" />
+
+									<s:set var="attributeFieldErrorsVar" value="%{fieldErrors[#attribute.name]}" />
 									<s:set var="attributeHasFieldErrorVar" value="#attributeFieldErrorsVar != null && !#attributeFieldErrorsVar.isEmpty()" />
+									<s:set var="attributeFieldNameErrorsVar" value="%{fieldErrors[#attributeTracer.getFormFieldName(#attribute)]}" />
+									<s:set var="attributeHasFieldNameErrorVar" value="#attributeFieldNameErrorsVar != null && !#attributeFieldNameErrorsVar.isEmpty()" />
+									<s:set var="attributeFieldNameErrorsVarV2" value="%{fieldErrors[#attribute.name+':'+#attribute.name]}" />
+									<s:set var="attributeHasFieldNameErrorVarV2" value="#attributeFieldNameErrorsVarV2 != null && !#attributeFieldNameErrorsVarV2.isEmpty()" />
+									<s:set var="attributeHasErrorVar" value="%{#attributeHasFieldErrorVar||#attributeHasFieldNameErrorVar||#attributeHasFieldNameErrorVarV2}" />
 									<s:set var="controlGroupErrorClassVar" value="''" />
 									<s:set var="inputErrorClassVar" value="''" />
-									<s:if test="#attributeHasFieldErrorVar">
+									<s:if test="#attributeHasErrorVar">
 										<s:set var="controlGroupErrorClassVar" value="' has-error'" />
 										<s:set var="inputErrorClassVar" value="' input-with-feedback'" />
 									</s:if>
+
 									<s:if test="null != #attribute.description"><s:set var="attributeLabelVar" value="#attribute.description" /></s:if>
 									<s:else><s:set var="attributeLabelVar" value="#attribute.name" /></s:else>
 
@@ -146,15 +155,19 @@
 												<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
 											</s:iterator>
 										</wpsa:hookPoint>
-										<s:if test="#attributeFieldErrorsVar">
-											<p class="text-danger padding-small-vertical"><s:iterator value="#attributeFieldErrorsVar"><s:property /> </s:iterator></p>
+
+										<s:if test="#attributeHasErrorVar">
+											<p class="text-danger padding-small-vertical">
+												<s:iterator value="#attributeFieldErrorsVar"><s:property /><br /></s:iterator>
+												<s:iterator value="#attributeFieldNameErrorsVar"><s:property /><br /></s:iterator>
+												<s:iterator value="#attributeFieldNameErrorsVarV2"><s:property /><br /></s:iterator>
+											</p>
 										</s:if>
 									</div><%-- form group --%>
 								</div><%-- contentedit div --%>
 							</s:iterator><%-- attributes iterator --%>
 							<%-- preview --%>
 								<s:set var="showingPageSelectItems" value="showingPageSelectItems" />
-								<s:set var="iconImagePath"><wp:resourceURL/>administration/common/img/icons/32x32/content-preview.png</s:set>
 								<wpsa:actionParam action="preview" var="previewActionName" >
 									<wpsa:actionSubParam name="%{'jacmsPreviewActionLangCode_' + #lang.code}" value="%{#lang.code}" />
 								</wpsa:actionParam>
