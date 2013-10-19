@@ -35,13 +35,13 @@
 		<h2 class="h5 margin-small-vertical">
 			<label class="sr-only"><s:text name="name.widget" /></label>
 			<span class="icon icon-puzzle-piece" title="<s:text name="name.widget" />"></span>&#32;
-			<s:property value="%{getTitle(showlet.type.code, showlet.type.titles)}" />
+			<s:property value="%{getTitle(widget.type.code, widget.type.titles)}" />
 		</h2>
 
 		<p class="sr-only">
 			<s:hidden name="pageCode" />
 			<s:hidden name="frame" />
-			<s:hidden name="widgetTypeCode" value="%{showlet.type.code}" />
+			<s:hidden name="widgetTypeCode" value="%{widget.type.code}" />
 		</p>
 
 	<s:if test="hasFieldErrors()">
@@ -58,7 +58,7 @@
 		</div>
 	</s:if>
 
-		<s:if test="showlet.config['contentType'] == null">
+		<s:if test="widget.config['contentType'] == null">
 		<%-- CONTENT TYPE --%>
 		<fieldset class="col-xs-12 margin-large-top">
 
@@ -110,7 +110,7 @@
 					<div class="col-xs-12">
 						<label for="modelId"><s:text name="label.contentModel" /></label>
 						<s:select name="modelId" id="modelId" value="%{getShowlet().getConfig().get('modelId')}"
-							list="%{getModelsForContentType(showlet.config['contentType'])}" headerKey="" headerValue="%{getText('label.default')}" listKey="id" listValue="description" cssClass="form-control" />
+							list="%{getModelsForContentType(widget.config['contentType'])}" headerKey="" headerValue="%{getText('label.default')}" listKey="id" listValue="description" cssClass="form-control" />
 					</div>
 				</div>
 
@@ -328,7 +328,7 @@
 								<code class="label label-info"><s:property value="#lang.code" /></code>&#32;
 								<s:text name="label.title" />
 							</label>
-							<s:textfield name="tiale_%{#lang.code}" id="title_%{#lang.code}" value="%{showlet.config.get('title_' + #lang.code)}" cssClass="form-control" />
+							<s:textfield name="title_%{#lang.code}" id="title_%{#lang.code}" value="%{widget.config.get('title_' + #lang.code)}" cssClass="form-control" />
 						</div>
 					</div>
 				</s:iterator>
@@ -337,7 +337,7 @@
 					<div class="col-xs-12">
 						<label for="pageLink"><s:text name="label.page" /></label>
 						<s:select list="pages" name="pageLink" id="pageLink" listKey="code" listValue="getShortFullTitle(currentLang.code)"
-								value="%{showlet.config.get('pageLink')}" headerKey="" headerValue="%{getText('label.none')}" cssClass="form-control" />
+								value="%{widget.config.get('pageLink')}" headerKey="" headerValue="%{getText('label.none')}" cssClass="form-control" />
 					</div>
 				</div>
 
@@ -348,7 +348,7 @@
 								<code class="label label-info"><s:property value="#lang.code" /></code>&#32;
 								<s:text name="label.link.descr"/>
 							</label>
-							<s:textfield name="liakDescr_%{#lang.code}" id="linkDescr_%{#lang.code}" value="%{showlet.config.get('linkDescr_' + #lang.code)}" cssClass="form-control" />
+							<s:textfield name="linkDescr_%{#lang.code}" id="linkDescr_%{#lang.code}" value="%{widget.config.get('linkDescr_' + #lang.code)}" cssClass="form-control" />
 						</div>
 					</div>
 				</s:iterator>
