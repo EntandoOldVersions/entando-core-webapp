@@ -14,7 +14,10 @@
 
 <s:include value="/WEB-INF/apsadmin/jsp/entity/include/entity-type-list.jsp" />
 
-<div class="alert alert-success">
+<s:set var="alertCssClass" value="%{' alert-success'}" />
+<s:if test="getSearcherManagerStatus() == 1"><s:set var="alertCssClass" value="%{' alert-warning'}" /></s:if>
+<s:elseif test="getSearcherManagerStatus() == 2"><s:set var="alertCssClass" value="%{' alert-warning'}" /></s:elseif>
+<div class="alert <s:property value="#alertCssClass" />">
 	<h3 class="margin-none" id="fagiano_startReloadIndexes"><s:text name="title.entityAdmin.entityTypes.indexes" /></h3>
 		<s:text name="note.entityAdmin.entityTypes.indexes.intro" />
 		<s:if test="getSearcherManagerStatus() == 1">
