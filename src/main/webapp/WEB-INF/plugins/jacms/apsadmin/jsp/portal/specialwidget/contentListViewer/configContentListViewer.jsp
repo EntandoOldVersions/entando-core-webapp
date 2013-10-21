@@ -77,6 +77,7 @@
 		</fieldset>
 		</div>
 	</div>
+</div>
 		</s:if>
 		<s:else>
 
@@ -319,41 +320,41 @@
 		<%-- TITLES --%>
 		<fieldset class="margin-base-top">
 			<legend data-toggle="collapse" data-target="#options-extra"><s:text name="title.extraOption" />&#32;<span class="icon icon-chevron-down"></span></legend>
-		<div class="collapse" id="options-extra">
-			<p><s:text name="note.extraOption.intro" /></p>
-				<s:iterator id="lang" value="langs">
+			<div class="collapse" id="options-extra">
+				<p><s:text name="note.extraOption.intro" /></p>
+					<s:iterator id="lang" value="langs">
+						<div class="form-group">
+							<div class="col-xs-12">
+								<label for="title_<s:property value="#lang.code" />">
+									<code class="label label-info"><s:property value="#lang.code" /></code>&#32;
+									<s:text name="label.title" />
+								</label>
+								<s:textfield name="title_%{#lang.code}" id="title_%{#lang.code}" value="%{widget.config.get('title_' + #lang.code)}" cssClass="form-control" />
+							</div>
+						</div>
+					</s:iterator>
+
 					<div class="form-group">
 						<div class="col-xs-12">
-							<label for="title_<s:property value="#lang.code" />">
-								<code class="label label-info"><s:property value="#lang.code" /></code>&#32;
-								<s:text name="label.title" />
-							</label>
-							<s:textfield name="title_%{#lang.code}" id="title_%{#lang.code}" value="%{widget.config.get('title_' + #lang.code)}" cssClass="form-control" />
+							<label for="pageLink"><s:text name="label.page" /></label>
+							<s:select list="pages" name="pageLink" id="pageLink" listKey="code" listValue="getShortFullTitle(currentLang.code)"
+									value="%{widget.config.get('pageLink')}" headerKey="" headerValue="%{getText('label.none')}" cssClass="form-control" />
 						</div>
 					</div>
-				</s:iterator>
 
-				<div class="form-group">
-					<div class="col-xs-12">
-						<label for="pageLink"><s:text name="label.page" /></label>
-						<s:select list="pages" name="pageLink" id="pageLink" listKey="code" listValue="getShortFullTitle(currentLang.code)"
-								value="%{widget.config.get('pageLink')}" headerKey="" headerValue="%{getText('label.none')}" cssClass="form-control" />
-					</div>
+					<s:iterator var="lang" value="langs">
+						<div class="form-group">
+							<div class="col-xs-12">
+								<label for="linkDescr_<s:property value="#lang.code" />">
+									<code class="label label-info"><s:property value="#lang.code" /></code>&#32;
+									<s:text name="label.link.descr"/>
+								</label>
+								<s:textfield name="linkDescr_%{#lang.code}" id="linkDescr_%{#lang.code}" value="%{widget.config.get('linkDescr_' + #lang.code)}" cssClass="form-control" />
+							</div>
+						</div>
+					</s:iterator>
+
 				</div>
-
-				<s:iterator var="lang" value="langs">
-					<div class="form-group">
-						<div class="col-xs-12">
-							<label for="linkDescr_<s:property value="#lang.code" />">
-								<code class="label label-info"><s:property value="#lang.code" /></code>&#32;
-								<s:text name="label.link.descr"/>
-							</label>
-							<s:textfield name="linkDescr_%{#lang.code}" id="linkDescr_%{#lang.code}" value="%{widget.config.get('linkDescr_' + #lang.code)}" cssClass="form-control" />
-						</div>
-					</div>
-				</s:iterator>
-
-			</div>
 		</fieldset>
 
 
@@ -454,7 +455,6 @@
 </div>
 
 		</s:else>
-
 
 </s:form>
 
