@@ -47,7 +47,7 @@
 			<wpsf:hidden name="%{#numberStartInputFieldName}" value="%{getSearchFormFieldValue(#numberStartInputFieldName)}" />
 			<wpsf:hidden name="%{#numberEndInputFieldName}" value="%{getSearchFormFieldValue(#numberEndInputFieldName)}" />
 		</s:elseif>
-		<s:elseif test="#attribute.type == 'Boolean' || #attribute.type == 'ThreeState'"> 
+		<s:elseif test="#attribute.type == 'Boolean' || #attribute.type == 'ThreeState'">
 			<s:set name="booleanInputFieldName" ><s:property value="#attribute.name" />_booleanFieldName</s:set>
 			<wpsf:hidden name="%{#booleanInputFieldName}" value="%{getSearchFormFieldValue(#booleanInputFieldName)}" />
 		</s:elseif>
@@ -66,7 +66,7 @@
 			</s:iterator>
 		</ul>
 		<div class="text-center margin-large-top">
-		<s:submit type="button" action="delete" cssClass="btn btn-warning btn-lg">
+		<s:submit type="button" action="deleteContentGroup" cssClass="btn btn-warning btn-lg">
 			<span class="icon icon-remove-sign"></span>&#32;
 			<s:text name="label.remove" />
 		</s:submit>
