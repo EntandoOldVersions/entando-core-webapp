@@ -152,6 +152,40 @@ fieldset.col-xs-12 {
 	#activity-stream .popover {
 		margin: 0 0 0 20px;
 	}
+
+	#activity-stream .row {
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	.activity-stream-picture {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+
+	.activity-stream-event::before,
+	.event-first::before,
+	.event-last::after {
+		left: 8.2%;
+	}
+
+}
+
+/* Large devices (desktops, 1200px and up) */
+
+@media (min-width: 1200px) {
+
+	.activity-stream-picture {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.activity-stream-event::before,
+	.event-first::before,
+	.event-last::after {
+		left: 4.165%;
+	}
+
 }
 
 /* Font Awesome */
