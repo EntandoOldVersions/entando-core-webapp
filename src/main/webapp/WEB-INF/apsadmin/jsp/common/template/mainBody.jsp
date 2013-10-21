@@ -163,22 +163,22 @@
 <s:if test="null != #activityStreamVar && #activityStreamVar.size() != 0">
 
 	<ul class="list-unstyled" id="activity-stream">
-	<s:iterator value="#activityStreamVar" var="actionLogRecordIdVar">
-		<li class="media row margin-large-vertical">
+	<s:iterator value="#activityStreamVar" var="actionLogRecordIdVar" status="currentEvent">
+		<li class="media row padding-large-vertical">
 
 		<wpsa:actionLogRecord key="%{#actionLogRecordIdVar}" var="actionLogRecordVar" />
 		<c:set var="usernameVar"><s:property value="#actionLogRecordVar.username" /></c:set>
 		<s:set var="fullnameVar"><wp:userProfileAttribute username="${usernameVar}" attributeRoleName="userprofile:fullname" /></s:set>
 		<s:set var="emailAttributeVar"><wp:userProfileAttribute username="${usernameVar}" attributeRoleName="userprofile:email" /></s:set>
 
-		<div class="col-xs-12 col-sm-1 margin-small-bottom">
+		<div class="col-xs-12 col-sm-2 col-lg-1 margin-small-bottom activity-stream-picture">
 			<img src="<s:url action="avatarStream" namespace="/do/user/avatar">
 							<s:param name="gravatarSize">56</s:param>
 							<s:param name="username" value="#actionLogRecordVar.username" />
 						</s:url>" width="56" height="56" class="img-circle media-object" />
 		</div>
 
-		<div class="media-body col-xs-12 col-sm-11">
+		<div class="media-body col-xs-12 col-sm-10 col-lg-11 activity-stream-event <s:if test="#currentEvent.first">event-first</s:if>">
 			<s:set var="activityStreamInfoVar" value="#actionLogRecordVar.activityStreamInfo" />
 			<c:set var="authGroupNameVar"><s:property value="#activityStreamInfoVar.linkAuthGroup" /></c:set>
 			<c:set var="authPermissionNameVar"><s:property value="#activityStreamInfoVar.linkAuthPermission" /></c:set>
@@ -270,6 +270,10 @@
 			</div>
 		</li>
 	</s:iterator>
+		<li class="media row">
+			<div class="media-body col-xs-12 col-sm-10 col-lg-11 col-sm-offset-2 col-lg-offset-1 activity-stream-event event-last">
+			</div>
+		</li>
 	</ul>
 </s:if>
 <s:else>

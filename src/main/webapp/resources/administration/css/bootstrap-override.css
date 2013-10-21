@@ -48,6 +48,10 @@ html {
 	padding: 0 6px;
 }
 
+#activity-stream {
+	position: relative;
+}
+
 #activity-stream img {
 	margin: 0 auto;
 }
@@ -56,15 +60,73 @@ html {
 	position: relative;
 	max-width: 100%;
 	margin: 0 auto;
+	border-color: #e7e7e7;
+	-webkit-box-shadow: none;
+	box-shadow: none;
 }
 
 #activity-stream .arrow {
 	display: none;
+	border-right-color: #e7e7e7;
+}
+
+#activity-stream .img-circle {
+	border: 1px solid #e7e7e7;
 }
 
 #activity-stream ul {
 	border-bottom: 1px dashed #ccc;
 	margin-left: 20px;
+}
+
+#activity-stream li.media {
+	margin-top: 0;
+}
+
+.activity-stream-picture {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.activity-stream-event {
+	position: static;
+}
+
+.activity-stream-event::before {
+	content: " ";
+	position: absolute;
+	margin-top: 0;
+	top: 0;
+	bottom: 56px;
+	left: 50%;
+	width: 1px;
+	height: 100%;
+	background-color: #e7e7e7;
+	z-index: -1;
+}
+
+.event-first::before {
+	content: " ";
+	position: absolute;
+	margin-top: 0;
+	top: 0;
+	bottom: 56px;
+	left: 50%;
+	width: 1px;
+	height: 2em	;
+	background-color: #fbfbfb;
+	z-index: 1;
+}
+
+.event-last::after {
+	content: " ";
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 1px;
+	height: 2.1em	;
+	background-color: #fbfbfb;
+	z-index: 1;
 }
 
 #tab-container {
