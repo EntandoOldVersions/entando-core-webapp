@@ -8347,3 +8347,7 @@ td.visible-print {
 .overflow-visible {
   overflow: visible !important;
 }
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
