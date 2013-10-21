@@ -11,33 +11,24 @@
 	<s:set var="attributeTracer" value="#masterListAttributeTracer.getMonoListElementTracer(#elementStatus.index)" />
 	<s:set var="elementIndex" value="#elementStatus.index" />
 
-	<s:set var="masterAttributeFieldErrorsVar" value="#attributeFieldErrorsVar" />
-	<s:set var="masterAttributeHasFieldErrorVar" value="#attributeHasFieldErrorVar" />
-	<s:set var="masterAontrolGroupErrorClassVar" value="#controlGroupErrorClassVar" />
-	<s:set var="masterAnputErrorClassVar" value="#inputErrorClassVar" />
-	<s:set var="masterAttributeFieldNameErrorsVar" value="#attributeFieldNameErrorsVar" />
-	<s:set var="masterAttributeHasFieldNameErrorVar" value="#attributeHasFieldNameErrorVar" />
-	<s:set var="masterAttributeFieldNameErrorsVarV2" value="#attributeFieldNameErrorsVarV2" />
-	<s:set var="masterAttributeHasFieldNameErrorVarV2" value="#attributeHasFieldNameErrorVarV2" />
-	<s:set var="masterAttributeHasErrorVar" value="#attributeHasErrorVar" />
 
-	<s:set var="attributeFieldErrorsVar" value="%{fieldErrors[#attribute.name]}" />
-	<s:set var="attributeHasFieldErrorVar" value="#attributeFieldErrorsVar != null && !#attributeFieldErrorsVar.isEmpty()" />
-	<s:set var="attributeFieldNameErrorsVar" value="%{fieldErrors[#attributeTracer.getFormFieldName(#attribute)]}" />
-	<s:set var="attributeHasFieldNameErrorVar" value="#attributeFieldNameErrorsVar != null && !#attributeFieldNameErrorsVar.isEmpty()" />
-	<s:set var="attributeFieldNameErrorsVarV2" value="%{fieldErrors[#attribute.name+':'+#attribute.name]}" />
-	<s:set var="attributeHasFieldNameErrorVarV2" value="#attributeFieldNameErrorsVarV2 != null && !#attributeFieldNameErrorsVarV2.isEmpty()" />
-	<s:set var="attributeHasErrorVar" value="%{#attributeHasFieldErrorVar||#attributeHasFieldNameErrorVar||#attributeHasFieldNameErrorVarV2}" />
+	<s:set var="MonoListAttributeFieldErrorsVar" value="%{fieldErrors[#attribute.name]}" />
+	<s:set var="MonoListAttributeHasFieldErrorVar" value="#MonoListAttributeFieldErrorsVar != null && !#MonoListAttributeFieldErrorsVar.isEmpty()" />
+	<s:set var="MonoListAttributeFieldNameErrorsVar" value="%{fieldErrors[#attributeTracer.getFormFieldName(#attribute)]}" />
+	<s:set var="MonoListAttributeHasFieldNameErrorVar" value="#MonoListAttributeFieldNameErrorsVar != null && !#MonoListAttributeFieldNameErrorsVar.isEmpty()" />
+	<s:set var="MonoListAttributeFieldNameErrorsVarV2" value="%{fieldErrors[#attribute.name+':'+#attribute.name]}" />
+	<s:set var="MonoListAttributeHasFieldNameErrorVarV2" value="#MonoListAttributeFieldNameErrorsVarV2 != null && !#MonoListAttributeFieldNameErrorsVarV2.isEmpty()" />
+	<s:set var="MonoListAttributeAttributeHasErrorVar" value="%{#MonoListAttributeHasFieldErrorVar||#MonoListAttributeHasFieldNameErrorVar||#MonoListAttributeHasFieldNameErrorVarV2}" />
 
-	<s:set var="controlGroupErrorClassVar" value="''" />
-	<s:set var="inputErrorClassVar" value="''" />
-	<s:if test="#attributeHasErrorVar">
-		<s:set var="controlGroupErrorClassVar" value="' panel-danger'" />
-		<s:set var="inputErrorClassVar" value="' input-with-feedback'" />
+	<s:set var="MonoListAttributeControlGroupErrorClassVar" value="''" />
+	<s:set var="MonoListAttributeInputErrorClassVar" value="''" />
+	<s:if test="#MonoListAttributeAttributeHasErrorVar">
+		<s:set var="MonoListAttributeControlGroupErrorClassVar" value="' panel-danger'" />
+		<s:set var="MonoListAttributeInputErrorClassVar" value="' input-with-feedback'" />
 	</s:if>
 
 	<li class="list-group-item">
-		<div class="panel panel-default margin-none<s:property value="%{#controlGroupErrorClassVar}" />"><%-- panel panel-default --%>
+		<div class="panel panel-default margin-none<s:property value="%{#MonoListAttributeControlGroupErrorClassVar}" />"><%-- panel panel-default --%>
 			<div class="panel-heading">
 			<%-- composite --%>
 				<s:if test="#attribute.type == 'Composite'">
@@ -113,22 +104,13 @@
 					</s:iterator>
 				</wpsa:hookPoint>
 
-				<s:if test="#attributeHasErrorVar">
+				<s:if test="#MonoListAttributeAttributeHasErrorVar">
 					<p class="text-danger margin-none padding-none padding-small-top">
-					<s:iterator value="#attributeFieldErrorsVar"><s:property /><br /></s:iterator>
-					<s:iterator value="#attributeFieldNameErrorsVar"><s:property /><br /></s:iterator>
-					<s:iterator value="#attributeFieldNameErrorsVarV2"><s:property /><br /></s:iterator>
+					<s:iterator value="#MonoListAttributeFieldErrorsVar"><s:property /><br /></s:iterator>
+					<s:iterator value="#MonoListAttributeFieldNameErrorsVar"><s:property /><br /></s:iterator>
+					<s:iterator value="#MonoListAttributeFieldNameErrorsVarV2"><s:property /><br /></s:iterator>
 				</s:if>
 
-				<s:set var="attributeFieldErrorsVar" value="#masterAttributeFieldErrorsVar" />
-				<s:set var="attributeHasFieldErrorVar" value="#masterAttributeHasFieldErrorVar" />
-				<s:set var="controlGroupErrorClassVar" value="#masterAontrolGroupErrorClassVar" />
-				<s:set var="inputErrorClassVar" value="#masterAnputErrorClassVar" />
-				<s:set var="attributeFieldNameErrorsVar" value="#masterAttributeFieldNameErrorsVar" />
-				<s:set var="attributeHasFieldNameErrorVar" value="#masterAttributeHasFieldNameErrorVar" />
-				<s:set var="attributeFieldNameErrorsVarV2" value="#masterAttributeFieldNameErrorsVarV2" />
-				<s:set var="attributeHasFieldNameErrorVarV2" value="#masterAttributeHasFieldNameErrorVarV2" />
-				<s:set var="attributeHasErrorVar" value="#masterAttributeHasErrorVar" />
 
 			</div><%-- row panel-body --%>
 		</div><%-- panel panel-default --%>

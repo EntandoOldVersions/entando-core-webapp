@@ -12,8 +12,16 @@
 			<div class="alert alert-danger alert-dismissable fade in">
 				<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
 				<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h2>
-				<p class="margin-none margin-base-top"><s:text name="message.content.error" /></p>
-				<ul class="unstyled">
+				<p class="margin-none margin-base-top">
+					<s:text name="message.content.error" />
+					&ensp;<span
+						class="icon icon-question-sign cursor-pointer"
+						title="<s:text name="label.all" />"
+						data-toggle="collapse"
+						data-target="#content-error-messages"></span>
+					<span class="sr-only"><s:text name="label.all" /></span>
+				</p>
+				<ul class="unstyled collapse margin-small-top" id="content-error-messages">
 					<s:iterator value="fieldErrors">
 						<s:iterator value="value">
 							<li><s:property escape="false" /></li>

@@ -4,40 +4,31 @@
 <s:set var="masterCompositeAttribute" value="#attribute" />
 <ul class="list-group">
 	<s:iterator value="#attribute.attributes" var="attribute">
+
 		<s:set var="parentAttribute" value="#masterCompositeAttribute" />
 		<s:set var="attributeTracer" value="#masterCompositeAttributeTracer.getCompositeTracer(#masterCompositeAttribute)"></s:set>
 
 		<s:set var="nullValueVar" />
 		<s:property value="%{#attributeTracer.setLang(#nullValueVar)}" />
 
-		<s:set var="masterAttributeFieldErrorsVar" value="#attributeFieldErrorsVar" />
-		<s:set var="masterAttributeHasFieldErrorVar" value="#attributeHasFieldErrorVar" />
-		<s:set var="masterAontrolGroupErrorClassVar" value="#controlGroupErrorClassVar" />
-		<s:set var="masterAnputErrorClassVar" value="#inputErrorClassVar" />
-		<s:set var="masterAttributeFieldNameErrorsVar" value="#attributeFieldNameErrorsVar" />
-		<s:set var="masterAttributeHasFieldNameErrorVar" value="#attributeHasFieldNameErrorVar" />
-		<s:set var="masterAttributeFieldNameErrorsVarV2" value="#attributeFieldNameErrorsVarV2" />
-		<s:set var="masterAttributeHasFieldNameErrorVarV2" value="#attributeHasFieldNameErrorVarV2" />
-		<s:set var="masterAttributeHasErrorVar" value="#attributeHasErrorVar" />
+		<s:set var="CompositeAttributeFieldErrorsVar" value="%{fieldErrors[#attribute.name]}" />
+		<s:set var="CompositeAttributeHasFieldErrorVar" value="#CompositeAttributeFieldErrorsVar != null && !#CompositeAttributeFieldErrorsVar.isEmpty()" />
+		<s:set var="CompositeAttributeFieldNameErrorsVar" value="%{fieldErrors[#attributeTracer.getFormFieldName(#attribute)]}" />
+		<s:set var="CompositeAttributeHasFieldNameErrorVar" value="#CompositeAttributeFieldNameErrorsVar != null && !#CompositeAttributeFieldNameErrorsVar.isEmpty()" />
+		<s:set var="CompositeAttributeFieldNameErrorsVarV2" value="%{fieldErrors[#attribute.name+':'+#attribute.name]}" />
+		<s:set var="CompositeAttributeHasFieldNameErrorVarV2" value="#CompositeAttributeFieldNameErrorsVarV2 != null && !#CompositeAttributeFieldNameErrorsVarV2.isEmpty()" />
+		<s:set var="CompositeAttributeHasErrorVar" value="%{#CompositeAttributeHasFieldErrorVar||#CompositeAttributeHasFieldNameErrorVar||#CompositeAttributeHasFieldNameErrorVarV2}" />
 
-		<s:set var="attributeFieldErrorsVar" value="%{fieldErrors[#attribute.name]}" />
-		<s:set var="attributeHasFieldErrorVar" value="#attributeFieldErrorsVar != null && !#attributeFieldErrorsVar.isEmpty()" />
-		<s:set var="attributeFieldNameErrorsVar" value="%{fieldErrors[#attributeTracer.getFormFieldName(#attribute)]}" />
-		<s:set var="attributeHasFieldNameErrorVar" value="#attributeFieldNameErrorsVar != null && !#attributeFieldNameErrorsVar.isEmpty()" />
-		<s:set var="attributeFieldNameErrorsVarV2" value="%{fieldErrors[#attribute.name+':'+#attribute.name]}" />
-		<s:set var="attributeHasFieldNameErrorVarV2" value="#attributeFieldNameErrorsVarV2 != null && !#attributeFieldNameErrorsVarV2.isEmpty()" />
-		<s:set var="attributeHasErrorVar" value="%{#attributeHasFieldErrorVar||#attributeHasFieldNameErrorVar||#attributeHasFieldNameErrorVarV2}" />
-
-		<s:set var="controlGroupErrorClassVar" value="''" />
-		<s:set var="inputErrorClassVar" value="''" />
-		<s:if test="#attributeHasErrorVar">
-			<s:set var="controlGroupErrorClassVar" value="' panel-danger'" />
-			<s:set var="inputErrorClassVar" value="' input-with-feedback'" />
+		<s:set var="CompositeAttributeControlGroupErrorClassVar" value="''" />
+		<s:set var="CompositeAttributeInputErrorClassVar" value="''" />
+		<s:if test="#CompositeAttributeHasErrorVar">
+			<s:set var="CompositeAttributeControlGroupErrorClassVar" value="' panel-danger'" />
+			<s:set var="CompositeAttributeInputErrorClassVar" value="' input-with-feedback'" />
 		</s:if>
 
 		<s:property value="%{#attributeTracer.setLang(#lang)}" />
 
-		<li class="list-group-item<s:property value="#controlGroupErrorClassVar" />">
+		<li class="list-group-item<s:property value="#CompositeAttributeControlGroupErrorClassVar" />">
 			<s:if test="null != #attribute.description"><s:set var="compositeElementLabelVar" value="#attribute.description" /></s:if>
 			<s:else><s:set var="compositeElementLabelVar" value="#attribute.name" /></s:else>
 
@@ -105,22 +96,13 @@
 			</s:iterator>
 			</wpsa:hookPoint>
 
-			<s:if test="#attributeHasErrorVar">
+			<s:if test="#CompositeAttributeHasErrorVar">
 				<p class="text-danger margin-none padding-none padding-small-top">
-				<s:iterator value="#attributeFieldErrorsVar"><s:property /><br /></s:iterator>
-				<s:iterator value="#attributeFieldNameErrorsVar"><s:property /><br /></s:iterator>
-				<s:iterator value="#attributeFieldNameErrorsVarV2"><s:property /><br /></s:iterator>
+				<s:iterator value="#CompositeAttributeFieldErrorsVar"><s:property /><br /></s:iterator>
+				<s:iterator value="#CompositeAttributeFieldNameErrorsVar"><s:property /><br /></s:iterator>
+				<s:iterator value="#CompositeAttributeFieldNameErrorsVarV2"><s:property /><br /></s:iterator>
 			</s:if>
 
-			<s:set var="attributeFieldErrorsVar" value="#masterAttributeFieldErrorsVar" />
-			<s:set var="attributeHasFieldErrorVar" value="#masterAttributeHasFieldErrorVar" />
-			<s:set var="controlGroupErrorClassVar" value="#masterAontrolGroupErrorClassVar" />
-			<s:set var="inputErrorClassVar" value="#masterAnputErrorClassVar" />
-			<s:set var="attributeFieldNameErrorsVar" value="#masterAttributeFieldNameErrorsVar" />
-			<s:set var="attributeHasFieldNameErrorVar" value="#masterAttributeHasFieldNameErrorVar" />
-			<s:set var="attributeFieldNameErrorsVarV2" value="#masterAttributeFieldNameErrorsVarV2" />
-			<s:set var="attributeHasFieldNameErrorVarV2" value="#masterAttributeHasFieldNameErrorVarV2" />
-			<s:set var="attributeHasErrorVar" value="#masterAttributeHasErrorVar" />
 
 		</li>
 	</s:iterator>

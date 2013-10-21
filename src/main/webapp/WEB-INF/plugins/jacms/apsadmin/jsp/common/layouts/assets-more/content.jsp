@@ -149,6 +149,7 @@ $(function() {
 								button.button('loading');
 							},
 							complete: function(resp, status) {
+								debugger;
 								if (status == 'success') {
 									oldData = this.sentData;
 									setTimeout(function(){
@@ -162,6 +163,10 @@ $(function() {
 											else {
 												messagesContainerEl.html(resp.fieldErrors);
 											}
+											savedDataEl.siblings('.icon').addClass('hide');
+										}
+										else {
+											savedDataEl.siblings('.icon').removeClass('hide');
 										}
 										button.button('reset');
 										savedDataEl.parent().removeClass('hide');
