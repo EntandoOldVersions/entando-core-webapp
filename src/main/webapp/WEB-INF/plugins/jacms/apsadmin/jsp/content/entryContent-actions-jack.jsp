@@ -4,6 +4,7 @@
 <div class="row margin-none margin-large-top">
 	<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 		<s:submit
+			id="edit-saveAndContinue"
 			data-loading-text="%{getText('label.autosaving.button.text')}"
 			data-button-type="autosave"
 			action="saveAndContinue"

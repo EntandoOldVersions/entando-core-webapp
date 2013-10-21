@@ -136,10 +136,10 @@ $(function() {
 				var versionEl = $('[data-autosave="version"]');
 				var lastEditorEl = $('[data-autosave="lastEditor"]');
 				//debugger;
-				var sendSave = function() {
+				var sendSave = function(forceSave) {
 					var delay = 3000;
 					var data = gatherData(form,button);
-					if (oldData!=data) {
+					if (oldData!=data || forceSave===true) {
 						$.ajax({
 							sentData: data,
 							url: action,
@@ -191,6 +191,10 @@ $(function() {
 					setTimeout(sendSave,delay);
 				}
 				sendSave();
+				$('#edit-saveAndContinue').on('click touchstart', function(ev){
+					ev.preventDefault();
+					sendSave(true);
+				});
 			}
 		});//each
 	});
