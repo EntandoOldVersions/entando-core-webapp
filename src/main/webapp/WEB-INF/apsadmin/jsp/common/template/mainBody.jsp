@@ -171,7 +171,6 @@
 		<s:set var="fullnameVar"><wp:userProfileAttribute username="${usernameVar}" attributeRoleName="userprofile:fullname" /></s:set>
 		<s:set var="emailAttributeVar"><wp:userProfileAttribute username="${usernameVar}" attributeRoleName="userprofile:email" /></s:set>
 
-		<%-- Temp gravatar untill Eu finishes the real feature --%>
 		<div class="col-xs-12 col-sm-1 margin-small-bottom">
 			<img src="<s:url action="avatarStream" namespace="/do/user/avatar">
 							<s:param name="gravatarSize">56</s:param>
