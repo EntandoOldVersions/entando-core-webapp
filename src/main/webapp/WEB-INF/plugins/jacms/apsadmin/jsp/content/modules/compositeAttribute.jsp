@@ -1,23 +1,27 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
-<s:set var="masterCompositeAttributeTracer" value="#attributeTracer" />
-<s:set var="masterCompositeAttribute" value="#attribute" />
+<s:set var="parentListAttribute" value="#masterListAttribute" />
+<s:set name="masterCompositeAttributeTracer" value="#attributeTracer" />
+<s:set name="masterCompositeAttribute" value="#attribute" />
 <ul class="list-group">
 	<s:iterator value="#attribute.attributes" var="attribute">
-
-		<s:set var="parentAttribute" value="#masterCompositeAttribute" />
-		<s:set var="attributeTracer" value="#masterCompositeAttributeTracer.getCompositeTracer(#masterCompositeAttribute)"></s:set>
-
-		<s:set var="nullValueVar" />
-		<s:property value="%{#attributeTracer.setLang(#nullValueVar)}" />
+		<s:set name="attributeTracer" value="#masterCompositeAttributeTracer.getCompositeTracer(#masterCompositeAttribute)"></s:set>
+		<s:set name="parentAttribute" value="#masterCompositeAttribute"></s:set>
+		<s:property value="%{#attributeTracer.setLang(null)}" />
+		<s:set var="CompositeAttributeNestedErrorKeyVar" value="%{(#parentListAttribute!=null ? #parentListAttribute.type+':' : '')+(#masterCompositeAttribute.type)+':'+(#attribute.type)+':'+(#masterCompositeAttribute.name)+'_'+(#attribute.name)+(#parentListAttribute!=null ? '_'+#elementStatus.index.toString() : '')}" />
 
 		<s:set var="CompositeAttributeFieldErrorsVar" value="%{fieldErrors[#attribute.name]}" />
+
 		<s:set var="CompositeAttributeHasFieldErrorVar" value="#CompositeAttributeFieldErrorsVar != null && !#CompositeAttributeFieldErrorsVar.isEmpty()" />
+		<%--
 		<s:set var="CompositeAttributeFieldNameErrorsVar" value="%{fieldErrors[#attributeTracer.getFormFieldName(#attribute)]}" />
 		<s:set var="CompositeAttributeHasFieldNameErrorVar" value="#CompositeAttributeFieldNameErrorsVar != null && !#CompositeAttributeFieldNameErrorsVar.isEmpty()" />
+		--%>
 		<s:set var="CompositeAttributeFieldNameErrorsVarV2" value="%{fieldErrors[#attribute.name+':'+#attribute.name]}" />
 		<s:set var="CompositeAttributeHasFieldNameErrorVarV2" value="#CompositeAttributeFieldNameErrorsVarV2 != null && !#CompositeAttributeFieldNameErrorsVarV2.isEmpty()" />
-		<s:set var="CompositeAttributeHasErrorVar" value="%{#CompositeAttributeHasFieldErrorVar||#CompositeAttributeHasFieldNameErrorVar||#CompositeAttributeHasFieldNameErrorVarV2}" />
+		<s:set var="CompositeAttributeNestedErrorsVar" value="%{fieldErrors[#CompositeAttributeNestedErrorKeyVar]}" />
+		<s:set var="CompositeAttributeHasNestedErrorsVar" value="%{#CompositeAttributeNestedErrorsVar != null && !#CompositeAttributeNestedErrorsVar.isEmpty()}" />
+		<s:set var="CompositeAttributeHasErrorVar" value="%{#CompositeAttributeHasFieldErrorVar||#CompositeAttributeHasFieldNameErrorVar||#CompositeAttributeHasFieldNameErrorVarV2||#CompositeAttributeHasNestedErrorsVar}" />
 
 		<s:set var="CompositeAttributeControlGroupErrorClassVar" value="''" />
 		<s:set var="CompositeAttributeInputErrorClassVar" value="''" />
@@ -99,8 +103,9 @@
 			<s:if test="#CompositeAttributeHasErrorVar">
 				<p class="text-danger margin-none padding-none padding-small-top">
 				<s:iterator value="#CompositeAttributeFieldErrorsVar"><s:property /><br /></s:iterator>
-				<s:iterator value="#CompositeAttributeFieldNameErrorsVar"><s:property /><br /></s:iterator>
+				<%-- <s:iterator value="#CompositeAttributeFieldNameErrorsVar"><s:property /><br /></s:iterator> --%>
 				<s:iterator value="#CompositeAttributeFieldNameErrorsVarV2"><s:property /><br /></s:iterator>
+				<s:iterator value="#CompositeAttributeNestedErrorsVar"><s:property /><br /></s:iterator>
 			</s:if>
 
 
@@ -109,4 +114,4 @@
 </ul>
 <s:set var="attributeTracer" value="#masterCompositeAttributeTracer" />
 <s:set var="attribute" value="#masterCompositeAttribute" />
-<s:set var="parentAttribute" value=""></s:set>
+<s:set var="parentAttribute" value="%{null}" />

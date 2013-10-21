@@ -16,8 +16,20 @@
 		<s:if test="hasFieldErrors()">
 			<div class="alert alert-danger alert-dismissable fade in">
 				<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
-				<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h2>
-				<%-- <p class="margin-base-vertical"><s:text name="message.content.error" /></p> --%>
+				<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" />&ensp;<span
+						class="icon icon-question-sign cursor-pointer"
+						title="<s:text name="label.all" />"
+						data-toggle="collapse"
+						data-target="#content-error-messages"></span>
+					<span class="sr-only"><s:text name="label.all" /></span>
+				</h2>
+				<ul class="unstyled collapse margin-small-top" id="content-error-messages">
+					<s:iterator value="fieldErrors">
+						<s:iterator value="value">
+							<li><%-- <s:property value="key" />&emsp;&emsp;|--%><s:property escape="false" /></li>
+							</s:iterator>
+						</s:iterator>
+				</ul>
 			</div>
 		</s:if>
 		<div class="col-xs-12">
@@ -33,18 +45,22 @@
 				<%-- tracer start --%>
 				<wpsa:tracerFactory var="attributeTracer" lang="%{#lang.code}" />
 
+				<s:set var="attributeFieldErrorsVar" value="%{fieldErrors[#attribute.name]}" />
+				<s:set var="attributeHasFieldErrorVar" value="#attributeFieldErrorsVar != null && !#attributeFieldErrorsVar.isEmpty()" />
+				<s:set var="attributeFieldNameErrorsVar" value="%{fieldErrors[#attributeTracer.getFormFieldName(#attribute)]}" />
+				<s:set var="attributeHasFieldNameErrorVar" value="#attributeFieldNameErrorsVar != null && !#attributeFieldNameErrorsVar.isEmpty()" />
+				<s:set var="attributeHasErrorVar" value="%{#attributeHasFieldErrorVar||#attributeHasFieldNameErrorVar}" />
+				<s:set var="controlGroupErrorClassVar" value="''" />
+				<s:set var="inputErrorClassVar" value="''" />
+				<s:if test="#attributeHasErrorVar">
+					<s:set var="controlGroupErrorClassVar" value="' has-error'" />
+					<s:set var="inputErrorClassVar" value="' input-with-feedback'" />
+				</s:if>
+
 				<s:if test="null != #attribute.description"><s:set var="attributeLabelVar" value="#attribute.description" /></s:if>
 				<s:else><s:set var="attributeLabelVar" value="#attribute.name" /></s:else>
-				
-				<s:set var="attributeFieldErrorsVar" value="%{fieldErrors[#attributeTracer.getFormFieldName(#attribute)]}" />
-				<s:set var="attributeHasFieldErrorVar" value="#attributeFieldErrorsVar != null && !#attributeFieldErrorsVar.isEmpty()" />
-				<s:set var="controlGroupErrorClassVar" value="%{''}" />
-				<s:set var="inputErrorClassVar" value="%{''}" />
-				<s:if test="#attributeHasFieldErrorVar">
-					<s:set var="controlGroupErrorClassVar" value="%{' has-error'}" />
-					<s:set var="inputErrorClassVar" value="%{' input-with-feedback'}" />
-				</s:if>
-				<div class="form-group<s:property value="controlGroupErrorClassVar" />">
+
+				<div class="form-group<s:property value="#controlGroupErrorClassVar" />"><%-- form group --%>
 					<s:if test="#attribute.type == 'List' || #attribute.type == 'Monolist'">
 						<label class="display-block"><span class="icon icon-list"></span>&#32;<s:property value="#attributeLabelVar" />&#32;<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" /></label>
 					</s:if>
@@ -109,9 +125,10 @@
 							<!-- attribute: <s:property value="#attribute.type" /> -->
 							<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/monotextAttribute.jsp" />
 					</s:else>
-					<s:if test="#attributeFieldErrorsVar">
+					<s:if test="#attributeHasErrorVar">
 						<p class="text-danger padding-small-vertical">
-							<s:iterator value="#attributeFieldErrorsVar"><s:property /> </s:iterator>
+							<s:iterator value="#attributeFieldErrorsVar"><s:property /><br /></s:iterator>
+							<s:iterator value="#attributeFieldNameErrorsVar"><s:property /><br /></s:iterator>
 						</p>
 					</s:if>
 				</div><%-- form-group --%>

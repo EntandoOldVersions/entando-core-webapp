@@ -11,14 +11,18 @@
 	<s:set var="attributeTracer" value="#masterListAttributeTracer.getMonoListElementTracer(#elementStatus.index)" />
 	<s:set var="elementIndex" value="#elementStatus.index" />
 
-
+	<s:set var="MonolistAttributeNestedErrorKeyVar" value="%{#masterListAttribute.type+':'+#masterListAttribute.nestedAttributeTypeCode+':'+#attribute.name+'_'+#elementStatus.index}" />
+	<%--
 	<s:set var="MonoListAttributeFieldErrorsVar" value="%{fieldErrors[#attribute.name]}" />
 	<s:set var="MonoListAttributeHasFieldErrorVar" value="#MonoListAttributeFieldErrorsVar != null && !#MonoListAttributeFieldErrorsVar.isEmpty()" />
 	<s:set var="MonoListAttributeFieldNameErrorsVar" value="%{fieldErrors[#attributeTracer.getFormFieldName(#attribute)]}" />
 	<s:set var="MonoListAttributeHasFieldNameErrorVar" value="#MonoListAttributeFieldNameErrorsVar != null && !#MonoListAttributeFieldNameErrorsVar.isEmpty()" />
+	--%>
 	<s:set var="MonoListAttributeFieldNameErrorsVarV2" value="%{fieldErrors[#attribute.name+':'+#attribute.name]}" />
 	<s:set var="MonoListAttributeHasFieldNameErrorVarV2" value="#MonoListAttributeFieldNameErrorsVarV2 != null && !#MonoListAttributeFieldNameErrorsVarV2.isEmpty()" />
-	<s:set var="MonoListAttributeAttributeHasErrorVar" value="%{#MonoListAttributeHasFieldErrorVar||#MonoListAttributeHasFieldNameErrorVar||#MonoListAttributeHasFieldNameErrorVarV2}" />
+	<s:set var="MonolistAttributeNestedErrorsVar" value="%{fieldErrors[#MonolistAttributeNestedErrorKeyVar]}" />
+	<s:set var="MonolistAttributeHasNestedErrorsVar" value="%{#MonolistAttributeNestedErrorsVar != null && !#MonolistAttributeNestedErrorsVar.isEmpty()}" />
+	<s:set var="MonoListAttributeAttributeHasErrorVar" value="%{#MonoListAttributeHasFieldErrorVar||#MonoListAttributeHasFieldNameErrorVar||#MonoListAttributeHasFieldNameErrorVarV2||#MonolistAttributeHasNestedErrorsVar}" />
 
 	<s:set var="MonoListAttributeControlGroupErrorClassVar" value="''" />
 	<s:set var="MonoListAttributeInputErrorClassVar" value="''" />
@@ -28,6 +32,7 @@
 	</s:if>
 
 	<li class="list-group-item">
+
 		<div class="panel panel-default margin-none<s:property value="%{#MonoListAttributeControlGroupErrorClassVar}" />"><%-- panel panel-default --%>
 			<div class="panel-heading">
 			<%-- composite --%>
@@ -107,10 +112,10 @@
 				<s:if test="#MonoListAttributeAttributeHasErrorVar">
 					<p class="text-danger margin-none padding-none padding-small-top">
 					<s:iterator value="#MonoListAttributeFieldErrorsVar"><s:property /><br /></s:iterator>
-					<s:iterator value="#MonoListAttributeFieldNameErrorsVar"><s:property /><br /></s:iterator>
+					<%-- <s:iterator value="#MonoListAttributeFieldNameErrorsVar"><s:property /><br /></s:iterator> --%>
 					<s:iterator value="#MonoListAttributeFieldNameErrorsVarV2"><s:property /><br /></s:iterator>
+					<s:iterator value="#MonolistAttributeNestedErrorsVar"><s:property /><br /></s:iterator>
 				</s:if>
-
 
 			</div><%-- row panel-body --%>
 		</div><%-- panel panel-default --%>
@@ -118,7 +123,9 @@
 </s:iterator>
 <s:set var="attributeTracer" value="#masterListAttributeTracer" />
 <s:set var="attribute" value="#masterListAttribute" />
-<s:set var="elementIndex" value="" />
+<s:set var="masterListAttribute" value="%{null}" />
+<s:set var="masterListAttributeTracer" value="%{null}" />
+<s:set var="elementIndex" value="%{null}" />
 <s:if test="#attribute.attributes.size() != 0">
 	</ul>
 </s:if>
