@@ -1,5 +1,6 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/aps-core" prefix="wp" %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 
 <s:if test="#group.size > #group.max">
 

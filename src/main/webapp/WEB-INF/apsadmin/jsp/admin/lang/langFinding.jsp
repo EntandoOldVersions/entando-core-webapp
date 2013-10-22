@@ -1,6 +1,8 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="wpsa" uri="/apsadmin-core"  %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
+
 <h1 class="panel panel-default title-page">
 	<span class="panel-body display-block">
 		<a href="<s:url namespace="/do/BaseAdmin" action="settings" />"><s:text name="menu.configure" /></a>

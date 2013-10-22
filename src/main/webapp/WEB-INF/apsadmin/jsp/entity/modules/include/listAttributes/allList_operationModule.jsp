@@ -1,6 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/aps-core" prefix="wp" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 
 <s:if test="null == #operationButtonDisabled">
 	<s:set var="operationButtonDisabled" value="false" />

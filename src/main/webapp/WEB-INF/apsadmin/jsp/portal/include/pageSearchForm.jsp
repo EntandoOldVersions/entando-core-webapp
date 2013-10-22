@@ -1,4 +1,5 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 
 <s:form action="search" cssClass="form-horizontal">
 

@@ -1,6 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/aps-core" prefix="wp" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 
 <wpsa:actionParam action="addListElement" var="actionName" >
 	<wpsa:actionSubParam name="attributeName" value="%{#attribute.name}" />
