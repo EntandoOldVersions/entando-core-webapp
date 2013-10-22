@@ -35,8 +35,8 @@
 					<s:iterator value="fieldErrors">
 						<s:iterator value="value">
 							<li><%-- <s:property value="key" />&emsp;|--%><s:property escape="false" /></li>
-							</s:iterator>
 						</s:iterator>
+					</s:iterator>
 				</ul>
 			</div>
 		</s:if>
