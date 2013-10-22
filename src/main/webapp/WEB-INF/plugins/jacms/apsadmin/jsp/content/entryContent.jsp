@@ -209,7 +209,8 @@
 												list="#showingPageSelectItems"
 												listKey="key"
 												listValue="%{getText('name.preview.page') + ': ' +value}"
-												cssClass="form-control" />
+												cssClass="form-control"
+												data-autosave="ignore" />
 											<span class="input-group-btn">
 												<%-- <s:select name="jacmsPreviewActionPageCode" id="%{#previewActionPageCodeLabelId}" list="#showingPageSelectItems" listKey="key" listValue="value" /></p>  --%>
 												<s:submit
@@ -255,7 +256,8 @@
 									list="groups"
 									listKey="name"
 									listValue="descr"
-									cssClass="form-control" />
+									cssClass="form-control"
+									data-autosave="ignore" />
 								<span class="input-group-btn">
 									<s:submit
 										type="button"
