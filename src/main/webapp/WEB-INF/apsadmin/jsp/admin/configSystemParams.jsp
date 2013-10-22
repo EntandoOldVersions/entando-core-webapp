@@ -148,10 +148,12 @@
 					<input type="radio" id="admin-settings-area-hypertextEditor_fckeditor" name="hypertextEditor" value="fckeditor" <s:if test="systemParams['hypertextEditor'] == 'fckeditor'">checked="checked"</s:if> />&#32;
 					<s:text name="name.editor.ckeditor" />
 				</label>
+				<%--
 				<label class="btn btn-default <s:if test="systemParams['hypertextEditor'] == 'hoofed'"> active</s:if>">
 					<input type="radio" id="admin-settings-area-hypertextEditor_hoofed" name="hypertextEditor" value="hoofed" <s:if test="systemParams['hypertextEditor'] == 'hoofed'">checked="checked"</s:if> />&#32;
 					<s:text name="name.editor.hoofed" />
 				</label>
+				--%>
 			</div>
 		</div>
 
