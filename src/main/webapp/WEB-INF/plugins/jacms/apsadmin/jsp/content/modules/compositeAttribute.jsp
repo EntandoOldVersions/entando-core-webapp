@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <s:set var="parentListAttribute" value="#masterListAttribute" />
@@ -8,20 +9,20 @@
 		<s:set name="attributeTracer" value="#masterCompositeAttributeTracer.getCompositeTracer(#masterCompositeAttribute)"></s:set>
 		<s:set name="parentAttribute" value="#masterCompositeAttribute"></s:set>
 		<s:property value="%{#attributeTracer.setLang(null)}" />
+
 		<s:set var="CompositeAttributeNestedErrorKeyVar" value="%{(#parentListAttribute!=null ? #parentListAttribute.type+':' : '')+(#masterCompositeAttribute.type)+':'+(#attribute.type)+':'+(#masterCompositeAttribute.name)+'_'+(#attribute.name)+(#parentListAttribute!=null ? '_'+#elementStatus.index.toString() : '')}" />
-
+		<s:set var="CompositeAttributeNestedErrorKeyVarV2" value="%{(#parentListAttribute!=null ? #parentListAttribute.type+':' : '')+(#masterCompositeAttribute.type)+':'+(#attribute.type)+':'+#lang.code+'_'+(#masterCompositeAttribute.name)+'_'+(#attribute.name)+(#parentListAttribute!=null ? '_'+#elementStatus.index.toString() : '')}" />
 		<s:set var="CompositeAttributeFieldErrorsVar" value="%{fieldErrors[#attribute.name]}" />
-
 		<s:set var="CompositeAttributeHasFieldErrorVar" value="#CompositeAttributeFieldErrorsVar != null && !#CompositeAttributeFieldErrorsVar.isEmpty()" />
-		<%--
 		<s:set var="CompositeAttributeFieldNameErrorsVar" value="%{fieldErrors[#attributeTracer.getFormFieldName(#attribute)]}" />
 		<s:set var="CompositeAttributeHasFieldNameErrorVar" value="#CompositeAttributeFieldNameErrorsVar != null && !#CompositeAttributeFieldNameErrorsVar.isEmpty()" />
-		--%>
-		<s:set var="CompositeAttributeFieldNameErrorsVarV2" value="%{fieldErrors[#attribute.name+':'+#attribute.name]}" />
+		<s:set var="CompositeAttributeFieldNameErrorsVarV2" value="%{fieldErrors[#attribute.type+':'+#attribute.name]}" />
 		<s:set var="CompositeAttributeHasFieldNameErrorVarV2" value="#CompositeAttributeFieldNameErrorsVarV2 != null && !#CompositeAttributeFieldNameErrorsVarV2.isEmpty()" />
 		<s:set var="CompositeAttributeNestedErrorsVar" value="%{fieldErrors[#CompositeAttributeNestedErrorKeyVar]}" />
 		<s:set var="CompositeAttributeHasNestedErrorsVar" value="%{#CompositeAttributeNestedErrorsVar != null && !#CompositeAttributeNestedErrorsVar.isEmpty()}" />
-		<s:set var="CompositeAttributeHasErrorVar" value="%{#CompositeAttributeHasFieldErrorVar||#CompositeAttributeHasFieldNameErrorVar||#CompositeAttributeHasFieldNameErrorVarV2||#CompositeAttributeHasNestedErrorsVar}" />
+		<s:set var="CompositeAttributeNestedErrorsVarV2" value="%{fieldErrors[#CompositeAttributeNestedErrorKeyVarV2]}" />
+		<s:set var="CompositeAttributeHasNestedErrorsVarV2" value="%{#CompositeAttributeNestedErrorsVarV2 != null && !#CompositeAttributeNestedErrorsVarV2.isEmpty()}" />
+		<s:set var="CompositeAttributeHasErrorVar" value="%{#CompositeAttributeHasFieldErrorVar||#CompositeAttributeHasFieldNameErrorVar||#CompositeAttributeHasFieldNameErrorVarV2||#CompositeAttributeHasNestedErrorsVar||#CompositeAttributeHasNestedErrorsVarV2}" />
 
 		<s:set var="CompositeAttributeControlGroupErrorClassVar" value="''" />
 		<s:set var="CompositeAttributeInputErrorClassVar" value="''" />
@@ -102,13 +103,19 @@
 
 			<s:if test="#CompositeAttributeHasErrorVar">
 				<p class="text-danger margin-none padding-none padding-small-top">
-				<s:iterator value="#CompositeAttributeFieldErrorsVar"><s:property /><br /></s:iterator>
-				<%-- <s:iterator value="#CompositeAttributeFieldNameErrorsVar"><s:property /><br /></s:iterator> --%>
-				<s:iterator value="#CompositeAttributeFieldNameErrorsVarV2"><s:property /><br /></s:iterator>
-				<s:iterator value="#CompositeAttributeNestedErrorsVar"><s:property /><br /></s:iterator>
+					<jsp:useBean id="CompositeAttributeErrorMapVar" class="java.util.HashMap" scope="request"/>
+					<s:iterator value="#CompositeAttributeFieldErrorsVar"><s:set var="attributeCurrentError" scope="page" /><c:set target="${CompositeAttributeErrorMapVar}" property="${attributeCurrentError}" value="${attributeCurrentError}"/></s:iterator>
+					<s:iterator value="#CompositeAttributeFieldNameErrorsVar"><s:set var="attributeCurrentError" scope="page" /><c:set target="${CompositeAttributeErrorMapVar}" property="${attributeCurrentError}" value="${attributeCurrentError}"/></s:iterator>
+					<s:iterator value="#CompositeAttributeFieldNameErrorsVarV2"><s:set var="attributeCurrentError" scope="page" /><c:set target="${CompositeAttributeErrorMapVar}" property="${attributeCurrentError}" value="${attributeCurrentError}"/></s:iterator>
+					<s:iterator value="#CompositeAttributeNestedErrorsVar"><s:set var="attributeCurrentError" scope="page" /><c:set target="${CompositeAttributeErrorMapVar}" property="${attributeCurrentError}" value="${attributeCurrentError}"/></s:iterator>
+					<s:iterator value="#CompositeAttributeNestedErrorsVarV2"><s:set var="attributeCurrentError" scope="page" /><c:set target="${CompositeAttributeErrorMapVar}" property="${attributeCurrentError}" value="${attributeCurrentError}"/></s:iterator>
+					<c:forEach items="${CompositeAttributeErrorMapVar}" var="attributeCurrentError">
+						<c:out value="${attributeCurrentError.value}" /><br />
+					</c:forEach>
+					<c:set var="CompositeAttributeErrorMapVar" value="${null}" />
+					<c:set var="attributeCurrentError" value="${null}" />
+				</p>
 			</s:if>
-
-
 		</li>
 	</s:iterator>
 </ul>

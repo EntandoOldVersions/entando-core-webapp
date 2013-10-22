@@ -43,13 +43,13 @@
 					<span class="<s:property value="#statusIconVar" />"></span>
 				</span>
 				<%-- field text --%>
-				<s:textfield 
-					id="%{#attributeTracer.getFormFieldName(#attribute)}" 
-					name="%{#attributeTracer.getFormFieldName(#attribute)}" 
-					value="%{#attribute.getTextForLang(#lang.code)}" 
-					maxlength="254" 
-					placeholder="%{getText('label.alt.text')}" 
-					title="%{getText('label.alt.text')}" 
+				<s:textfield
+					id="%{#attributeTracer.getFormFieldName(#attribute)}"
+					name="%{#attributeTracer.getFormFieldName(#attribute)}"
+					value="%{#attribute.getTextForLang(#lang.code)}"
+					maxlength="254"
+					placeholder="%{getText('label.link.text')}"
+					title="%{getText('label.link.text')}"
 					cssClass="form-control" />
 		</s:if>
 	</s:if>

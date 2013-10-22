@@ -6,12 +6,12 @@
 <s:iterator value="#attribute.attributes" id="attribute">
 <s:set name="attributeTracer" value="#masterCompositeAttributeTracer.getCompositeTracer(#masterCompositeAttribute)"></s:set>
 <s:set name="parentAttribute" value="#masterCompositeAttribute"></s:set>
-	<p>	
+	<p>
 		<label for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />" class="basic-mint-label"><s:property value="#attribute.name"/><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" />:</label>
 		<s:if test="#attribute.type == 'Boolean' || #attribute.type == 'ThreeState'">
 			</p>
 		</s:if>
-		
+
 		<s:if test="#attribute.type == 'Text'">
 			<br /><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/textAttribute.jsp" />
 		</s:if>
@@ -48,7 +48,7 @@
 
 	<s:if test="#attribute.type != 'Boolean' && #attribute.type != 'ThreeState'">
 		</p>
-	</s:if> 
+	</s:if>
 
 </s:iterator>
 <s:set name="attributeTracer" value="#masterCompositeAttributeTracer" />

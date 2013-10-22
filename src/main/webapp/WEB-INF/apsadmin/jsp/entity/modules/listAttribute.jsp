@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <s:if test="#attribute.getAttributeList(#lang.code).size() != 0">
 <ul class="list-group">
@@ -22,7 +23,7 @@
 	<s:set var="attributeHasFieldErrorVar" value="#attributeFieldErrorsVar != null && !#attributeFieldErrorsVar.isEmpty()" />
 	<s:set var="attributeFieldNameErrorsVar" value="%{fieldErrors[#attributeTracer.getFormFieldName(#attribute)]}" />
 	<s:set var="attributeHasFieldNameErrorVar" value="#attributeFieldNameErrorsVar != null && !#attributeFieldNameErrorsVar.isEmpty()" />
-	<s:set var="attributeFieldNameErrorsVarV2" value="%{fieldErrors[#attribute.name+':'+#attribute.name]}" />
+	<s:set var="attributeFieldNameErrorsVarV2" value="%{fieldErrors[#attribute.type+':'+#attribute.name]}" />
 	<s:set var="attributeHasFieldNameErrorVarV2" value="#attributeFieldNameErrorsVarV2 != null && !#attributeFieldNameErrorsVarV2.isEmpty()" />
 	<s:set var="attributeHasErrorVar" value="%{#attributeHasFieldErrorVar||#attributeHasFieldNameErrorVar||#attributeHasFieldNameErrorVarV2}" />
 
@@ -70,9 +71,16 @@
 
 				<s:if test="#attributeHasErrorVar">
 					<p class="text-danger margin-none padding-none padding-small-top">
-					<s:iterator value="#attributeFieldErrorsVar"><s:property /><br /></s:iterator>
-					<s:iterator value="#attributeFieldNameErrorsVar"><s:property /><br /></s:iterator>
-					<s:iterator value="#attributeFieldNameErrorsVarV2"><s:property /><br /></s:iterator>
+						<jsp:useBean id="ListAttributeErrorMapVar" class="java.util.HashMap" scope="request"/>
+						<s:iterator value="#attributeFieldErrorsVar"><s:set var="attributeCurrentError" scope="page" /><c:set target="${ListAttributeErrorMapVar}" property="${attributeCurrentError}" value="${attributeCurrentError}"/></s:iterator>
+						<s:iterator value="#attributeFieldNameErrorsVar"><s:set var="attributeCurrentError" scope="page" /><c:set target="${ListAttributeErrorMapVar}" property="${attributeCurrentError}" value="${attributeCurrentError}"/></s:iterator>
+						<s:iterator value="#attributeFieldNameErrorsVarV2"><s:set var="attributeCurrentError" scope="page" /><c:set target="${ListAttributeErrorMapVar}" property="${attributeCurrentError}" value="${attributeCurrentError}"/></s:iterator>
+						<c:forEach items="${ListAttributeErrorMapVar}" var="attributeCurrentError">
+							<c:out value="${attributeCurrentError.value}" /><br />
+						</c:forEach>
+						<c:set var="ListAttributeErrorMapVar" value="${null}" />
+						<c:set var="attributeCurrentError" value="${null}" />
+					</p>
 				</s:if>
 
 				<s:set var="attributeFieldErrorsVar" value="#masterAttributeFieldErrorsVar" />
@@ -92,7 +100,7 @@
 
 <s:set var="attributeTracer" value="#masterListAttributeTracer" />
 <s:set var="attribute" value="#masterListAttribute" />
-<s:set var="elementIndex" value="" />
+<s:set var="elementIndex" value="%{null}" />
 <s:if test="#attribute.getAttributeList(#lang.code).size() != 0">
 </ul>
 </s:if>
