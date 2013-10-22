@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
@@ -35,8 +34,8 @@
 					<s:iterator value="fieldErrors">
 						<s:iterator value="value">
 							<li><%-- <s:property value="key" />&emsp;|--%><s:property escape="false" /></li>
+							</s:iterator>
 						</s:iterator>
-					</s:iterator>
 				</ul>
 			</div>
 		</s:if>
@@ -47,7 +46,7 @@
 		<s:set var="myNameIsJack" value="true" />
 		<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/include/snippet-content.jsp" />
 		<p class="sr-only">
-			<wpsf:hidden name="contentOnSessionMarker" />
+			<s:hidden name="contentOnSessionMarker" />
 		</p>
 		<p class="sr-only" id="quickmenu"><s:text name="title.quickMenu" /></p>
 		<ul class="nav nav-tabs tab-togglers" id="tab-togglers">
@@ -79,9 +78,8 @@
 									<s:set var="attributeHasFieldErrorVar" value="#attributeFieldErrorsVar != null && !#attributeFieldErrorsVar.isEmpty()" />
 									<s:set var="attributeFieldNameErrorsVar" value="%{fieldErrors[#attributeTracer.getFormFieldName(#attribute)]}" />
 									<s:set var="attributeHasFieldNameErrorVar" value="#attributeFieldNameErrorsVar != null && !#attributeFieldNameErrorsVar.isEmpty()" />
-									<s:set var="attributeFieldNameErrorsVarV2" value="%{fieldErrors[#attribute.type+':'+#attribute.name]}" />
+									<s:set var="attributeFieldNameErrorsVarV2" value="%{fieldErrors[#attribute.name+':'+#attribute.name]}" />
 									<s:set var="attributeHasFieldNameErrorVarV2" value="#attributeFieldNameErrorsVarV2 != null && !#attributeFieldNameErrorsVarV2.isEmpty()" />
-
 									<s:set var="attributeHasErrorVar" value="%{#attributeHasFieldErrorVar||#attributeHasFieldNameErrorVar||#attributeHasFieldNameErrorVarV2}" />
 									<s:set var="controlGroupErrorClassVar" value="''" />
 									<s:set var="inputErrorClassVar" value="''" />
@@ -166,27 +164,11 @@
 
 										<s:if test="#attributeHasErrorVar">
 											<p class="text-danger padding-small-vertical">
-												<jsp:useBean id="attributeErrorMapVar" class="java.util.HashMap" scope="request"/>
-												<s:iterator value="#attributeFieldErrorsVar"><s:set var="attributeCurrentError" scope="page" /><c:set target="${attributeErrorMapVar}" property="${attributeCurrentError}" value="${attributeCurrentError}"/> </s:iterator>
-												<s:iterator value="#attributeFieldNameErrorsVar"><s:set var="attributeCurrentError" scope="page" /><c:set target="${attributeErrorMapVar}" property="${attributeCurrentError}" value="${attributeCurrentError}"/> </s:iterator>
-												<s:iterator value="#attributeFieldNameErrorsVarV2"><s:set var="attributeCurrentError" scope="page" /><c:set target="${attributeErrorMapVar}" property="${attributeCurrentError}" value="${attributeCurrentError}"/> </s:iterator>
-												<c:forEach items="${attributeErrorMapVar}" var="attributeCurrentError">
-													<c:out value="${attributeCurrentError.value}" /><br />
-												</c:forEach>
-												<c:set var="attributeErrorMapVar" value="${null}" />
-												<c:set var="attributeCurrentError" value="${null}" />
+												<s:iterator value="#attributeFieldErrorsVar"><s:property /><br /></s:iterator>
+												<s:iterator value="#attributeFieldNameErrorsVar"><s:property /><br /></s:iterator>
+												<s:iterator value="#attributeFieldNameErrorsVarV2"><s:property /><br /></s:iterator>
 											</p>
 										</s:if>
-										<s:set var="attributeHasErrorVar" value="%{null}" />
-										<s:set var="attributeFieldErrorsVar" value="%{null}" />
-										<s:set var="attributeHasFieldErrorVar" value="%{null}" />
-										<s:set var="attributeFieldNameErrorsVar" value="%{null}" />
-										<s:set var="attributeHasFieldNameErrorVar" value="%{null}" />
-										<s:set var="attributeFieldNameErrorsVarV2" value="%{null}" />
-										<s:set var="attributeHasFieldNameErrorVarV2" value="%{null}" />
-										<s:set var="attributeHasErrorVar" value="%{null}" />
-										<s:set var="controlGroupErrorClassVar" value="%{null}" />
-										<s:set var="inputErrorClassVar" value="%{null}" />
 									</div><%-- form group --%>
 								</div><%-- contentedit div --%>
 							</s:iterator><%-- attributes iterator --%>
@@ -209,18 +191,17 @@
 												list="#showingPageSelectItems"
 												listKey="key"
 												listValue="%{getText('name.preview.page') + ': ' +value}"
-												cssClass="form-control"
-												data-autosave="ignore" />
+												cssClass="form-control" />
 											<span class="input-group-btn">
 												<%-- <wpsf:select name="jacmsPreviewActionPageCode" id="%{#previewActionPageCodeLabelId}" list="#showingPageSelectItems" listKey="key" listValue="value" /></p>  --%>
-												<wpsf:submit
+												<s:submit
 													type="button"
 													cssClass="btn btn-info"
 													action="%{#previewActionName}"
 													title="%{getText('note.button.previewContent')}"
 													>
 													<span class="icon icon-eye-open"></span>&#32;<s:text name="label.preview" />
-												</wpsf:submit>
+												</s:submit>
 											</span>
 										</div>
 									</s:if>
@@ -256,16 +237,15 @@
 									list="groups"
 									listKey="name"
 									listValue="descr"
-									cssClass="form-control"
-									data-autosave="ignore" />
+									cssClass="form-control" />
 								<span class="input-group-btn">
-									<wpsf:submit
+									<s:submit
 										type="button"
 										action="joinGroup"
 										cssClass="btn btn-default">
 											<span class="icon icon-plus"></span>&#32;
 											<s:text name="label.join" />
-									</wpsf:submit>
+									</s:submit>
 								</span>
 							</div>
 						</div>
@@ -280,10 +260,10 @@
 									<span class="label label-default label-sm pull-left padding-small-top padding-small-bottom margin-small-right margin-small-bottom">
 										<span class="icon icon-tag"></span>&#32;
 										<s:property value="%{getGroupsMap()[#groupName].getDescr()}"/>&#32;
-										<wpsf:submit type="button" cssClass="btn btn-default btn-xs badge" action="%{#actionName}" title="%{getText('label.remove')+' '+getGroupsMap()[#groupName].getDescr()}">
+										<s:submit type="button" cssClass="btn btn-default btn-xs badge" action="%{#actionName}" title="%{getText('label.remove')+' '+getGroupsMap()[#groupName].getDescr()}">
 											<span class="icon icon-remove"></span>
 											<span class="sr-only">x</span>
-										</wpsf:submit>
+										</s:submit>
 									</span>
 								</s:iterator>
 								</div>
