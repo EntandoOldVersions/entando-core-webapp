@@ -58,10 +58,10 @@
 		</div>
 		<div class="form-group">
 			<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-				<s:submit type="button" title="%{getText('label.continue')}" cssClass="btn btn-primary btn-block">
+				<wpsf:submit type="button" title="%{getText('label.continue')}" cssClass="btn btn-primary btn-block">
 					<s:text name="label.continue" />&#32;
 					<span class="icon icon-long-arrow-right"></span>
-				</s:submit>
+				</wpsf:submit>
 			</div>
 		</div>
 </s:form>

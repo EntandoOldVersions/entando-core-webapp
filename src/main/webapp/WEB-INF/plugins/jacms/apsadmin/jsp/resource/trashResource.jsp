@@ -23,14 +23,14 @@
 
 <s:form action="delete">
 	<p class="sr-only">
-		<s:hidden name="resourceId" />
-		<s:hidden name="text" value="%{#parameters['text']}" />
-		<s:hidden name="categoryCode" value="%{#parameters['categoryCode']}" />
-		<s:hidden name="resourceTypeCode" />
-		<s:hidden name="fileName" value="%{#parameters['fileName']}" />
-		<s:hidden name="ownerGroupName" value="%{#parameters['ownerGroupName']}" />
+		<wpsf:hidden name="resourceId" />
+		<wpsf:hidden name="text" value="%{#parameters['text']}" />
+		<wpsf:hidden name="categoryCode" value="%{#parameters['categoryCode']}" />
+		<wpsf:hidden name="resourceTypeCode" />
+		<wpsf:hidden name="fileName" value="%{#parameters['fileName']}" />
+		<wpsf:hidden name="ownerGroupName" value="%{#parameters['ownerGroupName']}" />
 		<s:if test="#categoryTreeStyleVar == 'request'">
-			<s:iterator value="%{#parameters['treeNodesToOpen']}" var="treeNodeToOpenVar"><s:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"/></s:iterator>
+			<s:iterator value="%{#parameters['treeNodesToOpen']}" var="treeNodeToOpenVar"><wpsf:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"/></s:iterator>
 		</s:if>
 	</p>
 
@@ -40,10 +40,10 @@
 			<code><s:property value="%{loadResource(resourceId).descr}" /></code>?
 		</p>
 		<div class="text-center margin-large-top">
-			<s:submit type="button" cssClass="btn btn-warning btn-lg">
+			<wpsf:submit type="button" cssClass="btn btn-warning btn-lg">
 				<span class="icon icon-remove-sign"></span>&#32;
 				<s:text name="label.remove" />
-			</s:submit>
+			</wpsf:submit>
 			<a class="btn btn-link" href="<s:url action="list" namespace="/do/jacms/Resource"><s:param name="resourceTypeCode"><s:property value="resourceTypeCode" /></s:param></s:url>"><s:text name="note.goToSomewhere" />: <s:text name="title.resourceManagement" /></a>
 		</div>
 	</div>

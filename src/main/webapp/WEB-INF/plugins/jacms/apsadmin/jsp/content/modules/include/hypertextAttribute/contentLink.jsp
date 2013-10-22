@@ -23,10 +23,10 @@
 			<input type="text" class="form-control input-lg" placeholder="" title="" />
 			<wpsf:textfield name="text" id="text" cssClass="form-control input-lg" placeholder="%{getText('label.description')}" title="%{getText('label.search.by')+' '+getText('label.description')}" />
 			<span class="input-group-btn">
-				<s:submit type="button" title="%{getText('label.search')}" cssClass="btn btn-primary btn-lg">
+				<wpsf:submit type="button" title="%{getText('label.search')}" cssClass="btn btn-primary btn-lg">
 					<span class="icon icon-search"></span>
 					<span class="sr-only"><s:text name="label.search" /></span>
-				</s:submit>
+				</wpsf:submit>
 				<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="collapse" data-target="#search-advanced" title="<s:text name="title.searchFilters" />">
 					<span class="sr-only"><s:text name="title.searchFilters" /></span>
 					<span class="caret"></span>
@@ -49,9 +49,9 @@
 				</div>
 				<div class="form-group">
 					<div class="col-sm-5 col-sm-offset-2">
-						<s:submit type="button" cssClass="btn btn-primary">
+						<wpsf:submit type="button" cssClass="btn btn-primary">
 							<span class="icon icon-search"></span>&#32;<s:text name="label.search" />
-						</s:submit>
+						</wpsf:submit>
 					</div>
 				</div>
 			</div>

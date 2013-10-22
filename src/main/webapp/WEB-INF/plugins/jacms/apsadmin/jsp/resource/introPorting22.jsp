@@ -7,7 +7,7 @@
 <p><s:text name="note.porting22.intro" />&#32;<em class="important"><s:property value="resourcesId.size()" /></em>&#32;<s:text name="note.porting22.outro" /></p>
 
 <p class="centerText">
-	<s:submit value="%{getText('label.confirm')}" cssClass="button" />
+	<wpsf:submit value="%{getText('label.confirm')}" cssClass="button" />
 </p>
 
 </s:form>

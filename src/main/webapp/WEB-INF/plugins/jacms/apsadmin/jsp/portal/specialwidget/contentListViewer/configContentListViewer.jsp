@@ -39,9 +39,9 @@
 		</h2>
 
 		<p class="sr-only">
-			<s:hidden name="pageCode" />
-			<s:hidden name="frame" />
-			<s:hidden name="widgetTypeCode" value="%{widget.type.code}" />
+			<wpsf:hidden name="pageCode" />
+			<wpsf:hidden name="frame" />
+			<wpsf:hidden name="widgetTypeCode" value="%{widget.type.code}" />
 		</p>
 
 	<s:if test="hasFieldErrors()">
@@ -66,10 +66,10 @@
 				<div class="input-group">
 					<wpsf:select name="contentType" id="contentType" list="contentTypes" listKey="code" listValue="descr" cssClass="form-control" />
 					<span class="input-group-btn">
-						<s:submit type="button" action="configListViewer" cssClass="btn btn-success">
+						<wpsf:submit type="button" action="configListViewer" cssClass="btn btn-success">
 							<span class="icon icon-ok"></span>&#32;
 							<s:text name="label.confirm" />
-						</s:submit>
+						</wpsf:submit>
 					</span>
 				</div>
 			</div>
@@ -86,14 +86,14 @@
 					<div class="input-group">
 						<wpsf:select name="contentType" id="contentType" list="contentTypes" listKey="code" listValue="descr" disabled="true" value="%{getShowlet().getConfig().get('contentType')}" cssClass="form-control" />
 						<span class="input-group-btn">
-							<s:submit action="changeContentType" value="%{getText('label.change')}" cssClass="btn btn-info" />
+							<wpsf:submit action="changeContentType" value="%{getText('label.change')}" cssClass="btn btn-info" />
 						</span>
 					</div>
 				</div>
 			</div>
 			<p class="sr-only">
-				<s:hidden name="contentType" value="%{getShowlet().getConfig().get('contentType')}" />
-				<s:hidden name="categories" value="%{getShowlet().getConfig().get('categories')}" />
+				<wpsf:hidden name="contentType" value="%{getShowlet().getConfig().get('contentType')}" />
+				<wpsf:hidden name="categories" value="%{getShowlet().getConfig().get('categories')}" />
 				<s:iterator value="categoryCodes" var="categoryCodeVar" status="rowstatus">
 				<input type="hidden" name="categoryCodes" value="<s:property value="#categoryCodeVar" />" id="categoryCodes-<s:property value="#rowstatus.index" />"/>
 				</s:iterator>
@@ -141,10 +141,10 @@
 						<div class="input-group">
 							<wpsf:select name="categoryCode" id="category" list="categories" listKey="code" listValue="getShortFullTitle(currentLang.code)" headerKey="" headerValue="%{getText('label.all')}" cssClass="form-control" />
 							<span class="input-group-btn">
-								<s:submit type="button" action="addCategory" cssClass="btn btn-info">
+								<wpsf:submit type="button" action="addCategory" cssClass="btn btn-info">
 									<span class="icon icon-filter"></span>&#32;
 									<s:text name="label.filter" />
-								</s:submit>
+								</wpsf:submit>
 							</span>
 						</div>
 					</div>
@@ -163,14 +163,14 @@
 					  <wpsa:actionParam action="removeCategory" var="actionName" >
 					  	<wpsa:actionSubParam name="categoryCode" value="%{#categoryCodeVar}" />
 					  </wpsa:actionParam>
-					  <s:submit
+					  <wpsf:submit
 					    type="button"
 					    action="%{#actionName}"
 					    title="%{getText('label.remove') + ' ' + #showletCategory.getFullTitle(currentLang.code)}"
 					    cssClass="btn btn-default btn-xs badge">
 					     <span class="icon icon-remove"></span>
 					      <span class="sr-only">x</span>
-					  </s:submit>
+					  </wpsf:submit>
 					</span>
 
 					</s:iterator>
@@ -198,17 +198,17 @@
 						<div class="input-group">
 							<wpsf:select name="filterKey" id="filterKey" list="allowedFilterTypes" listKey="key" listValue="value" cssClass="form-control" />
 							<span class="input-group-btn">
-								<s:submit type="button" action="setFilterType" cssClass="btn btn-info">
+								<wpsf:submit type="button" action="setFilterType" cssClass="btn btn-info">
 									<span class="icon icon-plus-sign-alt"></span>&#32;
 									<s:text name="label.add" />
-								</s:submit>
+								</wpsf:submit>
 							</span>
 						</div>
 					</div>
 				</div>
 
 				<p class="sr-only">
-					<s:hidden name="filters" value="%{getShowlet().getConfig().get('filters')}" />
+					<wpsf:hidden name="filters" value="%{getShowlet().getConfig().get('filters')}" />
 				</p>
 
 				<s:if test="null != filtersProperties && filtersProperties.size()>0" >
@@ -278,27 +278,27 @@
 										<wpsa:actionSubParam name="filterIndex" value="%{#rowstatus.index}" />
 										<wpsa:actionSubParam name="movement" value="UP" />
 									</wpsa:actionParam>
-									<s:submit type="button" action="%{#actionName}" title="%{getText('label.moveUp')}" cssClass="btn btn-default">
+									<wpsf:submit type="button" action="%{#actionName}" title="%{getText('label.moveUp')}" cssClass="btn btn-default">
 										<span class="sr-only"><s:text name="label.moveUp" /></span>
 										<span class="icon icon-sort-up"></span>
-									</s:submit>
+									</wpsf:submit>
 
 									<wpsa:actionParam action="moveFilter" var="actionName" >
 										<wpsa:actionSubParam name="filterIndex" value="%{#rowstatus.index}" />
 										<wpsa:actionSubParam name="movement" value="DOWN" />
 									</wpsa:actionParam>
-									<s:submit type="button" action="%{#actionName}" title="%{getText('label.moveDown')}" cssClass="btn btn-default">
+									<wpsf:submit type="button" action="%{#actionName}" title="%{getText('label.moveDown')}" cssClass="btn btn-default">
 										<span class="sr-only"><s:text name="label.moveDown" /></span>
 										<span class="icon icon-sort-down"></span>
-									</s:submit>
+									</wpsf:submit>
 								</div>
 								<div class="btn-group btn-group-sm">
 									<wpsa:actionParam action="removeFilter" var="actionName" >
 										<wpsa:actionSubParam name="filterIndex" value="%{#rowstatus.index}" />
 									</wpsa:actionParam>
-									<s:submit type="button" action="%{#actionName}" title="%{getText('label.remove')}" cssClass="btn btn-warning">
+									<wpsf:submit type="button" action="%{#actionName}" title="%{getText('label.remove')}" cssClass="btn btn-warning">
 										<span class="icon icon-remove-circle"></span>
-									</s:submit>
+									</wpsf:submit>
 								</div>
 							</div>
 							<span class="clearfix"></span>
@@ -368,17 +368,17 @@
 						<div class="input-group">
 							<wpsf:select name="userFilterKey" id="userFilterKey" list="allowedUserFilterTypes" listKey="key" listValue="value" cssClass="form-control" />
 							<span class="input-group-btn">
-								<s:submit type="button" action="addUserFilter" cssClass="btn btn-info">
+								<wpsf:submit type="button" action="addUserFilter" cssClass="btn btn-info">
 									<span class="icon icon-plus-sign-alt"></span>&#32;
 									<s:text name="label.add" />
-								</s:submit>
+								</wpsf:submit>
 							</span>
 						</div>
 					</div>
 				</div>
 
 				<p class="sr-only">
-					<s:hidden name="userFilters" value="%{getShowlet().getConfig().get('userFilters')}" />
+					<wpsf:hidden name="userFilters" value="%{getShowlet().getConfig().get('userFilters')}" />
 				</p>
 
 				<s:if test="null != userFiltersProperties && userFiltersProperties.size() > 0" >
@@ -410,24 +410,24 @@
 									<wpsa:actionSubParam name="filterIndex" value="%{#rowstatus.index}" />
 									<wpsa:actionSubParam name="movement" value="UP" />
 								</wpsa:actionParam>
-								<s:submit type="button" action="%{#actionName}" title="%{getText('label.moveUp')}" cssClass="btn btn-default">
+								<wpsf:submit type="button" action="%{#actionName}" title="%{getText('label.moveUp')}" cssClass="btn btn-default">
 									<span class="icon icon-sort-up"></span>
-								</s:submit>
+								</wpsf:submit>
 								<wpsa:actionParam action="moveUserFilter" var="actionName" >
 									<wpsa:actionSubParam name="filterIndex" value="%{#rowstatus.index}" />
 									<wpsa:actionSubParam name="movement" value="DOWN" />
 								</wpsa:actionParam>
-								<s:submit type="button" action="%{#actionName}" title="%{getText('label.moveDown')}" cssClass="btn btn-default">
+								<wpsf:submit type="button" action="%{#actionName}" title="%{getText('label.moveDown')}" cssClass="btn btn-default">
 									<span class="icon icon-sort-down"></span>
-								</s:submit>
+								</wpsf:submit>
 							</div>
 							<div class="btn-group btn-group-sm">
 								<wpsa:actionParam action="removeUserFilter" var="actionName" >
 									<wpsa:actionSubParam name="filterIndex" value="%{#rowstatus.index}" />
 								</wpsa:actionParam>
-								<s:submit type="button" action="%{#actionName}" title="%{getText('label.remove')}" cssClass="btn btn-warning">
+								<wpsf:submit type="button" action="%{#actionName}" title="%{getText('label.remove')}" cssClass="btn btn-warning">
 									<span class="icon icon-remove-circle"></span>
-								</s:submit>
+								</wpsf:submit>
 							</div>
 						</div>
 						<span class="clearfix"></span>
@@ -445,10 +445,10 @@
 
 <div class="form-group">
 	<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-		<s:submit action="saveListViewerConfig" type="button" cssClass="btn btn-primary btn-block">
+		<wpsf:submit action="saveListViewerConfig" type="button" cssClass="btn btn-primary btn-block">
 			<span class="icon icon-save"></span>&#32;
 			<s:text name="label.save" />
-		</s:submit>
+		</wpsf:submit>
 	</div>
 </div>
 

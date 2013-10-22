@@ -2,6 +2,7 @@
 <%@ taglib uri="/aps-core" prefix="wp" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <%@ taglib prefix="jacms" uri="/jacms-apsadmin-core" %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 
 <s:if test="onEditContent">
 	<h1 class="panel panel-default title-page">
@@ -32,11 +33,11 @@
 <s:form action="search" cssClass="form-horizontal">
 	<s:set var="categoryTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_category" /></s:set>
 	<p class="sr-only">
-		<s:hidden name="resourceTypeCode" />
+		<wpsf:hidden name="resourceTypeCode" />
 		<s:if test="#categoryTreeStyleVar == 'request'">
-		<s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar"><s:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"/></s:iterator>
+		<s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar"><wpsf:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"/></s:iterator>
 		</s:if>
-		<s:hidden name="contentOnSessionMarker" />
+		<wpsf:hidden name="contentOnSessionMarker" />
 	</p>
 	<div class="form-group">
 		<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -46,10 +47,10 @@
 			<label class="sr-only" for="text"><s:text name="label.search.by" />&#32;<s:text name="label.description" /></label>
 			<wpsf:textfield name="text" id="text" cssClass="form-control input-lg" placeholder="%{getText('label.description')}" title="%{getText('label.search.by')} %{getText('label.description')}" />
 			<span class="input-group-btn">
-				<s:submit type="button" title="%{getText('label.search')}" cssClass="btn btn-primary btn-lg">
+				<wpsf:submit type="button" title="%{getText('label.search')}" cssClass="btn btn-primary btn-lg">
 					<span class="icon icon-search"></span>
 					<span class="sr-only"><s:text name="label.search" /></span>
-				</s:submit>
+				</wpsf:submit>
 				<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="collapse" data-target="#search-advanced" title="<s:text name="title.searchFilters" />">
 					<span class="sr-only"><s:text name="title.searchFilters" /></span>
 					<span class="caret"></span>
@@ -105,9 +106,9 @@
 				<%-- search button --%>
 					<div class="form-group">
 						<div class="col-sm-5 col-sm-offset-2">
-							<s:submit type="button" cssClass="btn btn-primary">
+							<wpsf:submit type="button" cssClass="btn btn-primary">
 								<span class="icon icon-search"></span>&#32;<s:text name="label.search" />
-							</s:submit>
+							</wpsf:submit>
 						</div>
 					</div>
 			</div>
@@ -123,17 +124,17 @@
 
 <s:form action="search">
 <p class="sr-only">
-	<s:hidden name="text" />
-	<s:hidden name="categoryCode" />
-	<s:hidden name="resourceTypeCode" />
-	<s:hidden name="fileName" />
-	<s:hidden name="ownerGroupName" />
+	<wpsf:hidden name="text" />
+	<wpsf:hidden name="categoryCode" />
+	<wpsf:hidden name="resourceTypeCode" />
+	<wpsf:hidden name="fileName" />
+	<wpsf:hidden name="ownerGroupName" />
 <s:if test="#categoryTreeStyleVar == 'request'">
 	<s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar">
-	<s:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"/>
+	<wpsf:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"/>
 	</s:iterator>
 </s:if>
-	<s:hidden name="contentOnSessionMarker" />
+	<wpsf:hidden name="contentOnSessionMarker" />
 </p>
 
 <wpsa:subset source="resources" count="10" objectName="groupResource" advanced="true" offset="5" >

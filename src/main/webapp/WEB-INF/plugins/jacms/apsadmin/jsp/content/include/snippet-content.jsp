@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <s:set var="contentDescriptionVar" value="%{content.descr}" />
 <s:set var="attributeFieldErrorsVar" value="%{fieldErrors['descr']}" />
 <s:set var="attributeHasFieldErrorVar" value="#attributeFieldErrorsVar != null && !#attributeFieldErrorsVar.isEmpty()" />
@@ -70,13 +71,13 @@
 					<wpsf:select name="mainGroup" id="contentMainGroup" list="allowedGroups" value="%{'free'}"
 						listKey="name" listValue="descr" cssClass="form-control" />
 					<span class="input-group-btn">
-						<s:submit
+						<wpsf:submit
 							action="configureMainGroup"
 							type="button"
 							title="Set Group"
 							cssClass="btn btn-warning">
 								<s:text name="label.setGroup" />
-						</s:submit>
+						</wpsf:submit>
 					</span>
 				</div>
 				<span class="help-block"><span class="icon icon-info-sign"></span>&#32;<s:text name="note.set.MainGroup" />.</span>

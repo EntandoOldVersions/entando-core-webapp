@@ -11,7 +11,7 @@
 	<wpsa:actionSubParam name="resourceTypeCode" value="%{#resourceTypeCode}" />
 	<wpsa:actionSubParam name="resourceLangCode" value="%{#lang.code}" />
 </wpsa:actionParam>
-<s:submit action="%{#removeResourceActionName}" type="button" title="%{#attribute.name + ': ' + getText('label.clear')}" cssClass="btn btn-warning btn-xs">
+<wpsf:submit action="%{#removeResourceActionName}" type="button" title="%{#attribute.name + ': ' + getText('label.clear')}" cssClass="btn btn-warning btn-xs">
 	<span class="icon icon-eraser"></span>&#32;
 	<s:if test="#resourceTypeCode == 'Image'">
 		<s:text name="label.clearImage" />
@@ -19,4 +19,4 @@
 	<s:else>
 		<s:text name="label.clearAttach" />
 	</s:else>
-</s:submit>
+</wpsf:submit>

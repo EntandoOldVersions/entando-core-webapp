@@ -62,11 +62,11 @@
 			<wpsa:actionSubParam name="langCode" value="%{#lang.code}" />
 		</wpsa:actionParam>
 		<s:if test="#attribute.symbolicLink != null || ((#attributeTracer.monoListElement) || (#attributeTracer.compositeElement))"><span class="input-group-btn"></s:if>
-			<s:submit cssClass="btn btn-default" type="button" action="%{#chooseLinkActionName}" title="%{#attribute.name + ': ' + getText('label.configure')}">
+			<wpsf:submit cssClass="btn btn-default" type="button" action="%{#chooseLinkActionName}" title="%{#attribute.name + ': ' + getText('label.configure')}">
 				<span class="icon icon-link"></span>&#32;
 				<span class="sr-only"><s:property value="#attribute.name" />:</span>
 				<s:text name="label.configure" />
-			</s:submit>
+			</wpsf:submit>
 			<s:if test="#attribute.symbolicLink != null && ((!#attributeTracer.monoListElement) || (#attributeTracer.monoListElement && #attributeTracer.compositeElement))">
 				<%-- valorized --%>
 				<wpsa:actionParam action="removeLink" var="removeLinkActionName" >
@@ -75,10 +75,10 @@
 					<wpsa:actionSubParam name="elementIndex" value="%{#elementIndex}" />
 					<wpsa:actionSubParam name="langCode" value="%{#lang.code}" />
 				</wpsa:actionParam>
-					<s:submit cssClass="btn btn-warning" type="button"  action="%{#removeLinkActionName}" title="%{getText('label.remove')}">
+					<wpsf:submit cssClass="btn btn-warning" type="button"  action="%{#removeLinkActionName}" title="%{getText('label.remove')}">
 						<span class="icon icon-remove"></span>
 						<span class="sr-only"><s:text name="label.remove" /></span>
-					</s:submit>
+					</wpsf:submit>
 			</s:if>
 		<s:if test="#attribute.symbolicLink != null || ((#attributeTracer.monoListElement) || (#attributeTracer.compositeElement))"></span></s:if>
 	</s:if>

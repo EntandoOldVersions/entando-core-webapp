@@ -16,9 +16,9 @@
 			</span>
 			<wpsf:select name="contentType" id="contentType" cssClass="form-control input-lg" list="smallContentTypes" listKey="code" listValue="descr" headerKey="" headerValue="%{getText('label.all')}" />
 			<div class="input-group-btn">
-				<s:submit type="button" cssClass="btn btn-primary btn-lg">
+				<wpsf:submit type="button" cssClass="btn btn-primary btn-lg">
 					<span class="icon icon-search" title="<s:text name="label.search" />"></span>
-				</s:submit>
+				</wpsf:submit>
 			</div>
 		</div>
 	</div>
@@ -31,7 +31,7 @@
 
 <s:form action="search">
 
-<p class="sr-only"><s:hidden name="contentType" /></p>
+<p class="sr-only"><wpsf:hidden name="contentType" /></p>
 
 	<s:if test="%{contentModels.size > 0}" >
 	

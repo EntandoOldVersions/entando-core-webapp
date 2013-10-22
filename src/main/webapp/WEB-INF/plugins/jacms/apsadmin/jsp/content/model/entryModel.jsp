@@ -1,6 +1,7 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <%@ taglib prefix="jacms" uri="/jacms-apsadmin-core" %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 
 <h1 class="panel panel-default title-page">
 	<span class="panel-body display-block">
@@ -26,9 +27,9 @@
 	</div>
 </s:if>
 <p class="sr-only">
-	<s:hidden name="strutsAction" />
+	<wpsf:hidden name="strutsAction" />
 	<s:if test="strutsAction == 2">
-		<s:hidden name="modelId" />  
+		<wpsf:hidden name="modelId" />  
 	</s:if>
 </p>
 
@@ -42,10 +43,10 @@
 				listKey="code" listValue="descr" cssClass="form-control" />
 				<span class="input-group-btn">
 				<s:if test="strutsAction == 1 && null == contentType">
-					<s:submit type="button" action="lockContentType" cssClass="btn btn-warning" value="%{getText('label.set')}"/>
+					<wpsf:submit type="button" action="lockContentType" cssClass="btn btn-warning" value="%{getText('label.set')}"/>
 				</s:if>
 				<s:else>
-					<s:submit type="button" action="lockContentType" cssClass="btn btn-info" value="%{getText('label.change')}"/>						
+					<wpsf:submit type="button" action="lockContentType" cssClass="btn btn-info" value="%{getText('label.change')}"/>						
 				</s:else>
 				</span>
 			</div>
@@ -108,10 +109,10 @@
 
 <div class="form-group">
 	<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-		<s:submit type="button" cssClass="btn btn-primary btn-block">
+		<wpsf:submit type="button" cssClass="btn btn-primary btn-block">
 			<span class="icon icon-save"></span>&#32;
 			<s:text name="label.save" />
-		</s:submit>
+		</wpsf:submit>
 	</div>
 </div>
 

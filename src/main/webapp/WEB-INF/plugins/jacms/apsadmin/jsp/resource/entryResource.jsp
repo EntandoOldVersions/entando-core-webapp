@@ -2,6 +2,7 @@
 <%@ taglib uri="/aps-core" prefix="wp" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <%@ taglib prefix="jacms" uri="/jacms-apsadmin-core" %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 
 <s:if test="onEditContent">
 	<h1 class="panel panel-default title-page">
@@ -72,17 +73,17 @@
 </s:if>
 
 <p class="sr-only">
-	<s:hidden name="strutsAction" />
-	<s:hidden name="resourceTypeCode" />
-	<s:hidden name="contentOnSessionMarker" />
+	<wpsf:hidden name="strutsAction" />
+	<wpsf:hidden name="resourceTypeCode" />
+	<wpsf:hidden name="contentOnSessionMarker" />
 	<s:iterator value="categoryCodes" id="categoryCode" status="rowstatus">
 	<input type="hidden" name="categoryCodes" value="<s:property value="#categoryCode" />" id="categoryCodes-<s:property value="#rowstatus.index" />"/>
 	</s:iterator>
 	<s:if test="strutsAction != 1">
-		<s:hidden name="resourceId" />
+		<wpsf:hidden name="resourceId" />
 	</s:if>
 	<s:if test="#categoryTreeStyleVar == 'request'">
-		<s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar"><s:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"/></s:iterator>
+		<s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar"><wpsf:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"/></s:iterator>
 	</s:if>
 </p>
 
@@ -102,7 +103,7 @@
 
 		<s:if test="%{lockGroupSelect}">
 			<p class="sr-only">
-				<s:hidden name="mainGroup" />
+				<wpsf:hidden name="mainGroup" />
 			</p>
 		</s:if>
 		<div class="form-group">
@@ -139,9 +140,9 @@
 	</div>
 	<div data-toggle="tree-toolbar">
 		<div data-toggle="tree-toolbar-actions">
-			<s:submit action="joinCategory" type="button" title="%{getText('label.join')}" cssClass="btn btn-info btn-sm margin-small-vertical" data-toggle="tooltip">
+			<wpsf:submit action="joinCategory" type="button" title="%{getText('label.join')}" cssClass="btn btn-info btn-sm margin-small-vertical" data-toggle="tooltip">
 				<span class="icon icon-plus"></span>
-			</s:submit>
+			</wpsf:submit>
 		</div>
 	</div>
 
@@ -156,10 +157,10 @@
 		<wpsa:actionParam action="removeCategory" var="actionName" >
 			<wpsa:actionSubParam name="categoryCode" value="%{#resourceCategory.code}" />
 		</wpsa:actionParam>
-		<s:submit type="button" action="%{#actionName}" title="%{getText('label.remove') + ' ' + #resourceCategory.defaultFullTitle}" cssClass="btn btn-default btn-xs badge">
+		<wpsf:submit type="button" action="%{#actionName}" title="%{getText('label.remove') + ' ' + #resourceCategory.defaultFullTitle}" cssClass="btn btn-default btn-xs badge">
 			<span class="icon icon-remove"></span>
 			<span class="sr-only">x</span>
-		</s:submit>
+		</wpsf:submit>
 	</span>
 </s:iterator>
 </s:if>
@@ -174,10 +175,10 @@
 <div class="form-horizontal">
 	<div class="form-group">
 		<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-			<s:submit type="button" cssClass="btn btn-primary btn-block">
+			<wpsf:submit type="button" cssClass="btn btn-primary btn-block">
 			<span class="icon icon-save"></span>&#32;
 			<s:text name="label.save" />
-		</s:submit>
+		</wpsf:submit>
 	</div>
 </div>
 </div>

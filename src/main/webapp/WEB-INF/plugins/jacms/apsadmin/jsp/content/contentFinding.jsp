@@ -1,6 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <%-- radios + checkboxes only --%>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 
@@ -28,10 +29,10 @@
 						<wpsa:actionParam action="search" var="searchActionName" >
 							<wpsa:actionSubParam name="actionCode" value="search" />
 						</wpsa:actionParam>
-						<s:submit action="%{#searchActionName}" type="button" cssClass="btn btn-primary btn-lg" title="%{getText('label.search')}">
+						<wpsf:submit action="%{#searchActionName}" type="button" cssClass="btn btn-primary btn-lg" title="%{getText('label.search')}">
 							<span class="sr-only"><s:text name="label.search" /></span>
 							<span class="icon icon-search"></span>
-						</s:submit>
+						</wpsf:submit>
 						<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="collapse" data-target="#search-advanced" title="<s:text name="title.searchFilters" />">
 								<span class="sr-only"><s:text name="title.searchFilters" /></span>
 								<span class="caret"></span>
@@ -52,7 +53,7 @@
 									<wpsa:actionParam action="changeContentType" var="changeContentTypeActionName" >
 										<wpsa:actionSubParam name="actionCode" value="changeContentType" />
 									</wpsa:actionParam>
-									<s:submit action="%{#changeContentTypeActionName}" cssClass="btn btn-default" value="%{getText('label.set')}" />
+									<wpsf:submit action="%{#changeContentTypeActionName}" cssClass="btn btn-default" value="%{getText('label.set')}" />
 								</div>
 							</div>
 						</div>
@@ -164,9 +165,9 @@
 						</div>
 						<div class="form-group">
 							<div class="col-sm-5 col-sm-offset-2">
-								<s:submit action="%{#searchActionName}" type="button" cssClass="btn btn-primary">
+								<wpsf:submit action="%{#searchActionName}" type="button" cssClass="btn btn-primary">
 									<span class="icon icon-search"></span>&#32;<s:text name="label.search" />
-								</s:submit>
+								</wpsf:submit>
 							</div>
 						</div>
 					</div><%--// search-advanced --%>
@@ -210,9 +211,9 @@
 				</div>
 
 				<div class="form-group col-sm-12">
-					<s:submit action="%{#searchActionName}" type="button" cssClass="btn btn-primary">
+					<wpsf:submit action="%{#searchActionName}" type="button" cssClass="btn btn-primary">
 							<span class="icon icon-search"></span>&#32;<s:text name="label.search" />
-					</s:submit>
+					</wpsf:submit>
 				</div>
 
 			</div>
@@ -223,40 +224,40 @@
 
 		<s:form action="search" >
 		<p class="sr-only">
-			<s:hidden name="text" />
-			<s:hidden name="contentType" />
-			<s:hidden name="state" />
-			<s:hidden name="onLineState" />
-			<s:hidden name="categoryCode" />
-			<s:hidden name="viewTypeDescr" />
-			<s:hidden name="viewGroup" />
-			<s:hidden name="viewCode" />
-			<s:hidden name="viewStatus" />
-			<s:hidden name="viewCreationDate" />
-			<s:hidden name="lastGroupBy" />
-			<s:hidden name="lastOrder" />
-			<s:hidden name="contentIdToken" />
-			<s:hidden name="ownerGroupName" />
+			<wpsf:hidden name="text" />
+			<wpsf:hidden name="contentType" />
+			<wpsf:hidden name="state" />
+			<wpsf:hidden name="onLineState" />
+			<wpsf:hidden name="categoryCode" />
+			<wpsf:hidden name="viewTypeDescr" />
+			<wpsf:hidden name="viewGroup" />
+			<wpsf:hidden name="viewCode" />
+			<wpsf:hidden name="viewStatus" />
+			<wpsf:hidden name="viewCreationDate" />
+			<wpsf:hidden name="lastGroupBy" />
+			<wpsf:hidden name="lastOrder" />
+			<wpsf:hidden name="contentIdToken" />
+			<wpsf:hidden name="ownerGroupName" />
 			<s:iterator var="attribute" value="#searcheableAttributes">
 				<s:if test="#attribute.textAttribute">
 					<s:set name="textInputFieldName" ><s:property value="#attribute.name" />_textFieldName</s:set>
-					<s:hidden name="%{#textInputFieldName}" value="%{getSearchFormFieldValue(#textInputFieldName)}" />
+					<wpsf:hidden name="%{#textInputFieldName}" value="%{getSearchFormFieldValue(#textInputFieldName)}" />
 				</s:if>
 				<s:elseif test="#attribute.type == 'Date'">
 					<s:set name="dateStartInputFieldName" ><s:property value="#attribute.name" />_dateStartFieldName</s:set>
 					<s:set name="dateEndInputFieldName" ><s:property value="#attribute.name" />_dateEndFieldName</s:set>
-					<s:hidden name="%{#dateStartInputFieldName}" value="%{getSearchFormFieldValue(#dateStartInputFieldName)}" />
-					<s:hidden name="%{#dateEndInputFieldName}" value="%{getSearchFormFieldValue(#dateEndInputFieldName)}" />
+					<wpsf:hidden name="%{#dateStartInputFieldName}" value="%{getSearchFormFieldValue(#dateStartInputFieldName)}" />
+					<wpsf:hidden name="%{#dateEndInputFieldName}" value="%{getSearchFormFieldValue(#dateEndInputFieldName)}" />
 				</s:elseif>
 				<s:elseif test="#attribute.type == 'Number'">
 					<s:set name="numberStartInputFieldName" ><s:property value="#attribute.name" />_numberStartFieldName</s:set>
 					<s:set name="numberEndInputFieldName" ><s:property value="#attribute.name" />_numberEndFieldName</s:set>
-					<s:hidden name="%{#numberStartInputFieldName}" value="%{getSearchFormFieldValue(#numberStartInputFieldName)}" />
-					<s:hidden name="%{#numberEndInputFieldName}" value="%{getSearchFormFieldValue(#numberEndInputFieldName)}" />
+					<wpsf:hidden name="%{#numberStartInputFieldName}" value="%{getSearchFormFieldValue(#numberStartInputFieldName)}" />
+					<wpsf:hidden name="%{#numberEndInputFieldName}" value="%{getSearchFormFieldValue(#numberEndInputFieldName)}" />
 				</s:elseif>
 				<s:elseif test="#attribute.type == 'Boolean' || #attribute.type == 'ThreeState'">
 					<s:set name="booleanInputFieldName" ><s:property value="#attribute.name" />_booleanFieldName</s:set>
-					<s:hidden name="%{#booleanInputFieldName}" value="%{getSearchFormFieldValue(#booleanInputFieldName)}" />
+					<wpsf:hidden name="%{#booleanInputFieldName}" value="%{getSearchFormFieldValue(#booleanInputFieldName)}" />
 				</s:elseif>
 			</s:iterator>
 		</p>
@@ -468,21 +469,21 @@
 			<div class="btn-toolbar">
 			<wp:ifauthorized permission="validateContents">
 				<div class="btn-group margin-small-vertical">
-					<s:submit action="approveContentGroup" type="button" title="%{getText('note.button.approve')}" cssClass="btn btn-success">
+					<wpsf:submit action="approveContentGroup" type="button" title="%{getText('note.button.approve')}" cssClass="btn btn-success">
 						<span class="icon icon-ok"></span>
 						<s:text name="label.approve" />
-					</s:submit>
-					<s:submit action="suspendContentGroup" type="button" title="%{getText('note.button.suspend')}" cssClass="btn btn-warning">
+					</wpsf:submit>
+					<wpsf:submit action="suspendContentGroup" type="button" title="%{getText('note.button.suspend')}" cssClass="btn btn-warning">
 						<span class="icon icon-pause"></span>
 						<s:text name="label.suspend" />
-					</s:submit>
+					</wpsf:submit>
 				</div>
 			</wp:ifauthorized>
 				<div class="btn-group margin-small-vertical">
-					<s:submit action="trashContentGroup" type="button" title="%{getText('note.button.delete')}" cssClass="btn btn-link">
+					<wpsf:submit action="trashContentGroup" type="button" title="%{getText('note.button.delete')}" cssClass="btn btn-link">
 						<span class="icon icon-remove-sign"></span>
 						<s:text name="label.remove" />
-					</s:submit>
+					</wpsf:submit>
 				</div>
 			</div>
 		</fieldset>

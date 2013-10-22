@@ -1,6 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 
 <h1 class="panel panel-default title-page">
 	<span class="panel-body display-block">
@@ -37,9 +38,9 @@
 		</h2>
 
 		<p class="sr-only">
-			<s:hidden name="pageCode" />
-			<s:hidden name="frame" />
-			<s:hidden name="widgetTypeCode" value="%{showlet.type.code}" />
+			<wpsf:hidden name="pageCode" />
+			<wpsf:hidden name="frame" />
+			<wpsf:hidden name="widgetTypeCode" value="%{showlet.type.code}" />
 		</p>
 
 			<s:if test="hasFieldErrors()">
@@ -89,12 +90,12 @@
 				</div>
 
 				<p class="sr-only">
-					<s:hidden name="contentId" value="%{getShowlet().getConfig().get('contentId')}" />
+					<wpsf:hidden name="contentId" value="%{getShowlet().getConfig().get('contentId')}" />
 				</p>
 
 				<div class="form-group">
 					<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-						<s:submit action="searchContents" value="%{getText('label.change')}" cssClass="btn btn-info btn-block" />
+						<wpsf:submit action="searchContents" value="%{getText('label.change')}" cssClass="btn btn-info btn-block" />
 					</div>
 				</div>
 
@@ -138,7 +139,7 @@
 			<div class="col-xs-12">
 				<div class="alert alert-info margin-base-vertical">
 					<s:text name="note.noContentSet" />&#32;
-					<s:submit action="searchContents" value="%{getText('label.choose')}" cssClass="btn btn-info" />
+					<wpsf:submit action="searchContents" value="%{getText('label.choose')}" cssClass="btn btn-info" />
 				</div>
 			</div>
 		</s:else>
@@ -147,10 +148,10 @@
 </div>
 <div class="form-group">
 	<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-		<s:submit type="button" cssClass="btn btn-primary btn-block">
+		<wpsf:submit type="button" cssClass="btn btn-primary btn-block">
 			<span class="icon icon-save"></span>&#32;
 			<s:text name="label.save" />
-		</s:submit>
+		</wpsf:submit>
 	</div>
 </div>
 </s:form>

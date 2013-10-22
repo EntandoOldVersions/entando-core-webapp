@@ -380,10 +380,10 @@
 
 	<div class="form-group">
 		<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-			<s:submit action="%{#saveFilterActionName}" type="button" cssClass="btn btn-primary btn-block">
+			<wpsf:submit action="%{#saveFilterActionName}" type="button" cssClass="btn btn-primary btn-block">
 				<span class="icon icon-filter"></span>&#32;
 				<s:text name="label.save" />
-			</s:submit>
+			</wpsf:submit>
 		</div>
 	</div>
 

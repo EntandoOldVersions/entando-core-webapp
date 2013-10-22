@@ -66,10 +66,10 @@
 			</s:iterator>
 		</ul>
 		<div class="text-center margin-large-top">
-		<s:submit type="button" action="deleteContentGroup" cssClass="btn btn-warning btn-lg">
+		<wpsf:submit type="button" action="deleteContentGroup" cssClass="btn btn-warning btn-lg">
 			<span class="icon icon-remove-sign"></span>&#32;
 			<s:text name="label.remove" />
-		</s:submit>
+		</wpsf:submit>
 		<a class="btn btn-link" href="<s:url action="list" namespace="/do/jacms/Content"/>" ><s:text name="note.goToSomewhere" />: <s:text name="title.contentList" /></a>
 		</div>
 	</div>

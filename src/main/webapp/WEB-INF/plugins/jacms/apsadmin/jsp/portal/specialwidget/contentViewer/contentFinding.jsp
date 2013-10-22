@@ -1,6 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 
 <h1 class="panel panel-default title-page">
 	<span class="panel-body display-block">
@@ -33,10 +34,10 @@
 					<s:property value="%{getTitle(#widgetType.code, #widgetType.titles)}" />
 				</h3>
 				<p class="sr-only">
-					<s:hidden name="pageCode" />
-					<s:hidden name="frame" />
-					<s:hidden name="widgetTypeCode" />
-					<s:hidden name="modelId" />
+					<wpsf:hidden name="pageCode" />
+					<wpsf:hidden name="frame" />
+					<wpsf:hidden name="widgetTypeCode" />
+					<wpsf:hidden name="modelId" />
 				</p>
 				<s:if test="hasFieldErrors()">
 					<div class="alert alert-danger alert-dismissable">
@@ -59,10 +60,10 @@
 						<label for="text" class="sr-only"><s:text name="label.search.by"/>&#32;<s:text name="label.description"/></label>
 						<wpsf:textfield name="text" id="text" cssClass="form-control input-lg" placeholder="%{getText('label.search.topic')}" title="%{getText('label.search.by')} %{getText('label.description')}" />
 						<div class="input-group-btn">
-							<s:submit type="button" cssClass="btn btn-primary btn-lg" title="%{getText('label.search')}">
+							<wpsf:submit type="button" cssClass="btn btn-primary btn-lg" title="%{getText('label.search')}">
 								<span class="icon icon-search"></span>
 								<span class="sr-only"><s:text name="label.search" /></span>
-							</s:submit>
+							</wpsf:submit>
 							<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="collapse" data-target="#search-advanced" title="<s:text name="title.searchFilters" />">
 								<span class="sr-only"><s:text name="title.searchFilters" /></span>
 								<span class="caret"></span>
@@ -99,9 +100,9 @@
 						<%-- search --%>
 							<div class="form-group">
 								<div class="col-sm-5 col-sm-offset-2">
-									<s:submit type="button" cssClass="btn btn-primary">
+									<wpsf:submit type="button" cssClass="btn btn-primary">
 										<span class="icon icon-search"></span>&#32;<s:text name="label.search" />
-									</s:submit>
+									</wpsf:submit>
 								</div>
 							</div>
 						</div><!--// search-advanced -->
@@ -115,8 +116,8 @@
 						<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 					</div>
 					<p class="sr-only">
-						<s:hidden name="lastGroupBy" />
-						<s:hidden name="lastOrder" />
+						<wpsf:hidden name="lastGroupBy" />
+						<wpsf:hidden name="lastOrder" />
 					</p>
 					<div class="table-responsive2"><%-- table-responsive --%>
 						<table class="table table-bordered">
@@ -276,9 +277,9 @@
 
 				<div class="form-group">
 					<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-						<s:submit type="button" action="joinContent" cssClass="btn btn-primary btn-block">
+						<wpsf:submit type="button" action="joinContent" cssClass="btn btn-primary btn-block">
 							<s:text name="label.confirm" />
-						</s:submit>
+						</wpsf:submit>
 					</div>
 				</div>
 

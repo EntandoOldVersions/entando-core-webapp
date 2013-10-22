@@ -6,7 +6,7 @@
 
 <s:if test="#categoryTreeStyleVar == 'request'">
 <p class="sr-only">
-<s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar"><s:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"></s:hidden></s:iterator>
+<s:iterator value="treeNodesToOpen" var="treeNodeToOpenVar"><wpsf:hidden name="treeNodesToOpen" value="%{#treeNodeToOpenVar}"></wpsf:hidden></s:iterator>
 </p>
 </s:if>
 
@@ -32,9 +32,9 @@
 		</ul>
 		<div data-toggle="tree-toolbar">
 			<div data-toggle="tree-toolbar-actions">
-				<s:submit action="joinCategory" type="button" title="%{getText('label.join')}" cssClass="btn btn-info btn-sm margin-small-vertical" data-toggle="tooltip">
+				<wpsf:submit action="joinCategory" type="button" title="%{getText('label.join')}" cssClass="btn btn-info btn-sm margin-small-vertical" data-toggle="tooltip">
 					<span class="icon icon-plus"></span>
-				</s:submit>
+				</wpsf:submit>
 			</div>
 		</div>
 	</div>
@@ -51,10 +51,10 @@
 		<wpsa:actionParam action="removeCategory" var="actionName" >
 			<wpsa:actionSubParam name="categoryCode" value="%{#contentCategory.code}" />
 		</wpsa:actionParam>
-		<s:submit type="button" action="%{#actionName}" title="%{getText('label.remove') + ' ' + #contentCategory.defaultFullTitle}" cssClass="btn btn-default btn-xs badge">
+		<wpsf:submit type="button" action="%{#actionName}" title="%{getText('label.remove') + ' ' + #contentCategory.defaultFullTitle}" cssClass="btn btn-default btn-xs badge">
 			<span class="icon icon-remove"></span>
 			<span class="sr-only">x</span>
-		</s:submit>
+		</wpsf:submit>
 	</span>
 </s:iterator>
 </s:if>

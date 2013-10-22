@@ -13,7 +13,7 @@
 
 <s:form>
 	<p class="sr-only">	
-		<s:hidden name="modelId"/>
+		<wpsf:hidden name="modelId"/>
 	</p>
 	<div class="alert alert-warning">
 		<p>
@@ -22,10 +22,10 @@
 			<s:property value="description" />?
 		</p>
 		<div class="text-center margin-large-top">
-		<s:submit type="button" action="delete" cssClass="btn btn-warning btn-lg">
+		<wpsf:submit type="button" action="delete" cssClass="btn btn-warning btn-lg">
 			<span class="icon icon-remove-sign"></span>&#32;
 			<s:text name="label.remove" />
-		</s:submit>
+		</wpsf:submit>
 		<a class="btn btn-link" href="<s:url action="list" namespace="/do/jacms/ContentModel"/>" ><s:text name="note.goToSomewhere" />: <s:text name="title.contentModels" /></a>
 		</div>
 	</div>

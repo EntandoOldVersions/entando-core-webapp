@@ -30,20 +30,20 @@
 </div>
 
 <s:form>
-<p class="sr-only">
-	<s:hidden name="resourceId" />
-</p>
+	<p class="sr-only">
+		<wpsf:hidden name="resourceId" />
+	</p>
 
-<s:if test="references['jacmsContentManagerUtilizers']">
-<s:set var="referencingContentsId" value="references['jacmsContentManagerUtilizers']" />
-<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/include/referencingContents.jsp" />
-</s:if>
+	<s:if test="references['jacmsContentManagerUtilizers']">
+		<s:set var="referencingContentsId" value="references['jacmsContentManagerUtilizers']" />
+		<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/portal/include/referencingContents.jsp" />
+	</s:if>
 
-<wpsa:hookPoint key="jacms.resourceReferences" objectName="hookPointElements_jacms_resourceReferences">
-<s:iterator value="#hookPointElements_jacms_resourceReferences" var="hookPointElement">
-	<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
-</s:iterator>
-</wpsa:hookPoint>
+	<wpsa:hookPoint key="jacms.resourceReferences" objectName="hookPointElements_jacms_resourceReferences">
+	<s:iterator value="#hookPointElements_jacms_resourceReferences" var="hookPointElement">
+		<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
+	</s:iterator>
+	</wpsa:hookPoint>
 
 </s:form>
 
