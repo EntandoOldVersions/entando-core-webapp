@@ -1,5 +1,5 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
-<%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 
 <div class="panel panel-default">
 	<div class="panel-body">

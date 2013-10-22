@@ -1,2 +1,2 @@
-<%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <wpsf:textfield useTabindexAutoIncrement="true" name="%{#paramName}" id="%{'admin-settings-area-'+#paramName}" value="%{systemParams[#paramName]}" cssClass="form-control" />

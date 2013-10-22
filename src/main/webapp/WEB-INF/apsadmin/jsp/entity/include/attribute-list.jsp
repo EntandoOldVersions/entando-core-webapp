@@ -1,5 +1,5 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
-<%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <%@ taglib uri="/aps-core" prefix="wp" %>
 

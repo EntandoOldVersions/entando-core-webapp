@@ -1,5 +1,5 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <s:set var="subFolderNameVar" value="subFolderName" />
 <s:set var="dumpReportVar" value="getDumpReport(#subFolderNameVar)" />
 <h1 class="panel panel-default title-page">

@@ -1,4 +1,4 @@
-<%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <s:if test="#lang.default">
 	<s:set var="currentEnumeratorAttributeName" value="%{#attributeTracer.getFormFieldName(#attribute)}" />

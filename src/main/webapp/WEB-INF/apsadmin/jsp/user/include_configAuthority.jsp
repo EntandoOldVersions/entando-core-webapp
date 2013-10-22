@@ -1,7 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="/aps-core" prefix="wp" %>
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
-<%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <s:if test="hasActionErrors()">
 	<div class="alert alert-danger alert-dismissable fade in">
 		<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
