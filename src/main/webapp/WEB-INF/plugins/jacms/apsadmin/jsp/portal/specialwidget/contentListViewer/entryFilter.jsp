@@ -1,5 +1,5 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <h1 class="panel panel-default title-page">
 	<span class="panel-body display-block">
 		<a href="<s:url action="viewTree" namespace="/do/Page" />" title="<s:text name="note.goToSomewhere" />: <s:text name="title.pageManagement" />">

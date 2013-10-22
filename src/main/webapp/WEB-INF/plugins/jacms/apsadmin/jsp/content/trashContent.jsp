@@ -1,5 +1,5 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 
 <s:set var="targetNS" value="%{'/do/jacms/Content'}" />
 <h1 class="panel panel-default title-page">

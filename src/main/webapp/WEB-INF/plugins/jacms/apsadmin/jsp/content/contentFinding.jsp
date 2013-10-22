@@ -2,7 +2,7 @@
 <%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%-- radios + checkboxes only --%>
-<%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 
 <s:set var="targetNS" value="%{'/do/jacms/Content'}" />
 <h1 class="panel panel-default title-page"><span class="panel-body display-block"><s:text name="jacms.menu.contentAdmin" />&#32;/&#32;<s:text name="title.contentList" /></span></h1>
