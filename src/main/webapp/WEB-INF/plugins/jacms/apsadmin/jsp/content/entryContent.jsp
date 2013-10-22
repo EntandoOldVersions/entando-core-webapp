@@ -46,7 +46,7 @@
 		<s:set var="myNameIsJack" value="true" />
 		<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/include/snippet-content.jsp" />
 		<p class="sr-only">
-			<s:hidden name="contentOnSessionMarker" />
+			<wpsf:hidden name="contentOnSessionMarker" />
 		</p>
 		<p class="sr-only" id="quickmenu"><s:text name="title.quickMenu" /></p>
 		<ul class="nav nav-tabs tab-togglers" id="tab-togglers">
@@ -194,14 +194,14 @@
 												cssClass="form-control" />
 											<span class="input-group-btn">
 												<%-- <wpsf:select name="jacmsPreviewActionPageCode" id="%{#previewActionPageCodeLabelId}" list="#showingPageSelectItems" listKey="key" listValue="value" /></p>  --%>
-												<s:submit
+												<wpsf:submit
 													type="button"
 													cssClass="btn btn-info"
 													action="%{#previewActionName}"
 													title="%{getText('note.button.previewContent')}"
 													>
 													<span class="icon icon-eye-open"></span>&#32;<s:text name="label.preview" />
-												</s:submit>
+												</wpsf:submit>
 											</span>
 										</div>
 									</s:if>
@@ -239,13 +239,13 @@
 									listValue="descr"
 									cssClass="form-control" />
 								<span class="input-group-btn">
-									<s:submit
+									<wpsf:submit
 										type="button"
 										action="joinGroup"
 										cssClass="btn btn-default">
 											<span class="icon icon-plus"></span>&#32;
 											<s:text name="label.join" />
-									</s:submit>
+									</wpsf:submit>
 								</span>
 							</div>
 						</div>
@@ -260,10 +260,10 @@
 									<span class="label label-default label-sm pull-left padding-small-top padding-small-bottom margin-small-right margin-small-bottom">
 										<span class="icon icon-tag"></span>&#32;
 										<s:property value="%{getGroupsMap()[#groupName].getDescr()}"/>&#32;
-										<s:submit type="button" cssClass="btn btn-default btn-xs badge" action="%{#actionName}" title="%{getText('label.remove')+' '+getGroupsMap()[#groupName].getDescr()}">
+										<wpsf:submit type="button" cssClass="btn btn-default btn-xs badge" action="%{#actionName}" title="%{getText('label.remove')+' '+getGroupsMap()[#groupName].getDescr()}">
 											<span class="icon icon-remove"></span>
 											<span class="sr-only">x</span>
-										</s:submit>
+										</wpsf:submit>
 									</span>
 								</s:iterator>
 								</div>
