@@ -38,7 +38,7 @@
 		<div class="col-xs-12">
 			<label for="contentType" class="control-label"><s:text name="contentModel.type" /></label>
 			<div class="input-group">
-			<s:select id="contentType" list="smallContentTypes" name="contentType" 
+			<wpsf:select id="contentType" list="smallContentTypes" name="contentType" 
 				listKey="code" listValue="descr" cssClass="form-control" />
 				<span class="input-group-btn">
 				<s:if test="strutsAction == 1 && null == contentType">
@@ -62,7 +62,7 @@
 		<s:set var="modelIdHasFieldErrorVar" value="#modelIdFieldErrorsVar!= null && !#modelIdFieldErrorsVar.isEmpty()" />
 		<s:set var="controlGroupErrorClassVar" value="%{#modelIdHasFieldErrorVar ? ' has-error' : ''}" />
 		<label for="modelId"><s:text name="contentModel.id" /></label>
-		<s:textfield name="modelId" id="modelId" disabled="%{getStrutsAction() == 2}" cssClass="form-control" />
+		<wpsf:textfield name="modelId" id="modelId" disabled="%{getStrutsAction() == 2}" cssClass="form-control" />
 		<s:if test="#modelIdHasFieldErrorVar">
 		  <p class="text-danger padding-small-vertical"><s:iterator value="#modelIdFieldErrorsVar"><s:property /> </s:iterator></p>
 		</s:if>
@@ -74,7 +74,7 @@
 		<s:set var="descriptionHasFieldErrors" value="#descriptionFieldErrorsVar!= null && !#descriptionFieldErrorsVar.isEmpty()" />
 		<s:set var="controlGroupErrorClassVar" value="%{#descriptionHasFieldErrors ? ' has-error' : ''}" />
 		<label for="description"><s:text name="label.description" /></label>
-		<s:textfield name="description" id="description" cssClass="form-control" />
+		<wpsf:textfield name="description" id="description" cssClass="form-control" />
 		<s:if test="#descriptionHasFieldErrors">
 		  <p class="text-danger padding-small-vertical"><s:iterator value="#descriptionFieldErrorsVar"><s:property /> </s:iterator></p>
 		</s:if>
@@ -102,7 +102,7 @@
 <div class="form-group">
 	<div class="col-xs-12">
 		<label for="newModel_stylesheet"><s:text name="contentModel.label.stylesheet" /></label>
-		<s:textfield name="stylesheet" id="newModel_stylesheet" cssClass="form-control" />
+		<wpsf:textfield name="stylesheet" id="newModel_stylesheet" cssClass="form-control" />
 	</div>
 </div>
 

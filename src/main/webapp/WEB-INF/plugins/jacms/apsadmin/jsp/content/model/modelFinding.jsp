@@ -14,7 +14,7 @@
 			<span class="input-group-addon">
 				<span class="icon icon-file-text-alt icon-large"></span>
 			</span>
-			<s:select name="contentType" id="contentType" cssClass="form-control input-lg" list="smallContentTypes" listKey="code" listValue="descr" headerKey="" headerValue="%{getText('label.all')}" />
+			<wpsf:select name="contentType" id="contentType" cssClass="form-control input-lg" list="smallContentTypes" listKey="code" listValue="descr" headerKey="" headerValue="%{getText('label.all')}" />
 			<div class="input-group-btn">
 				<s:submit type="button" cssClass="btn btn-primary btn-lg">
 					<span class="icon icon-search" title="<s:text name="label.search" />"></span>

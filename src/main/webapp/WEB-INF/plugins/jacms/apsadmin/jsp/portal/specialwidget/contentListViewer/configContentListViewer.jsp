@@ -60,21 +60,19 @@
 
 		<s:if test="widget.config['contentType'] == null">
 		<%-- CONTENT TYPE --%>
-		<fieldset class="col-xs-12 margin-large-top">
-
-		<div class="form-group">
-			<label for="contentType"><s:text name="label.type"/></label>
-			<div class="input-group">
-				<s:select name="contentType" id="contentType" list="contentTypes" listKey="code" listValue="descr" cssClass="form-control" />
-				<span class="input-group-btn">
-					<s:submit type="button" action="configListViewer" cssClass="btn btn-success">
-						<span class="icon icon-ok"></span>&#32;
-						<s:text name="label.confirm" />
-					</s:submit>
-				</span>
+		<div class="form-group margin-base-top">
+			<div class="col-xs-12">
+				<label for="contentType"><s:text name="label.type"/></label>
+				<div class="input-group">
+					<wpsf:select name="contentType" id="contentType" list="contentTypes" listKey="code" listValue="descr" cssClass="form-control" />
+					<span class="input-group-btn">
+						<s:submit type="button" action="configListViewer" cssClass="btn btn-success">
+							<span class="icon icon-ok"></span>&#32;
+							<s:text name="label.confirm" />
+						</s:submit>
+					</span>
+				</div>
 			</div>
-
-		</fieldset>
 		</div>
 	</div>
 </div>
@@ -86,7 +84,7 @@
 				<div class="col-xs-12">
 					<label for="contentType"><s:text name="label.type"/></label>
 					<div class="input-group">
-						<s:select name="contentType" id="contentType" list="contentTypes" listKey="code" listValue="descr" disabled="true" value="%{getShowlet().getConfig().get('contentType')}" cssClass="form-control" />
+						<wpsf:select name="contentType" id="contentType" list="contentTypes" listKey="code" listValue="descr" disabled="true" value="%{getShowlet().getConfig().get('contentType')}" cssClass="form-control" />
 						<span class="input-group-btn">
 							<s:submit action="changeContentType" value="%{getText('label.change')}" cssClass="btn btn-info" />
 						</span>
@@ -103,14 +101,14 @@
 
 		</fieldset>
 
-		<fieldset class="margin-base-top">
+		<fieldset class="margin-large-top">
 			<legend data-toggle="collapse" data-target="#options-publishing"><s:text name="title.publishingOptions" />&#32;<span class="icon icon-chevron-down"></span></legend>
 
 			<div class="collapse" id="options-publishing">
 				<div class="form-group">
 					<div class="col-xs-12">
 						<label for="modelId"><s:text name="label.contentModel" /></label>
-						<s:select name="modelId" id="modelId" value="%{getShowlet().getConfig().get('modelId')}"
+						<wpsf:select name="modelId" id="modelId" value="%{getShowlet().getConfig().get('modelId')}"
 							list="%{getModelsForContentType(widget.config['contentType'])}" headerKey="" headerValue="%{getText('label.default')}" listKey="id" listValue="description" cssClass="form-control" />
 					</div>
 				</div>
@@ -118,7 +116,7 @@
 				<div class="form-group">
 					<div class="col-xs-12">
 						<label for="maxElemForItem"><s:text name="label.maxElementsForItem" /></label>
-						<s:select name="maxElemForItem" id="maxElemForItem" value="%{getShowlet().getConfig().get('maxElemForItem')}"
+						<wpsf:select name="maxElemForItem" id="maxElemForItem" value="%{getShowlet().getConfig().get('maxElemForItem')}"
 							headerKey="" headerValue="%{getText('label.all')}" list="#{1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9,10:10,15:15,20:20}" cssClass="form-control" />
 					</div>
 				</div>
@@ -126,7 +124,7 @@
 				<div class="form-group">
 					<div class="col-xs-12">
 						<label for="maxElements"><s:text name="label.maxElements" /></label>
-						<s:select name="maxElements" id="maxElements" value="%{getShowlet().getConfig().get('maxElements')}"
+						<wpsf:select name="maxElements" id="maxElements" value="%{getShowlet().getConfig().get('maxElements')}"
 							headerKey="" headerValue="%{getText('label.all')}" list="#{1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9,10:10,15:15,20:20}" cssClass="form-control" />
 					</div>
 				</div>
@@ -141,10 +139,10 @@
 					<div class="col-xs-12">
 						<label for="category"><s:text name="label.categories" /></label>
 						<div class="input-group">
-							<s:select name="categoryCode" id="category" list="categories" listKey="code" listValue="getShortFullTitle(currentLang.code)" headerKey="" headerValue="%{getText('label.all')}" cssClass="form-control" />
+							<wpsf:select name="categoryCode" id="category" list="categories" listKey="code" listValue="getShortFullTitle(currentLang.code)" headerKey="" headerValue="%{getText('label.all')}" cssClass="form-control" />
 							<span class="input-group-btn">
 								<s:submit type="button" action="addCategory" cssClass="btn btn-info">
-									<span class="icon icon-filter">&#32;
+									<span class="icon icon-filter"></span>&#32;
 									<s:text name="label.filter" />
 								</s:submit>
 							</span>
@@ -198,7 +196,7 @@
 					<div class="col-xs-12">
 						<label for="filterKey"><s:text name="label.filter" /></label>
 						<div class="input-group">
-							<s:select name="filterKey" id="filterKey" list="allowedFilterTypes" listKey="key" listValue="value" cssClass="form-control" />
+							<wpsf:select name="filterKey" id="filterKey" list="allowedFilterTypes" listKey="key" listValue="value" cssClass="form-control" />
 							<span class="input-group-btn">
 								<s:submit type="button" action="setFilterType" cssClass="btn btn-info">
 									<span class="icon icon-plus-sign-alt"></span>&#32;
@@ -329,7 +327,7 @@
 									<code class="label label-info"><s:property value="#lang.code" /></code>&#32;
 									<s:text name="label.title" />
 								</label>
-								<s:textfield name="title_%{#lang.code}" id="title_%{#lang.code}" value="%{widget.config.get('title_' + #lang.code)}" cssClass="form-control" />
+								<wpsf:textfield name="title_%{#lang.code}" id="title_%{#lang.code}" value="%{widget.config.get('title_' + #lang.code)}" cssClass="form-control" />
 							</div>
 						</div>
 					</s:iterator>
@@ -337,7 +335,7 @@
 					<div class="form-group">
 						<div class="col-xs-12">
 							<label for="pageLink"><s:text name="label.page" /></label>
-							<s:select list="pages" name="pageLink" id="pageLink" listKey="code" listValue="getShortFullTitle(currentLang.code)"
+							<wpsf:select list="pages" name="pageLink" id="pageLink" listKey="code" listValue="getShortFullTitle(currentLang.code)"
 									value="%{widget.config.get('pageLink')}" headerKey="" headerValue="%{getText('label.none')}" cssClass="form-control" />
 						</div>
 					</div>
@@ -349,7 +347,7 @@
 									<code class="label label-info"><s:property value="#lang.code" /></code>&#32;
 									<s:text name="label.link.descr"/>
 								</label>
-								<s:textfield name="linkDescr_%{#lang.code}" id="linkDescr_%{#lang.code}" value="%{widget.config.get('linkDescr_' + #lang.code)}" cssClass="form-control" />
+								<wpsf:textfield name="linkDescr_%{#lang.code}" id="linkDescr_%{#lang.code}" value="%{widget.config.get('linkDescr_' + #lang.code)}" cssClass="form-control" />
 							</div>
 						</div>
 					</s:iterator>
@@ -368,7 +366,7 @@
 					<div class="col-xs-12">
 						<label for="userFilterKey"><s:text name="label.filter" /></label>
 						<div class="input-group">
-							<s:select name="userFilterKey" id="userFilterKey" list="allowedUserFilterTypes" listKey="key" listValue="value" cssClass="form-control" />
+							<wpsf:select name="userFilterKey" id="userFilterKey" list="allowedUserFilterTypes" listKey="key" listValue="value" cssClass="form-control" />
 							<span class="input-group-btn">
 								<s:submit type="button" action="addUserFilter" cssClass="btn btn-info">
 									<span class="icon icon-plus-sign-alt"></span>&#32;

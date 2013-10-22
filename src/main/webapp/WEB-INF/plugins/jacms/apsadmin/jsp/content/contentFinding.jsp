@@ -23,7 +23,7 @@
 						<span class="icon icon-file-text-alt icon-large" title="<s:text name="label.search.by"/>&#32;<s:text name="label.description"/>"></span>
 					</span>
 					<label for="text" class="sr-only"><s:text name="label.search.by"/>&#32;<s:text name="label.description"/></label>
-					<s:textfield name="text" id="text" cssClass="form-control input-lg" placeholder="%{getText('label.description')}" title="%{getText('label.search.by')} %{getText('label.description')}" />
+					<wpsf:textfield name="text" id="text" cssClass="form-control input-lg" placeholder="%{getText('label.description')}" title="%{getText('label.search.by')} %{getText('label.description')}" />
 					<span class="input-group-btn">
 						<wpsa:actionParam action="search" var="searchActionName" >
 							<wpsa:actionSubParam name="actionCode" value="search" />
@@ -45,7 +45,7 @@
 								<s:text name="label.type"/>
 							</label>
 							<div class="col-sm-5 input-group">
-								<s:select cssClass="form-control" name="contentType" id="contentType"
+								<wpsf:select cssClass="form-control" name="contentType" id="contentType"
 									list="contentTypes" listKey="code" listValue="descr"
 									headerKey="" headerValue="%{getText('label.all')}" />
 								<div class="input-group-btn">
@@ -71,7 +71,7 @@
 										<s:set name="textInputFieldName"><s:property value="#attribute.name" />_textFieldName</s:set>
 										<label for="<s:property value="currentFieldId" />" class="control-label col-sm-3 text-right"><s:property value="#attribute.name" /></label>
 										<div class="col-sm-4">
-											<s:textfield id="%{currentFieldId}" name="%{#textInputFieldName}" value="%{getSearchFormFieldValue(#textInputFieldName)}" cssClass="form-control" />
+											<wpsf:textfield id="%{currentFieldId}" name="%{#textInputFieldName}" value="%{getSearchFormFieldValue(#textInputFieldName)}" cssClass="form-control" />
 										</div>
 									</div>
 								</s:if>
@@ -81,13 +81,13 @@
 									<div class="form-group">
 										<label for="<s:property value="%{currentFieldId}" />_dateStartFieldName_cal" class="control-label col-sm-5 text-right"><s:text name="note.range.from.attribute" />&#32;<s:property value="#attribute.name" /></label>
 										<div class="col-sm-2">
-											<s:textfield id="%{currentFieldId}_dateStartFieldName_cal" name="%{#dateStartInputFieldName}" value="%{getSearchFormFieldValue(#dateStartInputFieldName)}" cssClass="form-control datepicker" placeholder="dd/mm/yyyy" />
+											<wpsf:textfield id="%{currentFieldId}_dateStartFieldName_cal" name="%{#dateStartInputFieldName}" value="%{getSearchFormFieldValue(#dateStartInputFieldName)}" cssClass="form-control datepicker" placeholder="dd/mm/yyyy" />
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="<s:property value="%{currentFieldId}" />_dateEndFieldName_cal" class="control-label col-sm-5 text-right"><s:text name="note.range.to.attribute" />&#32;<s:property value="#attribute.name" /></label>
 										<div class="col-sm-2">
-											<s:textfield id="%{currentFieldId}_dateEndFieldName_cal" name="%{#dateEndInputFieldName}" value="%{getSearchFormFieldValue(#dateEndInputFieldName)}" cssClass="form-control datepicker" placeholder="dd/mm/yyyy" />
+											<wpsf:textfield id="%{currentFieldId}_dateEndFieldName_cal" name="%{#dateEndInputFieldName}" value="%{getSearchFormFieldValue(#dateEndInputFieldName)}" cssClass="form-control datepicker" placeholder="dd/mm/yyyy" />
 										</div>
 									</div>
 								</s:elseif>
@@ -96,11 +96,11 @@
 									<s:set name="numberEndInputFieldName" ><s:property value="#attribute.name" />_numberEndFieldName</s:set>
 									<p>
 										<label for="<s:property value="currentFieldId" />_start"><s:text name="note.range.from.attribute" />&#32;<s:property value="#attribute.name" />:</label>
-										<s:textfield id="%{currentFieldId}_start" name="%{#numberStartInputFieldName}" value="%{getSearchFormFieldValue(#numberStartInputFieldName)}" />
+										<wpsf:textfield id="%{currentFieldId}_start" name="%{#numberStartInputFieldName}" value="%{getSearchFormFieldValue(#numberStartInputFieldName)}" />
 									</p>
 									<p>
 										<label for="<s:property value="currentFieldId" />_end"><s:text name="note.range.to.attribute" />&#32;<s:property value="#attribute.name" />:</label>
-										<s:textfield id="%{currentFieldId}_end" name="%{#numberEndInputFieldName}" value="%{getSearchFormFieldValue(#numberEndInputFieldName)}" />
+										<wpsf:textfield id="%{currentFieldId}_end" name="%{#numberEndInputFieldName}" value="%{getSearchFormFieldValue(#numberEndInputFieldName)}" />
 									</p>
 								</s:elseif>
 								<s:elseif test="#attribute.type == 'Boolean' || #attribute.type == 'ThreeState'">
@@ -128,7 +128,7 @@
 						<div class="form-group">
 							<label for="contentIdToken" class="control-label col-sm-2 text-right"><s:text name="label.code"/></label>
 							<div class="col-sm-5">
-								<s:textfield name="contentIdToken" id="contentIdToken" cssClass="form-control" placeholder="CNG12" />
+								<wpsf:textfield name="contentIdToken" id="contentIdToken" cssClass="form-control" placeholder="CNG12" />
 							</div>
 						</div>
 						<s:set var="allowedGroupsVar" value="allowedGroups" />
@@ -136,14 +136,14 @@
 							<div class="form-group">
 								<label for="ownerGroupName" class="control-label col-sm-2 text-right"><s:text name="label.group" /></label>
 								<div class="col-sm-5">
-									<s:select name="ownerGroupName" id="ownerGroupName" list="#allowedGroupsVar" headerKey="" headerValue="%{getText('label.all')}" listKey="name" listValue="descr" cssClass="form-control" />
+									<wpsf:select name="ownerGroupName" id="ownerGroupName" list="#allowedGroupsVar" headerKey="" headerValue="%{getText('label.all')}" listKey="name" listValue="descr" cssClass="form-control" />
 								</div>
 							</div>
 						</s:if>
 						<div class="form-group">
 							<label for="state" class="control-label col-sm-2 text-right"><s:text name="label.state"/></label>
 							<div class="col-sm-5">
-								<s:select name="state" id="state" list="avalaibleStatus" headerKey="" headerValue="%{getText('label.all')}" listKey="key" listValue="%{getText(value)}" cssClass="form-control" />
+								<wpsf:select name="state" id="state" list="avalaibleStatus" headerKey="" headerValue="%{getText('label.all')}" listKey="key" listValue="%{getText(value)}" cssClass="form-control" />
 							</div>
 						</div>
 						<div class="form-group">

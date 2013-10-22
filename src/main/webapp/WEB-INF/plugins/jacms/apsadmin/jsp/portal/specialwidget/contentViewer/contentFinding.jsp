@@ -57,7 +57,7 @@
 							<span class="icon icon-file-text-alt icon-large"></span>
 						</span>
 						<label for="text" class="sr-only"><s:text name="label.search.by"/>&#32;<s:text name="label.description"/></label>
-						<s:textfield name="text" id="text" cssClass="form-control input-lg" placeholder="%{getText('label.search.topic')}" title="%{getText('label.search.by')} %{getText('label.description')}" />
+						<wpsf:textfield name="text" id="text" cssClass="form-control input-lg" placeholder="%{getText('label.search.topic')}" title="%{getText('label.search.by')} %{getText('label.description')}" />
 						<div class="input-group-btn">
 							<s:submit type="button" cssClass="btn btn-primary btn-lg" title="%{getText('label.search')}">
 								<span class="icon icon-search"></span>
@@ -77,7 +77,7 @@
 									<s:text name="label.type" />
 								</label>
 								<div class="col-sm-5">
-									<s:select name="contentType" id="contentType"	list="contentTypes" listKey="code" listValue="descr" headerKey="" headerValue="%{getText('label.all')}" cssClass="form-control" />
+									<wpsf:select name="contentType" id="contentType"	list="contentTypes" listKey="code" listValue="descr" headerKey="" headerValue="%{getText('label.all')}" cssClass="form-control" />
 								</div>
 							</div>
 						<%-- code --%>
@@ -86,14 +86,14 @@
 									<s:text name="label.code" />
 								</label>
 								<div class="col-sm-5">
-									<s:textfield name="contentIdToken" id="contentIdToken" cssClass="form-control" />
+									<wpsf:textfield name="contentIdToken" id="contentIdToken" cssClass="form-control" />
 								</div>
 							</div>
 						<%-- status --%>
 							<div class="form-group">
 								<label for="state" class="control-label col-sm-2 text-right"><s:text name="label.state" /></label>
 								<div class="col-sm-5">
-									<s:select name="state" id="state" list="avalaibleStatus" headerKey="" headerValue="%{getText('label.all')}" cssClass="form-control" listKey="key" listValue="%{getText(value)}" />
+									<wpsf:select name="state" id="state" list="avalaibleStatus" headerKey="" headerValue="%{getText('label.all')}" cssClass="form-control" listKey="key" listValue="%{getText(value)}" />
 								</div>
 							</div>
 						<%-- search --%>

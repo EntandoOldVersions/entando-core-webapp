@@ -90,13 +90,13 @@
 	<div class="panel-body">
 	 	<div class="form-group">
 			<label class="control-label" for="descr"><s:text name="label.description" /></label>
-			<s:textfield name="descr" id="descr" cssClass="form-control" />
+			<wpsf:textfield name="descr" id="descr" cssClass="form-control" />
 		</div>
 
 		<s:set name="lockGroupSelect" value="%{resourceId != null && resourceId != 0}"></s:set>
 		<div class="form-group">
 			<label class="control-label" for="mainGroup"><s:text name="label.group" /></label>
-			<s:select name="mainGroup" id="mainGroup" list="allowedGroups" value="mainGroup"
+			<wpsf:select name="mainGroup" id="mainGroup" list="allowedGroups" value="mainGroup"
 			listKey="name" listValue="descr" disabled="%{lockGroupSelect}" cssClass="form-control" />
 		</div>
 

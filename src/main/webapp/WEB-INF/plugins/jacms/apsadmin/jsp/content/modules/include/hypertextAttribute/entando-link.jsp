@@ -173,7 +173,7 @@
 															<s:text name="label.url" />
 														</label>
 														<input type="hidden" name="contentOnSessionMarker" value="<s:property value="contentOnSessionMarker" />" />
-														<s:textfield id="txtName" name="txtName" maxlength="255" cssClass="form-control" />
+														<wpsf:textfield id="txtName" name="txtName" maxlength="255" cssClass="form-control" />
 														<span class="help help-block">
 															<s:text name="note.typeValidURL" />
 														</span>

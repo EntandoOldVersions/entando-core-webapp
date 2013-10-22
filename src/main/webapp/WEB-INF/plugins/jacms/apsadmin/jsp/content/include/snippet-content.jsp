@@ -67,7 +67,7 @@
 			<div class="form-group has-warning">
 				<label class="control-label" for="contentMainGroup"><s:text name="label.ownerGroup" /></label>
 				<div class="input-group">
-					<s:select name="mainGroup" id="contentMainGroup" list="allowedGroups" value="%{'free'}"
+					<wpsf:select name="mainGroup" id="contentMainGroup" list="allowedGroups" value="%{'free'}"
 						listKey="name" listValue="descr" cssClass="form-control" />
 					<span class="input-group-btn">
 						<s:submit

@@ -107,7 +107,7 @@
 					<div class="form-group">
 						<div class="col-xs-12">
 							<label for="modelId" class="control-label"><s:text name="label.contentModel" /></label>
-							<s:select id="modelId" name="modelId" value="%{getShowlet().getConfig().get('modelId')}"
+							<wpsf:select id="modelId" name="modelId" value="%{getShowlet().getConfig().get('modelId')}"
 							list="%{getModelsForContent(showlet.config['contentId'])}" headerKey="" headerValue="%{getText('label.default')}" listKey="id" listValue="description" cssClass="form-control" />
 						</div>
 					</div>
@@ -124,7 +124,7 @@
 					<s:if test="!#showletParam.name.equals('contentId') && !#showletParam.name.equals('modelId')">
 						<div class="form-group">
 							<label for="fagianoParam_<s:property value="#showletParam.name" />" class="control-label"><s:property value="#showletParam.descr" /></label>
-							<s:textfield cssClass="form-control" id="%{'fagianoParam_'+#showletParam.name}" name="%{#showletParam.name}" value="%{showlet.config[#showletParam.name]}" />
+							<wpsf:textfield cssClass="form-control" id="%{'fagianoParam_'+#showletParam.name}" name="%{#showletParam.name}" value="%{showlet.config[#showletParam.name]}" />
 						</div>
 					</s:if>
 				</s:iterator>

@@ -203,7 +203,7 @@
 											<label class="sr-only" for="<s:property value="#previewActionPageCodeLabelId" />">
 												<s:text name="name.preview.page" />
 											</label>
-											<s:select
+											<wpsf:select
 												name="%{'jacmsPreviewActionPageCode_' + #lang.code}"
 												id="%{#previewActionPageCodeLabelId}"
 												list="#showingPageSelectItems"
@@ -212,7 +212,7 @@
 												cssClass="form-control"
 												data-autosave="ignore" />
 											<span class="input-group-btn">
-												<%-- <s:select name="jacmsPreviewActionPageCode" id="%{#previewActionPageCodeLabelId}" list="#showingPageSelectItems" listKey="key" listValue="value" /></p>  --%>
+												<%-- <wpsf:select name="jacmsPreviewActionPageCode" id="%{#previewActionPageCodeLabelId}" list="#showingPageSelectItems" listKey="key" listValue="value" /></p>  --%>
 												<s:submit
 													type="button"
 													cssClass="btn btn-info"
@@ -250,7 +250,7 @@
 								<s:text name="label.join" />&#32;<s:text name="label.group" />
 							</label>
 							<div class="input-group">
-								<s:select
+								<wpsf:select
 									name="extraGroupName"
 									id="extraGroups"
 									list="groups"

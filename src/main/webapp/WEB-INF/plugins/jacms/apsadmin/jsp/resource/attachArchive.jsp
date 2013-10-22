@@ -44,7 +44,7 @@
 				<span class="icon icon-file-text-alt icon-large"></span>
 			</span>
 			<label class="sr-only" for="text"><s:text name="label.search.by" />&#32;<s:text name="label.description" /></label>
-			<s:textfield name="text" id="text" cssClass="form-control input-lg" placeholder="%{getText('label.description')}" title="%{getText('label.search.by')} %{getText('label.description')}" />
+			<wpsf:textfield name="text" id="text" cssClass="form-control input-lg" placeholder="%{getText('label.description')}" title="%{getText('label.search.by')} %{getText('label.description')}" />
 			<span class="input-group-btn">
 				<s:submit type="button" title="%{getText('label.search')}" cssClass="btn btn-primary btn-lg">
 					<span class="icon icon-search"></span>
@@ -64,7 +64,7 @@
 						<div class="form-group">
 							<label for="ownerGroupName" class="control-label col-sm-2 text-right"><s:text name="label.group" /></label>
 							<div class="col-sm-5">
-								<s:select name="ownerGroupName" id="ownerGroupName" list="#allowedGroupsVar" headerKey="" headerValue="%{getText('label.all')}" listKey="name" listValue="descr" cssClass="form-control" />
+								<wpsf:select name="ownerGroupName" id="ownerGroupName" list="#allowedGroupsVar" headerKey="" headerValue="%{getText('label.all')}" listKey="name" listValue="descr" cssClass="form-control" />
 							</div>
 						</div>
 					</s:if>
@@ -72,7 +72,7 @@
 					<div class="form-group">
 						<label for="fileName" class="control-label col-sm-2 text-right"><s:text name="label.filename" /></label>
 						<div class="col-sm-5">
-							<s:textfield name="fileName" id="fileName" cssClass="form-control"/>
+							<wpsf:textfield name="fileName" id="fileName" cssClass="form-control"/>
 						</div>
 					</div>
 				<%-- category --%>
