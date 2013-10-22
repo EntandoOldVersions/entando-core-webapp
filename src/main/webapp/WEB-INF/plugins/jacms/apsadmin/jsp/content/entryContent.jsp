@@ -34,7 +34,7 @@
 				<ul class="unstyled collapse margin-small-top" id="content-error-messages">
 					<s:iterator value="fieldErrors">
 						<s:iterator value="value">
-							<li><s:property value="key" />&emsp;|<s:property escape="false" /></li>
+							<li><%-- <s:property value="key" />&emsp;|--%><s:property escape="false" /></li>
 							</s:iterator>
 						</s:iterator>
 				</ul>
@@ -81,7 +81,7 @@
 									<s:set var="attributeHasFieldNameErrorVar" value="#attributeFieldNameErrorsVar != null && !#attributeFieldNameErrorsVar.isEmpty()" />
 									<s:set var="attributeFieldNameErrorsVarV2" value="%{fieldErrors[#attribute.type+':'+#attribute.name]}" />
 									<s:set var="attributeHasFieldNameErrorVarV2" value="#attributeFieldNameErrorsVarV2 != null && !#attributeFieldNameErrorsVarV2.isEmpty()" />
-									
+
 									<s:set var="attributeHasErrorVar" value="%{#attributeHasFieldErrorVar||#attributeHasFieldNameErrorVar||#attributeHasFieldNameErrorVarV2}" />
 									<s:set var="controlGroupErrorClassVar" value="''" />
 									<s:set var="inputErrorClassVar" value="''" />
