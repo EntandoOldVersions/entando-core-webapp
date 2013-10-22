@@ -13,50 +13,50 @@
 
 	<s:if test="#group.advanced">
 	<li>
-		<s:submit name="%{#pagerIdMarker + '_1'}" type="button" disabled="%{1 == #group.currItem}" title="%{getText('label.goToFirst')}">
+		<wpsf:submit name="%{#pagerIdMarker + '_1'}" type="button" disabled="%{1 == #group.currItem}" title="%{getText('label.goToFirst')}">
 			<span class="icon icon-step-backward"></span>
-		</s:submit>
+		</wpsf:submit>
 	</li>
 	<li>
-		<s:submit name="%{#pagerIdMarker + '_' + (#group.currItem - #group.offset) }" type="button" disabled="%{1 == #group.beginItemAnchor}" title="%{getText('label.jump') + ' ' + #group.offset + ' ' + getText('label.backward')}">
+		<wpsf:submit name="%{#pagerIdMarker + '_' + (#group.currItem - #group.offset) }" type="button" disabled="%{1 == #group.beginItemAnchor}" title="%{getText('label.jump') + ' ' + #group.offset + ' ' + getText('label.backward')}">
 			<span class="icon icon-fast-backward"></span>
-		</s:submit>
+		</wpsf:submit>
 	</li>
 	</s:if>
 
 	<li>
-		<s:submit name="%{#pagerIdMarker + '_' + #group.prevItem}" type="button" title="%{getText('label.prev.full')}" disabled="%{1 == #group.currItem}">
+		<wpsf:submit name="%{#pagerIdMarker + '_' + #group.prevItem}" type="button" title="%{getText('label.prev.full')}" disabled="%{1 == #group.currItem}">
 			<span class="icon icon-long-arrow-left"></span>
-		</s:submit>
+		</wpsf:submit>
 	</li>
 
 	<s:subset source="#group.items" count="#group.endItemAnchor-#group.beginItemAnchor+1" start="#group.beginItemAnchor-1">
 		<s:iterator id="item">
 			<li>
-				<s:submit name="%{#pagerIdMarker + '_' + #item}" type="button" disabled="%{#item == #group.currItem}">
+				<wpsf:submit name="%{#pagerIdMarker + '_' + #item}" type="button" disabled="%{#item == #group.currItem}">
 					<s:property value="%{#item}" />
-				</s:submit>
+				</wpsf:submit>
 			</li>
 		</s:iterator>
 	</s:subset>
 
 	<li>
-		<s:submit name="%{#pagerIdMarker + '_' + #group.nextItem}" type="button" title="%{getText('label.next.full')}" disabled="%{#group.maxItem == #group.currItem}">
+		<wpsf:submit name="%{#pagerIdMarker + '_' + #group.nextItem}" type="button" title="%{getText('label.next.full')}" disabled="%{#group.maxItem == #group.currItem}">
 			<span class="icon icon-long-arrow-right"></span>
-		</s:submit>
+		</wpsf:submit>
 	</li>
 
 	<s:if test="#group.advanced">
 	<s:set name="jumpForwardStep" value="#group.currItem + #group.offset"></s:set>
 	<li>
-		<s:submit name="%{#pagerIdMarker + '_' + (#jumpForwardStep)}" type="button" disabled="%{#group.maxItem == #group.endItemAnchor}" title="%{getText('label.jump') + ' ' + #group.offset + ' ' + getText('label.forward')}">
+		<wpsf:submit name="%{#pagerIdMarker + '_' + (#jumpForwardStep)}" type="button" disabled="%{#group.maxItem == #group.endItemAnchor}" title="%{getText('label.jump') + ' ' + #group.offset + ' ' + getText('label.forward')}">
 			<span class="icon icon-fast-forward"></span>
-		</s:submit>
+		</wpsf:submit>
 	</li>
 	<li>
-		<s:submit name="%{#pagerIdMarker + '_' + #group.size}" type="button" disabled="%{#group.maxItem == #group.currItem}" title="%{getText('label.goToLast')}">
+		<wpsf:submit name="%{#pagerIdMarker + '_' + #group.size}" type="button" disabled="%{#group.maxItem == #group.currItem}" title="%{getText('label.goToLast')}">
 			<span class="icon icon-step-forward"></span>
-		</s:submit>
+		</wpsf:submit>
 	</li>
 	</s:if>
 

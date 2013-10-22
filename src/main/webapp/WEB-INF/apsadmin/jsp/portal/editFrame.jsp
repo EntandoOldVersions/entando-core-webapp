@@ -58,8 +58,8 @@
 
 		<s:form action="joinWidget">
 			<p class="sr-only">
-				<s:hidden name="pageCode" />
-				<s:hidden name="frame" />
+				<wpsf:hidden name="pageCode" />
+				<wpsf:hidden name="frame" />
 			</p>
 
 			<div class="form-group margin-base-vertical">
@@ -104,10 +104,10 @@
 					</s:iterator>
 					</select>
 					<span class="input-group-btn">
-						<s:submit type="button" cssClass="btn btn-success">
+						<wpsf:submit type="button" cssClass="btn btn-success">
 							<span class="icon icon-ok"></span>&#32;
 							<s:text name="label.confirm" />
-						</s:submit>
+						</wpsf:submit>
 					</span>
 				</div>
 			</div>

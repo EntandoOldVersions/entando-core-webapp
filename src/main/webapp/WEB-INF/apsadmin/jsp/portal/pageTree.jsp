@@ -48,46 +48,46 @@
 		</s:elseif>
 	</ul>
 </div>
-<p class="sr-only"><s:hidden name="copyingPageCode" /></p>
+<p class="sr-only"><wpsf:hidden name="copyingPageCode" /></p>
 
 <fieldset data-toggle="tree-toolbar"><legend><s:text name="title.pageActions" /></legend>
 	<p class="sr-only"><s:text name="title.pageActionsIntro" /></p>
 
 	<div class="btn-toolbar" data-toggle="tree-toolbar-actions">
 		<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
-			<s:submit action="configure" type="button" title="%{getText('page.options.configure')}" cssClass="btn btn-info" data-toggle="tooltip">
+			<wpsf:submit action="configure" type="button" title="%{getText('page.options.configure')}" cssClass="btn btn-info" data-toggle="tooltip">
 				<span class="icon icon-cog"></span>
-			</s:submit>
-			<s:submit action="detail" type="button" title="%{getText('page.options.detail')}" cssClass="btn btn-info" data-toggle="tooltip">
+			</wpsf:submit>
+			<wpsf:submit action="detail" type="button" title="%{getText('page.options.detail')}" cssClass="btn btn-info" data-toggle="tooltip">
 				<span class="icon icon-info"></span>
-			</s:submit>
+			</wpsf:submit>
 		</div>
 		<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
-			<s:submit action="copy" type="button" title="%{getText('page.options.copy')}" cssClass="btn btn-info" data-toggle="tooltip">
+			<wpsf:submit action="copy" type="button" title="%{getText('page.options.copy')}" cssClass="btn btn-info" data-toggle="tooltip">
 				<span class="icon icon-copy"></span>
-			</s:submit>
-			<s:submit action="paste" type="button" title="%{getText('page.options.paste')}" cssClass="btn btn-info" data-toggle="tooltip">
+			</wpsf:submit>
+			<wpsf:submit action="paste" type="button" title="%{getText('page.options.paste')}" cssClass="btn btn-info" data-toggle="tooltip">
 				<span class="icon icon-paste"></span>
-			</s:submit>
-			<s:submit action="moveUp" type="button" title="%{getText('page.options.moveUp')}" cssClass="btn btn-info" data-toggle="tooltip">
+			</wpsf:submit>
+			<wpsf:submit action="moveUp" type="button" title="%{getText('page.options.moveUp')}" cssClass="btn btn-info" data-toggle="tooltip">
 				<span class="icon icon-sort-up"></span>
-			</s:submit>
-			<s:submit action="moveDown" type="button" title="%{getText('page.options.moveDown')}" cssClass="btn btn-info" data-toggle="tooltip">
+			</wpsf:submit>
+			<wpsf:submit action="moveDown" type="button" title="%{getText('page.options.moveDown')}" cssClass="btn btn-info" data-toggle="tooltip">
 				<span class="icon icon-sort-down"></span>
-			</s:submit>
+			</wpsf:submit>
 		</div>
 		<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
-			<s:submit action="new" type="button" title="%{getText('page.options.new')}" cssClass="btn btn-info" data-toggle="tooltip">
+			<wpsf:submit action="new" type="button" title="%{getText('page.options.new')}" cssClass="btn btn-info" data-toggle="tooltip">
 				<span class="icon icon-plus-sign"></span>
-			</s:submit>
-			<s:submit action="edit" type="button" title="%{getText('page.options.modify')}" cssClass="btn btn-info" data-toggle="tooltip">
+			</wpsf:submit>
+			<wpsf:submit action="edit" type="button" title="%{getText('page.options.modify')}" cssClass="btn btn-info" data-toggle="tooltip">
 				<span class="icon icon-edit"></span>
-			</s:submit>
+			</wpsf:submit>
 		</div>
 		<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
-			<s:submit action="trash" type="button" title="%{getText('page.options.delete')}" cssClass="btn btn-warning" data-toggle="tooltip">
+			<wpsf:submit action="trash" type="button" title="%{getText('page.options.delete')}" cssClass="btn btn-warning" data-toggle="tooltip">
 				<span class="icon icon-remove-sign"></span>
-			</s:submit>
+			</wpsf:submit>
 		</div>
 	</div>
 </fieldset>

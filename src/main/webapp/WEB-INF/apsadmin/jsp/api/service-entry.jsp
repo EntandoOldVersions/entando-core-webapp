@@ -42,20 +42,20 @@
 		<fieldset class="col-xs-12">
 			<legend><s:text name="label.info" /></legend>
 			<p class="sr-only">
-				<s:hidden name="strutsAction" />
+				<wpsf:hidden name="strutsAction" />
 				<s:if test="strutsAction == 2">
-					<s:hidden name="serviceKey" />
+					<wpsf:hidden name="serviceKey" />
 				</s:if>
 				<s:if test="strutsAction == 3">
-					<s:hidden name="pageCode" />
-					<s:hidden name="framePos" />
+					<wpsf:hidden name="pageCode" />
+					<wpsf:hidden name="framePos" />
 				</s:if>
-				<s:hidden name="resourceName" />
-				<s:hidden name="namespace" />
+				<wpsf:hidden name="resourceName" />
+				<wpsf:hidden name="namespace" />
 			</p>
 			<div class="form-group">
 				<label for="<s:property value="serviceKey" />" class="control-label"><s:text name="name.api.service" /> <abbr title="<s:text name="Entity.attribute.flag.mandatory.full"/>"><s:text name="Entity.attribute.flag.mandatory.short"/></abbr>:</label>
-				<s:textfield id="serviceKey" name="serviceKey" disabled="%{strutsAction == 2}" cssClass="form-control" />
+				<wpsf:textfield id="serviceKey" name="serviceKey" disabled="%{strutsAction == 2}" cssClass="form-control" />
 			</div>
 			<s:iterator value="systemLangs">
 				<div class="form-group">
@@ -65,7 +65,7 @@
 			</s:iterator>
 			<div class="form-group">
 				<label for="tag" class="control-label"><s:text name="label.tag" />:</label>
-				<s:textfield id="tag" name="tag" cssClass="form-control" />
+				<wpsf:textfield id="tag" name="tag" cssClass="form-control" />
 			</div>
 		</fieldset>
 		<fieldset class="col-xs-12">
@@ -88,11 +88,11 @@
 			</div>
 			<div class="form-group">
 				<label class="control-label" for="requiredPermission"><s:text name="label.api.authority.permission" />:</label>
-				<s:select headerKey="" headerValue="%{getText('label.none')}" name="requiredPermission" list="permissionAutorityOptions" listKey="key" listValue="value" id="requiredPermission" cssClass="form-control"/>
+				<wpsf:select headerKey="" headerValue="%{getText('label.none')}" name="requiredPermission" list="permissionAutorityOptions" listKey="key" listValue="value" id="requiredPermission" cssClass="form-control"/>
 			</div>
 			<div class="form-group">
 				<label class="control-label" for="requiredGroup"><s:text name="label.api.authority.group" />:</label>
-				<s:select headerKey="" headerValue="%{getText('label.none')}" name="requiredGroup" list="groups" listKey="name" listValue="descr" id="requiredGroup" cssClass="form-control"/>
+				<wpsf:select headerKey="" headerValue="%{getText('label.none')}" name="requiredGroup" list="groups" listKey="name" listValue="descr" id="requiredGroup" cssClass="form-control"/>
 			</div>
 		</fieldset>
 		<fieldset class="col-xs-12">
@@ -119,7 +119,7 @@
 						<s:property value="#apiParameterVar.required"/>
 						</td>
 						<td>
-						<s:textfield id="%{#apiParameterVar.key + '_apiParam'}" name="%{#apiParameterVar.key + '_apiParam'}" value="%{apiParameterValues[#apiParameterVar.key]}" cssClass="form-control" /></td>
+						<wpsf:textfield id="%{#apiParameterVar.key + '_apiParam'}" name="%{#apiParameterVar.key + '_apiParam'}" value="%{apiParameterValues[#apiParameterVar.key]}" cssClass="form-control" /></td>
                         <td>
 				        <s:set var="freeParameterFieldNameVar" value="%{'freeParameter_' + #apiParameterVar.key}" />
 				        <wpsf:radio name="%{#freeParameterFieldNameVar}"
@@ -135,10 +135,10 @@
 		</fieldset>
 		<div class="form-group">
 			<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-				<s:submit type="button" cssClass="btn btn-primary btn-block">
+				<wpsf:submit type="button" cssClass="btn btn-primary btn-block">
 					<span class="icon icon-save"></span>&#32;
 					<s:text name="label.save" />
-				</s:submit>
+				</wpsf:submit>
 			</div>
 		</div>
 	</s:form>

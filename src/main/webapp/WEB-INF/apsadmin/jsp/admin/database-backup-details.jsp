@@ -181,10 +181,10 @@
 		<hr />
 		<s:form namespace="/do/Admin/Database" method="get" cssClass="margin-more-top">
 			<p class="text-center">
-				<s:hidden name="subFolderName" value="%{#dumpReportVar.subFolderName}" />
-				<s:submit type="button" action="restoreIntro" cssClass="btn btn-primary">
+				<wpsf:hidden name="subFolderName" value="%{#dumpReportVar.subFolderName}" />
+				<wpsf:submit type="button" action="restoreIntro" cssClass="btn btn-primary">
 					<s:text name="database.management.label.restore" />
-				</s:submit>
+				</wpsf:submit>
 			</p>
 		</s:form>
 	</s:else>

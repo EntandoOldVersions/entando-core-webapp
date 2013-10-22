@@ -6,10 +6,10 @@
 		<div class="form-group">
 			<label for="attributeTypeCode" class="control-label"><s:text name="label.type" /></label>
 			<div class="input-group">
-			<s:select id="attributeTypeCode" list="attributeTypes" name="attributeTypeCode" 
+			<wpsf:select id="attributeTypeCode" list="attributeTypes" name="attributeTypeCode" 
 				listKey="type" listValue="type" cssClass="form-control" />
 				<span class="input-group-btn">
-					<s:submit type="button" action="addAttribute" cssClass="btn btn-default" value="%{getText('label.add')}"/>
+					<wpsf:submit type="button" action="addAttribute" cssClass="btn btn-default" value="%{getText('label.add')}"/>
 				</span>
 			</div>
 		</div>

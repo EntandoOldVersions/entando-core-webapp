@@ -39,23 +39,23 @@
 		</div>
 	</s:if>
 	<p class="sr-only">
-		<s:hidden name="selectedNode" />
-		<s:hidden name="strutsAction" />
-		<s:hidden name="copyPageCode" />
-		<s:hidden name="parentPageCode" />
-		<s:hidden name="groupSelectLock" />
+		<wpsf:hidden name="selectedNode" />
+		<wpsf:hidden name="strutsAction" />
+		<wpsf:hidden name="copyPageCode" />
+		<wpsf:hidden name="parentPageCode" />
+		<wpsf:hidden name="groupSelectLock" />
 		<s:if test="strutsAction == 2">
-			<s:hidden name="pageCode" />
+			<wpsf:hidden name="pageCode" />
 		</s:if>
-		<s:iterator value="extraGroups" id="groupName"><s:hidden name="extraGroups" value="%{#groupName}" /></s:iterator>
+		<s:iterator value="extraGroups" id="groupName"><wpsf:hidden name="extraGroups" value="%{#groupName}" /></s:iterator>
 		<s:if test="strutsAction == 3">
-			<s:hidden name="group" />
-			<s:hidden name="model" />
-			<s:hidden name="defaultShowlet" />
-			<s:hidden name="showable" />
-			<s:hidden name="useExtraTitles" />
-			<s:hidden name="charset" />
-			<s:hidden name="mimeType" />
+			<wpsf:hidden name="group" />
+			<wpsf:hidden name="model" />
+			<wpsf:hidden name="defaultShowlet" />
+			<wpsf:hidden name="showable" />
+			<wpsf:hidden name="useExtraTitles" />
+			<wpsf:hidden name="charset" />
+			<wpsf:hidden name="mimeType" />
 		</s:if>
 	</p>
 	<fieldset class="col-xs-12"><legend><s:text name="label.info" /></legend>
@@ -69,7 +69,7 @@
 		<s:set var="pageCodeFieldErrorsVar" value="%{fieldErrors['pageCode']}" />
 		<s:set var="pageCodeHasFieldErrorVar" value="#pageCodeFieldErrorsVar != null && !#pageCodeFieldErrorsVar.isEmpty()" />
 		<label for="pageCode"><s:text name="name.pageCode" /></label>
-		<s:textfield name="pageCode" id="pageCode" disabled="%{getStrutsAction() == 2}" cssClass="form-control" />
+		<wpsf:textfield name="pageCode" id="pageCode" disabled="%{getStrutsAction() == 2}" cssClass="form-control" />
 		<s:if test="#pageCodeHasFieldErrorVar">
 		  <p class="text-danger padding-small-vertical"><s:iterator value="#pageCodeFieldErrorsVar"><s:property /> </s:iterator></p>
 		</s:if>
@@ -79,7 +79,7 @@
 		<s:set var="titleFieldErrorsVar" value="%{fieldErrors['lang'+code]}" />
 		<s:set var="titleHasFieldErrorVar" value="#titleFieldErrorsVar != null && !#titleFieldErrorsVar.isEmpty()" />
 		<label for="lang<s:property value="code" />"><abbr title="<s:property value="descr" />"><code class="label label-info" ><s:property value="code" /></code></abbr>&#32;<s:text name="name.pageTitle" /></label>
-		<s:textfield name="%{'lang'+code}" id="%{'lang'+code}" value="%{titles.get(code)}" cssClass="form-control" />
+		<wpsf:textfield name="%{'lang'+code}" id="%{'lang'+code}" value="%{titles.get(code)}" cssClass="form-control" />
 		<s:if test="#titleHasFieldErrorVar">
 		  <p class="text-danger padding-small-vertical"><s:iterator value="#titleFieldErrorsVar"><s:property /> </s:iterator></p>
 		</s:if>
@@ -94,8 +94,8 @@
 
 	<div class="form-group">
 		<label for="group"><s:text name="label.ownerGroup" /></label>
-		<s:select name="group" id="group" list="allowedGroups" listKey="name" listValue="descr" disabled="%{groupSelectLock}" cssClass="form-control"></s:select>
-		<s:if test="groupSelectLock"><p class="sr-only"><s:hidden name="group" /></p></s:if>
+		<wpsf:select name="group" id="group" list="allowedGroups" listKey="name" listValue="descr" disabled="%{groupSelectLock}" cssClass="form-control"></wpsf:select>
+		<s:if test="groupSelectLock"><p class="sr-only"><wpsf:hidden name="group" /></p></s:if>
 	</div>
 	</fieldset>
 
@@ -103,13 +103,13 @@
 <div class="form-group">
 	<label for="extraGroups"><s:text name="label.join" />&#32;<s:text name="label.group" /></label>
 	<div class="input-group">
-		<s:select name="extraGroupName" id="extraGroups" list="groups"
+		<wpsf:select name="extraGroupName" id="extraGroups" list="groups"
 			listKey="name" listValue="descr" cssClass="form-control" />
 		<span class="input-group-btn">
-			<s:submit type="button" action="joinExtraGroup" cssClass="btn btn-default">
+			<wpsf:submit type="button" action="joinExtraGroup" cssClass="btn btn-default">
 				<span class="icon-plus"></span>&#32;
 				<s:property value="label.join" />
-			</s:submit>
+			</wpsf:submit>
 		</span>
 	</div>
 </div>
@@ -121,10 +121,10 @@
 		<span class="label label-default label-sm pull-left padding-small-top padding-small-bottom margin-small-right margin-small-bottom">
 			<span class="icon icon-tag"></span>&#32;
 			<s:property value="%{getSystemGroups()[#groupName].getDescr()}"/>&#32;
-			<s:submit type="button" action="%{#actionName}" value="%{getText('label.remove')}" title="%{getText('label.remove')}" cssClass="btn btn-default btn-xs badge">
+			<wpsf:submit type="button" action="%{#actionName}" value="%{getText('label.remove')}" title="%{getText('label.remove')}" cssClass="btn btn-default btn-xs badge">
 				<span class="icon icon-remove"></span>
 				<span class="sr-only">x</span>
-			</s:submit>
+			</wpsf:submit>
 		</span>
 	</s:iterator>
 </s:if>
@@ -135,7 +135,7 @@
 
 <div class="form-group" id="pagemodel">
 	<label for="model"><s:text name="name.pageModel" /></label>
-	<s:select name="model" id="model" list="pageModels" listKey="code" listValue="descr" cssClass="form-control"></s:select>
+	<wpsf:select name="model" id="model" list="pageModels" listKey="code" listValue="descr" cssClass="form-control"></wpsf:select>
 </div>
 
 <ul>
@@ -155,13 +155,13 @@
 
 <div class="form-group">
 	<label for="charset"><s:text name="name.charset" /></label>
-	<s:select name="charset" id="charset"
+	<wpsf:select name="charset" id="charset"
 				 headerKey="" headerValue="%{getText('label.default')}" list="allowedCharsets" cssClass="form-control" />
 </div>
 
 <div class="form-group">
 	<label for="mimeType"><s:text name="name.mimeType" /></label>
-	<s:select name="mimeType" id="mimeType"
+	<wpsf:select name="mimeType" id="mimeType"
 				 headerKey="" headerValue="%{getText('label.default')}" list="allowedMimeTypes" cssClass="form-control" />
 </div>
 
@@ -178,10 +178,10 @@
 	<div class="form-horizontal">
 		<div class="form-group">
 			<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-				<s:submit type="button" cssClass="btn btn-primary btn-block">
+				<wpsf:submit type="button" cssClass="btn btn-primary btn-block">
 					<span class="icon icon-save"></span>&#32;
 					<s:text name="label.save" />
-				</s:submit>
+				</wpsf:submit>
 			</div>
 		</div>
 	</div>

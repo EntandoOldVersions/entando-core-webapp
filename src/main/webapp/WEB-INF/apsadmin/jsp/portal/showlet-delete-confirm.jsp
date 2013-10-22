@@ -12,7 +12,7 @@
 <div id="main">
 <s:form namespace="/do/Portal/WidgetType" action="delete">
 	<p class="sr-only">
-		<s:hidden name="widgetTypeCode" />
+		<wpsf:hidden name="widgetTypeCode" />
 	</p>
 	<div class="alert alert-warning">
 		<p>
@@ -20,10 +20,10 @@
 			<code><s:property value="widgetTypeCode" /></code>?
 		</p>
 		<div class="text-center margin-large-top">
-		<s:submit type="button" cssClass="btn btn-warning btn-lg">
+		<wpsf:submit type="button" cssClass="btn btn-warning btn-lg">
 			<span class="icon icon-remove-sign"></span>&#32;
 			<s:text name="label.remove" />
-		</s:submit>
+		</wpsf:submit>
 		<a class="btn btn-link" href="<s:url action="viewWidgets" namespace="/do/Portal/WidgetType"/>" ><s:text name="note.goToSomewhere" />: <s:text name="title.widgetManagement" /></a>
 		</div>
 	</div>

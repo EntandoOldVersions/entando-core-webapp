@@ -43,7 +43,7 @@
 <s:set var="entityType" value="entityType" />
 <s:if test="operationId != 1">
 	<p class="sr-only">	
-		<s:hidden name="entityTypeCode" value="%{#entityType.typeCode}" />
+		<wpsf:hidden name="entityTypeCode" value="%{#entityType.typeCode}" />
 	</p>
 </s:if>
 
@@ -84,10 +84,10 @@
 <div class="form-horizontal">
 	<div class="form-group">
 	  <div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-	    <s:submit type="button" cssClass="btn btn-primary btn-block" action="saveEntityType" >
+	    <wpsf:submit type="button" cssClass="btn btn-primary btn-block" action="saveEntityType" >
 	      <span class="icon icon-save"></span>&#32;
 	      <s:text name="label.save" />
-	    </s:submit>
+	    </wpsf:submit>
 	  </div>
 	</div>
 </div>

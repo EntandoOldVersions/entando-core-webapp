@@ -60,9 +60,9 @@
 		<label for="attributeTypeCode"><s:text name="label.type" />:</label>
 	
 		<div class="input-group">
-			<s:select list="allowedAttributeElementTypes" id="attributeTypeCode" name="attributeTypeCode" listKey="type" listValue="type" cssClass="form-control"/>
+			<wpsf:select list="allowedAttributeElementTypes" id="attributeTypeCode" name="attributeTypeCode" listKey="type" listValue="type" cssClass="form-control"/>
 			<span class="input-group-btn">
-				<s:submit type="button" value="%{getText('label.add')}" action="addAttributeElement" cssClass="btn btn-default" />
+				<wpsf:submit type="button" value="%{getText('label.add')}" action="addAttributeElement" cssClass="btn btn-default" />
 			</span>
 		</div>
 	</div>
@@ -103,10 +103,10 @@
 
 <div class="form-group">
   <div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-    <s:submit type="button" cssClass="btn btn-primary btn-block" action="saveCompositeAttribute" >
+    <wpsf:submit type="button" cssClass="btn btn-primary btn-block" action="saveCompositeAttribute" >
       <span class="icon icon-save"></span>&#32;
       <s:text name="label.save" />
-    </s:submit>
+    </wpsf:submit>
   </div>
 </div>
 

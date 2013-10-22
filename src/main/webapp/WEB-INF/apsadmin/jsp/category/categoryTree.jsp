@@ -54,26 +54,26 @@
 	<fieldset data-toggle="tree-toolbar"><legend><s:text name="title.categoryActions" /></legend>
 		<div class="btn-toolbar" data-toggle="tree-toolbar-actions">
 			<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
-				<s:submit type="button" action="detail" title="%{getText('category.options.detail')}" data-toggle="tooltip" cssClass="btn btn-info">
+				<wpsf:submit type="button" action="detail" title="%{getText('category.options.detail')}" data-toggle="tooltip" cssClass="btn btn-info">
 					<span class="sr-only"><s:text name="category.options.detail" /></span>
 					<span class="icon icon-info"></span>
-				</s:submit>
+				</wpsf:submit>
 			</div>
 			<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
-				<s:submit type="button" action="new" title="%{getText('category.options.new')}" data-toggle="tooltip" cssClass="btn btn-info">
+				<wpsf:submit type="button" action="new" title="%{getText('category.options.new')}" data-toggle="tooltip" cssClass="btn btn-info">
 					<span class="sr-only"><s:text name="category.options.new" /></span>
 					<span class="icon icon-plus-sign"></span>
-				</s:submit>
-				<s:submit type="button" action="edit" title="%{getText('category.options.modify')}" data-toggle="tooltip" cssClass="btn btn-info">
+				</wpsf:submit>
+				<wpsf:submit type="button" action="edit" title="%{getText('category.options.modify')}" data-toggle="tooltip" cssClass="btn btn-info">
 					<span class="sr-only"><s:text name="category.options.modify" /></span>
 					<span class="icon icon-edit"></span>
-				</s:submit>
+				</wpsf:submit>
 			</div>
 			<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
-				<s:submit type="button" action="trash" title="%{getText('category.options.delete')}" data-toggle="tooltip" cssClass="btn btn-warning">
+				<wpsf:submit type="button" action="trash" title="%{getText('category.options.delete')}" data-toggle="tooltip" cssClass="btn btn-warning">
 					<span class="sr-only"><s:text name="category.options.delete" /></span>
 					<span class="icon icon-remove-sign"></span>
-				</s:submit>
+				</wpsf:submit>
 			</div>
 		</div>
 	</fieldset>

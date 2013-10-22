@@ -12,7 +12,7 @@
 </h1>
 <s:form action="delete">
 	<p class="sr-only">
-		<s:hidden name="name"/>
+		<wpsf:hidden name="name"/>
 	</p>
 	<div class="alert alert-warning">
 		<p>	
@@ -20,10 +20,10 @@
 			<code><s:property value="name" /></code>&#32;?
 		</p>
 		<div class="text-center margin-large-top">
-			<s:submit type="button" cssClass="btn btn-warning btn-lg">
+			<wpsf:submit type="button" cssClass="btn btn-warning btn-lg">
 				<span class="icon icon-remove-sign"></span>&#32;
 				<s:text name="label.confirm" />
-			</s:submit>
+			</wpsf:submit>
 			<a class="btn btn-link"	href="<s:url action="list" namespace="/do/Role" />">
 				<s:text name="note.goToSomewhere" />&#32;<s:text name="title.roleManagement" />
 			</a>

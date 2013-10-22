@@ -28,12 +28,12 @@
 						<span class="icon icon-file-text-alt icon-large"></span>
 					</span>
 					<label class="sr-only" for="text"><s:text name="label.search.by" />&#32;<s:text name="label.text" /></label>
-					<s:textfield name="text" id="text" cssClass="form-control input-lg" title="%{getText('label.search.by') +' '+ getText('label.text')}" placeholder="%{getText('label.search.by') +' '+ getText('label.text')}" />
+					<wpsf:textfield name="text" id="text" cssClass="form-control input-lg" title="%{getText('label.search.by') +' '+ getText('label.text')}" placeholder="%{getText('label.search.by') +' '+ getText('label.text')}" />
 					<span class="input-group-btn">
-						<s:submit type="button" title="%{getText('label.search')}" cssClass="btn btn-primary btn-lg">
+						<wpsf:submit type="button" title="%{getText('label.search')}" cssClass="btn btn-primary btn-lg">
 							<span class="icon icon-search"></span>
 							<span class="sr-only"><s:text name="label.search" /></span>
-						</s:submit>
+						</wpsf:submit>
 						<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="collapse" data-target="#search-advanced" title="<s:text name="title.searchFilters" />">
 							<span class="sr-only"><s:text name="title.searchFilters" /></span>
 							<span class="caret"></span>
@@ -56,9 +56,9 @@
 						</div>
 						<div class="form-group">
 							<div class="col-sm-5 col-sm-offset-2">
-								<s:submit type="button" cssClass="btn btn-primary">
+								<wpsf:submit type="button" cssClass="btn btn-primary">
 									<span class="icon icon-search"></span>&#32;<s:text name="label.search" />
-								</s:submit>
+								</wpsf:submit>
 							</div>
 						</div>
 				</div>
@@ -71,8 +71,8 @@
 		</a>
 		<s:form action="search" cssClass="form-horizontal margin-large-top">
 		<p class="sr-only">
-			<s:hidden name="text" />
-			<s:hidden name="searchOption" />
+			<wpsf:hidden name="text" />
+			<wpsf:hidden name="searchOption" />
 		</p>
 		<s:set name="currentLocaleStrings" value="localeStrings"/>
 		<wpsa:subset source="currentLocaleStrings" count="10" objectName="groupContent" advanced="true" offset="5">

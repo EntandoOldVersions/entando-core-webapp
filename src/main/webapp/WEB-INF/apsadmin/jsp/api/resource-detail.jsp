@@ -113,18 +113,18 @@
 				<div class="form-group">
 					<div class="col-xs-12">
 							<label for="all_auth"><s:text name="label.api.authorization" />:</label>
-							<s:select name="methodAuthority" list="methodAuthorityOptions" listKey="key" listValue="value" id="all_auth" cssClass="form-control" />
+							<wpsf:select name="methodAuthority" list="methodAuthorityOptions" listKey="key" listValue="value" id="all_auth" cssClass="form-control" />
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-xs-12">
-							<s:submit type="button" action="updateAllMethodStatus" id="%{''}" cssClass="btn btn-primary">
+							<wpsf:submit type="button" action="updateAllMethodStatus" id="%{''}" cssClass="btn btn-primary">
 								<s:text name="label.update" />
-							</s:submit>
+							</wpsf:submit>
 							&#32;
-							<s:submit type="button" action="resetAllMethodStatus" id="%{''}" cssClass="btn btn-default">
+							<wpsf:submit type="button" action="resetAllMethodStatus" id="%{''}" cssClass="btn btn-default">
 								<s:text name="label.reset.default" />
-							</s:submit>
+							</wpsf:submit>
 					</div>
 				</div>
 			</s:form>

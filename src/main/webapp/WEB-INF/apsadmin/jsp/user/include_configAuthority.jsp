@@ -42,10 +42,10 @@
 							</wpsa:actionParam>
 							<span class="label label-default label-sm pull-left padding-small-top padding-small-bottom margin-small-right margin-small-bottom">
 							  <s:property value="#user" />&#32;
-								<s:submit type="button" action="%{#actionName}" title="%{getText('label.remove') +' '+ #user}" cssClass="btn btn-default btn-xs badge">
+								<wpsf:submit type="button" action="%{#actionName}" title="%{getText('label.remove') +' '+ #user}" cssClass="btn btn-default btn-xs badge">
 									<span class="icon icon-remove"></span>
 									<span class="sr-only">x</span>
-								</s:submit>
+								</wpsf:submit>
 							</span>
 						</li>
 					</s:iterator>
@@ -61,7 +61,7 @@
 		<s:form action="search" cssClass="margin-base-top" cssClass="form-horizontal">
 			<h3 class="h4 margin-none  margin-base-bottom"><s:text name="title.userManagement.searchUsers" /></h3>
 			<p class="sr-only">
-				<s:hidden name="authName" />
+				<wpsf:hidden name="authName" />
 			</p>
 			<div class="form-group">
 				<div class="input-group col-sm-12">
@@ -69,11 +69,11 @@
 					<span class="input-group-addon" title="<s:text name="title.userManagement.searchUsers" />">
 						<span class="icon icon-file-text-alt icon-large"></span>
 					</span>
-					<s:textfield name="text" id="username" cssClass="form-control input-lg" title="%{getText('title.userManagement.searchUsers')}" placeholder="%{getText('label.search.by')+ ' '+ getText('label.username')}" />
+					<wpsf:textfield name="text" id="username" cssClass="form-control input-lg" title="%{getText('title.userManagement.searchUsers')}" placeholder="%{getText('label.search.by')+ ' '+ getText('label.username')}" />
 					<div class="input-group-btn">
-						<s:submit type="button" action="search" cssClass="btn btn-primary btn-lg" title="%{getText('title.userManagement.searchUsers')}">
+						<wpsf:submit type="button" action="search" cssClass="btn btn-primary btn-lg" title="%{getText('title.userManagement.searchUsers')}">
 								<span class="icon icon-search" title="<s:text name="label.search" />"></span>
-						</s:submit>
+						</wpsf:submit>
 					</div>
 				</div>
 			</div>
@@ -180,10 +180,10 @@
 			</div>
 			<div class="form-group">
 			  <div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-			    <s:submit type="button" action="addUser" cssClass="btn btn-primary btn-block">
+			    <wpsf:submit type="button" action="addUser" cssClass="btn btn-primary btn-block">
 			      <span class="icon icon-plus"></span>&#32;
 						<s:text name="label.add" />
-			    </s:submit>
+			    </wpsf:submit>
 			  </div>
 			</div>
 		</s:form>

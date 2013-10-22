@@ -43,7 +43,7 @@
 								<code class="label label-info" ><s:property value="#widgetParam.name" /></code>
 								&#32;<s:property value="#widgetParam.descr" />
 							</label>
-							<s:textfield id="%{'config-simple-parameter-'+#widgetParam.name}" name="%{#widgetParam.name}" value="%{widget.config[#widgetParam.name]}" cssClass="form-control" />
+							<wpsf:textfield id="%{'config-simple-parameter-'+#widgetParam.name}" name="%{#widgetParam.name}" value="%{widget.config[#widgetParam.name]}" cssClass="form-control" />
 						</div>
 					</div>
 				</s:iterator>
@@ -52,10 +52,10 @@
 	</div>
 	<div class="form-group">
 		<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-			<s:submit type="button" cssClass="btn btn-primary btn-block">
+			<wpsf:submit type="button" cssClass="btn btn-primary btn-block">
 				<span class="icon icon-filter"></span>&#32;
 				<s:text name="label.save" />
-			</s:submit>
+			</wpsf:submit>
 		</div>
 	</div>
 </s:form>

@@ -6,7 +6,7 @@
 <s:else>
 	<s:set var="numberAttributeValue" value="#attribute.failedNumberString" />
 </s:else>
-<s:textfield
+<wpsf:textfield
 		id="%{#attributeTracer.getFormFieldName(#attribute)}"
 		name="%{#attributeTracer.getFormFieldName(#attribute)}"
 		value="%{#numberAttributeValue}"

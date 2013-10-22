@@ -28,17 +28,17 @@
 				<span class="icon icon-file-text-alt icon-large" title="<s:text name="label.search.by"/>&#32;<s:text name="label.username"/>"></span>
 			</span>
 			<label for="search-username" class="sr-only"><s:text name="label.search.by"/>&#32;<s:text name="label.username"/></label>
-			<s:textfield
+			<wpsf:textfield
 				name="text"
 				id="text"
 				cssClass="form-control input-lg"
 				title="%{getText('label.search.by')+' '+getText('label.username')}"
 				placeholder="%{getText('label.username')}" />
 			<div class="input-group-btn">
-				<s:submit type="button" name="username" id="search-username" cssClass="btn btn-primary btn-lg" title="%{getText('label.search')}">
+				<wpsf:submit type="button" name="username" id="search-username" cssClass="btn btn-primary btn-lg" title="%{getText('label.search')}">
 					<span class="sr-only"><s:text name="label.search" /></span>
 					<span class="icon icon-search" title="<s:text name="label.search" />"></span>
-				</s:submit>
+				</wpsf:submit>
 				<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="collapse" data-target="#search-advanced" title="<s:text name="title.searchFilters" />">
 					<span class="sr-only"><s:text name="title.searchFilters" /></span>
 					<span class="caret"></span>
@@ -70,11 +70,11 @@
 				<div class="form-group">
 					<label for="userprofile_src_entityPrototypes" class="control-label col-sm-2 text-right"><s:text name="note.userprofile.search.profileType" /></label>
 					<div class="col-sm-5 input-group">
-						<s:select id="userprofile_src_entityPrototypes" list="entityPrototypes" name="entityTypeCode" headerKey="" headerValue="%{getText('label.all')}" listKey="typeCode" listValue="typeDescr" cssClass="form-control" />
+						<wpsf:select id="userprofile_src_entityPrototypes" list="entityPrototypes" name="entityTypeCode" headerKey="" headerValue="%{getText('label.all')}" listKey="typeCode" listValue="typeDescr" cssClass="form-control" />
 						<div class="input-group-btn">
-							<s:submit type="button" cssClass="btn btn-default" action="changeProfileType" value="set">
+							<wpsf:submit type="button" cssClass="btn btn-default" action="changeProfileType" value="set">
 								<s:text name="label.set" />
-							</s:submit>
+							</wpsf:submit>
 						</div>
 					</div>
 				</div>
@@ -98,7 +98,7 @@
 									<s:property value="#attribute.name" />
 								</label>
 								<div class="col-sm-5">
-									<s:textfield
+									<wpsf:textfield
 										id="%{#currentAttributeHtmlId}"
 										name="%{#textInputFieldName}"
 										value="%{getSearchFormFieldValue(#textInputFieldName)}"
@@ -190,7 +190,7 @@
 									<s:property value="#attribute.name" />
 								</label>
 								<div class="col-sm-5">
-									<s:textfield
+									<wpsf:textfield
 										id="%{#currentAttributeHtmlId}"
 										name="%{#textInputFieldName}"
 										value="%{getSearchFormFieldValue(#textInputFieldName)}"
@@ -269,11 +269,11 @@
 				<%-- second search button --%>
 				<div class="form-group">
 					<div class="col-sm-5 col-sm-offset-2">
-						<s:submit type="button" cssClass="btn btn-primary">
+						<wpsf:submit type="button" cssClass="btn btn-primary">
 							<span class="icon icon-search" /></span>
 							&#32;
 							<s:text name="label.search" />
-						</s:submit>
+						</wpsf:submit>
 					</div>
 				</div>
 			</div>

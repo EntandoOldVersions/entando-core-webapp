@@ -29,9 +29,9 @@
 		</div>
 	</s:if>
 	<p class="sr-only">
-		<s:hidden value="%{getStrutsAction()}" name="strutsAction"/>
+		<wpsf:hidden value="%{getStrutsAction()}" name="strutsAction"/>
 		<s:if test="getStrutsAction() == 2">
-			<s:hidden value="%{key}" name="key" />
+			<wpsf:hidden value="%{key}" name="key" />
 		</s:if>
 	</p>
 	<s:set var="keyFieldErrorsVar" value="%{fieldErrors['key']}" />
@@ -40,7 +40,7 @@
 	<div class="form-group<s:property value="#controlGroupErrorClassVar" />">
 		<div class="col-xs-12">
 			<label for="editLabel_key"><s:text name="label.code" /></label>
-			<s:textfield value="%{key}" name="key" id="editLabel_key" disabled="%{getStrutsAction() == 2}" cssClass="form-control" />
+			<wpsf:textfield value="%{key}" name="key" id="editLabel_key" disabled="%{getStrutsAction() == 2}" cssClass="form-control" />
 			<s:if test="#keyHasFieldErrorVar">
 				<p class="text-danger padding-small-vertical"><s:iterator value="#keyFieldErrorsVar"><s:property />&#32;</s:iterator></p>
 			</s:if>
@@ -90,10 +90,10 @@
 	<%-- save button --%>
 	<div class="form-group">
 		<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-			<s:submit type="button" action="save" cssClass="btn btn-primary btn-block">
+			<wpsf:submit type="button" action="save" cssClass="btn btn-primary btn-block">
 				<span class="icon icon-save"></span>&#32;
 				<s:text name="label.save" />
-			</s:submit>
+			</wpsf:submit>
 		</div>
 	</div>
 </s:form>

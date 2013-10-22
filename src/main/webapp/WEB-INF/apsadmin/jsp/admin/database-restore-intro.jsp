@@ -97,10 +97,10 @@
 			</s:else>
 			<s:form action="restoreBackup" method="get" namespace="/do/Admin/Database">
 				<p class="text-center">
-					<s:hidden name="subFolderName" value="%{subFolderName}" />
-					<s:submit type="button" cssClass="btn btn-%{#restoreCheckVar ? 'success' : 'warning'}">
+					<wpsf:hidden name="subFolderName" value="%{subFolderName}" />
+					<wpsf:submit type="button" cssClass="btn btn-%{#restoreCheckVar ? 'success' : 'warning'}">
 							<s:text name="database.management.label.restore" />
-					</s:submit>
+					</wpsf:submit>
 				</p>
 			</s:form>
 		</div>

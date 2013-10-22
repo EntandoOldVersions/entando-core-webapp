@@ -41,14 +41,14 @@
 	</dl>
 	<div class="text-center">
 		<s:form action="executeBackup" namespace="/do/Admin/Database" method="get">
-			<s:submit
+			<wpsf:submit
 				type="button"
 				action="executeBackup"
 				value="%{getText('database.management.label.backup.execute')}"
 				cssClass="btn btn-primary">
 					<span class="icon icon-ok"></span>
 					<s:text name="database.management.label.backup.execute" />
-			</s:submit>
+			</wpsf:submit>
 			<a
 				class="btn btn-link"
 				href="<s:url namespace="/do/Admin/Database" action="entry" />">

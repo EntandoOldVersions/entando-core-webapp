@@ -35,10 +35,10 @@
 		</s:if>?
 
 		<div class="text-center margin-large-top">
-			<s:submit type="button" cssClass="btn btn-warning btn-lg">
+			<wpsf:submit type="button" cssClass="btn btn-warning btn-lg">
 				<span class="icon icon-remove-sign"></span>&#32;
 				<s:text name="label.clear" />
-			</s:submit>
+			</wpsf:submit>
 			<s:if test="%{#NScurrent == '/do/Portal/WidgetType'}">
 			<a class="btn btn-link" href="<s:url action="viewWidgets" namespace="/do/Portal/WidgetType"/>" ><s:text name="note.goToSomewhere" />: <s:text name="title.widgetManagement" /></a>
 			</s:if>

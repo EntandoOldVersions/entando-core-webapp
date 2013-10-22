@@ -48,12 +48,12 @@
 			<div class="form-group<s:property value="controlGroupErrorClassVar" />">
 				<div class="col-xs-12">
 					<label for="categoryCode"><s:text name="name.categoryCode" /></label>
-						<s:textfield name="categoryCode" id="categoryCode" disabled="%{getStrutsAction() == 2}" cssClass="form-control" />
+						<wpsf:textfield name="categoryCode" id="categoryCode" disabled="%{getStrutsAction() == 2}" cssClass="form-control" />
 						<s:if test="getStrutsAction() != 2">
-							<s:hidden name="selectedNode" value="%{parentCategoryCode}" />
+							<wpsf:hidden name="selectedNode" value="%{parentCategoryCode}" />
 						</s:if>
 						<s:elseif test="getStrutsAction() == 2">
-							<s:hidden name="selectedNode" value="%{categoryCode}" />
+							<wpsf:hidden name="selectedNode" value="%{categoryCode}" />
 						</s:elseif>
 						<s:if test="#currentFieldHasFieldErrorVar">
 							<p class="help help-block"><s:iterator value="#currentFieldFieldErrorsVar"><s:property />&#32;</s:iterator></p>
@@ -70,7 +70,7 @@
 							<abbr class="label label-info" title="<s:property value="descr" />"><s:property value="code" /></abbr>&#32;
 							<s:text name="name.categoryTitle" />
 						</label>
-						<s:textfield name="%{'lang'+code}" id="%{'lang'+code}" value="%{titles.get(code)}" cssClass="form-control" />
+						<wpsf:textfield name="%{'lang'+code}" id="%{'lang'+code}" value="%{titles.get(code)}" cssClass="form-control" />
 						<s:if test="#currentFieldHasFieldErrorVar">
 							<p class="help help-block"><s:iterator value="#currentFieldFieldErrorsVar"><s:property />&#32;</s:iterator></p>
 						</s:if>
@@ -79,10 +79,10 @@
 			</s:iterator>
 		<div class="form-group">
 			<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-				<s:submit type="button" cssClass="btn btn-primary btn-block">
+				<wpsf:submit type="button" cssClass="btn btn-primary btn-block">
       		<span class="icon icon-save">&#32;</span>
 					<s:text name="label.save" />
-				</s:submit>
+				</wpsf:submit>
 			</div>
 		</div>
 	</s:form>

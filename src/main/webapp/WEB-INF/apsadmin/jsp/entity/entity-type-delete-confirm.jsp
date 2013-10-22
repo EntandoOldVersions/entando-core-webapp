@@ -12,8 +12,8 @@
 
 <s:form action="removeEntityType">
 	<p class="sr-only">
-		<s:hidden name="entityManagerName" />
-		<s:hidden name="entityTypeCode" />
+		<wpsf:hidden name="entityManagerName" />
+		<wpsf:hidden name="entityTypeCode" />
 	</p>
 	<div class="alert alert-warning">
 		<p>
@@ -22,10 +22,10 @@
 			<s:property value="%{getEntityPrototype(entityTypeCode).typeDescr}" />?
 		</p>
 		<div class="text-center margin-large-top">
-		<s:submit type="button" cssClass="btn btn-warning btn-lg">
+		<wpsf:submit type="button" cssClass="btn btn-warning btn-lg">
 			<span class="icon icon-remove-sign"></span>&#32;
             <s:text name="label.remove" />
-        </s:submit>
+        </wpsf:submit>
 		<a class="btn btn-link" href="<s:url action="initViewEntityTypes" namespace="/do/Entity"><s:param name="entityManagerName"><s:property value="entityManagerName" /></s:param></s:url>">
 		<s:text name="note.goToSomewhere" />: <s:text name="%{'title.' + entityManagerName + '.management'}" /></a>
 		</div>

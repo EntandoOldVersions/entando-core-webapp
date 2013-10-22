@@ -54,7 +54,7 @@
 	<div class="form-group<s:property value="#controlGroupErrorClassVar" />">
 		<div class="col-xs-12">
 			<label for="name"><s:text name="name" /></label>
-			<s:textfield name="name" id="name" disabled="%{getStrutsAction() == 2}" cssClass="form-control" />
+			<wpsf:textfield name="name" id="name" disabled="%{getStrutsAction() == 2}" cssClass="form-control" />
 			<s:if test="#fieldHasFieldErrorVar">
 				<p class="text-danger padding-small-vertical">
 					<s:iterator value="%{#fieldFieldErrorsVar}"><s:property />&#32;</s:iterator>
@@ -68,7 +68,7 @@
 	<div class="form-group<s:property value="#controlGroupErrorClassVar" />">
 		<div class="col-xs-12">
 			<label for="description"><s:text name="description" /></label>
-			<s:textfield name="description" id="description" cssClass="form-control" />
+			<wpsf:textfield name="description" id="description" cssClass="form-control" />
 			<s:if test="#fieldHasFieldErrorVar">
 				<p class="text-danger padding-small-vertical">
 					<s:iterator value="%{#fieldFieldErrorsVar}"><s:property />&#32;</s:iterator>
@@ -97,10 +97,10 @@
 	<%-- save button --%>
 	<div class="form-group">
 		<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-			<s:submit type="button" action="save" cssClass="btn btn-primary btn-block">
+			<wpsf:submit type="button" action="save" cssClass="btn btn-primary btn-block">
 				<span class="icon icon-save"></span>&#32;
 				<s:text name="label.save" />
-			</s:submit>
+			</wpsf:submit>
 		</div>
 	</div>
 </s:form>

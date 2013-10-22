@@ -48,7 +48,7 @@
 		<div class="form-group<s:property value="#controlGroupErrorClassVar" />">
 			<div class="col-xs-12">
 				<label for="username"><s:text name="username" /></label>
-				<s:textfield name="username" id="username" disabled="%{getStrutsAction() == 2}" cssClass="form-control" />
+				<wpsf:textfield name="username" id="username" disabled="%{getStrutsAction() == 2}" cssClass="form-control" />
 				<s:if test="#fieldHasFieldErrorVar">
 					<span class="help-block text-danger">
 						<s:iterator value="%{#fieldFieldErrorsVar}"><s:property />&#32;</s:iterator>
@@ -63,7 +63,7 @@
 		<div class="form-group<s:property value="#controlGroupErrorClassVar" />">
 			<div class="col-xs-12">
 				<label for="password"><s:text name="password" /></label>
-				<s:password name="password" id="password" cssClass="form-control" />
+				<wpsf:password name="password" id="password" cssClass="form-control" />
 				<s:if test="#fieldHasFieldErrorVar">
 					<span class="help-block text-danger">
 						<s:iterator value="%{#fieldFieldErrorsVar}"><s:property />&#32;</s:iterator>
@@ -78,7 +78,7 @@
 		<div class="form-group<s:property value="#controlGroupErrorClassVar" />">
 			<div class="col-xs-12">
 				<label for="passwordConfirm"><s:text name="passwordConfirm" /></label>
-				<s:password name="passwordConfirm" id="passwordConfirm" cssClass="form-control" />
+				<wpsf:password name="passwordConfirm" id="passwordConfirm" cssClass="form-control" />
 				<s:if test="#fieldHasFieldErrorVar">
 					<span class="help-block text-danger">
 						<s:iterator value="%{#fieldFieldErrorsVar}"><s:property />&#32;</s:iterator>
@@ -169,10 +169,10 @@
 	<%-- save button --%>
 	<div class="form-group">
 		<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-			<s:submit type="button" action="save" cssClass="btn btn-primary btn-block">
+			<wpsf:submit type="button" action="save" cssClass="btn btn-primary btn-block">
 				<span class="icon icon-save"></span>&#32;
 				<s:text name="label.save" />
-			</s:submit>
+			</wpsf:submit>
 		</div>
 	</div>
 </s:form>

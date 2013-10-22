@@ -50,8 +50,8 @@
 </s:if>
 
 <p class="sr-only">
-	<s:hidden name="attributeTypeCode" />
-	<s:hidden name="strutsAction" />
+	<wpsf:hidden name="attributeTypeCode" />
+	<wpsf:hidden name="strutsAction" />
 </p>
 <fieldset class="col-xs-12"><legend><s:text name="label.info" /></legend>
 	<div class="form-group">
@@ -95,10 +95,10 @@
 <div class="form-horizontal">
 	<div class="form-group">
 	  <div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-	    <s:submit type="button" cssClass="btn btn-primary btn-block" >
+	    <wpsf:submit type="button" cssClass="btn btn-primary btn-block" >
 	      <span class="icon icon-save"></span>&#32;
 	      <s:text name="label.save" />
-	    </s:submit>
+	    </wpsf:submit>
 	  </div>
 	</div>
 </div>

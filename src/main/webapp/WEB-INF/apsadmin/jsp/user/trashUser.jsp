@@ -20,10 +20,10 @@
 			<code><s:property value="%{username}" /></code>?
 		</p>
 		<div class="text-center margin-large-top">
-			<s:submit type="button" cssClass="btn btn-warning btn-lg">
+			<wpsf:submit type="button" cssClass="btn btn-warning btn-lg">
 			    <span class="icon icon-remove-sign"></span>&#32;
 				<s:text name="label.confirm" />
-			</s:submit>
+			</wpsf:submit>
 			<a class="btn btn-link" href="<s:url action="list" namespace="/do/User" />">
 			<s:text name="note.goToSomewhere" />:&#32;<s:text name="menu.accountAdmin.users" /></a>
 		</div>

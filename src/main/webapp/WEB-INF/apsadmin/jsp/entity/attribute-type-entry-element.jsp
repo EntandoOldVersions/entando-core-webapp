@@ -85,9 +85,9 @@
 
 <div class="form-group">
 	<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-		<s:submit type="button" cssClass="btn btn-primary btn-block">
+		<wpsf:submit type="button" cssClass="btn btn-primary btn-block">
 			<s:text name="label.continue" />
-		</s:submit>
+		</wpsf:submit>
 	</div>
 </div>
 </s:form>

@@ -55,16 +55,16 @@
 	</s:if>
 
 <p class="sr-only">
-	<s:hidden name="strutsAction" />
+	<wpsf:hidden name="strutsAction" />
 	<s:if test="strutsAction == 1">
-		<s:hidden name="parentWidgetTypeCode" />
+		<wpsf:hidden name="parentWidgetTypeCode" />
 	</s:if>
 	<s:elseif test="strutsAction == 2">
-		<s:hidden name="widgetTypeCode" />
+		<wpsf:hidden name="widgetTypeCode" />
 	</s:elseif>
 	<s:elseif test="strutsAction == 3">
-		<s:hidden name="pageCode" />
-		<s:hidden name="framePos" />
+		<wpsf:hidden name="pageCode" />
+		<wpsf:hidden name="framePos" />
 	</s:elseif>
 </p>
 
@@ -79,7 +79,7 @@
 			<s:set var="pageCodeFieldErrorsVar" value="%{fieldErrors['showletTypeCode']}" />
 			<s:set var="pageCodeHasFieldErrorVar" value="#pageCodeFieldErrorsVar != null && !#pageCodeFieldErrorsVar.isEmpty()" />
 			<label for="showletTypeCode" class="control-label"><s:text name="label.code" /></label>
-			<s:textfield id="showletTypeCode" name="showletTypeCode" cssClass="form-control" />
+			<wpsf:textfield id="showletTypeCode" name="showletTypeCode" cssClass="form-control" />
 			<s:if test="#pageCodeHasFieldErrorVar">
 			  <p class="text-danger padding-small-vertical"><s:iterator value="#pageCodeFieldErrorsVar"><s:property /> </s:iterator></p>
 			</s:if>
@@ -90,7 +90,7 @@
 			<s:set var="pageCodeFieldErrorsVar" value="%{fieldErrors['englishTitle']}" />
 			<s:set var="pageCodeHasFieldErrorVar" value="#pageCodeFieldErrorsVar != null && !#pageCodeFieldErrorsVar.isEmpty()" />
 		<label for="englishTitle" class="control-label"><code class="label label-info">en</code>&#32;<s:text name="label.title" /></label>
-		<s:textfield id="englishTitle" name="englishTitle" cssClass="form-control" />
+		<wpsf:textfield id="englishTitle" name="englishTitle" cssClass="form-control" />
 		<s:if test="#pageCodeHasFieldErrorVar">
 		  <p class="text-danger padding-small-vertical"><s:iterator value="#pageCodeFieldErrorsVar"><s:property /> </s:iterator></p>
 		</s:if>
@@ -100,7 +100,7 @@
 		<s:set var="pageCodeFieldErrorsVar" value="%{fieldErrors['italianTitle']}" />
 		<s:set var="pageCodeHasFieldErrorVar" value="#pageCodeFieldErrorsVar != null && !#pageCodeFieldErrorsVar.isEmpty()" />
 		<label for="italianTitle" class="control-label"><code class="label label-info">it</code>&#32;<s:text name="label.title" /></label>
-		<s:textfield id="italianTitle" name="italianTitle" cssClass="form-control" />
+		<wpsf:textfield id="italianTitle" name="italianTitle" cssClass="form-control" />
 		<s:if test="#pageCodeHasFieldErrorVar">
 		  <p class="text-danger padding-small-vertical"><s:iterator value="#pageCodeFieldErrorsVar"><s:property /> </s:iterator></p>
 		</s:if>
@@ -110,7 +110,7 @@
 		<s:set var="pageCodeFieldErrorsVar" value="%{fieldErrors['mainGroup']}" />
 		<s:set var="pageCodeHasFieldErrorVar" value="#pageCodeFieldErrorsVar != null && !#pageCodeFieldErrorsVar.isEmpty()" />
 		<label for="mainGroup" class="control-label"><s:text name="label.group" /></label>
-		<s:select name="mainGroup" id="mainGroup" list="groups" listKey="name" listValue="descr" cssClass="form-control" disabled="%{!#isSuperuserVar}" />
+		<wpsf:select name="mainGroup" id="mainGroup" list="groups" listKey="name" listValue="descr" cssClass="form-control" disabled="%{!#isSuperuserVar}" />
 		<s:if test="#pageCodeHasFieldErrorVar">
 		  <p class="text-danger padding-small-vertical"><s:iterator value="#pageCodeFieldErrorsVar"><s:property /> </s:iterator></p>
 		</s:if>
@@ -132,7 +132,7 @@
 		<s:iterator value="#parentShowletType.typeParameters" var="showletParam" >
 			<div class="form-group">
 				<label for="<s:property value="#showletParam.name" />" class="control-label"><s:property value="#showletParam.name" /></label>
-				<s:textfield id="%{#showletParam.name}" name="%{#showletParam.name}" value="%{#request.parameters[#showletParam.name]}" cssClass="form-control" />
+				<wpsf:textfield id="%{#showletParam.name}" name="%{#showletParam.name}" value="%{#request.parameters[#showletParam.name]}" cssClass="form-control" />
 				<s:if test="#showletParam.descr != ''">
 					<span class="help-block"><span class="icon icon-info-sign"></span>&#32;
 					<s:property value="#showletParam.descr" />
@@ -146,7 +146,7 @@
 			<div class="form-group">
 				<s:if test="#isSuperuserVar && #showletTypeVar.userType">
 				<label for="<s:property value="#showletParam.name" />" class="control-label"><s:property value="#showletParam.name" /></label>
-				<s:textfield id="%{#showletParam.name}" name="%{#showletParam.name}" value="%{#showletTypeVar.config[#showletParam.name]}" cssClass="form-control" />
+				<wpsf:textfield id="%{#showletParam.name}" name="%{#showletParam.name}" value="%{#showletTypeVar.config[#showletParam.name]}" cssClass="form-control" />
 				</s:if>
 				<s:else>
 				<span class="text-important"><s:property value="#showletParam.name" /></span>&#32;
@@ -186,10 +186,10 @@
 <div class="row">
 	<div class="form-group">
 	 	<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-	    <s:submit type="button" cssClass="btn btn-primary btn-block">
+	    <wpsf:submit type="button" cssClass="btn btn-primary btn-block">
 	      <span class="icon icon-save"></span>&#32;
 	      <s:text name="label.save" />
-	    </s:submit>
+	    </wpsf:submit>
 	    </div>
 
 		<s:if test="strutsAction == 3">
@@ -197,10 +197,10 @@
 				<wpsa:actionParam action="save" var="actionName" >
 					<wpsa:actionSubParam name="replaceOnPage" value="true" />
 				</wpsa:actionParam>
-				<s:submit type="button" action="%{#actionName}" cssClass="btn btn-default btn-block">
+				<wpsf:submit type="button" action="%{#actionName}" cssClass="btn btn-default btn-block">
 			      <span class="icon icon-exchange"></span>&#32;
 			      <s:text name="label.save.replace" />
-			    </s:submit>
+			    </wpsf:submit>
 			</div>
 		</s:if>
 		
@@ -210,7 +210,7 @@
 <wpsa:actionParam action="save" var="actionName" >
 	<wpsa:actionSubParam name="replaceOnPage" value="true" />
 </wpsa:actionParam>
-<s:submit action="%{#actionName}" value="%{getText('label.save.replace')}" cssClass="button"/>
+<wpsf:submit action="%{#actionName}" value="%{getText('label.save.replace')}" cssClass="button"/>
 </s:if>
 </p>
 

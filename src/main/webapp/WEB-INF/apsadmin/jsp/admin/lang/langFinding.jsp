@@ -30,10 +30,10 @@
 					</s:iterator>
 				</select>
 				<div class="input-group-btn">
-					<s:submit type="button" cssClass="btn btn-primary" >
+					<wpsf:submit type="button" cssClass="btn btn-primary" >
 						<span class="icon icon-plus-sign-alt"></span>&#32;
 						<s:text name="label.add" />
-					</s:submit>
+					</wpsf:submit>
 				</div>
 			</div>
 		</div>

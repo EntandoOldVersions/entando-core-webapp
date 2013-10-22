@@ -153,14 +153,14 @@
 									<label for="methodAuthority_<s:property value="%{#methodVar.httpMethod}" />">
 										<s:text name="label.api.authorization" />
 									</label>
-									<s:select cssClass="form-control" name="%{#methodVar.httpMethod}_methodAuthority" list="methodAuthorityOptions" listKey="key" listValue="value" value="%{selectFieldValue}" id="methodAuthority_%{#methodVar.httpMethod}" />
+									<wpsf:select cssClass="form-control" name="%{#methodVar.httpMethod}_methodAuthority" list="methodAuthorityOptions" listKey="key" listValue="value" value="%{selectFieldValue}" id="methodAuthority_%{#methodVar.httpMethod}" />
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="col-xs-12">
-									<s:submit type="button" action="updateMethodStatus" cssClass="btn btn-primary"><s:text name="label.update" /></s:submit>
+									<wpsf:submit type="button" action="updateMethodStatus" cssClass="btn btn-primary"><s:text name="label.update" /></wpsf:submit>
 									&#32;
-									<s:submit type="button" action="resetMethodStatus" id="%{''}" cssClass="btn btn-default"><s:text name="label.reset.default" /></s:submit>
+									<wpsf:submit type="button" action="resetMethodStatus" id="%{''}" cssClass="btn btn-default"><s:text name="label.reset.default" /></wpsf:submit>
 								</div>
 							</div>
 					</form>

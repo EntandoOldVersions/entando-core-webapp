@@ -62,8 +62,8 @@
 					</s:iterator>
 				</select>
 				<span class="input-group-btn">
-					<s:submit type="button" cssClass="btn btn-primary" action="newService">
-					<span class="icon icon-plus-sign"></span>&#32;<s:text name="api.button.create" /></s:submit>
+					<wpsf:submit type="button" cssClass="btn btn-primary" action="newService">
+					<span class="icon icon-plus-sign"></span>&#32;<s:text name="api.button.create" /></wpsf:submit>
 				</span>
 			</div>
 		</div>

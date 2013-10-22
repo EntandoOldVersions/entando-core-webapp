@@ -55,7 +55,7 @@
 			<s:set var="controlGroupErrorClassVar" value="%{#currentFieldHasFieldErrorVar ? ' has-error' : ''}" />
 			<div class="form-group<s:property value="#controlGroupErrorClassVar" />">
 				<label for="consumerKey"><s:text name="label.consumerKey" /></label>
-				<s:textfield name="consumerKey" id="consumerKey" disabled="%{getStrutsAction() == 2}" cssClass="form-control" />
+				<wpsf:textfield name="consumerKey" id="consumerKey" disabled="%{getStrutsAction() == 2}" cssClass="form-control" />
 				<s:if test="#currentFieldHasFieldErrorVar">
 					<span class="text-danger padding-small-vertical"><s:iterator value="#currentFieldErrorsVar"><s:property />&#32;</s:iterator></span>
 				</s:if>
@@ -65,7 +65,7 @@
 			<s:set var="controlGroupErrorClassVar" value="%{#currentFieldHasFieldErrorVar ? ' has-error' : ''}" />
 			<div class="form-group<s:property value="#controlGroupErrorClassVar" />">
 				<label for="secret"><s:text name="label.secret" /></label>
-				<s:textfield name="secret" id="secret" cssClass="form-control" />
+				<wpsf:textfield name="secret" id="secret" cssClass="form-control" />
 				<s:if test="#currentFieldHasFieldErrorVar">
 					<span class="text-danger padding-small-vertical"><s:iterator value="#currentFieldErrorsVar"><s:property />&#32;</s:iterator></span>
 				</s:if>
@@ -86,7 +86,7 @@
 			<s:set var="controlGroupErrorClassVar" value="%{#currentFieldHasFieldErrorVar ? ' has-error' : ''}" />
 			<div class="form-group<s:property value="#controlGroupErrorClassVar" />">
 				<label for="callbackUrl"><s:text name="label.callbackUrl" /></label>
-				<s:textfield name="callbackUrl" id="callbackUrl" cssClass="form-control" />
+				<wpsf:textfield name="callbackUrl" id="callbackUrl" cssClass="form-control" />
 				<s:if test="#currentFieldHasFieldErrorVar">
 					<span class="text-danger padding-small-vertical"><s:iterator value="#currentFieldErrorsVar"><s:property />&#32;</s:iterator></span>
 				</s:if>
@@ -97,7 +97,7 @@
 			<s:set var="controlGroupErrorClassVar" value="%{#currentFieldHasFieldErrorVar ? ' has-error' : ''}" />
 			<div class="form-group<s:property value="#controlGroupErrorClassVar" />">
 				<label for="expirationDate_cal"><s:text name="label.expirationDate" /></label>
-				<s:textfield name="expirationDate" id="expirationDate_cal" cssClass="form-control" />
+				<wpsf:textfield name="expirationDate" id="expirationDate_cal" cssClass="form-control" />
 				<span class="help help-block">dd/mm/yyyy</span>
 				<s:if test="#currentFieldHasFieldErrorVar">
 					<span class="text-danger padding-small-vertical"><s:iterator value="#currentFieldErrorsVar"><s:property />&#32;</s:iterator></span>
@@ -106,10 +106,10 @@
 		</div>
 		<div class="form-group">
 			<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-				<s:submit type="button" cssClass="btn btn-primary btn-block">
+				<wpsf:submit type="button" cssClass="btn btn-primary btn-block">
 					<span class="icon icon-save"></span>&#32;
 					<s:text name="label.save" />
-				</s:submit>
+				</wpsf:submit>
 			</div>
 		</div>
 	</s:form>

@@ -37,10 +37,10 @@
 					</wpsa:actionParam>
 					<span class="label label-default label-sm pull-left padding-small-top padding-small-bottom margin-small-right margin-small-bottom">
 					  <s:property value="descr" />&#32;
-						<s:submit type="button" action="%{#actionName}" title="%{getText('label.remove') +' '+ descr}" cssClass="btn btn-default btn-xs badge">
+						<wpsf:submit type="button" action="%{#actionName}" title="%{getText('label.remove') +' '+ descr}" cssClass="btn btn-default btn-xs badge">
 							<span class="icon icon-remove"></span>
 							<span class="sr-only">x</span>
-						</s:submit>
+						</wpsf:submit>
 					</span>
 				</li>
 			</s:iterator>
@@ -78,10 +78,10 @@
 					</wpsa:actionParam>
 					<span class="label label-default label-sm pull-left padding-small-top padding-small-bottom margin-small-right margin-small-bottom">
 					  <s:property value="description" />&#32;
-						<s:submit type="button" action="%{#actionName}" title="%{getText('label.remove') +' '+ description}" cssClass="btn btn-default btn-xs badge">
+						<wpsf:submit type="button" action="%{#actionName}" title="%{getText('label.remove') +' '+ description}" cssClass="btn btn-default btn-xs badge">
 							<span class="icon icon-remove"></span>
 							<span class="sr-only">x</span>
-						</s:submit>
+						</wpsf:submit>
 					</span>
 				</li>
 			</s:iterator>
@@ -108,10 +108,10 @@
 
 	<div class="form-group">
 		<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-			<s:submit type="button" cssClass="btn btn-primary btn-block">
+			<wpsf:submit type="button" cssClass="btn btn-primary btn-block">
 				<span class="icon icon-save"></span>&#32;
 				<s:text name="label.save" />
-			</s:submit>
+			</wpsf:submit>
 		</div>
 	</div>
 

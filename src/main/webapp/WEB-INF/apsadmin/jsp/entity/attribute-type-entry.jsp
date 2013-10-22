@@ -35,19 +35,19 @@
 <s:form action="saveAttribute">
 
 <p class="sr-only">
-	<s:hidden name="attributeTypeCode" />
-	<s:hidden name="strutsAction" />
+	<wpsf:hidden name="attributeTypeCode" />
+	<wpsf:hidden name="strutsAction" />
 	<s:if test="null != attributeRoles && attributeRoles.size() > 0">
-	<s:iterator value="attributeRoles" id="attributeRole"><s:hidden name="attributeRoles" value="%{#attributeRole}" /></s:iterator>
+	<s:iterator value="attributeRoles" id="attributeRole"><wpsf:hidden name="attributeRoles" value="%{#attributeRole}" /></s:iterator>
 	</s:if>
 	<s:if test="null != disablingCodes && disablingCodes.size() > 0">
-	<s:iterator value="disablingCodes" id="disablingCode"><s:hidden name="disablingCodes" value="%{#disablingCode}" /></s:iterator>
+	<s:iterator value="disablingCodes" id="disablingCode"><wpsf:hidden name="disablingCodes" value="%{#disablingCode}" /></s:iterator>
 	</s:if>
 </p>
 
 <s:if test="strutsAction == 2">
 	<p class="sr-only">
-		<s:hidden name="attributeName" />
+		<wpsf:hidden name="attributeName" />
 	</p>
 </s:if>
 
@@ -112,10 +112,10 @@
 		<div class="form-group">
 			<label for="attributeRoleName"><s:text name="name.role" /></label>
 			<div class="input-group">
-				<s:select name="attributeRoleName" id="attributeRoleName" list="#freeAttributeRoles" 
+				<wpsf:select name="attributeRoleName" id="attributeRoleName" list="#freeAttributeRoles" 
 					listKey="name" listValue="%{name + ' - ' + description}" cssClass="form-control" />
 				<span class="input-group-btn">
-				<s:submit type="button" action="addAttributeRole" value="%{getText('label.add')}" cssClass="btn btn-info" />
+				<wpsf:submit type="button" action="addAttributeRole" value="%{getText('label.add')}" cssClass="btn btn-info" />
 				</span>
 			</div>
 		</div>
@@ -134,9 +134,9 @@
 					<s:property value="%{getAttributeRole(#attributeRole).description}" />
 				</div>
 				<div class="col-sm-2 text-right">
-					<s:submit type="button" action="%{#actionName}" cssClass="btn btn-xs btn-warning" title="%{getText('label.remove')}" >
+					<wpsf:submit type="button" action="%{#actionName}" cssClass="btn btn-xs btn-warning" title="%{getText('label.remove')}" >
 						<span class="icon icon-remove-circle"></span>
-					</s:submit>
+					</wpsf:submit>
 				</div>
 			</div>
 			</li>
@@ -154,9 +154,9 @@
 	<div class="form-group">
 		<label for="disablingCode"><s:text name="label.code" /></label>
 		<div class="input-group">
-			<s:select name="disablingCode" id="disablingCode" list="#attributeDisablingCodesVar" cssClass="form-control"/>
+			<wpsf:select name="disablingCode" id="disablingCode" list="#attributeDisablingCodesVar" cssClass="form-control"/>
 			<span class="input-group-btn">
-			<s:submit type="button" action="addAttributeDisablingCode" value="%{getText('label.add')}" cssClass="btn btn-info" />
+			<wpsf:submit type="button" action="addAttributeDisablingCode" value="%{getText('label.add')}" cssClass="btn btn-info" />
 			</span>
 		</div>
 	</div>
@@ -175,9 +175,9 @@
 					<s:property value="%{#attributeDisablingCodesVar[#disablingCode]}" />
 				</div>
 				<div class="col-sm-2 text-right">
-				<s:submit type="button" action="%{#actionName}" cssClass="btn btn-xs btn-warning" title="%{getText('label.remove')}" >
+				<wpsf:submit type="button" action="%{#actionName}" cssClass="btn btn-xs btn-warning" title="%{getText('label.remove')}" >
 					<span class="icon icon-remove-circle"></span>
-				</s:submit>
+				</wpsf:submit>
 				</div>
 			</div>
 			</li>
@@ -213,9 +213,9 @@
 <div class="form-horizontal">
 	<div class="form-group">
 	  <div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-	    <s:submit type="button" cssClass="btn btn-primary btn-block">
+	    <wpsf:submit type="button" cssClass="btn btn-primary btn-block">
 	      <s:text name="label.continue" />
-	    </s:submit>
+	    </wpsf:submit>
 	  </div>
 	</div>
 </div>

@@ -26,11 +26,11 @@
 				?
 		</span>
 		<p class="panel-body display-block text-center">
-				<s:submit
+				<wpsf:submit
 					type="button"
 					cssClass="btn btn-default">
 					<s:text name="label.confirm" />
-				</s:submit>
+				</wpsf:submit>
 		</p>
 	</div>
 </s:form>
