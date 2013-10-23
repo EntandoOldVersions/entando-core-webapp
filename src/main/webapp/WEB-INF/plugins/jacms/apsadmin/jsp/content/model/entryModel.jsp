@@ -17,7 +17,7 @@
 	</span>
 </h1>
 
-<div id="main">        
+<div id="main" role="main">        
 
 <s:form action="save" namespace="/do/jacms/ContentModel" cssClass="form-horizontal" >
 <s:if test="hasFieldErrors()">

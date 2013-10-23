@@ -17,7 +17,7 @@
 <s:set var="targetNS" value="%{'/do/Role'}" />
 <h1><s:text name="title.roleManagement" /><s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></h1>
 
-<div id="main">
+<div id="main" role="main">
 
 <h2><s:text name="title.roleManagement.assignToUsers" />: <s:property value="authName" /></h2>
 

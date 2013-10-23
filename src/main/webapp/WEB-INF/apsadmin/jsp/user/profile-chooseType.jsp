@@ -9,7 +9,7 @@
 	</span>
 </h1>
 
-<div id="main">
+<div id="main" role="main">
 	<p><s:text name="title.chooseUserProfileType" />:&#32;<code><s:property value="username" /></code></p>
 
 	<s:form action="new" cssClass="form-horizontal">

@@ -11,7 +11,7 @@
 	</span>
 </h1>
 
-<div id="main">
+<div id="main" role="main">
 
 <s:include value="/WEB-INF/apsadmin/jsp/user/include_configAuthority.jsp" />
 

@@ -6,7 +6,7 @@
 
 <%-- <h1><s:text name="document.title.main" /></h1> --%>
 
-<div id="main">
+<div id="main" role="main">
 
 <%--
 <s:if test="hasFieldErrors()">

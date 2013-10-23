@@ -9,7 +9,7 @@
 	</span>
 </h1>
 
-<div id="main">
+<div id="main" role="main">
 	<s:if test="strutsAction == 1 || strutsAction == 3">
 		<s:set var="masterApiMethodVar" value="%{getMethod(namespace, resourceName)}" />
 	</s:if>

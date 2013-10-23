@@ -8,7 +8,7 @@
 	</span>
 </h1>
 
-<div id="main">
+<div id="main" role="main">
 	<s:form action="delete">
 		<p class="sr-only">
 			<wpsf:hidden name="serviceKey" />

@@ -16,7 +16,7 @@
 	</span>
 </h1>
 
-<div id="main">
+<div id="main" role="main">
 
 <s:form action="deleteWidgetFromPage">
 	<p class="sr-only">

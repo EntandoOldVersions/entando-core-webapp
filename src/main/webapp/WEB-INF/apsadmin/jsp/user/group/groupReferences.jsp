@@ -10,7 +10,7 @@
 	</span>
 </h1>
 
-<div id="main">
+<div id="main" role="main">
 
 <div class="message message_error">
 <h2><s:text name="message.title.ActionErrors" /></h2>

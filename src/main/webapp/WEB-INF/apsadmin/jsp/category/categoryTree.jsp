@@ -2,7 +2,7 @@
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <h1 class="panel panel-default title-page"><span class="panel-body display-block"><s:text name="title.categoryManagement" /></span></h1>
-<div id="main">
+<div id="main" role="main">
 <s:form cssClass="action-form" cssClass="action-form">
 	<s:if test="hasActionErrors()">
 		<div class="alert alert-danger alert-dismissable fade in">

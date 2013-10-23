@@ -10,7 +10,7 @@
 	</span>
 </h1>
 
-<div id="main">
+<div id="main" role="main">
 
 	<div class="alert alert-warning">
 		<s:property value="references.size()" />&#32;<s:text name="note.entityTypes.deleteType.references" />

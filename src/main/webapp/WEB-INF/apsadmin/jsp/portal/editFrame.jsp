@@ -16,7 +16,7 @@
 
 <p class="sr-only"><a href="#editFrame"><s:text name="note.goToEditFrame" /></a></p>
 
-<div id="main">
+<div id="main" role="main">
 
 <s:set var="breadcrumbs_pivotPageCode" value="currentPage.code" />
 <s:include value="/WEB-INF/apsadmin/jsp/portal/include/pageInfo_breadcrumbs.jsp" />

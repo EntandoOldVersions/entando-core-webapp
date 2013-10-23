@@ -4,7 +4,7 @@
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <h1><s:text name="title.myProfile" /></h1>
 
-<div id="main">
+<div id="main" role="main">
 <h2 class="margin-more-bottom"><s:text name="title.changePassword" /></h2>
 <s:form action="changePassword">
 

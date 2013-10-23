@@ -4,7 +4,7 @@
 
 <h1 class="panel panel-default title-page"><span class="panel-body display-block"><s:text name="title.pageManagement" /></span></h1>
 
-<div id="main">
+<div id="main" role="main">
 
 <p><s:text name="note.pageTree.intro" /></p>
 

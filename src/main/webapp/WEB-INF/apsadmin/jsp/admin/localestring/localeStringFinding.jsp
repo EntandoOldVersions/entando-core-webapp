@@ -9,7 +9,7 @@
 		<s:text name="title.languageAdmin.labels" />
 	</span>
 </h1>
-<div id="main">
+<div id="main" role="main">
 	<s:form action="search" cssClass="form-horizontal">
 		<s:if test="hasActionErrors()">
 			<div class="alert alert-danger alert-dismissable fade in">

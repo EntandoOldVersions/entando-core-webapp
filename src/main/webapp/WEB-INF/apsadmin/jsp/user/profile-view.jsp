@@ -12,7 +12,7 @@
 		<s:text name="title.userProfileDetails" />
 	</span>
 </h1>
-<div id="main">
+<div id="main" role="main">
 
 	<s:set name="lang" value="defaultLang" />
 	<s:set var="userProfileVar" value="%{getUserProfile(username)}" />

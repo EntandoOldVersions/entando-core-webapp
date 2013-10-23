@@ -8,7 +8,7 @@
 <s:set var="targetNS" value="%{'/do/jacms/Content'}" />
 <h1 class="panel panel-default title-page"><span class="panel-body display-block"><s:text name="jacms.menu.contentAdmin" />&#32;/&#32;<s:text name="title.contentList" /></span></h1>
 
-<div id="main">
+<div id="main" role="main">
 
 		<s:url action="search" var= "formAction" namespace="do/jacms/Content" />
 		<s:form action="%{'/' + #formAction}" cssClass="form-horizontal">

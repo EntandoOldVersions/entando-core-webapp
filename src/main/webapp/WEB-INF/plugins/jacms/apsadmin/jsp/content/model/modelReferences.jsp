@@ -11,7 +11,7 @@
 	</span>
 </h1>
 
-<div id="main">
+<div id="main" role="main">
 <div class="alert alert-danger alert-dismissable fade in">
 	<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
 	<h2 class="h4 margin-none">

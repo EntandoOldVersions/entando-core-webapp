@@ -5,7 +5,7 @@
 <h1 class="panel panel-default title-page">
 	<span class="panel-body display-block"><s:text name="title.apiServiceManagement" /></span>
 </h1>
-<div id="main">
+<div id="main" role="main">
 	<s:if test="hasActionErrors()">
 		<div class="alert alert-danger alert-dismissable fade in">
 			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>

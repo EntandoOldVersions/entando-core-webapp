@@ -10,7 +10,7 @@
 	<c:otherwise><c:set var="cache_buster">${fn:substring(cache_buster, 1, -1)}${fn:substring(cache_buster, 0, 1)}</c:set></c:otherwise> 
 </c:choose>
 
-<div id="main">
+<div id="main" role="main">
 
 <s:include value="/WEB-INF/apsadmin/jsp/entity/include/entity-type-list.jsp" />
 

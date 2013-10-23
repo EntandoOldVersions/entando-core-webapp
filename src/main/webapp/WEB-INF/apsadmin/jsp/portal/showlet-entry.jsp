@@ -19,7 +19,7 @@
 	</span>
 </h1>
 
-<div id="main">
+<div id="main" role="main">
 <p>
 <s:if test="strutsAction != 2">
 	<s:text name="title.newWidgetType.from" />:&#32;

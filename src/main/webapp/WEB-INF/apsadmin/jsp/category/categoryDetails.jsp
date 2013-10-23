@@ -10,7 +10,7 @@
 		<s:text name="title.categoryDetail" />
 	</span>
 </h1>
-<div id="main">
+<div id="main" role="main">
 	<s:set var="breadcrumbs_pivotCategoryCode" value="categoryCode" />
 	<s:include value="/WEB-INF/apsadmin/jsp/category/include/categoryInfo_breadcrumbs.jsp" />
 	<table class="table table-bordered">

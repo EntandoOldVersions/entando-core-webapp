@@ -11,7 +11,7 @@
 		<s:text name="title.deleteCategory" />
 	</span>
 </h1>
-<div id="main">
+<div id="main" role="main">
 	<%-- father category <s:property value="getCategory(selectedNode).parent.code" />  --%>
 	<s:form action="delete">
 		<s:set var="categoryToDelete" value="getCategory(selectedNode)" />

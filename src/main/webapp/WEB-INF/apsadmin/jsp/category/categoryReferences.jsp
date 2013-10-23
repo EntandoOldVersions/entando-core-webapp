@@ -10,7 +10,7 @@
 		<s:text name="title.categoryReference" />
 	</span>
 </h1>
-<div id="main">
+<div id="main" role="main">
 	<div class="alert alert-danger alert-dismissable fade in">
 		<h2 class="h3 margin-none"><s:text name="message.title.ActionErrors" /></h2>
 		<p><s:text name="message.note.resolveReferences" /></p>

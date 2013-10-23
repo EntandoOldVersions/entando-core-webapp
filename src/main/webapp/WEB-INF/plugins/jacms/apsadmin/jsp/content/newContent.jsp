@@ -6,7 +6,7 @@
 <s:set var="targetNS" value="%{'/do/jacms/Content'}" />
 <h1><s:text name="jacms.menu.contentAdmin" /><s:include value="/WEB-INF/apsadmin/jsp/common/inc/operations-context-general.jsp" /></h1>
 
-<div id="main">
+<div id="main" role="main">
 <h2 class="margin-more-bottom"><s:text name="title.contentEditing" /></h2>
 <h3 class="sr-only"><s:text name="title.contentInfo" /></h3>
 

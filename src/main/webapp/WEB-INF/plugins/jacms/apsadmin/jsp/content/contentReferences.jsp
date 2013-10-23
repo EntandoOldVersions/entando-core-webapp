@@ -8,7 +8,7 @@
 
 <s:form>
 
-<div id="main">
+<div id="main" role="main">
 <h2><s:text name="title.contentEditing" /></h2>
 
 <s:set var="myNameIsJack" value="true" />

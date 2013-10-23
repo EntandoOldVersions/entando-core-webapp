@@ -14,7 +14,7 @@
 		<s:else><s:text name="name.version.work" /></s:else>
 	</span>
 </h1>
-<div id="main"><%-- #main --%>
+<div id="main" role="main"><%-- #main --%>
 	<s:if test="content == null"><%-- content is null --%>
 		<div class="alert alert-warning">
 			<h2 class="h3 margin-none"><s:text name="title.error" /></h2>

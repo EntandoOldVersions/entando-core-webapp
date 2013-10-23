@@ -18,7 +18,7 @@
 	</span>
 </h1>
 
-<div id="main">
+<div id="main" role="main">
 
 <s:if test="strutsAction == 2"><s:set var="breadcrumbs_pivotPageCode" value="pageCode" /></s:if>
 <s:else><s:set var="breadcrumbs_pivotPageCode" value="parentPageCode" /></s:else>

@@ -5,7 +5,7 @@
 
 <h1 class="panel panel-default title-page"><span class="panel-body display-block"><a href="<s:url action="viewTree" namespace="/do/Page" />" title="<s:text name="note.goToSomewhere" />: <s:text name="title.pageManagement" />"><s:text name="title.pageManagement" /></a></span></h1>
 
-<div id="main">
+<div id="main" role="main">
 
 <p><s:text name="note.pageTree.intro" /></p>
 

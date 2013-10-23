@@ -16,7 +16,7 @@
 	</span>
 </h1>
 
-<div id="main"><%-- main --%>
+<div id="main" role="main"><%-- main --%>
 	<s:set var="breadcrumbs_pivotPageCode" value="pageCode" />
 	<s:include value="/WEB-INF/apsadmin/jsp/portal/include/pageInfo_breadcrumbs.jsp" />
 	<s:action namespace="/do/Page" name="printPageDetails" executeResult="true" ignoreContextParams="true"><s:param name="selectedNode" value="pageCode"></s:param></s:action>

@@ -15,7 +15,7 @@
 	</span>
 </h1>
 
-<div id="main">
+<div id="main" role="main">
 
 <s:if test="!#showletTypeVar.isLogic()">
 	<s:set var="relatedApiMethodVar" value="#showletTypeApiMappingsVar[#showletTypeVar.code]" />

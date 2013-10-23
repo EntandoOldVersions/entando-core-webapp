@@ -13,7 +13,7 @@
 	</span>
 </h1>
 
-<div id="main">
+<div id="main" role="main">
 
 <s:set var="breadcrumbs_pivotPageCode" value="pageCode" />
 <s:include value="/WEB-INF/apsadmin/jsp/portal/include/pageInfo_breadcrumbs.jsp" />

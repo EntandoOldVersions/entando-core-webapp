@@ -12,7 +12,7 @@
 		<s:text name="title.userProfile.edit" />
 	</span>
 </h1>
-<div id="main">
+<div id="main" role="main">
 	<s:form cssClass="form-horizontal">
 		<s:if test="hasFieldErrors()">
 			<div class="alert alert-danger alert-dismissable fade in">

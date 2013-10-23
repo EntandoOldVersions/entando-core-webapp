@@ -10,7 +10,7 @@
 	</span>
 </h1>
 
-<div id="main">
+<div id="main" role="main">
 
 <s:set name="listAttribute" value="listAttribute" />
 <s:set name="compositeAttribute" value="compositeAttributeOnEdit" />

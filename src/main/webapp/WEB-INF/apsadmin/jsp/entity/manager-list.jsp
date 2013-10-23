@@ -11,7 +11,7 @@
 	</span>
 </h1>
 
-<div id="main">
+<div id="main" role="main">
 
 <p><s:text name="note.entities.intro" /></p>
 

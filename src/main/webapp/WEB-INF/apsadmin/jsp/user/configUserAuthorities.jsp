@@ -14,7 +14,7 @@
 	</span>
 </h1>
 
-<div id="main">
+<div id="main" role="main">
 
 <p class="margin-more-bottom">
 	<s:text name="note.userAuthorizations.intro" />&#32;<code><s:property value="userAuthsFormBean.username"/></code>, <s:text name="note.userAuthorizations.youCan" />&#32;<a href="#groups"><s:text name="note.userAuthorizations.configureGroups" /></a>&#32;<s:text name="label.or" />&#32;<a href="#roles"><s:text name="note.userAuthorizations.configureRoles" /></a>.

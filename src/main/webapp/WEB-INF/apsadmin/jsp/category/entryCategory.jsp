@@ -15,7 +15,7 @@
 		</s:elseif>
 	</span>
 </h1>
-<div id="main">
+<div id="main" role="main">
 	<s:if test="strutsAction == 2"><s:set var="breadcrumbs_pivotCategoryCode" value="categoryCode" /></s:if>
 	<s:else><s:set var="breadcrumbs_pivotCategoryCode" value="parentCategoryCode" /></s:else>
 	<s:include value="/WEB-INF/apsadmin/jsp/category/include/categoryInfo_breadcrumbs.jsp" />

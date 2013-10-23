@@ -9,7 +9,7 @@
 	</span>
 </h1>
 
-<div id="main">
+<div id="main" role="main">
 
 <h2><s:text name="title.entityAdmin.entityManagers.reload" /></h2>
 
