@@ -45,7 +45,7 @@
 
     <definition extends="layout.default" name="admin.common.profile.entry">
         <put-attribute name="title" value="title.userManagement" />
-        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/template/extraresources/profile-entry.jsp" />
+        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/profile-entry.jsp" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/common/userProfile-entry.jsp" />
     </definition>
 
@@ -57,7 +57,7 @@
     </definition>
     <definition extends="layout.settings" name="admin.User.list">
         <put-attribute name="title" value="title.userManagement" />
-        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/template/extraresources/user-list.jsp" />
+        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/user-list.jsp" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/user/user-list.jsp" />
     </definition>
     <definition extends="layout.settings" name="admin.User.entry">
@@ -83,7 +83,7 @@
     </definition>
     <definition extends="layout.settings" name="admin.UserProfile.entry">
         <put-attribute name="title" value="title.userManagement" />
-        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/template/extraresources/profile-entry.jsp" />
+        <put-attribute name="extraResources" value="/WEB-INF/apsadmin/jsp/common/layouts/assets-more/profile-entry.jsp" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/user/profile-entry.jsp" />
     </definition>
 
