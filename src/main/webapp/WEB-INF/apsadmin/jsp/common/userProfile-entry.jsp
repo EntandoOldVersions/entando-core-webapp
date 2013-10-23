@@ -38,9 +38,9 @@
 </s:if>
 
 <s:if test="hasActionMessages()">
-	<div class="alert alert-danger alert-dismissable fade in">
+	<div class="alert alert-success alert-dismissable fade in">
 		<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
-		<h2 class="h4 margin-none">><s:text name="messages.confirm" /></h3>
+		<h2 class="h4 margin-none"><s:text name="messages.confirm" /></h3>
 		<ul>
 			<s:iterator value="actionMessages">
 				<li><s:property escape="false" /></li>
@@ -77,7 +77,7 @@
 <div class="form-group">
 	<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 		<wpsf:submit type="button" cssClass="btn btn-primary btn-block">
-			<span class="icon icon-filter"></span>&#32;
+			<span class="icon icon-save"></span>&#32;
 			<s:text name="label.save" />
 		</wpsf:submit>
 	</div>
