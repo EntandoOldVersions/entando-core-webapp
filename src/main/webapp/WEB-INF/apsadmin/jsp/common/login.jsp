@@ -185,7 +185,7 @@
 <script src="<wp:resourceURL />administration/bootstrap/js/bootstrap.js"></script>
 <script>
 	$(function(){
-		document.getElementById('username').focus();
+		try { document.getElementById('username').focus(); } catch(e) {}
 	});
 </script>
 
