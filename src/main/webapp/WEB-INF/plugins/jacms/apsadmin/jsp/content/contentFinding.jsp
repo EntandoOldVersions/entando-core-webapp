@@ -222,7 +222,7 @@
 
 		<hr />
 
-		<s:form action="search" >
+	<s:form action="search" >
 		<p class="sr-only">
 			<wpsf:hidden name="text" />
 			<wpsf:hidden name="contentType" />
@@ -494,6 +494,5 @@
 
 		</wpsa:subset>
 
-		</s:form>
-		</div>
+	</s:form>
 </div>
