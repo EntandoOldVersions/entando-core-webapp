@@ -101,10 +101,10 @@
 				</div>
 				<div id="submenu-contents" class="panel-collapse collapse" role="presentation">
 					<ul class="panel-body nav nav-pills nav-stacked" role="menubar" aria-labelledby="aria-menu-jacms-contentadmin">
-						<li role="presentation"><a href="<s:url action="list" namespace="/do/jacms/Content" />"><s:text name="jacms.menu.contentAdmin.list" /></a></li>
+						<li role="presentation"><a role="menuitem" href="<s:url action="list" namespace="/do/jacms/Content" />"><s:text name="jacms.menu.contentAdmin.list" /></a></li>
 						<wpsa:entityTypes entityManagerName="jacmsContentManager" var="contentTypesVar" />
 						<li class="dropdown hidden-xs hidden-sm visible-md visible-lg" role="presentation">
-							<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="aria-menu-jacms-new">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="aria-menu-jacms-new" role="menuitem">
 								<s:text name="label.new" />&#32;<s:text name="label.content" />&#32;<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu" role="menubar" aria-labelledby="aria-menu-jacms-new">
