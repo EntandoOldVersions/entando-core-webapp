@@ -57,135 +57,134 @@
 		</s:form>
 	</div>
 </div>
-
-		<s:form action="search" cssClass="margin-base-top" cssClass="form-horizontal">
-			<h3 class="h4 margin-none  margin-base-bottom"><s:text name="title.userManagement.searchUsers" /></h3>
-			<p class="sr-only">
-				<wpsf:hidden name="authName" />
-			</p>
-			<div class="form-group">
-				<div class="input-group col-sm-12">
-					<label for="username" class="sr-only"><s:text name="title.userManagement.searchUsers" /></label>
-					<span class="input-group-addon" title="<s:text name="title.userManagement.searchUsers" />">
-						<span class="icon icon-file-text-alt icon-large"></span>
-					</span>
-					<wpsf:textfield name="text" id="username" cssClass="form-control input-lg" title="%{getText('title.userManagement.searchUsers')}" placeholder="%{getText('label.search.by')+ ' '+ getText('label.username')}" />
-					<div class="input-group-btn">
-						<wpsf:submit type="button" action="search" cssClass="btn btn-primary btn-lg" title="%{getText('title.userManagement.searchUsers')}">
-								<span class="icon icon-search" title="<s:text name="label.search" />"></span>
-						</wpsf:submit>
-					</div>
+<div role="search">
+	<s:form action="search" cssClass="margin-base-top" cssClass="form-horizontal">
+		<h3 class="h4 margin-none  margin-base-bottom"><s:text name="title.userManagement.searchUsers" /></h3>
+		<p class="sr-only">
+			<wpsf:hidden name="authName" />
+		</p>
+		<div class="form-group">
+			<div class="input-group col-sm-12">
+				<label for="username" class="sr-only"><s:text name="title.userManagement.searchUsers" /></label>
+				<span class="input-group-addon" title="<s:text name="title.userManagement.searchUsers" />">
+					<span class="icon icon-file-text-alt icon-large"></span>
+				</span>
+				<wpsf:textfield name="text" id="username" cssClass="form-control input-lg" title="%{getText('title.userManagement.searchUsers')}" placeholder="%{getText('label.search.by')+ ' '+ getText('label.username')}" />
+				<div class="input-group-btn">
+					<wpsf:submit type="button" action="search" cssClass="btn btn-primary btn-lg" title="%{getText('title.userManagement.searchUsers')}">
+							<span class="icon icon-search" title="<s:text name="label.search" />"></span>
+					</wpsf:submit>
 				</div>
 			</div>
-		</s:form>
+		</div>
+	</s:form>
 
-		<s:form action="search" cssClass="form-horizontal">
-			<p class="sr-only">
-				<wpsf:hidden name="username" />
-				<wpsf:hidden name="authName" />
-			</p>
-			<div class="form-group">
-				<div class="input-group col-sm-12">
-						<wpsa:subset source="searchResult" count="10" objectName="groupUser" advanced="true" offset="5">
-							<s:set name="group" value="#groupUser" />
-							<div class="text-center">
-								<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
-								<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
-							</div>
-							<div class="table-responsive">
-								<table class="table table-bordered">
+	<s:form action="search" cssClass="form-horizontal">
+		<p class="sr-only">
+			<wpsf:hidden name="username" />
+			<wpsf:hidden name="authName" />
+		</p>
+		<div class="form-group">
+			<div class="input-group col-sm-12">
+					<wpsa:subset source="searchResult" count="10" objectName="groupUser" advanced="true" offset="5">
+						<s:set name="group" value="#groupUser" />
+						<div class="text-center">
+							<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
+							<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
+						</div>
+						<div class="table-responsive">
+							<table class="table table-bordered">
+								<tr>
+									<th><s:text name="label.username" /></th>
+									<th class="text-center"><s:text name="label.date.registration" /></th>
+									<th class="text-center"><s:text name="label.date.lastLogin" /></th>
+									<th class="text-center"><s:text name="label.date.lastPasswordChange" /></th>
+									<th class="text-center"><abbr title="<s:text name="label.state" />">S</abbr></th>
+								</tr>
+								<s:iterator var="usernameVar">
+									<s:set var="userVar" value="%{getUser(#usernameVar)}" />
+									<s:if test="!#userVar.entandoUser">
+										<s:set var="statusIconImagePath">icon-sitemap</s:set>
+										<s:set var="statusIconText" value="%{getText('note.userStatus.notEntandoUser')}" />
+									</s:if>
+									<s:elseif test="#userVar.disabled">
+										<s:set var="statusIconImagePath">icon-moon</s:set>
+										<s:set var="statusIconText" value="%{getText('note.userStatus.notActive')}" />
+									</s:elseif>
+									<s:elseif test="!#userVar.accountNotExpired">
+										<s:set var="statusIconImagePath">icon-off</s:set>
+										<s:set var="statusIconText" value="%{getText('note.userStatus.expiredAccount')}" />
+									</s:elseif>
+									<s:elseif test="!#userVar.credentialsNotExpired">
+										<s:set var="statusIconImagePath">icon-check</s:set>
+										<s:set var="statusIconText" value="%{getText('note.userStatus.expiredPassword')}" />
+									</s:elseif>
+									<s:elseif test="!#userVar.disabled">
+										<s:set var="statusIconImagePath">icon-ok</s:set>
+										<s:set var="statusIconText" value="%{getText('note.userStatus.active')}" />
+									</s:elseif>
 									<tr>
-										<th><s:text name="label.username" /></th>
-										<th class="text-center"><s:text name="label.date.registration" /></th>
-										<th class="text-center"><s:text name="label.date.lastLogin" /></th>
-										<th class="text-center"><s:text name="label.date.lastPasswordChange" /></th>
-										<th class="text-center"><abbr title="<s:text name="label.state" />">S</abbr></th>
+										<td class="text-nowrap">
+											<s:set var="usernameAlreadyInVar" value="%{false}" />
+											<s:iterator value="#authorizedUsersVar" var="u"><s:if test="%{#u.username == #usernameVar}"><s:set var="usernameAlreadyInVar" value="%{true}" /></s:if></s:iterator>
+											<label>
+												<s:if test="%{!#usernameAlreadyInVar}">
+													<input type="radio" name="usernameToSet" value="<s:property value="#usernameVar"/>" />
+												</s:if>
+												<s:else><span class="icon icon-check text-muted"></span></s:else>
+												&#32;
+												<s:property value="#userVar" />
+											</label>
+										</td>
+										<td class="text-center text-nowrap">
+											<code>
+												<s:if test="#userVar.entandoUser">
+													<s:date name="#userVar.creationDate" format="dd/MM/yyyy" />
+												</s:if>
+												<s:else><abbr title="<s:text name="label.none" />">&ndash;</abbr></s:else>
+											</code>
+										</td>
+										<td class="text-center text-nowrap">
+											<code>
+												<s:if test="#userVar.entandoUser && #userVar.lastAccess != null">
+													<s:date name="#userVar.lastAccess" format="dd/MM/yyyy" />
+												</s:if>
+												<s:else><abbr title="<s:text name="label.none" />">&ndash;</abbr></s:else>
+											</code>
+										</td>
+										<td class="text-center text-nowrap">
+												<code>
+													<s:if test="#userVar.entandoUser && #userVar.lastPasswordChange != null">
+														<s:date name="#userVar.lastPasswordChange" format="dd/MM/yyyy" />
+													</s:if>
+													<s:else><abbr title="<s:text name="label.none" />">&ndash;</abbr></s:else>
+												</code>
+										</td>
+										<td class="text-center col-xs-1 col-sm-1 col-md-1 col-lg-1">
+											<span
+												class="icon <s:property value="#statusIconImagePath" />"
+												title="<s:property value="#statusIconText" />"
+												>
+													<span class="sr-only"><s:property value="#statusIconText" /></span>
+											</span>
+										</td>
 									</tr>
-									<s:iterator var="usernameVar">
-										<s:set var="userVar" value="%{getUser(#usernameVar)}" />
-										<s:if test="!#userVar.entandoUser">
-											<s:set var="statusIconImagePath">icon-sitemap</s:set>
-											<s:set var="statusIconText" value="%{getText('note.userStatus.notEntandoUser')}" />
-										</s:if>
-										<s:elseif test="#userVar.disabled">
-											<s:set var="statusIconImagePath">icon-moon</s:set>
-											<s:set var="statusIconText" value="%{getText('note.userStatus.notActive')}" />
-										</s:elseif>
-										<s:elseif test="!#userVar.accountNotExpired">
-											<s:set var="statusIconImagePath">icon-off</s:set>
-											<s:set var="statusIconText" value="%{getText('note.userStatus.expiredAccount')}" />
-										</s:elseif>
-										<s:elseif test="!#userVar.credentialsNotExpired">
-											<s:set var="statusIconImagePath">icon-check</s:set>
-											<s:set var="statusIconText" value="%{getText('note.userStatus.expiredPassword')}" />
-										</s:elseif>
-										<s:elseif test="!#userVar.disabled">
-											<s:set var="statusIconImagePath">icon-ok</s:set>
-											<s:set var="statusIconText" value="%{getText('note.userStatus.active')}" />
-										</s:elseif>
-										<tr>
-											<td class="text-nowrap">
-												<s:set var="usernameAlreadyInVar" value="%{false}" />
-												<s:iterator value="#authorizedUsersVar" var="u"><s:if test="%{#u.username == #usernameVar}"><s:set var="usernameAlreadyInVar" value="%{true}" /></s:if></s:iterator>
-												<label>
-													<s:if test="%{!#usernameAlreadyInVar}">
-														<input type="radio" name="usernameToSet" value="<s:property value="#usernameVar"/>" />
-													</s:if>
-													<s:else><span class="icon icon-check text-muted"></span></s:else>
-													&#32;
-													<s:property value="#userVar" />
-												</label>
-											</td>
-											<td class="text-center text-nowrap">
-												<code>
-													<s:if test="#userVar.entandoUser">
-														<s:date name="#userVar.creationDate" format="dd/MM/yyyy" />
-													</s:if>
-													<s:else><abbr title="<s:text name="label.none" />">&ndash;</abbr></s:else>
-												</code>
-											</td>
-											<td class="text-center text-nowrap">
-												<code>
-													<s:if test="#userVar.entandoUser && #userVar.lastAccess != null">
-														<s:date name="#userVar.lastAccess" format="dd/MM/yyyy" />
-													</s:if>
-													<s:else><abbr title="<s:text name="label.none" />">&ndash;</abbr></s:else>
-												</code>
-											</td>
-											<td class="text-center text-nowrap">
-													<code>
-														<s:if test="#userVar.entandoUser && #userVar.lastPasswordChange != null">
-															<s:date name="#userVar.lastPasswordChange" format="dd/MM/yyyy" />
-														</s:if>
-														<s:else><abbr title="<s:text name="label.none" />">&ndash;</abbr></s:else>
-													</code>
-											</td>
-											<td class="text-center col-xs-1 col-sm-1 col-md-1 col-lg-1">
-												<span
-													class="icon <s:property value="#statusIconImagePath" />"
-													title="<s:property value="#statusIconText" />"
-													>
-														<span class="sr-only"><s:property value="#statusIconText" /></span>
-												</span>
-											</td>
-										</tr>
-									</s:iterator>
-								</table>
-							</div>
-							<div class="text-center">
-								<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
-							</div>
-						</wpsa:subset>
-				</div>
+								</s:iterator>
+							</table>
+						</div>
+						<div class="text-center">
+							<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
+						</div>
+					</wpsa:subset>
 			</div>
-			<div class="form-group">
-			  <div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-			    <wpsf:submit type="button" action="addUser" cssClass="btn btn-primary btn-block">
-			      <span class="icon icon-plus"></span>&#32;
-						<s:text name="label.add" />
-			    </wpsf:submit>
-			  </div>
-			</div>
-		</s:form>
-
-
+		</div>
+		<div class="form-group">
+		  <div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+		    <wpsf:submit type="button" action="addUser" cssClass="btn btn-primary btn-block">
+		      <span class="icon icon-plus"></span>&#32;
+					<s:text name="label.add" />
+		    </wpsf:submit>
+		  </div>
+		</div>
+	</s:form>
+</div>

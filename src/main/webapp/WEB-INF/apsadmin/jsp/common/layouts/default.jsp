@@ -41,7 +41,7 @@
 	<tiles:insertAttribute name="shortcuts-quickbar"/>
 	--%>
 
-	<h1 class="sr-only" id="fagiano_start"><s:text name="title.mainFunctions" /></h1>
+	<p class="sr-only" id="fagiano_start"><s:text name="title.mainFunctions" /></p>
 	<div class="row row-offcanvas row-offcanvas-right">
 		<div class="col-sm-3 sidebar-offcanvas col-sm-push-9 col-md-push-9 col-lg-push-9" id="sidebar">
 

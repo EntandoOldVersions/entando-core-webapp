@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="jacmswpsa" uri="/jacms-apsadmin-core" %>
 
-<h2 id="manage" class="sr-only"><s:text name="note.userbar.intro" />:</h2>
+<p id="manage" class="sr-only"><s:text name="note.userbar.intro" />:</p>
 
 <p>
 	<a class="btn btn-info btn-block" href="<s:url namespace="/do/BaseAdmin" action="settings" />"><span class="icon icon-cog"></span>&#32;<s:text name="menu.configure" /></a>

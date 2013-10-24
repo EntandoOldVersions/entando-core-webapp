@@ -24,7 +24,7 @@
 			--%>
 		</div>
 	</s:if>
-	<div class="form-group">
+	<div class="form-group" role="search">
 		<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<span class="input-group-addon" title="<s:text name="label.search.by" />&#32;<s:text name="label.description" />">
 				<span class="icon icon-file-text-alt icon-large"></span>

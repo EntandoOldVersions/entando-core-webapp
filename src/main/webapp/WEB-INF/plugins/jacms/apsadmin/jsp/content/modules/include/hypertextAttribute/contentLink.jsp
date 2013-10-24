@@ -3,7 +3,7 @@
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 
 <div id="divContentLink" class="tab">
-<s:form action="configInternalLink" cssClass="searchForm">
+<s:form action="configInternalLink" cssClass="searchForm" role="search">
 <p><s:text name="note.chooseContentToLink" />.</p>
 
 <p class="sr-only">

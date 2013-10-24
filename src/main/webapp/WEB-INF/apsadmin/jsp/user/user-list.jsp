@@ -10,7 +10,7 @@
 		<s:text name="title.userManagement" />
 	</span>
 </h1>
-<s:form action="search" cssClass="form-horizontal">
+<s:form action="search" cssClass="form-horizontal" role="search">
 	<s:if test="hasActionErrors()">
 		<div class="alert alert-danger alert-dismissable fade in">
 			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>

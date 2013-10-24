@@ -21,7 +21,7 @@ http://localhost:8080/PortalExample/do/Entity/search.action?entityManagerName=ja
 		</div>
 	</s:if>
 
-<s:form action="search">
+<s:form action="search"  role="search">
 	
 	<fieldset>
 		<legend class="accordion_toggler"><s:text name="title.searchFilters" /></legend>  

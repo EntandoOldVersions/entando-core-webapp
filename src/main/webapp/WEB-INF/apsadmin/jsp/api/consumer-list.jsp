@@ -29,7 +29,7 @@
 		</div>
 	</s:if>
 
-	<s:form action="search" cssClass="form-horizontal">
+	<s:form action="search" cssClass="form-horizontal" role="search">
 		<div class="form-group">
 			<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<span class="input-group-addon">

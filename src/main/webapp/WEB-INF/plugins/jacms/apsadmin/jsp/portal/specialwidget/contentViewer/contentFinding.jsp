@@ -52,7 +52,7 @@
 						</ul>
 					</div>
 				</s:if>
-				<div class="form-group"><%-- form-group search --%>
+				<div class="form-group" role="search"><%-- form-group search --%>
 					<div class="input-group col-sm-12">
 						<span class="input-group-addon">
 							<span class="icon icon-file-text-alt icon-large"></span>

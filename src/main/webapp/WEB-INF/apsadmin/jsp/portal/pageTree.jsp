@@ -20,78 +20,79 @@
 </div>
 </s:if>
 
-<s:include value="/WEB-INF/apsadmin/jsp/portal/include/pageSearchForm.jsp" />
+<div role="search">
+	<s:include value="/WEB-INF/apsadmin/jsp/portal/include/pageSearchForm.jsp" />
 
-<hr />
+	<hr />
 
-<%--
-<h2 class="margin-base-vertical"><s:text name="title.pageTree" /></h2>
---%>
+	<%--
+	<h2 class="margin-base-vertical"><s:text name="title.pageTree" /></h2>
+	--%>
 
-<s:form cssClass="action-form">
+	<s:form cssClass="action-form">
 
-<s:set var="pageTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_page" /></s:set>
+	<s:set var="pageTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_page" /></s:set>
 
-<div class="well">
-	<ul id="pageTree" class="icons-ul list-unstyled">
-		<s:set var="inputFieldName" value="%{'selectedNode'}" />
-		<s:set var="selectedTreeNode" value="%{selectedNode}" />
-		<s:set var="liClassName" value="'page'" />
-		<s:set var="treeItemIconName" value="'icon-folder-close'" />
+	<div class="well">
+		<ul id="pageTree" class="icons-ul list-unstyled">
+			<s:set var="inputFieldName" value="%{'selectedNode'}" />
+			<s:set var="selectedTreeNode" value="%{selectedNode}" />
+			<s:set var="liClassName" value="'page'" />
+			<s:set var="treeItemIconName" value="'icon-folder-close'" />
 
-		<s:if test="#pageTreeStyleVar == 'classic'">
-		<s:set var="currentRoot" value="allowedTreeRootNode" />
-		<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder.jsp" />
-		</s:if>
-		<s:elseif test="#pageTreeStyleVar == 'request'">
-		<s:set var="currentRoot" value="showableTree" />
-		<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder-request-links.jsp" />
-		</s:elseif>
-	</ul>
-</div>
-<p class="sr-only"><wpsf:hidden name="copyingPageCode" /></p>
-
-<fieldset data-toggle="tree-toolbar"><legend><s:text name="title.pageActions" /></legend>
-	<p class="sr-only"><s:text name="title.pageActionsIntro" /></p>
-
-	<div class="btn-toolbar" data-toggle="tree-toolbar-actions">
-		<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
-			<wpsf:submit action="configure" type="button" title="%{getText('page.options.configure')}" cssClass="btn btn-info" data-toggle="tooltip">
-				<span class="icon icon-cog"></span>
-			</wpsf:submit>
-			<wpsf:submit action="detail" type="button" title="%{getText('page.options.detail')}" cssClass="btn btn-info" data-toggle="tooltip">
-				<span class="icon icon-info"></span>
-			</wpsf:submit>
-		</div>
-		<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
-			<wpsf:submit action="copy" type="button" title="%{getText('page.options.copy')}" cssClass="btn btn-info" data-toggle="tooltip">
-				<span class="icon icon-copy"></span>
-			</wpsf:submit>
-			<wpsf:submit action="paste" type="button" title="%{getText('page.options.paste')}" cssClass="btn btn-info" data-toggle="tooltip">
-				<span class="icon icon-paste"></span>
-			</wpsf:submit>
-			<wpsf:submit action="moveUp" type="button" title="%{getText('page.options.moveUp')}" cssClass="btn btn-info" data-toggle="tooltip">
-				<span class="icon icon-sort-up"></span>
-			</wpsf:submit>
-			<wpsf:submit action="moveDown" type="button" title="%{getText('page.options.moveDown')}" cssClass="btn btn-info" data-toggle="tooltip">
-				<span class="icon icon-sort-down"></span>
-			</wpsf:submit>
-		</div>
-		<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
-			<wpsf:submit action="new" type="button" title="%{getText('page.options.new')}" cssClass="btn btn-info" data-toggle="tooltip">
-				<span class="icon icon-plus-sign"></span>
-			</wpsf:submit>
-			<wpsf:submit action="edit" type="button" title="%{getText('page.options.modify')}" cssClass="btn btn-info" data-toggle="tooltip">
-				<span class="icon icon-edit"></span>
-			</wpsf:submit>
-		</div>
-		<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
-			<wpsf:submit action="trash" type="button" title="%{getText('page.options.delete')}" cssClass="btn btn-warning" data-toggle="tooltip">
-				<span class="icon icon-remove-sign"></span>
-			</wpsf:submit>
-		</div>
+			<s:if test="#pageTreeStyleVar == 'classic'">
+			<s:set var="currentRoot" value="allowedTreeRootNode" />
+			<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder.jsp" />
+			</s:if>
+			<s:elseif test="#pageTreeStyleVar == 'request'">
+			<s:set var="currentRoot" value="showableTree" />
+			<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder-request-links.jsp" />
+			</s:elseif>
+		</ul>
 	</div>
-</fieldset>
-</s:form>
+	<p class="sr-only"><wpsf:hidden name="copyingPageCode" /></p>
 
+	<fieldset data-toggle="tree-toolbar"><legend><s:text name="title.pageActions" /></legend>
+		<p class="sr-only"><s:text name="title.pageActionsIntro" /></p>
+
+		<div class="btn-toolbar" data-toggle="tree-toolbar-actions">
+			<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
+				<wpsf:submit action="configure" type="button" title="%{getText('page.options.configure')}" cssClass="btn btn-info" data-toggle="tooltip">
+					<span class="icon icon-cog"></span>
+				</wpsf:submit>
+				<wpsf:submit action="detail" type="button" title="%{getText('page.options.detail')}" cssClass="btn btn-info" data-toggle="tooltip">
+					<span class="icon icon-info"></span>
+				</wpsf:submit>
+			</div>
+			<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
+				<wpsf:submit action="copy" type="button" title="%{getText('page.options.copy')}" cssClass="btn btn-info" data-toggle="tooltip">
+					<span class="icon icon-copy"></span>
+				</wpsf:submit>
+				<wpsf:submit action="paste" type="button" title="%{getText('page.options.paste')}" cssClass="btn btn-info" data-toggle="tooltip">
+					<span class="icon icon-paste"></span>
+				</wpsf:submit>
+				<wpsf:submit action="moveUp" type="button" title="%{getText('page.options.moveUp')}" cssClass="btn btn-info" data-toggle="tooltip">
+					<span class="icon icon-sort-up"></span>
+				</wpsf:submit>
+				<wpsf:submit action="moveDown" type="button" title="%{getText('page.options.moveDown')}" cssClass="btn btn-info" data-toggle="tooltip">
+					<span class="icon icon-sort-down"></span>
+				</wpsf:submit>
+			</div>
+			<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
+				<wpsf:submit action="new" type="button" title="%{getText('page.options.new')}" cssClass="btn btn-info" data-toggle="tooltip">
+					<span class="icon icon-plus-sign"></span>
+				</wpsf:submit>
+				<wpsf:submit action="edit" type="button" title="%{getText('page.options.modify')}" cssClass="btn btn-info" data-toggle="tooltip">
+					<span class="icon icon-edit"></span>
+				</wpsf:submit>
+			</div>
+			<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
+				<wpsf:submit action="trash" type="button" title="%{getText('page.options.delete')}" cssClass="btn btn-warning" data-toggle="tooltip">
+					<span class="icon icon-remove-sign"></span>
+				</wpsf:submit>
+			</div>
+		</div>
+	</fieldset>
+	</s:form>
+</div>
 </div>

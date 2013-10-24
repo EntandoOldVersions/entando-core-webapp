@@ -20,95 +20,97 @@
 	</ul>
 </div>
 </s:if>
+<div role="search">
 
-<s:include value="/WEB-INF/apsadmin/jsp/portal/include/pageSearchForm.jsp" />
+	<s:include value="/WEB-INF/apsadmin/jsp/portal/include/pageSearchForm.jsp" />
 
-<hr />
+	<hr />
 
-<%--
-<h2 class="margin-base-vertical"><s:text name="title.pageManagement.pages" /></h2>
---%>
+	<%--
+	<h2 class="margin-base-vertical"><s:text name="title.pageManagement.pages" /></h2>
+	--%>
 
-<s:form action="search" cssClass="action-form">
+	<s:form action="search" cssClass="action-form">
 
-<p class="sr-only">
-	<wpsf:hidden name="pageCodeToken" />
-</p>
-
-<s:set var="pagesFound" value="pagesFound"></s:set>
-
-<s:if test="%{#pagesFound != null && #pagesFound.isEmpty() == false}">
-
-	<wpsa:subset source="#pagesFound" count="10" objectName="groupPage" advanced="true" offset="5">
-	<s:set name="group" value="#groupPage" />
-
-	<div class="text-center">
-		<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
-		<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
-	</div>
-
-	<div class="well">
-		<ul id="pageTree" class="icons-ul list-unstyled">
-		<s:iterator var="singlePage">
-
-			<s:set name="pageFullPath">
-				<s:set value="%{getBreadCrumbsTargets(#singlePage.code)}" name="breadCrumbsTargets" ></s:set>
-				<s:iterator value="#breadCrumbsTargets" id="target" status="rowstatus">
-					<s:if test="%{#rowstatus.index != 0}"> | </s:if>
-					<s:property value="#target.titles[currentLang.code]" />
-				</s:iterator>
-			</s:set>
-			<li class="page tree_node_flag"><span class="icon icon-li icon-folder-close"></span>&#32;<wpsf:radio name="selectedNode" id="page_%{#singlePage.code}" value="%{#singlePage.code}" /><label for="page_<s:property value="%{#singlePage.code}" />" title="<s:property value="#pageFullPath" />"><s:property value="%{#singlePage.code}" /></label></li>
-			<%-- <s:property value="%{#singlePage.titles[currentLang.code]}" /> --%>
-		</s:iterator>
-		</ul>
-	</div>
-
-	<div class="text-center">
-		<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
-	</div>
-	</wpsa:subset>
-
-<p class="sr-only">
-	<wpsf:hidden name="copyingPageCode" />
-</p>
-
-<fieldset data-toggle="tree-toolbar"><legend><s:text name="title.pageActions" /></legend>
-<p class="sr-only"><s:text name="title.pageActionsIntro" /></p>
-
-<div class="btn-toolbar" data-toggle="tree-toolbar-actions">
-	<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
-		<wpsf:submit action="configure" type="button" title="%{getText('page.options.configure')}" cssClass="btn btn-info" data-toggle="tooltip">
-			<span class="icon icon-cog"></span>
-		</wpsf:submit>
-		<wpsf:submit action="detail" type="button" title="%{getText('page.options.detail')}" cssClass="btn btn-info" data-toggle="tooltip">
-			<span class="icon icon-info"></span>
-		</wpsf:submit>
-	</div>
-	<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
-		<wpsf:submit action="copy" type="button" title="%{getText('page.options.copy')}" cssClass="btn btn-info" data-toggle="tooltip">
-			<span class="icon icon-copy"></span>
-		</wpsf:submit>
-	</div>
-	<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
-		<wpsf:submit action="edit" type="button" title="%{getText('page.options.modify')}" cssClass="btn btn-info" data-toggle="tooltip">
-			<span class="icon icon-edit"></span>
-		</wpsf:submit>
-	</div>
-	<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
-		<wpsf:submit action="trash" type="button" title="%{getText('page.options.delete')}" cssClass="btn btn-warning" data-toggle="tooltip">
-			<span class="icon icon-remove-sign"></span>
-		</wpsf:submit>
-	</div>
-</div>
-</fieldset>
-</s:if>
-<s:else>
-	<p class="alert alert-info">
-		<s:text name="noPages.found" />
+	<p class="sr-only">
+		<wpsf:hidden name="pageCodeToken" />
 	</p>
-</s:else>
 
-</s:form>
+	<s:set var="pagesFound" value="pagesFound" />
+
+	<s:if test="%{#pagesFound != null && #pagesFound.isEmpty() == false}">
+
+		<wpsa:subset source="#pagesFound" count="10" objectName="groupPage" advanced="true" offset="5">
+		<s:set name="group" value="#groupPage" />
+
+		<div class="text-center">
+			<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
+			<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
+		</div>
+
+		<div class="well">
+			<ul id="pageTree" class="icons-ul list-unstyled">
+			<s:iterator var="singlePage">
+
+				<s:set name="pageFullPath">
+					<s:set value="%{getBreadCrumbsTargets(#singlePage.code)}" name="breadCrumbsTargets" ></s:set>
+					<s:iterator value="#breadCrumbsTargets" id="target" status="rowstatus">
+						<s:if test="%{#rowstatus.index != 0}"> | </s:if>
+						<s:property value="#target.titles[currentLang.code]" />
+					</s:iterator>
+				</s:set>
+				<li class="page tree_node_flag"><span class="icon icon-li icon-folder-close"></span>&#32;<wpsf:radio name="selectedNode" id="page_%{#singlePage.code}" value="%{#singlePage.code}" /><label for="page_<s:property value="%{#singlePage.code}" />" title="<s:property value="#pageFullPath" />"><s:property value="%{#singlePage.code}" /></label></li>
+				<%-- <s:property value="%{#singlePage.titles[currentLang.code]}" /> --%>
+			</s:iterator>
+			</ul>
+		</div>
+
+		<div class="text-center">
+			<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
+		</div>
+		</wpsa:subset>
+
+	<p class="sr-only">
+		<wpsf:hidden name="copyingPageCode" />
+	</p>
+
+	<fieldset data-toggle="tree-toolbar"><legend><s:text name="title.pageActions" /></legend>
+	<p class="sr-only"><s:text name="title.pageActionsIntro" /></p>
+
+	<div class="btn-toolbar" data-toggle="tree-toolbar-actions">
+		<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
+			<wpsf:submit action="configure" type="button" title="%{getText('page.options.configure')}" cssClass="btn btn-info" data-toggle="tooltip">
+				<span class="icon icon-cog"></span>
+			</wpsf:submit>
+			<wpsf:submit action="detail" type="button" title="%{getText('page.options.detail')}" cssClass="btn btn-info" data-toggle="tooltip">
+				<span class="icon icon-info"></span>
+			</wpsf:submit>
+		</div>
+		<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
+			<wpsf:submit action="copy" type="button" title="%{getText('page.options.copy')}" cssClass="btn btn-info" data-toggle="tooltip">
+				<span class="icon icon-copy"></span>
+			</wpsf:submit>
+		</div>
+		<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
+			<wpsf:submit action="edit" type="button" title="%{getText('page.options.modify')}" cssClass="btn btn-info" data-toggle="tooltip">
+				<span class="icon icon-edit"></span>
+			</wpsf:submit>
+		</div>
+		<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
+			<wpsf:submit action="trash" type="button" title="%{getText('page.options.delete')}" cssClass="btn btn-warning" data-toggle="tooltip">
+				<span class="icon icon-remove-sign"></span>
+			</wpsf:submit>
+		</div>
+	</div>
+	</fieldset>
+	</s:if>
+	<s:else>
+		<p class="alert alert-info">
+			<s:text name="noPages.found" />
+		</p>
+	</s:else>
+
+	</s:form>
+</div>
 
 </div>

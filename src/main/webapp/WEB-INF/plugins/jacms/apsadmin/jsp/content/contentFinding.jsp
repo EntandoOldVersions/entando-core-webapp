@@ -11,7 +11,7 @@
 <div id="main" role="main">
 
 		<s:url action="search" var= "formAction" namespace="do/jacms/Content" />
-		<s:form action="%{'/' + #formAction}" cssClass="form-horizontal">
+		<s:form action="%{'/' + #formAction}" cssClass="form-horizontal" role="search">
 
 			<p class="sr-only">
 				<input type="hidden" name="lastGroupBy" />

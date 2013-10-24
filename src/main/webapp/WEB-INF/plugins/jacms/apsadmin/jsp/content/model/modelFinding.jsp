@@ -7,7 +7,7 @@
 
 <div id="main" role="main">
 
-<s:form action="search" cssClass="form-horizontal">
+<s:form action="search" cssClass="form-horizontal" role="search">
 	<div class="form-group">
 		<label for="contentType" class="sr-only"><s:text name="label.search.by"/>&#32;<s:text name="label.type"/></label>
 		<div class="input-group col-sm-12">

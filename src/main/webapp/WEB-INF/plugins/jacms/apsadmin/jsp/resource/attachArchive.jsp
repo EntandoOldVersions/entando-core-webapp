@@ -30,7 +30,7 @@
 		</span>
 	</h1>
 </s:if>
-<s:form action="search" cssClass="form-horizontal">
+<s:form action="search" cssClass="form-horizontal" role="search">
 	<s:set var="categoryTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_category" /></s:set>
 	<p class="sr-only">
 		<wpsf:hidden name="resourceTypeCode" />

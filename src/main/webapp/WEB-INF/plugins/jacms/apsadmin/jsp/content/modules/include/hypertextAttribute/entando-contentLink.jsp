@@ -2,7 +2,7 @@
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <div id="content-link" class="tab-pane">
-	<s:form action="entandoInternalLink" cssClass="form-horizontal">
+	<s:form action="entandoInternalLink" cssClass="form-horizontal" role="search">
 		<p class="sr-only"><s:text name="note.chooseContentToLink" />.</p>
 		<p class="sr-only">
 			<wpsf:hidden name="lastGroupBy" />
