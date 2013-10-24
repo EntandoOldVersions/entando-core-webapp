@@ -31,7 +31,7 @@
 		<li class="panel-group" role="presentation">
 			<div class="panel panel-default" role="presentation">
 				<div class="panel-heading" role="presentation">
-					<a data-toggle="collapse" href="#submenu-plugins" class="display-block" id="aria-menu-plugin">
+					<a data-toggle="collapse" href="#submenu-plugins" class="display-block" id="aria-menu-plugin"  aria-haspopup="true" role="menuitem">
 						<s:text name="menu.plugins" />&#32;
 						<span class="icon icon-chevron-down pull-right"></span>
 					</a>
@@ -66,7 +66,7 @@
 	<li class="panel-group" role="presentation">
 		<div class="panel panel-default" role="presentation">
 			<div class="panel-heading" role="presentation">
-				<a data-toggle="collapse" href="#submenu-api" class="display-block" id="aria-menu-api">
+				<a data-toggle="collapse" href="#submenu-api" class="display-block" id="aria-menu-api" aria-haspopup="true" role="menuitem">
 					<s:text name="menu.apisAdmin" />&#32;
 					<span class="icon icon-chevron-down pull-right"></span>
 				</a>
@@ -94,7 +94,7 @@
 		<li class="panel-group" role="presentation">
 			<div class="panel panel-default overflow-visible" role="presentation">
 				<div class="panel-heading" role="presentation">
-					<a data-toggle="collapse" href="#submenu-contents" class="display-block" id="aria-menu-jacms-contentadmin">
+					<a data-toggle="collapse" href="#submenu-contents" class="display-block" id="aria-menu-jacms-contentadmin"  aria-haspopup="true" role="menuitem">
 						<s:text name="jacms.menu.contentAdmin" />&#32;
 						<span class="icon icon-chevron-down pull-right"></span>
 					</a>
@@ -150,7 +150,7 @@
 		<li role="presentation" class="panel-group">
 			<div role="presentation" class="panel panel-default">
 				<div role="presentation" class="panel-heading">
-					<a data-toggle="collapse" href="#submenu-resources" class="display-block" id="aria-menu-jacms-resources">
+					<a data-toggle="collapse" href="#submenu-resources" class="display-block" id="aria-menu-jacms-resources"  aria-haspopup="true" role="menuitem">
 						<s:text name="jacms.menu.resourceAdmin" />&#32;
 						<span class="icon icon-chevron-down pull-right"></span>
 					</a>
