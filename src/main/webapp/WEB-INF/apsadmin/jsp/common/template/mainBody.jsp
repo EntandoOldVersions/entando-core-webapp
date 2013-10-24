@@ -172,7 +172,7 @@
 		<s:set var="emailAttributeVar"><wp:userProfileAttribute username="${usernameVar}" attributeRoleName="userprofile:email" /></s:set>
 
 		<div class="col-xs-12 col-sm-2 col-lg-1 margin-small-bottom activity-stream-picture">
-			<img src="<s:url action="avatarStream" namespace="/do/user/avatar">
+			<img alt=" " src="<s:url action="avatarStream" namespace="/do/user/avatar">
 							<s:param name="gravatarSize">56</s:param>
 							<s:param name="username" value="#actionLogRecordVar.username" />
 						</s:url>" width="56" height="56" class="img-circle media-object" />
