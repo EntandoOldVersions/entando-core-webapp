@@ -83,7 +83,7 @@
 <wpsa:subset source="contents" count="10" objectName="groupContent" advanced="true" offset="5">
 <s:set name="group" value="#groupContent" />
 
-<div class="pager">
+<div class="text-center">
 	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
 	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 </div>
@@ -124,7 +124,7 @@
 	</table>
 </s:if>		
 
-<div class="pager">
+<div class="text-center">
 	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 </div>
 

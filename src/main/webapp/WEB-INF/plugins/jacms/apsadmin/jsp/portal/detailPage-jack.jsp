@@ -14,7 +14,7 @@
 
 <wpsa:subset source="#publishedContents" count="10" objectName="publishedContentsGroup" advanced="true" offset="5" pagerId="publishedContents">
 <s:set name="group" value="#publishedContentsGroup" />
-<div class="pager">
+<div class="text-center">
 	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
 	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 </div>
@@ -30,7 +30,7 @@
 	</table>
 </div>
 
-<div class="pager">
+<div class="text-center">
 	<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 </div>
 </wpsa:subset>

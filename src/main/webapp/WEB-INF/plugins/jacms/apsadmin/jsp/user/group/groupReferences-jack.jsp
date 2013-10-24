@@ -12,7 +12,7 @@
 			<s:if test="null != references['jacmsContentManagerUtilizers']">
 				<wpsa:subset source="references['jacmsContentManagerUtilizers']" count="10" objectName="contentReferences" advanced="true" offset="5" pagerId="contentManagerReferences">
 					<s:set name="group" value="#contentReferences" />
-					<div class="pager">
+					<div class="text-center">
 						<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
 						<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 					</div>
@@ -47,7 +47,7 @@
 							</s:iterator>
 						</table>
 					</div>
-					<div class="pager">
+					<div class="text-center">
 						<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 					</div>
 					</wpsa:subset>
@@ -66,7 +66,7 @@
 			<s:if test="null != references['jacmsResourceManagerUtilizers']">
 				<wpsa:subset source="references['jacmsResourceManagerUtilizers']" count="10" objectName="resourceReferences" advanced="true" offset="5" pagerId="resourceManagerReferences">
 					<s:set name="group" value="#resourceReferences" />
-					<div class="pager">
+					<div class="text-center">
 						<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
 						<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 					</div>
@@ -97,7 +97,7 @@
 							</tr>
 						</s:iterator>
 					</table>
-					<div class="pager">
+					<div class="text-center">
 						<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 					</div>
 				</wpsa:subset>

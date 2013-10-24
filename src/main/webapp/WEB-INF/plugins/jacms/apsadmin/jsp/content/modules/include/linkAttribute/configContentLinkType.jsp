@@ -84,7 +84,7 @@
 			<wpsf:hidden name="contentOnSessionMarker" />
 		</p>
 		<s:set var="group" value="#groupContent" />
-		<div class="pager">
+		<div class="text-center">
 			<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
 			<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 		</div>

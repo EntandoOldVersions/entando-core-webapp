@@ -191,7 +191,7 @@ http://localhost:8080/PortalExample/do/Entity/search.action?entityManagerName=ja
 	<wpsa:subset source="#entityIds" count="15" objectName="entityGroup" advanced="true" offset="5">
 		<s:set name="group" value="#entityGroup" />
 		
-		<div class="pager">
+		<div class="text-center">
 			<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
 			<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 		</div>   
@@ -203,7 +203,7 @@ http://localhost:8080/PortalExample/do/Entity/search.action?entityManagerName=ja
 			<br />
 		</s:iterator>
 		
-		<div class="pager">
+		<div class="text-center">
 			<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 		</div>
 		

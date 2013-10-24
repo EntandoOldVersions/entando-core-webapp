@@ -38,7 +38,7 @@
 		<wpsa:subset source="contentModels" count="10" objectName="groupContentModel" advanced="true" offset="5">
 		<s:set name="group" value="#groupContentModel" />
 		
-		<div class="pager">
+		<div class="text-center">
 			<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
 			<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 		</div>
@@ -85,7 +85,7 @@
 			</s:iterator>
 		</table>
 		</div>
-	<div class="pager">
+	<div class="text-center">
 		<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 	</div>
 	</wpsa:subset>

@@ -30,7 +30,7 @@
 	<wpsa:subset source="references['PageManagerUtilizers']" count="10" objectName="pageReferences" advanced="true" offset="5" pagerId="pageManagerReferences">
 	<s:set name="group" value="#pageReferences" />
 	
-	<div class="pager">
+	<div class="text-center">
 		<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
 		<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 	</div>
@@ -64,7 +64,7 @@
 		</s:iterator>
 	</table>
 	
-	<div class="pager">
+	<div class="text-center">
 		<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 	</div>
 	
