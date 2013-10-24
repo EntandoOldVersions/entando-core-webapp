@@ -32,7 +32,7 @@
 				&#32;
 			</span>
 			<span id="contentDescription-input" style="display: none;" class="input-group has-warning margin-small-bottom">
-				<input class="form-control" type="text" name="descr" value="<s:property value="#contentDescriptionVar" />" id="contentDescription" />
+				<input class="form-control" type="text" name="descr" value="<s:property value="#contentDescriptionVar" />" placeholder="<s:text name="note.description.placeholder" />" id="contentDescription" />
 				<span class="input-group-btn">
 					<button
 						class="btn btn-warning"
