@@ -31,9 +31,7 @@
 	<script src="<wp:resourceURL />administration/bootstrap/js/bootstrap.js"></script>
 	<script src="<wp:resourceURL />administration/js/bootstrap-offcanvas.js"></script>
 
-	<!-- QUA' FUORI LE COSE COMUNI. DENTRO L'EXTRA LE DIFFERENZE -->
 	<tiles:insertAttribute name="extraResources"/>
-
 </head>
 <body>
 
@@ -43,13 +41,11 @@
 	<tiles:insertAttribute name="shortcuts-quickbar"/>
 	--%>
 
-	<%--
-	<h1 id="fagiano_start"><s:text name="title.mainFunctions" /></h1>
-	--%>
+	<h1 class="sr-only" id="fagiano_start"><s:text name="title.mainFunctions" /></h1>
 	<div class="row row-offcanvas row-offcanvas-right">
 		<div class="col-sm-3 sidebar-offcanvas col-sm-push-9 col-md-push-9 col-lg-push-9" id="sidebar">
 
-			<div class="panel-group margin-base-bottom">
+			<div class="panel-group margin-base-bottom" role="navigation">
 				<div class="panel panel-default">
 					<div class="panel-heading" id="user-avatar">
 						<a data-toggle="collapse" href="#submenu-user" class="display-block">
@@ -93,7 +89,7 @@
 				</p>
 			</nav>
 		</div>
-		<div class="col-sm-9 col-sm-pull-3 col-md-pull-3 col-lg-pull-3" id="container-content">
+		<div class="col-sm-9 col-sm-pull-3 col-md-pull-3 col-lg-pull-3" id="container-content" role="banner">
 			<div class="navbar navbar-default navbar-static-top" id="navbar">
 				<div class="navbar-header">
 					<a href="#sidebar" class="btn-offcanvas navbar-toggle pull-right visible-xs" data-toggle="offcanvas">
@@ -113,7 +109,7 @@
 				<li><a href="#fagiano_mainContent"><s:text name="note.backToMainContent" /></a></li>
 				<li><a href="#fagiano_start"><s:text name="note.backToStart" /></a></li>
 			</ul>
-			<div class="text-center">
+			<div class="text-center" role="contentinfo">
 				<tiles:insertAttribute name="footer"/>
 			</div>
 		</div>
