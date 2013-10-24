@@ -49,7 +49,11 @@
 				<div class="panel panel-default">
 					<div class="panel-heading" id="user-avatar">
 						<a data-toggle="collapse" href="#submenu-user" class="display-block">
-							<c:out value="${sessionScope.currentUser}" />
+							<c:set var="current_username" value="${sessionScope.currentUser}" />
+							<c:if test="${null != sessionScope.currentUser.profile}">
+								<c:set var="current_username" value="${sessionScope.currentUser.profile.displayName}" />
+							</c:if>
+							<c:out value="${current_username}" />
 							<img src="<s:url action="avatarStream" namespace="/do/currentuser/avatar">
 							<s:param name="gravatarSize">34</s:param>
 						</s:url>" width="34" height="34" alt=" " class="img-rounded" />
