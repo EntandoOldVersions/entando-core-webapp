@@ -25,10 +25,10 @@
 					<span class="icon icon-edit"></span>&#32;
 					<span data-swapon-role="text">
 						<s:if test="#contentDescriptionVar!=null && !#contentDescriptionVar.isEmpty()"><s:property value="#contentDescriptionVar" /></s:if>
-						<s:else><s:text name="note.provide.description" /></s:else>
+						<s:else><s:text name="note.description.provide" /></s:else>
 					</span>
 				</a>
-				<span class="text-warning" <s:if test="#contentDescriptionVar!=null && !#contentDescriptionVar.isEmpty()"> style="display: none;" </s:if>>,&#32;<s:text name="note.provide.description.usedefault" />.</span>
+				<span class="text-warning" <s:if test="#contentDescriptionVar!=null && !#contentDescriptionVar.isEmpty()"> style="display: none;" </s:if>>,&#32;<s:text name="note.description.usedefault" />.</span>
 				&#32;
 			</span>
 			<span id="contentDescription-input" style="display: none;" class="input-group has-warning margin-small-bottom">
