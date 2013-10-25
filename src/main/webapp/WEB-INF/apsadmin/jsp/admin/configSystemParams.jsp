@@ -19,7 +19,7 @@
 		</div>
 	</s:if>
 
-	<fieldset class="col-xs-12 margin-large-top"><legend><s:text name="sysconfig.legend.featuresOnDemand" /></legend>
+	<fieldset class="col-xs-12 margin-large-top" id="additional-features"><legend><s:text name="sysconfig.legend.featuresOnDemand" /></legend>
 
 		<div class="form-group">
 			<s:set name="paramName" value="'firstTimeMessages'" />

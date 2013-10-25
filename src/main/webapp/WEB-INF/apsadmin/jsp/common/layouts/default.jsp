@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
-<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <!DOCTYPE html>
@@ -31,6 +31,17 @@
 	<script src="<wp:resourceURL />administration/bootstrap/js/bootstrap.js"></script>
 	<script src="<wp:resourceURL />administration/js/bootstrap-offcanvas.js"></script>
 
+	<wp:info key="systemParam" paramName="firstTimeMessages" var="firstTimeMessagesVar" />
+	<!-- <c:out value="${firstTimeMessagesVar}" /> -->
+	<c:if test="${firstTimeMessagesVar eq true}">
+		<script>
+			var Entando = Entando||{};
+			Entando.info = Entando.type || {};
+			Entando.info.applicationBaseURL = "<wp:info key="systemParam" paramName="applicationBaseURL" />";
+		</script>
+		<script src="<wp:resourceURL />administration/js/first-time-messages.js" />
+	</c:if>
+
 	<tiles:insertAttribute name="extraResources"/>
 </head>
 <body>
@@ -44,54 +55,68 @@
 	<p class="sr-only" id="fagiano_start"><s:text name="title.mainFunctions" /></p>
 	<div class="row row-offcanvas row-offcanvas-right">
 		<div class="col-sm-3 sidebar-offcanvas col-sm-push-9 col-md-push-9 col-lg-push-9" id="sidebar">
-
-			<div class="panel-group margin-base-bottom" role="navigation">
-				<div class="panel panel-default">
-					<div class="panel-heading" id="user-avatar">
-						<a data-toggle="collapse" href="#submenu-user" class="display-block">
-							<c:set var="current_username" value="${sessionScope.currentUser}" />
-							<c:if test="${null != sessionScope.currentUser.profile}">
-								<c:set var="current_username" value="${sessionScope.currentUser.profile.displayName}" />
-							</c:if>
-							<c:out value="${current_username}" />
-							<img src="<s:url action="avatarStream" namespace="/do/currentuser/avatar">
-							<s:param name="gravatarSize">34</s:param>
-						</s:url>" width="34" height="34" alt=" " class="img-rounded" />
-						</a>
-					</div>
-					<div id="submenu-user" class="panel-collapse collapse">
-						<ul class="panel-body nav nav-pills nav-stacked">
-							<c:if test="${sessionScope.currentUser.japsUser}">
-							<li>
-								<a href="<s:url action="editProfile" namespace="/do/CurrentUser" />">
-									<span class="icon icon-fixed-width icon-user"></span>&#32;
-									<s:text name="note.changeYourPassword" />
-								</a>
-							</li>
-							</c:if>
-							<li>
-								<a href="<s:url value="/" />" title="<s:text name="note.goToPortal" /> ( <s:text name="note.sameWindow" /> )">
-									<span class="icon icon-fixed-width icon-globe"></span>&#32;
-									<s:text name="note.goToPortal" />
-								</a>
-							</li>
-							<li>
-								<a href="<s:url action="logout" namespace="/do" />">
-									<span class="icon icon-fixed-width icon-off"></span>&#32;
-									<s:text name="menu.exit" />
-								</a>
-							</li>
-						</ul>
+			<div class="alternative-background">
+				<div class="panel-group margin-base-bottom" role="navigation">
+					<div class="panel panel-default">
+						<div class="panel-heading" id="user-avatar">
+							<a data-toggle="collapse" href="#submenu-user" class="display-block">
+								<c:set var="current_username" value="${sessionScope.currentUser}" />
+								<c:if test="${null != sessionScope.currentUser.profile}">
+									<c:set var="current_username" value="${sessionScope.currentUser.profile.displayName}" />
+								</c:if>
+								<c:out value="${current_username}" />
+								<img src="<s:url action="avatarStream" namespace="/do/currentuser/avatar">
+								<s:param name="gravatarSize">34</s:param>
+							</s:url>" width="34" height="34" alt=" " class="img-rounded" />
+							</a>
+						</div>
+						<div id="submenu-user" class="panel-collapse collapse">
+							<ul class="panel-body nav nav-pills nav-stacked">
+								<c:if test="${sessionScope.currentUser.japsUser}">
+								<li>
+									<a href="<s:url action="editProfile" namespace="/do/CurrentUser" />">
+										<span class="icon icon-fixed-width icon-user"></span>&#32;
+										<s:text name="note.changeYourPassword" />
+									</a>
+								</li>
+								</c:if>
+								<li>
+									<a href="<s:url value="/" />" title="<s:text name="note.goToPortal" /> ( <s:text name="note.sameWindow" /> )">
+										<span class="icon icon-fixed-width icon-globe"></span>&#32;
+										<s:text name="note.goToPortal" />
+									</a>
+								</li>
+								<li>
+									<a href="<s:url action="logout" namespace="/do" />">
+										<span class="icon icon-fixed-width icon-off"></span>&#32;
+										<s:text name="menu.exit" />
+									</a>
+								</li>
+							</ul>
+						</div>
 					</div>
 				</div>
+				<nav role="navigation">
+					<tiles:insertAttribute name="menu"/>
+					<p class="sr-only">
+						<a href="#fagiano_start" id="fagiano_mainContent"><s:text name="note.backToStart" /></a>
+					</p>
+				</nav>
 			</div>
-
-			<nav role="navigation">
-				<tiles:insertAttribute name="menu"/>
-				<p class="sr-only">
-					<a href="#fagiano_start" id="fagiano_mainContent"><s:text name="note.backToStart" /></a>
-				</p>
-			</nav>
+			<c:if test="${firstTimeMessagesVar}">
+				<div class="alert alert-info margin-none margin-base-top fade in" id="first-time-messages">
+					<button class="close" data-dismiss="alert" data-first-time-messages="dismiss"><span class="icon icon-remove"></span></button>
+					<p class="margin-none">
+						<s:text name="label.firstTimeMessages.moreFeatures" /><br />
+						<a class="alert-link" href="<s:url action="configSystemParams" namespace="/do/BaseAdmin" />#additional-features">
+							<s:text name="label.firstTimeMessages.goActivateFeatures" />&#32;<span class="icon  icon-arrow-right"></span>
+						</a>
+					</p>
+				</div>
+				<div class="alert alert-warning margin-none margin-base-top fade out hide" id="first-time-messages-undo">
+					<a class="alert-link" href="#" data-first-time-messages="dismiss" data-dismiss="alert"><s:text name="label.firstTimeMessages.undo" /></a>&#32;<s:text name="label.firstTimeMessages.ifYouMissed" />&#32;<a class="alert-link" href="<s:url action="configSystemParams" namespace="/do/BaseAdmin" />#additional-features"><code><s:text name="label.firstTimeMessages.settingsGeneral" /></code></a>
+				</div>
+			</c:if>
 		</div>
 		<div class="col-sm-9 col-sm-pull-3 col-md-pull-3 col-lg-pull-3" id="container-content">
 			<div class="navbar navbar-default navbar-static-top" id="navbar" role="banner">
