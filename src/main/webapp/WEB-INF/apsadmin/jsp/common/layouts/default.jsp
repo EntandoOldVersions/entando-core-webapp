@@ -93,8 +93,8 @@
 				</p>
 			</nav>
 		</div>
-		<div class="col-sm-9 col-sm-pull-3 col-md-pull-3 col-lg-pull-3" id="container-content" role="banner">
-			<div class="navbar navbar-default navbar-static-top" id="navbar">
+		<div class="col-sm-9 col-sm-pull-3 col-md-pull-3 col-lg-pull-3" id="container-content">
+			<div class="navbar navbar-default navbar-static-top" id="navbar" role="banner">
 				<div class="navbar-header">
 					<a href="#sidebar" class="btn-offcanvas navbar-toggle pull-right visible-xs" data-toggle="offcanvas">
 						<span class="sr-only"><s:text name="label.menu" /></span>
