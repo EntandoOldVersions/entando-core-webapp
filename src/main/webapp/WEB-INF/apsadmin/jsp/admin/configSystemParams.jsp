@@ -22,6 +22,11 @@
 	<fieldset class="col-xs-12 margin-large-top"><legend><s:text name="sysconfig.legend.featuresOnDemand" /></legend>
 
 		<div class="form-group">
+			<s:set name="paramName" value="'firstTimeMessages'" />
+			<label class="checkbox">
+				<s:include value="/WEB-INF/apsadmin/jsp/admin/simpleCheckboxParamBlock.jsp" />
+				&#32;<s:text name="menu.accountAdmin.firstTimeMessages" />
+			</label>
 			<s:set name="paramName" value="'groupsOnDemand'" />
 			<label class="checkbox">
 				<s:include value="/WEB-INF/apsadmin/jsp/admin/simpleCheckboxParamBlock.jsp" />
