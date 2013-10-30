@@ -32,14 +32,13 @@
 	<script src="<wp:resourceURL />administration/js/bootstrap-offcanvas.js"></script>
 
 	<wp:info key="systemParam" paramName="firstTimeMessages" var="firstTimeMessagesVar" />
-	<!-- <c:out value="${firstTimeMessagesVar}" /> -->
 	<c:if test="${firstTimeMessagesVar eq true}">
 		<script>
 			var Entando = Entando||{};
 			Entando.info = Entando.type || {};
 			Entando.info.applicationBaseURL = "<wp:info key="systemParam" paramName="applicationBaseURL" />";
 		</script>
-		<script src="<wp:resourceURL />administration/js/first-time-messages.js" />
+		<script src="<wp:resourceURL />administration/js/first-time-messages.js"></script>
 	</c:if>
 
 	<tiles:insertAttribute name="extraResources"/>
