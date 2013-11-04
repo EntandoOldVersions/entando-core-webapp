@@ -17,14 +17,15 @@
 <s:set var="resourceFlavoursVar" value="resourceFlavours" />
 
 <s:if test="#resourceFlavoursVar.size() > 0">
-	<s:set var="icon_off"><img src="<wp:resourceURL />administration/common/img/icons/generic-status-ko.png" alt="<wp:i18n key="ENTANDO_API_METHOD_STATUS_OFF" />" /></s:set>
-	<s:set var="title_off"><wp:i18n key="ENTANDO_API_METHOD_STATUS_OFF" />. <wp:i18n key="ENTANDO_API_GOTO_DETAILS" /></s:set>
-	<s:set var="icon_free"><img src="<wp:resourceURL />administration/common/img/icons/generic-status-ok.png" alt="<wp:i18n key="ENTANDO_API_METHOD_STATUS_FREE" />" /></s:set>
+	<s:set var="icon_free"><span class="icon icon-ok"></span><span class="noscreen sr-only"><wp:i18n key="ENTANDO_API_METHOD_STATUS_FREE" /></span></s:set>
 	<s:set var="title_free"><wp:i18n key="ENTANDO_API_METHOD_STATUS_FREE" />. <wp:i18n key="ENTANDO_API_GOTO_DETAILS" /></s:set>
-	<s:set var="icon_auth"><img src="<wp:resourceURL />administration/common/img/icons/22x22/api-authentication.png" alt="<wp:i18n key="ENTANDO_API_METHOD_STATUS_AUTH" />" /></s:set>
+
+	<s:set var="icon_auth"><span class="icon icon-user"></span><span class="noscreen sr-only"><wp:i18n key="ENTANDO_API_METHOD_STATUS_AUTH" /></span></s:set>
 	<s:set var="title_auth"><wp:i18n key="ENTANDO_API_METHOD_STATUS_AUTH" />. <wp:i18n key="ENTANDO_API_GOTO_DETAILS" /></s:set>
-	<s:set var="icon_lock"><img src="<wp:resourceURL />administration/common/img/icons/22x22/api-authorization.png"  alt="<wp:i18n key="ENTANDO_API_METHOD_STATUS_LOCK" />" /></s:set>
+
+	<s:set var="icon_lock"><span class="icon icon-lock"></span><span class="noscreen sr-only"><wp:i18n key="ENTANDO_API_METHOD_STATUS_LOCK" /></span></s:set>
 	<s:set var="title_lock"><wp:i18n key="ENTANDO_API_METHOD_STATUS_LOCK" />. <wp:i18n key="ENTANDO_API_GOTO_DETAILS" /></s:set>
+
 	<s:iterator var="resourceFlavourVar" value="#resourceFlavoursVar" status="resourceFlavourStatusVar">
 		<table class="table table-striped table-bordered table-condensed">
 			<s:iterator value="#resourceFlavourVar" var="resourceVar" status="statusVar" >
