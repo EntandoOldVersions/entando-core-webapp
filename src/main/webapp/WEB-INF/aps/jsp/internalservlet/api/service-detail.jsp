@@ -3,7 +3,7 @@
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
-<wp:headInfo type="CSS" info="showlets/api.css"/>
+<wp:headInfo type="CSS" info="widgets/api.css"/>
 <s:set var="apiServiceVar" value="%{getApiService(serviceKey)}" />
 <div class="entando-api api-resource-detail">
 <h2><wp:i18n key="ENTANDO_API_SERVICE" />&#32;<s:property value="serviceKey" /></h2>
@@ -34,7 +34,7 @@
 <s:set var="masterMethodVar" value="#apiServiceVar.master" />
 
 <!-- INFO -->
-<dl class="api-info">
+<dl class="dl-horizontal">
 	<dt><wp:i18n key="ENTANDO_API_SERVICE_KEY" /></dt>
 		<dd><s:property value="serviceKey" /></dd>
 	<dt><wp:i18n key="ENTANDO_API_SERVICE_PARENT_API" /></dt>
@@ -85,7 +85,7 @@
 </dl>
 
 <s:if test="%{null != #apiServiceVar.freeParameters}" >
-<table class="generic" summary="<wp:i18n key="ENTANDO_API_SERVICE_PARAMETERS_SUMMARY" />">
+<table class="table table-striped table-bordered table-condensed" summary="<wp:i18n key="ENTANDO_API_SERVICE_PARAMETERS_SUMMARY" />">
 	<caption><span><wp:i18n key="ENTANDO_API_SERVICE_PARAMETERS" /></span></caption>
 	<tr>
 		<th><wp:i18n key="ENTANDO_API_SERVICE_PARAM_NAME" /></th>
@@ -110,6 +110,6 @@
 </table>
 </s:if>
 <p class="api-back">
-	<a href="<wp:action path="/ExtStr2/do/Front/Api/Resource/list.action" />"><wp:i18n key="ENTANDO_API_GOTO_LIST" /></a>
+	<a class="btn btn-primary" href="<wp:action path="/ExtStr2/do/Front/Api/Resource/list.action" />"><span class="icon-arrow-left icon-white"></span>&#32;<wp:i18n key="ENTANDO_API_GOTO_LIST" /></a>
 </p>
 </div>
