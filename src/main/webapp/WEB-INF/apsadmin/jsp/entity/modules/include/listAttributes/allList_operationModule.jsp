@@ -15,7 +15,7 @@
 			<wpsa:actionSubParam name="movement" value="UP" />
 		</wpsa:actionParam>
 		<wpsf:submit disabled="%{#operationButtonDisabled}" action="%{#actionName}" type="button" cssClass="btn btn-default" title="%{getText('label.moveInPositionNumber')}: %{#elementIndex}">
-		<span class="icon icon-sort-up"></span>
+		<span class="fa fa-sort-up"></span>
 		<span class="sr-only"><s:text name="label.moveInPositionNumber" />: <s:property value="%{#elementIndex}" /></span>
 		</wpsf:submit>
 
@@ -26,7 +26,7 @@
 			<wpsa:actionSubParam name="movement" value="DOWN" />
 		</wpsa:actionParam>
 		<wpsf:submit disabled="%{#operationButtonDisabled}" action="%{#actionName}" type="button" cssClass="btn btn-default" title="%{getText('label.moveInPositionNumber')}: %{#elementIndex+2}">
-		<span class="icon icon-sort-down"></span>
+		<span class="fa fa-sort-down"></span>
 		<span class="sr-only"><s:text name="label.moveInPositionNumber" />: <s:property value="%{#elementIndex}" /></span>
 		</wpsf:submit>
 	</div>
@@ -37,7 +37,7 @@
 			<wpsa:actionSubParam name="elementIndex" value="%{#elementIndex}" />
 		</wpsa:actionParam>
 		<wpsf:submit disabled="%{#operationButtonDisabled}" action="%{#actionName}" type="button" cssClass="btn btn-default btn-warning" title="%{getText('label.remove')}: %{#elementIndex}">
-		<span class="icon icon-remove-circle"></span>
+		<span class="fa fa-remove-circle"></span>
 		<span class="sr-only"><s:text name="label.remove" />: <s:property value="%{#elementIndex}" /></span>
 		</wpsf:submit>
 	</div>

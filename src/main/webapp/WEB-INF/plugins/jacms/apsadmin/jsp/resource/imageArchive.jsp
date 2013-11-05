@@ -46,13 +46,13 @@
 	<div class="form-group">
 		<div class="input-group col-sm-12">
 			<span class="input-group-addon">
-				<span class="icon icon-file-text-alt icon-large"></span>
+				<span class="fa fa-file-text-o fa-lg"></span>
 			</span>
 			<label for="text" class="sr-only"><s:text name="label.search.by"/>&#32;<s:text name="label.description"/></label>
 			<wpsf:textfield name="text" id="text" cssClass="form-control input-lg" placeholder="%{getText('label.description')}" title="%{getText('label.search.by')} %{getText('label.description')}" />
 			<div class="input-group-btn">
 				<wpsf:submit type="button" cssClass="btn btn-primary btn-lg" title="%{getText('label.search')}">
-					<span class="icon icon-search"></span>
+					<span class="fa fa-search"></span>
 					<span class="sr-only"><s:text name="label.search" /></span>
 				</wpsf:submit>
 				<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="collapse" data-target="#search-advanced" title="<s:text name="title.searchFilters" />">
@@ -87,11 +87,11 @@
 						</label>
 						<div class="col-sm-5">
 							<div class="well">
-								<ul id="categoryTree" class="icons-ul list-unstyled">
+								<ul id="categoryTree" class="fa-ul list-unstyled">
 									<s:set name="inputFieldName" value="'categoryCode'" />
 									<s:set name="selectedTreeNode" value="categoryCode" />
 									<s:set name="liClassName" value="'category'" />
-									<s:set name="treeItemIconName" value="'icon-folder-close'" />
+									<s:set name="treeItemIconName" value="'fa-folder'" />
 
 									<s:if test="#categoryTreeStyleVar == 'classic'">
 										<s:set name="currentRoot" value="categoryRoot" />
@@ -111,7 +111,7 @@
 					<div class="form-group">
 						<div class="col-sm-5 col-sm-offset-2">
 							<wpsf:submit type="button" cssClass="btn btn-primary">
-								<span class="icon icon-search"></span>&#32;<s:text name="label.search" />
+								<span class="fa fa-search"></span>&#32;<s:text name="label.search" />
 							</wpsf:submit>
 						</div>
 					</div>
@@ -127,7 +127,7 @@
 			<s:param name="resourceTypeCode" >Image</s:param><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" />
 		</s:url>"
 		class="btn btn-default">
-		<span class="icon icon-plus-sign"></span>&#32;
+		<span class="fa fa-plus-circle"></span>&#32;
 		<s:text name="label.new" />&#32;<s:text name="label.image" />
 	</a>
 </wp:ifauthorized>
@@ -187,7 +187,7 @@
 
 			<s:if test="!onEditContent">
 				<div class="panel-heading text-right padding-small-vertical padding-small-right">
-					<a href="<s:property value="URLtrash" escape="false" />" class="icon icon-remove-sign text-warning">
+					<a href="<s:property value="URLtrash" escape="false" />" class="fa fa-remove-sign text-warning">
 						<span class="sr-only">Delete</span>
 					</a>
 				</div>
@@ -201,7 +201,7 @@
 					<a href="<s:property value="URLedit" escape="false" />"
 						 class="btn btn-default"
 						 title="<s:text name="label.edit" />: <s:property value="#resource.descr" />">
-						<span class="icon icon-edit"></span>&#32;
+						<span class="fa fa-pencil-square-o"></span>&#32;
 						<s:text name="label.edit" />
 					</a>
 				</s:if>
@@ -209,12 +209,12 @@
 					<a href="<s:property value="URLuse" escape="false" />"
 						 class="btn btn-default"
 						 title="<s:text name="note.joinThisToThat" />:	<s:property value="content.descr" />" >
-						<span class="icon icon-picture"></span>&#32;
+						<span class="fa fa-picture-o"></span>&#32;
 						<s:text name="label.use"/>
 					</a>
 				</s:else>
 					<button type="button" class="btn btn-info" data-toggle="popover" data-title="<s:property value="#resource.descr" />">
-						<span class="icon icon-info"></span>
+						<span class="fa fa-info"></span>
 						<span class="sr-only"><s:text name="label.info" /></span>
 					</button>
 				</div>

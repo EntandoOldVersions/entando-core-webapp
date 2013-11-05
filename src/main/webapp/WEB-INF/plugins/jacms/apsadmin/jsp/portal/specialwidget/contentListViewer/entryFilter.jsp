@@ -31,7 +31,7 @@
 			<s:set var="showletType" value="%{getShowletType(widgetTypeCode)}"></s:set>
 			<h2 class="h5 margin-small-vertical">
 				<label class="sr-only"><s:text name="name.widget" /></label>
-				<span class="icon icon-puzzle-piece" title="<s:text name="name.widget" />"></span>&#32;
+				<span class="fa fa-puzzle-piece" title="<s:text name="name.widget" />"></span>&#32;
 				<s:property value="%{getTitle(#showletType.code, #showletType.titles)}" />
 			</h2>
 
@@ -43,7 +43,7 @@
 
 			<s:if test="hasFieldErrors()">
 			<div class="alert alert-danger alert-dismissable">
-				<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+				<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
 				<h3 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h3>
 				<ul>
 				<s:iterator value="fieldErrors">
@@ -97,7 +97,7 @@
 			</s:elseif>
 
 			<p>
-				<span class="icon icon-filter" title="<s:text name="note.filterTypes.intro" />"></span>&#32;
+				<span class="fa fa-filter" title="<s:text name="note.filterTypes.intro" />"></span>&#32;
 			 	<s:property value="filterDescription" />
 			 	<span class="label label-info">
 			<s:if test="filterTypeId == 0">
@@ -381,7 +381,7 @@
 	<div class="form-group">
 		<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 			<wpsf:submit action="%{#saveFilterActionName}" type="button" cssClass="btn btn-primary btn-block">
-				<span class="icon icon-filter"></span>&#32;
+				<span class="fa fa-filter"></span>&#32;
 				<s:text name="label.save" />
 			</wpsf:submit>
 		</div>

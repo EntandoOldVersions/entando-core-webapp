@@ -13,7 +13,7 @@
 
 <div id="main" role="main">
 <div class="alert alert-danger alert-dismissable fade in">
-	<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+	<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
 	<h2 class="h4 margin-none">
 		<s:text name="message.title.ActionErrors" />
 	</h2>
@@ -40,7 +40,7 @@
 						<div class="btn-group btn-group-xs">
 							<a class="btn btn-default" href="<s:url action="new" namespace="/do/Page"/>?selectedNode=<s:property value="#page.code" />&amp;action:configure=true">
 								<span class="sr-only"><s:text name="label.edit" />&#32;<s:property value="#model.description" /></span>
-								<span class="icon icon-cog"></span>
+								<span class="fa fa-cog"></span>
 							</a>
 						</div>
 					</td>

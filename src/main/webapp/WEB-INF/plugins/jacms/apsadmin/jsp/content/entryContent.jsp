@@ -19,12 +19,12 @@
 	<div data-autosave="messages_container">
 		<s:if test="hasFieldErrors()">
 			<div class="alert alert-danger alert-dismissable fade in">
-				<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+				<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
 				<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h2>
 				<p class="margin-none margin-base-top">
 					<s:text name="message.content.error" />
 					&ensp;<span
-						class="icon icon-question-sign cursor-pointer"
+						class="fa fa-question-circle cursor-pointer"
 						title="<s:text name="label.all" />"
 						data-toggle="collapse"
 						data-target="#content-error-messages"></span>
@@ -93,13 +93,13 @@
 
 									<div class="form-group<s:property value="#controlGroupErrorClassVar" />"><%-- form group --%>
 										<s:if test="#attribute.type == 'List' || #attribute.type == 'Monolist'">
-												<label class="display-block"><span class="icon icon-list"></span>&#32;<s:property value="#attributeLabelVar" />&#32;<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" /></label>
+												<label class="display-block"><span class="fa fa-list"></span>&#32;<s:property value="#attributeLabelVar" />&#32;<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" /></label>
 										</s:if>
 										<s:elseif test="#attribute.type == 'Image' || #attribute.type == 'Attach' || #attribute.type == 'CheckBox' || #attribute.type == 'Boolean' || #attribute.type == 'ThreeState'">
 												<label class="display-block"><s:property value="#attributeLabelVar" />&#32;<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" /></label>
 										</s:elseif>
 										<s:elseif test="#attribute.type == 'Composite'">
-												<label class="display-block"><span class="icon icon-list-alt"></span>&#32;<s:property value="#attributeLabelVar" />&#32;<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" /></label>
+												<label class="display-block"><span class="fa fa-list-alt"></span>&#32;<s:property value="#attributeLabelVar" />&#32;<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" /></label>
 										</s:elseif>
 										<s:elseif test="#attribute.type == 'Monotext' || #attribute.type == 'Text' || #attribute.type == 'Longtext' || #attribute.type == 'Hypertext' || #attribute.type == 'Number' || #attribute.type == 'Date' || #attribute.type == 'Timestamp' || #attribute.type == 'Link' || #attribute.type == 'Enumerator'">
 												<label class="display-block" for="<s:property value="%{#attributeTracer.getFormFieldName(#attribute)}" />"><s:property value="#attributeLabelVar" />&#32;<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" /></label>
@@ -200,7 +200,7 @@
 													action="%{#previewActionName}"
 													title="%{getText('note.button.previewContent')}"
 													>
-													<span class="icon icon-eye-open"></span>&#32;<s:text name="label.preview" />
+													<span class="fa fa-eye-open"></span>&#32;<s:text name="label.preview" />
 												</wpsf:submit>
 											</span>
 										</div>
@@ -219,7 +219,7 @@
 			<div class="panel-heading">
 				<h2 class="h4 margin-none">
 					<s:text name="title.contentInfo" />
-					<a href="#quickmenu" id="info_content_goBackToQuickMenu" class="pull-right" title="<s:text name="note.goBackToQuickMenu" />"><span class="icon icon-circle-arrow-up"></span><span class="sr-only"><s:text name="note.goBackToQuickMenu" /></span></a>
+					<a href="#quickmenu" id="info_content_goBackToQuickMenu" class="pull-right" title="<s:text name="note.goBackToQuickMenu" />"><span class="fa fa-arrow-circle-up"></span><span class="sr-only"><s:text name="note.goBackToQuickMenu" /></span></a>
 				</h2>
 			</div>
 			<div class="panel-body">
@@ -243,7 +243,7 @@
 										type="button"
 										action="joinGroup"
 										cssClass="btn btn-default">
-											<span class="icon icon-plus"></span>&#32;
+											<span class="fa fa-plus"></span>&#32;
 											<s:text name="label.join" />
 									</wpsf:submit>
 								</span>
@@ -258,10 +258,10 @@
 										<wpsa:actionSubParam name="extraGroupName" value="%{#groupName}" />
 									</wpsa:actionParam>
 									<span class="label label-default label-sm pull-left padding-small-top padding-small-bottom margin-small-right margin-small-bottom">
-										<span class="icon icon-tag"></span>&#32;
+										<span class="fa fa-tag"></span>&#32;
 										<s:property value="%{getGroupsMap()[#groupName].getDescr()}"/>&#32;
 										<wpsf:submit type="button" cssClass="btn btn-default btn-xs badge" action="%{#actionName}" title="%{getText('label.remove')+' '+getGroupsMap()[#groupName].getDescr()}">
-											<span class="icon icon-remove"></span>
+											<span class="fa fa-remove"></span>
 											<span class="sr-only">x</span>
 										</wpsf:submit>
 									</span>

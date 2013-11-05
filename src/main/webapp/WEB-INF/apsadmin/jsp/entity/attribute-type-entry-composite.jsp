@@ -15,7 +15,7 @@
 
 <s:if test="hasFieldErrors()">
 	<div class="alert alert-danger alert-dismissable">
-		<button type="button" class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+		<button type="button" class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
 		<h2 class="h4 margin-none">
 			<s:text name="message.title.FieldErrors" />
    		</h2>
@@ -88,10 +88,10 @@
 	 		<td><s:property value="#attribute.type" /></td>
 			<td class="text-center">
 				<s:if test="#attribute.required">
-					<span class="icon icon-check" title="<s:text name="label.yes" />"></span>
+					<span class="fa fa-check-square-o" title="<s:text name="label.yes" />"></span>
 				</s:if> 
 				<s:else>
-					<span class="icon icon-check-empty" title="<s:text name="label.no" />"></span>
+					<span class="fa fa-square-o" title="<s:text name="label.no" />"></span>
 				</s:else>
 			</td>
 		</tr>
@@ -104,7 +104,7 @@
 <div class="form-group">
   <div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
     <wpsf:submit type="button" cssClass="btn btn-primary btn-block" action="saveCompositeAttribute" >
-      <span class="icon icon-save"></span>&#32;
+      <span class="fa fa-save"></span>&#32;
       <s:text name="label.save" />
     </wpsf:submit>
   </div>

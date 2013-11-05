@@ -9,7 +9,7 @@
 	<p class="sr-only"><wpsf:hidden name="contentOnSessionMarker" /></p>
 	<s:if test="hasFieldErrors()">
 		<div class="alert alert-danger alert-dismissable fade in">
-			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+			<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
 			<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h4>
 			<ul class="margin-none margin-base-top">
 				<s:iterator value="fieldErrors">
@@ -28,15 +28,15 @@
 					<s:iterator value="#linkDestinations" var="typeId">
 						<s:if test="#typeId != 4">
 							<s:if test="#typeId == 1">
-								<s:set var="statusIconVar">icon icon-globe</s:set>
+								<s:set var="statusIconVar">fa fa-globe</s:set>
 								<s:set name="linkDestination" value="%{getText('note.URLLinkTo')}" />
 							</s:if>
 							<s:elseif test="#typeId == 2">
-								<s:set var="statusIconVar">icon icon-folder-close</s:set>
+								<s:set var="statusIconVar">fa fa-folder</s:set>
 								<s:set name="linkDestination" value="%{getText('note.pageLinkTo')}" />
 							</s:elseif>
 							<s:elseif test="#typeId == 3 || #typeId == 4">
-								<s:set var="statusIconVar">icon icon-file-text-alt</s:set>
+								<s:set var="statusIconVar">fa fa-file-text-o</s:set>
 								<s:set name="linkDestination" value="%{getText('note.contentLinkTo')}" />
 							</s:elseif>
 							<label class="btn btn-default <s:if test="#typeId == symbolicLink.destType || (symbolicLink.destType == 4 && #typeId == 3)"> active </s:if>" for="linkType_<s:property value="#typeId"/>">
@@ -60,7 +60,7 @@
 			<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 				<wpsf:submit type="button" title="%{getText('label.continue')}" cssClass="btn btn-primary btn-block">
 					<s:text name="label.continue" />&#32;
-					<span class="icon icon-long-arrow-right"></span>
+					<span class="fa fa-long-arrow-right"></span>
 				</wpsf:submit>
 			</div>
 		</div>

@@ -10,7 +10,7 @@
 </h1>
 <s:if test="hasActionErrors()">
 	<div class="alert alert-danger alert-dismissable fade in">
-		<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+		<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
 		<h2 class="h4 margin-none"><s:text name="messages.title.ActionErrors" /></h2>
 		<ul class="margin-base-top">
 				<s:iterator value="actionErrors">
@@ -22,7 +22,7 @@
 <a 
 	class="btn btn-default margin-base-bottom"
 	href="<s:url namespace="/do/Role" action="new" />">
-		<span class="icon icon-plus-sign">
+		<span class="fa fa-plus-circle">
 			&#32;
 			<s:text name="title.roleManagement.roleNew" />
 		</span>
@@ -42,14 +42,14 @@
 							class="btn btn-default" 
 							title="<s:text name="label.edit" />:&#32;<s:property value="#role.name" />" 
 							href="<s:url action="edit"><s:param name="name" value="#role.name"/></s:url>">
-								<span class="icon icon-edit"></span>
+								<span class="fa fa-pencil-square-o"></span>
 								<span class="sr-only"><s:text name="label.edit" />:&#32;<s:property value="#role.name" /></span>
 						</a>
 						<a 
 							class="btn btn-default" 
 							title="<s:text name="note.assignToUsers" />:&#32;<s:property value="#role.name" />" 
 							href="<s:url namespace="/do/Role/Auth" action="config"><s:param name="authName" value="#role.name"/></s:url>">
-								<span class="icon icon-group"></span>
+								<span class="fa fa-users"></span>
 								<span class="sr-only"><s:text name="note.assignToUsers" />:&#32;<s:property value="#role.name" /></span>
 						</a>
 					</div>
@@ -58,7 +58,7 @@
 							class="btn btn-warning" 
 							title="<s:text name="label.remove" />: <s:property value="#role.name" />" 
 							href="<s:url action="trash"><s:param name="name" value="#role.name"/></s:url>">
-								<span class="icon icon-remove-circle" />
+								<span class="fa fa-remove-circle" />
 								<span class="sr-only"><s:text name="label.remove" />: <s:property value="#role.name" /></span>
 						</a>
 					</div>

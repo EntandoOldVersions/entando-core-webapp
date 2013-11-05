@@ -7,7 +7,7 @@
 <p id="manage" class="sr-only"><s:text name="note.userbar.intro" />:</p>
 
 <p>
-	<a class="btn btn-info btn-block" href="<s:url namespace="/do/BaseAdmin" action="settings" />"><span class="icon icon-cog"></span>&#32;<s:text name="menu.configure" /></a>
+	<a class="btn btn-info btn-block" href="<s:url namespace="/do/BaseAdmin" action="settings" />"><span class="fa fa-cog"></span>&#32;<s:text name="menu.configure" /></a>
 </p>
 
 <ul class="nav nav-pills nav-stacked" id="backoffice-menu-main" role="menubar">
@@ -33,7 +33,7 @@
 				<div class="panel-heading" role="presentation">
 					<a data-toggle="collapse" href="#submenu-plugins" class="display-block" id="aria-menu-plugin"  aria-haspopup="true" role="menuitem">
 						<s:text name="menu.plugins" />&#32;
-						<span class="icon icon-chevron-down pull-right"></span>
+						<span class="fa fa-chevron-down pull-right"></span>
 					</a>
 				</div>
 				<div id="submenu-plugins" class="panel-collapse collapse">
@@ -68,7 +68,7 @@
 			<div class="panel-heading" role="presentation">
 				<a data-toggle="collapse" href="#submenu-api" class="display-block" id="aria-menu-api" aria-haspopup="true" role="menuitem">
 					<s:text name="menu.apisAdmin" />&#32;
-					<span class="icon icon-chevron-down pull-right"></span>
+					<span class="fa fa-chevron-down pull-right"></span>
 				</a>
 			</div>
 			<div id="submenu-api" class="panel-collapse collapse" role="presentation">
@@ -96,7 +96,7 @@
 				<div class="panel-heading" role="presentation">
 					<a data-toggle="collapse" href="#submenu-contents" class="display-block" id="aria-menu-jacms-contentadmin"  aria-haspopup="true" role="menuitem">
 						<s:text name="jacms.menu.contentAdmin" />&#32;
-						<span class="icon icon-chevron-down pull-right"></span>
+						<span class="fa fa-chevron-down pull-right"></span>
 					</a>
 				</div>
 				<div id="submenu-contents" class="panel-collapse collapse" role="presentation">
@@ -152,7 +152,7 @@
 				<div role="presentation" class="panel-heading">
 					<a data-toggle="collapse" href="#submenu-resources" class="display-block" id="aria-menu-jacms-resources"  aria-haspopup="true" role="menuitem">
 						<s:text name="jacms.menu.resourceAdmin" />&#32;
-						<span class="icon icon-chevron-down pull-right"></span>
+						<span class="fa fa-chevron-down pull-right"></span>
 					</a>
 				</div>
 				<div id="submenu-resources" class="panel-collapse collapse" role="presentation">

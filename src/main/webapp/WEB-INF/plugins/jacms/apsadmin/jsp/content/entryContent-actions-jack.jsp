@@ -12,7 +12,7 @@
 			type="button"
 			cssClass="btn btn-default btn-block"
 			title="%{getText('note.button.saveAndContinue')}">
-				<span class="icon icon-play-circle"></span>&#32;
+				<span class="fa fa-play-circle-o"></span>&#32;
 				<s:text name="label.saveAndContinue" />
 		</wpsf:submit>
 	</div>
@@ -22,7 +22,7 @@
 		<wpsf:select name="status" id="status" list="avalaibleStatus" value="%{content.status}" listKey="key" listValue="%{getText(value)}" cssClass="form-control" />
 		<span class="input-group-btn">
 			<wpsf:submit action="save" type="button" cssClass="btn btn-default" title="%{getText('note.button.saveContent')}">
-				<span class="icon icon-save"></span>
+				<span class="fa fa-save"></span>
 			</wpsf:submit>
 		</span>
 	</div>
@@ -30,14 +30,14 @@
 	<wp:ifauthorized permission="validateContents">
 		<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 			<wpsf:submit action="saveAndApprove" type="button" cssClass="btn btn-success btn-block" title="%{getText('note.button.saveAndApprove')}" >
-				<span class="icon icon-ok"></span>&#32;
+				<span class="fa fa-check"></span>&#32;
 				<s:text name="label.saveAndApprove" />
 			</wpsf:submit>
 		</div>
 		<s:if test="content.onLine">
 			<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 				<wpsf:submit action="suspend" type="button" cssClass="btn btn-warning btn-block" title="%{getText('note.button.suspend')}">
-					<span class="icon icon-pause"></span>&#32;
+					<span class="fa fa-pause"></span>&#32;
 					<s:text name="label.suspend" />
 				</wpsf:submit>
 			</div>
@@ -49,7 +49,7 @@
 	<div class="col-xs-12 col-sm-4 col-md-3 margin-none">
 		<small class="help help-block text-muted text-center">
 			<span class="hide">
-				<span class="icon icon-check"></span>&#32;<s:text name="note.autosaved.at" />: <span data-autosave="last-save-time"></span>
+				<span class="fa fa-check-square-o"></span>&#32;<s:text name="note.autosaved.at" />: <span data-autosave="last-save-time"></span>
 			</span>&nbsp;<%-- little hack prevents to scroll down the page the first time the message appears --%>
 		</small>
 	</div>

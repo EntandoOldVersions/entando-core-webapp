@@ -20,7 +20,7 @@
 
 <s:if test="hasFieldErrors()">
 	<div class="alert alert-danger alert-dismissable">
-		<button type="button" class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+		<button type="button" class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
 		<h2 class="h4"><s:text name="message.title.FieldErrors" /></h2>
 			<ul>
 				<s:iterator value="fieldErrors">
@@ -85,7 +85,7 @@
 	<div class="form-group">
 	  <div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 	    <wpsf:submit type="button" cssClass="btn btn-primary btn-block" action="saveEntityType" >
-	      <span class="icon icon-save"></span>&#32;
+	      <span class="fa fa-save"></span>&#32;
 	      <s:text name="label.save" />
 	    </wpsf:submit>
 	  </div>

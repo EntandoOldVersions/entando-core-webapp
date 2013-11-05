@@ -36,7 +36,7 @@
 					</s:url>"
 						 class="text-success"
 						 title="<s:text name="name.mainFrame" />">
-						<span class="icon icon-cogs icon-fixed-width"></span>&#32;
+						<span class="fa fa-cogs fa-fw"></span>&#32;
 				</s:if>
 				<s:else>
 					<a href="
@@ -44,7 +44,7 @@
 						<s:param name="pageCode"><s:property value="currentPage.code"/></s:param>
 						<s:param name="frame"><s:property value="#rowstatus.index"/></s:param>
 					</s:url>">
-						<span class="icon icon-cog icon-fixed-width"></span>&#32;
+						<span class="fa fa-cog fa-fw"></span>&#32;
 				</s:else>
 						<s:property value="currentPage.getModel().getFrames()[#rowstatus.index]"/>
 					</a>
@@ -62,7 +62,7 @@
 												 </s:url>"
 									 title="<s:text name="title.widgetManagement.howmanypages.goToSee" />: <s:property value="%{getTitle(#showletType.getCode(), #showletType.getTitles())}" />"
 									 class="btn btn-default">
-									<span class="icon icon-info"></span>
+									<span class="fa fa-info"></span>
 								</a>
 							<wp:ifauthorized permission="superuser">
 								<s:if test="!#showletType.isLogic() && null != #showletType.typeParameters && #showletType.typeParameters.size() > 0">
@@ -73,7 +73,7 @@
 										</s:url>"
 										 title="<s:text name="label.userWidget.new.from" />: <s:property value="%{getTitle(#showletType.getCode(), #showletType.getTitles())}" />"
 										 class="btn btn-default">
-										<span class="icon icon-puzzle-piece"></span>
+										<span class="fa fa-puzzle-piece"></span>
 									</a>
 								</s:if>
 							</wp:ifauthorized>
@@ -95,7 +95,7 @@
 										</s:url>"
 										 title="<s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#relatedApiMethodVar.methodName" />"
 										 class="btn btn-default">
-										<span class="icon icon-code-fork"></span>
+										<span class="fa fa-code-fork"></span>
 									</a>
 								</s:if>
 								<s:set var="relatedApiMethodVar" />
@@ -110,7 +110,7 @@
 									</s:url>"
 									 title="<s:text name="label.clear" />: <s:property value="%{getTitle(#showletType.code, #showletType.titles)}" />"
 									 class="btn btn-warning">
-										<span class="icon icon-eraser"></span>
+										<span class="fa fa-eraser"></span>
 								</a>
 							</div>
 							</s:if>
@@ -136,7 +136,7 @@
 				<s:url action="edit" anchor="pagemodel">
 					<s:param name="selectedNode" value="currentPage.code" />
 				</s:url>" class="btn btn-lg btn-info">
-				<span class="icon icon-edit"></span>&#32;
+				<span class="fa fa-pencil-square-o"></span>&#32;
 				<s:text name="page.options.pagemodel" />
 			</a>
 		</p>

@@ -20,7 +20,7 @@
 			</p>
 			<div class="text-center margin-large-top">
 				<wpsf:submit type="button" action="delete" cssClass="btn btn-warning btn-lg">
-					<span class="icon icon-remove-sign"></span>&#32;
+					<span class="fa fa-remove-sign"></span>&#32;
 					<s:text name="label.remove" />
 				</wpsf:submit>
 				<a class="btn btn-link" href="<s:url action="list" namespace="/do/Api/Service"/>" ><s:text name="note.goToSomewhere" />: <s:text name="menu.apisAdmin.services" /></a>

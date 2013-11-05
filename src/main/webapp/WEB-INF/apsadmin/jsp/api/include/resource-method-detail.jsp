@@ -67,7 +67,7 @@
 											<s:param name="httpMethod" value="#methodVar.httpMethod" />
 										</s:url>
 										<a title="<s:property value="#requestSchemaURL" escapeHtml="false" />" href="<s:property value="#requestSchemaURLVar" escapeHtml="false" />" >
-											<span class="icon icon-globe"></span>&#32;
+											<span class="fa fa-globe"></span>&#32;
 											<s:text name="label.api.resource.method.schemas.req" />
 										</a>
 									</p>
@@ -79,7 +79,7 @@
 										<s:param name="httpMethod" value="#methodVar.httpMethod" />
 									</s:url>
 									<a title="<s:property value="#responseSchemaURL" escapeHtml="false" />" href="<s:property value="#responseSchemaURLVar" escapeHtml="false" />" >
-										<span class="icon icon-globe"></span>&#32;
+										<span class="fa fa-globe"></span>&#32;
 										<s:text name="label.api.resource.method.schemas.resp" />
 									</a>
 								</p>
@@ -104,7 +104,7 @@
 										<s:iterator value="#methodParametersVar" var="apiParameter" >
 											<tr>
 												<td class="text-right">
-													<span class="icon icon-<s:property value="%{#apiParameter.required ? 'ok' : ''}" />" title="<s:property value="%{#apiParameter.required ? getText('label.yes') : getText('label.no')}" />"></span>
+													<span class="fa fa-<s:property value="%{#apiParameter.required ? 'ok' : ''}" />" title="<s:property value="%{#apiParameter.required ? getText('label.yes') : getText('label.no')}" />"></span>
 													<span class="sr-only"><s:property value="%{#apiParameter.required ? getText('label.yes') : getText('label.no')}" /></span>
 												</td>
 												<td><code><s:property value="#apiParameter.key" /></code></td>

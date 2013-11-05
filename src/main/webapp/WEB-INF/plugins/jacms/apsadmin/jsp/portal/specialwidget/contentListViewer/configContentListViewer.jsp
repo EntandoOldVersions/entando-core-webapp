@@ -34,7 +34,7 @@
 
 		<h2 class="h5 margin-small-vertical">
 			<label class="sr-only"><s:text name="name.widget" /></label>
-			<span class="icon icon-puzzle-piece" title="<s:text name="name.widget" />"></span>&#32;
+			<span class="fa fa-puzzle-piece" title="<s:text name="name.widget" />"></span>&#32;
 			<s:property value="%{getTitle(widget.type.code, widget.type.titles)}" />
 		</h2>
 
@@ -46,7 +46,7 @@
 
 	<s:if test="hasFieldErrors()">
 		<div class="alert alert-danger alert-dismissable">
-			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+			<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
 			<h3 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h3>
 			<ul>
 			<s:iterator value="fieldErrors">
@@ -67,7 +67,7 @@
 					<wpsf:select name="contentType" id="contentType" list="contentTypes" listKey="code" listValue="descr" cssClass="form-control" />
 					<span class="input-group-btn">
 						<wpsf:submit type="button" action="configListViewer" cssClass="btn btn-success">
-							<span class="icon icon-ok"></span>&#32;
+							<span class="fa fa-check"></span>&#32;
 							<s:text name="label.confirm" />
 						</wpsf:submit>
 					</span>
@@ -102,7 +102,7 @@
 		</fieldset>
 
 		<fieldset class="margin-large-top">
-			<legend data-toggle="collapse" data-target="#options-publishing"><s:text name="title.publishingOptions" />&#32;<span class="icon icon-chevron-down"></span></legend>
+			<legend data-toggle="collapse" data-target="#options-publishing"><s:text name="title.publishingOptions" />&#32;<span class="fa fa-chevron-down"></span></legend>
 
 			<div class="collapse" id="options-publishing">
 				<div class="form-group">
@@ -132,7 +132,7 @@
 		</fieldset>
 
 		<fieldset class="margin-base-top">
-			<legend data-toggle="collapse" data-target="#filters"><s:text name="title.filterOptions" />&#32;<span class="icon icon-chevron-down"></span></legend>
+			<legend data-toggle="collapse" data-target="#filters"><s:text name="title.filterOptions" />&#32;<span class="fa fa-chevron-down"></span></legend>
 
 			<div class="collapse" id="filters">
 				<div class="form-group">
@@ -142,7 +142,7 @@
 							<wpsf:select name="categoryCode" id="category" list="categories" listKey="code" listValue="getShortFullTitle(currentLang.code)" headerKey="" headerValue="%{getText('label.all')}" cssClass="form-control" />
 							<span class="input-group-btn">
 								<wpsf:submit type="button" action="addCategory" cssClass="btn btn-info">
-									<span class="icon icon-filter"></span>&#32;
+									<span class="fa fa-filter"></span>&#32;
 									<s:text name="label.filter" />
 								</wpsf:submit>
 							</span>
@@ -156,7 +156,7 @@
 					<s:set name="showletCategory" value="%{getCategory(#categoryCodeVar)}"></s:set>
 
 					<span class="label label-default label-sm pull-left padding-small-top padding-small-bottom margin-small-right margin-small-bottom">
-					  <span class="icon icon-tag"></span>&#32;
+					  <span class="fa fa-tag"></span>&#32;
 					  <abbr title="<s:property value="#showletCategory.getFullTitle(currentLang.code)"/>">
 					    <s:property value="#showletCategory.getShortFullTitle(currentLang.code)" />
 					  </abbr>&#32;
@@ -168,7 +168,7 @@
 					    action="%{#actionName}"
 					    title="%{getText('label.remove') + ' ' + #showletCategory.getFullTitle(currentLang.code)}"
 					    cssClass="btn btn-default btn-xs badge">
-					     <span class="icon icon-remove"></span>
+					     <span class="fa fa-remove"></span>
 					      <span class="sr-only">x</span>
 					  </wpsf:submit>
 					</span>
@@ -199,7 +199,7 @@
 							<wpsf:select name="filterKey" id="filterKey" list="allowedFilterTypes" listKey="key" listValue="value" cssClass="form-control" />
 							<span class="input-group-btn">
 								<wpsf:submit type="button" action="setFilterType" cssClass="btn btn-info">
-									<span class="icon icon-plus-sign-alt"></span>&#32;
+									<span class="fa fa-plus-square"></span>&#32;
 									<s:text name="label.add" />
 								</wpsf:submit>
 							</span>
@@ -280,7 +280,7 @@
 									</wpsa:actionParam>
 									<wpsf:submit type="button" action="%{#actionName}" title="%{getText('label.moveUp')}" cssClass="btn btn-default">
 										<span class="sr-only"><s:text name="label.moveUp" /></span>
-										<span class="icon icon-sort-up"></span>
+										<span class="fa fa-sort-up"></span>
 									</wpsf:submit>
 
 									<wpsa:actionParam action="moveFilter" var="actionName" >
@@ -289,7 +289,7 @@
 									</wpsa:actionParam>
 									<wpsf:submit type="button" action="%{#actionName}" title="%{getText('label.moveDown')}" cssClass="btn btn-default">
 										<span class="sr-only"><s:text name="label.moveDown" /></span>
-										<span class="icon icon-sort-down"></span>
+										<span class="fa fa-sort-down"></span>
 									</wpsf:submit>
 								</div>
 								<div class="btn-group btn-group-sm">
@@ -297,7 +297,7 @@
 										<wpsa:actionSubParam name="filterIndex" value="%{#rowstatus.index}" />
 									</wpsa:actionParam>
 									<wpsf:submit type="button" action="%{#actionName}" title="%{getText('label.remove')}" cssClass="btn btn-warning">
-										<span class="icon icon-remove-circle"></span>
+										<span class="fa fa-remove-circle"></span>
 									</wpsf:submit>
 								</div>
 							</div>
@@ -317,7 +317,7 @@
 
 		<%-- TITLES --%>
 		<fieldset class="margin-base-top">
-			<legend data-toggle="collapse" data-target="#options-extra"><s:text name="title.extraOption" />&#32;<span class="icon icon-chevron-down"></span></legend>
+			<legend data-toggle="collapse" data-target="#options-extra"><s:text name="title.extraOption" />&#32;<span class="fa fa-chevron-down"></span></legend>
 			<div class="collapse" id="options-extra">
 				<p><s:text name="note.extraOption.intro" /></p>
 					<s:iterator id="lang" value="langs">
@@ -358,7 +358,7 @@
 
 		<%-- USER FILTERS - START BLOCK --%>
 		<fieldset class="margin-base-top">
-			<legend data-toggle="collapse" data-target="#filters-frontend"><s:text name="title.filters.search" />&#32;<span class="icon icon-chevron-down"></span></legend>
+			<legend data-toggle="collapse" data-target="#filters-frontend"><s:text name="title.filters.search" />&#32;<span class="fa fa-chevron-down"></span></legend>
 
 			<div class="collapse" id="filters-frontend">
 
@@ -369,7 +369,7 @@
 							<wpsf:select name="userFilterKey" id="userFilterKey" list="allowedUserFilterTypes" listKey="key" listValue="value" cssClass="form-control" />
 							<span class="input-group-btn">
 								<wpsf:submit type="button" action="addUserFilter" cssClass="btn btn-info">
-									<span class="icon icon-plus-sign-alt"></span>&#32;
+									<span class="fa fa-plus-square"></span>&#32;
 									<s:text name="label.add" />
 								</wpsf:submit>
 							</span>
@@ -411,14 +411,14 @@
 									<wpsa:actionSubParam name="movement" value="UP" />
 								</wpsa:actionParam>
 								<wpsf:submit type="button" action="%{#actionName}" title="%{getText('label.moveUp')}" cssClass="btn btn-default">
-									<span class="icon icon-sort-up"></span>
+									<span class="fa fa-sort-up"></span>
 								</wpsf:submit>
 								<wpsa:actionParam action="moveUserFilter" var="actionName" >
 									<wpsa:actionSubParam name="filterIndex" value="%{#rowstatus.index}" />
 									<wpsa:actionSubParam name="movement" value="DOWN" />
 								</wpsa:actionParam>
 								<wpsf:submit type="button" action="%{#actionName}" title="%{getText('label.moveDown')}" cssClass="btn btn-default">
-									<span class="icon icon-sort-down"></span>
+									<span class="fa fa-sort-down"></span>
 								</wpsf:submit>
 							</div>
 							<div class="btn-group btn-group-sm">
@@ -426,7 +426,7 @@
 									<wpsa:actionSubParam name="filterIndex" value="%{#rowstatus.index}" />
 								</wpsa:actionParam>
 								<wpsf:submit type="button" action="%{#actionName}" title="%{getText('label.remove')}" cssClass="btn btn-warning">
-									<span class="icon icon-remove-circle"></span>
+									<span class="fa fa-remove-circle"></span>
 								</wpsf:submit>
 							</div>
 						</div>
@@ -446,7 +446,7 @@
 <div class="form-group">
 	<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 		<wpsf:submit action="saveListViewerConfig" type="button" cssClass="btn btn-primary btn-block">
-			<span class="icon icon-save"></span>&#32;
+			<span class="fa fa-save"></span>&#32;
 			<s:text name="label.save" />
 		</wpsf:submit>
 	</div>

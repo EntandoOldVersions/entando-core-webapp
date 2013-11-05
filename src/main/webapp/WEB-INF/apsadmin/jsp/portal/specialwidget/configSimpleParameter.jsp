@@ -31,7 +31,7 @@
 		<div class="panel-body">
 			<h2 class="h5 margin-small-vertical">
 				<label class="sr-only"><s:text name="name.widget" /></label>
-				<span class="icon icon-puzzle-piece" title="<s:text name="name.widget" />"></span>&#32;
+				<span class="fa fa-puzzle-piece" title="<s:text name="name.widget" />"></span>&#32;
 				<s:property value="%{getTitle(widget.type.code, widget.type.titles)}" />
 			</h2>
 			<fieldset class="margin-base-top">
@@ -53,7 +53,7 @@
 	<div class="form-group">
 		<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 			<wpsf:submit type="button" cssClass="btn btn-primary btn-block">
-				<span class="icon icon-save"></span>&#32;
+				<span class="fa fa-save"></span>&#32;
 				<s:text name="label.save" />
 			</wpsf:submit>
 		</div>

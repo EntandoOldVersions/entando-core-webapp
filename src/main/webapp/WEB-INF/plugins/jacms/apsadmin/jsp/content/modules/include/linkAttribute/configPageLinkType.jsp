@@ -9,7 +9,7 @@
 <s:form cssClass="form-horizontal">
 	<s:if test="hasFieldErrors()">
 		<div class="alert alert-danger alert-dismissable fade in">
-			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+			<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
 			<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h4>
 			<%--
 			<ul class="margin-none margin-base-top">
@@ -43,11 +43,11 @@
 				</label>
 				<s:set var="pageTreeStyleVar"><wp:info key="systemParam" paramName="treeStyle_page" /></s:set>
 				<div class="well">
-					<ul id="pageTree" class="icons-ul list-unstyled">
+					<ul id="pageTree" class="fa-ul list-unstyled">
 						<s:set name="inputFieldName" value="'selectedNode'" />
 						<s:set name="selectedTreeNode" value="selectedNode" />
 						<s:set name="liClassName" value="'page'" />
-						<s:set var="treeItemIconName" value="'icon-folder-close'" />
+						<s:set var="treeItemIconName" value="'fa-folder'" />
 
 						<s:if test="#pageTreeStyleVar == 'classic'">
 						<s:set name="currentRoot" value="allowedTreeRootNode" />

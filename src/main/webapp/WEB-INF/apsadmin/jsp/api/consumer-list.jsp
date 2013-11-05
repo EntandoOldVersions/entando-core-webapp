@@ -8,7 +8,7 @@
 <div id="main" role="main">
 	<s:if test="hasActionMessages()">
 		<div class="alert alert-info alert-dismissable fade in">
-			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+			<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
 			<h2 class="h4 margin-none"><s:text name="messages.confirm" /></h2>
 			<ul class="margin-base-top">
 				<s:iterator value="actionMessages">
@@ -19,7 +19,7 @@
 	</s:if>
 	<s:if test="hasActionErrors()">
 		<div class="alert alert-danger alert-dismissable fade in">
-			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+			<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
 			<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
 			<ul class="margin-base-top">
 				<s:iterator value="actionErrors">
@@ -33,14 +33,14 @@
 		<div class="form-group">
 			<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<span class="input-group-addon">
-					<span class="icon icon-file-text-alt icon-large" title="<s:text name="label.search.by"/>&#32;<s:text name="label.consumer.description"/>"></span>
+					<span class="fa fa-file-text-o fa-lg" title="<s:text name="label.search.by"/>&#32;<s:text name="label.consumer.description"/>"></span>
 				</span>
 				<label for="search_consumer_description" class="sr-only"><s:text name="label.search.by"/>&#32;<s:text name="label.consumer.description"/></label>
 				<wpsf:textfield name="text" id="search_consumer_description" cssClass="form-control input-lg" placeholder="%{getText('label.description')}" title="%{getText('label.search.by')} %{getText('label.consumer.description')}" />
 				<span class="input-group-btn">
 					<wpsf:submit type="button" cssClass="btn btn-primary btn-lg" title="%{getText('label.search')}">
 						<span class="sr-only"><s:text name="label.search" /></span>
-						<span class="icon icon-search"></span>
+						<span class="fa fa-search"></span>
 					</wpsf:submit>
 					<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="collapse" data-target="#search-advanced" title="<s:text name="title.searchFilters" />">
 							<span class="sr-only"><s:text name="title.searchFilters" /></span>
@@ -59,7 +59,7 @@
 						<div class="form-group">
 							<div class="col-sm-5 col-sm-offset-2">
 								<wpsf:submit type="button" cssClass="btn btn-primary">
-									<span class="icon icon-search"></span>&#32;<s:text name="label.search" />
+									<span class="fa fa-search"></span>&#32;<s:text name="label.search" />
 								</wpsf:submit>
 							</div>
 						</div>
@@ -69,7 +69,7 @@
 	</s:form>
 	<hr />
 	<a href="<s:url action="new" />" class="btn btn-default">
-		<span class="icon icon-plus-sign"></span>&#32;<s:text name="label.new" />
+		<span class="fa fa-plus-circle"></span>&#32;<s:text name="label.new" />
 	</a>
 	<s:form action="search">
 		<p class="sr-only">
@@ -102,13 +102,13 @@
 							<td class="text-center text-nowrap">
 								<div class="btn-group btn-group-xs">
 									<a class="btn btn-default" href="<s:url action="edit"><s:param name="consumerKey" value="#consumerKeyVar" /></s:url>" title="<s:text name="label.edit" />: <s:property value="#consumerKeyVar" />">
-										<span class="icon icon-edit"></span>
+										<span class="fa fa-pencil-square-o"></span>
 										<span class="sr-only"><s:text name="label.edit" /></span>
 									</a>
 								</div>
 								<div class="btn-group btn-group-xs">
 									<a class="btn btn-warning" href="<s:url action="trash"><s:param name="consumerKey" value="#consumerKeyVar"/></s:url>" title="<s:text name="label.remove" />: <s:property value="#consumerKeyVar" />">
-										<span class="icon icon-remove-circle"></span>
+										<span class="fa fa-remove-circle"></span>
 										<span class="sr-only"><s:text name="label.alt.clear" /></span>
 									</a>
 								</div>

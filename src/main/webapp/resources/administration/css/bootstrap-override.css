@@ -189,11 +189,11 @@ fieldset.col-xs-12 {
 }
 
 /* Font Awesome */
-.popover-content .icons-ul,
-#categoryTree.icons-ul,
-#categoryTree .icons-ul,
-#pageTree.icons-ul,
-#pageTree .icons-ul {
+.popover-content .fa-ul,
+#categoryTree.fa-ul,
+#categoryTree .fa-ul,
+#pageTree.fa-ul,
+#pageTree .fa-ul {
 	margin-left: 0;
 	padding-left: 22px;
 }

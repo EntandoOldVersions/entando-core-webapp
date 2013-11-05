@@ -26,7 +26,7 @@
 <%-- Error message handling --%>
 	<s:if test="hasActionErrors()">
 <div class="alert alert-danger alert-dismissable">
-	<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+	<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
 	<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
 	<ul class="margin-base-vertical">
 	<s:iterator value="actionErrors">
@@ -47,7 +47,7 @@
 
 		<h3 class="h5 margin-small-vertical">
 			<label class="sr-only"><s:text name="name.widget" /></label>
-			<span class="icon icon-puzzle-piece" title="<s:text name="name.widget" />"></span>&#32;
+			<span class="fa fa-puzzle-piece" title="<s:text name="name.widget" />"></span>&#32;
 			<s:property value="%{getTitle(showlet.type.code, showlet.type.titles)}" />
 		</h3>
 
@@ -68,7 +68,7 @@
 
 				<div class="input-group">
 					<span class="input-group-addon" title="<s:text name="title.editFrame.chooseAWidget" />">
-						<span class="icon icon-puzzle-piece"></span>
+						<span class="fa fa-puzzle-piece"></span>
 					</span>
 					<select name="widgetTypeCode" id="showletCode" class="form-control">
 					<s:iterator var="showletFlavour" value="showletFlavours">
@@ -106,7 +106,7 @@
 					</select>
 					<span class="input-group-btn">
 						<wpsf:submit type="button" cssClass="btn btn-success">
-							<span class="icon icon-ok"></span>&#32;
+							<span class="fa fa-check"></span>&#32;
 							<s:text name="label.confirm" />
 						</wpsf:submit>
 					</span>

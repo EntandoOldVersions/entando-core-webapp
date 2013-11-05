@@ -11,11 +11,11 @@
 </s:if>
 
 <div class="well">
-	<ul id="categoryTree" class="icons-ul list-unstyled">
+	<ul id="categoryTree" class="fa-ul list-unstyled">
 		<s:set name="inputFieldName" value="'categoryCode'" />
 		<s:set name="selectedTreeNode" value="categoryCode" />
 		<s:set name="liClassName" value="'category'" />
-		<s:set name="treeItemIconName" value="'icon-folder-close'" />
+		<s:set name="treeItemIconName" value="'fa-folder'" />
 
 		<s:if test="#categoryTreeStyleVar == 'classic'">
 			<s:set name="currentRoot" value="categoryRoot" />

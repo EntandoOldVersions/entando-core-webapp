@@ -13,7 +13,7 @@
 	<s:form action="search" cssClass="form-horizontal" role="search">
 		<s:if test="hasActionErrors()">
 			<div class="alert alert-danger alert-dismissable fade in">
-				<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+				<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
 				<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
 				<ul class="margin-base-top">
 					<s:iterator value="actionErrors">
@@ -25,13 +25,13 @@
 		<div class="form-group">
 			<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					<span class="input-group-addon" title="<s:text name="label.search.by" />&#32;<s:text name="label.text" />">
-						<span class="icon icon-file-text-alt icon-large"></span>
+						<span class="fa fa-file-text-o fa-lg"></span>
 					</span>
 					<label class="sr-only" for="text"><s:text name="label.search.by" />&#32;<s:text name="label.text" /></label>
 					<wpsf:textfield name="text" id="text" cssClass="form-control input-lg" title="%{getText('label.search.by') +' '+ getText('label.text')}" placeholder="%{getText('label.search.by') +' '+ getText('label.text')}" />
 					<span class="input-group-btn">
 						<wpsf:submit type="button" title="%{getText('label.search')}" cssClass="btn btn-primary btn-lg">
-							<span class="icon icon-search"></span>
+							<span class="fa fa-search"></span>
 							<span class="sr-only"><s:text name="label.search" /></span>
 						</wpsf:submit>
 						<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="collapse" data-target="#search-advanced" title="<s:text name="title.searchFilters" />">
@@ -57,7 +57,7 @@
 						<div class="form-group">
 							<div class="col-sm-5 col-sm-offset-2">
 								<wpsf:submit type="button" cssClass="btn btn-primary">
-									<span class="icon icon-search"></span>&#32;<s:text name="label.search" />
+									<span class="fa fa-search"></span>&#32;<s:text name="label.search" />
 								</wpsf:submit>
 							</div>
 						</div>
@@ -66,7 +66,7 @@
 			</div>
 		</s:form>
 		<a href="<s:url namespace="/do/LocaleString" action="new" />" class="btn btn-default">
-			<span class="icon icon-plus-sign"></span>
+			<span class="fa fa-plus-circle"></span>
 			<s:text name="title.generalSettings.locale.new" />
 		</a>
 		<s:form action="search" cssClass="form-horizontal margin-large-top">
@@ -106,8 +106,8 @@
 								</s:iterator>
 							<dt class="sr-only"><s:text name="label.actions" /></dt>
 								<dd class="margin-small-top">
-									<a class="btn btn-default btn-small"href="<s:url action="edit" namespace="/do/LocaleString" />?key=<s:property value="#key" />"title="<s:text name="label.edit" />: <s:property value="#key" />"> <span class="icon icon-edit">&#32;Edit</span></a> 
-									<a class="btn btn-default btn-small"href="<s:url action="delete" namespace="/do/LocaleString"><s:param name="key" value="#key" /></s:url>"title="<s:text name="label.remove" />: <s:property value="#key" />"> <span class="icon icon-remove-circle">&#32;<s:text name="label.remove" /></a> 
+									<a class="btn btn-default btn-small"href="<s:url action="edit" namespace="/do/LocaleString" />?key=<s:property value="#key" />"title="<s:text name="label.edit" />: <s:property value="#key" />"> <span class="fa fa-pencil-square-o">&#32;<s:text name="label.edit" /></span></a> 
+									<a class="btn btn-default btn-small"href="<s:url action="delete" namespace="/do/LocaleString"><s:param name="key" value="#key" /></s:url>"title="<s:text name="label.remove" />: <s:property value="#key" />"> <span class="fa fa-remove-circle">&#32;<s:text name="label.remove" /></a> 
 								</dd>
 						</dl>
 					</s:iterator>

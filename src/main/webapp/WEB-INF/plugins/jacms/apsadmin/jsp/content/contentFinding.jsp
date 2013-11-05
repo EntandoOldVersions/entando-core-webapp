@@ -21,7 +21,7 @@
 			<div class="form-group">
 				<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					<span class="input-group-addon">
-						<span class="icon icon-file-text-alt icon-large" title="<s:text name="label.search.by"/>&#32;<s:text name="label.description"/>"></span>
+						<span class="fa fa-file-text-o fa-lg" title="<s:text name="label.search.by"/>&#32;<s:text name="label.description"/>"></span>
 					</span>
 					<label for="text" class="sr-only"><s:text name="label.search.by"/>&#32;<s:text name="label.description"/></label>
 					<wpsf:textfield name="text" id="text" cssClass="form-control input-lg" placeholder="%{getText('label.description')}" title="%{getText('label.search.by')} %{getText('label.description')}" />
@@ -31,7 +31,7 @@
 						</wpsa:actionParam>
 						<wpsf:submit action="%{#searchActionName}" type="button" cssClass="btn btn-primary btn-lg" title="%{getText('label.search')}">
 							<span class="sr-only"><s:text name="label.search" /></span>
-							<span class="icon icon-search"></span>
+							<span class="fa fa-search"></span>
 						</wpsf:submit>
 						<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="collapse" data-target="#search-advanced" title="<s:text name="title.searchFilters" />">
 								<span class="sr-only"><s:text name="title.searchFilters" /></span>
@@ -61,7 +61,7 @@
 						<s:if test="null != #searcheableAttributes && #searcheableAttributes.size() > 0">
 							<%-- restore when we can dimiss it with a timeout
 							<div class="alert alert-info alert-dismissable fade in">
-								<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+								<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
 								<p>Content type successfully set. TODO label.</p>
 							</div>
 							--%>
@@ -166,7 +166,7 @@
 						<div class="form-group">
 							<div class="col-sm-5 col-sm-offset-2">
 								<wpsf:submit action="%{#searchActionName}" type="button" cssClass="btn btn-primary">
-									<span class="icon icon-search"></span>&#32;<s:text name="label.search" />
+									<span class="fa fa-search"></span>&#32;<s:text name="label.search" />
 								</wpsf:submit>
 							</div>
 						</div>
@@ -212,7 +212,7 @@
 
 				<div class="form-group col-sm-12">
 					<wpsf:submit action="%{#searchActionName}" type="button" cssClass="btn btn-primary">
-							<span class="icon icon-search"></span>&#32;<s:text name="label.search" />
+							<span class="fa fa-search"></span>&#32;<s:text name="label.search" />
 					</wpsf:submit>
 				</div>
 
@@ -266,7 +266,7 @@
 
 		<div class="btn-group">
 			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-				<span class="icon icon-plus-sign"></span>
+				<span class="fa fa-plus-circle"></span>
 				<s:text name="label.newContent" />&#32;
 				<span class="caret"></span>
 		  </button>
@@ -281,7 +281,7 @@
 
 		<s:if test="hasActionErrors()">
 		<div class="alert alert-danger alert-dismissable fade in">
-			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+			<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
 			<h2 class="h4 margin-none">
 				<s:text name="message.title.ActionErrors" />
 			</h2>
@@ -294,7 +294,7 @@
 		</s:if>
 		<s:if test="hasActionMessages()">
 		<div class="alert alert-success alert-dismissable fade in">
-			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+			<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
 			<h2 class="h4 margin-none"><s:text name="messages.confirm" /></h2>
 			<ul class="margin-base-top">
 				<s:iterator value="actionMessages">
@@ -366,7 +366,7 @@
 			<td class="text-center text-nowrap">
 				<div class="btn-group btn-group-xs">
 					<a class="btn btn-default" title="<s:text name="label.edit" />: <s:property value="#content.id" /> - <s:property value="#content.descr" />" href="<s:url action="edit" namespace="/do/jacms/Content"><s:param name="contentId" value="#content.id" /></s:url>">
-						<span class="icon icon-edit"></span>
+						<span class="fa fa-pencil-square-o"></span>
 						<span class="sr-only"><s:text name="label.edit" />: <s:property value="#content.id" /> - <s:property value="#content.descr" /></span>
 					</a>
 					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -375,19 +375,19 @@
 					<ul class="dropdown-menu text-left" role="menu">
 						<li>
 							<a title="<s:text name="label.copyPaste" />: <s:property value="#content.id" /> - <s:property value="#content.descr" />" href="<s:url action="copyPaste" namespace="/do/jacms/Content"><s:param name="contentId" value="#content.id" /><s:param name="copyPublicVersion" value="'false'" /></s:url>">
-								<span class="icon icon-fixed-width icon-paste"></span>
+								<span class="fa fa-fixed-width fa-clipboard"></span>
 								<s:text name="label.copyPaste" /><span class="sr-only">: <s:property value="#content.id" /> - <s:property value="#content.descr" /></span>
 							</a>
 						</li>
 						<li>
 							<a title="<s:text name="label.inspect" />: [<s:text name="name.work" />] <s:property value="#content.id" /> - <s:property value="#content.descr" />" href="<s:url action="inspect" namespace="/do/jacms/Content"><s:param name="contentId" value="#content.id" /><s:param name="currentPublicVersion" value="'false'" /></s:url>">
-								<span class="icon icon-fixed-width icon-info"></span>
+								<span class="fa fa-fixed-width icon-info"></span>
 								<s:text name="label.inspect" />&#32;<s:text name="name.work" />
 							</a>
 						</li>
 						<li>
 							<a title="<s:text name="label.inspect" />: [<s:text name="name.onLine" />] <s:property value="#content.id" /> - <s:property value="#content.descr" />" href="<s:url action="inspect" namespace="/do/jacms/Content"><s:param name="contentId" value="#content.id" /><s:param name="currentPublicVersion" value="'true'" /></s:url>">
-								<span class="icon icon-fixed-width icon-info"></span>
+								<span class="fa fa-fixed-width icon-info"></span>
 								<s:text name="label.inspect" />&#32;<s:text name="name.onLine" />
 							</a>
 						</li>
@@ -454,7 +454,7 @@
 			</s:if>
 
 			<td class="text-center">
-				<span class="icon icon-<s:property value="iconName" /> text-<s:property value="textVariant" />" title="<s:property value="isOnlineStatus" />"></span>
+				<span class="fa fa-<s:property value="iconName" /> text-<s:property value="textVariant" />" title="<s:property value="isOnlineStatus" />"></span>
 				<span class="sr-only"><s:property value="isOnlineStatus" /></span>
 			</td>
 			</tr>
@@ -470,18 +470,18 @@
 			<wp:ifauthorized permission="validateContents">
 				<div class="btn-group margin-small-vertical">
 					<wpsf:submit action="approveContentGroup" type="button" title="%{getText('note.button.approve')}" cssClass="btn btn-success">
-						<span class="icon icon-ok"></span>
+						<span class="fa fa-check"></span>
 						<s:text name="label.approve" />
 					</wpsf:submit>
 					<wpsf:submit action="suspendContentGroup" type="button" title="%{getText('note.button.suspend')}" cssClass="btn btn-warning">
-						<span class="icon icon-pause"></span>
+						<span class="fa fa-pause"></span>
 						<s:text name="label.suspend" />
 					</wpsf:submit>
 				</div>
 			</wp:ifauthorized>
 				<div class="btn-group margin-small-vertical">
 					<wpsf:submit action="trashContentGroup" type="button" title="%{getText('note.button.delete')}" cssClass="btn btn-link">
-						<span class="icon icon-remove-sign"></span>
+						<span class="fa fa-remove-sign"></span>
 						<s:text name="label.remove" />
 					</wpsf:submit>
 				</div>

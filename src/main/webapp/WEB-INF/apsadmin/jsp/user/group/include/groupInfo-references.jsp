@@ -34,10 +34,10 @@
 										<td class="text-center text-nowrap"><s:if test="#canEditCurrentPage"><div class="btn-group btn-group-xs"><a
 														class="btn btn-default" 
 														href="<s:url namespace="/do/Page" action="viewTree"><s:param name="selectedNode" value="#currentPageVar.code" /></s:url>"
-														title="<s:text name="note.goToSomewhere" />:&#32;<s:property value="%{#currentPageVar.getFullTitle(currentLang.code)}" />"><span class="icon icon-folder-close"></span><span class="sr-only"><s:text name="note.goToSomewhere" />:&#32;<s:property value="%{#currentPageVar.getFullTitle(currentLang.code)}" /></span></a><a
+														title="<s:text name="note.goToSomewhere" />:&#32;<s:property value="%{#currentPageVar.getFullTitle(currentLang.code)}" />"><span class="fa fa-folder"></span><span class="sr-only"><s:text name="note.goToSomewhere" />:&#32;<s:property value="%{#currentPageVar.getFullTitle(currentLang.code)}" /></span></a><a
 														class="btn btn-default" 
 														href="<s:url namespace="/do/Page" action="configure"><s:param name="pageCode" value="#currentPageVar.code" /></s:url>"
-														title="<s:text name="title.configPage" />:&#32;<s:property value="%{#currentPageVar.getFullTitle(currentLang.code)}" />"><span class="icon icon-cog"></span><span class="sr-only"><s:text name="title.configPage" />:&#32;<s:property value="%{#currentPageVar.getFullTitle(currentLang.code)}" /></span></a></div></s:if></td>
+														title="<s:text name="title.configPage" />:&#32;<s:property value="%{#currentPageVar.getFullTitle(currentLang.code)}" />"><span class="fa fa-cog"></span><span class="sr-only"><s:text name="title.configPage" />:&#32;<s:property value="%{#currentPageVar.getFullTitle(currentLang.code)}" /></span></a></div></s:if></td>
 										<td>
 											<s:property value="%{#currentPageVar.getFullTitle(currentLang.code)}" />
 										</td>
@@ -80,23 +80,23 @@
 									</tr>
 									<s:iterator var="usernameVar">
 										<s:if test="null == #usernameVar || #usernameVar.disabled">
-											<s:set var="statusIconClassVar" value="%{'icon icon-pause text-warning'}" />
+											<s:set var="statusIconClassVar" value="%{'fa fa-pause text-warning'}" />
 											<s:set var="statusTextVar" value="%{getText('note.userStatus.notActive')}" />
 										</s:if>
 										<s:elseif test="!#usernameVar.entandoUser">
-											<s:set var="statusIconClassVar" value="%{'icon icon-minus'}" />
+											<s:set var="statusIconClassVar" value="%{'fa fa-minus'}" />
 											<s:set var="statusTextVar" value="%{getText('note.userStatus.notEntandoUser')}" />
 										</s:elseif>
 										<s:elseif test="!#usernameVar.accountNotExpired">
-											<s:set var="statusIconClassVar" value="%{'icon icon-circle-blank text-danger'}" />
+											<s:set var="statusIconClassVar" value="%{'fa fa-circle-o text-danger'}" />
 											<s:set var="statusTextVar" value="%{getText('note.userStatus.expiredAccount')}" />
 										</s:elseif>
 										<s:elseif test="!#usernameVar.credentialsNotExpired">
-											<s:set var="statusIconClassVar" value="%{'icon icon-adjust text-warning'}" />
+											<s:set var="statusIconClassVar" value="%{'fa fa-adjust text-warning'}" />
 											<s:set var="statusTextVar" value="%{getText('note.userStatus.expiredPassword')}" />
 										</s:elseif>
 										<s:elseif test="!#usernameVar.disabled">
-											<s:set var="statusIconClassVar" value="%{'icon icon-ok text-success'}" />
+											<s:set var="statusIconClassVar" value="%{'fa fa-check text-success'}" />
 											<s:set var="statusTextVar" value="%{getText('note.userStatus.active')}" />
 										</s:elseif>
 										<tr>
@@ -110,7 +110,7 @@
 																	href="<s:url namespace="/do/User" action="edit"><s:param name="username" value="#usernameVar.username"/></s:url>" 
 																	title="<s:text name="label.edit" />: <s:property value="#usernameVar.username" />" >
 																		<span class="sr-only"><s:text name="label.edit" /></span>
-																		<span class="icon icon-edit"></span>
+																		<span class="fa fa-pencil-square-o"></span>
 																</a>
 															<%-- edit authorization button --%>
 																	<a
@@ -120,7 +120,7 @@
 																			<span class="sr-only">
 																				<s:text name="note.configureAuthorizationsFor" />: <s:property value="#usernameVar" />
 																			</span>
-																			<span class="icon-fixed-width icon icon-unlock"></span>
+																			<span class="fa-fw fa fa-unlock"></span>
 																	</a>
 														</c:if>
 													</div>
@@ -135,7 +135,7 @@
 														</code>
 													</s:if>
 													<s:else>
-														<span class="icon icon-minus text-muted" title="<s:text name="label.none" />"></span>
+														<span class="fa fa-minus text-muted" title="<s:text name="label.none" />"></span>
 														<span class="sr-only"><s:text name="label.none" /></span>
 													</s:else>
 												</td>

@@ -17,13 +17,13 @@
 <s:set var="resourceFlavoursVar" value="resourceFlavours" />
 
 <s:if test="#resourceFlavoursVar.size() > 0">
-	<s:set var="icon_free"><span class="icon icon-ok"></span><span class="noscreen sr-only"><wp:i18n key="ENTANDO_API_METHOD_STATUS_FREE" /></span></s:set>
+	<s:set var="icon_free"><span class="fa fa-check"></span><span class="noscreen sr-only"><wp:i18n key="ENTANDO_API_METHOD_STATUS_FREE" /></span></s:set>
 	<s:set var="title_free"><wp:i18n key="ENTANDO_API_METHOD_STATUS_FREE" />. <wp:i18n key="ENTANDO_API_GOTO_DETAILS" /></s:set>
 
-	<s:set var="icon_auth"><span class="icon icon-user"></span><span class="noscreen sr-only"><wp:i18n key="ENTANDO_API_METHOD_STATUS_AUTH" /></span></s:set>
+	<s:set var="icon_auth"><span class="fa fa-user"></span><span class="noscreen sr-only"><wp:i18n key="ENTANDO_API_METHOD_STATUS_AUTH" /></span></s:set>
 	<s:set var="title_auth"><wp:i18n key="ENTANDO_API_METHOD_STATUS_AUTH" />. <wp:i18n key="ENTANDO_API_GOTO_DETAILS" /></s:set>
 
-	<s:set var="icon_lock"><span class="icon icon-lock"></span><span class="noscreen sr-only"><wp:i18n key="ENTANDO_API_METHOD_STATUS_LOCK" /></span></s:set>
+	<s:set var="icon_lock"><span class="fa fa-lock"></span><span class="noscreen sr-only"><wp:i18n key="ENTANDO_API_METHOD_STATUS_LOCK" /></span></s:set>
 	<s:set var="title_lock"><wp:i18n key="ENTANDO_API_METHOD_STATUS_LOCK" />. <wp:i18n key="ENTANDO_API_GOTO_DETAILS" /></s:set>
 
 	<s:iterator var="resourceFlavourVar" value="#resourceFlavoursVar" status="resourceFlavourStatusVar">

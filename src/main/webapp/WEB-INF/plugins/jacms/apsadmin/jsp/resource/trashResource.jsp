@@ -41,7 +41,7 @@
 		</p>
 		<div class="text-center margin-large-top">
 			<wpsf:submit type="button" cssClass="btn btn-warning btn-lg">
-				<span class="icon icon-remove-sign"></span>&#32;
+				<span class="fa fa-remove-sign"></span>&#32;
 				<s:text name="label.remove" />
 			</wpsf:submit>
 			<a class="btn btn-link" href="<s:url action="list" namespace="/do/jacms/Resource"><s:param name="resourceTypeCode"><s:property value="resourceTypeCode" /></s:param></s:url>"><s:text name="note.goToSomewhere" />: <s:text name="title.resourceManagement" /></a>

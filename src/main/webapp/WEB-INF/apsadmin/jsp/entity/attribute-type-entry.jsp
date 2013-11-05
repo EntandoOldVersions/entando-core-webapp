@@ -20,7 +20,7 @@
 
 <s:if test="hasFieldErrors()">
 	<div class="alert alert-danger alert-dismissable">
-		<button type="button" class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+		<button type="button" class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
 		<p><s:text name="message.title.FieldErrors" /></p>
 			<ul>
 				<s:iterator value="fieldErrors">
@@ -135,7 +135,7 @@
 				</div>
 				<div class="col-sm-2 text-right">
 					<wpsf:submit type="button" action="%{#actionName}" cssClass="btn btn-xs btn-warning" title="%{getText('label.remove')}" >
-						<span class="icon icon-remove-circle"></span>
+						<span class="fa fa-remove-circle"></span>
 					</wpsf:submit>
 				</div>
 			</div>
@@ -176,7 +176,7 @@
 				</div>
 				<div class="col-sm-2 text-right">
 				<wpsf:submit type="button" action="%{#actionName}" cssClass="btn btn-xs btn-warning" title="%{getText('label.remove')}" >
-					<span class="icon icon-remove-circle"></span>
+					<span class="fa fa-remove-circle"></span>
 				</wpsf:submit>
 				</div>
 			</div>

@@ -22,7 +22,7 @@
 		<s:text name="note.entityAdmin.entityTypes.indexes.intro" />
 		<s:if test="getSearcherManagerStatus() == 1">
 				<s:text name="label.indexes.status.wip" />&#32;
-				<span class="icon icon-spinner"></span>
+				<span class="fa fa-spinner"></span>
 		</s:if>
 		<s:elseif test="getSearcherManagerStatus() == 2">
 		<a href="

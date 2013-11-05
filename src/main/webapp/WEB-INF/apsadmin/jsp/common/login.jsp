@@ -42,7 +42,7 @@
 
 				<s:if test="hasActionErrors()">
 				<div class="alert alert-danger alert-dismissable">
-					<button type="button" class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+					<button type="button" class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
 					<s:if test="hasActionErrors()">
 					<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
 					<ul class="margin-base-vertical">
@@ -123,7 +123,7 @@
 					<div class="margin-base-vertical form-group<s:property value="controlGroupErrorClassVar" />">
 						<label for="username" class="sr-only"><s:text name="label.username" /></label>
 						<div class="input-group">
-							<div class="input-group-addon"><span class="icon icon-user"></span></div>
+							<div class="input-group-addon"><span class="fa fa-user"></span></div>
 							<wpsf:textfield name="username" id="username" cssClass="form-control input-lg" placeholder="%{getText('label.username')}" />
 						</div>
 						<s:if test="#usernameHasFieldErrorVar">
@@ -142,7 +142,7 @@
 					<div class="margin-base-vertical form-group<s:property value="controlGroupErrorClassVar" />">
 						<label for="password" class="sr-only"><s:text name="label.password" /></label>
 						<div class="input-group">
-							<div class="input-group-addon"><span class="icon icon-lock"></span></div>
+							<div class="input-group-addon"><span class="fa fa-lock"></span></div>
 							<wpsf:password name="password" id="password" cssClass="form-control input-lg" placeholder="%{getText('label.password')}" />
 						</div>
 						<s:if test="#passwordHasFieldErrorVar">
@@ -164,7 +164,7 @@
 					<div class="row">
 						<p class="padding-base-top col-sm-8 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
 								<wpsf:submit type="button" cssClass="btn btn-primary btn-lg btn-block">
-									<span class="icon icon-signin"></span>&#32;
+									<span class="fa fa-signin"></span>&#32;
 									<s:text name="label.signin" />
 								</wpsf:submit>
 						</p>

@@ -6,7 +6,7 @@
 <s:form cssClass="action-form" cssClass="action-form">
 	<s:if test="hasActionErrors()">
 		<div class="alert alert-danger alert-dismissable fade in">
-			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+			<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
 			<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
 				<ul class="margin-base-top">
 					<s:iterator value="actionErrors">
@@ -17,7 +17,7 @@
 	</s:if>
 	<s:if test="hasActionMessages()">
 		<div class="alert alert-info alert-dismissable fade in">
-			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+			<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
 			<h2 class="h4 margin-none"><s:text name="messages.confirm" /></h3>
 			<ul class="margin-base-top">
 				<s:iterator value="actionMessages">
@@ -31,11 +31,11 @@
 	<s:set var="categoryTreeStyleVar"><wp:info key="systemParam" paramName="treeStyle_category" /></s:set>
 
 	<div class="well">
-		<ul id="categoryTree" class="icons-ul list-unstyled">
+		<ul id="categoryTree" class="fa-ul list-unstyled">
 			<s:set name="inputFieldName" value="%{'selectedNode'}" />
 			<s:set name="selectedTreeNode" value="%{selectedNode}" />
 			<s:set name="liClassName" value="%{'category'}" />
-			<s:set var="treeItemIconName" value="'icon-folder-close'" />
+			<s:set var="treeItemIconName" value="'fa-folder'" />
 
 			<s:if test="#categoryTreeStyleVar == 'classic'">
 			<s:set name="currentRoot" value="treeRootNode" />
@@ -56,23 +56,23 @@
 			<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
 				<wpsf:submit type="button" action="detail" title="%{getText('category.options.detail')}" data-toggle="tooltip" cssClass="btn btn-info">
 					<span class="sr-only"><s:text name="category.options.detail" /></span>
-					<span class="icon icon-info"></span>
+					<span class="fa fa-info"></span>
 				</wpsf:submit>
 			</div>
 			<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
 				<wpsf:submit type="button" action="new" title="%{getText('category.options.new')}" data-toggle="tooltip" cssClass="btn btn-info">
 					<span class="sr-only"><s:text name="category.options.new" /></span>
-					<span class="icon icon-plus-sign"></span>
+					<span class="fa fa-plus-circle"></span>
 				</wpsf:submit>
 				<wpsf:submit type="button" action="edit" title="%{getText('category.options.modify')}" data-toggle="tooltip" cssClass="btn btn-info">
 					<span class="sr-only"><s:text name="category.options.modify" /></span>
-					<span class="icon icon-edit"></span>
+					<span class="fa fa-pencil-square-o"></span>
 				</wpsf:submit>
 			</div>
 			<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
 				<wpsf:submit type="button" action="trash" title="%{getText('category.options.delete')}" data-toggle="tooltip" cssClass="btn btn-warning">
 					<span class="sr-only"><s:text name="category.options.delete" /></span>
-					<span class="icon icon-remove-sign"></span>
+					<span class="fa fa-remove-sign"></span>
 				</wpsf:submit>
 			</div>
 		</div>

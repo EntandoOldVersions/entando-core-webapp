@@ -17,7 +17,7 @@
 
 <s:if test="hasFieldErrors()">
 	<div class="alert alert-danger alert-dismissable">
-		<button type="button" class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+		<button type="button" class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
 		<p><s:text name="message.title.FieldErrors" /></p>
 		<ul>
 			<s:iterator value="fieldErrors">
@@ -30,7 +30,7 @@
 </s:if>
 
 <a href="<s:url namespace="/do/Entity" action="initAddEntityType" ><s:param name="entityManagerName"><s:property value="entityManagerName" /></s:param></s:url>" class="btn btn-default">
-<span class="icon icon-plus-sign"></span>&#32;
+<span class="fa fa-plus-circle"></span>&#32;
 <s:text name="menu.entityAdmin.entityTypes.new" />
 </a>
 
@@ -57,14 +57,14 @@
 				</s:url>
 				" title="<s:text name="label.edit" />: <s:property value="#entityType.typeDescr" />">
 					<span class="sr-only"><s:text name="label.edit" />&#32;<s:property value="#entityType.typeDescr" /></span>
-					<span class="icon icon-edit"></span>
+					<span class="fa fa-pencil-square-o"></span>
 				</a>
 
 				<a href="
 				<s:url namespace="/do/Entity" action="reloadEntityTypeReferences" anchor="%{#entityAnchor}"><s:param name="entityManagerName"><s:property value="entityManagerName" /></s:param><s:param name="entityTypeCode"><s:property value="#entityType.typeCode" /></s:param>
 				</s:url>" title="<s:if test="getEntityManagerStatus(entityManagerName, #entityType.typeCode) == 2"><s:text name="label.references.status.ko" /></s:if><s:if test="getEntityManagerStatus(entityManagerName, #entityType.typeCode) == 0"><s:text name="label.references.status.ok" /></s:if>" class="btn btn-default btn-xs"
 				<s:if test="getEntityManagerStatus(entityManagerName, #entityType.typeCode) == 1">disabled="true"</s:if>>
-				<span class="icon icon-refresh">
+				<span class="fa fa-refresh">
 				<span class="sr-only"><s:text name="label.references.status.ko" /></span>
 				</span>
 				</a>
@@ -77,22 +77,22 @@
 					<s:param name="entityTypeCode"><s:property value="#entityType.typeCode" /></s:param>
 				</s:url>
 				" title="<s:text name="label.remove" />: <s:property value="#entityType.typeDescr" />" class="btn btn-warning">
-				<span class="icon icon-remove-circle"></span>&#32;
+				<span class="fa fa-remove-circle"></span>&#32;
 				<span class="sr-only"><s:text name="label.alt.clear" /></span>
 				</a>
 			</div>
 		</td>
 		<td class="text-center">
 		<s:if test="getEntityManagerStatus(entityManagerName, #entityType.typeCode) == 1">
-			<span class="icon icon-spinner" title="<s:text name="label.references.status.wip" />">
+			<span class="fa fa-spinner" title="<s:text name="label.references.status.wip" />">
 			</span> 
 		</s:if>
 		<s:elseif test="getEntityManagerStatus(entityManagerName, #entityType.typeCode) == 2">
-			<span class="icon icon-exclamation text-warning" title="<s:text name="label.references.status.ko" />">
+			<span class="fa fa-exclamation text-warning" title="<s:text name="label.references.status.ko" />">
 			</span>
 		</s:elseif>
 		<s:elseif test="getEntityManagerStatus(entityManagerName, #entityType.typeCode) == 0">
-			<span class="icon icon-ok text-success" title="<s:text name="label.references.status.ok" />">
+			<span class="fa fa-check text-success" title="<s:text name="label.references.status.ok" />">
 			</span>			
 		</s:elseif>
 		</td>

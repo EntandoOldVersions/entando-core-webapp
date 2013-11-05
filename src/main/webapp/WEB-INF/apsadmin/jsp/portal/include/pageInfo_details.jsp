@@ -48,45 +48,45 @@
 
 	<s:set var="freeViewerPage" ><s:property value="{isFreeViewerPage(#details_pivotPage)}" /></s:set>
 	<s:if test="#freeViewerPage.equals('[true]')">
-		<s:set var="iconName" id="iconName">check</s:set>
+		<s:set var="iconName">check-square-o</s:set>
 		<s:set var="freeViewerPageBooleanStatus" value="%{getText('label.yes')}" />
 	</s:if>
 	<s:elseif test="#freeViewerPage.equals('[false]')" >
-		<s:set var="iconName" id="iconName">check-empty</s:set>
+		<s:set var="iconName">square-o</s:set>
 		<s:set var="freeViewerPageBooleanStatus" value="%{getText('label.no')}" />
 	</s:elseif>
 
 		<tr>
 			<th class="text-right"><s:text name="name.isViewerPage" /></th>
-			<td><span title="<s:property value="freeViewerPageBooleanStatus" />" class="icon icon-<s:property value="iconName" />"></span></td>
+			<td><span title="<s:property value="freeViewerPageBooleanStatus" />" class="fa fa-<s:property value="iconName" />"></span></td>
 		</tr>
 
 	<s:if test="#details_pivotPage.showable">
-		<s:set var="iconName" id="iconName">check</s:set>
+		<s:set var="iconName">check-square-o</s:set>
 		<s:set var="booleanStatus" value="%{getText('label.yes')}" />
 	</s:if>
 	<s:else>
-		<s:set var="iconName" id="iconName">check-empty</s:set>
+		<s:set var="iconName">square-o</s:set>
 		<s:set var="booleanStatus" value="%{getText('label.no')}" />
 	</s:else>
 
 		<tr>
 			<th class="text-right"><s:text name="name.isShowablePage" /></th>
-			<td><span title="<s:property value="booleanStatus" />" class="icon icon-<s:property value="iconName" />"></span></td>
+			<td><span title="<s:property value="booleanStatus" />" class="fa fa-<s:property value="iconName" />"></span></td>
 		</tr>
 
 	<s:if test="#details_pivotPage.useExtraTitles">
-		<s:set var="iconName" id="iconName">check</s:set>
+		<s:set var="iconName">check-square-o</s:set>
 		<s:set var="useExtraTitlesBooleanStatus" value="%{getText('label.yes')}" />
 	</s:if>
 	<s:else>
-		<s:set var="iconName" id="iconName">check-empty</s:set>
+		<s:set var="iconName">square-o</s:set>
 		<s:set var="useExtraTitlesBooleanStatus" value="%{getText('label.no')}" />
 	</s:else>
 
 		<tr>
 			<th class="text-right"><abbr lang="en" title="<s:text name="name.SEO.full" />"><s:text name="name.SEO.short" /></abbr>:&#32;<s:text name="name.useBetterTitles" /></th>
-			<td><span title="<s:property value="useExtraTitlesBooleanStatus" />" class="icon icon-<s:property value="iconName" />"></span></td>
+			<td><span title="<s:property value="useExtraTitlesBooleanStatus" />" class="fa fa-<s:property value="iconName" />"></span></td>
 		</tr>
 
 	</table>

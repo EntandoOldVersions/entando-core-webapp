@@ -42,13 +42,13 @@
 	<div class="form-group">
 		<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<span class="input-group-addon" title="<s:text name="label.search.by" />&#32;<s:text name="label.description" />">
-				<span class="icon icon-file-text-alt icon-large"></span>
+				<span class="fa fa-file-text-o fa-lg"></span>
 			</span>
 			<label class="sr-only" for="text"><s:text name="label.search.by" />&#32;<s:text name="label.description" /></label>
 			<wpsf:textfield name="text" id="text" cssClass="form-control input-lg" placeholder="%{getText('label.description')}" title="%{getText('label.search.by')} %{getText('label.description')}" />
 			<span class="input-group-btn">
 				<wpsf:submit type="button" title="%{getText('label.search')}" cssClass="btn btn-primary btn-lg">
-					<span class="icon icon-search"></span>
+					<span class="fa fa-search"></span>
 					<span class="sr-only"><s:text name="label.search" /></span>
 				</wpsf:submit>
 				<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="collapse" data-target="#search-advanced" title="<s:text name="title.searchFilters" />">
@@ -83,11 +83,11 @@
 						</label>
 						<div class="col-sm-5">
 							<div class="well">
-								<ul id="categoryTree" class="icons-ul list-unstyled">
+								<ul id="categoryTree" class="fa-ul list-unstyled">
 									<s:set name="inputFieldName" value="'categoryCode'" />
 									<s:set name="selectedTreeNode" value="categoryCode" />
 									<s:set name="liClassName" value="'category'" />
-									<s:set name="treeItemIconName" value="'icon-folder-close'" />
+									<s:set name="treeItemIconName" value="'fa-folder'" />
 
 									<s:if test="#categoryTreeStyleVar == 'classic'">
 										<s:set name="currentRoot" value="categoryRoot" />
@@ -107,7 +107,7 @@
 					<div class="form-group">
 						<div class="col-sm-5 col-sm-offset-2">
 							<wpsf:submit type="button" cssClass="btn btn-primary">
-								<span class="icon icon-search"></span>&#32;<s:text name="label.search" />
+								<span class="fa fa-search"></span>&#32;<s:text name="label.search" />
 							</wpsf:submit>
 						</div>
 					</div>
@@ -119,7 +119,7 @@
 <wp:ifauthorized permission="manageResources">
 	<p><a href="<s:url action="new" >
 	<s:param name="resourceTypeCode" >Attach</s:param><s:param name="contentOnSessionMarker" value="contentOnSessionMarker" /></s:url>"
-	class="btn btn-default" title="<s:text name="label.new" />&#32;<s:text name="label.attach" />"><span class="icon icon-plus-sign"></span>&#32;<s:text name="label.new" />&#32;<s:text name="label.attach" /></a></p>
+	class="btn btn-default" title="<s:text name="label.new" />&#32;<s:text name="label.attach" />"><span class="fa fa-plus-circle"></span>&#32;<s:text name="label.new" />&#32;<s:text name="label.attach" /></a></p>
 </wp:ifauthorized>
 
 <s:form action="search">
@@ -156,7 +156,7 @@
 		<div class="row"><div class="col-lg-12">
 			<s:iterator var="category_resource" value="#resource.categories">
 					<span class="label label-default label-sm pull-left padding-small-top padding-small-bottom margin-small-right margin-small-bottom">
-						<span class="icon icon-tag"></span>&#32;
+						<span class="fa fa-tag"></span>&#32;
 						<s:property value="%{#category_resource.getTitle(currentLang.code)}"/></span>
 			</s:iterator>
 		</div></div>
@@ -194,7 +194,7 @@
 			<s:if test="!#resource.categories.empty">
 					<s:iterator var="category_resource" value="#resource.categories">
 						<span class="label label-default label-sm pull-left padding-small-top padding-small-bottom margin-small-right margin-small-bottom">
-							<span class="icon icon-tag"></span>&#32;
+							<span class="fa fa-tag"></span>&#32;
 						<s:property value="%{#category_resource.getTitle(currentLang.code)}"/></span>
 					</s:iterator>
 			</s:if>
@@ -208,16 +208,16 @@
 						<s:param name="fileName" value="%{fileName}" />
 						<s:param name="ownerGroupName" value="%{ownerGroupName}" />
 						<s:param name="treeNodesToOpen" value="%{treeNodesToOpen}" />
-					</s:url>" title="<s:text name="label.remove" />: <s:property value="#resource.descr" /> "><span class="icon icon-remove-sign text-warning"></span></a>
+					</s:url>" title="<s:text name="label.remove" />: <s:property value="#resource.descr" /> "><span class="fa fa-remove-sign text-warning"></span></a>
 			</div>
 		</div>
 		<div class="row">
 		<div class="col-lg-12">
 			<a href="<s:url action="edit" namespace="/do/jacms/Resource"><s:param name="resourceId" value="%{#resourceid}" /></s:url>" title="<s:text name="label.edit" />: <s:property value="#resource.descr" /> ">
-			<span class="icon icon-edit"></span>&#32;<s:property value="#resource.descr" /></a>
+			<span class="fa fa-pencil-square-o"></span>&#32;<s:property value="#resource.descr" /></a>
 			<p class="margin-none">
 			<a href="<s:property value="%{#resource.documentPath}" />" title="<s:text name="label.download" />: <s:property value="#resourceInstance.fileName" />" class="pull-left margin-small-top">
-			<span class="icon icon-download-alt"></span>&#32;
+			<span class="fa fa-download"></span>&#32;
 				<s:set var="fileName" value="#resourceInstance.fileName" />
 				<s:if test='%{#fileName.length()>25}'>
 					<s:set var="fileName" value='%{#fileName.substring(0,10)+"..."+#fileName.substring(#fileName.length()-10)}' />

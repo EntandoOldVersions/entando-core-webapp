@@ -46,7 +46,7 @@
 				action="executeBackup"
 				value="%{getText('database.management.label.backup.execute')}"
 				cssClass="btn btn-primary">
-					<span class="icon icon-ok"></span>
+					<span class="fa fa-check"></span>
 					<s:text name="database.management.label.backup.execute" />
 			</wpsf:submit>
 			<a

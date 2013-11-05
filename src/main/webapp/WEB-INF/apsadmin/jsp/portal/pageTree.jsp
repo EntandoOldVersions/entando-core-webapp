@@ -10,7 +10,7 @@
 
 <s:if test="hasActionErrors()">
 <div class="alert alert-danger alert-dismissable">
-	<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+	<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
 	<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
 	<ul>
 	<s:iterator value="actionErrors">
@@ -34,11 +34,11 @@
 	<s:set var="pageTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_page" /></s:set>
 
 	<div class="well">
-		<ul id="pageTree" class="icons-ul list-unstyled">
+		<ul id="pageTree" class="fa-ul list-unstyled">
 			<s:set var="inputFieldName" value="%{'selectedNode'}" />
 			<s:set var="selectedTreeNode" value="%{selectedNode}" />
 			<s:set var="liClassName" value="'page'" />
-			<s:set var="treeItemIconName" value="'icon-folder-close'" />
+			<s:set var="treeItemIconName" value="'fa-folder'" />
 
 			<s:if test="#pageTreeStyleVar == 'classic'">
 			<s:set var="currentRoot" value="allowedTreeRootNode" />
@@ -58,37 +58,37 @@
 		<div class="btn-toolbar" data-toggle="tree-toolbar-actions">
 			<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
 				<wpsf:submit action="configure" type="button" title="%{getText('page.options.configure')}" cssClass="btn btn-info" data-toggle="tooltip">
-					<span class="icon icon-cog"></span>
+					<span class="fa fa-cog"></span>
 				</wpsf:submit>
 				<wpsf:submit action="detail" type="button" title="%{getText('page.options.detail')}" cssClass="btn btn-info" data-toggle="tooltip">
-					<span class="icon icon-info"></span>
+					<span class="fa fa-info"></span>
 				</wpsf:submit>
 			</div>
 			<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
 				<wpsf:submit action="copy" type="button" title="%{getText('page.options.copy')}" cssClass="btn btn-info" data-toggle="tooltip">
-					<span class="icon icon-copy"></span>
+					<span class="fa fa-files-o"></span>
 				</wpsf:submit>
 				<wpsf:submit action="paste" type="button" title="%{getText('page.options.paste')}" cssClass="btn btn-info" data-toggle="tooltip">
-					<span class="icon icon-paste"></span>
+					<span class="fa fa-clipboard"></span>
 				</wpsf:submit>
 				<wpsf:submit action="moveUp" type="button" title="%{getText('page.options.moveUp')}" cssClass="btn btn-info" data-toggle="tooltip">
-					<span class="icon icon-sort-up"></span>
+					<span class="fa fa-sort-up"></span>
 				</wpsf:submit>
 				<wpsf:submit action="moveDown" type="button" title="%{getText('page.options.moveDown')}" cssClass="btn btn-info" data-toggle="tooltip">
-					<span class="icon icon-sort-down"></span>
+					<span class="fa fa-sort-down"></span>
 				</wpsf:submit>
 			</div>
 			<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
 				<wpsf:submit action="new" type="button" title="%{getText('page.options.new')}" cssClass="btn btn-info" data-toggle="tooltip">
-					<span class="icon icon-plus-sign"></span>
+					<span class="fa fa-plus-circle"></span>
 				</wpsf:submit>
 				<wpsf:submit action="edit" type="button" title="%{getText('page.options.modify')}" cssClass="btn btn-info" data-toggle="tooltip">
-					<span class="icon icon-edit"></span>
+					<span class="fa fa-pencil-square-o"></span>
 				</wpsf:submit>
 			</div>
 			<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
 				<wpsf:submit action="trash" type="button" title="%{getText('page.options.delete')}" cssClass="btn btn-warning" data-toggle="tooltip">
-					<span class="icon icon-remove-sign"></span>
+					<span class="fa fa-remove-sign"></span>
 				</wpsf:submit>
 			</div>
 		</div>

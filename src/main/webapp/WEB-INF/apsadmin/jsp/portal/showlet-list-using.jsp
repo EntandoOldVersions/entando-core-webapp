@@ -51,13 +51,13 @@
 							<s:url namespace="/do/Page" action="viewTree">
 								<s:param name="selectedNode" value="#singlePage.code" />
 							</s:url>" class="btn btn-default" title="<s:text name="note.goToSomewhere" />: <s:property value="%{#singlePage.getFullTitle(currentLang.code)}" />">
-						<span class="icon icon-sitemap"></span>
+						<span class="fa fa-sitemap"></span>
 					</a>
 					<a href="
 							<s:url namespace="/do/Page" action="configure">
 								<s:param name="pageCode" value="#singlePage.code" />
 							</s:url>" class="btn btn-default" title="<s:text name="title.configPage" />: <s:property value="%{#singlePage.getFullTitle(currentLang.code)}" />" />
-						<span class="icon icon-cog"></span>
+						<span class="fa fa-cog"></span>
 					</a>
 				</div>
 			</div>
@@ -79,7 +79,7 @@
 					<div class="btn-group pull-right">
 						<div class="btn-group">
 							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="<s:text name="label.new" />..."">
-								<span class="icon-plus-sign"></span>
+								<span class="icon-plus-circle"></span>
 								<span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">
@@ -127,7 +127,7 @@
 									<s:param name="pageCode"><s:property value="#singlePage.code"/></s:param>
 									<s:param name="frame"><s:property value="#rowstatus.index"/></s:param>
 								</s:url>" title="<s:text name="title.editFrame" />: <s:property value="#rowstatus.index"/> &ndash; <s:property value="#singlePage.model.getFrames()[#rowstatus.index]"/>" class="btn btn-default">
-							<span class="icon icon-cog"></span>
+							<span class="fa fa-cog"></span>
 						</a>
 					</div>
 				</div>
@@ -144,7 +144,7 @@
 								<s:param name="frame"><s:property value="#rowstatus.index"/></s:param>
 								<s:param name="widgetTypeCode"><s:property value="#showletTypeVar.code"/></s:param>
 							</s:url>" title="<s:text name="label.clear" />: <s:property value="#rowstatus.index"/> &middot; <s:property value="#singlePage.model.getFrames()[#rowstatus.index]"/>" class="btn btn-warning pull-right">
-						<span class="icon icon-eraser"></span>
+						<span class="fa fa-eraser"></span>
 					</a>
 				</div>
 

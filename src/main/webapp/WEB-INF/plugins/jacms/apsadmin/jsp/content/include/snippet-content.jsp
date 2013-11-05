@@ -22,7 +22,7 @@
 		</s:if>
 			<span id="contentDescription-text">
 				<a data-container="contentDescription-text" href="#contentDescription-input" data-swapon="contentDescription-input" data-swapon-fade="true" class="text-warning" id="contentDescription-readonly">
-					<span class="icon icon-edit"></span>&#32;
+					<span class="fa fa-pencil-square-o"></span>&#32;
 					<span data-swapon-role="text">
 						<s:if test="#contentDescriptionVar!=null && !#contentDescriptionVar.isEmpty()"><s:property value="#contentDescriptionVar" /></s:if>
 						<s:else><s:text name="note.description.provide" /></s:else>
@@ -80,7 +80,7 @@
 						</wpsf:submit>
 					</span>
 				</div>
-				<span class="help-block"><span class="icon icon-info-sign"></span>&#32;<s:text name="note.set.MainGroup" />.</span>
+				<span class="help-block"><span class="fa fa-info-circle"></span>&#32;<s:text name="note.set.MainGroup" />.</span>
 			</div>
 		</s:if>
 

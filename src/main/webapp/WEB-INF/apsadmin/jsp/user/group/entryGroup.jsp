@@ -18,7 +18,7 @@
 <s:form action="save" cssClass="form-horizontal" >
 	<s:if test="hasActionErrors()">
 		<div class="alert alert-danger alert-dismissable fade in">
-			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+			<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
 			<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
 			<ul class="margin-base-top">
 				<s:iterator value="actionErrors">
@@ -29,7 +29,7 @@
 	</s:if>
 	<s:if test="hasFieldErrors()">
 		<div class="alert alert-danger alert-dismissable fade in">
-			<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+			<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
 			<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h2>
 			<%--<ul class="margin-base-top">
 				<s:iterator value="fieldErrors">
@@ -80,7 +80,7 @@
     <div class="form-group">
       <div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
         <wpsf:submit type="button" cssClass="btn btn-primary btn-block">
-          <span class="icon icon-save"></span>&#32;
+          <span class="fa fa-save"></span>&#32;
           <s:text name="label.save" />
         </wpsf:submit>
       </div>
