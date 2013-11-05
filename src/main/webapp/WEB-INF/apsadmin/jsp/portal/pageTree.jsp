@@ -10,7 +10,7 @@
 
 <s:if test="hasActionErrors()">
 <div class="alert alert-danger alert-dismissable">
-	<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+	<button class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 	<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
 	<ul>
 	<s:iterator value="actionErrors">
@@ -58,37 +58,37 @@
 		<div class="btn-toolbar" data-toggle="tree-toolbar-actions">
 			<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
 				<wpsf:submit action="configure" type="button" title="%{getText('page.options.configure')}" cssClass="btn btn-info" data-toggle="tooltip">
-					<span class="fa fa-cog"></span>
+					<span class="icon fa fa-cog"></span>
 				</wpsf:submit>
 				<wpsf:submit action="detail" type="button" title="%{getText('page.options.detail')}" cssClass="btn btn-info" data-toggle="tooltip">
-					<span class="fa fa-info"></span>
+					<span class="icon fa fa-info"></span>
 				</wpsf:submit>
 			</div>
 			<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
 				<wpsf:submit action="copy" type="button" title="%{getText('page.options.copy')}" cssClass="btn btn-info" data-toggle="tooltip">
-					<span class="fa fa-files-o"></span>
+					<span class="icon fa fa-files-o"></span>
 				</wpsf:submit>
 				<wpsf:submit action="paste" type="button" title="%{getText('page.options.paste')}" cssClass="btn btn-info" data-toggle="tooltip">
-					<span class="fa fa-clipboard"></span>
+					<span class="icon fa fa-clipboard"></span>
 				</wpsf:submit>
 				<wpsf:submit action="moveUp" type="button" title="%{getText('page.options.moveUp')}" cssClass="btn btn-info" data-toggle="tooltip">
-					<span class="fa fa-sort-up"></span>
+					<span class="icon fa fa-sort-desc"></span>
 				</wpsf:submit>
 				<wpsf:submit action="moveDown" type="button" title="%{getText('page.options.moveDown')}" cssClass="btn btn-info" data-toggle="tooltip">
-					<span class="fa fa-sort-down"></span>
+					<span class="icon fa fa-sort-asc"></span>
 				</wpsf:submit>
 			</div>
 			<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
 				<wpsf:submit action="new" type="button" title="%{getText('page.options.new')}" cssClass="btn btn-info" data-toggle="tooltip">
-					<span class="fa fa-plus-circle"></span>
+					<span class="icon fa fa-plus-circle"></span>
 				</wpsf:submit>
 				<wpsf:submit action="edit" type="button" title="%{getText('page.options.modify')}" cssClass="btn btn-info" data-toggle="tooltip">
-					<span class="fa fa-pencil-square-o"></span>
+					<span class="icon fa fa-pencil-square-o"></span>
 				</wpsf:submit>
 			</div>
 			<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
 				<wpsf:submit action="trash" type="button" title="%{getText('page.options.delete')}" cssClass="btn btn-warning" data-toggle="tooltip">
-					<span class="fa fa-remove-sign"></span>
+					<span class="icon fa fa-times-circle"></span>
 				</wpsf:submit>
 			</div>
 		</div>

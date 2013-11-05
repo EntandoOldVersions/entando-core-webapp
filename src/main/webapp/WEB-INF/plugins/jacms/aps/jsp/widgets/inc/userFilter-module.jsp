@@ -12,7 +12,7 @@
 
 <c:if test="${hasUserFilterError}">
 <div class="alert alert-error">
-	<a class="close" data-dismiss="alert" href="#"><span class="fa fa-remove"></span></a>
+	<a class="close" data-dismiss="alert" href="#"><span class="icon fa fa-times"></span></a>
 	<h2 class="alert-heading"><wp:i18n key="ERRORS" /></h2>
 	<ul>
 		<c:forEach var="userFilterOptionVar" items="${userFilterOptionsVar}">

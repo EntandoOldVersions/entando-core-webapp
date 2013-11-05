@@ -4,7 +4,7 @@
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <s:if test="hasActionErrors()">
 	<div class="alert alert-danger alert-dismissable fade in">
-		<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+		<button class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 		<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
 		<ul class="margin-base-top">
 			<s:iterator value="actionErrors">
@@ -15,7 +15,7 @@
 </s:if>
 <s:if test="hasFieldErrors()">
 	<div class="alert alert-danger alert-dismissable fade in">
-		<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+		<button class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 		<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
 		<ul class="margin-base-top">
 			<s:iterator value="fieldErrors">
@@ -43,7 +43,7 @@
 							<span class="label label-default label-sm pull-left padding-small-top padding-small-bottom margin-small-right margin-small-bottom">
 							  <s:property value="#user" />&#32;
 								<wpsf:submit type="button" action="%{#actionName}" title="%{getText('label.remove') +' '+ #user}" cssClass="btn btn-default btn-xs badge">
-									<span class="fa fa-remove"></span>
+									<span class="icon fa fa-times"></span>
 									<span class="sr-only">x</span>
 								</wpsf:submit>
 							</span>
@@ -67,12 +67,12 @@
 			<div class="input-group col-sm-12">
 				<label for="username" class="sr-only"><s:text name="title.userManagement.searchUsers" /></label>
 				<span class="input-group-addon" title="<s:text name="title.userManagement.searchUsers" />">
-					<span class="fa fa-file-text-o fa-lg"></span>
+					<span class="icon fa fa-file-text-o fa-lg"></span>
 				</span>
 				<wpsf:textfield name="text" id="username" cssClass="form-control input-lg" title="%{getText('title.userManagement.searchUsers')}" placeholder="%{getText('label.search.by')+ ' '+ getText('label.username')}" />
 				<div class="input-group-btn">
 					<wpsf:submit type="button" action="search" cssClass="btn btn-primary btn-lg" title="%{getText('title.userManagement.searchUsers')}">
-							<span class="fa fa-search" title="<s:text name="label.search" />"></span>
+							<span class="icon fa fa-search" title="<s:text name="label.search" />"></span>
 					</wpsf:submit>
 				</div>
 			</div>
@@ -131,7 +131,7 @@
 												<s:if test="%{!#usernameAlreadyInVar}">
 													<input type="radio" name="usernameToSet" value="<s:property value="#usernameVar"/>" />
 												</s:if>
-												<s:else><span class="fa fa-check-square-o text-muted"></span></s:else>
+												<s:else><span class="icon fa fa-check-square-o text-muted"></span></s:else>
 												&#32;
 												<s:property value="#userVar" />
 											</label>
@@ -181,7 +181,7 @@
 		<div class="form-group">
 		  <div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 		    <wpsf:submit type="button" action="addUser" cssClass="btn btn-primary btn-block">
-		      <span class="fa fa-plus"></span>&#32;
+		      <span class="icon fa fa-plus"></span>&#32;
 					<s:text name="label.add" />
 		    </wpsf:submit>
 		  </div>

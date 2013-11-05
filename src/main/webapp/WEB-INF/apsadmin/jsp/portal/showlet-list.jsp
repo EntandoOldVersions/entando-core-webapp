@@ -9,7 +9,7 @@
 
 <s:if test="hasFieldErrors()">
 	<div class="alert alert-danger alert-dismissable">
-		<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+		<button class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 		<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
 		<ul class="margin-base-vertical">
 		<s:iterator value="actionErrors">
@@ -66,7 +66,7 @@
 				<span class="badge" title="<s:text name="title.widgetManagement.howmanypages.long" />: <s:property value="#showletType.value" />"><s:property value="#showletUtilizers.size()" /></span>&#32;
 			</div>
 			<div class="col-xs-10 col-md-11">
-				<a href="<s:url namespace="/do/Portal/WidgetType" action="edit"><s:param name="widgetTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.configWidget" />: <s:property value="#showletType.value" />" ><span class="fa fa-cog"></span>
+				<a href="<s:url namespace="/do/Portal/WidgetType" action="edit"><s:param name="widgetTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.configWidget" />: <s:property value="#showletType.value" />" ><span class="icon fa fa-cog"></span>
 				<s:property value="#showletType.value" /></a>
 				
 				<%--<span class="label label-default label-sm padding-small-top padding-small-bottom margin-small-right margin-small-bottom"><s:property value="%{getGroup(getShowletType(#showletType.key).mainGroup).descr}" /></span>--%>
@@ -77,7 +77,7 @@
 		<div class="btn-group btn-group-xs pull-right">
 		
 		<s:if test="#showletUtilizers != null && #showletUtilizers.size() > 0">
-			<a href="<s:url namespace="/do/Portal/WidgetType" action="viewWidgetUtilizers"><s:param name="widgetTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="title.widgetManagement.howmanypages.goToSee" />: <s:property value="#showletType.value" />" class="btn btn-default"><span class="fa fa-info"></span></a>
+			<a href="<s:url namespace="/do/Portal/WidgetType" action="viewWidgetUtilizers"><s:param name="widgetTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="title.widgetManagement.howmanypages.goToSee" />: <s:property value="#showletType.value" />" class="btn btn-default"><span class="icon fa fa-info"></span></a>
 		</s:if>
 		
 		<wp:ifauthorized permission="superuser">
@@ -103,16 +103,16 @@
 						<s:param name="namespace" value="#relatedApiMethodVar.namespace" />
 					</s:url>
 				</s:else>
-				<a href="<s:property value="#newServiceUrlVar" escape="false" />" title="<s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#relatedApiMethodVar.methodName" />" class="btn btn-default"><span class="fa fa-code-fork"></span></a>
+				<a href="<s:property value="#newServiceUrlVar" escape="false" />" title="<s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#relatedApiMethodVar.methodName" />" class="btn btn-default"><span class="icon fa fa-code-fork"></span></a>
 				<s:set var="newServiceUrlVar" value="null" />
 			</s:if>
 			<s:set var="relatedApiMethodVar" value="null" />
 		
 			<s:if test="null != #concreteShowletTypeVar.typeParameters && #concreteShowletTypeVar.typeParameters.size() > 0">
-				<a href="<s:url namespace="/do/Portal/WidgetType" action="new"><s:param name="parentShowletTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.userWidget.new.from" />: <s:property value="#showletType.value" />" class="btn btn-default"><span class="fa fa-puzzle-piece"></span></a>
+				<a href="<s:url namespace="/do/Portal/WidgetType" action="new"><s:param name="parentShowletTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.userWidget.new.from" />: <s:property value="#showletType.value" />" class="btn btn-default"><span class="icon fa fa-puzzle-piece"></span></a>
 			</s:if>
 			<s:if test="#firstType.optgroup == 'userShowletCode' && !#concreteShowletTypeVar.isLocked() && (#showletUtilizers == null || #showletUtilizers.size() == 0)">
-				<a href="<s:url namespace="/do/Portal/WidgetType" action="trash"><s:param name="widgetTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.remove" />: <s:property value="#showletType.value" />" class="btn btn-warning" ><span class="fa fa-remove-circle"></span></a>
+				<a href="<s:url namespace="/do/Portal/WidgetType" action="trash"><s:param name="widgetTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.remove" />: <s:property value="#showletType.value" />" class="btn btn-warning" ><span class="icon fa fa-times-circle-o"></span></a>
 			</s:if>
 			</wp:ifauthorized>
 			<wpsa:hookPoint key="core.showletType.list.table.td" objectName="hookPointElements_core_showletType_list_table_td">

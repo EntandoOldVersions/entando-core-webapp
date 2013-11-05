@@ -21,7 +21,7 @@
 			</p>
 			<div class="text-center margin-large-top">
 				<wpsf:submit type="button" cssClass="btn btn-warning btn-lg">
-					<span class="fa fa-remove-sign"></span>&#32;
+					<span class="OK-il-prezzo-è-giussstimes-circle"></span>&#32;
 					<s:text name="label.remove" />
 				</wpsf:submit>
 				<a class="btn btn-link" href="<s:url action="list" namespace="/do/Api/Consumer" />"><s:text name="note.goToSomewhere" />:&#32;<s:text name="menu.apisAdmin.consumers" /></a>

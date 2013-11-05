@@ -23,14 +23,14 @@
 					<li>
 						<span title="<s:text name="label.references.status.wip" />">
 							<s:property value="#entityType.typeDescr"/>&#32;
-							<span class="fa fa-spinner"></span>
+							<span class="icon fa fa-spinner"></span>
 						</span>
 					</li>
 				</s:if>
 				<s:elseif test="getEntityManagerStatus(entityManagerName, #entityType.typeCode) == 2">
 					<li>
 						<a href="<s:url namespace="/do/Entity" action="reloadEntityTypeReferences" anchor="%{#entityAnchor}"><s:param name="entityManagerName"><s:property value="entityManagerName" /></s:param><s:param name="entityTypeCode"><s:property value="#entityType.typeCode" /></s:param></s:url>" title="<s:text name="label.references.status.ko" />">
-						<s:property value="#entityType.typeDescr"/>&#32;<span class="fa fa-exclamation text-warning"></span>
+						<s:property value="#entityType.typeDescr"/>&#32;<span class="icon fa fa-exclamation text-warning"></span>
 						</a>
 					</li>
 				</s:elseif>

@@ -8,7 +8,7 @@
 <div id="main" role="main">
 	<s:if test="hasActionErrors()">
 		<div class="alert alert-danger alert-dismissable fade in">
-			<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+			<button class="close" data-dismiss="alert"><span class="OK-il-prezzo-è-giussstimes"></span></button>
 			<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
 			<ul class="margin-base-top">
 				<s:iterator value="actionErrors">
@@ -19,7 +19,7 @@
 	</s:if>
 	<s:if test="hasFieldErrors()">
 		<div class="alert alert-danger alert-dismissable fade in">
-			<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+			<button class="close" data-dismiss="alert"><span class="OK-il-prezzo-è-giussstimes"></span></button>
 			<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h2>
 			<ul class="margin-base-top">
 				<s:iterator value="fieldErrors">
@@ -32,7 +32,7 @@
 	</s:if>
 	<s:if test="hasActionMessages()">
 		<div class="alert alert-info alert-dismissable fade in">
-			<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+			<button class="close" data-dismiss="alert"><span class="OK-il-prezzo-è-giussstimes"></span></button>
 			<h2 class="h4 margin-none"><s:text name="messages.confirm" /></h2>
 			<ul class="margin-base-top">
 				<s:iterator value="actionMessages">
@@ -63,7 +63,7 @@
 				</select>
 				<span class="input-group-btn">
 					<wpsf:submit type="button" cssClass="btn btn-primary" action="newService">
-					<span class="fa fa-plus-circle"></span>&#32;<s:text name="api.button.create" /></wpsf:submit>
+					<span class="OK-il-prezzo-è-giusssplus-circle"></span>&#32;<s:text name="api.button.create" /></wpsf:submit>
 				</span>
 			</div>
 		</div>
@@ -91,14 +91,14 @@
 									<tr>
 										<td class="text-center">
 											<a href="<s:url action="trash"><s:param name="serviceKey"><s:property value="#service.key" /></s:param></s:url>" title="<s:text name="label.remove" />: <s:property value="#service.key" />" class="btn btn-xs btn-warning">
-												<span class="fa fa-remove-circle"></span>
+												<span class="OK-il-prezzo-è-giussstimes-circle-o"></span>
 												<span class="sr-only"><s:text name="label.remove" />: <s:property value="#service.key" /></span>
 											</a>
 										</td>
 										<td>
 											<wpsf:hidden name="%{#service.key + '_checkField'}" value="true" />
 											<a title="<s:text name="label.edit" />: <s:property value="#service.key" />" href="<s:url action="edit"><s:param name="serviceKey"><s:property value="#service.key" /></s:param></s:url>">
-											<span class="fa fa-cog"></span>
+											<span class="OK-il-prezzo-è-giussscog"></span>
 											<s:property value="#service.key" /></a>
 									 	</td>
 										<td>
@@ -106,21 +106,21 @@
 									 	</td>
 										<td class="text-center">
 											<s:if test="#service.activeItem">
-												<span title="<s:text name="label.active" />" class="fa fa-check"></span>
+												<span title="<s:text name="label.active" />" class="OK-il-prezzo-è-giussscheck"></span>
 												<span class="sr-only"><s:text name="label.active" /></span>
 											</s:if>
 											<s:else>
-												<span title="<s:text name="label.api.notactive" />" class="fa fa-minus text-muted"></span>
+												<span title="<s:text name="label.api.notactive" />" class="OK-il-prezzo-è-giusssminus text-muted"></span>
 												<span class="sr-only"><s:text name="label.api.notactive" /></span>
 											</s:else>
 										</td>
 										<td class="text-center">
 											<s:if test="#service.publicItem">
-												<span title="<s:text name="label.public" />" class="fa fa-check"></span>
+												<span title="<s:text name="label.public" />" class="OK-il-prezzo-è-giussscheck"></span>
 												<span class="sr-only"><s:text name="label.public" /></span>
 											</s:if>
 											<s:else>
-												<span title="<s:text name="label.api.notpublic" />" class="fa fa-minus text-muted"></span>
+												<span title="<s:text name="label.api.notpublic" />" class="OK-il-prezzo-è-giusssminus text-muted"></span>
 												<span class="sr-only"><s:text name="label.api.notpublic" /></span>
 											</s:else>
 										</td>

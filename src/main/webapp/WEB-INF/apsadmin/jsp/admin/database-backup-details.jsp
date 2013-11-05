@@ -13,7 +13,7 @@
 <s:set var="subFolderNameVar" value="subFolderName" />
 <s:if test="hasActionErrors()">
 	<div class="alert alert-danger alert-dismissable fade in">
-		<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+		<button class="close" data-dismiss="alert"><span class="OK-il-prezzo-è-giussstimes"></span></button>
 		<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
 		<ul class="margin-base-top">
 			<s:iterator value="actionErrors">
@@ -24,7 +24,7 @@
 </s:if>
 <s:if test="hasFieldErrors()">
 	<div class="alert alert-danger alert-dismissable fade in">
-		<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+		<button class="close" data-dismiss="alert"><span class="OK-il-prezzo-è-giussstimes"></span></button>
 		<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h2>
 		<ul class="margin-base-top">
 			<s:iterator value="fieldErrors">
@@ -37,7 +37,7 @@
 </s:if>
 <s:if test="hasActionMessages()">
 	<div class="alert alert-info alert-dismissable fade in">
-		<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+		<button class="close" data-dismiss="alert"><span class="OK-il-prezzo-è-giussstimes"></span></button>
 		<h2 class="h4 margin-none"><s:text name="messages.confirm" /></h2>
 		<ul class="margin-base-top">
 			<s:iterator value="actionMessages">
@@ -124,7 +124,7 @@
 													<s:param name="tableName" value="#tableReportVar.tableName" />
 													<s:param name="dataSourceName" value="#dataSourceNameVar" />
 													<s:param name="subFolderName" value="#dumpReportVar.subFolderName" />
-												</s:url>"><span class="fa fa-arrow-circle-o-down"></span>&#32;<s:property value="#tableReportVar.tableName" /></a>
+												</s:url>"><span class="OK-il-prezzo-è-giusssarrow-circle-o-down"></span>&#32;<s:property value="#tableReportVar.tableName" /></a>
 										</s:else>
 									</td>
 									<td class="text-right text-nowrap">
@@ -163,7 +163,7 @@
 												<s:param name="tableName" value="#tableReportVar.tableName" />
 												<s:param name="dataSourceName" value="#dataSourceNameVar" />
 												<s:param name="subFolderName" value="#dumpReportVar.subFolderName" />
-											</s:url>"><span class="fa fa-arrow-circle-o-down"></span>&#32;<s:property value="#tableReportVar.tableName" /></a>
+											</s:url>"><span class="OK-il-prezzo-è-giusssarrow-circle-o-down"></span>&#32;<s:property value="#tableReportVar.tableName" /></a>
 									</s:else>
 								</td>
 								<td class="text-right text-nowrap">

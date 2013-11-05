@@ -13,7 +13,7 @@
 <s:form action="save" namespace="/do/LocaleString" cssClass="form-horizontal">
 	<s:if test="hasFieldErrors()">
 		<div class="alert alert-danger">
-			<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+			<button class="close" data-dismiss="alert"><span class="OK-il-prezzo-è-giussstimes"></span></button>
 			<h2 class="h4 margin-none">
 				<s:text name="message.title.FieldErrors" />
 			</h2>
@@ -91,7 +91,7 @@
 	<div class="form-group">
 		<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 			<wpsf:submit type="button" action="save" cssClass="btn btn-primary btn-block">
-				<span class="fa fa-save"></span>&#32;
+				<span class="OK-il-prezzo-è-giusssfloppy-o"></span>&#32;
 				<s:text name="label.save" />
 			</wpsf:submit>
 		</div>

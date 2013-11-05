@@ -15,7 +15,7 @@
 	<s:form action="new" cssClass="form-horizontal">
 		<s:if test="hasFieldErrors()">
 			<div class="alert alert-danger alert-dismissable fade in">
-				<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+				<button class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 				<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h2>
 					<ul>
 						<s:iterator value="fieldErrors">
@@ -39,7 +39,7 @@
 			<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 				<wpsf:submit type="button" title="%{getText('label.continue')}" cssClass="btn btn-primary btn-block">
 					<s:text name="label.continue" />&#32;
-					<span class="fa fa-long-arrow-right"></span>
+					<span class="icon fa fa-long-arrow-right"></span>
 				</wpsf:submit>
 			</div>
 		</div>

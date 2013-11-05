@@ -17,11 +17,11 @@
 </wpsa:actionParam>
 <wpsf:submit action="%{#chooseResourceActionName}" type="button" title="%{#attribute.name + ': ' + getText('label.choose')}" cssClass="%{#buttonCssClass}">
 	<s:if test="#resourceTypeCode == 'Image'">
-			<span class="fa fa-picture-o"></span>&#32;
+			<span class="icon fa fa-picture-o"></span>&#32;
 			<s:text name="label.chooseImage" />
 	</s:if>
 	<s:else>
-			<span class="fa fa-paperclip"></span>&#32;
+			<span class="icon fa fa-paperclip"></span>&#32;
 			<s:text name="label.chooseAttach" />
 	</s:else>
 </wpsf:submit>

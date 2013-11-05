@@ -16,9 +16,9 @@
 	<s:form cssClass="form-horizontal">
 		<s:if test="hasFieldErrors()">
 			<div class="alert alert-danger alert-dismissable fade in">
-				<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+				<button class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 				<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" />&ensp;<span
-						class="fa fa-question-sign cursor-pointer"
+						class="icon fa fa-question-sign cursor-pointer"
 						title="<s:text name="label.all" />"
 						data-toggle="collapse"
 						data-target="#content-error-messages"></span>
@@ -66,7 +66,7 @@
 
 				<div class="form-group<s:property value="#controlGroupErrorClassVar" />"><%-- form group --%>
 					<s:if test="#attribute.type == 'List' || #attribute.type == 'Monolist'">
-						<label class="display-block"><span class="fa fa-list"></span>&#32;<s:property value="#attributeLabelVar" />&#32;<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" /></label>
+						<label class="display-block"><span class="icon fa fa-list"></span>&#32;<s:property value="#attributeLabelVar" />&#32;<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" /></label>
 					</s:if>
 					<s:elseif test="#attribute.type == 'Image' || #attribute.type == 'CheckBox' || #attribute.type == 'Boolean' || #attribute.type == 'ThreeState' || #attribute.type == 'Composite'">
 						<label class="display-block"><s:property value="#attributeLabelVar" />&#32;<s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" /></label>
@@ -148,7 +148,7 @@
 	<div class="form-group">
 		<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 			<wpsf:submit type="button" action="save" cssClass="btn btn-primary btn-block">
-				<span class="fa fa-save"></span>&#32;
+				<span class="icon fa fa-floppy-o"></span>&#32;
 				<s:text name="label.save" />
 			</wpsf:submit>
 		</div>

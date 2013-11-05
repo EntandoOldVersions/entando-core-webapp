@@ -23,7 +23,7 @@
 			<wpsa:actionSubParam name="attributeName" value="%{#attribute.name}" />
 		</wpsa:actionParam>
 		<wpsf:submit action="%{#actionName}" type="button" title="%{getText('label.edit')}: %{#attribute.name}" cssClass="btn btn-default" >
-		<span class="fa fa-pencil-square-o"></span>
+		<span class="icon fa fa-pencil-square-o"></span>
 		<span class="sr-only"><s:text name="label.edit" />: <s:property value="#attribute.name" /></span>
 		</wpsf:submit>
 	</div>
@@ -51,18 +51,18 @@
 	
 	<td class="text-center">
 		<s:if test="#attribute.required">
-			<span class="fa fa-check-square-o" title="<s:text name="label.yes" />"></span>
+			<span class="icon fa fa-check-square-o" title="<s:text name="label.yes" />"></span>
 		</s:if> 
 		<s:else>
-			<span class="fa fa-square-o" title="<s:text name="label.no" />"></span>
+			<span class="icon fa fa-square-o" title="<s:text name="label.no" />"></span>
 		</s:else>
 	</td>
 	<td class="text-center">
 		<s:if test="#attribute.searcheable">
-			<span class="fa fa-check-square-o" title="<s:text name="label.yes" />"></span>
+			<span class="icon fa fa-check-square-o" title="<s:text name="label.yes" />"></span>
 		</s:if> 
 		<s:else>
-			<span class="fa fa-square-o" title="<s:text name="label.no" />"></span>
+			<span class="icon fa fa-square-o" title="<s:text name="label.no" />"></span>
 		</s:else>
 	</td>
 </tr>

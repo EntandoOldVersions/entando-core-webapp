@@ -9,7 +9,7 @@
 <s:form cssClass="form-horizontal">
 	<s:if test="hasFieldErrors()">
 		<div class="alert alert-danger alert-dismissable fade in">
-			<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+			<button class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 			<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h4>
 			<%--
 			<ul class="margin-none margin-base-top">

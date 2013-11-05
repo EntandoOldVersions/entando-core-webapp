@@ -21,19 +21,19 @@
 	</s:if>
 	<s:if test="#validLink"><%-- valid link --%>
 		<s:if test="#attribute.symbolicLink.destType == 1">
-			<s:set var="statusIconVar">btn btn-default fa fa-globe</s:set>
+			<s:set var="statusIconVar">btn btn-default icon fa fa-globe</s:set>
 			<s:set var="linkDestination" value="%{getText('note.URLLinkTo') + ': ' + #attribute.symbolicLink.urlDest}" />
 		</s:if>
 		<s:elseif test="#attribute.symbolicLink.destType == 2">
-			<s:set var="statusIconVar">btn btn-default fa fa-folder</s:set>
+			<s:set var="statusIconVar">btn btn-default icon fa fa-folder</s:set>
 			<s:set var="linkDestination" value="%{getText('note.pageLinkTo') + ': ' + #linkedPage.titles[currentLang.code]}" />
 		</s:elseif>
 		<s:elseif test="#attribute.symbolicLink.destType == 3">
-			<s:set var="statusIconVar">btn btn-default fa fa-file-text-o</s:set>
+			<s:set var="statusIconVar">btn btn-default icon fa fa-file-text-o</s:set>
 			<s:set var="linkDestination" value="%{getText('note.contentLinkTo') + ': ' + #attribute.symbolicLink.contentDest + ' - ' + #linkedContent.descr}" />
 		</s:elseif>
 		<s:elseif test="#attribute.symbolicLink.destType == 4">
-			<s:set var="statusIconVar">btn btn-default fa fa-file-text</s:set>
+			<s:set var="statusIconVar">btn btn-default icon fa fa-file-text</s:set>
 			<s:set var="linkDestination" value="%{getText('note.contentLinkTo') + ': ' + #attribute.symbolicLink.contentDest + ' - ' + #linkedContent.descr + ', ' + getText('note.contentOnPageLinkTo') + ': ' + #linkedPage.titles[currentLang.code]}" />
 		</s:elseif>
 		<%-- link icon --%>

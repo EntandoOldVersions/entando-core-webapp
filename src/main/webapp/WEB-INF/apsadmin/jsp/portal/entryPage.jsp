@@ -28,13 +28,13 @@
 
 	<s:if test="hasActionErrors()">
 		<div class="alert alert-danger alert-dismissable">
-			<button type="button" class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+			<button type="button" class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 			<p><s:text name="message.title.ActionErrors" /></p>
 		</div>
 	</s:if>
 	<s:if test="hasFieldErrors()">
 		<div class="alert alert-danger alert-dismissable">
-			<button type="button" class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+			<button type="button" class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 			<p><s:text name="message.title.FieldErrors" /></p>
 		</div>
 	</s:if>
@@ -119,10 +119,10 @@
 			<wpsa:actionSubParam name="extraGroupName" value="%{#groupName}" />
 		</wpsa:actionParam>
 		<span class="label label-default label-sm pull-left padding-small-top padding-small-bottom margin-small-right margin-small-bottom">
-			<span class="fa fa-tag"></span>&#32;
+			<span class="icon fa fa-tag"></span>&#32;
 			<s:property value="%{getSystemGroups()[#groupName].getDescr()}"/>&#32;
 			<wpsf:submit type="button" action="%{#actionName}" value="%{getText('label.remove')}" title="%{getText('label.remove')}" cssClass="btn btn-default btn-xs badge">
-				<span class="fa fa-remove"></span>
+				<span class="icon fa fa-times"></span>
 				<span class="sr-only">x</span>
 			</wpsf:submit>
 		</span>
@@ -179,7 +179,7 @@
 		<div class="form-group">
 			<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 				<wpsf:submit type="button" cssClass="btn btn-primary btn-block">
-					<span class="fa fa-save"></span>&#32;
+					<span class="icon fa fa-floppy-o"></span>&#32;
 					<s:text name="label.save" />
 				</wpsf:submit>
 			</div>

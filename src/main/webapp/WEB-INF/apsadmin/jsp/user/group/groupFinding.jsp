@@ -8,7 +8,7 @@
 </h1>
 <s:if test="hasActionErrors()">
 	<div class="alert alert-danger alert-dismissable fade in">
-		<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+		<button class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 		<h2 class="h4 margin-none"><s:text name="messages.title.ActionErrors" /></h2>
 		<ul class="margin-base-top">
 				<s:iterator value="actionErrors">
@@ -20,7 +20,7 @@
 <a
 	class="btn btn-default margin-base-bottom"
 	href="<s:url namespace="/do/Group" action="new" />">
-		<span class="fa fa-plus-circle">
+		<span class="icon fa fa-plus-circle">
 			&#32;
 			<s:text name="title.groupManagement.groupNew" />
 		</span>
@@ -43,7 +43,7 @@
 							class="btn btn-default"
 							href="<s:url action="detail"><s:param name="name" value="#group.name"/></s:url>" 
 							title="<s:text name="note.detailsFor" />: <s:property value="#group.name" />">
-								<span class="fa fa-info"></span>
+								<span class="icon fa fa-info"></span>
 								<span class="sr-only"><s:text name="note.detailsFor" />: <s:property value="#group.name" /></span>
 						</a>
 						<button type="submit" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -55,7 +55,7 @@
 										href="<s:url action="edit"><s:param name="name" value="#group.name"/></s:url>" 
 										title="<s:text name="label.edit" />:&#32;<s:property value="#group.name" />"
 										>
-										<span class="fa-fw fa fa-pencil-square-o"></span>
+										<span class="icon fa fa-pencil-square-o fa-fw"></span>
 										<s:text name="label.edit" />
 									</a>
 								</li>
@@ -63,7 +63,7 @@
 									<a 
 										href="<s:url namespace="/do/Group/Auth" action="config"><s:param name="authName" value="#group.name"/></s:url>" 
 										title="<s:text name="note.manageUsersFor" />: <s:property value="#group.name" />">
-											<span class="fa-fw fa fa-users"></span>
+											<span class="icon fa fa-users fa-fw"></span>
 											<s:text name="note.manageUsersFor" />
 										</a>
 								</li>
@@ -75,7 +75,7 @@
 							href="<s:url action="trash"><s:param name="name" value="#group.name"/></s:url>"  
 							title="<s:text name="label.remove" />: <s:property value="#group.name" />">
 								<span class="sr-only"><s:text name="label.remove" />: <s:property value="#group.name" /></span>
-								<span class="fa fa-remove-circle"></span>
+								<span class="icon fa fa-times-circle-o"></span>
 							</a>
 					</div>
 				</td>

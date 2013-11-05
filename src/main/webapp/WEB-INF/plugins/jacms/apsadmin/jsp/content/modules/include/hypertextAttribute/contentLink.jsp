@@ -17,14 +17,14 @@
 	<div class="form-group">
 		<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<span class="input-group-addon" title="<s:text name="label.search.by" />&#32;<s:text name="label.description" />">
-				<span class="fa fa-file-text-o fa-lg"></span>
+				<span class="icon fa fa-file-text-o fa-lg"></span>
 			</span>
 			<label class="sr-only" for="text"><s:text name="label.search.by" />&#32;<s:text name="label.description" /></label>
 			<input type="text" class="form-control input-lg" placeholder="" title="" />
 			<wpsf:textfield name="text" id="text" cssClass="form-control input-lg" placeholder="%{getText('label.description')}" title="%{getText('label.search.by')+' '+getText('label.description')}" />
 			<span class="input-group-btn">
 				<wpsf:submit type="button" title="%{getText('label.search')}" cssClass="btn btn-primary btn-lg">
-					<span class="fa fa-search"></span>
+					<span class="icon fa fa-search"></span>
 					<span class="sr-only"><s:text name="label.search" /></span>
 				</wpsf:submit>
 				<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="collapse" data-target="#search-advanced" title="<s:text name="title.searchFilters" />">
@@ -50,7 +50,7 @@
 				<div class="form-group">
 					<div class="col-sm-5 col-sm-offset-2">
 						<wpsf:submit type="button" cssClass="btn btn-primary">
-							<span class="fa fa-search"></span>&#32;<s:text name="label.search" />
+							<span class="icon fa fa-search"></span>&#32;<s:text name="label.search" />
 						</wpsf:submit>
 					</div>
 				</div>

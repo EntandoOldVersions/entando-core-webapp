@@ -125,7 +125,7 @@
 						<s:set var="referencedContentsIdVar" value="referencedContentsId" />
 						<dl id="jpcontentinspection_referral_contents">
 							<dt>
-								<span class="fa fa-file-text-o"></span>&#32;<s:text name="title.referencedContents" />
+								<span class="icon fa fa-file-text-o"></span>&#32;<s:text name="title.referencedContents" />
 							</dt>
 							<s:if test="!#referencedContentsIdVar.empty">
 								<s:iterator var="curReferencedContentId" value="#referencedContentsIdVar">
@@ -148,7 +148,7 @@
 					<%-- referenced pages --%>
 						<s:set var="referencedPagesVar" value="referencedPages" />
 						<dl id="jpcontentinspection_pages">
-							<dt><span class="fa fa-li fa-folder"></span>&#32;<s:text name="title.referencedPages" /></dt>
+							<dt><span class="icon fa fa-li fa-folder"></span>&#32;<s:text name="title.referencedPages" /></dt>
 							<s:if test="!#referencedPagesVar.empty">
 								<s:iterator var="curReferencedPage" value="#referencedPagesVar">
 									<dd>
@@ -178,7 +178,7 @@
 					<%-- referencing contents --%>
 						<s:set var="referencingContentsIdVar" value="referencingContentsId" />
 						<dl id="jpcontentinspection_referring_conts">
-							<dt><span class="fa fa-file-text-o"></span>&#32;<s:text name="title.referencingContents" /></dt>
+							<dt><span class="icon fa fa-file-text-o"></span>&#32;<s:text name="title.referencingContents" /></dt>
 							<s:if test="!#referencingContentsIdVar.empty">
 								<s:iterator var="curReferencingContentId" value="#referencingContentsIdVar">
 									<jacmswpsa:content contentId="%{#curReferencingContentId}" var="curReferencingContent" authToEditVar="isAuthToEditVar" workVersion="true" />
@@ -200,7 +200,7 @@
 					<%-- referecing pages --%>
 						<s:set var="referencingPagesVar" value="referencingPages" />
 						<dl id="jpcontentinspection_referencing_pages">
-							<dt><span class="fa fa-li fa-folder"></span>&#32;<s:text name="title.referencingPages" /></dt>
+							<dt><span class="icon fa fa-li fa-folder"></span>&#32;<s:text name="title.referencingPages" /></dt>
 							<s:if test="!#referencingPagesVar.empty">
 								<s:iterator var="curReferencingPage" value="#referencingPagesVar">
 									<dd>

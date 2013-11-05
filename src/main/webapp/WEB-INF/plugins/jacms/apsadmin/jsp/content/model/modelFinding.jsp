@@ -12,12 +12,12 @@
 		<label for="contentType" class="sr-only"><s:text name="label.search.by"/>&#32;<s:text name="label.type"/></label>
 		<div class="input-group col-sm-12">
 			<span class="input-group-addon">
-				<span class="fa fa-file-text-o fa-lg"></span>
+				<span class="icon fa fa-file-text-o fa-lg"></span>
 			</span>
 			<wpsf:select name="contentType" id="contentType" cssClass="form-control input-lg" list="smallContentTypes" listKey="code" listValue="descr" headerKey="" headerValue="%{getText('label.all')}" />
 			<div class="input-group-btn">
 				<wpsf:submit type="button" cssClass="btn btn-primary btn-lg">
-					<span class="fa fa-search" title="<s:text name="label.search" />"></span>
+					<span class="icon fa fa-search" title="<s:text name="label.search" />"></span>
 				</wpsf:submit>
 			</div>
 		</div>
@@ -25,7 +25,7 @@
 </s:form>
 
 <a href="<s:url action="new" namespace="/do/jacms/ContentModel"/>" class="btn btn-default">
-	<span class="fa fa-plus-circle"></span>&#32;
+	<span class="icon fa fa-plus-circle"></span>&#32;
 	<s:text name="title.contentModels.new" />
 </a>
 
@@ -60,13 +60,13 @@
 							<%-- edit --%>
 							<a class="btn btn-default" href="<s:url action="edit" namespace="/do/jacms/ContentModel" />?modelId=<s:property value="#model.id" />" title="<s:text name="label.edit" />: <s:property value="#model.description" />">
 								<span class="sr-only"><s:text name="label.edit" />&#32;<s:property value="#model.description" /></span>
-								<span class="fa fa-pencil-square-o"></span>
+								<span class="icon fa fa-pencil-square-o"></span>
 							</a>
 						</div>
 						<%-- remove --%>
 						<div class="btn-group btn-group-xs">
 							<a href="<s:url action="trash" namespace="/do/jacms/ContentModel" />?modelId=<s:property value="#model.id" />" title="<s:text name="label.remove" />: <s:property value="#model.description" />" class="btn btn-warning">
-							<span class="fa fa-remove-circle"></span>&#32;
+							<span class="icon fa fa-times-circle-o"></span>&#32;
 							<span class="sr-only"><s:text name="label.alt.clear" /></span>
 							</a>
 						</div>

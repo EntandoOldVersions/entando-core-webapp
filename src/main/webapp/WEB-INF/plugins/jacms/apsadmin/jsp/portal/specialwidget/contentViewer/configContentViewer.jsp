@@ -33,7 +33,7 @@
 
 		<h2 class="h5 margin-small-vertical">
 			<label class="sr-only"><s:text name="name.widget" /></label>
-			<span class="fa fa-puzzle-piece" title="<s:text name="name.widget" />"></span>&#32;
+			<span class="icon fa fa-puzzle-piece" title="<s:text name="name.widget" />"></span>&#32;
 			<s:property value="%{getTitle(showlet.type.code, showlet.type.titles)}" />
 		</h2>
 
@@ -45,7 +45,7 @@
 
 			<s:if test="hasFieldErrors()">
 		<div class="alert alert-danger alert-dismissable">
-			<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+			<button class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 			<h3 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h3>
 			<ul class="margin-base-vertical">
 			<s:iterator value="fieldErrors">
@@ -102,7 +102,7 @@
 			</fieldset>
 
 			<fieldset class="margin-large-top">
-				<legend data-toggle="collapse" data-target="#options-publishing"><s:text name="title.publishingOptions" />&#32;<span class="fa fa-chevron-down"></span></legend>
+				<legend data-toggle="collapse" data-target="#options-publishing"><s:text name="title.publishingOptions" />&#32;<span class="icon fa fa-chevron-down"></span></legend>
 
 				<div class="collapse" id="options-publishing">
 					<div class="form-group">
@@ -149,7 +149,7 @@
 <div class="form-group">
 	<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 		<wpsf:submit type="button" cssClass="btn btn-primary btn-block">
-			<span class="fa fa-save"></span>&#32;
+			<span class="icon fa fa-floppy-o"></span>&#32;
 			<s:text name="label.save" />
 		</wpsf:submit>
 	</div>

@@ -19,7 +19,7 @@
 				href="<s:url action="list" />"
 				title="<s:text name="note.groupConfirm.trash.goBack" />&#32;<s:text name="menu.accountAdmin.groups" />"
 				>
-					<span class="fa fa-reply"></span>
+					<span class="icon fa fa-reply"></span>
 				</a>
 				&#32;<s:text name="note.groupConfirm.trash" />&#32;
 				<code><s:property value="name" /></code>

@@ -27,7 +27,7 @@
 	<div class="form-group<s:property value="controlGroupErrorClassVar" />">
 	
 	<s:if test="#attribute.type == 'List' || #attribute.type == 'Monolist'">
-	<label class="display-block"><span class="fa fa-list"></span>&#32;
+	<label class="display-block"><span class="icon fa fa-list"></span>&#32;
 	<s:property value="#attributeLabelVar" /><s:include value="/WEB-INF/apsadmin/jsp/entity/modules/include/attributeInfo.jsp" /></label>
 	</s:if>
 	<s:elseif test="#attribute.type == 'Image' || #attribute.type == 'CheckBox' || #attribute.type == 'Boolean' || #attribute.type == 'ThreeState' || #attribute.type == 'Composite'">

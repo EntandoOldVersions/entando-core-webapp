@@ -9,7 +9,7 @@
 </h1>
 <s:if test="hasActionErrors()">
 	<div class="alert alert-danger alert-dismissable fade in">
-		<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+		<button class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 		<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
 		<ul class="margin-base-top">
 			<s:iterator value="actionErrors">
@@ -20,7 +20,7 @@
 </s:if>
 <s:if test="hasFieldErrors()">
 	<div class="alert alert-danger alert-dismissable fade in">
-		<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+		<button class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 		<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h2>
 		<ul class="margin-base-top">
 			<s:iterator value="fieldErrors">
@@ -33,7 +33,7 @@
 </s:if>
 <s:if test="hasActionMessages()">
 	<div class="alert alert-info alert-dismissable fade in">
-		<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+		<button class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 		<h2 class="h4 margin-none"><s:text name="messages.confirm" /></h2>
 		<ul class="margin-base-top">
 			<s:iterator value="actionMessages">
@@ -72,7 +72,7 @@
 									href="<s:url namespace="/do/Admin/Database" action="trashBackup" >
 									   <s:param name="subFolderName" value="#dumpReportVar.subFolderName" />
 								   </s:url>" class="btn btn-warning btn-xs">
-								   <span class="fa fa-remove-circle"></span>
+								   <span class="icon fa fa-times-circle-o"></span>
 								  </a>
 							</td>
 							<td class="text-nowrap text-right"><s:property value="#status.count" /></td>

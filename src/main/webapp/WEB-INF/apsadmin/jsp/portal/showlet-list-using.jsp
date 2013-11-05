@@ -51,13 +51,13 @@
 							<s:url namespace="/do/Page" action="viewTree">
 								<s:param name="selectedNode" value="#singlePage.code" />
 							</s:url>" class="btn btn-default" title="<s:text name="note.goToSomewhere" />: <s:property value="%{#singlePage.getFullTitle(currentLang.code)}" />">
-						<span class="fa fa-sitemap"></span>
+						<span class="icon fa fa-sitemap"></span>
 					</a>
 					<a href="
 							<s:url namespace="/do/Page" action="configure">
 								<s:param name="pageCode" value="#singlePage.code" />
 							</s:url>" class="btn btn-default" title="<s:text name="title.configPage" />: <s:property value="%{#singlePage.getFullTitle(currentLang.code)}" />" />
-						<span class="fa fa-cog"></span>
+						<span class="icon fa fa-cog"></span>
 					</a>
 				</div>
 			</div>
@@ -127,7 +127,7 @@
 									<s:param name="pageCode"><s:property value="#singlePage.code"/></s:param>
 									<s:param name="frame"><s:property value="#rowstatus.index"/></s:param>
 								</s:url>" title="<s:text name="title.editFrame" />: <s:property value="#rowstatus.index"/> &ndash; <s:property value="#singlePage.model.getFrames()[#rowstatus.index]"/>" class="btn btn-default">
-							<span class="fa fa-cog"></span>
+							<span class="icon fa fa-cog"></span>
 						</a>
 					</div>
 				</div>
@@ -144,7 +144,7 @@
 								<s:param name="frame"><s:property value="#rowstatus.index"/></s:param>
 								<s:param name="widgetTypeCode"><s:property value="#showletTypeVar.code"/></s:param>
 							</s:url>" title="<s:text name="label.clear" />: <s:property value="#rowstatus.index"/> &middot; <s:property value="#singlePage.model.getFrames()[#rowstatus.index]"/>" class="btn btn-warning pull-right">
-						<span class="fa fa-eraser"></span>
+						<span class="icon fa fa-eraser"></span>
 					</a>
 				</div>
 

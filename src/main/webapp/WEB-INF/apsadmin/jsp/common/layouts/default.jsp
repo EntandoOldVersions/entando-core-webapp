@@ -74,20 +74,20 @@
 								<c:if test="${sessionScope.currentUser.japsUser}">
 								<li>
 									<a href="<s:url action="editProfile" namespace="/do/CurrentUser" />">
-										<span class="fa fa-fixed-width icon-user"></span>&#32;
+										<span class="icon fa fa-user fa-fw"></span>&#32;
 										<s:text name="note.changeYourPassword" />
 									</a>
 								</li>
 								</c:if>
 								<li>
 									<a href="<s:url value="/" />" title="<s:text name="note.goToPortal" /> ( <s:text name="note.sameWindow" /> )">
-										<span class="fa fa-fixed-width icon-globe"></span>&#32;
+										<span class="icon fa fa-globe fa-fw"></span>&#32;
 										<s:text name="note.goToPortal" />
 									</a>
 								</li>
 								<li>
 									<a href="<s:url action="logout" namespace="/do" />">
-										<span class="fa fa-fixed-width icon-off"></span>&#32;
+										<span class="icon fa fa-off fa-fw"></span>&#32;
 										<s:text name="menu.exit" />
 									</a>
 								</li>
@@ -104,11 +104,11 @@
 			</div>
 			<c:if test="${firstTimeMessagesVar}">
 				<div class="alert alert-info margin-none margin-base-top fade in" id="first-time-messages">
-					<button class="close" data-dismiss="alert" data-first-time-messages="dismiss"><span class="fa fa-remove"></span></button>
+					<button class="close" data-dismiss="alert" data-first-time-messages="dismiss"><span class="icon fa fa-times"></span></button>
 					<p class="margin-none">
 						<s:text name="label.firstTimeMessages.moreFeatures" /><br />
 						<a class="alert-link" href="<s:url action="configSystemParams" namespace="/do/BaseAdmin" />#additional-features">
-							<s:text name="label.firstTimeMessages.goActivateFeatures" />&#32;<span class="icon  icon-arrow-right"></span>
+							<s:text name="label.firstTimeMessages.goActivateFeatures" />&#32;<span class="icon fa fa-arrow-right"></span>
 						</a>
 					</p>
 				</div>

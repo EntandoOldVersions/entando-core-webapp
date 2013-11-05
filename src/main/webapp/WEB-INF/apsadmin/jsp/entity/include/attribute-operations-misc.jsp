@@ -9,7 +9,7 @@
 		<wpsa:actionSubParam name="movement" value="UP" />
 	</wpsa:actionParam>
 	<wpsf:submit  action="%{#actionName}" type="button" value="%{getText('label.moveUp')}" title="%{getText('label.moveInPositionNumber')}: %{#elementIndex}" cssClass="btn btn-default">
-	<span class="fa fa-sort-up"></span>
+	<span class="icon fa fa-sort-desc"></span>
 	</wpsf:submit>
 
 	<wpsa:actionParam action="moveAttribute" var="actionName" >
@@ -17,7 +17,7 @@
 		<wpsa:actionSubParam name="movement" value="DOWN" />
 	</wpsa:actionParam>
 	<wpsf:submit  action="%{#actionName}" type="button" value="%{getText('label.moveDown')}" title="%{getText('label.moveInPositionNumber')}: %{#elementIndex+2}" cssClass="btn btn-default">
-	<span class="fa fa-sort-down"></span>
+	<span class="icon fa fa-sort-down"></span>
 	</wpsf:submit>
 </div>
 
@@ -26,6 +26,6 @@
 		<wpsa:actionSubParam name="attributeIndex" value="%{#elementIndex}" />
 	</wpsa:actionParam>
 	<wpsf:submit  action="%{#actionName}" type="button" value="%{getText('label.remove')}" title="%{getText('label.remove')}" cssClass="btn btn-warning">
-	<span class="fa fa-remove-sign"></span>
+	<span class="icon fa fa-times-circle"></span>
 	</wpsf:submit>
 </div>

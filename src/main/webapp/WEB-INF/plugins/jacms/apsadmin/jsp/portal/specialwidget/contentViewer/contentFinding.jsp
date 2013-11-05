@@ -30,7 +30,7 @@
 				<s:set var="widgetType" value="%{getWidgetType(widgetTypeCode)}"></s:set>
 				<h3 class="h5 margin-small-top margin-large-bottom">
 					<label class="sr-only"><s:text name="name.widget" /></label>
-					<span class="fa fa-puzzle-piece" title="<s:text name="name.widget" />"></span>&#32;
+					<span class="icon fa fa-puzzle-piece" title="<s:text name="name.widget" />"></span>&#32;
 					<s:property value="%{getTitle(#widgetType.code, #widgetType.titles)}" />
 				</h3>
 				<p class="sr-only">
@@ -41,7 +41,7 @@
 				</p>
 				<s:if test="hasFieldErrors()">
 					<div class="alert alert-danger alert-dismissable">
-						<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+						<button class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 						<h4 class="margin-none"><s:text name="message.title.FieldErrors" /></h4>
 						<ul class="margin-base-vertical">
 						<s:iterator value="fieldErrors">
@@ -55,13 +55,13 @@
 				<div class="form-group" role="search"><%-- form-group search --%>
 					<div class="input-group col-sm-12">
 						<span class="input-group-addon">
-							<span class="fa fa-file-text-o fa-lg"></span>
+							<span class="icon fa fa-file-text-o fa-lg"></span>
 						</span>
 						<label for="text" class="sr-only"><s:text name="label.search.by"/>&#32;<s:text name="label.description"/></label>
 						<wpsf:textfield name="text" id="text" cssClass="form-control input-lg" placeholder="%{getText('label.search.topic')}" title="%{getText('label.search.by')} %{getText('label.description')}" />
 						<div class="input-group-btn">
 							<wpsf:submit type="button" cssClass="btn btn-primary btn-lg" title="%{getText('label.search')}">
-								<span class="fa fa-search"></span>
+								<span class="icon fa fa-search"></span>
 								<span class="sr-only"><s:text name="label.search" /></span>
 							</wpsf:submit>
 							<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="collapse" data-target="#search-advanced" title="<s:text name="title.searchFilters" />">
@@ -101,7 +101,7 @@
 							<div class="form-group">
 								<div class="col-sm-5 col-sm-offset-2">
 									<wpsf:submit type="button" cssClass="btn btn-primary">
-										<span class="fa fa-search"></span>&#32;<s:text name="label.search" />
+										<span class="icon fa fa-search"></span>&#32;<s:text name="label.search" />
 									</wpsf:submit>
 								</div>
 							</div>

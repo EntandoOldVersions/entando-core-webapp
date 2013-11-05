@@ -12,7 +12,7 @@
 	<wpsa:actionSubParam name="resourceLangCode" value="%{#lang.code}" />
 </wpsa:actionParam>
 <wpsf:submit action="%{#removeResourceActionName}" type="button" title="%{#attribute.name + ': ' + getText('label.clear')}" cssClass="btn btn-warning btn-xs">
-	<span class="fa fa-eraser"></span>&#32;
+	<span class="icon fa fa-eraser"></span>&#32;
 	<s:if test="#resourceTypeCode == 'Image'">
 		<s:text name="label.clearImage" />
 	</s:if>

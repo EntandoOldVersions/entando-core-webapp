@@ -22,7 +22,7 @@
 <s:form action="save" namespace="/do/jacms/ContentModel" cssClass="form-horizontal" >
 <s:if test="hasFieldErrors()">
 	<div class="alert alert-danger alert-dismissable">
-		<button type="button" class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+		<button type="button" class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 		<p><s:text name="message.title.FieldErrors" /></p>
 	</div>
 </s:if>
@@ -51,7 +51,7 @@
 				</span>
 			</div>
 			<s:if test="strutsAction == 1 && null == contentType">
-			<span class="help-block"><span class="fa fa-info-circle"></span>&#32;<s:text name="note.contentModel.assist.intro" /></span>
+			<span class="help-block"><span class="icon fa fa-info-circle"></span>&#32;<s:text name="note.contentModel.assist.intro" /></span>
 			</s:if>
 		</div>
 		</div>
@@ -89,7 +89,7 @@
 		<div class="display-block">
 			<s:textarea name="contentShape" id="contentShape" cols="50" rows="10" cssClass="form-control" />
 		</div>
-		<span class="help-block"><span class="fa fa-info-circle"></span>&#32;
+		<span class="help-block"><span class="icon fa fa-info-circle"></span>&#32;
 			<s:if test="strutsAction == 2 || (strutsAction == 1 && null != contentType)">(<s:text name="note.contentModel.help" />)&#32;</s:if>
 			<s:text name="note.contentModel.contentAssist" />:&#32;<em class="important"><s:text name="label.on" /></em>.&#32;
 			<s:if test="strutsAction == 2 || (strutsAction == 1 && null != contentType)">[<s:text name="note.contentModel.attributeHelp" />:&#32;<em class="important"><s:text name="label.on" /></em>]</s:if>
@@ -110,7 +110,7 @@
 <div class="form-group">
 	<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 		<wpsf:submit type="button" cssClass="btn btn-primary btn-block">
-			<span class="fa fa-save"></span>&#32;
+			<span class="icon fa fa-floppy-o"></span>&#32;
 			<s:text name="label.save" />
 		</wpsf:submit>
 	</div>

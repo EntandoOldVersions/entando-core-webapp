@@ -96,7 +96,7 @@
 
 			var insertAlert = function(text, target) {
 				$('<div class="alert alert-danger alert-dismissable fade in">'+
-					  '<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>'+
+					  '<button class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>'+
 						'<strong><s:property value="%{getText('message.title.FieldErrors')}" escapeJavaScript="true" /></strong>. '+
 						text+
 					'</div>').prependTo(target);
@@ -182,7 +182,7 @@
 												<div class="form-group">
 													<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 														<button type="submit" id="button_externalURL" name="button_externalURL" class="btn btn-primary btn-block">
-															<span class="icon  icon-save"></span>&#32;
+															<span class="icon fa fa-floppy-o"></span>&#32;
 															<s:text name="label.confirm" />
 														</button>
 													</div>

@@ -22,7 +22,7 @@
 		</p>
 		<div class="text-center margin-large-top">
 			<wpsf:submit type="button" cssClass="btn btn-warning btn-lg">
-				<span class="fa fa-remove-sign"></span>&#32;
+				<span class="icon fa fa-times-circle"></span>&#32;
 				<s:text name="label.confirm" />
 			</wpsf:submit>
 			<a class="btn btn-link"	href="<s:url action="list" namespace="/do/Role" />">

@@ -38,7 +38,7 @@
 					<span class="label label-default label-sm pull-left padding-small-top padding-small-bottom margin-small-right margin-small-bottom">
 					  <s:property value="descr" />&#32;
 						<wpsf:submit type="button" action="%{#actionName}" title="%{getText('label.remove') +' '+ descr}" cssClass="btn btn-default btn-xs badge">
-							<span class="fa fa-remove"></span>
+							<span class="icon fa fa-times"></span>
 							<span class="sr-only">x</span>
 						</wpsf:submit>
 					</span>
@@ -56,7 +56,7 @@
 				<wpsf:select name="groupName" id="groupName" list="groups" listKey="name" listValue="descr" cssClass="form-control" />
 				<span class="input-group-btn">
 				<wpsf:submit action="addGroup" type="button" cssClass="btn btn-info">
-					<span class="fa fa-plus"></span>&#32;
+					<span class="icon fa fa-plus"></span>&#32;
 					<s:text name="label.add" />
 				</wpsf:submit>
 				</span>
@@ -79,7 +79,7 @@
 					<span class="label label-default label-sm pull-left padding-small-top padding-small-bottom margin-small-right margin-small-bottom">
 					  <s:property value="description" />&#32;
 						<wpsf:submit type="button" action="%{#actionName}" title="%{getText('label.remove') +' '+ description}" cssClass="btn btn-default btn-xs badge">
-							<span class="fa fa-remove"></span>
+							<span class="icon fa fa-times"></span>
 							<span class="sr-only">x</span>
 						</wpsf:submit>
 					</span>
@@ -98,7 +98,7 @@
 				<wpsf:select name="roleName" id="roleName" list="roles" listKey="name" listValue="description" cssClass="form-control" />
 				<span class="input-group-btn">
 				<wpsf:submit action="addRole" type="button" cssClass="btn btn-info">
-					<span class="fa fa-plus"></span>&#32;
+					<span class="icon fa fa-plus"></span>&#32;
 					<s:text name="label.add" />
 				</wpsf:submit>
 				</span>
@@ -109,7 +109,7 @@
 	<div class="form-group">
 		<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 			<wpsf:submit type="button" cssClass="btn btn-primary btn-block">
-				<span class="fa fa-save"></span>&#32;
+				<span class="icon fa fa-floppy-o"></span>&#32;
 				<s:text name="label.save" />
 			</wpsf:submit>
 		</div>

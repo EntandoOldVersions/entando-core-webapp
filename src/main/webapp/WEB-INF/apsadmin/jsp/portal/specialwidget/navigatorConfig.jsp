@@ -33,7 +33,7 @@
 
 		<h2 class="h5 margin-small-vertical">
 			<label class="sr-only"><s:text name="name.widget" /></label>
-			<span class="fa fa-puzzle-piece" title="<s:text name="name.widget" />"></span>&#32;
+			<span class="icon fa fa-puzzle-piece" title="<s:text name="name.widget" />"></span>&#32;
 			<s:property value="%{getTitle(showlet.type.code, showlet.type.titles)}" />
 		</h2>
 
@@ -46,7 +46,7 @@
 
 		<s:if test="hasActionErrors()">
 			<div class="alert alert-danger alert-dismissable">
-				<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+				<button class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 				<h3 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h3>
 				<ul class="margin-base-vertical">
 				<s:iterator value="actionErrors">
@@ -58,7 +58,7 @@
 
 		<s:if test="hasFieldErrors()">
 			<div class="alert alert-danger alert-dismissable">
-				<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+				<button class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 				<h3 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h3>
 				<ul class="margin-base-vertical">
 				<s:iterator value="fieldErrors">
@@ -94,15 +94,15 @@
 					&#32;
 					<s:if test="#expression.operatorId == -1"></s:if>
 					<s:elseif test="#expression.operatorId == 1">
-						<label class="label label-default" title="<s:text name="widget.configNavigator.operator" />"><span class="fa fa-angle-right"></span></label>&#32;
+						<label class="label label-default" title="<s:text name="widget.configNavigator.operator" />"><span class="icon fa fa-angle-right"></span></label>&#32;
 						<s:text name="widget.configNavigator.allChildren" />
 					</s:elseif>
 					<s:elseif test="#expression.operatorId == 2">
-						<label class="label label-default" title="<s:text name="widget.configNavigator.operator" />"><span class="fa fa-angle-right"></span></label>&#32;
+						<label class="label label-default" title="<s:text name="widget.configNavigator.operator" />"><span class="icon fa fa-angle-right"></span></label>&#32;
 						<s:text name="widget.configNavigator.allNodes" />
 					</s:elseif>
 					<s:elseif test="#expression.operatorId == 3">
-						<label class="label label-default" title="<s:text name="widget.configNavigator.operator" />"><span class="fa fa-angle-right"></span></label>&#32;
+						<label class="label label-default" title="<s:text name="widget.configNavigator.operator" />"><span class="icon fa fa-angle-right"></span></label>&#32;
 						<abbr title="<s:text name="widget.configNavigator.levelOfNodesTothisLevel" />"><s:text name="widget.configNavigator.nodesTothisLevel" /></abbr>: <s:property value="operatorSubtreeLevel" />
 					</s:elseif>
 					<s:else>ERROR</s:else>
@@ -115,7 +115,7 @@
 								<wpsa:actionSubParam name="movement" value="UP" />
 							</wpsa:actionParam>
 							<wpsf:submit action="%{#actionName}" type="button" title="%{getText('label.moveUp')}" cssClass="btn btn-default">
-								<span class="fa fa-sort-up"></span>
+								<span class="icon fa fa-sort-desc"></span>
 							</wpsf:submit>
 
 							<wpsa:actionParam action="moveExpression" var="actionName" >
@@ -123,7 +123,7 @@
 								<wpsa:actionSubParam name="movement" value="DOWN" />
 							</wpsa:actionParam>
 							<wpsf:submit action="%{#actionName}" type="button" title="%{getText('label.moveDown')}" cssClass="btn btn-default">
-								<span class="fa fa-sort-down"></span>
+								<span class="icon fa fa-sort-down"></span>
 							</wpsf:submit>
 						</div>
 						<div class="btn-group btn-group-xs">
@@ -131,7 +131,7 @@
 								<wpsa:actionSubParam name="expressionIndex" value="%{#rowstatus.index}" />
 							</wpsa:actionParam>
 							<wpsf:submit action="%{#actionName}" type="button" title="%{getText('label.remove')}" cssClass="btn btn-warning">
-								<span class="fa fa-remove-circle"></span>
+								<span class="icon fa fa-times-circle-o"></span>
 							</wpsf:submit>
 						</div>
 					</div>
@@ -226,7 +226,7 @@
 
 		<p>
 			<wpsf:submit action="addExpression" type="button" cssClass="btn btn-default">
-				<span class="fa fa-plus-square"></span>
+				<span class="icon fa fa-plus-square"></span>
 				<s:text name="widget.configNavigator.addExpression" />
 			</wpsf:submit>
 		</p>
@@ -236,7 +236,7 @@
 <div class="form-group">
 	<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 		<wpsf:submit action="saveNavigatorConfig" type="button" cssClass="btn btn-primary btn-block">
-			<span class="fa fa-save"></span>&#32;
+			<span class="icon fa fa-floppy-o"></span>&#32;
 			<s:text name="label.save" />
 		</wpsf:submit>
 	</div>

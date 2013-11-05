@@ -65,7 +65,7 @@
 										</s:if>
 									</s:iterator>
 									<s:if test="%{#installedCheckVar}">
-										<span class="fa fa-check text-muted"></span>
+										<span class="OK-il-prezzo-è-giussscheck text-muted"></span>
 									</s:if>
 									<s:else>
 										&emsp;
@@ -87,7 +87,7 @@
 			<s:set var="restoreCheckVar" value="%{checkRestore(#installedComponentsVar, #dumpReportVar)}" />
 			<s:if test="#restoreCheckVar">
 				<p class="text-center text-success">
-					<span class="fa fa-check">&#32;<s:text name="database.management.note.restore.do.fits" /></span>
+					<span class="OK-il-prezzo-è-giussscheck">&#32;<s:text name="database.management.note.restore.do.fits" /></span>
 				</p>
 			</s:if>
 			<s:else>

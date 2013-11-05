@@ -23,7 +23,7 @@
 		</p>
 		<div class="text-center margin-large-top">
 		<wpsf:submit type="button" action="delete" cssClass="btn btn-warning btn-lg">
-			<span class="fa fa-remove-sign"></span>&#32;
+			<span class="icon fa fa-times-circle"></span>&#32;
 			<s:text name="label.remove" />
 		</wpsf:submit>
 		<a class="btn btn-link" href="<s:url action="list" namespace="/do/jacms/ContentModel"/>" ><s:text name="note.goToSomewhere" />: <s:text name="title.contentModels" /></a>

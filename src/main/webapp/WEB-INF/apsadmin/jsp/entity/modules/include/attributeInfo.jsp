@@ -48,4 +48,4 @@
 </s:set>
 </s:if>
 
-<span class="label label-info pull-right" data-toggle="popover" data-placement="left" data-html="true" data-content="<s:property value="htmlContent" />" title="" data-original-title="Attribute info"><span class="fa fa-info"></span></span>
+<span class="label label-info pull-right" data-toggle="popover" data-placement="left" data-html="true" data-content="<s:property value="htmlContent" />" title="" data-original-title="Attribute info"><span class="icon fa fa-info"></span></span>

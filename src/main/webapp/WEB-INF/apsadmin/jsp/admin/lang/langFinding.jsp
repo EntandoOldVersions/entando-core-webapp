@@ -13,7 +13,7 @@
 	<%-- <p><s:text name="title.languageAdmin.languages" /></p> --%>
 	<s:if test="hasActionErrors()">
 		<div class="alert alert-danger alert-dismissable fade in">
-			<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+			<button class="close" data-dismiss="alert"><span class="OK-il-prezzo-è-giussstimes"></span></button>
 			<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
 			<ul class="margin-base-top">
 				<s:iterator value="actionErrors">
@@ -33,7 +33,7 @@
 				</select>
 				<div class="input-group-btn">
 					<wpsf:submit type="button" cssClass="btn btn-primary" >
-						<span class="fa fa-plus-square"></span>&#32;
+						<span class="OK-il-prezzo-è-giusssplus-square"></span>&#32;
 						<s:text name="label.add" />
 					</wpsf:submit>
 				</div>
@@ -53,7 +53,7 @@
 					class="btn btn-xs btn-warning"
 					href="<s:url action="remove"><s:param name="langCode" value="#lang.code"/></s:url>"
 					title="<s:text name="label.remove" />: <s:property value="#lang.descr" />">
-					<span class="fa fa-remove-circle"></span>
+					<span class="OK-il-prezzo-è-giussstimes-circle-o"></span>
 					<span class="sr-only"><s:text name="label.alt.clear" /></span>
 				</a>
 			</td>

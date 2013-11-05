@@ -23,19 +23,19 @@
 		<s:if test="#validLink">
 			<%-- link with a valid value --%>
 			<s:if test="#attribute.symbolicLink.destType == 1">
-				<s:set var="statusIconVar">btn btn-default disabled fa fa-globe</s:set>
+				<s:set var="statusIconVar">btn btn-default disabled icon fa fa-globe</s:set>
 				<s:set var="linkDestination" value="%{getText('note.URLLinkTo') + ': ' + #attribute.symbolicLink.urlDest}" />
 			</s:if>
 			<s:if test="#attribute.symbolicLink.destType == 2">
-				<s:set var="statusIconVar">btn btn-default disabled fa fa-folder</s:set>
+				<s:set var="statusIconVar">btn btn-default disabled icon fa fa-folder</s:set>
 				<s:set var="linkDestination" value="%{getText('note.pageLinkTo') + ': ' + #linkedPage.titles[currentLang.code]}" />
 			</s:if>
 			<s:if test="#attribute.symbolicLink.destType == 3">
-				<s:set var="statusIconVar">btn btn-default disabled fa fa-file-text-o</s:set>
+				<s:set var="statusIconVar">btn btn-default disabled icon fa fa-file-text-o</s:set>
 				<s:set var="linkDestination" value="%{getText('note.contentLinkTo') + ': ' + #attribute.symbolicLink.contentDest + ' - ' + #linkedContent.descr}" />
 			</s:if>
 			<s:if test="#attribute.symbolicLink.destType == 4">
-				<s:set var="statusIconVar">btn btn-default disabled fa fa-file-text</s:set>
+				<s:set var="statusIconVar">btn btn-default disabled icon fa fa-file-text</s:set>
 				<s:set var="linkDestination" value="%{getText('note.contentLinkTo') + ': ' + #attribute.symbolicLink.contentDest + ' - ' + #linkedContent.descr + ', ' + getText('note.contentOnPageLinkTo') + ': ' + #linkedPage.titles[currentLang.code]}" />
 			</s:if>
 				<span class="input-group-btn" title="<s:property value="linkDestination" />">
@@ -63,7 +63,7 @@
 		</wpsa:actionParam>
 		<s:if test="#attribute.symbolicLink != null || ((#attributeTracer.monoListElement) || (#attributeTracer.compositeElement))"><span class="input-group-btn"></s:if>
 			<wpsf:submit cssClass="btn btn-default" type="button" action="%{#chooseLinkActionName}" title="%{#attribute.name + ': ' + getText('label.configure')}">
-				<span class="fa fa-link"></span>&#32;
+				<span class="icon fa fa-link"></span>&#32;
 				<span class="sr-only"><s:property value="#attribute.name" />:</span>
 				<s:text name="label.configure" />
 			</wpsf:submit>
@@ -76,7 +76,7 @@
 					<wpsa:actionSubParam name="langCode" value="%{#lang.code}" />
 				</wpsa:actionParam>
 					<wpsf:submit cssClass="btn btn-warning" type="button"  action="%{#removeLinkActionName}" title="%{getText('label.remove')}">
-						<span class="fa fa-remove"></span>
+						<span class="icon fa fa-times"></span>
 						<span class="sr-only"><s:text name="label.remove" /></span>
 					</wpsf:submit>
 			</s:if>

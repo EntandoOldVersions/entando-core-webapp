@@ -13,7 +13,7 @@
 <s:form action="search" cssClass="form-horizontal" role="search">
 	<s:if test="hasActionErrors()">
 		<div class="alert alert-danger alert-dismissable fade in">
-			<button class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+			<button class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 			<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
 			<ul class="margin-base-top">
 				<s:iterator value="actionErrors">
@@ -25,7 +25,7 @@
 	<div class="form-group">
 		<div class="input-group col-sm-12 col-md-12">
 			<span class="input-group-addon">
-				<span class="fa fa-file-text-o fa-lg" title="<s:text name="label.search.by"/>&#32;<s:text name="label.username"/>"></span>
+				<span class="icon fa fa-file-text-o fa-lg" title="<s:text name="label.search.by"/>&#32;<s:text name="label.username"/>"></span>
 			</span>
 			<label for="search-username" class="sr-only"><s:text name="label.search.by"/>&#32;<s:text name="label.username"/></label>
 			<wpsf:textfield
@@ -37,7 +37,7 @@
 			<div class="input-group-btn">
 				<wpsf:submit type="button" name="username" id="search-username" cssClass="btn btn-primary btn-lg" title="%{getText('label.search')}">
 					<span class="sr-only"><s:text name="label.search" /></span>
-					<span class="fa fa-search" title="<s:text name="label.search" />"></span>
+					<span class="icon fa fa-search" title="<s:text name="label.search" />"></span>
 				</wpsf:submit>
 				<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="collapse" data-target="#search-advanced" title="<s:text name="title.searchFilters" />">
 					<span class="sr-only"><s:text name="title.searchFilters" /></span>
@@ -270,7 +270,7 @@
 				<div class="form-group">
 					<div class="col-sm-5 col-sm-offset-2">
 						<wpsf:submit type="button" cssClass="btn btn-primary">
-							<span class="fa fa-search" /></span>
+							<span class="icon fa fa-search" /></span>
 							&#32;
 							<s:text name="label.search" />
 						</wpsf:submit>
@@ -281,7 +281,7 @@
 	</div>
 
 	<a href="<s:url namespace="/do/User" action="new" />" class="btn btn-default">
-		<span class="fa fa-plus-circle"></span>&#32;
+		<span class="icon fa fa-plus-circle"></span>&#32;
 		<s:text name="title.userManagement.userNew" />
 	</a>
 
@@ -316,23 +316,23 @@
 					<s:url action="view" namespace="/do/userprofile" var="viewUserProfileActionVar"><s:param name="username" value="#usernameVar"/></s:url>
 					<s:url action="trash" var="userTrashActionVar"><s:param name="username" value="#usernameVar"/></s:url>
 					<s:if test="null == #userVar || #userVar.disabled">
-						<s:set var="statusIconClassVar" value="%{'fa fa-pause text-warning'}" />
+						<s:set var="statusIconClassVar" value="%{'icon fa fa-pause text-warning'}" />
 						<s:set var="statusTextVar" value="%{getText('note.userStatus.notActive')}" />
 					</s:if>
 					<s:elseif test="!#userVar.entandoUser">
-						<s:set var="statusIconClassVar" value="%{'fa fa-minus'}" />
+						<s:set var="statusIconClassVar" value="%{'icon fa fa-minus'}" />
 						<s:set var="statusTextVar" value="%{getText('note.userStatus.notEntandoUser')}" />
 					</s:elseif>
 					<s:elseif test="!#userVar.accountNotExpired">
-						<s:set var="statusIconClassVar" value="%{'fa fa-circle-o text-danger'}" />
+						<s:set var="statusIconClassVar" value="%{'icon fa fa-circle-o text-danger'}" />
 						<s:set var="statusTextVar" value="%{getText('note.userStatus.expiredAccount')}" />
 					</s:elseif>
 					<s:elseif test="!#userVar.credentialsNotExpired">
-						<s:set var="statusIconClassVar" value="%{'fa fa-adjust text-warning'}" />
+						<s:set var="statusIconClassVar" value="%{'icon fa fa-adjust text-warning'}" />
 						<s:set var="statusTextVar" value="%{getText('note.userStatus.expiredPassword')}" />
 					</s:elseif>
 					<s:elseif test="!#userVar.disabled">
-						<s:set var="statusIconClassVar" value="%{'fa fa-check text-success'}" />
+						<s:set var="statusIconClassVar" value="%{'icon fa fa-check text-success'}" />
 						<s:set var="statusTextVar" value="%{getText('note.userStatus.active')}" />
 					</s:elseif>
 					<tr>
@@ -341,7 +341,7 @@
 								<%-- edit --%>
 								<a class="btn btn-default" title="<s:text name="label.edit" />&#32;<s:property value="#usernameVar" />" href="<s:property value="#editUserActionVar" escapeHtml="false" />">
 									<span class="sr-only"><s:text name="label.edit" />&#32;<s:property value="#usernameVar" /></span>
-									<span class="fa fa-pencil-square-o"></span>
+									<span class="icon fa fa-pencil-square-o"></span>
 								</a>
 								<%-- dropdown button --%>
 								<button type="submit" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -354,7 +354,7 @@
 											href="<s:property value="#editUserAuthActionVar" escapeHtml="false" />"
 											title="<s:text name="note.configureAuthorizationsFor" />: <s:property value="#usernameVar" />"
 											>
-											<span class="fa-fw fa fa-unlock"></span>&#32;
+											<span class="fa-fw icon fa fa-unlock"></span>&#32;
 											<s:text name="note.configureAuthorizationsFor" />: <s:property value="#usernameVar" />
 										</a>
 									</li>
@@ -364,7 +364,7 @@
 											<a
 												href="<s:property value="#editUserProfileActionVar" escapeHtml="false" />"
 												title="<s:text name="label.editProfile" />: <s:property value="#usernameVar" />">
-												<span class="fa-fw fa fa-user"></span>&#32;
+												<span class="fa-fw icon fa fa-user"></span>&#32;
 												<s:text name="label.editProfile" />: <s:property value="#usernameVar" />
 											</a>
 										</li>
@@ -375,7 +375,7 @@
 											<a
 												href="<s:property value="#viewUserProfileActionVar" escapeHtml="false" />"
 												title="<s:text name="label.viewProfile" />: <s:property value="#usernameVar" />">
-												<span class="fa-fw fa fa-info"></span>&#32;
+												<span class="fa-fw icon fa fa-info"></span>&#32;
 												<s:text name="label.viewProfile" />: <s:property value="#usernameVar" />
 											</a>
 										</li>
@@ -389,7 +389,7 @@
 									title="<s:text name="label.remove" />: <s:property value="#usernameVar" />"
 									class="btn btn-warning"
 									>
-									<span class="fa fa-remove-circle"></span>&#32;
+									<span class="icon fa fa-times-circle-o"></span>&#32;
 									<span class="sr-only"><s:text name="label.alt.clear" /></span>
 								</a>
 							</div>

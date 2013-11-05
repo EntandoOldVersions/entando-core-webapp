@@ -21,7 +21,7 @@
 				<%-- download --%>
 					<div class="col-xs-12 col-sm-3 col-lg-2 text-center">
 						<a href="<s:property value="#defaultResource.attachPath" />" title="<s:text name="label.download" />:&#32;<s:property value="#defaultResource.descr"/>">
-							<span class="fa fa-file-text icon-4x fa-lg" ></span>
+							<span class="icon fa fa-file-text icon-4x fa-lg" ></span>
 							<span class="sr-only"><s:text name="label.download" />:&#32;<s:property value="#defaultResource.descr"/></span>
 						</a>
 					</div>
@@ -91,7 +91,7 @@
 						<%-- download icon + button --%>
 							<div class="col-xs-12 col-sm-3 col-lg-2 text-center">
 								<a href="<s:property value="#langResourceVar.attachPath" />" title="<s:text name="label.download" />:&#32;<s:property value="#langResourceVar.descr"/>">
-									<span class="fa fa-file-text icon-4x fa-lg <s:if test="#currentResourceIsEmptyVar"> text-muted </s:if>"></span>
+									<span class="icon fa fa-file-text icon-4x fa-lg <s:if test="#currentResourceIsEmptyVar"> text-muted </s:if>"></span>
 									<span class="sr-only"><s:text name="label.download" />:&#32;<s:property value="#langResourceVar.descr"/></span>
 								</a>
 							</div>

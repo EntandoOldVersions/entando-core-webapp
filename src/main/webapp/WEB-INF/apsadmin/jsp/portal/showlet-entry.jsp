@@ -39,7 +39,7 @@
 
 	<s:if test="hasActionErrors()">
 		<div class="alert alert-danger alert-dismissable">
-			<button type="button" class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+			<button type="button" class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 			<p><s:text name="message.title.ActionErrors" /></p>
 		    <ul>
             	<s:iterator value="actionErrors">
@@ -50,7 +50,7 @@
 	</s:if>
 	<s:if test="hasFieldErrors()">
 		<div class="alert alert-danger alert-dismissable">
-			<button type="button" class="close" data-dismiss="alert"><span class="fa fa-remove"></span></button>
+			<button type="button" class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 			<p><s:text name="message.title.FieldErrors" /></p>
 		</div>
 	</s:if>
@@ -135,7 +135,7 @@
 				<label for="<s:property value="#showletParam.name" />" class="control-label"><s:property value="#showletParam.name" /></label>
 				<wpsf:textfield id="%{#showletParam.name}" name="%{#showletParam.name}" value="%{#request.parameters[#showletParam.name]}" cssClass="form-control" />
 				<s:if test="#showletParam.descr != ''">
-					<span class="help-block"><span class="fa fa-info-circle"></span>&#32;
+					<span class="help-block"><span class="icon fa fa-info-circle"></span>&#32;
 					<s:property value="#showletParam.descr" />
 					</span>
 				</s:if>
@@ -154,7 +154,7 @@
 				<s:property value="%{#showletTypeVar.config[#showletParam.name]}" />
 				</s:else>
 				<s:if test="#showletParam.descr != ''">
-					<span class="help-block"><span class="fa fa-info-circle"></span>&#32;<s:property value="#showletParam.descr" /></span>
+					<span class="help-block"><span class="icon fa fa-info-circle"></span>&#32;<s:property value="#showletParam.descr" /></span>
 				</s:if>
 			</div>
 		</s:iterator>
@@ -188,7 +188,7 @@
 	<div class="form-group">
 	 	<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 	    <wpsf:submit type="button" cssClass="btn btn-primary btn-block">
-	      <span class="fa fa-save"></span>&#32;
+	      <span class="icon fa fa-floppy-o"></span>&#32;
 	      <s:text name="label.save" />
 	    </wpsf:submit>
 	    </div>
@@ -199,7 +199,7 @@
 					<wpsa:actionSubParam name="replaceOnPage" value="true" />
 				</wpsa:actionParam>
 				<wpsf:submit type="button" action="%{#actionName}" cssClass="btn btn-default btn-block">
-			      <span class="fa fa-exchange"></span>&#32;
+			      <span class="icon fa fa-exchange"></span>&#32;
 			      <s:text name="label.save.replace" />
 			    </wpsf:submit>
 			</div>
