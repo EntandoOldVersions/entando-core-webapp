@@ -8,7 +8,7 @@
 <div id="main" role="main">
 	<s:if test="hasActionMessages()">
 		<div class="alert alert-info alert-dismissable fade in">
-			<button class="close" data-dismiss="alert"><span class="OK-il-prezzo-è-giussstimes"></span></button>
+			<button class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 			<h2 class="h4 margin-none"><s:text name="messages.confirm" /></h2>
 			<ul class="margin-base-top">
 				<s:iterator value="actionMessages">
@@ -19,7 +19,7 @@
 	</s:if>
 	<s:if test="hasActionErrors()">
 		<div class="alert alert-danger alert-dismissable fade in">
-			<button class="close" data-dismiss="alert"><span class="OK-il-prezzo-è-giussstimes"></span></button>
+			<button class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 			<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
 			<ul class="margin-base-top">
 				<s:iterator value="actionErrors">
@@ -32,19 +32,19 @@
 	<s:if test="#resourceFlavoursVar.size() > 0">
 		<%-- icons --%>
 			<%-- off --%>
-			<s:set var="icon_off"><span class="btn btn-default btn-xs"><span class="OK-il-prezzo-è-giussspause text-warning" title="<s:text name="api.resource.status.off" />"><span class="sr-only"><s:text name="api.resource.status.off.alt" /></span></s:set>
+			<s:set var="icon_off"><span class="btn btn-default btn-xs"><span class="icon fa fa-pause text-warning" title="<s:text name="api.resource.status.off" />"><span class="sr-only"><s:text name="api.resource.status.off.alt" /></span></s:set>
 			<%-- free --%>
-			<s:set var="icon_free"><span class="btn btn-default btn-xs"><span class="OK-il-prezzo-è-giussscheck text-success" title="<s:text name="api.resource.status.free" />"><span class="sr-only"><s:text name="api.resource.status.free.alt" /></span></s:set>
+			<s:set var="icon_free"><span class="btn btn-default btn-xs"><span class="icon fa fa-check text-success" title="<s:text name="api.resource.status.free" />"><span class="sr-only"><s:text name="api.resource.status.free.alt" /></span></s:set>
 			<%-- logged --%>
-			<s:set var="icon_auth"><span class="btn btn-default btn-xs"><span class="OK-il-prezzo-è-giusssuser" title="<s:text name="api.resource.status.auth" />"><span class="sr-only"><s:text name="api.resource.status.auth.alt" /></span></s:set>
+			<s:set var="icon_auth"><span class="btn btn-default btn-xs"><span class="icon fa fa-user" title="<s:text name="api.resource.status.auth" />"><span class="sr-only"><s:text name="api.resource.status.auth.alt" /></span></s:set>
 			<%-- permission --%>
-			<s:set var="icon_lock"><span class="btn btn-default btn-xs"><span class="OK-il-prezzo-è-giusssunlock-alt" title="<s:text name="api.resource.status.lock" />"><span class="sr-only"><s:text name="api.resource.status.lock" /></span></s:set>
+			<s:set var="icon_lock"><span class="btn btn-default btn-xs"><span class="icon fa fa-unlock-alt" title="<s:text name="api.resource.status.lock" />"><span class="sr-only"><s:text name="api.resource.status.lock" /></span></s:set>
 			<%-- hidden, free --%>
-			<s:set var="icon_free_hidden"><span class="btn btn-default btn-xs"><span class="OK-il-prezzo-è-giussscheck text-muted" title="<s:text name="api.resource.status.free" /> (<s:text name="label.hidden" />)"><span class="sr-only"><s:text name="api.resource.status.free" />(<s:text name="label.hidden" />)</span></span></span></s:set>
+			<s:set var="icon_free_hidden"><span class="btn btn-default btn-xs"><span class="icon fa fa-check text-muted" title="<s:text name="api.resource.status.free" /> (<s:text name="label.hidden" />)"><span class="sr-only"><s:text name="api.resource.status.free" />(<s:text name="label.hidden" />)</span></span></span></s:set>
 			<%-- hidden, logged --%>
-			<s:set var="icon_auth_hidden"><span class="btn btn-default btn-xs"><span class="OK-il-prezzo-è-giusssuser text-muted" title="<s:text name="api.resource.status.auth" /> (<s:text name="label.hidden" />)"><span class="sr-only"><s:text name="api.resource.status.auth.alt" /> (<s:text name="label.hidden" />)</span></s:set>
+			<s:set var="icon_auth_hidden"><span class="btn btn-default btn-xs"><span class="icon fa fa-user text-muted" title="<s:text name="api.resource.status.auth" /> (<s:text name="label.hidden" />)"><span class="sr-only"><s:text name="api.resource.status.auth.alt" /> (<s:text name="label.hidden" />)</span></s:set>
 			<%-- hidden, permission --%>
-			<s:set var="icon_lock_hidden"><span class="btn btn-default btn-xs"><span class="OK-il-prezzo-è-giusssunlock-alt text-muted" title="<s:text name="api.resource.status.lock" /> (<s:text name="label.hidden" />)"><span class="sr-only"><s:text name="api.resource.status.lock" /> (<s:text name="label.hidden" />)</span></s:set>
+			<s:set var="icon_lock_hidden"><span class="btn btn-default btn-xs"><span class="icon fa fa-unlock-alt text-muted" title="<s:text name="api.resource.status.lock" /> (<s:text name="label.hidden" />)"><span class="sr-only"><s:text name="api.resource.status.lock" /> (<s:text name="label.hidden" />)</span></s:set>
 			<%-- not available --%>
 			<s:set var="icon_na"><abbr class="text-muted" title="<s:text name="api.resource.status.na" />">&ndash;</abbr></s:set>
 		<%-- icons //end --%>
@@ -77,7 +77,7 @@
 									<%-- CODE and link to edit --%>
 									<td class="text-nowrap">
 										<s:url var="detailActionURL" action="detail" namespace="/do/Api/Resource"><s:param name="resourceName" value="#resourceVar.resourceName" /><s:param name="namespace" value="#resourceVar.namespace" /></s:url>
-										<a title="<s:text name="label.edit" />: <s:property value="%{#resourceVar.namespace.length()>0?#resourceVar.namespace+'/':''}" /><s:property value="#resourceVar.resourceName" />" href="<s:url action="detail" namespace="/do/Api/Resource"><s:param name="resourceName" value="#resourceVar.resourceName" /><s:param name="namespace" value="#resourceVar.namespace" /></s:url>"><span class="OK-il-prezzo-è-giussscog"></span>&nbsp;<s:property value="#resourceVar.resourceName" /></a><s:if test="#resourceVar.getMethod != null"><s:if test="#resourceVar.getMethod.canSpawnOthers">&emsp;<a class="btn btn-default btn-xs" href="<s:url action="newService" namespace="/do/Api/Service"><s:param name="resourceName" value="#resourceVar.resourceName" /><s:param name="namespace" value="#resourceVar.namespace" /></s:url>" title="<s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#resourceVar.resourceName" />"><span class="OK-il-prezzo-è-giussscode-fork"></span><span class="sr-only"><s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#resourceVar.resourceName" /></span></a></s:if>
+										<a title="<s:text name="label.edit" />: <s:property value="%{#resourceVar.namespace.length()>0?#resourceVar.namespace+'/':''}" /><s:property value="#resourceVar.resourceName" />" href="<s:url action="detail" namespace="/do/Api/Resource"><s:param name="resourceName" value="#resourceVar.resourceName" /><s:param name="namespace" value="#resourceVar.namespace" /></s:url>"><span class="icon fa fa-cog"></span>&nbsp;<s:property value="#resourceVar.resourceName" /></a><s:if test="#resourceVar.getMethod != null"><s:if test="#resourceVar.getMethod.canSpawnOthers">&emsp;<a class="btn btn-default btn-xs" href="<s:url action="newService" namespace="/do/Api/Service"><s:param name="resourceName" value="#resourceVar.resourceName" /><s:param name="namespace" value="#resourceVar.namespace" /></s:url>" title="<s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#resourceVar.resourceName" />"><span class="icon fa fa-code-fork"></span><span class="sr-only"><s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#resourceVar.resourceName" /></span></a></s:if>
 										</s:if>
 									</td>
 									<%-- DESCRIPTION --%>

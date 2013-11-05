@@ -6,7 +6,7 @@
 <s:form cssClass="action-form" cssClass="action-form">
 	<s:if test="hasActionErrors()">
 		<div class="alert alert-danger alert-dismissable fade in">
-			<button class="close" data-dismiss="alert"><span class="OK-il-prezzo-è-giussstimes"></span></button>
+			<button class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 			<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
 				<ul class="margin-base-top">
 					<s:iterator value="actionErrors">
@@ -17,7 +17,7 @@
 	</s:if>
 	<s:if test="hasActionMessages()">
 		<div class="alert alert-info alert-dismissable fade in">
-			<button class="close" data-dismiss="alert"><span class="OK-il-prezzo-è-giussstimes"></span></button>
+			<button class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 			<h2 class="h4 margin-none"><s:text name="messages.confirm" /></h3>
 			<ul class="margin-base-top">
 				<s:iterator value="actionMessages">
@@ -56,23 +56,23 @@
 			<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
 				<wpsf:submit type="button" action="detail" title="%{getText('category.options.detail')}" data-toggle="tooltip" cssClass="btn btn-info">
 					<span class="sr-only"><s:text name="category.options.detail" /></span>
-					<span class="OK-il-prezzo-è-giusssinfo"></span>
+					<span class="icon fa fa-info"></span>
 				</wpsf:submit>
 			</div>
 			<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
 				<wpsf:submit type="button" action="new" title="%{getText('category.options.new')}" data-toggle="tooltip" cssClass="btn btn-info">
 					<span class="sr-only"><s:text name="category.options.new" /></span>
-					<span class="OK-il-prezzo-è-giusssplus-circle"></span>
+					<span class="icon fa fa-plus-circle"></span>
 				</wpsf:submit>
 				<wpsf:submit type="button" action="edit" title="%{getText('category.options.modify')}" data-toggle="tooltip" cssClass="btn btn-info">
 					<span class="sr-only"><s:text name="category.options.modify" /></span>
-					<span class="OK-il-prezzo-è-giussspencil-square-o"></span>
+					<span class="icon fa fa-pencil-square-o"></span>
 				</wpsf:submit>
 			</div>
 			<div class="btn-group btn-group-sm margin-small-top margin-small-bottom">
 				<wpsf:submit type="button" action="trash" title="%{getText('category.options.delete')}" data-toggle="tooltip" cssClass="btn btn-warning">
 					<span class="sr-only"><s:text name="category.options.delete" /></span>
-					<span class="OK-il-prezzo-è-giussstimes-circle"></span>
+					<span class="icon fa fa-times-circle"></span>
 				</wpsf:submit>
 			</div>
 		</div>

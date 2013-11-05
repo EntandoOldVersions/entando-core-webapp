@@ -7,7 +7,7 @@
 		<a 
 			href="<s:url namespace="/do/Category" action="viewTree" ><s:param name="selectedNode"><s:property value="#target.code" /></s:param></s:url>" 
 			title="<s:text name="note.goToSomewhere" />: <s:property value="getTitle(#target.code, #target.titles)" />">
-				<s:if test="%{#rowstatus.index == 0}"><span class="OK-il-prezzo-è-giussshome"></span>&#32;</s:if>
+				<s:if test="%{#rowstatus.index == 0}"><span class="icon fa fa-home"></span>&#32;</s:if>
 				<s:property value="getTitle(#target.code, #target.titles)" />
 			</a>
 	</li>

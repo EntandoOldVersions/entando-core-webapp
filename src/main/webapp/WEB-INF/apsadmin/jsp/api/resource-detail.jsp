@@ -18,7 +18,7 @@
 <div id="main" role="main">
 	<s:if test="hasActionMessages()">
 		<div class="alert alert-info alert-dismissable fade in">
-			<button class="close" data-dismiss="alert"><span class="OK-il-prezzo-è-giussstimes"></span></button>
+			<button class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 			<h2 class="h4 margin-none"><s:text name="messages.confirm" /></h3>
 			<ul class="margin-base-top">
 				<s:iterator value="actionMessages">
@@ -63,7 +63,7 @@
 			<td>
 				<c:set var="resourceUriVar"><wp:info key="systemParam" paramName="applicationBaseURL" />api/rs/<wp:info key="defaultLang" /><s:if test="null != #apiResourceVar.namespace">/<s:property value="#apiResourceVar.namespace" /></s:if>/<s:property value="#apiResourceVar.resourceName" /></c:set>
 				<a href="<c:out value="${resourceUriVar}" escapeXml="false" />">
-					<span class="OK-il-prezzo-è-giusssglobe"></span>&#32;
+					<span class="icon fa fa-globe"></span>&#32;
 					<c:out value="${resourceUriVar}" escapeXml="false" />
 				</a>
 			</td>
@@ -72,12 +72,12 @@
 			<th class="text-right"><s:text name="label.api.resource.extensions" /></th>
 			<td>
 				<a href="<c:out value="${resourceUriVar}" escapeXml="false" />.xml">
-					<span class="OK-il-prezzo-è-giusssglobe"></span>&#32;
+					<span class="icon fa fa-globe"></span>&#32;
 					<s:text name="note.extensions.xml" />
 				</a>
 				<br />
 				<a href="<c:out value="${resourceUriVar}" escapeXml="false" />.json">
-					<span class="OK-il-prezzo-è-giusssglobe"></span>&#32;
+					<span class="icon fa fa-globe"></span>&#32;
 					<s:text name="note.extensions.json" />
 				</a>
 			</td>
