@@ -123,7 +123,7 @@
 								<wpsa:actionSubParam name="movement" value="DOWN" />
 							</wpsa:actionParam>
 							<wpsf:submit action="%{#actionName}" type="button" title="%{getText('label.moveDown')}" cssClass="btn btn-default">
-								<span class="icon fa fa-sort-down"></span>
+								<span class="icon fa fa-sort-asc"></span>
 							</wpsf:submit>
 						</div>
 						<div class="btn-group btn-group-xs">

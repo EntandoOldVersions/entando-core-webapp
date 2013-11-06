@@ -4,7 +4,7 @@
 <p class="margin-base-vertical text-right">
 	<button type="button" data-toggle="collapse" data-target="#page-info"  class="btn btn-link">
 		<s:text name="label.info" />&#32;
-		<span class="icon-chevron-down"></span>
+		<span class="icon fa fa-chevron-down"></span>
 	</button>
 </p>
 
@@ -58,7 +58,7 @@
 
 		<tr>
 			<th class="text-right"><s:text name="name.isViewerPage" /></th>
-			<td><span title="<s:property value="freeViewerPageBooleanStatus" />" class="icon fa fa-<s:property value="iconName" />"></span></td>
+			<td><span title="<s:property value="freeViewerPageBooleanStatus" />" class="icon fa fa-<s:property value="#iconName" />"></span></td>
 		</tr>
 
 	<s:if test="#details_pivotPage.showable">
@@ -72,7 +72,7 @@
 
 		<tr>
 			<th class="text-right"><s:text name="name.isShowablePage" /></th>
-			<td><span title="<s:property value="booleanStatus" />" class="icon fa fa-<s:property value="iconName" />"></span></td>
+			<td><span title="<s:property value="booleanStatus" />" class="icon fa fa-<s:property value="#iconName" />"></span></td>
 		</tr>
 
 	<s:if test="#details_pivotPage.useExtraTitles">
@@ -86,7 +86,7 @@
 
 		<tr>
 			<th class="text-right"><abbr lang="en" title="<s:text name="name.SEO.full" />"><s:text name="name.SEO.short" /></abbr>:&#32;<s:text name="name.useBetterTitles" /></th>
-			<td><span title="<s:property value="useExtraTitlesBooleanStatus" />" class="icon fa fa-<s:property value="iconName" />"></span></td>
+			<td><span title="<s:property value="useExtraTitlesBooleanStatus" />" class="icon fa fa-<s:property value="#iconName" />"></span></td>
 		</tr>
 
 	</table>

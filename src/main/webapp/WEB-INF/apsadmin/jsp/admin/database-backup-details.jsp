@@ -95,7 +95,7 @@
 
 		<p class="help-block text-right">
 				<button type="button" data-toggle="collapse" data-target="#datasource-details" class="btn btn-link">
-					<s:text name="DataSource Details"/> <span class="icon-chevron-down"></span>
+					<s:text name="DataSource Details"/> <span class="icon fa fa-chevron-down"></span>
 				</button>
 		</p>
 		<div id="datasource-details" class="collapse">

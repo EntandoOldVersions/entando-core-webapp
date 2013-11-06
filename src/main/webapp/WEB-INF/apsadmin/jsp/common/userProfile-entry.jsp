@@ -58,17 +58,17 @@
 	</p>
 
 	<div class="form-group">
-		<label for="oldPassword"><s:text name="label.oldPassword" />&#32;<span class="fa-li icon-asterisk text-muted" title="<s:text name="Entity.attribute.flag.mandatory.full" />"></span></label>
+		<label for="oldPassword"><s:text name="label.oldPassword" />&#32;<span class="icon fa-li fa-asterisk text-muted" title="<s:text name="Entity.attribute.flag.mandatory.full" />"></span></label>
 		<wpsf:password name="oldPassword" id="oldPassword" cssClass="form-control" />
 	</div>
 
 	<div class="form-group">
-		<label for="password" ><s:text name="label.password" />&#32;<span class="fa-li icon-asterisk text-muted" title="<s:text name="Entity.attribute.flag.mandatory.full" />"></span></label>
+		<label for="password" ><s:text name="label.password" />&#32;<span class="icon fa-li fa-asterisk text-muted" title="<s:text name="Entity.attribute.flag.mandatory.full" />"></span></label>
 		<wpsf:password name="password" id="password" cssClass="form-control" />
 	</div>
 
 	<div class="form-group">
-		<label for="passwordConfirm"><s:text name="label.passwordConfirm" />&#32;<span class="fa-li icon-asterisk text-muted" title="<s:text name="Entity.attribute.flag.mandatory.full" />"></span></label>
+		<label for="passwordConfirm"><s:text name="label.passwordConfirm" />&#32;<span class="icon fa-li fa-asterisk text-muted" title="<s:text name="Entity.attribute.flag.mandatory.full" />"></span></label>
 		<wpsf:password name="passwordConfirm" id="passwordConfirm" cssClass="form-control" />
 	</div>
 

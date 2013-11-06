@@ -3,22 +3,22 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <s:set var="validationRules" value="#attribute.validationRules" />
 <s:set var="hasValidationRulesVar" value="%{#validationRules != null && #validationRules.ognlValidationRule != null&& #validationRules.ognlValidationRule.expression != null}" />
-<s:if test="#attribute.required">&#32;<span class="fa-li icon-asterisk text-muted" title="<s:text name="Entity.attribute.flag.mandatory.full" />"></span></s:if>
+<s:if test="#attribute.required">&#32;<span class="icon fa-li fa-asterisk text-muted" title="<s:text name="Entity.attribute.flag.mandatory.full" />"></span></s:if>
 <s:if test="#attribute.required || #attribute.searcheable || #attribute.indexingType != 'NONE' || (#attribute.textAttribute && (#attribute.minLength != -1 || #attribute.maxLength != -1)) || (#hasValidationRulesVar) ">
 
 <s:set var="htmlContent">
 	<ul class="fa-ul">
 
 	<s:if test="#attribute.required">
-		<li><span class="fa-li icon-asterisk"></span><s:text name="Entity.attribute.flag.mandatory.full" /></li>
+		<li><span class="icon fa-li fa-asterisk"></span><s:text name="Entity.attribute.flag.mandatory.full" /></li>
 	</s:if>
 
 	<s:if test="#attribute.searcheable">
-		<li><span class="fa-li icon-filter"></span><s:text name="Entity.attribute.flag.searcheable.full" /></li>
+		<li><span class="icon fa-li fa-filter"></span><s:text name="Entity.attribute.flag.searcheable.full" /></li>
 	</s:if>
 
 	<s:if test="#attribute.indexingType != 'NONE'">
-		<li><span class="fa-li icon-search"></span><s:text name="Entity.attribute.flag.indexed.full" /></li>
+		<li><span class="icon fa-li fa-search"></span><s:text name="Entity.attribute.flag.indexed.full" /></li>
 	</s:if>
 
 	<s:if test="#attribute.textAttribute">

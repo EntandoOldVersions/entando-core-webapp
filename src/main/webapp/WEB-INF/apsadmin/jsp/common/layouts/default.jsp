@@ -87,7 +87,7 @@
 								</li>
 								<li>
 									<a href="<s:url action="logout" namespace="/do" />">
-										<span class="icon fa fa-off fa-fw"></span>&#32;
+										<span class="icon fa fa-power-off fa-fw"></span>&#32;
 										<s:text name="menu.exit" />
 									</a>
 								</li>
@@ -122,9 +122,9 @@
 				<div class="navbar-header">
 					<a href="#sidebar" class="btn-offcanvas navbar-toggle pull-right visible-xs" data-toggle="offcanvas">
 						<span class="sr-only"><s:text name="label.menu" /></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
+						<span class="icon fa fa-bar"></span>
+						<span class="icon fa fa-bar"></span>
+						<span class="icon fa fa-bar"></span>
 					</a>
 					<a class="navbar-brand" href="<s:url action="main" namespace="/do" />"><img src="<wp:resourceURL />administration/img/entando-logo-symbol-70x42.png" alt="Entando - Simplifying Enterprise Portals" width="70" height="42" /></a>
 				</div>

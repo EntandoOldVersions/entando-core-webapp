@@ -200,7 +200,7 @@
 													action="%{#previewActionName}"
 													title="%{getText('note.button.previewContent')}"
 													>
-													<span class="icon fa fa-eye-open"></span>&#32;<s:text name="label.preview" />
+													<span class="icon fa fa-eye"></span>&#32;<s:text name="label.preview" />
 												</wpsf:submit>
 											</span>
 										</div>

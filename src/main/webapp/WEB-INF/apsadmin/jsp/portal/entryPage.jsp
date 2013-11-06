@@ -107,7 +107,7 @@
 			listKey="name" listValue="descr" cssClass="form-control" />
 		<span class="input-group-btn">
 			<wpsf:submit type="button" action="joinExtraGroup" cssClass="btn btn-default">
-				<span class="icon-plus"></span>&#32;
+				<span class="icon fa fa-plus"></span>&#32;
 				<s:property value="label.join" />
 			</wpsf:submit>
 		</span>

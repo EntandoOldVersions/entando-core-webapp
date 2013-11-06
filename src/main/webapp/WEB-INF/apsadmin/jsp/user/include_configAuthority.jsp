@@ -120,7 +120,7 @@
 										<s:set var="statusIconText" value="%{getText('note.userStatus.expiredPassword')}" />
 									</s:elseif>
 									<s:elseif test="!#userVar.disabled">
-										<s:set var="statusIconImagePath">fa-check</s:set>
+										<s:set var="statusIconImagePath">fa-check-square-o</s:set>
 										<s:set var="statusIconText" value="%{getText('note.userStatus.active')}" />
 									</s:elseif>
 									<tr>
@@ -162,7 +162,7 @@
 										</td>
 										<td class="text-center col-xs-1 col-sm-1 col-md-1 col-lg-1">
 											<span
-												class="icon <s:property value="#statusIconImagePath" />"
+												class="icon fa <s:property value="%{' '+#statusIconImagePath}" />"
 												title="<s:property value="#statusIconText" />"
 												>
 													<span class="sr-only"><s:property value="#statusIconText" /></span>

@@ -26,7 +26,7 @@
 			<wpsa:actionSubParam name="movement" value="DOWN" />
 		</wpsa:actionParam>
 		<wpsf:submit disabled="%{#operationButtonDisabled}" action="%{#actionName}" type="button" cssClass="btn btn-default" title="%{getText('label.moveInPositionNumber')}: %{#elementIndex+2}">
-		<span class="icon fa fa-sort-down"></span>
+		<span class="icon fa fa-sort-asc"></span>
 		<span class="sr-only"><s:text name="label.moveInPositionNumber" />: <s:property value="%{#elementIndex}" /></span>
 		</wpsf:submit>
 	</div>

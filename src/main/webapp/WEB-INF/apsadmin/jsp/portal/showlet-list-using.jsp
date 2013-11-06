@@ -79,7 +79,7 @@
 					<div class="btn-group pull-right">
 						<div class="btn-group">
 							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="<s:text name="label.new" />..."">
-								<span class="icon-plus-circle"></span>
+								<span class="icon fa fa-plus-circle"></span>
 								<span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">

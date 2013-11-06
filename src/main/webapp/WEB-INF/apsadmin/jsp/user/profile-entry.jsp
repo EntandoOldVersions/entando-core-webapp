@@ -18,7 +18,7 @@
 			<div class="alert alert-danger alert-dismissable fade in">
 				<button class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 				<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" />&ensp;<span
-						class="icon fa fa-question-sign cursor-pointer"
+						class="icon fa fa-question-circle cursor-pointer"
 						title="<s:text name="label.all" />"
 						data-toggle="collapse"
 						data-target="#content-error-messages"></span>
