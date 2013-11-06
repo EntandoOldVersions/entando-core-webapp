@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
@@ -34,8 +35,8 @@
 					<s:iterator value="fieldErrors">
 						<s:iterator value="value">
 							<li><%-- <s:property value="key" />&emsp;|--%><s:property escape="false" /></li>
-							</s:iterator>
 						</s:iterator>
+					</s:iterator>
 				</ul>
 			</div>
 		</s:if>
@@ -78,8 +79,9 @@
 									<s:set var="attributeHasFieldErrorVar" value="#attributeFieldErrorsVar != null && !#attributeFieldErrorsVar.isEmpty()" />
 									<s:set var="attributeFieldNameErrorsVar" value="%{fieldErrors[#attributeTracer.getFormFieldName(#attribute)]}" />
 									<s:set var="attributeHasFieldNameErrorVar" value="#attributeFieldNameErrorsVar != null && !#attributeFieldNameErrorsVar.isEmpty()" />
-									<s:set var="attributeFieldNameErrorsVarV2" value="%{fieldErrors[#attribute.name+':'+#attribute.name]}" />
+									<s:set var="attributeFieldNameErrorsVarV2" value="%{fieldErrors[#attribute.type+':'+#attribute.name]}" />
 									<s:set var="attributeHasFieldNameErrorVarV2" value="#attributeFieldNameErrorsVarV2 != null && !#attributeFieldNameErrorsVarV2.isEmpty()" />
+
 									<s:set var="attributeHasErrorVar" value="%{#attributeHasFieldErrorVar||#attributeHasFieldNameErrorVar||#attributeHasFieldNameErrorVarV2}" />
 									<s:set var="controlGroupErrorClassVar" value="''" />
 									<s:set var="inputErrorClassVar" value="''" />
@@ -164,11 +166,27 @@
 
 										<s:if test="#attributeHasErrorVar">
 											<p class="text-danger padding-small-vertical">
-												<s:iterator value="#attributeFieldErrorsVar"><s:property /><br /></s:iterator>
-												<s:iterator value="#attributeFieldNameErrorsVar"><s:property /><br /></s:iterator>
-												<s:iterator value="#attributeFieldNameErrorsVarV2"><s:property /><br /></s:iterator>
+												<jsp:useBean id="attributeErrorMapVar" class="java.util.HashMap" scope="request"/>
+												<s:iterator value="#attributeFieldErrorsVar"><s:set var="attributeCurrentError" scope="page" /><c:set target="${attributeErrorMapVar}" property="${attributeCurrentError}" value="${attributeCurrentError}"/> </s:iterator>
+												<s:iterator value="#attributeFieldNameErrorsVar"><s:set var="attributeCurrentError" scope="page" /><c:set target="${attributeErrorMapVar}" property="${attributeCurrentError}" value="${attributeCurrentError}"/> </s:iterator>
+												<s:iterator value="#attributeFieldNameErrorsVarV2"><s:set var="attributeCurrentError" scope="page" /><c:set target="${attributeErrorMapVar}" property="${attributeCurrentError}" value="${attributeCurrentError}"/> </s:iterator>
+												<c:forEach items="${attributeErrorMapVar}" var="attributeCurrentError">
+													<c:out value="${attributeCurrentError.value}" /><br />
+												</c:forEach>
+												<c:set var="attributeErrorMapVar" value="${null}" />
+												<c:set var="attributeCurrentError" value="${null}" />
 											</p>
 										</s:if>
+										<s:set var="attributeHasErrorVar" value="%{null}" />
+										<s:set var="attributeFieldErrorsVar" value="%{null}" />
+										<s:set var="attributeHasFieldErrorVar" value="%{null}" />
+										<s:set var="attributeFieldNameErrorsVar" value="%{null}" />
+										<s:set var="attributeHasFieldNameErrorVar" value="%{null}" />
+										<s:set var="attributeFieldNameErrorsVarV2" value="%{null}" />
+										<s:set var="attributeHasFieldNameErrorVarV2" value="%{null}" />
+										<s:set var="attributeHasErrorVar" value="%{null}" />
+										<s:set var="controlGroupErrorClassVar" value="%{null}" />
+										<s:set var="inputErrorClassVar" value="%{null}" />
 									</div><%-- form group --%>
 								</div><%-- contentedit div --%>
 							</s:iterator><%-- attributes iterator --%>
@@ -191,7 +209,8 @@
 												list="#showingPageSelectItems"
 												listKey="key"
 												listValue="%{getText('name.preview.page') + ': ' +value}"
-												cssClass="form-control" />
+												cssClass="form-control"
+												data-autosave="ignore" />
 											<span class="input-group-btn">
 												<%-- <wpsf:select name="jacmsPreviewActionPageCode" id="%{#previewActionPageCodeLabelId}" list="#showingPageSelectItems" listKey="key" listValue="value" /></p>  --%>
 												<wpsf:submit
@@ -237,7 +256,8 @@
 									list="groups"
 									listKey="name"
 									listValue="descr"
-									cssClass="form-control" />
+									cssClass="form-control"
+									data-autosave="ignore" />
 								<span class="input-group-btn">
 									<wpsf:submit
 										type="button"

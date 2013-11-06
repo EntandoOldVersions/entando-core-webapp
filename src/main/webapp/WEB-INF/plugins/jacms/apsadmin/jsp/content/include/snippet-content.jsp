@@ -83,7 +83,6 @@
 				<span class="help-block"><span class="icon fa fa-info-circle"></span>&#32;<s:text name="note.set.MainGroup" />.</span>
 			</div>
 		</s:if>
-
 	</div>
 </div>
 	<s:if test="#attributeHasFieldErrorVar">
