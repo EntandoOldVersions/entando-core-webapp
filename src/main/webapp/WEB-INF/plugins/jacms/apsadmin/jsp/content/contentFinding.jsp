@@ -69,7 +69,7 @@
 								<s:set var="currentFieldId" value="%{'entityFinding_'+#attribute.name}" />
 								<s:if test="#attribute.textAttribute">
 									<div class="form-group">
-										<s:set name="textInputFieldName"><s:property value="#attribute.name" />_textFieldName</s:set>
+										<s:set var="textInputFieldName"><s:property value="#attribute.name" />_textFieldName</s:set>
 										<label for="<s:property value="currentFieldId" />" class="control-label col-sm-3 text-right"><s:property value="#attribute.name" /></label>
 										<div class="col-sm-4">
 											<wpsf:textfield id="%{currentFieldId}" name="%{#textInputFieldName}" value="%{getSearchFormFieldValue(#textInputFieldName)}" cssClass="form-control" />
@@ -77,8 +77,8 @@
 									</div>
 								</s:if>
 								<s:elseif test="#attribute.type == 'Date'">
-									<s:set name="dateStartInputFieldName" ><s:property value="#attribute.name" />_dateStartFieldName</s:set>
-									<s:set name="dateEndInputFieldName" ><s:property value="#attribute.name" />_dateEndFieldName</s:set>
+									<s:set var="dateStartInputFieldName" ><s:property value="#attribute.name" />_dateStartFieldName</s:set>
+									<s:set var="dateEndInputFieldName" ><s:property value="#attribute.name" />_dateEndFieldName</s:set>
 									<div class="form-group">
 										<label for="<s:property value="%{currentFieldId}" />_dateStartFieldName_cal" class="control-label col-sm-5 text-right"><s:text name="note.range.from.attribute" />&#32;<s:property value="#attribute.name" /></label>
 										<div class="col-sm-2">
@@ -93,8 +93,8 @@
 									</div>
 								</s:elseif>
 								<s:elseif test="#attribute.type == 'Number'">
-									<s:set name="numberStartInputFieldName" ><s:property value="#attribute.name" />_numberStartFieldName</s:set>
-									<s:set name="numberEndInputFieldName" ><s:property value="#attribute.name" />_numberEndFieldName</s:set>
+									<s:set var="numberStartInputFieldName" ><s:property value="#attribute.name" />_numberStartFieldName</s:set>
+									<s:set var="numberEndInputFieldName" ><s:property value="#attribute.name" />_numberEndFieldName</s:set>
 									<p>
 										<label for="<s:property value="currentFieldId" />_start"><s:text name="note.range.from.attribute" />&#32;<s:property value="#attribute.name" />:</label>
 										<wpsf:textfield id="%{currentFieldId}_start" name="%{#numberStartInputFieldName}" value="%{getSearchFormFieldValue(#numberStartInputFieldName)}" />
@@ -108,8 +108,8 @@
 									<p>
 										<span class="important"><s:property value="#attribute.name" /></span><br />
 									</p>
-									<s:set name="booleanInputFieldName" ><s:property value="#attribute.name" />_booleanFieldName</s:set>
-									<s:set name="booleanInputFieldValue" ><s:property value="%{getSearchFormFieldValue(#booleanInputFieldName)}" /></s:set>
+									<s:set var="booleanInputFieldName" ><s:property value="#attribute.name" />_booleanFieldName</s:set>
+									<s:set var="booleanInputFieldValue" ><s:property value="%{getSearchFormFieldValue(#booleanInputFieldName)}" /></s:set>
 									<ul class="noBullet radiocheck">
 										<li><wpsf:radio id="none_%{#booleanInputFieldName}" name="%{#booleanInputFieldName}" value="" checked="%{!#booleanInputFieldValue.equals('true') && !#booleanInputFieldValue.equals('false')}" /><label for="none_<s:property value="#booleanInputFieldName" />" class="normal" ><s:text name="label.bothYesAndNo"/></label></li>
 										<li><wpsf:radio id="true_%{#booleanInputFieldName}" name="%{#booleanInputFieldName}" value="true" checked="%{#booleanInputFieldValue == 'true'}" /><label for="true_<s:property value="#booleanInputFieldName" />" class="normal" ><s:text name="label.yes"/></label></li>
@@ -240,23 +240,23 @@
 			<wpsf:hidden name="ownerGroupName" />
 			<s:iterator var="attribute" value="#searcheableAttributes">
 				<s:if test="#attribute.textAttribute">
-					<s:set name="textInputFieldName" ><s:property value="#attribute.name" />_textFieldName</s:set>
+					<s:set var="textInputFieldName" ><s:property value="#attribute.name" />_textFieldName</s:set>
 					<wpsf:hidden name="%{#textInputFieldName}" value="%{getSearchFormFieldValue(#textInputFieldName)}" />
 				</s:if>
 				<s:elseif test="#attribute.type == 'Date'">
-					<s:set name="dateStartInputFieldName" ><s:property value="#attribute.name" />_dateStartFieldName</s:set>
-					<s:set name="dateEndInputFieldName" ><s:property value="#attribute.name" />_dateEndFieldName</s:set>
+					<s:set var="dateStartInputFieldName" ><s:property value="#attribute.name" />_dateStartFieldName</s:set>
+					<s:set var="dateEndInputFieldName" ><s:property value="#attribute.name" />_dateEndFieldName</s:set>
 					<wpsf:hidden name="%{#dateStartInputFieldName}" value="%{getSearchFormFieldValue(#dateStartInputFieldName)}" />
 					<wpsf:hidden name="%{#dateEndInputFieldName}" value="%{getSearchFormFieldValue(#dateEndInputFieldName)}" />
 				</s:elseif>
 				<s:elseif test="#attribute.type == 'Number'">
-					<s:set name="numberStartInputFieldName" ><s:property value="#attribute.name" />_numberStartFieldName</s:set>
-					<s:set name="numberEndInputFieldName" ><s:property value="#attribute.name" />_numberEndFieldName</s:set>
+					<s:set var="numberStartInputFieldName" ><s:property value="#attribute.name" />_numberStartFieldName</s:set>
+					<s:set var="numberEndInputFieldName" ><s:property value="#attribute.name" />_numberEndFieldName</s:set>
 					<wpsf:hidden name="%{#numberStartInputFieldName}" value="%{getSearchFormFieldValue(#numberStartInputFieldName)}" />
 					<wpsf:hidden name="%{#numberEndInputFieldName}" value="%{getSearchFormFieldValue(#numberEndInputFieldName)}" />
 				</s:elseif>
 				<s:elseif test="#attribute.type == 'Boolean' || #attribute.type == 'ThreeState'">
-					<s:set name="booleanInputFieldName" ><s:property value="#attribute.name" />_booleanFieldName</s:set>
+					<s:set var="booleanInputFieldName" ><s:property value="#attribute.name" />_booleanFieldName</s:set>
 					<wpsf:hidden name="%{#booleanInputFieldName}" value="%{getSearchFormFieldValue(#booleanInputFieldName)}" />
 				</s:elseif>
 			</s:iterator>
@@ -307,7 +307,7 @@
 		<s:set var="contentIdsVar" value="contents" />
 
 		<wpsa:subset source="#contentIdsVar" count="10" objectName="groupContent" advanced="true" offset="5">
-		<s:set name="group" value="#groupContent" />
+		<s:set var="group" value="#groupContent" />
 
 		<div class="text-center">
 			<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
@@ -361,7 +361,7 @@
 				</th>
 			</tr>
 			<s:iterator var="contentId">
-			<s:set name="content" value="%{getContentVo(#contentId)}"></s:set>
+			<s:set var="content" value="%{getContentVo(#contentId)}"></s:set>
 			<tr>
 			<td class="text-center text-nowrap">
 				<div class="btn-group btn-group-xs">
@@ -438,19 +438,19 @@
 			</td>
 
 			<s:if test="#content.onLine && #content.sync">
-				<s:set name="iconName" id="iconName">ok</s:set>
-				<s:set name="textVariant" id="textVariant">success</s:set>
-				<s:set name="isOnlineStatus" value="%{getText('label.yes')}" />
+				<s:set var="iconName">check</s:set>
+				<s:set var="textVariant">success</s:set>
+				<s:set var="isOnlineStatus" value="%{getText('label.yes')}" />
 			</s:if>
 			<s:if test="#content.onLine && !(#content.sync)">
-				<s:set name="iconName" id="iconName">adjust</s:set>
-				<s:set name="textVariant" id="textVariant">info</s:set>
-				<s:set name="isOnlineStatus" value="%{getText('label.yes') + ', ' + getText('note.notSynched')}" />
+				<s:set var="iconName">adjust</s:set>
+				<s:set var="textVariant">info</s:set>
+				<s:set var="isOnlineStatus" value="%{getText('label.yes') + ', ' + getText('note.notSynched')}" />
 			</s:if>
 			<s:if test="!(#content.onLine)">
-				<s:set name="iconName" id="iconName">pause</s:set>
-				<s:set name="textVariant" id="textVariant">warning</s:set>
-				<s:set name="isOnlineStatus" value="%{getText('label.no')}" />
+				<s:set var="iconName">pause</s:set>
+				<s:set var="textVariant">warning</s:set>
+				<s:set var="isOnlineStatus" value="%{getText('label.no')}" />
 			</s:if>
 
 			<td class="text-center">
