@@ -54,54 +54,52 @@
 	<p class="sr-only" id="fagiano_start"><s:text name="title.mainFunctions" /></p>
 	<div class="row row-offcanvas row-offcanvas-right">
 		<div class="col-sm-3 sidebar-offcanvas col-sm-push-9 col-md-push-9 col-lg-push-9" id="sidebar">
-			<div class="alternative-background">
-				<div class="panel-group margin-base-bottom" role="navigation">
-					<div class="panel panel-default">
-						<div class="panel-heading" id="user-avatar">
-							<a data-toggle="collapse" href="#submenu-user" class="display-block">
-								<c:set var="current_username" value="${sessionScope.currentUser}" />
-								<c:if test="${null != sessionScope.currentUser.profile}">
-									<c:set var="current_username" value="${sessionScope.currentUser.profile.displayName}" />
-								</c:if>
-								<c:out value="${current_username}" />
-								<img src="<s:url action="avatarStream" namespace="/do/currentuser/avatar">
-								<s:param name="gravatarSize">34</s:param>
-							</s:url>" width="34" height="34" alt=" " class="img-rounded" />
-							</a>
-						</div>
-						<div id="submenu-user" class="panel-collapse collapse">
-							<ul class="panel-body nav nav-pills nav-stacked">
-								<c:if test="${sessionScope.currentUser.japsUser}">
-								<li>
-									<a href="<s:url action="editProfile" namespace="/do/CurrentUser" />">
-										<span class="icon fa fa-user fa-fw"></span>&#32;
-										<s:text name="note.changeYourPassword" />
-									</a>
-								</li>
-								</c:if>
-								<li>
-									<a href="<s:url value="/" />" title="<s:text name="note.goToPortal" /> ( <s:text name="note.sameWindow" /> )">
-										<span class="icon fa fa-globe fa-fw"></span>&#32;
-										<s:text name="note.goToPortal" />
-									</a>
-								</li>
-								<li>
-									<a href="<s:url action="logout" namespace="/do" />">
-										<span class="icon fa fa-power-off fa-fw"></span>&#32;
-										<s:text name="menu.exit" />
-									</a>
-								</li>
-							</ul>
-						</div>
+			<div class="panel-group margin-base-bottom" role="navigation">
+				<div class="panel panel-default">
+					<div class="panel-heading" id="user-avatar">
+						<a data-toggle="collapse" href="#submenu-user" class="display-block">
+							<c:set var="current_username" value="${sessionScope.currentUser}" />
+							<c:if test="${null != sessionScope.currentUser.profile}">
+								<c:set var="current_username" value="${sessionScope.currentUser.profile.displayName}" />
+							</c:if>
+							<c:out value="${current_username}" />
+							<img src="<s:url action="avatarStream" namespace="/do/currentuser/avatar">
+							<s:param name="gravatarSize">34</s:param>
+						</s:url>" width="34" height="34" alt=" " class="img-rounded" />
+						</a>
+					</div>
+					<div id="submenu-user" class="panel-collapse collapse">
+						<ul class="panel-body nav nav-pills nav-stacked">
+							<c:if test="${sessionScope.currentUser.japsUser}">
+							<li>
+								<a href="<s:url action="editProfile" namespace="/do/CurrentUser" />">
+									<span class="icon fa fa-user fa-fw"></span>&#32;
+									<s:text name="note.changeYourPassword" />
+								</a>
+							</li>
+							</c:if>
+							<li>
+								<a href="<s:url value="/" />" title="<s:text name="note.goToPortal" /> ( <s:text name="note.sameWindow" /> )">
+									<span class="icon fa fa-globe fa-fw"></span>&#32;
+									<s:text name="note.goToPortal" />
+								</a>
+							</li>
+							<li>
+								<a href="<s:url action="logout" namespace="/do" />">
+									<span class="icon fa fa-power-off fa-fw"></span>&#32;
+									<s:text name="menu.exit" />
+								</a>
+							</li>
+						</ul>
 					</div>
 				</div>
-				<nav role="navigation">
-					<tiles:insertAttribute name="menu"/>
-					<p class="sr-only">
-						<a href="#fagiano_start" id="fagiano_mainContent"><s:text name="note.backToStart" /></a>
-					</p>
-				</nav>
 			</div>
+			<nav role="navigation">
+				<tiles:insertAttribute name="menu"/>
+				<p class="sr-only">
+					<a href="#fagiano_start" id="fagiano_mainContent"><s:text name="note.backToStart" /></a>
+				</p>
+			</nav>
 			<c:if test="${firstTimeMessagesVar}">
 				<div class="alert alert-info margin-none margin-base-top fade in" id="first-time-messages">
 					<button class="close" data-dismiss="alert" data-first-time-messages="dismiss"><span class="icon fa fa-times"></span></button>
