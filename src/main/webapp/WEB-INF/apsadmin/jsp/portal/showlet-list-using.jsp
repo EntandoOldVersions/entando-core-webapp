@@ -71,62 +71,61 @@
 		</h2>
 	</div>
 	<ul class="list-group">
-	<s:iterator value="#singlePage.showlets" id="showlet" status="rowstatus">
+	<s:iterator value="#singlePage.widgets" var="showlet" status="rowstatus">
 		<s:if test="#showlet != null && #showlet.type != null && #showlet.type.code.equals(widgetTypeCode)">
 		<li class="list-group-item">
 			<div class="row">
 				<div class="col-sm-3 col-lg-3">
 					<div class="btn-group pull-right">
 						<div class="btn-group">
-							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="<s:text name="label.new" />..."">
+							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="<s:text name="label.new" />...">
 								<span class="icon fa fa-plus-circle"></span>
 								<span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">
-
-							<s:if test="null != #showlet.type.typeParameters && #showlet.type.typeParameters.size() > 0">
-								<li>
-									<a href="
-											<s:url namespace="/do/Portal/WidgetType" action="copy">
-												<s:param name="pageCode" value="#singlePage.code" />
-												<s:param name="framePos" value="#rowstatus.index" />
-											</s:url>"><s:text name="label.userShowlet.new" /></a>
-								</li>
-							</s:if>
+								<s:if test="null != #showlet.type.typeParameters && #showlet.type.typeParameters.size() > 0">
+									<li>
+										<a href="<s:url namespace="/do/Portal/WidgetType" action="copy"><s:param name="pageCode" value="#singlePage.code" /><s:param name="framePos" value="#rowstatus.index" /></s:url>">
+											<s:text name="label.userShowlet.new" />
+										</a>
+									</li>
+								</s:if>
 							<s:if test="%{isUserAllowed(#singlePage)}">
 								<s:if test="null != #relatedApiMethodVar && !#showletTypeVar.isLogic()">
-								<wp:ifauthorized permission="superuser">
-								<li>
-									<a href="
-											<s:url action="copyFromWidget" namespace="/do/Api/Service">
-												<s:param name="pageCode" value="#singlePage.code" />
-												<s:param name="framePos" value="#rowstatus.index" />
-												<s:param name="resourceName" value="#relatedApiMethodVar.resourceName" />
-												<s:param name="namespace" value="#relatedApiMethodVar.namespace" />
-											</s:url>"><s:text name="note.api.apiMethodList.createServiceFromMethod" /> <code><s:property value="#relatedApiMethodVar.methodName" /></code></a>
-								</li>
-								</wp:ifauthorized>
+									<wp:ifauthorized permission="superuser">
+										<li>
+											<a href="<s:url action="copyFromWidget" namespace="/do/Api/Service">
+														<s:param name="pageCode" value="#singlePage.code" />
+														<s:param name="framePos" value="#rowstatus.index" />
+														<s:param name="resourceName" value="#relatedApiMethodVar.resourceName" />
+														<s:param name="namespace" value="#relatedApiMethodVar.namespace" />
+													</s:url>">
+												<s:text name="note.api.apiMethodList.createServiceFromMethod" />&#32;
+												<code><s:property value="#relatedApiMethodVar.methodName" /></code>
+											</a>
+										</li>
+									</wp:ifauthorized>
 								</s:if>
 								<s:elseif test="null != #relatedApiMethodVar && #showletTypeVar.isLogic()">
-								<wp:ifauthorized permission="superuser">
-								<li>
-									<a href="
-											<s:url action="newService" namespace="/do/Api/Service">
-												<s:param name="widgetTypeCode" value="widgetTypeCode" />
-												<s:param name="resourceName" value="#relatedApiMethodVar.resourceName" />
-												<s:param name="namespace" value="#relatedApiMethodVar.namespace" />
-											</s:url>"><s:text name="note.api.apiMethodList.createServiceFromMethod" /> <code><s:property value="#relatedApiMethodVar.methodName" /></code></a>
-								</li>
-								</wp:ifauthorized>
+									<wp:ifauthorized permission="superuser">
+										<li>
+											<a href="<s:url action="newService" namespace="/do/Api/Service">
+														<s:param name="widgetTypeCode" value="widgetTypeCode" />
+														<s:param name="resourceName" value="#relatedApiMethodVar.resourceName" />
+														<s:param name="namespace" value="#relatedApiMethodVar.namespace" />
+													</s:url>">
+												<s:text name="note.api.apiMethodList.createServiceFromMethod" />&#32;<code><s:property value="#relatedApiMethodVar.methodName" /></code>
+											</a>
+										</li>
+									</wp:ifauthorized>
 								</s:elseif>
 							</s:if>
 							</ul>
 						</div>
-						<a href="
-								<s:url action="editFrame" namespace="/do/Page">
+						<a href="<s:url action="editFrame" namespace="/do/Page">
 									<s:param name="pageCode"><s:property value="#singlePage.code"/></s:param>
 									<s:param name="frame"><s:property value="#rowstatus.index"/></s:param>
-								</s:url>" title="<s:text name="title.editFrame" />: <s:property value="#rowstatus.index"/> &ndash; <s:property value="#singlePage.model.getFrames()[#rowstatus.index]"/>" class="btn btn-default">
+								</s:url>" title="<s:text name="title.editFrame" />:&#32;<s:property value="#rowstatus.index"/> &ndash;&#32;<s:property value="#singlePage.model.getFrames()[#rowstatus.index]"/>" class="btn btn-default">
 							<span class="icon fa fa-cog"></span>
 						</a>
 					</div>
@@ -138,12 +137,11 @@
 				</div>
 
 				<div class="col-sm-1">
-					<a href="
-							<s:url action="trashWidgetFromPage" namespace="/do/Portal/WidgetType">
+					<a href="<s:url action="trashWidgetFromPage" namespace="/do/Portal/WidgetType">
 								<s:param name="pageCode"><s:property value="#singlePage.code"/></s:param>
 								<s:param name="frame"><s:property value="#rowstatus.index"/></s:param>
 								<s:param name="widgetTypeCode"><s:property value="#showletTypeVar.code"/></s:param>
-							</s:url>" title="<s:text name="label.clear" />: <s:property value="#rowstatus.index"/> &middot; <s:property value="#singlePage.model.getFrames()[#rowstatus.index]"/>" class="btn btn-warning pull-right">
+							</s:url>" title="<s:text name="label.clear" />:&#32;<s:property value="#rowstatus.index"/>&#32;&middot;&#32;<s:property value="#singlePage.model.getFrames()[#rowstatus.index]"/>" class="btn btn-warning pull-right">
 						<span class="icon fa fa-eraser"></span>
 					</a>
 				</div>
