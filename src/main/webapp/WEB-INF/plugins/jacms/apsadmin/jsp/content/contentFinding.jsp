@@ -280,7 +280,7 @@
 		</div>
 
 		<s:if test="hasActionErrors()">
-		<div class="alert alert-danger alert-dismissable fade in">
+		<div class="alert alert-danger alert-dismissable fade in margin-base-top">
 			<button class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 			<h2 class="h4 margin-none">
 				<s:text name="message.title.ActionErrors" />
