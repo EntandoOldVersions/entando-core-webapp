@@ -54,6 +54,7 @@ html {
 
 #activity-stream img {
 	margin: 0 auto;
+	background-color: #fff;
 }
 
 #activity-stream .popover {
