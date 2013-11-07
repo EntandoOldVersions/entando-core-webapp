@@ -30,25 +30,25 @@
 
 	<s:set var="categoryTreeStyleVar"><wp:info key="systemParam" paramName="treeStyle_category" /></s:set>
 
-	<div class="well">
-		<ul id="categoryTree" class="fa-ul list-unstyled">
-			<s:set name="inputFieldName" value="%{'selectedNode'}" />
-			<s:set name="selectedTreeNode" value="%{selectedNode}" />
-			<s:set name="liClassName" value="%{'category'}" />
-			<s:set var="treeItemIconName" value="'fa-folder'" />
+<div class="well">
+	<ul id="categoryTree" class="fa-ul list-unstyled">
+		<s:set var="inputFieldName" value="%{'selectedNode'}" />
+		<s:set var="selectedTreeNode" value="%{selectedNode}" />
+		<s:set var="liClassName" value="'category'" />
+		<s:set var="treeItemIconName" value="'fa-folder'" />
 
-			<s:if test="#categoryTreeStyleVar == 'classic'">
-			<s:set name="currentRoot" value="treeRootNode" />
+		<s:if test="#categoryTreeStyleVar == 'classic'">
+			<s:set var="currentRoot" value="treeRootNode" />
 			<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder.jsp" />
-			</s:if>
-			<s:elseif test="#categoryTreeStyleVar == 'request'">
-			<s:set name="openTreeActionName" value="'openCloseCategoryTree'" />
-			<s:set name="closeTreeActionName" value="'openCloseCategoryTree'" />
-			<s:set name="currentRoot" value="showableTree" />
+		</s:if>
+		<s:elseif test="#categoryTreeStyleVar == 'request'">
+			<s:set var="openTreeActionName" value="'openCloseCategoryTree'" />
+			<s:set var="closeTreeActionName" value="'openCloseCategoryTree'" />
+			<s:set var="currentRoot" value="showableTree" />
 			<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder-request-links.jsp" />
-			</s:elseif>
-		</ul>
-	</div>
+		</s:elseif>
+	</ul>
+</div>
 
 	<p class="sr-only"><s:text name="title.categoryActionsIntro" /></p>
 	<fieldset data-toggle="tree-toolbar"><legend><s:text name="title.categoryActions" /></legend>

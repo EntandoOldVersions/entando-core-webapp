@@ -1,7 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
-<s:set var="pageTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_page" /></s:set>
-<s:if test="#pageTreeStyleVar == 'classic'">
+<s:set var="categoryTreeStyleVar" ><wp:info key="systemParam" paramName="treeStyle_category" /></s:set>
+<s:if test="#categoryTreeStyleVar == 'classic'">
 jQuery("#categoryTree").EntandoWoodMenu({
 	menuToggler: "subTreeToggler",
 	menuRetriever: function(toggler) {
