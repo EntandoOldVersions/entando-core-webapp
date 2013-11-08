@@ -112,7 +112,7 @@
 		</div>
   		<div class="checkbox">
     	<label>
-			<input type="checkbox" name="normalizeFileName" id="normalizeFileName">&#32;<s:text name="label.normalize" />
+			<input type="checkbox" name="normalizeFileName" id="normalizeFileName" value="true">&#32;<s:text name="label.normalize" />
 		</label>
 		</div>
 	</div>
