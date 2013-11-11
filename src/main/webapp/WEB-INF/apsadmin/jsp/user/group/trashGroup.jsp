@@ -3,7 +3,7 @@
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <h1 class="panel panel-default title-page">
 	<span class="panel-body display-block">
-		<a href="<s:url action="list" namespace="/do/Group"></s:url>" 
+		<a href="<s:url action="list" namespace="/do/Group"></s:url>"
 		title="<s:text name="note.goToSomewhere" />: <s:text name="title.groupManagement" />">
 		<s:text name="title.groupManagement" />
 		</a>
@@ -13,24 +13,19 @@
 </h1>
 <s:form action="delete">
 	<p class="sr-only"><wpsf:hidden name="name"/></p>
-	<div class="panel panel-default">
-		<span class="panel-body display-block">
-			<a
-				href="<s:url action="list" />"
-				title="<s:text name="note.groupConfirm.trash.goBack" />&#32;<s:text name="menu.accountAdmin.groups" />"
-				>
-					<span class="icon fa fa-reply"></span>
-				</a>
-				&#32;<s:text name="note.groupConfirm.trash" />&#32;
-				<code><s:property value="name" /></code>
-				?
-		</span>
-		<p class="panel-body display-block text-center">
-				<wpsf:submit
-					type="button"
-					cssClass="btn btn-default">
-					<s:text name="label.confirm" />
-				</wpsf:submit>
+	<div class="alert alert-warning">
+		<p>
+			<s:text name="note.groupConfirm.trash" />&#32;
+			<code><s:property value="name" /></code>
+			?
 		</p>
+		<div class="text-center margin-large-top">
+			<wpsf:submit type="button" cssClass="btn btn-warning btn-lg">
+			    <span class="icon fa fa-times-circle"></span>&#32;
+				<s:text name="label.confirm" />
+			</wpsf:submit>
+			<a class="btn btn-link" href="<s:url action="list" />">
+			<s:text name="note.goToSomewhere" />:&#32;<s:text name="menu.accountAdmin.groups" /></a>
+		</div>
 	</div>
 </s:form>
