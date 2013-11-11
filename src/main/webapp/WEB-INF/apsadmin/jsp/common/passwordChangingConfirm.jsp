@@ -1,19 +1,25 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-
-<h1><s:text name="title.myProfile" /></h1>
-
+<%@ taglib prefix="wp" uri="/aps-core" %>
+<%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
+<h1 class="panel panel-default title-page">
+	<span class="panel-body display-block">
+		<s:text name="title.changePassword" />
+	</span>
+</h1>
 <div id="main" role="main">
-<h2 class="margin-more-bottom"><s:text name="title.changePassword" /></h2>
-
-<div class="message message_confirm">
-	<h3><s:text name="messages.confirm" /></h3>	
-	<p><s:text name="message.passwordChanged" /></p>
+	<div class="alert alert-success">
+		<strong><s:text name="messages.confirm" /></strong>
+		&#32;<s:text name="message.passwordChanged" />
+		<s:if test="!#session.currentUser.credentialsNotExpired">
+			&emsp;
+			<a class="alert-link" href="<s:url action="logout" />" >
+				<span class="icon fa fa-arrow-right"></span>
+				<s:text name="note.login.again" />
+			</a>
+		</s:if>
+	</div>
 </div>
 
-<br /><br /><br />
-<s:if test="!#session.currentUser.credentialsNotExpired">
-<a href="<s:url action="logout" />" >E' NECESSARIO RILOGARSI</a>
-<br /><br />
 
-</s:if>
-</div>
+
