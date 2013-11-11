@@ -40,7 +40,7 @@
 						<wpsf:password name="oldPassword" id="oldPassword" cssClass="form-control" />
 						<s:if test="#fieldHasFieldErrorVar">
 							<span class="help-block text-danger">
-								<s:iterator value="%{#fieldFieldErrorsVar}"><s:property />&#32;</s:iterator>
+								<s:iterator value="%{#fieldFieldErrorsVar}"><s:property escape="false" />&#32;</s:iterator>
 							</span>
 						</s:if>
 					</div>
@@ -55,7 +55,7 @@
 						<wpsf:password name="password" id="password" cssClass="form-control" />
 						<s:if test="#fieldHasFieldErrorVar">
 							<span class="help-block text-danger">
-								<s:iterator value="%{#fieldFieldErrorsVar}"><s:property />&#32;</s:iterator>
+								<s:iterator value="%{#fieldFieldErrorsVar}"><s:property escape="false" />&#32;</s:iterator>
 							</span>
 						</s:if>
 					</div>
@@ -70,7 +70,7 @@
 						<wpsf:password name="passwordConfirm" id="passwordConfirm" cssClass="form-control" />
 						<s:if test="#fieldHasFieldErrorVar">
 							<span class="help-block text-danger">
-								<s:iterator value="%{#fieldFieldErrorsVar}"><s:property />&#32;</s:iterator>
+								<s:iterator value="%{#fieldFieldErrorsVar}"><s:property escape="false" />&#32;</s:iterator>
 							</span>
 						</s:if>
 					</div>
