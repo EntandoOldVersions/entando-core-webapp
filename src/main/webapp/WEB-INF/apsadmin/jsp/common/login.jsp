@@ -15,7 +15,6 @@
 	<meta charset="utf-8" />
 
 	<link rel="stylesheet" href="<wp:resourceURL />administration/bootstrap/css/bootstrap.min.css" media="screen" />
-	<link rel="stylesheet" href="<wp:resourceURL />administration/css/bootstrap-theme-entando/css/bootstrap.min.css" media="screen" />
 	<link rel="stylesheet" href="<wp:resourceURL />administration/css/bootstrap-theme-entando-ce/css/bootstrap.min.css" media="screen" />
 
 
