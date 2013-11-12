@@ -304,6 +304,11 @@
 												<s:elseif test="#attribute.type == 'Monolist'">
 													<s:include value="/WEB-INF/plugins/jacms/apsadmin/jsp/content/view/monolistAttribute.jsp" />
 												</s:elseif>
+												<wpsa:hookPoint key="jacms.contentDetails.attributeExtra" objectName="hookPointElements_jacms_contentDetails_attributeExtra">
+													<s:iterator value="#hookPointElements_jacms_contentDetails_attributeExtra" var="hookPointElementVar">
+														<wpsa:include value="%{#hookPointElementVar.filePath}"></wpsa:include>
+													</s:iterator>
+												</wpsa:hookPoint>
 											</div><%--input-group --%>
 										</div><%-- form-group --%>
 										<s:if test="!#attributeListStatus.last"><hr /></s:if>
