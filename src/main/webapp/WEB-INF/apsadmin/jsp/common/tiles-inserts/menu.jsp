@@ -105,7 +105,7 @@
 						<wpsa:entityTypes entityManagerName="jacmsContentManager" var="contentTypesVar" />
 						<li class="dropdown hidden-xs hidden-sm visible-md visible-lg" role="presentation">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="aria-menu-jacms-new" role="menuitem">
-								<s:text name="label.new" />&#32;<s:text name="label.content" />&#32;<span class="caret"></span>
+								<s:text name="label.new.male" />&#32;<s:text name="label.content" />&#32;<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu" role="menubar" aria-labelledby="aria-menu-jacms-new">
 								<s:iterator var="contentTypeVar" value="#contentTypesVar">
@@ -113,7 +113,7 @@
 									<s:if test="%{#isAuthToEditVar}">
 									<li role="presentation" class="hidden-xs hidden-sm visible-md visible-lg"><a role="menuitem" href="<s:url action="createNew" namespace="/do/jacms/Content" >
 											   <s:param name="contentTypeCode" value="%{#contentTypeVar.typeCode}" />
-										   </s:url>" ><s:text name="label.new" />&#32;<s:property value="%{#contentTypeVar.typeDescr}" /></a></li>
+										   </s:url>" ><s:text name="label.new.male" />&#32;<s:property value="%{#contentTypeVar.typeDescr}" /></a></li>
 									</s:if>
 								</s:iterator>
 							</ul>
@@ -123,7 +123,7 @@
 							<s:if test="%{#isAuthToEditVar}">
 							<li role="presentation" class="visible-xs visible-sm hidden-md hidden-lg"><a role="menuitem" href="<s:url action="createNew" namespace="/do/jacms/Content" >
 									   <s:param name="contentTypeCode" value="%{#contentTypeVar.typeCode}" />
-								   </s:url>" ><s:text name="label.new" />&#32;<s:property value="%{#contentTypeVar.typeDescr}" /></a></li>
+								   </s:url>" ><s:text name="label.new.male" />&#32;<s:property value="%{#contentTypeVar.typeDescr}" /></a></li>
 							</s:if>
 						</s:iterator>
 						<li role="presentation" class="divider visible-xs visible-sm hidden-md hidden-lg"><hr role="presentation" class="margin-none" />
