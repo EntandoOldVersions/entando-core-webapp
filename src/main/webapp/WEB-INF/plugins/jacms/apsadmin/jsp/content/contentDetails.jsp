@@ -148,7 +148,7 @@
 					<%-- referenced pages --%>
 						<s:set var="referencedPagesVar" value="referencedPages" />
 						<dl id="jpcontentinspection_pages">
-							<dt><span class="icon fa fa-li fa-folder"></span>&#32;<s:text name="title.referencedPages" /></dt>
+							<dt><span class="icon fa fa-folder"></span>&#32;<s:text name="title.referencedPages" /></dt>
 							<s:if test="!#referencedPagesVar.empty">
 								<s:iterator var="curReferencedPage" value="#referencedPagesVar">
 									<dd>
@@ -200,7 +200,7 @@
 					<%-- referecing pages --%>
 						<s:set var="referencingPagesVar" value="referencingPages" />
 						<dl id="jpcontentinspection_referencing_pages">
-							<dt><span class="icon fa fa-li fa-folder"></span>&#32;<s:text name="title.referencingPages" /></dt>
+							<dt><span class="icon fa fa-folder"></span>&#32;<s:text name="title.referencingPages" /></dt>
 							<s:if test="!#referencingPagesVar.empty">
 								<s:iterator var="curReferencingPage" value="#referencingPagesVar">
 									<dd>
