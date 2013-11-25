@@ -5,7 +5,7 @@
 
 <h1 class="panel panel-default title-page">
 	<span class="panel-body display-block">
-		<a href="<s:url action="viewWidgets" namespace="/do/Portal/WidgetType" />" 
+		<a href="<s:url action="viewWidgets" namespace="/do/Portal/WidgetType" />"
 		title="<s:text name="note.goToSomewhere" />: <s:text name="title.widgetManagement" />">
 		<s:text name="title.widgetManagement" /></a>
 		<s:if test="strutsAction == 2">
@@ -86,7 +86,7 @@
 			</s:if>
 		</div>
 	</s:if>
-	
+
 	<div class="form-group<s:property value="controlGroupErrorClassVar" />">
 			<s:set var="pageCodeFieldErrorsVar" value="%{fieldErrors['englishTitle']}" />
 			<s:set var="pageCodeHasFieldErrorVar" value="#pageCodeFieldErrorsVar != null && !#pageCodeFieldErrorsVar.isEmpty()" />
@@ -96,7 +96,7 @@
 		  <p class="text-danger padding-small-vertical"><s:iterator value="#pageCodeFieldErrorsVar"><s:property /> </s:iterator></p>
 		</s:if>
 	</div>
-	
+
 	<div class="form-group<s:property value="controlGroupErrorClassVar" />">
 		<s:set var="pageCodeFieldErrorsVar" value="%{fieldErrors['italianTitle']}" />
 		<s:set var="pageCodeHasFieldErrorVar" value="#pageCodeFieldErrorsVar != null && !#pageCodeFieldErrorsVar.isEmpty()" />
@@ -116,14 +116,14 @@
 		  <p class="text-danger padding-small-vertical"><s:iterator value="#pageCodeFieldErrorsVar"><s:property /> </s:iterator></p>
 		</s:if>
 	</div>
-	
+
 	<s:if test="#showletTypeVar.logic && strutsAction == 2">
-	<div class="form-group">    
+	<div class="form-group">
 		<label class="control-label"><s:text name="label.widgetType.parentType" /></label>
 		<p class="form-control-static"><s:property value="#showletTypeVar.parentType.titles[currentLang.code]" /></p>
 	</div>
 	</s:if>
-	
+
 </fieldset>
 
 <s:if test="strutsAction != 2 || #showletTypeVar.logic">
@@ -204,16 +204,9 @@
 			    </wpsf:submit>
 			</div>
 		</s:if>
-		
+
 	</div>
 </div>
-<s:if test="strutsAction == 3">
-<wpsa:actionParam action="save" var="actionName" >
-	<wpsa:actionSubParam name="replaceOnPage" value="true" />
-</wpsa:actionParam>
-<wpsf:submit action="%{#actionName}" value="%{getText('label.save.replace')}" cssClass="button"/>
-</s:if>
-</p>
 
 </s:form>
 </div>
