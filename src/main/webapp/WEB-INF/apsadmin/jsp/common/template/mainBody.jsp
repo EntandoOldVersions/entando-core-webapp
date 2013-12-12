@@ -6,8 +6,8 @@
 <div id="main" role="main">
 	<h1><s:text name="title.activityStream" /></h1>
 	<s:set var="currentUsernameVar"><c:out value="${sessionScope.currentUser.username}" /></s:set>
-	<wpsa:activityStream var="activityStreamList" />
-	<s:if test="null != #activityStreamList && #activityStreamList.size() != 0">
+	<wpsa:activityStream var="activityStreamListVar" />
+	<s:if test="null != #activityStreamListVar && #activityStreamListVar.size() != 0">
 		<ul class="list-unstyled" id="activity-stream">
 			<s:include value="/WEB-INF/apsadmin/jsp/common/activity-stream/inc/stream.jsp" />
 			<li class="media row">
@@ -26,4 +26,8 @@
 	jQuery(function(){
 		$('#activity-stream [data-toggle="tooltip"]').tooltip({trigger: 'hover'});
 	})
+	Entando = Entando || {};
+	Entando.backoffice = Entando.backoffice || {};
+	Entando.backoffice.streamUpdateAjaxUrl = '/portalexample/stream-ajax.jsp';
 </script>
+<script src="<wp:resourceURL />administration/js/entando-stream.js"></script>

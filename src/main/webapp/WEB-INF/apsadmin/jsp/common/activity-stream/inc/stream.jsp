@@ -1,18 +1,28 @@
-<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
-<%-- reading the list from mainBody.jsp with: <wpsa:activityStream var="activityStreamList" /> --%>
-<s:set var="ajax" value="%{false}" /><%-- fill this with something... --%>
-<s:iterator value="#activityStreamList" var="actionLogRecordIdVar" status="currentEvent">
+<%-- reading the list from mainBody.jsp with: <wpsa:activityStream var="activityStreamListVar" /> --%>
+<s:set var="ajax" value="%{#parameters.ajax}" /><%-- fill this with something... --%>
+<c:if test="${param.ajax eq 'true'}">
+	<%-- ajax eh? so set the #activityStreamListVar variable accordingly --%>
+	<wpsa:activityStream var="activityStreamListVar" />
+</c:if>
+<c:if test="${!(param.ajax eq 'true')}"><%-- use the #activityStreamListVar from mainBody.jsp --%></c:if>
+
+<c:set var="browserUsername" value="${session.currentUser.username}" />
+<wp:userProfileAttribute username="${browserUsername}" attributeRoleName="userprofile:fullname" var="browserUserFullnameVar" />
+<wp:userProfileAttribute username="${browserUsername}" attributeRoleName="userprofile:email" var="browserUserEmailAttributeVar" />
+
+<s:iterator value="#activityStreamListVar" var="actionLogRecordIdVar" status="currentEvent">
 	<wpsa:actionLogRecord key="%{#actionLogRecordIdVar}" var="actionLogRecordVar" />
 	<s:set var="usernameVar" value="#actionLogRecordVar.username" scope="page" />
 	<wp:userProfileAttribute username="${usernameVar}" attributeRoleName="userprofile:fullname" var="fullnameVar" />
 	<wp:userProfileAttribute username="${usernameVar}" attributeRoleName="userprofile:email" var="emailAttributeVar" />
 	<s:set var="fullnameVar" value="#attr.fullnameVar" />
 	<s:set var="emailAttributeVar" value="#attr.emailAttributeVar" />
-	<li class="media row padding-large-vertical">
+	<li class="media row padding-large-vertical" data-entando-timestamp="<s:if test="#currentEvent.last">2013-12-12 12:25:03|0238</s:if>">
 		<div class="col-xs-12 col-sm-2 col-lg-1 margin-small-bottom activity-stream-picture">
 			<img alt=" " src="<s:url action="avatarStream" namespace="/do/user/avatar">
 							<s:param name="gravatarSize">56</s:param>
@@ -67,49 +77,48 @@
 						</c:otherwise>
 					</c:choose>
 					<wpsa:activityStreamLikeRecords recordId="%{#actionLogRecordIdVar}" var="activityStreamLikeRecordsVar" />
-					<p class="margin-small-vertical">
-						<time datetime="<s:date name="#actionLogRecordVar.actionDate" format="yyyy-MM-dd HH:mm" />" title="<s:date name="#actionLogRecordVar.actionDate" format="yyyy-MM-dd HH:mm" />" class="text-info">
-							<s:date name="#actionLogRecordVar.actionDate" nice="true" />
-						</time>
-						<s:if test="#activityStreamLikeRecordsVar.size() > 0">
+					<%-- like / dislike --%>
+						<p class="margin-small-vertical">
+							<time datetime="<s:date name="#actionLogRecordVar.actionDate" format="yyyy-MM-dd HH:mm" />" title="<s:date name="#actionLogRecordVar.actionDate" format="yyyy-MM-dd HH:mm" />" class="text-info">
+								<s:date name="#actionLogRecordVar.actionDate" nice="true" />
+							</time>
+							<s:if test="#activityStreamLikeRecordsVar.size() > 0">
+								&#32;&middot;&#32;
+								<s:property value="#activityStreamLikeRecordsVar.size()" />
+								&#32;
+								<s:text name="label.like.number" />
+							</s:if>
 							&#32;&middot;&#32;
-							<s:property value="#activityStreamLikeRecordsVar.size()" />
-							&#32;
-							<s:text name="label.like.number" />
-						</s:if>
-						&#32;&middot;&#32;
-						<s:set value="%{#activityStreamLikeRecordsVar.containsUser(#currentUsernameVar)}" var="likeRecordsContainsUserVar" />
-						<s:if test="%{#likeRecordsContainsUserVar}" >
-							<a
-								href="<s:url namespace="/do/ActivityStream" action="unlikeActivity">
-									<s:param name="recordId" value="%{#actionLogRecordIdVar}" />
-									</s:url>"
-								data-toggle="tooltip"
-								data-placement="right"
-								data-original-title="<s:iterator value="#activityStreamLikeRecordsVar" var="activityStreamLikeRecordVar"><s:property value="#activityStreamLikeRecordVar.displayName" />&#32;<s:text name="label.like.likesthis" />
-									</s:iterator>"
-								>
-									<s:text name="label.like.unlike" />
-							</a>
-						</s:if>
-						<s:else>
-							<a
-								href="<s:url namespace="/do/ActivityStream" action="likeActivity">
-									<s:param name="recordId" value="%{#actionLogRecordIdVar}" /></s:url>"
-								data-toggle="tooltip"
-								data-placement="right"
-								data-original-title="<s:iterator value="#activityStreamLikeRecordsVar" var="activityStreamLikeRecordVar"><s:property value="#activityStreamLikeRecordVar.displayName" />&#32;<s:text name="label.like.likesthis" />
-									</s:iterator>"
-								>
-									<s:text name="label.like.like" />
-							</a>
-						</s:else>
-					</p>
-
-
-
+							<s:set value="%{#activityStreamLikeRecordsVar.containsUser(#currentUsernameVar)}" var="likeRecordsContainsUserVar" />
+							<s:if test="%{#likeRecordsContainsUserVar}" >
+								<a
+									href="<s:url namespace="/do/ActivityStream" action="unlikeActivity">
+										<s:param name="recordId" value="%{#actionLogRecordIdVar}" />
+										</s:url>"
+									data-toggle="tooltip"
+									data-placement="right"
+									data-original-title="<s:iterator value="#activityStreamLikeRecordsVar" var="activityStreamLikeRecordVar"><s:property value="#activityStreamLikeRecordVar.displayName" />&#32;<s:text name="label.like.likesthis" />
+										</s:iterator>"
+									>
+										<s:text name="label.like.unlike" />
+								</a>
+							</s:if>
+							<s:else>
+								<a
+									href="<s:url namespace="/do/ActivityStream" action="likeActivity">
+										<s:param name="recordId" value="%{#actionLogRecordIdVar}" /></s:url>"
+									data-toggle="tooltip"
+									data-placement="right"
+									data-original-title="<s:iterator value="#activityStreamLikeRecordsVar" var="activityStreamLikeRecordVar"><s:property value="#activityStreamLikeRecordVar.displayName" />&#32;<s:text name="label.like.likesthis" />
+										</s:iterator>"
+									>
+										<s:text name="label.like.like" />
+								</a>
+							</s:else>
+						</p>
 				</div>
 			</div>
+			<%-- comments --%>
 			<div class="padding-base-left" style="margin-left: 20px">
 				<h4 class="sr-only">Comments</h4>
 				<c:forEach begin="0" end="4" varStatus="commentUser">
@@ -143,6 +152,22 @@
 						</div>
 					</div>
 				</c:forEach>
+				<div class="media">
+					<span
+						class="pull-left"
+						>
+						<img
+							class="img-circle media-object"
+							src="/portalexample/do/user/avatar/avatarStream.action?gravatarSize=56&username=<s:property value="#attr.browserUsername" />"
+							style="width: 32px; height: 32px" />
+					</span>
+					<div class="media-body">
+						<form action="#">
+							<textarea class="col-xs-12 col-sm-12 col-md-12 col-lg-12" cols="30" rows="3" placeholder="insert comment..."></textarea>
+							<button name="" class="margin-small-top pull-right btn btn-sm btn-default"><span class="icon fa fa-comment"></span>&#32;Submit</button>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 	</li>
