@@ -8,6 +8,7 @@
 	<s:set var="currentUsernameVar"><c:out value="${sessionScope.currentUser.username}" /></s:set>
 	<wpsa:activityStream var="activityStreamListVar" />
 	<s:if test="null != #activityStreamListVar && #activityStreamListVar.size() != 0">
+		<div id="stream-updates-alert" class="alert alert-info hide">Show New Updates (<span class="n">0</span>)</div>
 		<ul class="list-unstyled" id="activity-stream">
 			<s:include value="/WEB-INF/apsadmin/jsp/common/activity-stream/inc/stream.jsp" />
 			<li class="media row">
@@ -28,6 +29,7 @@
 	})
 	Entando = Entando || {};
 	Entando.backoffice = Entando.backoffice || {};
-	Entando.backoffice.streamUpdateAjaxUrl = '/portalexample/stream-ajax.jsp';
+	Entando.backoffice.streamListUpdateAjaxUrl = '/portalexample/streams-list-item-ajax.jsp';
+	Entando.backoffice.streamAddCommentAjaxUrl = '/portalexample/stream-add-comment-ajax.jsp';
 </script>
 <script src="<wp:resourceURL />administration/js/entando-stream.js"></script>

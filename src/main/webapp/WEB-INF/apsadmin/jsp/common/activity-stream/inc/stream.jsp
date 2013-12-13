@@ -5,11 +5,15 @@
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <%-- reading the list from mainBody.jsp with: <wpsa:activityStream var="activityStreamListVar" /> --%>
 <s:set var="ajax" value="%{#parameters.ajax}" /><%-- fill this with something... --%>
-<c:if test="${param.ajax eq 'true'}">
+<c:set var="ajax" value="${param.ajax eq 'true'}" />
+<s:set var="ajax" value="#attr.ajax" />
+<s:if test="#ajax">
 	<%-- ajax eh? so set the #activityStreamListVar variable accordingly --%>
 	<wpsa:activityStream var="activityStreamListVar" />
-</c:if>
-<c:if test="${!(param.ajax eq 'true')}"><%-- use the #activityStreamListVar from mainBody.jsp --%></c:if>
+</s:if>
+<s:else>
+	<%-- use the #activityStreamListVar from mainBody.jsp --%>
+</s:else>
 
 <c:set var="browserUsername" value="${session.currentUser.username}" />
 <wp:userProfileAttribute username="${browserUsername}" attributeRoleName="userprofile:fullname" var="browserUserFullnameVar" />
@@ -152,7 +156,9 @@
 						</div>
 					</div>
 				</c:forEach>
-				<div class="media">
+				<div
+					class="insert-comment media	<s:if test="#ajax"> hide </s:if>"
+				>
 					<span
 						class="pull-left"
 						>
@@ -163,7 +169,7 @@
 					</span>
 					<div class="media-body">
 						<form action="#">
-							<textarea class="col-xs-12 col-sm-12 col-md-12 col-lg-12" cols="30" rows="3" placeholder="insert comment..."></textarea>
+							<textarea class="col-xs-12 col-sm-12 col-md-12 col-lg-12" cols="30" rows="3" placeholder="insert comment..." name="comment"></textarea>
 							<button name="" class="margin-small-top pull-right btn btn-sm btn-default"><span class="icon fa fa-comment"></span>&#32;Submit</button>
 						</form>
 					</div>
