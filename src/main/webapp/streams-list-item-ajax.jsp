@@ -6,6 +6,7 @@
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
+<c:set var="loremText">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</c:set>
 <c:set var="random"><%= java.lang.Math.round(java.lang.Math.random() * 3) %></c:set>
 <c:if test="${random%2 > 0}">
 	<c:forEach begin="0" end="${random}" varStatus="s">
@@ -38,13 +39,23 @@
 					<c:forEach begin="0" end="${random}" varStatus="commentStatus">
 						<div class="media">
 							<a class="pull-left" href="/portalexample/do/userprofile/view.action?username=username-<c:out value="${commentStatus.count}" />" title="label.viewProfile: display name <c:out value="${commentStatus.count}" />">
-								<img class="img-circle media-object" src="/portalexample/do/user/avatar/avatarStream.action?gravatarSize=56&amp;username=username-<c:out value="${commentStatus.count}" />" style="width: 32px; height: 32px">
+								<img class="img-circle media-object" src="http://lorempixel.com/32/32/?gravatarSize=56&amp;username=username-<c:out value="${commentStatus.count}" />" style="width: 32px; height: 32px">
 							</a>
 							<div class="media-body">
 								<h5 class="media-heading">
-									<a href="/portalexample/do/userprofile/view.action?username=username-<c:out value="${commentStatus.count}" />" title="label.viewProfile: display name <c:out value="${commentStatus.count}" />">display name <c:out value="${commentStatus.count}" /></a>, in an instant
+									<a href="/portalexample/do/userprofile/view.action?username=username-<c:out value="${commentStatus.count}" />" title="label.viewProfile: display name <c:out value="${commentStatus.count}" />">display name <c:out value="${commentStatus.count}" /></a>,&#32;
+									<time datetime="2013-12-13 16:19" title="2013-12-13 16:19" class="text-info">
+										in an instant
+									</time>
 								</h5>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+								<c:set var="loremRandom1"><%= java.lang.Math.round(java.lang.Math.random() * 440) %></c:set>
+								<c:set var="loremRandom2" value="${440-loremRandom1}" />
+								<c:if test="${loremRandom2 < loremRandom1}">
+									<c:set var="tmp" value="${loremRandom2}" />
+									<c:set var="loremRandom2" value="${loremRandom1}" />
+									<c:set var="loremRandom1" value="${tmp}" />
+								</c:if>
+								<c:out value="${fn:substring(loremText, loremRandom1, loremRandom2)}" />
 							</div>
 						</div>
 					</c:forEach>
@@ -100,9 +111,17 @@
 					</a>
 					<div class="media-body">
 						<h5 class="media-heading">
-							<a href="/portalexample/do/userprofile/view.action?username=username-<c:out value="${commentStatus.count}" />" title="label.viewProfile: display name <c:out value="${commentStatus.count}" />">display name <c:out value="${commentStatus.count}" /></a>, in an instant
+							<a href="/portalexample/do/userprofile/view.action?username=username-<c:out value="${commentStatus.count}" />" title="label.viewProfile: display name <c:out value="${commentStatus.count}" />">display name <c:out value="${commentStatus.count}" /></a>,&#32;
+								<time datetime="2013-12-13 16:19" title="2013-12-13 16:19" class="text-info">in an instant</time>
 						</h5>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						<c:set var="loremRandom1"><%= java.lang.Math.round(java.lang.Math.random() * 440) %></c:set>
+						<c:set var="loremRandom2" value="${440-loremRandom1}" />
+						<c:if test="${loremRandom2 < loremRandom1}">
+							<c:set var="tmp" value="${loremRandom2}" />
+							<c:set var="loremRandom2" value="${loremRandom1}" />
+							<c:set var="loremRandom1" value="${tmp}" />
+						</c:if>
+						<c:out value="${fn:substring(loremText, loremRandom1, loremRandom2)}" />
 					</div>
 				</div>
 			</c:forEach>

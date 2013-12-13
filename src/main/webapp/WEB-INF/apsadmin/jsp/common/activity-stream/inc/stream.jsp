@@ -154,7 +154,9 @@
 										href="<s:url action="view" namespace="/do/userprofile"><s:param name="username" value="#comment.username"/></s:url>"
 										title="<s:text name="label.viewProfile" />:&#32;<s:property value="#comment.displayName" />">
 										<s:property value="#comment.displayName" /></a>
-									,&#32;<s:date name="%{#comment.date}" nice="true" />
+									,&#32;<time datetime="<s:date name="#comment.date" format="yyyy-MM-dd HH:mm" />" title="<s:date name="#comment.date" format="yyyy-MM-dd HH:mm" />" class="text-info">
+										<s:date name="%{#comment.date}" nice="true" />
+									</time>
 								</h5>
 								<s:property value="#comment.text" />
 							</div>

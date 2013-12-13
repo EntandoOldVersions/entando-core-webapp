@@ -90,6 +90,7 @@ jQuery(function(){
 					$.each(oldRepl, function(index, el) {
 						$(el).replaceWith(newRepl[index]);
 					})
+					els[index]=oldItem;
 				}
 				else { //new item
 					var ts = getTsFromStreamEl(item);
@@ -123,7 +124,9 @@ jQuery(function(){
 		}
 	};
 	var postUpdate = function(elementsArray){
-		$('[data-toggle="tooltip"]', elementsArray).tooltip({trigger: 'hover'});
+		$.each(elementsArray, function(index, item){
+			$('[data-toggle="tooltip"]', item).tooltip({trigger: 'hover'});
+		});
 	};
 
 	var displayUpdates = function(elementsArray) {
