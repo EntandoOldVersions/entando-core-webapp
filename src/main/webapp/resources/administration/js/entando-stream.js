@@ -74,21 +74,22 @@ jQuery(function(){
 			preUpdate(els);
 			$.each(els.reverse(), function(index, item){
 				item = $(item);
-
 				if (index==1) {
 					var ts = getTsFromStreamEl(item);
 					if ( ts.getTime() > LATEST_COMMENT_TS.getTime() ) {
 						LATEST_COMMENT_TS = ts;
 					}
 				}
-
 				var check = checkIfNewOrUpdateStreamItem(item);
 				if (check.update) { // update item
 					var ts = item.attr(TIMESTAMP_ATTR);
-					var oldItem = $('li['+TIMESTAMP_ATTR+'="' +ts+ '"]', STREAM_ROOT);
-					var oldComment = $('.insert-comment', oldItem);
-					$('.insert-comment', item).replaceWith(oldComment);
-					check.updateEl.replaceWith(item);
+					var oldItem = check.updateEl;
+					var newItem = item;
+					var oldRepl = $('[data-entando="ajax-update"]', oldItem).get();
+					var newRepl  = $('[data-entando="ajax-update"]', newItem).get();
+					$.each(oldRepl, function(index, el) {
+						$(el).replaceWith(newRepl[index]);
+					})
 				}
 				else { //new item
 					var ts = getTsFromStreamEl(item);
@@ -177,12 +178,12 @@ jQuery(function(){
 			data: $(this).serialize(),
 			beforeSend: pauseRoutine,
 			success: function() {
+				var textarea = $('textarea', ev.target);
+				textarea.val("");
 				askForUpdate();
 				startRoutine();
 			}
 		});
 	});
-
-
 	startRoutine();
 });

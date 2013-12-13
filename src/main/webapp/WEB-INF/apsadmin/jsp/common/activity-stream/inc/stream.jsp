@@ -42,7 +42,7 @@
 			<s:set var="authGroupNameVar" value="#activityStreamInfoVar.linkAuthGroup" scope="page" />
 			<s:set var="authPermissionNameVar" value="#activityStreamInfoVar.linkAuthPermission" scope="page" />
 			<wp:ifauthorized groupName="${authGroupNameVar}" permission="${authPermissionNameVar}" var="isAuthorizedVar" />
-			<div class="popover right display-block">
+			<div class="popover right display-block" data-entando="ajax-update">
 				<div class="arrow"></div>
 				<div class="popover-content">
 					<c:choose>
@@ -127,58 +127,58 @@
 				</div>
 			</div>
 			<%-- comments --%>
-			<div class="padding-base-left" style="margin-left: 20px">
-				<h4 class="sr-only">Comments</h4>
-				<c:forEach begin="0" end="4" varStatus="commentUser">
-					<jsp:useBean id="testDate" class="java.util.Date" />
-					<s:set var="comment" value="#{
-					 'username': 'username-'+#attr.commentUser.count,
-					 'displayName': 'display name '+#attr.commentUser.count,
-					 'text': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-					 'date': #attr.testDate
-					}" />
-					<div class="media">
-						<a
+				<div class="padding-base-left" style="margin-left: 20px" data-entando="ajax-update">
+					<h4 class="sr-only">Comments</h4>
+					<c:forEach begin="0" end="4" varStatus="commentUser">
+						<jsp:useBean id="testDate" class="java.util.Date" />
+						<s:set var="comment" value="#{
+						 'username': 'username-'+#attr.commentUser.count,
+						 'displayName': 'display name '+#attr.commentUser.count,
+						 'text': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+						 'date': #attr.testDate
+						}" />
+						<div class="media">
+							<a
+								class="pull-left"
+								href="<s:url action="view" namespace="/do/userprofile"><s:param name="username" value="#comment.username"/></s:url>"
+								title="<s:text name="label.viewProfile" />:&#32;<s:property value="#comment.displayName" />"
+								>
+								<img
+									class="img-circle media-object"
+									src="/portalexample/do/user/avatar/avatarStream.action?gravatarSize=56&username=<s:property value="#comment.username" />"
+									style="width: 32px; height: 32px" />
+							</a>
+							<div class="media-body">
+								<h5 class="media-heading">
+									<a
+										href="<s:url action="view" namespace="/do/userprofile"><s:param name="username" value="#comment.username"/></s:url>"
+										title="<s:text name="label.viewProfile" />:&#32;<s:property value="#comment.displayName" />">
+										<s:property value="#comment.displayName" /></a>
+									,&#32;<s:date name="%{#comment.date}" nice="true" />
+								</h5>
+								<s:property value="#comment.text" />
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+				<div class="padding-base-left margin-small-top" style="margin-left: 20px">
+					<div class="insert-comment media <s:if test="#ajax"> hide </s:if>">
+						<span
 							class="pull-left"
-							href="<s:url action="view" namespace="/do/userprofile"><s:param name="username" value="#comment.username"/></s:url>"
-							title="<s:text name="label.viewProfile" />:&#32;<s:property value="#comment.displayName" />"
 							>
 							<img
 								class="img-circle media-object"
-								src="/portalexample/do/user/avatar/avatarStream.action?gravatarSize=56&username=<s:property value="#comment.username" />"
+								src="/portalexample/do/user/avatar/avatarStream.action?gravatarSize=56&username=<s:property value="#attr.browserUsername" />"
 								style="width: 32px; height: 32px" />
-						</a>
+						</span>
 						<div class="media-body">
-							<h5 class="media-heading">
-								<a
-									href="<s:url action="view" namespace="/do/userprofile"><s:param name="username" value="#comment.username"/></s:url>"
-									title="<s:text name="label.viewProfile" />:&#32;<s:property value="#comment.displayName" />">
-									<s:property value="#comment.displayName" /></a>
-								,&#32;<s:date name="%{#comment.date}" nice="true" />
-							</h5>
-							<s:property value="#comment.text" />
+							<form action="#">
+								<textarea class="col-xs-12 col-sm-12 col-md-12 col-lg-12" cols="30" rows="3" placeholder="insert comment..." name="comment"></textarea>
+								<button name="" class="margin-small-top pull-right btn btn-sm btn-default"><span class="icon fa fa-comment"></span>&#32;Submit</button>
+							</form>
 						</div>
 					</div>
-				</c:forEach>
-				<div
-					class="insert-comment media	<s:if test="#ajax"> hide </s:if>"
-				>
-					<span
-						class="pull-left"
-						>
-						<img
-							class="img-circle media-object"
-							src="/portalexample/do/user/avatar/avatarStream.action?gravatarSize=56&username=<s:property value="#attr.browserUsername" />"
-							style="width: 32px; height: 32px" />
-					</span>
-					<div class="media-body">
-						<form action="#">
-							<textarea class="col-xs-12 col-sm-12 col-md-12 col-lg-12" cols="30" rows="3" placeholder="insert comment..." name="comment"></textarea>
-							<button name="" class="margin-small-top pull-right btn btn-sm btn-default"><span class="icon fa fa-comment"></span>&#32;Submit</button>
-						</form>
-					</div>
 				</div>
-			</div>
 		</div>
 	</li>
 </s:iterator>
