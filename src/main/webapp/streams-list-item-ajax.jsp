@@ -6,7 +6,16 @@
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
-<c:set var="loremText">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</c:set>
+<c:set var="loremText">Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+
+Ut enim ad minim veniam, quis 
+nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit 
+anim id est laborum.</c:set>
 <c:set var="random"><%= java.lang.Math.round(java.lang.Math.random() * 3) %></c:set>
 <c:if test="${random%2 > 0}">
 	<c:forEach begin="0" end="${random}" varStatus="s">
@@ -26,10 +35,12 @@
 						<a href="/portalexample/do/Page/edit.action?selectedNode=errorpage">System Error</a>
 						<p class="margin-small-vertical">
 							<time datetime="2013-09-27 11:00" title="2013-09-27 11:00" class="text-info">76 days, 2 hours ago</time>
-							 ·
-							1 like(s)
 							·
-							<a href="/portalexample/do/ActivityStream/unlikeActivity.action?recordId=3" data-toggle="tooltip" data-placement="right" data-original-title="NAme&amp; likes this">Unlike</a>
+							<c:set var="randomLike"><%= java.lang.Math.round(java.lang.Math.random() * 99) %></c:set>
+							<c:out value="${randomLike}" />&#32;like(s)
+							·
+							<a href="/portalexample/do/ActivityStream/unlikeActivity.action?recordId=3" data-toggle="tooltip" data-placement="bottom" 
+							data-original-title="<c:forEach begin="1" end="${randomLike}" varStatus="likeStatus">Name<c:out value="${likeStatus.count}" />&#32;</c:forEach>likes this">Unlike</a>
 						</p>
 					</div>
 				</div>
@@ -55,7 +66,12 @@
 									<c:set var="loremRandom2" value="${loremRandom1}" />
 									<c:set var="loremRandom1" value="${tmp}" />
 								</c:if>
-								<c:out value="${fn:substring(loremText, loremRandom1, loremRandom2)}" />
+								<% pageContext.setAttribute("carriageReturn", "\r"); %> 
+								<% pageContext.setAttribute("newLine", "\n"); %> 
+								<c:set var="STRING_TO_ESCAPE"><c:out value="${fn:substring(loremText, loremRandom1, loremRandom2)}" /></c:set>
+								<c:set var="ESCAPED_STRING" value="${fn:replace(fn:replace(STRING_TO_ESCAPE,carriageReturn,' '),newLine,'<br />')}" />
+								<c:set var="ESCAPED_STRING" value="${fn:replace(ESCAPED_STRING,'<br /><br />','<br />')}" />
+								<c:out value="${ESCAPED_STRING}" escapeXml="false" />
 							</div>
 						</div>
 					</c:forEach>
@@ -95,9 +111,12 @@
 						<fmt:formatDate value="${testDate2}" pattern="yyyy-MM-dd HH:mm:ss|SSSS" /> | <c:out value="${random}" />
 					</time>
 					 ·
-					1 like(s)
+					<c:set var="randomLike"><%= java.lang.Math.round(java.lang.Math.random() * 99) %></c:set>
+					<c:out value="${randomLike}" />&#32;like(s)
 					·
-					<a href="/portalexample/do/ActivityStream/unlikeActivity.action?recordId=3" data-toggle="tooltip" data-placement="right" data-original-title="NAme&amp; likes this">Unlike</a>
+					<a href="/portalexample/do/ActivityStream/unlikeActivity.action?recordId=3" 
+					data-toggle="tooltip" 
+					data-placement="bottom data-original-title="data-original-title="<c:forEach begin="1" end="${randomLike}" varStatus="likeStatus">Name<c:out value="${likeStatus.count}" />&#32;</c:forEach>likes this">Unlike</a>
 				</p>
 			</div>
 		</div>
@@ -121,7 +140,12 @@
 							<c:set var="loremRandom2" value="${loremRandom1}" />
 							<c:set var="loremRandom1" value="${tmp}" />
 						</c:if>
-						<c:out value="${fn:substring(loremText, loremRandom1, loremRandom2)}" />
+						<% pageContext.setAttribute("carriageReturn", "\r"); %> 
+						<% pageContext.setAttribute("newLine", "\n"); %> 
+						<c:set var="STRING_TO_ESCAPE"><c:out value="${fn:substring(loremText, loremRandom1, loremRandom2)}" /></c:set>
+						<c:set var="ESCAPED_STRING" value="${fn:replace(fn:replace(STRING_TO_ESCAPE,carriageReturn,' '),newLine,'<br />')}" />
+						<c:set var="ESCAPED_STRING" value="${fn:replace(ESCAPED_STRING,'<br /><br />','<br />')}" />
+						<c:out value="${ESCAPED_STRING}" escapeXml="false" />
 					</div>
 				</div>
 			</c:forEach>

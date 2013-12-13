@@ -104,7 +104,7 @@
 										<s:param name="recordId" value="%{#actionLogRecordIdVar}" />
 										</s:url>"
 									data-toggle="tooltip"
-									data-placement="right"
+									data-placement="bottom"
 									data-original-title="<s:iterator value="#activityStreamLikeRecordsVar" var="activityStreamLikeRecordVar"><s:property value="#activityStreamLikeRecordVar.displayName" />&#32;<s:text name="label.like.likesthis" />
 										</s:iterator>"
 									>
@@ -116,7 +116,7 @@
 									href="<s:url namespace="/do/ActivityStream" action="likeActivity">
 										<s:param name="recordId" value="%{#actionLogRecordIdVar}" /></s:url>"
 									data-toggle="tooltip"
-									data-placement="right"
+									data-placement="bottom"
 									data-original-title="<s:iterator value="#activityStreamLikeRecordsVar" var="activityStreamLikeRecordVar"><s:property value="#activityStreamLikeRecordVar.displayName" />&#32;<s:text name="label.like.likesthis" />
 										</s:iterator>"
 									>
