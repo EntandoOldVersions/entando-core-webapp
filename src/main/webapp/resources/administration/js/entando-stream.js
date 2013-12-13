@@ -4,11 +4,43 @@ jQuery(function(){
 	var routineInterval = null;
 	var clock = 4 * 1000;
 	var TIMESTAMP_ATTR = 'data-entando-timestamp';
+	var TIMESTAMP_COMMENT_ATTR = 'data-entando-timestamp-comment';
 	var STREAM_ROOT = $('#activity-stream');
 	var STREAM_UPDATE_EL = $('#stream-updates-alert');
-
+	var TMP_CONTAINER = $('<ul class="ajax tmp"></ul>');
 	var LIST_UPDATE_URL = Entando.backoffice.streamListUpdateAjaxUrl;
 	var COMMENT_UPDATE_URL = Entando.backoffice.streamAddCommentAjaxUrl;
+
+	var getTsFromStreamEl = function(streamEl) {
+		var attrTm = $(streamEl).attr(TIMESTAMP_ATTR).split('|');
+		var ts = new Date(attrTm[0]);
+		ts.setMilliseconds(attrTm[1]);
+		return ts;
+	}
+	var getCommentTsFromStreamEl = function(streamEl) {
+		var attrTm = $(streamEl).attr(TIMESTAMP_COMMENT_ATTR).split('|');
+		var ts = new Date(attrTm[0]);
+		ts.setMilliseconds(attrTm[1]);
+		return ts;
+	}
+	getTsStringFromDate = function(date) {
+		//2013-12-13 11:46:59|0207
+		var date = new Date(date);
+		return date.getFullYear()
+			+'-'+ (date.getMonth()+1<10 ? ('0'+(date.getMonth()+1)) : date.getMonth()+1)
+			+'-'+ (date.getDate()<10? ('0'+date.getDate()) : date.getDate())
+			+' '+ (date.getHours()<10? ('0'+date.getHours()) : date.getHours())
+			+':'+ (date.getMinutes()<10? ('0'+date.getMinutes()) : date.getMinutes())
+			+':'+ (date.getSeconds()<10? ('0'+date.getSeconds()) : date.getSeconds())
+			+'|'+ (
+				(0<=date.getMilliseconds()&&date.getMilliseconds()<10) ? ('000'+date.getMilliseconds()) :
+						(10<=date.getMilliseconds()&&date.getMilliseconds()<100) ? ('00'+date.getMilliseconds()) :
+								(100<=date.getMilliseconds()&&date.getMilliseconds()<1000) ? ('0'+date.getMilliseconds()) : date.getMilliseconds()
+				)
+	};
+
+	var LATEST_STREAM_TS = getTsFromStreamEl(STREAM_ROOT.children('li').first());
+	var LATEST_COMMENT_TS = getCommentTsFromStreamEl(STREAM_ROOT.children('li').first());
 
 	var setWindowTitle = function(title){
 		if (title!==undefined) {
@@ -40,25 +72,31 @@ jQuery(function(){
 		if (els!==undefined) {
 			els = els.get();
 			preUpdate(els);
-			//var rawTs = els.attr(TIMESTAMP_ATTR);
-			//ts = new Date(rawTs.split('|')[0]);
-			//ts.setMilliseconds(rawTs.split('|')[1]);
-			//console.log(els[0]);
-			//console.log(TIMESTAMP_ATTR, ts);
 			$.each(els.reverse(), function(index, item){
 				item = $(item);
-				//console.log('updating', index, checkIfNewOrUpdateStreamItem(item), item);
+
+				if (index==1) {
+					var ts = getTsFromStreamEl(item);
+					if ( ts.getTime() > LATEST_COMMENT_TS.getTime() ) {
+						LATEST_COMMENT_TS = ts;
+					}
+				}
+
 				var check = checkIfNewOrUpdateStreamItem(item);
-				if (check.update) {
+				if (check.update) { // update item
 					var ts = item.attr(TIMESTAMP_ATTR);
 					var oldItem = $('li['+TIMESTAMP_ATTR+'="' +ts+ '"]', STREAM_ROOT);
 					var oldComment = $('.insert-comment', oldItem);
 					$('.insert-comment', item).replaceWith(oldComment);
 					check.updateEl.replaceWith(item);
 				}
-				else {
+				else { //new item
+					var ts = getTsFromStreamEl(item);
+					if ( ts.getTime() > LATEST_STREAM_TS.getTime() ) {
+						LATEST_STREAM_TS = ts;
+					}
 					item.addClass('hide');
-					$('.insert-comment.hide', item).removeClass('hide');
+					item.children('.insert-comment.hide').removeClass('hide');
 					item.appendTo(STREAM_UPDATE_EL);
 				}
 			});
@@ -84,7 +122,7 @@ jQuery(function(){
 		}
 	};
 	var postUpdate = function(elementsArray){
-		$('[data-toggle="tooltip"]', STREAM_ROOT).tooltip({trigger: 'hover'});
+		$('[data-toggle="tooltip"]', elementsArray).tooltip({trigger: 'hover'});
 	};
 
 	var displayUpdates = function(elementsArray) {
@@ -98,12 +136,17 @@ jQuery(function(){
 
 	var ajaxRequest = function(data) {
 		return $.ajax({
+				method: 'post',
 				dataType: 'html',
 				async: true,
 				url: LIST_UPDATE_URL,
-				data: data || { ajax: true },
+				data: data || {
+					ajax: true,
+					lastStreamTimestamp: getTsStringFromDate(LATEST_STREAM_TS),
+					lastCommentTimestamp: getTsStringFromDate(LATEST_COMMENT_TS)
+				},
 				success: function(data, textStatus, jqXHR) {
-					var streamElements = $('<ul class="ajax">'+data+'</ul>').children('li');
+					var streamElements = TMP_CONTAINER.html(data).children('li');
 					updateStream(streamElements);
 				}
 			})
@@ -128,14 +171,12 @@ jQuery(function(){
 	/** comment ajax **/
 	STREAM_ROOT.delegate('.insert-comment form', 'submit', function(ev){
 		ev.preventDefault();
-		console.log('form, prevented', ev);
 		$.ajax({
 			url: COMMENT_UPDATE_URL,
 			method: 'post',
 			data: $(this).serialize(),
 			beforeSend: pauseRoutine,
 			success: function() {
-				$
 				askForUpdate();
 				startRoutine();
 			}

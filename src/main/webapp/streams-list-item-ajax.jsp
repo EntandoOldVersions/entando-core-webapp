@@ -10,7 +10,7 @@
 <c:if test="${random%2 > 0}">
 	<c:forEach begin="0" end="${random}" varStatus="s">
 		<jsp:useBean id="testDate" class="java.util.Date" scope="page" />
-		<li class="media row padding-large-vertical" data-entando-timestamp="<fmt:formatDate value="${testDate}" pattern="yyyy-MM-dd HH:mm:ss|SSSS" />">
+		<li class="media row padding-large-vertical" data-entando-timestamp="<fmt:formatDate value="${testDate}" pattern="yyyy-MM-dd HH:mm:ss|SSSS" />" data-entando-timestamp-comment="<fmt:formatDate value="${testDate}" pattern="yyyy-MM-dd HH:mm:ss|SSSS" />">
 		<c:remove var="testDate" scope="page" />
 			<div class="col-xs-12 col-sm-2 col-lg-1 margin-small-bottom activity-stream-picture">
 				<img alt=" " src="/portalexample/do/user/avatar/avatarStream.action?gravatarSize=56&amp;username=admin" width="56" height="56" class="img-circle media-object">

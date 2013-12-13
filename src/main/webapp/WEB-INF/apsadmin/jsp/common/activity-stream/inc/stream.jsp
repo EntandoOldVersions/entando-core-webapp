@@ -26,7 +26,11 @@
 	<wp:userProfileAttribute username="${usernameVar}" attributeRoleName="userprofile:email" var="emailAttributeVar" />
 	<s:set var="fullnameVar" value="#attr.fullnameVar" />
 	<s:set var="emailAttributeVar" value="#attr.emailAttributeVar" />
-	<li class="media row padding-large-vertical" data-entando-timestamp="<s:if test="#currentEvent.last">2013-12-12 12:25:03|0238</s:if>">
+	<li
+		class="media row padding-large-vertical" 
+		data-entando-timestamp="<s:if test="#currentEvent.last">2013-12-12 12:25:03|0238</s:if><s:if test="#currentEvent.first">2013-12-12 13:00:00|0987</s:if>"
+		data-entando-timestamp-comment="<s:if test="#currentEvent.first">2013-12-12 13:00:00|0987</s:if>"
+	>
 		<div class="col-xs-12 col-sm-2 col-lg-1 margin-small-bottom activity-stream-picture">
 			<img alt=" " src="<s:url action="avatarStream" namespace="/do/user/avatar">
 							<s:param name="gravatarSize">56</s:param>
