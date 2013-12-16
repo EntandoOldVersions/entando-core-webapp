@@ -3,7 +3,7 @@ jQuery(function(){ //dom is ready...
 	var $ = jQuery;
 	var WINDOW_TITLE_DEFAULT = window.document.title;
 	var routineInterval = null;
-	var CLOCK = 40 * 1000;
+	var CLOCK = 4 * 1000;
 	var TIMESTAMP_ATTR = 'data-entando-timestamp';
 	var TIMESTAMP_COMMENT_ATTR = 'data-entando-timestamp-comment';
 	var AJAX_UPDATE_SELECTOR = '[data-entando="ajax-update"]';
