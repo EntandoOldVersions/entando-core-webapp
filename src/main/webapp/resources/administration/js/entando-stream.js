@@ -39,7 +39,7 @@ jQuery(function(){ //dom is ready...
 			+' '+ (date.getHours()<10? ('0'+date.getHours()) : date.getHours())
 			+':'+ (date.getMinutes()<10? ('0'+date.getMinutes()) : date.getMinutes())
 			+':'+ (date.getSeconds()<10? ('0'+date.getSeconds()) : date.getSeconds())
-			+'|'+ (
+			+' '+ (
 				(0<=date.getMilliseconds()&&date.getMilliseconds()<10) ? ('000'+date.getMilliseconds()) :
 						(10<=date.getMilliseconds()&&date.getMilliseconds()<100) ? ('00'+date.getMilliseconds()) :
 								(100<=date.getMilliseconds()&&date.getMilliseconds()<1000) ? ('0'+date.getMilliseconds()) : date.getMilliseconds()

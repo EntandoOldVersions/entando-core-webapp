@@ -16,12 +16,20 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit 
 anim id est laborum.</c:set>
-<c:set var="random"><%= java.lang.Math.round(java.lang.Math.random() * 3) %></c:set>
-<c:if test="${random%2 > 0}">
+<c:set var="random"><%= java.lang.Math.round(java.lang.Math.random() * 6) %></c:set>
+<c:set var="param_date" value="${!(empty param.lastStreamTimestamp) ? param.lastStreamTimestamp : '2013-01-05 10:09:08 0765' }" />
+<c:set var="random" value="${0}" />
+<c:if test="${random%2 > 0 || true}">
 	<c:forEach begin="0" end="${random}" varStatus="s">
-		<jsp:useBean id="testDate" class="java.util.Date" scope="page" />
-		<li class="media row padding-large-bottom" data-entando-timestamp="<fmt:formatDate value="${testDate}" pattern="yyyy-MM-dd HH:mm:ss|SSSS" />" data-entando-timestamp-comment="<fmt:formatDate value="${testDate}" pattern="yyyy-MM-dd HH:mm:ss|SSSS" />">
-			<c:remove var="testDate" scope="page" />
+		<fmt:parseDate value="${param_date}" pattern="yyyy-MM-dd HH:mm:ss SSSS" var="startDate" type="both" />
+		<c:set var="testDate" value="${startDate}" />
+		<c:set var="testDate_time"><jsp:getProperty name="testDate" property="time" /></c:set>
+		<c:set var="testDate_time" value="${testDate_time + ((1000 * 60 * 60 * 25) * (random+1-s.index))}" />
+		<jsp:setProperty name="testDate" property="time" value="${testDate_time}" />
+		<fmt:formatDate value="${testDate}" pattern="yyyy-MM-dd HH:mm:ss|SSSS" var="fmt" />
+		<li class="media row padding-large-bottom" 
+			data-entando-timestamp="<c:out value="${fmt}" />" 
+			data-entando-timestamp-comment="<c:out value="${fmt}" />">
 			<div class="col-xs-12 col-sm-2 col-lg-1 margin-small-bottom activity-stream-picture">
 				<img alt=" " src="/portalexample/do/user/avatar/avatarStream.action?gravatarSize=56&amp;username=admin" width="56" height="56" class="img-circle media-object">
 			</div>
@@ -34,7 +42,12 @@ anim id est laborum.</c:set>
 						created a new page <c:out value="${s.count}" />:
 						<a href="/portalexample/do/Page/edit.action?selectedNode=errorpage">System Error</a>
 						<p class="margin-small-vertical">
-							<time datetime="2013-09-27 11:00" title="2013-09-27 11:00" class="text-info">76 days, 2 hours ago</time>
+							<time 
+								datetime="<c:out value="${fmt}" />" 
+								title="<c:out value="${fmt}" />" 
+								class="text-info">
+									<c:out value="${fmt}" />
+							</time>
 							·
 							<c:set var="randomLike"><%= java.lang.Math.round(java.lang.Math.random() * 99) %></c:set>
 							<c:out value="${randomLike}" />&#32;like(s)
@@ -46,8 +59,8 @@ anim id est laborum.</c:set>
 				</div>
 				<div class="padding-base-left" style="margin-left: 20px"  data-entando="ajax-update">
 					<h4 class="sr-only">Comments</h4>
-					<c:set var="random"><%= java.lang.Math.round(java.lang.Math.random() * 7) %></c:set>
-					<c:forEach begin="0" end="${random}" varStatus="commentStatus">
+					<c:set var="randomComment"><%= java.lang.Math.round(java.lang.Math.random() * 7) %></c:set>
+					<c:forEach begin="0" end="${randomComment}" varStatus="commentStatus">
 						<div class="media">
 							<a class="pull-left" href="/portalexample/do/userprofile/view.action?username=username-<c:out value="${commentStatus.count}" />" title="label.viewProfile: display name <c:out value="${commentStatus.count}" />">
 								<img class="img-circle media-object" src="http://lorempixel.com/32/32/?gravatarSize=56&amp;username=username-<c:out value="${commentStatus.count}" />" style="width: 32px; height: 32px">
@@ -91,9 +104,20 @@ anim id est laborum.</c:set>
 				</div>
 			</div>
 		</li>
+		<c:remove var="testDate" />
+		<c:remove var="startDate" />
+		<c:remove var="testDate_time" />
 	</c:forEach>
 </c:if>
-<li class="media row padding-large-bottom" data-entando-timestamp="2013-12-12 12:25:03|0238">
+<%-- 2013-09-27 10:58:38|0000 --%>
+<jsp:useBean id="testDate2" class="java.util.Date" scope="page" />
+<jsp:setProperty name="testDate2" property="year" value="113"/>
+<jsp:setProperty name="testDate2" property="month" value="8"/>
+<jsp:setProperty name="testDate2" property="date" value="27"/>
+<jsp:setProperty name="testDate2" property="hours" value="10"/>
+<jsp:setProperty name="testDate2" property="minutes" value="58"/>
+<jsp:setProperty name="testDate2" property="seconds" value="38"/>
+<li class="media row padding-large-bottom" data-entando-timestamp="<fmt:formatDate value="${testDate2}" pattern="yyyy-MM-dd HH:mm:ss" />|0000">
 	<div class="col-xs-12 col-sm-2 col-lg-1 margin-small-bottom activity-stream-picture">
 		<img alt=" " src="/portalexample/do/user/avatar/avatarStream.action?gravatarSize=56&amp;username=admin" width="56" height="56" class="img-circle media-object">
 	</div>
@@ -106,9 +130,8 @@ anim id est laborum.</c:set>
 			created a new page:
 			<a href="/portalexample/do/Page/edit.action?selectedNode=errorpage">System Error</a>
 				<p class="margin-small-vertical">
-					<time datetime="2013-09-27 11:00" title="2013-09-27 11:00" class="text-info">
-						<jsp:useBean id="testDate2" class="java.util.Date" scope="page" />
-						<fmt:formatDate value="${testDate2}" pattern="yyyy-MM-dd HH:mm:ss|SSSS" /> | <c:out value="${random}" />
+					<time datetime="<fmt:formatDate value="${testDate2}" pattern="yyyy-MM-dd HH:mm" />" title="<fmt:formatDate value="${testDate2}" pattern="yyyy-MM-dd HH:mm:ss" />" class="text-info">
+						<fmt:formatDate value="${testDate2}" pattern="yyyy-MM-dd HH:mm:ss" />|0000 | <c:out value="${random}" />
 					</time>
 					 ·
 					<c:set var="randomLike"><%= java.lang.Math.round(java.lang.Math.random() * 99) %></c:set>
