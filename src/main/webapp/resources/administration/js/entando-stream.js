@@ -102,7 +102,7 @@ jQuery(function(){ //dom is ready...
 						LATEST_STREAM_TS = ts;
 					}
 					item.addClass('hide');
-					item.children('.insert-comment.hide').removeClass('hide');
+					$('.insert-comment.hide', item).removeClass('hide');
 					item.appendTo(STREAM_UPDATE_EL);
 				}
 			});
@@ -209,7 +209,9 @@ jQuery(function(){ //dom is ready...
 			LOAD_MORE_BUTTON_EL.button('loading');
 		}
 		else {
-			LOAD_MORE_BUTTON_EL.button('reset');
+			setTimeout(function() {
+				LOAD_MORE_BUTTON_EL.button('reset');
+			}, 600);
 		}
 	};
 	var ajaxLoadMoreRequest = function() {
