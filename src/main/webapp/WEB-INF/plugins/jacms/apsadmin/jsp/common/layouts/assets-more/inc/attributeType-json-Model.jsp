@@ -42,5 +42,5 @@ This converter shall always return a json object like this:
 		"getConfigParameter(\"<PARAM_NAME>\")": null, 
 		"getCurrentPage()": null, 
 		"getCurrentLang()": null, 
-		"getCurrentShowlet()": null
+		"getCurrentWidget()": null
 	}
