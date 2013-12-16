@@ -3,15 +3,19 @@ jQuery(function(){ //dom is ready...
 	var $ = jQuery;
 	var WINDOW_TITLE_DEFAULT = window.document.title;
 	var routineInterval = null;
-	var CLOCK = 4 * 1000;
+	var CLOCK = 40 * 1000;
 	var TIMESTAMP_ATTR = 'data-entando-timestamp';
 	var TIMESTAMP_COMMENT_ATTR = 'data-entando-timestamp-comment';
+	var AJAX_UPDATE_SELECTOR = '[data-entando="ajax-update"]';
 	var STREAM_ROOT = $('#activity-stream');
 	var STREAM_UPDATE_EL = $('#stream-updates-alert');
 	var TMP_CONTAINER = $('<ul class="ajax tmp"></ul>');
+	var LOAD_MORE_BUTTON_EL = $('[data-entando="load-more-button"]');
+	var STREAM_ITEM_EL_SELECTOR = 'li'
 	var LIST_UPDATE_URL = Entando.backoffice.streamListUpdateAjaxUrl;
 	var COMMENT_UPDATE_URL = Entando.backoffice.streamAddCommentAjaxUrl;
 	var LOAD_MORE_URL = Entando.backoffice.streamLoadMoreAjaxUrl;
+
 
 //utility
 	var getTsFromStreamEl = function(streamEl) {
@@ -51,7 +55,7 @@ jQuery(function(){ //dom is ready...
 	};
 	var checkIfNewOrUpdateStreamItem = function(stream) {
 		var ts = $(stream).attr(TIMESTAMP_ATTR);
-		var findstring = 'li['+TIMESTAMP_ATTR+'="'+ts+'"]';
+		var findstring = STREAM_ITEM_EL_SELECTOR+'['+TIMESTAMP_ATTR+'="'+ts+'"]';
 		var found = STREAM_ROOT.children(findstring);
 		var el = undefined;
 		if (found.length>0){
@@ -65,8 +69,8 @@ jQuery(function(){ //dom is ready...
 			};
 	};
 //stream
-	var LATEST_STREAM_TS = getTsFromStreamEl(STREAM_ROOT.children('li').first());
-	var LATEST_COMMENT_TS = getCommentTsFromStreamEl(STREAM_ROOT.children('li').first());
+	var LATEST_STREAM_TS = getTsFromStreamEl(STREAM_ROOT.children(STREAM_ITEM_EL_SELECTOR).first());
+	var LATEST_COMMENT_TS = getCommentTsFromStreamEl(STREAM_ROOT.children(STREAM_ITEM_EL_SELECTOR).first());
 	var updateStream = function(elementsArray) {
 		var els = elementsArray;
 		if (els!==undefined) {
@@ -85,8 +89,8 @@ jQuery(function(){ //dom is ready...
 					var ts = item.attr(TIMESTAMP_ATTR);
 					var oldItem = check.updateEl;
 					var newItem = item;
-					var oldRepl = $('[data-entando="ajax-update"]', oldItem).get();
-					var newRepl  = $('[data-entando="ajax-update"]', newItem).get();
+					var oldRepl = $(AJAX_UPDATE_SELECTOR, oldItem).get();
+					var newRepl  = $(AJAX_UPDATE_SELECTOR, newItem).get();
 					$.each(oldRepl, function(index, el) {
 						$(el).replaceWith(newRepl[index]);
 					})
@@ -107,7 +111,7 @@ jQuery(function(){ //dom is ready...
 	};
 	var preUpdate = function(elementsArray) {
 		var news = 0;
-		var newsReadyToGo = STREAM_UPDATE_EL.children('li').get().length;
+		var newsReadyToGo = STREAM_UPDATE_EL.children(STREAM_ITEM_EL_SELECTOR).get().length;
 		$.each(elementsArray, function(index, item){
 			var check = checkIfNewOrUpdateStreamItem(item);
 			if (check.newone) { news = news +1; }
@@ -148,7 +152,7 @@ jQuery(function(){ //dom is ready...
 					lastCommentTimestamp: getTsStringFromDate(LATEST_COMMENT_TS)
 				},
 				success: function(data, textStatus, jqXHR) {
-					var streamElements = TMP_CONTAINER.html(data).children('li');
+					var streamElements = TMP_CONTAINER.html(data).children(STREAM_ITEM_EL_SELECTOR);
 					updateStream(streamElements);
 				}
 			})
@@ -163,7 +167,7 @@ jQuery(function(){ //dom is ready...
 	}
 	STREAM_UPDATE_EL.on('click touchstart', function(){
 		pauseRoutine();
-		displayUpdates(STREAM_UPDATE_EL.children('li'));
+		displayUpdates(STREAM_UPDATE_EL.children(STREAM_ITEM_EL_SELECTOR));
 		setWindowTitle();
 		startRoutine();
 	});
@@ -202,10 +206,10 @@ jQuery(function(){ //dom is ready...
 	};
 	var loadMoreLoadingState = function(load) {
 		if (load == true) {
-			$('[data-entando="load-more-button"]').button('loading');
+			LOAD_MORE_BUTTON_EL.button('loading');
 		}
 		else {
-			$('[data-entando="load-more-button"]').button('reset');
+			LOAD_MORE_BUTTON_EL.button('reset');
 		}
 	};
 	var ajaxLoadMoreRequest = function() {
@@ -213,18 +217,18 @@ jQuery(function(){ //dom is ready...
 			url: LOAD_MORE_URL,
 			method: 'post',
 			data: {
-				stream: STREAM_ROOT.children('li').last().attr(TIMESTAMP_ATTR).replace('|', ' ')
+				stream: STREAM_ROOT.children(STREAM_ITEM_EL_SELECTOR).last().attr(TIMESTAMP_ATTR).replace('|', ' ')
 			},
 			beforeSend: function(){ loadMoreLoadingState(true) },
 			success: function(data, textStatus, jqXHR) {
-				var streamElements = TMP_CONTAINER.html(data).children('li');
+				var streamElements = TMP_CONTAINER.html(data).children(STREAM_ITEM_EL_SELECTOR);
 				updateMoreStream(streamElements);
 				postUpdate(streamElements);
 				loadMoreLoadingState();
 			}
 		});
 	};
-	$('[data-entando="load-more-button"]').on('click', function(){
+	LOAD_MORE_BUTTON_EL.on('click', function(){
 		ajaxLoadMoreRequest();
 	});
 //domready

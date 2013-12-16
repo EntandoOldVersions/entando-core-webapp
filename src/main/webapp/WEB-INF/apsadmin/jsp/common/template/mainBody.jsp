@@ -9,7 +9,7 @@
 	<wpsa:activityStream var="activityStreamListVar" />
 	<s:if test="null != #activityStreamListVar && #activityStreamListVar.size() != 0">
 		<div id="stream-updates-alert" class="alert alert-info hide cursor-pointer margin-small-bottom">Show New Updates (<span class="n">0</span>)</div>
-		<ul class="list-unstyled" id="activity-stream">
+		<ul class="list-unstyled padding-large-top" id="activity-stream">
 			<s:include value="/WEB-INF/apsadmin/jsp/common/activity-stream/inc/stream.jsp" />
 			<%--
 			<li class="media row">

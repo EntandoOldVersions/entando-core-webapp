@@ -27,7 +27,7 @@
 	<s:set var="fullnameVar" value="#attr.fullnameVar" />
 	<s:set var="emailAttributeVar" value="#attr.emailAttributeVar" />
 	<li
-		class="media row padding-large-vertical" 
+		class="media row padding-large-bottom" 
 		data-entando-timestamp="<s:if test="#currentEvent.last">2013-12-12 12:25:03|0238</s:if><s:if test="#currentEvent.first">2013-12-12 13:00:00|0987</s:if>"
 		data-entando-timestamp-comment="<s:if test="#currentEvent.first">2013-12-12 13:00:00|0987</s:if>"
 	>

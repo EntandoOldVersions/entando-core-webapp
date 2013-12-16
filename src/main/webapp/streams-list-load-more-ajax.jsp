@@ -26,7 +26,7 @@ anim id est laborum.</c:set>
 		<c:set var="oldMin"><jsp:getProperty name="testDate" property="minutes" /></c:set>
 		<jsp:setProperty name="testDate" property="date" value="${oldDate - s.count}"/>
 		<jsp:setProperty name="testDate" property="minutes" value="${oldMin - s.count}"/>
-		<li class="media row padding-large-vertical" data-entando-timestamp="<fmt:formatDate value="${testDate}" pattern="yyyy-MM-dd HH:mm:ss|SSSS" />" data-entando-timestamp-comment="<fmt:formatDate value="${testDate}" pattern="yyyy-MM-dd HH:mm:ss|SSSS" />">
+		<li class="media row padding-large-bottom" data-entando-timestamp="<fmt:formatDate value="${testDate}" pattern="yyyy-MM-dd HH:mm:ss|SSSS" />" data-entando-timestamp-comment="<fmt:formatDate value="${testDate}" pattern="yyyy-MM-dd HH:mm:ss|SSSS" />">
 			<div class="col-xs-12 col-sm-2 col-lg-1 margin-small-bottom activity-stream-picture">
 				<img alt=" " src="/portalexample/do/user/avatar/avatarStream.action?gravatarSize=56&amp;username=admin" width="56" height="56" class="img-circle media-object">
 			</div>
