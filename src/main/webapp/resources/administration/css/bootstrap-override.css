@@ -230,3 +230,8 @@ fieldset.col-xs-12 {
 	margin-bottom: 0;
 	font-weight: normal;
 }
+
+.stream-img-small {
+	width: 32px;
+	height: 32px;
+}

@@ -144,9 +144,8 @@
 								title="<s:text name="label.viewProfile" />:&#32;<s:property value="#comment.displayName" />"
 								>
 								<img
-									class="img-circle media-object"
-									src="/portalexample/do/user/avatar/avatarStream.action?gravatarSize=56&username=<s:property value="#comment.username" />"
-									style="width: 32px; height: 32px" />
+									class="img-circle media-object stream-img-small"
+									src="/portalexample/do/user/avatar/avatarStream.action?gravatarSize=56&username=<s:property value="#comment.username" />" />
 							</a>
 							<div class="media-body">
 								<h5 class="media-heading">
@@ -169,9 +168,8 @@
 							class="pull-left"
 							>
 							<img
-								class="img-circle media-object"
-								src="/portalexample/do/user/avatar/avatarStream.action?gravatarSize=56&username=<s:property value="#attr.browserUsername" />"
-								style="width: 32px; height: 32px" />
+								class="img-circle media-object stream-img-small"
+								src="/portalexample/do/user/avatar/avatarStream.action?gravatarSize=56&username=<s:property value="#attr.browserUsername" />" />
 						</span>
 						<div class="media-body">
 							<form action="#">
