@@ -149,7 +149,7 @@ jQuery(function(){ //dom is ready...
 				url: LIST_UPDATE_URL,
 				data: data || {
 					ajax: true,
-					lastStreamTimestamp: getTsStringFromDate(LATEST_STREAM_TS),
+					timestamp: getTsStringFromDate(LATEST_STREAM_TS),
 					lastCommentTimestamp: getTsStringFromDate(LATEST_COMMENT_TS)
 				},
 				success: function(data, textStatus, jqXHR) {
@@ -201,7 +201,9 @@ jQuery(function(){ //dom is ready...
 			url: COMMENT_DELETE_URL,
 			method: 'post',
 			dataType: 'json',
-			data: {"commentId": commentToDeleteId},
+			data: {
+				'commentId': commentToDeleteId
+			},
 			success: function(data, textStatus, jqXHR) {
 				$('[data-entando-comment="'+data.commentId+'"]').fadeOut(600, function(){
 					$(this).remove();
@@ -237,7 +239,8 @@ jQuery(function(){ //dom is ready...
 			url: LIST_LOAD_MORE_URL,
 			method: 'post',
 			data: {
-				stream: STREAM_ROOT.children(STREAM_ITEM_EL_SELECTOR).last().attr(TIMESTAMP_ATTR)
+				'ajax': true,
+				timestamp: STREAM_ROOT.children(STREAM_ITEM_EL_SELECTOR).last().attr(TIMESTAMP_ATTR)
 			},
 			beforeSend: function(){ loadMoreLoadingState(true) },
 			success: function(data, textStatus, jqXHR) {

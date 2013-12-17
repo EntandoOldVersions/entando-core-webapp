@@ -9,12 +9,11 @@
 <s:set var="ajax" value="#attr.ajax" />
 <s:if test="#ajax">
 	<%-- ajax eh? so set the #activityStreamListVar variable accordingly --%>
-	<wpsa:activityStream var="activityStreamListVar" />
+	<s:set var="activityStreamListVar" value="%{getUpdate()}" />
 </s:if>
 <s:else>
 	<%-- use the #activityStreamListVar from mainBody.jsp --%>
 </s:else>
-
 <c:set var="browserUsername" value="${session.currentUser.username}" />
 <wp:userProfileAttribute username="${browserUsername}" attributeRoleName="userprofile:fullname" var="browserUserFullnameVar" />
 <wp:userProfileAttribute username="${browserUsername}" attributeRoleName="userprofile:email" var="browserUserEmailAttributeVar" />

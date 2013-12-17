@@ -6,8 +6,10 @@
 	Entando.backoffice = Entando.backoffice || {};
 	Entando.backoffice.stream = {};
 	Entando.backoffice.stream.list = {};
-	Entando.backoffice.stream.list.updateUrl = '/portalexample/streams-list-item-ajax.jsp';
-	Entando.backoffice.stream.list.loadMoreUrl = '/portalexample/streams-list-item-ajax.jsp';
+	//Entando.backoffice.stream.list.updateUrl = '/portalexample/streams-list-item-ajax.jsp';
+	Entando.backoffice.stream.list.updateUrl = '<s:url action="update" namespace="/do/ActivityStream" />';
+	//Entando.backoffice.stream.list.loadMoreUrl = '/portalexample/streams-list-item-ajax.jsp';
+	Entando.backoffice.stream.list.loadMoreUrl = '<s:url action="viewMore" namespace="/do/ActivityStream" />';
 
 	Entando.backoffice.stream.comments = {};
 	Entando.backoffice.stream.comments.addUrl = '/portalexample/stream-add-comment-ajax.jsp';;
