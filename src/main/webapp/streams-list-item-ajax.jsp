@@ -17,16 +17,16 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit 
 anim id est laborum.</c:set>
 <c:set var="random"><%= java.lang.Math.round(java.lang.Math.random() * 6) %></c:set>
-<c:set var="param_date" value="${!(empty param.lastStreamTimestamp) ? param.lastStreamTimestamp : '2013-01-05 10:09:08 0765' }" />
+<c:set var="param_date" value="${!(empty param.lastStreamTimestamp) ? param.lastStreamTimestamp : '2013-01-05 10:09:08|765' }" />
 <c:set var="random" value="${0}" />
 <c:if test="${random%2 > 0 || true}">
 	<c:forEach begin="0" end="${random}" varStatus="s">
-		<fmt:parseDate value="${param_date}" pattern="yyyy-MM-dd HH:mm:ss SSSS" var="startDate" type="both" />
+		<fmt:parseDate value="${param_date}" pattern="yyyy-MM-dd HH:mm:ss|SSS" var="startDate" type="both" />
 		<c:set var="testDate" value="${startDate}" />
 		<c:set var="testDate_time"><jsp:getProperty name="testDate" property="time" /></c:set>
 		<c:set var="testDate_time" value="${testDate_time + ((1000 * 60 * 60 * 25) * (random+1-s.index))}" />
 		<jsp:setProperty name="testDate" property="time" value="${testDate_time}" />
-		<fmt:formatDate value="${testDate}" pattern="yyyy-MM-dd HH:mm:ss|SSSS" var="fmt" />
+		<fmt:formatDate value="${testDate}" pattern="yyyy-MM-dd HH:mm:ss|SSS" var="fmt" />
 		<li class="media row padding-large-bottom" 
 			data-entando-timestamp="<c:out value="${fmt}" />" 
 			data-entando-timestamp-comment="<c:out value="${fmt}" />">
@@ -109,7 +109,7 @@ anim id est laborum.</c:set>
 		<c:remove var="testDate_time" />
 	</c:forEach>
 </c:if>
-<%-- 2013-09-27 10:58:38|0000 --%>
+<%-- 2013-09-27 10:58:38|000 --%>
 <jsp:useBean id="testDate2" class="java.util.Date" scope="page" />
 <jsp:setProperty name="testDate2" property="year" value="113"/>
 <jsp:setProperty name="testDate2" property="month" value="8"/>
@@ -117,7 +117,7 @@ anim id est laborum.</c:set>
 <jsp:setProperty name="testDate2" property="hours" value="10"/>
 <jsp:setProperty name="testDate2" property="minutes" value="58"/>
 <jsp:setProperty name="testDate2" property="seconds" value="38"/>
-<li class="media row padding-large-bottom" data-entando-timestamp="<fmt:formatDate value="${testDate2}" pattern="yyyy-MM-dd HH:mm:ss" />|0000">
+<li class="media row padding-large-bottom" data-entando-timestamp="<fmt:formatDate value="${testDate2}" pattern="yyyy-MM-dd HH:mm:ss" />|000">
 	<div class="col-xs-12 col-sm-2 col-lg-1 margin-small-bottom activity-stream-picture">
 		<img alt=" " src="/portalexample/do/user/avatar/avatarStream.action?gravatarSize=56&amp;username=admin" width="56" height="56" class="img-circle media-object">
 	</div>
@@ -131,7 +131,7 @@ anim id est laborum.</c:set>
 			<a href="/portalexample/do/Page/edit.action?selectedNode=errorpage">System Error</a>
 				<p class="margin-small-vertical">
 					<time datetime="<fmt:formatDate value="${testDate2}" pattern="yyyy-MM-dd HH:mm" />" title="<fmt:formatDate value="${testDate2}" pattern="yyyy-MM-dd HH:mm:ss" />" class="text-info">
-						<fmt:formatDate value="${testDate2}" pattern="yyyy-MM-dd HH:mm:ss" />|0000 | <c:out value="${random}" />
+						<fmt:formatDate value="${testDate2}" pattern="yyyy-MM-dd HH:mm:ss" />|000 | <c:out value="${random}" />
 					</time>
 					 ·
 					<c:set var="randomLike"><%= java.lang.Math.round(java.lang.Math.random() * 99) %></c:set>

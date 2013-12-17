@@ -6,9 +6,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="param_date" value="${param.stream}" />
 <c:if test="${empty param.stream}">
-	<c:set var="param_date">2013-01-05 10:09:08 0765</c:set>
+	<c:set var="param_date">2013-01-05 10:09:08|765</c:set>
 </c:if>
-<fmt:parseDate value="${param_date}" pattern="yyyy-MM-dd HH:mm:ss SSSS" var="testDate" type="both" />
+<fmt:parseDate value="${param_date}" pattern="yyyy-MM-dd HH:mm:ss|SSS" var="testDate" type="both" />
 <c:set var="loremText">Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 
@@ -26,7 +26,7 @@ anim id est laborum.</c:set>
 		<c:set var="oldMin"><jsp:getProperty name="testDate" property="minutes" /></c:set>
 		<jsp:setProperty name="testDate" property="date" value="${oldDate - s.count}"/>
 		<jsp:setProperty name="testDate" property="minutes" value="${oldMin - s.count}"/>
-		<li class="media row padding-large-bottom" data-entando-timestamp="<fmt:formatDate value="${testDate}" pattern="yyyy-MM-dd HH:mm:ss|SSSS" />" data-entando-timestamp-comment="<fmt:formatDate value="${testDate}" pattern="yyyy-MM-dd HH:mm:ss|SSSS" />">
+		<li class="media row padding-large-bottom" data-entando-timestamp="<fmt:formatDate value="${testDate}" pattern="yyyy-MM-dd HH:mm:ss|SSS" />" data-entando-timestamp-comment="<fmt:formatDate value="${testDate}" pattern="yyyy-MM-dd HH:mm:ss|SSS" />">
 			<div class="col-xs-12 col-sm-2 col-lg-1 margin-small-bottom activity-stream-picture">
 				<img alt=" " src="/portalexample/do/user/avatar/avatarStream.action?gravatarSize=56&amp;username=admin" width="56" height="56" class="img-circle media-object">
 			</div>
@@ -39,7 +39,7 @@ anim id est laborum.</c:set>
 						created a new page <c:out value="${s.count}" />:
 						<a href="/portalexample/do/Page/edit.action?selectedNode=errorpage">System Error</a>
 						<p class="margin-small-vertical">
-							<time datetime="<fmt:formatDate value="${testDate}" pattern="yyyy-MM-dd HH:mm:ss|SSSS" />" title="2013-09-27 11:00" class="text-info"><fmt:formatDate value="${testDate}" pattern="yyyy-MM-dd HH:mm:ss|SSSS" /></time>
+							<time datetime="<fmt:formatDate value="${testDate}" pattern="yyyy-MM-dd HH:mm:ss|SSS" />" title="2013-09-27 11:00" class="text-info"><fmt:formatDate value="${testDate}" pattern="yyyy-MM-dd HH:mm:ss|SSS" /></time>
 							·
 							<c:set var="randomLike"><%= java.lang.Math.round(java.lang.Math.random() * 99) %></c:set>
 							<c:out value="${randomLike}" />&#32;like(s)

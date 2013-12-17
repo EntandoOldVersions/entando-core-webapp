@@ -39,10 +39,10 @@ jQuery(function(){ //dom is ready...
 			+' '+ (date.getHours()<10? ('0'+date.getHours()) : date.getHours())
 			+':'+ (date.getMinutes()<10? ('0'+date.getMinutes()) : date.getMinutes())
 			+':'+ (date.getSeconds()<10? ('0'+date.getSeconds()) : date.getSeconds())
-			+' '+ (
-				(0<=date.getMilliseconds()&&date.getMilliseconds()<10) ? ('000'+date.getMilliseconds()) :
-						(10<=date.getMilliseconds()&&date.getMilliseconds()<100) ? ('00'+date.getMilliseconds()) :
-								(100<=date.getMilliseconds()&&date.getMilliseconds()<1000) ? ('0'+date.getMilliseconds()) : date.getMilliseconds()
+			+'|'+ (
+				(0<=date.getMilliseconds()&&date.getMilliseconds()<10) ? ('00'+date.getMilliseconds()) :
+						(10<=date.getMilliseconds()&&date.getMilliseconds()<100) ? ('0'+date.getMilliseconds()) :
+								date.getMilliseconds()
 				)
 	};
 	var setWindowTitle = function(title){
@@ -219,7 +219,7 @@ jQuery(function(){ //dom is ready...
 			url: LOAD_MORE_URL,
 			method: 'post',
 			data: {
-				stream: STREAM_ROOT.children(STREAM_ITEM_EL_SELECTOR).last().attr(TIMESTAMP_ATTR).replace('|', ' ')
+				stream: STREAM_ROOT.children(STREAM_ITEM_EL_SELECTOR).last().attr(TIMESTAMP_ATTR)
 			},
 			beforeSend: function(){ loadMoreLoadingState(true) },
 			success: function(data, textStatus, jqXHR) {
