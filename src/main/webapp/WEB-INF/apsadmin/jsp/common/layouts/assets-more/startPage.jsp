@@ -7,6 +7,7 @@
 	Entando.backoffice.streamListUpdateAjaxUrl = '/portalexample/streams-list-item-ajax.jsp';
 	Entando.backoffice.streamAddCommentAjaxUrl = '/portalexample/stream-add-comment-ajax.jsp';
 	Entando.backoffice.streamLoadMoreAjaxUrl = '/portalexample/streams-list-load-more-ajax.jsp';
+	Entando.backoffice.streamRemoveCommentAjaxUrl = '/portalexample/stream-add-comment-ajax.jsp';
 </script>
 <script>
 	jQuery(function(){

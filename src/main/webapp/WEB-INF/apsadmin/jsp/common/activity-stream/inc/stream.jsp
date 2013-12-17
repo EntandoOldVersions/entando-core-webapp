@@ -18,7 +18,7 @@
 <c:set var="browserUsername" value="${session.currentUser.username}" />
 <wp:userProfileAttribute username="${browserUsername}" attributeRoleName="userprofile:fullname" var="browserUserFullnameVar" />
 <wp:userProfileAttribute username="${browserUsername}" attributeRoleName="userprofile:email" var="browserUserEmailAttributeVar" />
-
+<wp:ifauthorized permission="superuser" var="browserIsSuperUser" />
 <s:iterator value="#activityStreamListVar" var="actionLogRecordIdVar" status="currentEvent">
 	<wpsa:actionLogRecord key="%{#actionLogRecordIdVar}" var="actionLogRecordVar" />
 	<s:set var="usernameVar" value="#actionLogRecordVar.username" scope="page" />
@@ -129,15 +129,15 @@
 			<%-- comments --%>
 				<div class="padding-base-left" style="margin-left: 20px" data-entando="ajax-update">
 					<h4 class="sr-only">Comments</h4>
-					<c:forEach begin="0" end="4" varStatus="commentUser">
+					<c:forEach begin="0" end="4" varStatus="commentStatus">
 						<jsp:useBean id="testDate" class="java.util.Date" />
 						<s:set var="comment" value="#{
-						 'username': 'username-'+#attr.commentUser.count,
-						 'displayName': 'display name '+#attr.commentUser.count,
+						 'username': 'username-'+#attr.commentStatus.count,
+						 'displayName': 'display name '+#attr.commentStatus.count,
 						 'text': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 						 'date': #attr.testDate
 						}" />
-						<div class="media">
+						<div class="media" data-entando-comment="<%= java.lang.Math.round(java.lang.Math.random() * 9999999) %><%= java.lang.Math.round(java.lang.Math.random() * 7) %><%= java.lang.Math.round(java.lang.Math.random() * 7) %><%= java.lang.Math.round(java.lang.Math.random() * 7) %><%= java.lang.Math.round(java.lang.Math.random() * 7) %><%= java.lang.Math.round(java.lang.Math.random() * 7) %><%= java.lang.Math.round(java.lang.Math.random() * 7) %><%= java.lang.Math.round(java.lang.Math.random() * 7) %><%= java.lang.Math.round(java.lang.Math.random() * 7) %><%= java.lang.Math.round(java.lang.Math.random() * 7) %>">
 							<a
 								class="pull-left"
 								href="<s:url action="view" namespace="/do/userprofile"><s:param name="username" value="#comment.username"/></s:url>"
@@ -156,6 +156,12 @@
 									,&#32;<time datetime="<s:date name="#comment.date" format="yyyy-MM-dd HH:mm" />" title="<s:date name="#comment.date" format="yyyy-MM-dd HH:mm" />" class="text-info">
 										<s:date name="%{#comment.date}" nice="true" />
 									</time>
+									<s:if test="#comment.username == #attr.browserUsername || #attr.browserIsSuperUser">
+										<a href="#remove" data-entando="remove-comment-ajax" class="pull-right">
+											<span class="icon fa fa-icon fa-times-circle-o"></span>
+											&nbsp;Delete
+										</a>
+									</s:if>
 								</h5>
 								<s:property value="#comment.text" />
 							</div>

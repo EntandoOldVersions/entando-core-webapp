@@ -14,6 +14,7 @@ jQuery(function(){ //dom is ready...
 	var STREAM_ITEM_EL_SELECTOR = 'li'
 	var LIST_UPDATE_URL = Entando.backoffice.streamListUpdateAjaxUrl;
 	var COMMENT_UPDATE_URL = Entando.backoffice.streamAddCommentAjaxUrl;
+	var COMMENT_DELETE_URL = Entando.backoffice.streamRemoveCommentAjaxUrl;
 	var LOAD_MORE_URL = Entando.backoffice.streamLoadMoreAjaxUrl;
 
 
@@ -190,6 +191,23 @@ jQuery(function(){ //dom is ready...
 				}
 			});
 		}
+	});
+	STREAM_ROOT.delegate('[data-entando="remove-comment-ajax"]', 'click', function(ev){
+		ev.preventDefault();
+		var button = $(ev.target);
+		var commentToDeleteEl = button.parents('[data-entando-comment]').first();
+		var commentToDeleteId = commentToDeleteEl.attr('data-entando-comment');
+		$.ajax({
+			url: COMMENT_DELETE_URL,
+			method: 'post',
+			dataType: 'json',
+			data: {"commentId": commentToDeleteId},
+			success: function(data, textStatus, jqXHR) {
+				$('[data-entando-comment="'+data.commentId+'"]').fadeOut(600, function(){
+					$(this).remove();
+				})
+			}
+		})
 	});
 
 //start stream routine

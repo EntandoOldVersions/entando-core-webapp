@@ -53,7 +53,7 @@ anim id est laborum.</c:set>
 					<h4 class="sr-only">Comments</h4>
 					<c:set var="random"><%= java.lang.Math.round(java.lang.Math.random() * 7) %></c:set>
 					<c:forEach begin="0" end="${random}" varStatus="commentStatus">
-						<div class="media">
+						<div class="media" data-entando-comment="<%= java.lang.Math.round(java.lang.Math.random() * 9999999) %><%= java.lang.Math.round(java.lang.Math.random() * 7) %><%= java.lang.Math.round(java.lang.Math.random() * 7) %><%= java.lang.Math.round(java.lang.Math.random() * 7) %><%= java.lang.Math.round(java.lang.Math.random() * 7) %><%= java.lang.Math.round(java.lang.Math.random() * 7) %><%= java.lang.Math.round(java.lang.Math.random() * 7) %><%= java.lang.Math.round(java.lang.Math.random() * 7) %><%= java.lang.Math.round(java.lang.Math.random() * 7) %><%= java.lang.Math.round(java.lang.Math.random() * 7) %>">
 							<a class="pull-left" href="/portalexample/do/userprofile/view.action?username=username-<c:out value="${commentStatus.count}" />" title="label.viewProfile: display name <c:out value="${commentStatus.count}" />">
 								<img class="img-circle media-object stream-img-small" src="http://lorempixel.com/32/32/?gravatarSize=56&amp;username=username-<c:out value="${commentStatus.count}" />" />
 							</a>
@@ -63,6 +63,12 @@ anim id est laborum.</c:set>
 									<time datetime="2013-12-13 16:19" title="2013-12-13 16:19" class="text-info">
 										in an instant
 									</time>
+									<c:if test="${commentStatus.count == 2}">
+										<br /><a href="#remove" data-entando="remove-comment-ajax" class="pull-right">
+											<span class="icon fa fa-icon fa-times-circle-o"></span>
+											&nbsp;Delete
+										</a>
+									</c:if>
 								</h5>
 								<c:set var="loremRandom1"><%= java.lang.Math.round(java.lang.Math.random() * 440) %></c:set>
 								<c:set var="loremRandom2" value="${440-loremRandom1}" />

@@ -7,4 +7,9 @@
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <%-- just this... gimme true to ajax, --%>
+<c:if test="${empty param.commentId}">
 true
+</c:if>
+<c:if test="${!(empty param.commentId)}">
+{"commentId": "<c:out value="${param.commentId}" />"}
+</c:if>
