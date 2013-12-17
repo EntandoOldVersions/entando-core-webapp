@@ -12,10 +12,10 @@ jQuery(function(){ //dom is ready...
 	var TMP_CONTAINER = $('<ul class="ajax tmp"></ul>');
 	var LOAD_MORE_BUTTON_EL = $('[data-entando="load-more-button"]');
 	var STREAM_ITEM_EL_SELECTOR = 'li'
-	var LIST_UPDATE_URL = Entando.backoffice.streamListUpdateAjaxUrl;
-	var COMMENT_UPDATE_URL = Entando.backoffice.streamAddCommentAjaxUrl;
-	var COMMENT_DELETE_URL = Entando.backoffice.streamRemoveCommentAjaxUrl;
-	var LOAD_MORE_URL = Entando.backoffice.streamLoadMoreAjaxUrl;
+	var LIST_UPDATE_URL = Entando.backoffice.stream.list.updateUrl;
+	var LIST_LOAD_MORE_URL = Entando.backoffice.stream.list.loadMoreUrl;
+	var COMMENT_ADD_URL = Entando.backoffice.stream.comments.addUrl;
+	var COMMENT_DELETE_URL = Entando.backoffice.stream.comments.deleteUrl;
 
 
 //utility
@@ -179,7 +179,7 @@ jQuery(function(){ //dom is ready...
 		var textarea = $('textarea', ev.target);
 		if ($.trim(textarea.val()).length >0) {
 			$.ajax({
-				url: COMMENT_UPDATE_URL,
+				url: COMMENT_ADD_URL,
 				method: 'post',
 				data: $(this).serialize(),
 				beforeSend: pauseRoutine,
@@ -234,7 +234,7 @@ jQuery(function(){ //dom is ready...
 	};
 	var ajaxLoadMoreRequest = function() {
 		return $.ajax({
-			url: LOAD_MORE_URL,
+			url: LIST_LOAD_MORE_URL,
 			method: 'post',
 			data: {
 				stream: STREAM_ROOT.children(STREAM_ITEM_EL_SELECTOR).last().attr(TIMESTAMP_ATTR)
