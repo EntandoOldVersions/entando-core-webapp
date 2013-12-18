@@ -18,16 +18,6 @@
 <script>
 	jQuery(function(){
 		$('#activity-stream [data-toggle="tooltip"]').tooltip({trigger: 'hover'});
-		$('#activity-stream').delegate('.insert-comment textarea', 'keydown', function(ev) {
-			var textarea = $(this);
-			var lines = textarea.val().split('\n').length+1;
-			textarea.attr('rows', lines > 10 ? 10 : lines);
-		});
-		$('#activity-stream').delegate('.insert-comment textarea', 'blur', function(ev) {
-			var textarea = $(this);
-			var lines = textarea.val().split('\n').length;
-			textarea.attr('rows', lines > 10 ? 10 : lines);
-		});
 	})
 </script>
 <script src="<wp:resourceURL />administration/js/entando-stream.js"></script>

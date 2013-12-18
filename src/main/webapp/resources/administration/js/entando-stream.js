@@ -188,6 +188,7 @@ jQuery(function(){ //dom is ready...
 				success: function() {
 					var textarea = $('textarea', ev.target);
 					textarea.val("");
+					restoreSizeCommentTextarea(textarea);
 					askForUpdate();
 					startRoutine();
 				}
@@ -212,6 +213,19 @@ jQuery(function(){ //dom is ready...
 				})
 			}
 		})
+	});
+	var restoreSizeCommentTextarea = function(el) {
+		var textarea = $(el);
+		var lines = textarea.val().split('\n').length;
+		textarea.attr('rows', lines > 10 ? 10 : lines);
+	};
+	$('#activity-stream').delegate('.insert-comment textarea', 'keydown', function(ev) {
+		var textarea = $(this);
+		var lines = textarea.val().split('\n').length+1;
+		textarea.attr('rows', lines > 10 ? 10 : lines);
+	});
+	$('#activity-stream').delegate('.insert-comment textarea', 'blur', function(ev) {
+		restoreCommentTextarea(this);
 	});
 
 //start stream routine
