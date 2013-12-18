@@ -18,7 +18,11 @@
 			</li>
 			--%>
 		</ul>
-		<button class="btn btn-default" data-entando="load-more-button" data-loading-text="Loading...">Load More</button>
+		<div class="row">
+			<div class="col-xs-12 col-sm-2 col-md-2 col-lg-1 text-center">
+				<button class="btn btn-default" data-entando="load-more-button" data-loading-text="Loading...">Load More</button>
+			</div>
+		</div>
 	</s:if>
 	<s:else>
 		NO ONE ACTIVITY

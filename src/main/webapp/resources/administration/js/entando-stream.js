@@ -4,6 +4,7 @@ jQuery(function(){ //dom is ready...
 	var WINDOW_TITLE_DEFAULT = window.document.title;
 	var routineInterval = null;
 	var CLOCK = 4 * 1000;
+	var ANIMATION_DURATION = 600;
 	var TIMESTAMP_ATTR = 'data-entando-timestamp';
 	var TIMESTAMP_COMMENT_ATTR = 'data-entando-timestamp-comment';
 	var AJAX_UPDATE_SELECTOR = '[data-entando="ajax-update"]';
@@ -94,9 +95,9 @@ jQuery(function(){ //dom is ready...
 					var newRepl  = $(AJAX_UPDATE_SELECTOR, newItem).get();
 					$.each(oldRepl, function(index, el) {
 						var el = $(el);
-						el.fadeOut(300, function(){
+						el.fadeOut(ANIMATION_DURATION, function(){
 							el.replaceWith(newRepl[index]);
-							el.fadeIn(300);
+							el.fadeIn(ANIMATION_DURATION);
 						})
 					})
 					els[index]=oldItem;
@@ -209,7 +210,7 @@ jQuery(function(){ //dom is ready...
 				'commentId': commentToDeleteId
 			},
 			success: function(data, textStatus, jqXHR) {
-				$('[data-entando-comment="'+data.commentId+'"]').fadeOut(600, function(){
+				$('[data-entando-comment="'+data.commentId+'"]').fadeOut(ANIMATION_DURATION, function(){
 					$(this).remove();
 				})
 			}
@@ -235,7 +236,7 @@ jQuery(function(){ //dom is ready...
 		else {
 			setTimeout(function() {
 				LOAD_MORE_BUTTON_EL.button('reset');
-			}, 600);
+			}, ANIMATION_DURATION);
 		}
 	};
 	var ajaxLoadMoreRequest = function() {
