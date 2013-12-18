@@ -7,13 +7,10 @@
 <s:set var="ajax" value="%{#parameters.ajax}" /><%-- fill this with something... --%>
 <c:set var="ajax" value="${param.ajax eq 'true'}" />
 <s:set var="ajax" value="#attr.ajax" />
-<s:if test="#ajax">
-	<%-- ajax eh? so set the #activityStreamListVar variable accordingly --%>
+<s:if test="#ajax"><%-- ajax eh? so set the #activityStreamListVar variable accordingly --%>
 	<s:set var="activityStreamListVar" value="%{getActionRecordIds()}" />
 </s:if>
-<s:else>
-	<%-- use the #activityStreamListVar from mainBody.jsp --%>
-</s:else>
+<s:else><%-- use the #activityStreamListVar from mainBody.jsp --%></s:else>
 <c:set var="browserUsername" value="${session.currentUser.username}" />
 <s:set var="currentUsernameVar" value="#attr.browserUsername" />
 <wp:userProfileAttribute username="${browserUsername}" attributeRoleName="userprofile:fullname" var="browserUserFullnameVar" />
@@ -27,7 +24,7 @@
 	<s:set var="fullnameVar" value="#attr.fullnameVar" />
 	<s:set var="emailAttributeVar" value="#attr.emailAttributeVar" />
 	<li
-		class="media row padding-large-bottom" 
+		class="media row padding-large-bottom"
 		data-entando-timestamp="<s:date name="#actionLogRecordVar.actionDate" format="yyyy-MM-dd HH:mm:ss|SSS" />"
 		data-entando-timestamp-comment="<s:date name="#actionLogRecordVar.actionDate" format="yyyy-MM-dd HH:mm:ss|SSS" />"
 	>
@@ -124,7 +121,7 @@
 			</div>
 			<%-- comments --%>
 				<div class="padding-base-left" style="margin-left: 20px" data-entando="ajax-update">
-					<h4 class="sr-only">Comments</h4>
+					<h4 class="sr-only"><s:text name="activity.stream.title.comments" /></h4>
 					<c:forEach begin="0" end="4" varStatus="commentStatus">
 						<jsp:useBean id="testDate" class="java.util.Date" />
 						<s:set var="comment" value="#{
@@ -155,7 +152,7 @@
 									<s:if test="#comment.username == #attr.browserUsername || #attr.browserIsSuperUser">
 										<a href="#remove" data-entando="remove-comment-ajax" class="pull-right">
 											<span class="icon fa fa-icon fa-times-circle-o"></span>
-											&nbsp;Delete
+											&nbsp;<s:text name="activity.stream.button.delete" />
 										</a>
 									</s:if>
 								</h5>
@@ -171,15 +168,15 @@
 							>
 							<img
 								class="img-circle media-object stream-img-small"
-								src="/portalexample/do/user/avatar/avatarStream.action?gravatarSize=56&username=<s:property value="#attr.browserUsername" />" />
+								src="/portalexample/do/user/avatar/avatarStream.action?gravatarSize=56&username=<s:property value="#currentUsernameVar" />" />
 						</span>
 						<div class="media-body">
-							<form action="#">
+							<form action="#" class="form-horizontal">
 								<textarea
 									role="textbox"
 									aria-multiline="true"
-									class="col-xs-12 col-sm-12 col-md-12 col-lg-12" cols="30" rows="2" placeholder="insert comment..." name="comment"></textarea>
-								<button name="" class="margin-small-top pull-right btn btn-sm btn-default"><span class="icon fa fa-comment"></span>&#32;Submit</button>
+									class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-control" cols="30" rows="1" placeholder="insert comment..." name="comment"></textarea>
+								<button class="margin-small-top pull-right btn btn-sm btn-default"><span class="icon fa fa-comment"></span>&#32;<s:text name="activity.stream.button.submit.comment" /></button>
 							</form>
 						</div>
 					</div>

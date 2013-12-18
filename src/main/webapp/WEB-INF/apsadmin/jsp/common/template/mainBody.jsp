@@ -8,7 +8,7 @@
 	<s:set var="currentUsernameVar"><c:out value="${sessionScope.currentUser.username}" /></s:set>
 	<wpsa:activityStream var="activityStreamListVar" />
 	<s:if test="null != #activityStreamListVar && #activityStreamListVar.size() != 0">
-		<div id="stream-updates-alert" class="alert alert-info hide cursor-pointer margin-small-bottom">Show New Updates (<span class="n">0</span>)</div>
+		<div id="stream-updates-alert" class="alert alert-info hide cursor-pointer margin-small-bottom"><s:text name="activity.stream.note.show.updates" /> (<span class="n">0</span>)</div>
 		<ul class="list-unstyled padding-large-top" id="activity-stream">
 			<s:include value="/WEB-INF/apsadmin/jsp/common/activity-stream/inc/stream.jsp" />
 			<%--
@@ -18,13 +18,15 @@
 			</li>
 			--%>
 		</ul>
-		<div class="row">
-			<div class="col-xs-12 col-sm-2 col-md-2 col-lg-1 text-center">
-				<button class="btn btn-default" data-entando="load-more-button" data-loading-text="Loading...">Load More</button>
+		<s:if test="#activityStreamListVar.size() != 10">
+			<div class="row">
+				<div class="col-xs-12 col-sm-2 col-md-2 col-lg-1 text-center">
+					<button class="btn btn-default" data-entando="load-more-button" data-loading-text="<s:text name="activity.stream.note.loading" />&hellip;"><s:text name="activity.stream.note.loadMore" /></button>
+				</div>
 			</div>
-		</div>
+		</s:if>
 	</s:if>
 	<s:else>
-		NO ONE ACTIVITY
+		<s:text name="activity.stream.note.no.activity" />
 	</s:else>
 </div>
