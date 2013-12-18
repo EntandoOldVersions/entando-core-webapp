@@ -93,7 +93,11 @@ jQuery(function(){ //dom is ready...
 					var oldRepl = $(AJAX_UPDATE_SELECTOR, oldItem).get();
 					var newRepl  = $(AJAX_UPDATE_SELECTOR, newItem).get();
 					$.each(oldRepl, function(index, el) {
-						$(el).replaceWith(newRepl[index]);
+						var el = $(el);
+						el.fadeOut(300, function(){
+							el.replaceWith(newRepl[index]);
+							el.fadeIn(300);
+						})
 					})
 					els[index]=oldItem;
 				}
@@ -192,7 +196,7 @@ jQuery(function(){ //dom is ready...
 			});
 		}
 	});
-	STREAM_ROOT.delegate('[data-entando="remove-comment-ajax"]', 'click', function(ev){
+	STREAM_ROOT.delegate('[data-entando="remove-comment-ajax"]', 'click touchstart', function(ev){
 		ev.preventDefault();
 		var button = $(ev.target);
 		var commentToDeleteEl = button.parents('[data-entando-comment]').first();
@@ -251,7 +255,7 @@ jQuery(function(){ //dom is ready...
 			}
 		});
 	};
-	LOAD_MORE_BUTTON_EL.on('click', function(){
+	LOAD_MORE_BUTTON_EL.on('click touchstart', function(){
 		ajaxLoadMoreRequest();
 	});
 //domready
