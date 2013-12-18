@@ -9,12 +9,13 @@
 <s:set var="ajax" value="#attr.ajax" />
 <s:if test="#ajax">
 	<%-- ajax eh? so set the #activityStreamListVar variable accordingly --%>
-	<s:set var="activityStreamListVar" value="%{getUpdate()}" />
+	<s:set var="activityStreamListVar" value="%{getActionRecordIds()}" />
 </s:if>
 <s:else>
 	<%-- use the #activityStreamListVar from mainBody.jsp --%>
 </s:else>
 <c:set var="browserUsername" value="${session.currentUser.username}" />
+<s:set var="currentUsernameVar" value="#attr.browserUsername" />
 <wp:userProfileAttribute username="${browserUsername}" attributeRoleName="userprofile:fullname" var="browserUserFullnameVar" />
 <wp:userProfileAttribute username="${browserUsername}" attributeRoleName="userprofile:email" var="browserUserEmailAttributeVar" />
 <wp:ifauthorized permission="superuser" var="browserIsSuperUser" />
@@ -85,40 +86,36 @@
 					</c:choose>
 					<wpsa:activityStreamLikeRecords recordId="%{#actionLogRecordIdVar}" var="activityStreamLikeRecordsVar" />
 					<%-- like / dislike --%>
+						<s:set value="%{#activityStreamLikeRecordsVar.containsUser(#currentUsernameVar)}" var="likeRecordsContainsUserVar" />
 						<p class="margin-small-vertical">
 							<time datetime="<s:date name="#actionLogRecordVar.actionDate" format="yyyy-MM-dd HH:mm" />" title="<s:date name="#actionLogRecordVar.actionDate" format="yyyy-MM-dd HH:mm" />" class="text-info">
 								<s:date name="#actionLogRecordVar.actionDate" nice="true" />
 							</time>
 							<s:if test="#activityStreamLikeRecordsVar.size() > 0">
 								&#32;&middot;&#32;
-								<s:property value="#activityStreamLikeRecordsVar.size()" />
-								&#32;
-								<s:text name="label.like.number" />
+								<span
+									data-toggle="tooltip"
+									data-placement="bottom"
+									data-original-title="<s:iterator value="#activityStreamLikeRecordsVar" var="activityStreamLikeRecordVar"><s:property value="#activityStreamLikeRecordVar.displayName" />&#32;
+										</s:iterator><s:text name="label.like.likesthis" />">
+									<s:property value="#activityStreamLikeRecordsVar.size()" />
+									&#32;
+									<s:text name="label.like.number" />
+								</span>
 							</s:if>
 							&#32;&middot;&#32;
-							<s:set value="%{#activityStreamLikeRecordsVar.containsUser(#currentUsernameVar)}" var="likeRecordsContainsUserVar" />
 							<s:if test="%{#likeRecordsContainsUserVar}" >
 								<a
 									href="<s:url namespace="/do/ActivityStream" action="unlikeActivity">
 										<s:param name="recordId" value="%{#actionLogRecordIdVar}" />
-										</s:url>"
-									data-toggle="tooltip"
-									data-placement="bottom"
-									data-original-title="<s:iterator value="#activityStreamLikeRecordsVar" var="activityStreamLikeRecordVar"><s:property value="#activityStreamLikeRecordVar.displayName" />&#32;<s:text name="label.like.likesthis" />
-										</s:iterator>"
-									>
+										</s:url>">
 										<s:text name="label.like.unlike" />
 								</a>
 							</s:if>
 							<s:else>
 								<a
 									href="<s:url namespace="/do/ActivityStream" action="likeActivity">
-										<s:param name="recordId" value="%{#actionLogRecordIdVar}" /></s:url>"
-									data-toggle="tooltip"
-									data-placement="bottom"
-									data-original-title="<s:iterator value="#activityStreamLikeRecordsVar" var="activityStreamLikeRecordVar"><s:property value="#activityStreamLikeRecordVar.displayName" />&#32;<s:text name="label.like.likesthis" />
-										</s:iterator>"
-									>
+										<s:param name="recordId" value="%{#actionLogRecordIdVar}" /></s:url>">
 										<s:text name="label.like.like" />
 								</a>
 							</s:else>

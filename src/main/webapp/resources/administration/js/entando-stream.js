@@ -95,10 +95,7 @@ jQuery(function(){ //dom is ready...
 					var newRepl  = $(AJAX_UPDATE_SELECTOR, newItem).get();
 					$.each(oldRepl, function(index, el) {
 						var el = $(el);
-						el.fadeOut(ANIMATION_DURATION, function(){
-							el.replaceWith(newRepl[index]);
-							el.fadeIn(ANIMATION_DURATION);
-						})
+						el.replaceWith(newRepl[index])
 					})
 					els[index]=oldItem;
 				}
