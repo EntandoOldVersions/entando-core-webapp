@@ -18,6 +18,12 @@
 <script>
 	jQuery(function(){
 		$('#activity-stream [data-toggle="tooltip"]').tooltip({trigger: 'hover'});
+		$('#activity-stream').delegate('.insert-comment textarea', 'keydown', function(ev) {
+			var textarea = $(this);
+			var rows = new Number(textarea.attr('rows')).toFixed(0);
+			var lines = textarea.val().replace('\r', '').split('\n').length+1;
+			textarea.attr('rows', lines);
+		})
 	})
 </script>
 <script src="<wp:resourceURL />administration/js/entando-stream.js"></script>

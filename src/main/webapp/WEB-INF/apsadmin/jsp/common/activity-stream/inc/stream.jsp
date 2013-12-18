@@ -175,7 +175,10 @@
 						</span>
 						<div class="media-body">
 							<form action="#">
-								<textarea class="col-xs-12 col-sm-12 col-md-12 col-lg-12" cols="30" rows="3" placeholder="insert comment..." name="comment"></textarea>
+								<textarea
+									role="textbox"
+									aria-multiline="true"
+									class="col-xs-12 col-sm-12 col-md-12 col-lg-12" cols="30" rows="2" placeholder="insert comment..." name="comment"></textarea>
 								<button name="" class="margin-small-top pull-right btn btn-sm btn-default"><span class="icon fa fa-comment"></span>&#32;Submit</button>
 							</form>
 						</div>
