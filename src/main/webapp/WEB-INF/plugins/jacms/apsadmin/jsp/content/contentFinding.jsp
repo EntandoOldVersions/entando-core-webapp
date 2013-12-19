@@ -14,8 +14,8 @@
 		<s:form action="%{'/' + #formAction}" cssClass="form-horizontal" role="search">
 
 			<p class="sr-only">
-				<input type="hidden" name="lastGroupBy" />
-				<input type="hidden" name="lastOrder" />
+				<wpsf:hidden name="lastGroupBy" />
+				<wpsf:hidden name="lastOrder" />
 			</p>
 
 			<div class="form-group">
@@ -123,7 +123,7 @@
 								<s:text name="label.category" />
 							</label>
 							<div class="col-sm-5">
-								<s:action name="showCategoryTreeOnContentFinding" namespace="/do/jacms/Content" executeResult="true"></s:action>
+								<s:action name="showCategoryTreeOnContentFinding" namespace="/do/jacms/Content" ignoreContextParams="true" executeResult="true"></s:action>
 							</div>
 						</div>
 						<div class="form-group">
@@ -305,7 +305,7 @@
 		</s:if>
 
 		<s:set var="contentIdsVar" value="contents" />
-
+		
 		<wpsa:subset source="#contentIdsVar" count="10" objectName="groupContent" advanced="true" offset="5">
 		<s:set var="group" value="#groupContent" />
 
@@ -324,8 +324,9 @@
 				<th>
 				<a href="<s:url action="changeOrder" anchor="content_list_intro" includeParams="all" >
 					<s:param name="lastGroupBy"><s:property value="lastGroupBy"/></s:param>
-					<s:param name="lastOrder"><s:property value="lastOrder" /></s:param>
+					<s:param name="lastOrder" ><s:property value="lastOrder" /></s:param>
 					<s:param name="groupBy">descr</s:param>
+					<s:param name="entandoaction:changeOrder">changeOrder</s:param>
 					</s:url>"><s:text name="label.description" /></a>
 				</th>
 			<s:if test="viewCode">
@@ -334,6 +335,7 @@
 					<s:param name="lastGroupBy"><s:property value="lastGroupBy"/></s:param>
 					<s:param name="lastOrder"><s:property value="lastOrder" /></s:param>
 					<s:param name="groupBy">code</s:param>
+					<s:param name="entandoaction:changeOrder">changeOrder</s:param>
 					</s:url>"><s:text name="label.code" /></a>
 				</th>
 			</s:if>
@@ -346,14 +348,16 @@
 					<s:param name="lastGroupBy"><s:property value="lastGroupBy"/></s:param>
 					<s:param name="lastOrder"><s:property value="lastOrder" /></s:param>
 					<s:param name="groupBy">created</s:param>
+					<s:param name="entandoaction:changeOrder">changeOrder</s:param>
 					</s:url>"><s:text name="label.creationDate" /></a>
 				</th>
 			</s:if>
 				<th class="text-center">
 				<a href="<s:url action="changeOrder" anchor="content_list_intro" includeParams="all" >
-					<s:param name="lastGroupBy"><s:property value="lastGroupBy"/></s:param>
+					   <s:param name="lastGroupBy"><s:property value="lastGroupBy"/></s:param>
 					<s:param name="lastOrder"><s:property value="lastOrder" /></s:param>
 					<s:param name="groupBy">lastModified</s:param>
+					<s:param name="entandoaction:changeOrder">changeOrder</s:param>
 					</s:url>"><s:text name="label.lastEdit" /></a>
 				</th>
 				<th class="text-center">
