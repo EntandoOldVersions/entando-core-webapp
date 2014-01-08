@@ -22,20 +22,33 @@
 			</ul>
 		</div>
 	</s:if>
+	<s:if test="hasFieldErrors()">
+		<div class="alert alert-danger alert-dismissable fade in">
+			<button class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
+			<h2 class="h4 margin-none"><s:text name="message.title.FieldErrors" /></h2>
+			<ul class="margin-base-top">
+				<s:iterator value="fieldErrors">
+						<s:iterator value="value">
+							<li><s:property escape="false" /></li>
+						</s:iterator>
+					</s:iterator>
+			</ul>
+		</div>
+	</s:if>
 	<div class="form-group">
 		<div class="input-group col-sm-12 col-md-12">
 			<span class="input-group-addon">
 				<span class="icon fa fa-file-text-o fa-lg" title="<s:text name="label.search.by"/>&#32;<s:text name="label.username"/>"></span>
 			</span>
 			<label for="search-username" class="sr-only"><s:text name="label.search.by"/>&#32;<s:text name="label.username"/></label>
-			<wpsf:textfield
-				name="text"
-				id="text"
-				cssClass="form-control input-lg"
+			<wpsf:textfield 
+				name="username" 
+				id="search-username" 
+				cssClass="form-control input-lg" 
 				title="%{getText('label.search.by')+' '+getText('label.username')}"
 				placeholder="%{getText('label.username')}" />
 			<div class="input-group-btn">
-				<wpsf:submit type="button" name="username" id="search-username" cssClass="btn btn-primary btn-lg" title="%{getText('label.search')}">
+				<wpsf:submit type="button" id="search-username" cssClass="btn btn-primary btn-lg" title="%{getText('label.search')}">
 					<span class="sr-only"><s:text name="label.search" /></span>
 					<span class="icon fa fa-search" title="<s:text name="label.search" />"></span>
 				</wpsf:submit>
