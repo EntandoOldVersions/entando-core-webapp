@@ -144,7 +144,7 @@
 										href="<s:url action="view" namespace="/do/userprofile"><s:param name="username" value="#activityStreamCommentVar.username"/></s:url>"
 										title="<s:text name="label.viewProfile" />:&#32;<s:property value="#activityStreamCommentVar.displayName" />">
 										<s:property value="#activityStreamCommentVar.displayName" /></a>
-									,&#32;<time datetime="<s:date name="#activityStreamCommentVar.commentDate" format="yyyy-MM-dd HH:mm" />" title="<s:date name="#activityStreamCommentVar.commentDate" format="yyyy-MM-dd HH:mm" />" class="text-info">
+									&#32;&middot;&#32;<time datetime="<s:date name="#activityStreamCommentVar.commentDate" format="yyyy-MM-dd HH:mm" />" title="<s:date name="#activityStreamCommentVar.commentDate" format="yyyy-MM-dd HH:mm" />" class="text-info">
 										<s:date name="%{#activityStreamCommentVar.commentDate}" nice="true" />
 									</time>
 									<s:if test="#activityStreamCommentVar.username == #attr.browserUsername || #attr.browserIsSuperUser">
