@@ -81,8 +81,8 @@
 							<s:property value="#linkTitleVar" />
 						</c:otherwise>
 					</c:choose>
-					<wpsa:activityStreamLikeRecords recordId="%{#actionLogRecordIdVar}" var="activityStreamLikeRecordsVar" />
 					<%-- like / dislike --%>
+					<wpsa:activityStreamLikeRecords recordId="%{#actionLogRecordIdVar}" var="activityStreamLikeRecordsVar" />
 						<s:set value="%{#activityStreamLikeRecordsVar.containsUser(#currentUsernameVar)}" var="likeRecordsContainsUserVar" />
 						<p class="margin-small-vertical">
 							<time datetime="<s:date name="#actionLogRecordVar.actionDate" format="yyyy-MM-dd HH:mm" />" title="<s:date name="#actionLogRecordVar.actionDate" format="yyyy-MM-dd HH:mm" />" class="text-info">
@@ -119,48 +119,47 @@
 						</p>
 				</div>
 			</div>
+							
 			<%-- comments --%>
+			<wpsa:activityStreamCommentRecords recordId="%{#actionLogRecordIdVar}" var="activityStreamCommentListVar" />
+				<s:iterator value="#activityStreamCommentListVar" var="activityStreamCommentVar">
+				
+				
+					
+					
 				<div class="padding-base-left" style="margin-left: 20px" data-entando="ajax-update">
 					<h4 class="sr-only"><s:text name="activity.stream.title.comments" /></h4>
-					<c:forEach begin="0" end="4" varStatus="commentStatus">
-						<jsp:useBean id="testDate" class="java.util.Date" />
-						<s:set var="comment" value="#{
-						 'username': 'username-'+#attr.commentStatus.count,
-						 'displayName': 'display name '+#attr.commentStatus.count,
-						 'text': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-						 'date': #attr.testDate
-						}" />
-						<div class="media" data-entando-comment="<%= java.lang.Math.round(java.lang.Math.random() * 9999999) %><%= java.lang.Math.round(java.lang.Math.random() * 7) %><%= java.lang.Math.round(java.lang.Math.random() * 7) %><%= java.lang.Math.round(java.lang.Math.random() * 7) %><%= java.lang.Math.round(java.lang.Math.random() * 7) %><%= java.lang.Math.round(java.lang.Math.random() * 7) %><%= java.lang.Math.round(java.lang.Math.random() * 7) %><%= java.lang.Math.round(java.lang.Math.random() * 7) %><%= java.lang.Math.round(java.lang.Math.random() * 7) %><%= java.lang.Math.round(java.lang.Math.random() * 7) %>">
+						<div class="media" data-entando-comment="%{#activityStreamCommentVar.commentDate}">
 							<a
 								class="pull-left"
-								href="<s:url action="view" namespace="/do/userprofile"><s:param name="username" value="#comment.username"/></s:url>"
-								title="<s:text name="label.viewProfile" />:&#32;<s:property value="#comment.displayName" />"
+								href="<s:url action="view" namespace="/do/userprofile"><s:param name="username" value="#activityStreamCommentVar.username"/></s:url>"
+								title="<s:text name="label.viewProfile" />:&#32;<s:property value="#activityStreamCommentVar.displayName" />"
 								>
 								<img
 									class="img-circle media-object stream-img-small"
-									src="/portalexample/do/user/avatar/avatarStream.action?gravatarSize=56&username=<s:property value="#comment.username" />" />
+									src="/portalexample/do/user/avatar/avatarStream.action?gravatarSize=56&username=<s:property value="#activityStreamCommentVar.username" />" />
 							</a>
 							<div class="media-body">
 								<h5 class="media-heading">
 									<a
-										href="<s:url action="view" namespace="/do/userprofile"><s:param name="username" value="#comment.username"/></s:url>"
-										title="<s:text name="label.viewProfile" />:&#32;<s:property value="#comment.displayName" />">
-										<s:property value="#comment.displayName" /></a>
-									,&#32;<time datetime="<s:date name="#comment.date" format="yyyy-MM-dd HH:mm" />" title="<s:date name="#comment.date" format="yyyy-MM-dd HH:mm" />" class="text-info">
-										<s:date name="%{#comment.date}" nice="true" />
+										href="<s:url action="view" namespace="/do/userprofile"><s:param name="username" value="#activityStreamCommentVar.username"/></s:url>"
+										title="<s:text name="label.viewProfile" />:&#32;<s:property value="#activityStreamCommentVar.displayName" />">
+										<s:property value="#activityStreamCommentVar.displayName" /></a>
+									,&#32;<time datetime="<s:date name="#activityStreamCommentVar.commentDate" format="yyyy-MM-dd HH:mm" />" title="<s:date name="#activityStreamCommentVar.commentDate" format="yyyy-MM-dd HH:mm" />" class="text-info">
+										<s:date name="%{#activityStreamCommentVar.commentDate}" nice="true" />
 									</time>
-									<s:if test="#comment.username == #attr.browserUsername || #attr.browserIsSuperUser">
+									<s:if test="#activityStreamCommentVar.username == #attr.browserUsername || #attr.browserIsSuperUser">
 										<a href="#remove" data-entando="remove-comment-ajax" class="pull-right">
 											<span class="icon fa fa-icon fa-times-circle-o"></span>
 											&nbsp;<s:text name="activity.stream.button.delete" />
 										</a>
 									</s:if>
 								</h5>
-								<s:property value="#comment.text" />
+								<s:property value="#activityStreamCommentVar.commentText" />
 							</div>
 						</div>
-					</c:forEach>
 				</div>
+				</s:iterator>
 				<div class="padding-base-left margin-small-top" style="margin-left: 20px">
 					<div class="insert-comment media <s:if test="#ajax"> hide </s:if>">
 						<span
@@ -171,12 +170,17 @@
 								src="/portalexample/do/user/avatar/avatarStream.action?gravatarSize=56&username=<s:property value="#currentUsernameVar" />" />
 						</span>
 						<div class="media-body">
-							<form action="#" class="form-horizontal">
+							<form id="addComment" name="addComment" action="#" class="form-horizontal">
+								<wpsf:hidden name="streamRecordId" value="%{#actionLogRecordIdVar}" />
 								<textarea
 									role="textbox"
 									aria-multiline="true"
-									class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-control" cols="30" rows="1" placeholder="insert comment..." name="comment"></textarea>
-								<button class="margin-small-top pull-right btn btn-sm btn-default"><span class="icon fa fa-comment"></span>&#32;<s:text name="activity.stream.button.submit.comment" /></button>
+									class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-control" cols="30" rows="1" placeholder="insert comment..." name="commentText"></textarea>
+								<wpsf:submit type="button" 
+											 value="%{getText('activity.stream.button.submit.comment')}"
+											 cssClass="margin-small-top pull-right btn btn-sm btn-default">
+									<span class="icon fa fa-comment"></span>&#32;<s:text name="activity.stream.button.submit.comment" />
+								</wpsf:submit>
 							</form>
 						</div>
 					</div>
