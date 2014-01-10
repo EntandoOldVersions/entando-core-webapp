@@ -177,6 +177,7 @@ jQuery(function(){ //dom is ready...
 
 //comment ajax
 	STREAM_ROOT.delegate('.insert-comment form', 'submit', function(ev){
+		debugger;
 		ev.preventDefault();
 		var textarea = $('textarea', ev.target);
 		if ($.trim(textarea.val()).length >0) {
@@ -190,8 +191,8 @@ jQuery(function(){ //dom is ready...
 					textarea.val("");
 					restoreSizeCommentTextarea(textarea);
 					askForUpdate();
-					startRoutine();
-				}
+				},
+				complete: startRoutine
 			});
 		}
 	});
