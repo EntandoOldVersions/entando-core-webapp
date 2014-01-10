@@ -12,8 +12,8 @@
 	Entando.backoffice.stream.list.loadMoreUrl = '<s:url action="viewMore" namespace="/do/ActivityStream" />';
 
 	Entando.backoffice.stream.comments = {};
-	Entando.backoffice.stream.comments.addUrl = '/portalexample/stream-add-comment-ajax.jsp';;
-	Entando.backoffice.stream.comments.deleteUrl = '/portalexample/stream-add-comment-ajax.jsp';;
+	Entando.backoffice.stream.comments.addUrl = '<s:url action="addComment" namespace="/do/ActivityStream" />';
+	Entando.backoffice.stream.comments.deleteUrl = '/portalexample/stream-add-comment-ajax.jsp';
 </script>
 <script>
 	jQuery(function(){
