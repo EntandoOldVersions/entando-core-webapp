@@ -6,7 +6,7 @@ jQuery(function(){ //dom is ready...
 	var CLOCK = 4 * 1000;
 	var ANIMATION_DURATION = 600;
 	var TIMESTAMP_ATTR = 'data-entando-timestamp';
-	var TIMESTAMP_COMMENT_ATTR = 'data-entando-timestamp-comment';
+	var TIMESTAMP_LAST_UPDATE_ATTR = 'data-entando-updatedate';
 	var AJAX_UPDATE_SELECTOR = '[data-entando="ajax-update"]';
 	var STREAM_ROOT = $('#activity-stream');
 	var STREAM_UPDATE_EL = $('#stream-updates-alert');
@@ -27,13 +27,13 @@ jQuery(function(){ //dom is ready...
 		return ts;
 	};
 	var getCommentTsFromStreamEl = function(streamEl) {
-		var attrTm = $(streamEl).attr(TIMESTAMP_COMMENT_ATTR).split('|');
+		var attrTm = $(streamEl).attr(TIMESTAMP_LAST_UPDATE_ATTR).split('|');
 		var ts = new Date(attrTm[0]);
 		ts.setMilliseconds(attrTm[1]);
 		return ts;
 	};
 	var getTsStringFromDate = function(date) {
-		//2013-12-13 11:46:59|0207
+		//2013-12-13 11:46:59|207
 		var date = new Date(date);
 		return date.getFullYear()
 			+'-'+ (date.getMonth()+1<10 ? ('0'+(date.getMonth()+1)) : date.getMonth()+1)
@@ -72,7 +72,7 @@ jQuery(function(){ //dom is ready...
 	};
 //stream
 	var LATEST_STREAM_TS = getTsFromStreamEl(STREAM_ROOT.children(STREAM_ITEM_EL_SELECTOR).first());
-	var LATEST_COMMENT_TS = getCommentTsFromStreamEl(STREAM_ROOT.children(STREAM_ITEM_EL_SELECTOR).first());
+	var LAST_UPDATE_TS = getCommentTsFromStreamEl(STREAM_ROOT.children(STREAM_ITEM_EL_SELECTOR).first());
 	var updateStream = function(elementsArray) {
 		var els = elementsArray;
 		if (els!==undefined) {
@@ -82,8 +82,8 @@ jQuery(function(){ //dom is ready...
 				item = $(item);
 				if (index==1) {
 					var ts = getTsFromStreamEl(item);
-					if ( ts.getTime() > LATEST_COMMENT_TS.getTime() ) {
-						LATEST_COMMENT_TS = ts;
+					if ( ts.getTime() > LAST_UPDATE_TS.getTime() ) {
+						LAST_UPDATE_TS = ts;
 					}
 				}
 				var check = checkIfNewOrUpdateStreamItem(item);
@@ -152,7 +152,7 @@ jQuery(function(){ //dom is ready...
 				data: data || {
 					ajax: true,
 					timestamp: getTsStringFromDate(LATEST_STREAM_TS),
-					lastCommentTimestamp: getTsStringFromDate(LATEST_COMMENT_TS)
+					lastCommentTimestamp: getTsStringFromDate(LAST_UPDATE_TS)
 				},
 				success: function(data, textStatus, jqXHR) {
 					var streamElements = TMP_CONTAINER.html(data).children(STREAM_ITEM_EL_SELECTOR);
@@ -177,7 +177,6 @@ jQuery(function(){ //dom is ready...
 
 //comment ajax
 	STREAM_ROOT.delegate('.insert-comment form', 'submit', function(ev){
-		debugger;
 		ev.preventDefault();
 		var textarea = $('textarea', ev.target);
 		if ($.trim(textarea.val()).length >0) {
@@ -220,13 +219,14 @@ jQuery(function(){ //dom is ready...
 		var lines = textarea.val().split('\n').length;
 		textarea.attr('rows', lines > 10 ? 10 : lines);
 	};
-	$('#activity-stream').delegate('.insert-comment textarea', 'keydown', function(ev) {
-		var textarea = $(this);
-		var lines = textarea.val().split('\n').length+1;
-		textarea.attr('rows', lines > 10 ? 10 : lines);
-	});
-	$('#activity-stream').delegate('.insert-comment textarea', 'blur', function(ev) {
+	$('#activity-stream').delegate('.insert-comment textarea', 'keydown blur', function(ev) {
 		restoreSizeCommentTextarea(this);
+	});
+	$('#activity-stream').delegate('.insert-comment textarea', 'cut paste', function(ev) {
+		var el = this;
+		setInterval(function(){
+			restoreSizeCommentTextarea(el);
+		},200);
 	});
 
 //start stream routine

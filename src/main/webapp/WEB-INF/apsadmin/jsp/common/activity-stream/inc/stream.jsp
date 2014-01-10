@@ -5,8 +5,9 @@
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
-<% pageContext.setAttribute("carriageReturn", "\r"); %> 
-<% pageContext.setAttribute("newLine", "\n"); %> 
+<% pageContext.setAttribute("carriageReturn", "\r"); %>
+<% pageContext.setAttribute("newLine", "\n"); %>
+<% pageContext.setAttribute("tabChar", "\t"); %>
 <%-- reading the list from mainBody.jsp with: <wpsa:activityStream var="activityStreamListVar" /> --%>
 <c:set var="ajax" value="${param.ajax eq 'true'}" />
 <s:set var="ajax" value="#attr.ajax" />
@@ -19,6 +20,7 @@
 <wp:userProfileAttribute username="${browserUsername}" attributeRoleName="userprofile:fullname" var="browserUserFullnameVar" />
 <wp:userProfileAttribute username="${browserUsername}" attributeRoleName="userprofile:email" var="browserUserEmailAttributeVar" />
 <wp:ifauthorized permission="superuser" var="browserIsSuperUser" />
+<s:date name="%{getLastUpdate()}" format="yyyy-MM-dd HH:mm:ss|SSS" var="lastUpdateDateVar" />
 <s:iterator value="#activityStreamListVar" var="actionLogRecordIdVar" status="currentEvent">
 	<wpsa:actionLogRecord key="%{#actionLogRecordIdVar}" var="actionLogRecordVar" />
 	<s:set var="usernameVar" value="#actionLogRecordVar.username" scope="page" />
@@ -29,7 +31,7 @@
 	<li
 		class="media row padding-large-bottom"
 		data-entando-timestamp="<s:date name="#actionLogRecordVar.actionDate" format="yyyy-MM-dd HH:mm:ss|SSS" />"
-		data-entando-timestamp-comment="<s:date name="#actionLogRecordVar.actionDate" format="yyyy-MM-dd HH:mm:ss|SSS" />"
+		data-entando-updatedate="<s:property value="#lastUpdateDateVar" />"
 	>
 		<div class="col-xs-12 col-sm-2 col-lg-1 margin-small-bottom activity-stream-picture">
 			<img alt=" " src="<s:url action="avatarStream" namespace="/do/user/avatar">
@@ -155,8 +157,8 @@
 									</s:if>
 								</h5>
 								<c:set var="STRING_TO_ESCAPE"><s:property value="#activityStreamCommentVar.commentText" /></c:set>
-								<c:set var="ESCAPED_STRING" value="${fn:replace(fn:replace(STRING_TO_ESCAPE,carriageReturn,' '),newLine,'<br />')}" />
-								<c:set var="ESCAPED_STRING" value="${fn:replace(ESCAPED_STRING,'<br /><br />','<br />')}" />
+								<c:set var="ESCAPED_STRING" value="${fn:replace(fn:replace(fn:replace(STRING_TO_ESCAPE,carriageReturn,' '), newLine, '<br />'), tabChar, '&emsp;')}" />
+								<c:set var="ESCAPED_STRING" value="${fn:replace(ESCAPED_STRING,'<br /><br /><br />','<br />')}" />
 								<c:out value="${ESCAPED_STRING}" escapeXml="false" />
 							</div>
 						</div>
