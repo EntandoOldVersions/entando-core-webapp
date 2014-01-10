@@ -225,7 +225,7 @@ jQuery(function(){ //dom is ready...
 		textarea.attr('rows', lines > 10 ? 10 : lines);
 	});
 	$('#activity-stream').delegate('.insert-comment textarea', 'blur', function(ev) {
-		restoreCommentTextarea(this);
+		restoreSizeCommentTextarea(this);
 	});
 
 //start stream routine
