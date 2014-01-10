@@ -128,7 +128,7 @@
 				<s:iterator value="#activityStreamCommentListVar" var="activityStreamCommentVar">
 				<div class="padding-base-left" style="margin-left: 20px" data-entando="ajax-update">
 					<h4 class="sr-only"><s:text name="activity.stream.title.comments" /></h4>
-						<div class="media" data-entando-comment="%{#activityStreamCommentVar.commentDate}">
+						<div class="media" data-entando-comment="<s:date name="%{#activityStreamCommentVar.commentDate}" format="yyyy-MM-dd HH:mm:ss|SSS" />">
 							<a
 								class="pull-left"
 								href="<s:url action="view" namespace="/do/userprofile"><s:param name="username" value="#activityStreamCommentVar.username"/></s:url>"
