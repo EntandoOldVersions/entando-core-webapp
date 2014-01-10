@@ -1,10 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
+<% pageContext.setAttribute("carriageReturn", "\r"); %> 
+<% pageContext.setAttribute("newLine", "\n"); %> 
 <%-- reading the list from mainBody.jsp with: <wpsa:activityStream var="activityStreamListVar" /> --%>
-<s:set var="ajax" value="%{#parameters.ajax}" /><%-- fill this with something... --%>
 <c:set var="ajax" value="${param.ajax eq 'true'}" />
 <s:set var="ajax" value="#attr.ajax" />
 <s:if test="#ajax"><%-- ajax eh? so set the #activityStreamListVar variable accordingly --%>
@@ -119,14 +122,10 @@
 						</p>
 				</div>
 			</div>
-							
+
 			<%-- comments --%>
 			<wpsa:activityStreamCommentRecords recordId="%{#actionLogRecordIdVar}" var="activityStreamCommentListVar" />
 				<s:iterator value="#activityStreamCommentListVar" var="activityStreamCommentVar">
-				
-				
-					
-					
 				<div class="padding-base-left" style="margin-left: 20px" data-entando="ajax-update">
 					<h4 class="sr-only"><s:text name="activity.stream.title.comments" /></h4>
 						<div class="media" data-entando-comment="%{#activityStreamCommentVar.commentDate}">
@@ -155,7 +154,10 @@
 										</a>
 									</s:if>
 								</h5>
-								<s:property value="#activityStreamCommentVar.commentText" />
+								<c:set var="STRING_TO_ESCAPE"><s:property value="#activityStreamCommentVar.commentText" /></c:set>
+								<c:set var="ESCAPED_STRING" value="${fn:replace(fn:replace(STRING_TO_ESCAPE,carriageReturn,' '),newLine,'<br />')}" />
+								<c:set var="ESCAPED_STRING" value="${fn:replace(ESCAPED_STRING,'<br /><br />','<br />')}" />
+								<c:out value="${ESCAPED_STRING}" escapeXml="false" />
 							</div>
 						</div>
 				</div>
@@ -176,7 +178,7 @@
 									role="textbox"
 									aria-multiline="true"
 									class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-control" cols="30" rows="1" placeholder="insert comment..." name="commentText"></textarea>
-								<wpsf:submit type="button" 
+								<wpsf:submit type="button"
 											 value="%{getText('activity.stream.button.submit.comment')}"
 											 cssClass="margin-small-top pull-right btn btn-sm btn-default">
 									<span class="icon fa fa-comment"></span>&#32;<s:text name="activity.stream.button.submit.comment" />
