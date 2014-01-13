@@ -197,16 +197,16 @@ jQuery(function(){ //dom is ready...
 	STREAM_ROOT.delegate('[data-entando="remove-comment-ajax"]', 'click touchstart', function(ev){
 		ev.preventDefault();
 		var button = $(ev.target);
-		var commentToDeleteEl = button.parents('[data-entando-comment]').first();
+		var commentToDeleteEl = button.parents('[data-entando-commentid]').first();
 		var streamId = commentToDeleteEl.parents(STREAM_ITEM_EL_SELECTOR+'['+ID_ATTR+']').attr(ID_ATTR);
-		var commentToDeleteId = commentToDeleteEl.attr('data-entando-comment');
+		var commentToDeleteId = commentToDeleteEl.attr('data-entando-commentid');
 		$.ajax({
 			url: COMMENT_DELETE_URL,
 			method: 'post',
 			dataType: 'json',
 			data: {
-				'commentId': commentToDeleteId,
-				'streamId': streamId
+				'streamId': streamId,
+				'commentId': commentToDeleteId
 			},
 			success: function(data, textStatus, jqXHR) {
 				$('[data-entando-comment="'+data.commentId+'"]').fadeOut(ANIMATION_DURATION, function(){
