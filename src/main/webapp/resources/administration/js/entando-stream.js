@@ -82,39 +82,41 @@ jQuery(function(){ //dom is ready...
 		var els = elementsArray;
 		if (els!==undefined) {
 			els = els.get();
-			preUpdate(els);
-			$.each(els.reverse(), function(index, item){
-				item = $(item);
-				if (index==0) {
-					var ts = getLastUpdateTs(item);
-					if ( ts.getTime() > LAST_UPDATE_TS.getTime() ) {
-						LAST_UPDATE_TS = ts;
+			if (els.length>0) {
+				preUpdate(els);
+				$.each(els.reverse(), function(index, item){
+					item = $(item);
+					if (index==0) {
+						var ts = getLastUpdateTs(item);
+						if ( ts.getTime() > LAST_UPDATE_TS.getTime() ) {
+							LAST_UPDATE_TS = ts;
+						}
 					}
-				}
-				var check = checkIfNewOrUpdateStreamItem(item);
-				if (check.update) { // update item
-					var ts = item.attr(TIMESTAMP_ATTR);
-					var oldItem = check.updateEl;
-					var newItem = item;
-					var oldRepl = $(AJAX_UPDATE_SELECTOR, oldItem).get();
-					var newRepl  = $(AJAX_UPDATE_SELECTOR, newItem).get();
-					$.each(oldRepl, function(index, el) {
-						var el = $(el);
-						el.replaceWith(newRepl[index])
-					})
-					els[index]=oldItem;
-				}
-				else { //new item
-					var ts = getTsFromStreamEl(item);
-					if ( ts.getTime() > LATEST_STREAM_TS.getTime() ) {
-						LATEST_STREAM_TS = ts;
+					var check = checkIfNewOrUpdateStreamItem(item);
+					if (check.update) { // update item
+						var ts = item.attr(TIMESTAMP_ATTR);
+						var oldItem = check.updateEl;
+						var newItem = item;
+						var oldRepl = $(AJAX_UPDATE_SELECTOR, oldItem).get();
+						var newRepl  = $(AJAX_UPDATE_SELECTOR, newItem).get();
+						$.each(oldRepl, function(index, el) {
+							var el = $(el);
+							el.replaceWith(newRepl[index])
+						})
+						els[index]=oldItem;
 					}
-					item.addClass('hide hidden');
-					$('.insert-comment.hide.hidden', item).removeClass('hide hidden');
-					item.appendTo(STREAM_UPDATE_EL);
-				}
-			});
-			postUpdate(els);
+					else { //new item
+						var ts = getTsFromStreamEl(item);
+						if ( ts.getTime() > LATEST_STREAM_TS.getTime() ) {
+							LATEST_STREAM_TS = ts;
+						}
+						item.addClass('hide hidden');
+						$('.insert-comment.hide.hidden', item).removeClass('hide hidden');
+						item.appendTo(STREAM_UPDATE_EL);
+					}
+				});
+				postUpdate(els);
+			}
 		}
 	};
 	var preUpdate = function(elementsArray) {
