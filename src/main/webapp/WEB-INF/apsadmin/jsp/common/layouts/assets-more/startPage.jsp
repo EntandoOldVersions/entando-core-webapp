@@ -13,7 +13,7 @@
 
 	Entando.backoffice.stream.comments = {};
 	Entando.backoffice.stream.comments.addUrl = '<s:url action="addComment" namespace="/do/ActivityStream" />';
-	Entando.backoffice.stream.comments.deleteUrl = '/portalexample/stream-add-comment-ajax.jsp';
+	Entando.backoffice.stream.comments.deleteUrl = '<s:url action="removeComment" namespace="/do/ActivityStream" />';
 </script>
 <script>
 	jQuery(function(){
