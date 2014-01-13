@@ -198,13 +198,15 @@ jQuery(function(){ //dom is ready...
 		ev.preventDefault();
 		var button = $(ev.target);
 		var commentToDeleteEl = button.parents('[data-entando-comment]').first();
+		var streamId = commentToDeleteEl.parents(STREAM_ITEM_EL_SELECTOR+'['+ID_ATTR+']').attr(ID_ATTR);
 		var commentToDeleteId = commentToDeleteEl.attr('data-entando-comment');
 		$.ajax({
 			url: COMMENT_DELETE_URL,
 			method: 'post',
 			dataType: 'json',
 			data: {
-				'commentId': commentToDeleteId
+				'commentId': commentToDeleteId,
+				'streamId': streamId
 			},
 			success: function(data, textStatus, jqXHR) {
 				$('[data-entando-comment="'+data.commentId+'"]').fadeOut(ANIMATION_DURATION, function(){
