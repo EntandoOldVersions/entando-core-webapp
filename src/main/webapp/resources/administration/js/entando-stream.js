@@ -24,17 +24,22 @@ jQuery(function(){ //dom is ready...
 		var attrTm = $(streamEl).attr(TIMESTAMP_ATTR).split('|');
 		var ts = new Date(attrTm[0]);
 		ts.setMilliseconds(attrTm[1]);
+		if (!ts.getTime()>0) return new Date('1970-01-01');
 		return ts;
 	};
-	var getCommentTsFromStreamEl = function(streamEl) {
+
+	var getLastUpdateTs = function(streamEl) {
 		var attrTm = $(streamEl).attr(TIMESTAMP_LAST_UPDATE_ATTR).split('|');
 		var ts = new Date(attrTm[0]);
 		ts.setMilliseconds(attrTm[1]);
+		if (!ts.getTime()>0) return new Date('1970-01-01');
 		return ts;
 	};
+
 	var getTsStringFromDate = function(date) {
 		//2013-12-13 11:46:59|207
 		var date = new Date(date);
+		if (!date.getTime()>0) return;
 		return date.getFullYear()
 			+'-'+ (date.getMonth()+1<10 ? ('0'+(date.getMonth()+1)) : date.getMonth()+1)
 			+'-'+ (date.getDate()<10? ('0'+date.getDate()) : date.getDate())
@@ -72,7 +77,7 @@ jQuery(function(){ //dom is ready...
 	};
 //stream
 	var LATEST_STREAM_TS = getTsFromStreamEl(STREAM_ROOT.children(STREAM_ITEM_EL_SELECTOR).first());
-	var LAST_UPDATE_TS = getCommentTsFromStreamEl(STREAM_ROOT.children(STREAM_ITEM_EL_SELECTOR).first());
+	var LAST_UPDATE_TS = getLastUpdateTs(STREAM_ROOT.children(STREAM_ITEM_EL_SELECTOR).first());
 	var updateStream = function(elementsArray) {
 		var els = elementsArray;
 		if (els!==undefined) {
@@ -80,8 +85,8 @@ jQuery(function(){ //dom is ready...
 			preUpdate(els);
 			$.each(els.reverse(), function(index, item){
 				item = $(item);
-				if (index==1) {
-					var ts = getTsFromStreamEl(item);
+				if (index==0) {
+					var ts = getLastUpdateTs(item);
 					if ( ts.getTime() > LAST_UPDATE_TS.getTime() ) {
 						LAST_UPDATE_TS = ts;
 					}
@@ -104,8 +109,8 @@ jQuery(function(){ //dom is ready...
 					if ( ts.getTime() > LATEST_STREAM_TS.getTime() ) {
 						LATEST_STREAM_TS = ts;
 					}
-					item.addClass('hide');
-					$('.insert-comment.hide', item).removeClass('hide');
+					item.addClass('hide hidden');
+					$('.insert-comment.hide.hidden', item).removeClass('hide hidden');
 					item.appendTo(STREAM_UPDATE_EL);
 				}
 			});
@@ -122,11 +127,11 @@ jQuery(function(){ //dom is ready...
 		var numberEl = $('.n', STREAM_UPDATE_EL);
 		numberEl.text(news + newsReadyToGo);
 		if (news + newsReadyToGo) {
-			STREAM_UPDATE_EL.removeClass('hide');
+			STREAM_UPDATE_EL.removeClass('hide hidden');
 			setWindowTitle(news + newsReadyToGo);
 		}
 		else {
-			STREAM_UPDATE_EL.addClass('hide');
+			STREAM_UPDATE_EL.addClass('hide hidden');
 			setWindowTitle();
 		}
 	};
@@ -138,10 +143,10 @@ jQuery(function(){ //dom is ready...
 	var displayUpdates = function(elementsArray) {
 		$.each(elementsArray, function(index, item){
 			item = $(item);
-			item.removeClass('hide');
+			item.removeClass('hide hidden');
 			item.prependTo(STREAM_ROOT);
 		})
-		STREAM_UPDATE_EL.addClass('hide');
+		STREAM_UPDATE_EL.addClass('hide hidden');
 	};
 	var ajaxUpdateStreamRequest = function(data) {
 		return $.ajax({
@@ -151,8 +156,7 @@ jQuery(function(){ //dom is ready...
 				url: LIST_UPDATE_URL,
 				data: data || {
 					ajax: true,
-					timestamp: getTsStringFromDate(LATEST_STREAM_TS),
-					lastCommentTimestamp: getTsStringFromDate(LAST_UPDATE_TS)
+					timestamp: getTsStringFromDate(LATEST_STREAM_TS)
 				},
 				success: function(data, textStatus, jqXHR) {
 					var streamElements = TMP_CONTAINER.html(data).children(STREAM_ITEM_EL_SELECTOR);
@@ -236,8 +240,8 @@ jQuery(function(){ //dom is ready...
 	var updateMoreStream = function(elementsArray) {
 		$.each(elementsArray, function(index, item) {
 			var item = $(item);
-			item.removeClass('hide');
-			$('.insert-comment.hide', item).removeClass('hide');
+			item.removeClass('hide hidden');
+			$('.insert-comment.hide.hidden', item).removeClass('hide hidden');
 			item.appendTo(STREAM_ROOT);
 		});
 	};
