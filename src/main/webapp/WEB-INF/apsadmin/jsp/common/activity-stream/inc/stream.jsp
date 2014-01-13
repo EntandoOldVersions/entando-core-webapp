@@ -31,9 +31,12 @@
 	<s:set var="emailAttributeVar" value="#attr.emailAttributeVar" />
 	<li
 		class="media row padding-large-bottom"
-		data-entando-timestamp="<s:date name="#actionLogRecordVar.actionDate" format="yyyy-MM-dd HH:mm:ss|SSS" />"
+		data-entando-id="<s:property value="#actionLogRecordVar.id" />"
+		data-entando-creationdate="<s:date name="#actionLogRecordVar.actionDate" format="yyyy-MM-dd HH:mm:ss|SSS" />"
 		data-entando-updatedate="<s:property value="#lastUpdateDateVar" />"
 	>
+
+
 		<div class="col-xs-12 col-sm-2 col-lg-1 margin-small-bottom activity-stream-picture">
 			<img alt=" " src="<s:url action="avatarStream" namespace="/do/user/avatar">
 							<s:param name="gravatarSize">56</s:param>

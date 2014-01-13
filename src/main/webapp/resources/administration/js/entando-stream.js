@@ -5,8 +5,9 @@ jQuery(function(){ //dom is ready...
 	var routineInterval = null;
 	var CLOCK = 4 * 1000;
 	var ANIMATION_DURATION = 600;
-	var TIMESTAMP_ATTR = 'data-entando-timestamp';
+	var TIMESTAMP_ATTR = 'data-entando-creationdate';
 	var TIMESTAMP_LAST_UPDATE_ATTR = 'data-entando-updatedate';
+	var ID_ATTR = 'data-entando-id';
 	var AJAX_UPDATE_SELECTOR = '[data-entando="ajax-update"]';
 	var STREAM_ROOT = $('#activity-stream');
 	var STREAM_UPDATE_EL = $('#stream-updates-alert');
@@ -61,8 +62,9 @@ jQuery(function(){ //dom is ready...
 		}
 	};
 	var checkIfNewOrUpdateStreamItem = function(stream) {
-		var ts = $(stream).attr(TIMESTAMP_ATTR);
-		var findstring = STREAM_ITEM_EL_SELECTOR+'['+TIMESTAMP_ATTR+'="'+ts+'"]';
+		var id = $(stream).attr(ID_ATTR);
+		var findstring = STREAM_ITEM_EL_SELECTOR+'['+ID_ATTR+'="'+id+'"]';
+		console.log('findstring', findstring);
 		var found = STREAM_ROOT.children(findstring);
 		var el = undefined;
 		if (found.length>0){
@@ -70,13 +72,12 @@ jQuery(function(){ //dom is ready...
 		}
 		found=found.length>0;
 		return {
-				update: (found ? true : false),
-				newone: (!found ? true : false),
-				updateEl: el
-			};
+			update: (found ? true : false),
+			newone: (!found ? true : false),
+			updateEl: el
+		};
 	};
 //stream
-	var LATEST_STREAM_TS = getTsFromStreamEl(STREAM_ROOT.children(STREAM_ITEM_EL_SELECTOR).first());
 	var LAST_UPDATE_TS = getLastUpdateTs(STREAM_ROOT.children(STREAM_ITEM_EL_SELECTOR).first());
 	var updateStream = function(elementsArray) {
 		var els = elementsArray;
@@ -94,7 +95,6 @@ jQuery(function(){ //dom is ready...
 					}
 					var check = checkIfNewOrUpdateStreamItem(item);
 					if (check.update) { // update item
-						var ts = item.attr(TIMESTAMP_ATTR);
 						var oldItem = check.updateEl;
 						var newItem = item;
 						var oldRepl = $(AJAX_UPDATE_SELECTOR, oldItem).get();
@@ -106,10 +106,6 @@ jQuery(function(){ //dom is ready...
 						els[index]=oldItem;
 					}
 					else { //new item
-						var ts = getTsFromStreamEl(item);
-						if ( ts.getTime() > LATEST_STREAM_TS.getTime() ) {
-							LATEST_STREAM_TS = ts;
-						}
 						item.addClass('hide hidden');
 						$('.insert-comment.hide.hidden', item).removeClass('hide hidden');
 						item.appendTo(STREAM_UPDATE_EL);
@@ -267,7 +263,7 @@ jQuery(function(){ //dom is ready...
 			},
 			beforeSend: function(){ loadMoreLoadingState(true) },
 			success: function(data, textStatus, jqXHR) {
-				var streamElements = TMP_CONTAINER.html(data).children(STREAM_ITEM_EL_SELECTOR);
+				var streamElements = $('<ul class="ajax tmp"></ul>').html(data).children(STREAM_ITEM_EL_SELECTOR);
 				updateMoreStream(streamElements);
 				postUpdate(streamElements);
 				loadMoreLoadingState();
