@@ -156,7 +156,7 @@ jQuery(function(){ //dom is ready...
 				url: LIST_UPDATE_URL,
 				data: data || {
 					ajax: true,
-					timestamp: getTsStringFromDate(LATEST_STREAM_TS)
+					timestamp: getTsStringFromDate(LAST_UPDATE_TS)
 				},
 				success: function(data, textStatus, jqXHR) {
 					var streamElements = TMP_CONTAINER.html(data).children(STREAM_ITEM_EL_SELECTOR);
