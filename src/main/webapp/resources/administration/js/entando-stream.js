@@ -47,11 +47,9 @@ jQuery(function(){ //dom is ready...
 			+' '+ (date.getHours()<10? ('0'+date.getHours()) : date.getHours())
 			+':'+ (date.getMinutes()<10? ('0'+date.getMinutes()) : date.getMinutes())
 			+':'+ (date.getSeconds()<10? ('0'+date.getSeconds()) : date.getSeconds())
-			+'|'+ (
-				(0<=date.getMilliseconds()&&date.getMilliseconds()<10) ? ('00'+date.getMilliseconds()) :
+			+'|'+ ((0<=date.getMilliseconds()&&date.getMilliseconds()<10) ? ('00'+date.getMilliseconds()) :
 						(10<=date.getMilliseconds()&&date.getMilliseconds()<100) ? ('0'+date.getMilliseconds()) :
-								date.getMilliseconds()
-				)
+								date.getMilliseconds())
 	};
 	var setWindowTitle = function(title){
 		if (title!==undefined) {
@@ -64,7 +62,6 @@ jQuery(function(){ //dom is ready...
 	var checkIfNewOrUpdateStreamItem = function(stream) {
 		var id = $(stream).attr(ID_ATTR);
 		var findstring = STREAM_ITEM_EL_SELECTOR+'['+ID_ATTR+'="'+id+'"]';
-		console.log('findstring', findstring);
 		var found = STREAM_ROOT.children(findstring);
 		var el = undefined;
 		if (found.length>0){
