@@ -20,7 +20,8 @@
 <wp:userProfileAttribute username="${browserUsername}" attributeRoleName="userprofile:fullname" var="browserUserFullnameVar" />
 <wp:userProfileAttribute username="${browserUsername}" attributeRoleName="userprofile:email" var="browserUserEmailAttributeVar" />
 <wp:ifauthorized permission="superuser" var="browserIsSuperUser" />
-<s:date name="%{getLastUpdate()}" format="yyyy-MM-dd HH:mm:ss|SSS" var="lastUpdateDateVar" />
+<wpsa:activityStreamLastUpdateDate var="lastUpdateDateVar" />
+<s:date name="%{#lastUpdateDateVar}" format="yyyy-MM-dd HH:mm:ss|SSS" var="lastUpdateDateVar" />
 <s:iterator value="#activityStreamListVar" var="actionLogRecordIdVar" status="currentEvent">
 	<wpsa:actionLogRecord key="%{#actionLogRecordIdVar}" var="actionLogRecordVar" />
 	<s:set var="usernameVar" value="#actionLogRecordVar.username" scope="page" />
@@ -31,12 +32,7 @@
 	<li
 		class="media row padding-large-bottom"
 		data-entando-timestamp="<s:date name="#actionLogRecordVar.actionDate" format="yyyy-MM-dd HH:mm:ss|SSS" />"
-		<s:if test="#lastUpdateDateVar==null">
-		data-entando-updatedate="<s:date name="#actionLogRecordVar.actionDate" format="yyyy-MM-dd HH:mm:ss|SSS" />"
-		</s:if>
-		<s:else>
-			data-entando-updatedate="<s:property value="#lastUpdateDateVar" />"
-		</s:else>
+		data-entando-updatedate="<s:property value="#lastUpdateDateVar" />"
 	>
 		<div class="col-xs-12 col-sm-2 col-lg-1 margin-small-bottom activity-stream-picture">
 			<img alt=" " src="<s:url action="avatarStream" namespace="/do/user/avatar">
