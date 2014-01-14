@@ -8,7 +8,7 @@
 	<s:set var="currentUsernameVar"><c:out value="${sessionScope.currentUser.username}" /></s:set>
 	<wpsa:activityStream var="activityStreamListVar" />
 	<s:if test="null != #activityStreamListVar && #activityStreamListVar.size() != 0">
-		<div id="stream-updates-alert" class="alert alert-info hide cursor-pointer margin-small-bottom"><s:text name="activity.stream.note.show.updates" /> (<span class="n">0</span>)</div>
+		<div id="stream-updates-alert" aria-live="polite" class="alert alert-info hide cursor-pointer margin-small-bottom"><s:text name="activity.stream.note.show.updates" /> (<span class="n"></span>)</div>
 		<ul class="list-unstyled padding-large-top" id="activity-stream">
 			<s:include value="/WEB-INF/apsadmin/jsp/common/activity-stream/inc/stream.jsp" />
 			<%--

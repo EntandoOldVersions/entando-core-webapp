@@ -176,22 +176,41 @@ jQuery(function(){ //dom is ready...
 	});
 
 //comment ajax
+	var addCommentLoadingState = function(button, load) {
+		var button = $(button);
+		if (load == true) {
+			button.button('loading');
+		}
+		else {
+			setTimeout(function() {
+				button.button('reset');
+			}, ANIMATION_DURATION);
+		}
+	};
 	STREAM_ROOT.delegate('.insert-comment form', 'submit', function(ev){
 		ev.preventDefault();
 		var textarea = $('textarea', ev.target);
+		var button = $('[data-entando="add-comment-button"]', ev.target);
 		if ($.trim(textarea.val()).length >0) {
 			$.ajax({
 				url: COMMENT_ADD_URL,
 				method: 'post',
+				button: button,
 				data: $(this).serialize(),
-				beforeSend: pauseRoutine,
+				beforeSend: function(jqXHR, settings) {
+					pauseRoutine();
+					addCommentLoadingState(this.button, true);
+				},
 				success: function() {
 					var textarea = $('textarea', ev.target);
 					textarea.val("");
 					restoreSizeCommentTextarea(textarea);
 					askForUpdate();
 				},
-				complete: startRoutine
+				complete: function(jqXHR, textStatus, we) {
+					startRoutine();
+					addCommentLoadingState(this.button);
+				}
 			});
 		}
 	});
