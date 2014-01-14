@@ -8,6 +8,7 @@ jQuery(function(){ //dom is ready...
 	var TIMESTAMP_ATTR = 'data-entando-creationdate';
 	var TIMESTAMP_LAST_UPDATE_ATTR = 'data-entando-updatedate';
 	var ID_ATTR = 'data-entando-id';
+	var COMMENT_ID_ATTR = 'data-entando-commentid';
 	var AJAX_UPDATE_SELECTOR = '[data-entando="ajax-update"]';
 	var STREAM_ROOT = $('#activity-stream');
 	var STREAM_UPDATE_EL = $('#stream-updates-alert');
@@ -197,19 +198,19 @@ jQuery(function(){ //dom is ready...
 	STREAM_ROOT.delegate('[data-entando="remove-comment-ajax"]', 'click touchstart', function(ev){
 		ev.preventDefault();
 		var button = $(ev.target);
-		var commentToDeleteEl = button.parents('[data-entando-commentid]').first();
+		var commentToDeleteEl = button.parents('['+COMMENT_ID_ATTR+']').first();
 		var streamId = commentToDeleteEl.parents(STREAM_ITEM_EL_SELECTOR+'['+ID_ATTR+']').attr(ID_ATTR);
-		var commentToDeleteId = commentToDeleteEl.attr('data-entando-commentid');
+		var commentToDeleteId = commentToDeleteEl.attr(COMMENT_ID_ATTR);
 		$.ajax({
 			url: COMMENT_DELETE_URL,
 			method: 'post',
 			dataType: 'json',
 			data: {
 				'streamId': streamId,
-				'commentId': commentToDeleteId
+				'streamRecordId': commentToDeleteId
 			},
 			success: function(data, textStatus, jqXHR) {
-				$('[data-entando-comment="'+data.commentId+'"]').fadeOut(ANIMATION_DURATION, function(){
+				$('['+COMMENT_ID_ATTR+'="'+data.commentId+'"]').fadeOut(ANIMATION_DURATION, function(){
 					$(this).remove();
 				})
 			}
