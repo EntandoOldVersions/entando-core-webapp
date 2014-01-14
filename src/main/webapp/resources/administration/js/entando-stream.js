@@ -225,12 +225,12 @@ jQuery(function(){ //dom is ready...
 			method: 'post',
 			dataType: 'json',
 			data: {
-				'streamId': streamId,
-				'streamRecordId': commentToDeleteId
+				'streamRecordId': streamId,
+				'commentId': commentToDeleteId
 			},
 			success: function(data, textStatus, jqXHR) {
-				$('['+COMMENT_ID_ATTR+'="'+data.commentId+'"]').fadeOut(ANIMATION_DURATION, function(){
-					$(this).remove();
+				$('['+COMMENT_ID_ATTR+'="'+this.commentId+'"]').fadeOut(ANIMATION_DURATION, function(){
+					//$(this).remove();
 				})
 			}
 		})

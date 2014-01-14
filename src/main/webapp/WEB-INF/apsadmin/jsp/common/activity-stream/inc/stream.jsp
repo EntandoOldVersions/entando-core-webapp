@@ -183,10 +183,17 @@
 						<%-- insert comment --%>
 						<form action="<s:url action="addComment" namespace="/do/ActivityStream" />" class="form-horizontal">
 							<wpsf:hidden name="streamRecordId" value="%{#actionLogRecordIdVar}" />
+							<label for="textarea-stream-<s:property value="#actionLogRecordIdVar" />" class="sr-only"><s:text name="activity.stream.comment.insert.tip" /></label>
 							<textarea
+								id="textarea-stream-<s:property value="#actionLogRecordIdVar" />"
 								role="textbox"
 								aria-multiline="true"
-								class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-control" cols="30" rows="1" placeholder="<s:property value="%{getText('activity.stream.comment.insert.tip')}" />" name="commentText"></textarea>
+								class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-control"
+								cols="30"
+								rows="1"
+								placeholder="<s:property value="%{getText('activity.stream.comment.insert.tip')}" />"
+								title="<s:property value="%{getText('activity.stream.comment.insert.tip')}" />"
+								name="commentText"></textarea>
 							<wpsf:submit
 								type="button"
 								data-entando="add-comment-button"
