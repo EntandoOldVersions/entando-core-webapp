@@ -4,7 +4,7 @@
 <s:set var="validationRules" value="#attribute.validationRules" />
 <s:set var="hasValidationRulesVar" value="%{#validationRules != null && #validationRules.ognlValidationRule != null&& #validationRules.ognlValidationRule.expression != null}" />
 <s:if test="#attribute.required">&#32;<span class="icon fa fa-asterisk text-muted" title="<s:text name="Entity.attribute.flag.mandatory.full" />"></span></s:if>
-<s:if test="#attribute.required || #attribute.searcheable || #attribute.indexingType != 'NONE' || (#attribute.textAttribute && (#attribute.minLength != -1 || #attribute.maxLength != -1)) || (#hasValidationRulesVar) ">
+<s:if test="#attribute.required || #attribute.searchable || #attribute.indexingType != 'NONE' || (#attribute.textAttribute && (#attribute.minLength != -1 || #attribute.maxLength != -1)) || (#hasValidationRulesVar) ">
 
 <s:set var="htmlContent">
 	<ul class="fa-ul">
@@ -13,8 +13,8 @@
 		<li><span class="icon fa fa-li fa-asterisk"></span><s:text name="Entity.attribute.flag.mandatory.full" /></li>
 	</s:if>
 
-	<s:if test="#attribute.searcheable">
-		<li><span class="icon fa fa-li fa-filter"></span><s:text name="Entity.attribute.flag.searcheable.full" /></li>
+	<s:if test="#attribute.searchable">
+		<li><span class="icon fa fa-li fa-filter"></span><s:text name="Entity.attribute.flag.searchable.full" /></li>
 	</s:if>
 
 	<s:if test="#attribute.indexingType != 'NONE'">

@@ -96,11 +96,11 @@ http://localhost:8080/PortalExample/do/Entity/search.action?entityManagerName=ja
 			
 			</s:if>
 			
-			<s:set var="searcheableAttributesVar" value="searcheableAttributes" ></s:set>
+			<s:set var="searchableAttributesVar" value="searchableAttributes" ></s:set>
 			
-			<s:if test="null != #searcheableAttributesVar && #searcheableAttributesVar.size() > 0">
+			<s:if test="null != #searchableAttributesVar && #searchableAttributesVar.size() > 0">
 				
-				<s:iterator var="attribute" value="#searcheableAttributesVar">
+				<s:iterator var="attribute" value="#searchableAttributesVar">
 					<s:set var="currentFieldId">entityFinding_<s:property value="#attribute.name" /></s:set> 
 					
 					<s:if test="#attribute.textAttribute"> 
@@ -162,7 +162,7 @@ http://localhost:8080/PortalExample/do/Entity/search.action?entityManagerName=ja
 <s:form action="search">
 	<p class="sr-only">
 		<wpsf:hidden name="entityTypeCode" />
-		<s:iterator var="attribute" value="#searcheableAttributes">
+		<s:iterator var="attribute" value="#searchableAttributesVar">
 			<s:if test="#attribute.textAttribute">
 				<s:set name="textInputFieldName" ><s:property value="#attribute.name" />_textFieldName</s:set>
 				<wpsf:hidden name="%{#textInputFieldName}" value="%{getSearchFormFieldValue(#textInputFieldName)}" />

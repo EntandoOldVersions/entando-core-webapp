@@ -28,9 +28,9 @@
 	<wpsf:hidden name="lastOrder" />
 	<wpsf:hidden name="contentIdToken" />
 	<wpsf:hidden name="ownerGroupName" />
-	<s:set var="searcheableAttributes" value="searcheableAttributes" ></s:set>
-	<s:if test="null != #searcheableAttributes && #searcheableAttributes.size() > 0">
-	<s:iterator var="attribute" value="#searcheableAttributes">
+	<s:set var="searchableAttributes" value="searchableAttributes" ></s:set>
+	<s:if test="null != #searchableAttributes && #searchableAttributes.size() > 0">
+	<s:iterator var="attribute" value="#searchableAttributes">
 		<s:if test="#attribute.textAttribute">
 			<s:set name="textInputFieldName" ><s:property value="#attribute.name" />_textFieldName</s:set>
 			<wpsf:hidden name="%{#textInputFieldName}" value="%{getSearchFormFieldValue(#textInputFieldName)}" />

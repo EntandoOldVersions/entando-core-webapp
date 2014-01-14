@@ -61,8 +61,8 @@
 
 		<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div id="search-advanced" class="collapse well collapse-input-group">
-				<s:set var="searcheableAttributesVar" value="searcheableAttributes" />
-				<s:set var="searcheableAttributesPageScope" value="%{#searcheableAttributesVar}" scope="page" />
+				<s:set var="searchableAttributesVar" value="searchableAttributes" />
+				<s:set var="searchableAttributesPageScope" value="%{#searchableAttributesVar}" scope="page" />
 				<div class="form-group">
 					<label class="control-label col-sm-2 text-right">Users</label>
 					<div class="btn-group col-lg-10" data-toggle="buttons">
@@ -91,7 +91,7 @@
 						</div>
 					</div>
 				</div>
-				<c:if test="${empty searcheableAttributesPageScope}">
+				<c:if test="${empty searchableAttributesPageScope}">
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-lg-offset-2 col-sm-10 col-lg-10 input-group">
 							<span class="text-info">
@@ -100,8 +100,8 @@
 						</div>
 					</div>
 				</c:if>
-				<s:if test="null != #searcheableAttributesVar && #searcheableAttributesVar.size() > 0">
-					<s:iterator value="#searcheableAttributesVar" var="attribute">
+				<s:if test="null != #searchableAttributesVar && #searchableAttributesVar.size() > 0">
+					<s:iterator value="#searchableAttributesVar" var="attribute">
 						<%-- Text Attribute --%>
 						<s:if test="#attribute.textAttribute">
 							<s:set var="currentAttributeHtmlId" value="%{'userprofile_src_'+#attribute.name}" />

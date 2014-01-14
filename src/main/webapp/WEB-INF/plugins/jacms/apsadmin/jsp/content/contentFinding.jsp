@@ -57,15 +57,15 @@
 								</div>
 							</div>
 						</div>
-						<s:set var="searcheableAttributes" value="searcheableAttributes" />
-						<s:if test="null != #searcheableAttributes && #searcheableAttributes.size() > 0">
+						<s:set var="searchableAttributes" value="searchableAttributes" />
+						<s:if test="null != #searchableAttributes && #searchableAttributes.size() > 0">
 							<%-- restore when we can dimiss it with a timeout
 							<div class="alert alert-info alert-dismissable fade in">
 								<button class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 								<p>Content type successfully set. TODO label.</p>
 							</div>
 							--%>
-							<s:iterator var="attribute" value="#searcheableAttributes">
+							<s:iterator var="attribute" value="#searchableAttributes">
 								<s:set var="currentFieldId" value="%{'entityFinding_'+#attribute.name}" />
 								<s:if test="#attribute.textAttribute">
 									<div class="form-group">
@@ -238,7 +238,7 @@
 			<wpsf:hidden name="lastOrder" />
 			<wpsf:hidden name="contentIdToken" />
 			<wpsf:hidden name="ownerGroupName" />
-			<s:iterator var="attribute" value="#searcheableAttributes">
+			<s:iterator var="attribute" value="#searchableAttributes">
 				<s:if test="#attribute.textAttribute">
 					<s:set var="textInputFieldName" ><s:property value="#attribute.name" />_textFieldName</s:set>
 					<wpsf:hidden name="%{#textInputFieldName}" value="%{getSearchFormFieldValue(#textInputFieldName)}" />

@@ -94,7 +94,7 @@
 			
 			<s:if test="isSearchableOptionSupported(attributeTypeCode)">
 			<li class="checkbox">
-				<label for="searcheable"><s:text name="Entity.attribute.flag.searcheable.full" /><wpsf:checkbox name="searcheable" id="searcheable" cssClass="radiocheck" /></label>
+				<label for="searchable"><s:text name="Entity.attribute.flag.searchable.full" /><wpsf:checkbox name="searchable" id="searchable" cssClass="radiocheck" /></label>
 			</li>
 			</s:if>
 

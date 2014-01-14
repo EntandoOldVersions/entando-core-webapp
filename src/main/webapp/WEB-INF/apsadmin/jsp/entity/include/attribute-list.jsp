@@ -12,7 +12,7 @@
 	<th><s:text name="label.type" /></th>
 	<th><s:text name="name.roles" /></th>
 	<th class="text-center text-nowrap" class="text-center text-nowrap"><abbr title="<s:text name="Entity.attribute.flag.mandatory.full" />"><s:text name="Entity.attribute.flag.mandatory.short" /></abbr></th>
-	<th class="text-center text-nowrap"><abbr title="<s:text name="Entity.attribute.flag.searcheable.full" />"><s:text name="Entity.attribute.flag.searcheable.short" /></abbr></th>
+	<th class="text-center text-nowrap"><abbr title="<s:text name="Entity.attribute.flag.searchable.full" />"><s:text name="Entity.attribute.flag.searchable.short" /></abbr></th>
 </tr>
 
 <s:iterator value="#entityType.attributeList" var="attribute" status="elementStatus">
@@ -58,7 +58,7 @@
 		</s:else>
 	</td>
 	<td class="text-center">
-		<s:if test="#attribute.searcheable">
+		<s:if test="#attribute.searchable">
 			<span class="icon fa fa-check-square-o" title="<s:text name="label.yes" />"></span>
 		</s:if> 
 		<s:else>
