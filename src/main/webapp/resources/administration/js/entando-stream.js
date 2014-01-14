@@ -292,5 +292,19 @@ jQuery(function(){ //dom is ready...
 	LOAD_MORE_BUTTON_EL.on('click touchstart', function(){
 		ajaxLoadMoreRequest();
 	});
+
+//like
+	STREAM_ROOT.delegate('[data-entando="like-link"]', 'click touchstart', function(ev){
+		ev.preventDefault();
+		var likeLinkEl = $(ev.target);
+		$.ajax({
+			url: likeLinkEl.attr('href'),
+			method: 'get',
+			beforeSend: pauseRoutine,
+			success: askForUpdate,
+			complete: startRoutine
+		});
+	});
+
 //domready
 });

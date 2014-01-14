@@ -88,42 +88,35 @@
 							<s:property value="#linkTitleVar" />
 						</c:otherwise>
 					</c:choose>
-					<%-- like / unlike --%>
 					<wpsa:activityStreamLikeRecords recordId="%{#actionLogRecordIdVar}" var="activityStreamLikeRecordsVar" />
-						<s:set value="%{#activityStreamLikeRecordsVar.containsUser(#currentUsernameVar)}" var="likeRecordsContainsUserVar" />
-						<p class="margin-small-vertical">
-							<time datetime="<s:date name="#actionLogRecordVar.actionDate" format="yyyy-MM-dd HH:mm" />" title="<s:date name="#actionLogRecordVar.actionDate" format="yyyy-MM-dd HH:mm" />" class="text-info">
-								<s:date name="#actionLogRecordVar.actionDate" nice="true" />
-							</time>
-							<s:if test="#activityStreamLikeRecordsVar.size() > 0">
-								&#32;&middot;&#32;
-								<span
-									data-toggle="tooltip"
-									data-placement="bottom"
-									data-original-title="<s:iterator value="#activityStreamLikeRecordsVar" var="activityStreamLikeRecordVar"><s:property value="#activityStreamLikeRecordVar.displayName" />&#32;
-										</s:iterator><s:text name="label.like.likesthis" />">
-									<s:property value="#activityStreamLikeRecordsVar.size()" />
-									&#32;
-									<s:text name="label.like.number" />
-								</span>
-							</s:if>
+					<s:set value="%{#activityStreamLikeRecordsVar.containsUser(#currentUsernameVar)}" var="likeRecordsContainsUserVar" />
+					<p class="margin-small-vertical">
+						<time datetime="<s:date name="#actionLogRecordVar.actionDate" format="yyyy-MM-dd HH:mm" />" title="<s:date name="#actionLogRecordVar.actionDate" format="yyyy-MM-dd HH:mm" />" class="text-info">
+							<s:date name="#actionLogRecordVar.actionDate" nice="true" />
+						</time>
+						<s:if test="#activityStreamLikeRecordsVar.size() > 0">
 							&#32;&middot;&#32;
-							<s:if test="%{#likeRecordsContainsUserVar}" >
-								<a
-									href="<s:url namespace="/do/ActivityStream" action="unlikeActivity">
-										<s:param name="recordId" value="%{#actionLogRecordIdVar}" />
-										</s:url>">
-										<s:text name="label.like.unlike" />
-								</a>
-							</s:if>
-							<s:else>
-								<a
-									href="<s:url namespace="/do/ActivityStream" action="likeActivity">
-										<s:param name="recordId" value="%{#actionLogRecordIdVar}" /></s:url>">
-										<s:text name="label.like.like" />
-								</a>
-							</s:else>
-						</p>
+							<span
+								data-toggle="tooltip"
+								data-placement="bottom"
+								data-original-title="<s:iterator value="#activityStreamLikeRecordsVar" var="activityStreamLikeRecordVar"><s:property value="#activityStreamLikeRecordVar.displayName" />&#32;
+									</s:iterator><s:text name="label.like.likesthis" />">
+								<s:property value="#activityStreamLikeRecordsVar.size()" />
+								&#32;
+								<s:text name="label.like.number" />
+							</span>
+						</s:if>
+						&#32;&middot;&#32;
+						<%-- like / unlike --%>
+						<a
+							data-entando="like-link"
+							href="<s:url namespace="/do/ActivityStream" action="%{#likeRecordsContainsUserVar ? 'unlikeActivity' : 'likeActivity'}">
+								<s:param name="recordId" value="%{#actionLogRecordIdVar}" />
+								</s:url>">
+								<s:if test="%{#likeRecordsContainsUserVar}" ><s:text name="label.like.unlike" /></s:if>
+								<s:else><s:text name="label.like.like" /></s:else>
+						</a>
+					</p>
 				</div>
 			</div>
 
