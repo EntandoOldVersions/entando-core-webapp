@@ -113,6 +113,29 @@
 										<span class="icon fa fa-eraser"></span>
 								</a>
 							</div>
+							<!-- move widget
+							<div class="btn-group btn-group-xs">
+								<a href="
+									<s:url action="moveWidgetUp" namespace="/do/Page">
+										<s:param name="selectedNode" value="currentPage.code" />
+										<s:param name="frame" value="#rowstatus.index" />
+										<s:param name="widgetTypeCode" value="#showletType.code" />
+									</s:url>"
+									 title="<s:text name="label.moveUp" />: <s:property value="%{getTitle(#showletType.code, #showletType.titles)}" />">
+										<s:text name="label.moveUp" />
+								</a>
+								<a href="
+									<s:url action="moveWidgetDown" namespace="/do/Page">
+										<s:param name="selectedNode" value="currentPage.code" />
+										<s:param name="frame" value="#rowstatus.index" />
+										<s:param name="widgetTypeCode" value="#showletType.code" />
+									</s:url>"
+									 title="<s:text name="label.moveDown" />: <s:property value="%{getTitle(#showletType.code, #showletType.titles)}" />">
+										<s:text name="label.moveDown" />
+								</a>
+							</div>
+							 -->
+							
 							</s:if>
 						</div><!-- // toolbar -->
 					</div>
