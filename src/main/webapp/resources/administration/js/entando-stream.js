@@ -22,25 +22,42 @@ jQuery(function(){ //dom is ready...
 
 
 //utility
-	var getTsFromStreamEl = function(streamEl) {
-		var attrTm = $(streamEl).attr(TIMESTAMP_ATTR).split('|');
-		var ts = new Date(attrTm[0]);
-		ts.setMilliseconds(attrTm[1]);
-		if (!ts.getTime()>0) return new Date('1970-01-01');
+	var dateFromString = function(myString) {
+		//example string  2014-01-15 10:01:08|423
+		var dateValues = {
+			year: myString.substring(0,4),
+			month: new Number(myString.substring(5,7))-1,
+			day: myString.substring(8,10),
+			hour: myString.substring(11,13),
+			minute: myString.substring(14,16),
+			second: myString.substring(17,19),
+			millisecond: myString.substring(20,23)
+		}
+		var ts = new Date(
+			dateValues.year,
+			dateValues.month,
+			dateValues.day,
+			dateValues.hour,
+			dateValues.minute,
+			dateValues.second,
+			dateValues.millisecond
+		);
+		if (!ts.getTime() > 0) { ts = new Date('1970-01-01'); }
 		return ts;
+	};
+
+	var getTsFromStreamEl = function(streamEl) {
+		var attrTm = $(streamEl).attr(TIMESTAMP_ATTR);
+		return dateFromString(attrTm);
 	};
 
 	var getLastUpdateTs = function(streamEl) {
-		var attrTm = $(streamEl).attr(TIMESTAMP_LAST_UPDATE_ATTR).split('|');
-		var ts = new Date(attrTm[0]);
-		ts.setMilliseconds(attrTm[1]);
-		if (!ts.getTime()>0) return new Date('1970-01-01');
-		return ts;
+		var attrTm = $(streamEl).attr(TIMESTAMP_LAST_UPDATE_ATTR);
+		return dateFromString(attrTm);
 	};
 
 	var getTsStringFromDate = function(date) {
-		//2013-12-13 11:46:59|207
-		var date = new Date(date);
+		//var date = new Date(date);
 		if (!date.getTime()>0) return;
 		return date.getFullYear()
 			+'-'+ (date.getMonth()+1<10 ? ('0'+(date.getMonth()+1)) : date.getMonth()+1)
