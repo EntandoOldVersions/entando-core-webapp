@@ -289,7 +289,7 @@ jQuery(function(){ //dom is ready...
 		var lines = textarea.val().split('\n').length;
 		textarea.attr('rows', lines > 10 ? 10 : lines);
 	};
-	$('#activity-stream').delegate('.insert-comment textarea', 'keydown blur', function(ev) {
+	$('#activity-stream').delegate('.insert-comment textarea', 'keydown', function(ev) {
 		restoreSizeCommentTextarea(this);
 	});
 	$('#activity-stream').delegate('.insert-comment textarea', 'cut paste', function(ev) {
@@ -298,7 +298,6 @@ jQuery(function(){ //dom is ready...
 			restoreSizeCommentTextarea(el);
 		},200);
 	});
-
 //start stream routine
 	startRoutine();
 
