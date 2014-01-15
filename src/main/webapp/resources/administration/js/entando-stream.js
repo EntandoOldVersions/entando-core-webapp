@@ -23,24 +23,15 @@ jQuery(function(){ //dom is ready...
 
 //utility
 	var dateFromString = function(myString) {
-		//example string  2014-01-15 10:01:08|423
-		var dateValues = {
-			year: myString.substring(0,4),
-			month: new Number(myString.substring(5,7))-1,
-			day: myString.substring(8,10),
-			hour: myString.substring(11,13),
-			minute: myString.substring(14,16),
-			second: myString.substring(17,19),
-			millisecond: myString.substring(20,23)
-		}
+		//example string 2014-01-15 10:01:08|423
 		var ts = new Date(
-			dateValues.year,
-			dateValues.month,
-			dateValues.day,
-			dateValues.hour,
-			dateValues.minute,
-			dateValues.second,
-			dateValues.millisecond
+			myString.substring(0,4),
+			new Number(myString.substring(5,7))-1,
+			myString.substring(8,10),
+			myString.substring(11,13),
+			myString.substring(14,16),
+			myString.substring(17,19),
+			myString.substring(20,23)
 		);
 		if (!ts.getTime() > 0) { ts = new Date('1970-01-01'); }
 		return ts;
@@ -244,11 +235,12 @@ jQuery(function(){ //dom is ready...
 			$.ajax({
 				url: COMMENT_ADD_URL,
 				method: 'post',
-				button: button,
 				data: $(this).serialize(),
+				formButton: button,
+				formTextarea: textarea,
 				beforeSend: function(jqXHR, settings) {
 					pauseRoutine();
-					addCommentLoadingState(this.button, true);
+					addCommentLoadingState(this.formButton, true);
 				},
 				success: function() {
 					var textarea = $('textarea', ev.target);
@@ -258,12 +250,13 @@ jQuery(function(){ //dom is ready...
 				},
 				complete: function(jqXHR, textStatus, we) {
 					startRoutine();
-					addCommentLoadingState(this.button);
+					addCommentLoadingState(this.formButton);
+					this.formTextarea.focus();
 				}
 			});
 		}
 	});
-	STREAM_ROOT.delegate('[data-entando="remove-comment-ajax"]', 'click touchstart', function(ev){
+	STREAM_ROOT.delegate('[data-entando="delete-comment-ajax"]', 'click touchstart', function(ev){
 		ev.preventDefault();
 		var button = $(ev.target);
 		var commentToDeleteEl = button.parents('['+COMMENT_ID_ATTR+']').first();
@@ -291,6 +284,10 @@ jQuery(function(){ //dom is ready...
 	};
 	$('#activity-stream').delegate('.insert-comment textarea', 'keydown', function(ev) {
 		restoreSizeCommentTextarea(this);
+		if (ev.shiftKey===false && ev.keyCode==13) {
+			var form = $(this).parents('form');
+			form.submit();
+		}
 	});
 	$('#activity-stream').delegate('.insert-comment textarea', 'cut paste', function(ev) {
 		var el = this;

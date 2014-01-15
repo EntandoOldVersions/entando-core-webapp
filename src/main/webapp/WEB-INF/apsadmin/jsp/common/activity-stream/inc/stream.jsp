@@ -135,7 +135,10 @@
 							>
 							<img
 								class="img-circle media-object stream-img-small"
-								src="/portalexample/do/user/avatar/avatarStream.action?gravatarSize=56&username=<s:property value="#activityStreamCommentVar.username" />" />
+								src="<s:url action="avatarStream" namespace="/do/user/avatar">
+									<s:param name="gravatarSize">56</s:param>
+									<s:param name="username" value="#activityStreamCommentVar.username" />
+								</s:url>" />
 						</a>
 						<div class="media-body">
 							<h5 class="media-heading">
@@ -146,9 +149,9 @@
 								&#32;&middot;&#32;<time datetime="<s:date name="#activityStreamCommentVar.commentDate" format="yyyy-MM-dd HH:mm" />" title="<s:date name="#activityStreamCommentVar.commentDate" format="yyyy-MM-dd HH:mm" />" class="text-info">
 									<s:date name="%{#activityStreamCommentVar.commentDate}" nice="true" />
 								</time>
-								<%-- remove comment --%>
+								<%-- delete comment --%>
 								<s:if test="#activityStreamCommentVar.username == #currentUsernameVar || #attr.browserIsSuperUser">
-									<a href="#remove" data-entando="remove-comment-ajax" class="pull-right">
+									<a href="#delete" data-entando="delete-comment-ajax" class="pull-right">
 										<span class="icon fa fa-icon fa-times-circle-o"></span>
 										&nbsp;<s:text name="activity.stream.button.delete" />
 									</a>
@@ -170,7 +173,10 @@
 					<span class="pull-left" >
 						<img
 							class="img-circle media-object stream-img-small"
-							src="/portalexample/do/user/avatar/avatarStream.action?gravatarSize=56&amp;username=<s:property value="#currentUsernameVar" />" />
+							src="<s:url action="avatarStream" namespace="/do/user/avatar">
+								<s:param name="gravatarSize">56</s:param>
+								<s:param name="username" value="#currentUsernameVar" />
+							</s:url>" />
 					</span>
 					<div class="media-body">
 						<%-- insert comment --%>
