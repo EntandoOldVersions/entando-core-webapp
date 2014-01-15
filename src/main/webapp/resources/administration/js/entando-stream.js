@@ -85,10 +85,8 @@ jQuery(function(){ //dom is ready...
 			};
 		}
 		else {//(if not ignored) check update
-			//check if it's already in the STREAM_ROOT
 			found = STREAM_ROOT.children(findstring);
 			if (found.length == 0) {
-				//check if it's already there within the STREAM_UPDATE_EL
 				found = STREAM_UPDATE_EL.children(findstring);
 			}
 			if (found.length > 0) {
@@ -108,6 +106,8 @@ jQuery(function(){ //dom is ready...
 			}
 		}
 	};
+
+
 //stream
 	var LAST_UPDATE_TS = getLastUpdateTs(STREAM_ROOT.children(STREAM_ITEM_EL_SELECTOR).first());
 	var updateStream = function(elementsArray) {
@@ -215,6 +215,7 @@ jQuery(function(){ //dom is ready...
 		startRoutine();
 	});
 
+
 //comment ajax
 	var addCommentLoadingState = function(button, load) {
 		var button = $(button);
@@ -295,8 +296,11 @@ jQuery(function(){ //dom is ready...
 			restoreSizeCommentTextarea(el);
 		},200);
 	});
+
+
 //start stream routine
 	startRoutine();
+
 
 //load more
 	var updateMoreStream = function(elementsArray) {
@@ -338,6 +342,7 @@ jQuery(function(){ //dom is ready...
 		ajaxLoadMoreRequest();
 	});
 
+
 //like
 	STREAM_ROOT.delegate('[data-entando="like-link"]', 'click touchstart', function(ev){
 		ev.preventDefault();
@@ -351,5 +356,6 @@ jQuery(function(){ //dom is ready...
 		});
 	});
 
-//domready
+
+//...domready
 });
