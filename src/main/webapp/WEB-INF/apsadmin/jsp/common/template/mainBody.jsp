@@ -11,20 +11,12 @@
 		<div id="stream-updates-alert" aria-live="polite" class="alert alert-info hide cursor-pointer margin-small-bottom"><s:text name="activity.stream.note.show.updates" /> (<span class="n"></span>)</div>
 		<ul class="list-unstyled padding-large-top" id="activity-stream">
 			<s:include value="/WEB-INF/apsadmin/jsp/common/activity-stream/inc/stream.jsp" />
-			<%--
-			<li class="media row">
-				<div class="media-body col-xs-12 col-sm-10 col-lg-11 col-sm-offset-2 col-lg-offset-1 activity-stream-event event-last">
-				</div>
-			</li>
-			--%>
 		</ul>
-		<s:if test="#activityStreamListVar.size() != 10">
-			<div class="row">
-				<div class="col-xs-12 col-sm-2 col-md-2 col-lg-1 text-center">
-					<button class="btn btn-default" data-entando="load-more-button" data-loading-text="<s:text name="activity.stream.note.loading" />&hellip;"><s:text name="activity.stream.note.loadMore" /></button>
-				</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-2 col-md-2 col-lg-1 text-center">
+				<button class="btn btn-default" data-entando="load-more-button" data-loading-text="<s:text name="activity.stream.note.loading" />&hellip;"><s:text name="activity.stream.note.loadMore" /></button>
 			</div>
-		</s:if>
+		</div>
 	</s:if>
 	<s:else>
 		<s:text name="activity.stream.note.no.activity" />

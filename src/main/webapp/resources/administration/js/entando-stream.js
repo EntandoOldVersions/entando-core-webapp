@@ -63,17 +63,42 @@ jQuery(function(){ //dom is ready...
 	var checkIfNewOrUpdateStreamItem = function(stream) {
 		var id = $(stream).attr(ID_ATTR);
 		var findstring = STREAM_ITEM_EL_SELECTOR+'['+ID_ATTR+'="'+id+'"]';
-		var found = STREAM_ROOT.children(findstring);
-		var el = undefined;
-		if (found.length>0){
-			el = found;
+		var stream_ts = getTsFromStreamEl(stream);
+		var found = 0;
+		//try to ignore ignore
+		var older_el = $(STREAM_ITEM_EL_SELECTOR+'['+ID_ATTR+']', STREAM_ROOT).last();
+		var older_ts = getTsFromStreamEl(older_el);
+		//check if its date is older than the last (the older) stream published
+		if (older_ts.getTime() > stream_ts.getTime()) {
+			return {
+				ignore: true,
+				update: false,
+				newone: false
+			};
 		}
-		found=found.length>0;
-		return {
-			update: (found ? true : false),
-			newone: (!found ? true : false),
-			updateEl: el
-		};
+		else {//(if not ignored) check update
+			//check if it's already in the STREAM_ROOT
+			found = STREAM_ROOT.children(findstring);
+			if (found.length == 0) {
+				//check if it's already there within the STREAM_UPDATE_EL
+				found = STREAM_UPDATE_EL.children(findstring);
+			}
+			if (found.length > 0) {
+				return {
+					ignore: false,
+					update: true,
+					newone: false,
+					updateEl: found
+				};
+			}
+			else {
+				return {
+					ignore: false,
+					update: false,
+					newone: true
+				};
+			}
+		}
 	};
 //stream
 	var LAST_UPDATE_TS = getLastUpdateTs(STREAM_ROOT.children(STREAM_ITEM_EL_SELECTOR).first());
@@ -103,11 +128,16 @@ jQuery(function(){ //dom is ready...
 						})
 						els[index]=oldItem;
 					}
-					else { //new item
+					else if(check.newone) { //new item
 						item.addClass('hide hidden');
 						$('.insert-comment.hide.hidden', item).removeClass('hide hidden');
 						item.appendTo(STREAM_UPDATE_EL);
 					}
+					/*
+					else if(check.ignore) {
+						//do nothing...
+					}
+					*/
 				});
 				postUpdate(els);
 			}
@@ -132,6 +162,7 @@ jQuery(function(){ //dom is ready...
 		}
 	};
 	var postUpdate = function(elementsArray){
+		TMP_CONTAINER.empty();
 		$.each(elementsArray, function(index, item){
 			$('[data-toggle="tooltip"]', item).tooltip({trigger: 'hover'});
 		});
@@ -171,6 +202,7 @@ jQuery(function(){ //dom is ready...
 	STREAM_UPDATE_EL.on('click touchstart', function(){
 		pauseRoutine();
 		displayUpdates(STREAM_UPDATE_EL.children(STREAM_ITEM_EL_SELECTOR));
+		STREAM_UPDATE_EL.remove(ID_ATTR+'['+STREAM_ITEM_EL_SELECTOR+']');
 		setWindowTitle();
 		startRoutine();
 	});
@@ -229,7 +261,7 @@ jQuery(function(){ //dom is ready...
 				'commentId': commentToDeleteId
 			},
 			success: function(data, textStatus, jqXHR) {
-				$('['+COMMENT_ID_ATTR+'="'+data.commentId+'"]').fadeOut(ANIMATION_DURATION, function(){
+				$('['+COMMENT_ID_ATTR+'="'+data.commentId+'"]').slideToggle(ANIMATION_DURATION, function(){
 					$(this).remove();
 				})
 			}
