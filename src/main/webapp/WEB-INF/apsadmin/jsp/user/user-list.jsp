@@ -41,14 +41,14 @@
 				<span class="icon fa fa-file-text-o fa-lg" title="<s:text name="label.search.by"/>&#32;<s:text name="label.username"/>"></span>
 			</span>
 			<label for="search-username" class="sr-only"><s:text name="label.search.by"/>&#32;<s:text name="label.username"/></label>
-			<wpsf:textfield 
-				name="username" 
-				id="search-username" 
-				cssClass="form-control input-lg" 
+			<wpsf:textfield
+				name="username"
+				id="search-username"
+				cssClass="form-control input-lg"
 				title="%{getText('label.search.by')+' '+getText('label.username')}"
 				placeholder="%{getText('label.username')}" />
 			<div class="input-group-btn">
-				<wpsf:submit type="button" id="search-username" cssClass="btn btn-primary btn-lg" title="%{getText('label.search')}">
+				<wpsf:submit type="button" cssClass="btn btn-primary btn-lg" title="%{getText('label.search')}">
 					<span class="sr-only"><s:text name="label.search" /></span>
 					<span class="icon fa fa-search" title="<s:text name="label.search" />"></span>
 				</wpsf:submit>
