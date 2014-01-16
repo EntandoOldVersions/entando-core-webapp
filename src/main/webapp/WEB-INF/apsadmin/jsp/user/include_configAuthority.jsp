@@ -58,7 +58,7 @@
 	</div>
 </div>
 <div role="search">
-	<s:form action="search" cssClass="margin-base-top" cssClass="form-horizontal">
+	<s:form action="search" cssClass="margin-base-top form-horizontal">
 		<h3 class="h4 margin-none  margin-base-bottom"><s:text name="title.userManagement.searchUsers" /></h3>
 		<p class="sr-only">
 			<wpsf:hidden name="authName" />
