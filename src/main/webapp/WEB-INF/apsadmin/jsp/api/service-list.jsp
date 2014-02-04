@@ -78,56 +78,54 @@
 					</p>
 					<div class="panel panel-default" id="<s:property value="#serviceGroupVar" />">
 						<div class="panel-heading"><s:text name="%{#serviceGroupVar}.name" /></div>
-						<div class="panel-body table-responsive">
-							<table class="table table-bordered margin-none">
+						<table class="table table-responsive">
+							<tr>
+								<th class="text-center"><abbr title="<s:text name="label.remove" />">&ndash;</abbr></th>
+								<th><s:text name="name.api.service" /></th>
+								<th><s:text name="label.description" /></th>
+								<th class="text-center"><abbr title="<s:text name="label.active" />">A</abbr></th>
+								<th class="text-center"><abbr title="<s:text name="label.public" />">P</abbr></th>
+							</tr>
+							<s:iterator value="#servicesByGroupVar" var="service">
 								<tr>
-									<th class="text-center"><abbr title="<s:text name="label.remove" />">&ndash;</abbr></th>
-									<th><s:text name="name.api.service" /></th>
-									<th><s:text name="label.description" /></th>
-									<th class="text-center"><abbr title="<s:text name="label.active" />">A</abbr></th>
-									<th class="text-center"><abbr title="<s:text name="label.public" />">P</abbr></th>
+									<td class="text-center">
+										<a href="<s:url action="trash"><s:param name="serviceKey"><s:property value="#service.key" /></s:param></s:url>" title="<s:text name="label.remove" />: <s:property value="#service.key" />" class="btn btn-xs btn-warning">
+											<span class="icon fa fa-times-circle-o"></span>
+											<span class="sr-only"><s:text name="label.remove" />: <s:property value="#service.key" /></span>
+										</a>
+									</td>
+									<td>
+										<wpsf:hidden name="%{#service.key + '_checkField'}" value="true" />
+										<a title="<s:text name="label.edit" />: <s:property value="#service.key" />" href="<s:url action="edit"><s:param name="serviceKey"><s:property value="#service.key" /></s:param></s:url>">
+										<span class="icon fa fa-cog"></span>
+										<s:property value="#service.key" /></a>
+								 	</td>
+									<td>
+								 		<s:property value="#service.value" />
+								 	</td>
+									<td class="text-center">
+										<s:if test="#service.activeItem">
+											<span title="<s:text name="label.active" />" class="icon fa fa-check"></span>
+											<span class="sr-only"><s:text name="label.active" /></span>
+										</s:if>
+										<s:else>
+											<span title="<s:text name="label.api.notactive" />" class="icon fa fa-minus text-muted"></span>
+											<span class="sr-only"><s:text name="label.api.notactive" /></span>
+										</s:else>
+									</td>
+									<td class="text-center">
+										<s:if test="#service.publicItem">
+											<span title="<s:text name="label.public" />" class="icon fa fa-check"></span>
+											<span class="sr-only"><s:text name="label.public" /></span>
+										</s:if>
+										<s:else>
+											<span title="<s:text name="label.api.notpublic" />" class="icon fa fa-minus text-muted"></span>
+											<span class="sr-only"><s:text name="label.api.notpublic" /></span>
+										</s:else>
+									</td>
 								</tr>
-								<s:iterator value="#servicesByGroupVar" var="service">
-									<tr>
-										<td class="text-center">
-											<a href="<s:url action="trash"><s:param name="serviceKey"><s:property value="#service.key" /></s:param></s:url>" title="<s:text name="label.remove" />: <s:property value="#service.key" />" class="btn btn-xs btn-warning">
-												<span class="icon fa fa-times-circle-o"></span>
-												<span class="sr-only"><s:text name="label.remove" />: <s:property value="#service.key" /></span>
-											</a>
-										</td>
-										<td>
-											<wpsf:hidden name="%{#service.key + '_checkField'}" value="true" />
-											<a title="<s:text name="label.edit" />: <s:property value="#service.key" />" href="<s:url action="edit"><s:param name="serviceKey"><s:property value="#service.key" /></s:param></s:url>">
-											<span class="icon fa fa-cog"></span>
-											<s:property value="#service.key" /></a>
-									 	</td>
-										<td>
-									 		<s:property value="#service.value" />
-									 	</td>
-										<td class="text-center">
-											<s:if test="#service.activeItem">
-												<span title="<s:text name="label.active" />" class="icon fa fa-check"></span>
-												<span class="sr-only"><s:text name="label.active" /></span>
-											</s:if>
-											<s:else>
-												<span title="<s:text name="label.api.notactive" />" class="icon fa fa-minus text-muted"></span>
-												<span class="sr-only"><s:text name="label.api.notactive" /></span>
-											</s:else>
-										</td>
-										<td class="text-center">
-											<s:if test="#service.publicItem">
-												<span title="<s:text name="label.public" />" class="icon fa fa-check"></span>
-												<span class="sr-only"><s:text name="label.public" /></span>
-											</s:if>
-											<s:else>
-												<span title="<s:text name="label.api.notpublic" />" class="icon fa fa-minus text-muted"></span>
-												<span class="sr-only"><s:text name="label.api.notpublic" /></span>
-											</s:else>
-										</td>
-									</tr>
-								</s:iterator>
-							</table>
-						</div>
+							</s:iterator>
+						</table>
 					</div>
 				</s:if>
 		</s:iterator>
