@@ -56,86 +56,84 @@
 								<%-- if we're evaluating the first resource, setup the caption title and table headers --%>
 								<s:if test="#resourceVar.source=='core'"><s:set var="captionVar" value="#resourceVar.source" /></s:if>
 								<s:else><s:set var="captionVar" value="%{getText(#resourceVar.sectionCode+'.name')}" /></s:else>
-								<h2 class="h3 margin-none" title="<s:text name="label.flavour" />&#32;<s:property value="#captionVar" />"><s:property value="#captionVar" /></h2>
+								<h2 class="h3 panel-title" title="<s:text name="label.flavour" />&#32;<s:property value="#captionVar" />"><s:property value="#captionVar" /></h2>
 							</s:if>
 						</s:iterator>
 					</div>
-					<div class="panel-body table-responsive">
-						<table class="table table-bordered table-hover">
-							<s:iterator value="#resourceFlavourVar" var="resourceVar" status="statusVar" >
-								<s:if test="#statusVar.first">
-									<tr>
-										<th><s:text name="name.api.resource" /></th>
-										<th><s:text name="label.description" /></th>
-										<th class="text-center"><abbr title="GET">G</abbr></th>
-										<th class="text-center"><abbr title="POST">P</abbr></th>
-										<th class="text-center"><abbr title="PUT">P</abbr></th>
-										<th class="text-center"><abbr title="DELETE">D</abbr></th>
-									</tr>
-								</s:if>
+					<table class="table table-responsive">
+						<s:iterator value="#resourceFlavourVar" var="resourceVar" status="statusVar" >
+							<s:if test="#statusVar.first">
 								<tr>
-									<%-- CODE and link to edit --%>
-									<td class="text-nowrap">
-										<s:url var="detailActionURL" action="detail" namespace="/do/Api/Resource"><s:param name="resourceName" value="#resourceVar.resourceName" /><s:param name="namespace" value="#resourceVar.namespace" /></s:url>
-										<a title="<s:text name="label.edit" />: <s:property value="%{#resourceVar.namespace.length()>0?#resourceVar.namespace+'/':''}" /><s:property value="#resourceVar.resourceName" />" href="<s:url action="detail" namespace="/do/Api/Resource"><s:param name="resourceName" value="#resourceVar.resourceName" /><s:param name="namespace" value="#resourceVar.namespace" /></s:url>"><span class="icon fa fa-cog"></span>&nbsp;<s:property value="#resourceVar.resourceName" /></a><s:if test="#resourceVar.getMethod != null"><s:if test="#resourceVar.getMethod.canSpawnOthers">&emsp;<a class="btn btn-default btn-xs" href="<s:url action="newService" namespace="/do/Api/Service"><s:param name="resourceName" value="#resourceVar.resourceName" /><s:param name="namespace" value="#resourceVar.namespace" /></s:url>" title="<s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#resourceVar.resourceName" />"><span class="icon fa fa-code-fork"></span><span class="sr-only"><s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#resourceVar.resourceName" /></span></a></s:if>
-										</s:if>
-									</td>
-									<%-- DESCRIPTION --%>
-									<td><s:property value="#resourceVar.description" /></td>
-									<%-- GET --%>
-									<td class="text-center">	
-										<s:if test="#resourceVar.getMethod != null" >
-											<a href="<s:property value="#detailActionURL" escapeHtml="false" />#GET_tab">
-												<s:if test="!#resourceVar.getMethod.active" ><s:property value="#icon_off" escapeHtml="false" /></s:if>
-												<s:elseif test="#resourceVar.getMethod.requiredPermission != null" ><s:if test="#resourceVar.getMethod.hidden" ><s:property value="#icon_lock_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_lock" escapeHtml="false" /></s:else></s:elseif>
-												<s:elseif test="#resourceVar.getMethod.requiredAuth" ><s:if test="#resourceVar.getMethod.hidden" ><s:property value="#icon_auth_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_auth" escapeHtml="false" /></s:else></s:elseif>
-												<s:else><s:if test="#resourceVar.getMethod.hidden" ><s:property value="#icon_free_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_free" escapeHtml="false" /></s:else></s:else>
-											</a>
-										</s:if>
-										<s:else>
-											<s:property value="#icon_na" escapeHtml="false" />
-										</s:else>
-									</td>
-									<%-- POST --%>
-									<td class="text-center">
-										<s:if test="#resourceVar.postMethod != null" >
-											<a href="<s:property value="#detailActionURL" escapeHtml="false" />#POST_tab">
-												<s:if test="!#resourceVar.postMethod.active" ><s:property value="#icon_off" escapeHtml="false" /></s:if>
-												<s:elseif test="#resourceVar.postMethod.requiredPermission != null" ><s:if test="#resourceVar.postMethod.hidden" ><s:property value="#icon_lock_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_lock" escapeHtml="false" /></s:else></s:elseif>
-												<s:elseif test="#resourceVar.postMethod.requiredAuth" ><s:if test="#resourceVar.postMethod.hidden" ><s:property value="#icon_auth_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_auth" escapeHtml="false" /></s:else></s:elseif>
-												<s:else><s:if test="#resourceVar.postMethod.hidden" ><s:property value="#icon_free_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_free" escapeHtml="false" /></s:else></s:else>
-											</a>
-										</s:if>
-										<s:else><s:property value="#icon_na" escapeHtml="false" /></s:else>
-									</td>
-									<%-- PUT --%>
-									<td class="text-center">
-										<s:if test="#resourceVar.putMethod != null" >
-											<a href="<s:property value="#detailActionURL" escapeHtml="false" />#PUT_tab">
-												<s:if test="!#resourceVar.putMethod.active" ><s:property value="#icon_off" escapeHtml="false" /></s:if>
-												<s:elseif test="#resourceVar.putMethod.requiredPermission != null" ><s:if test="#resourceVar.putMethod.hidden" ><s:property value="#icon_lock_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_lock" escapeHtml="false" /></s:else></s:elseif>
-												<s:elseif test="#resourceVar.putMethod.requiredAuth" ><s:if test="#resourceVar.putMethod.hidden" ><s:property value="#icon_auth_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_auth" escapeHtml="false" /></s:else></s:elseif>
-												<s:else><s:if test="#resourceVar.putMethod.hidden" ><s:property value="#icon_free_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_free" escapeHtml="false" /></s:else></s:else>
-											</a>
-										</s:if>
-										<s:else><s:property value="#icon_na" escapeHtml="false" /></s:else>
-									</td>
-									<%-- DELETE --%>
-									<td class="text-center">
-										<s:if test="#resourceVar.deleteMethod != null" >
-											<a href="<s:property value="#detailActionURL" escapeHtml="false" />#DELETE_tab">
-												<s:if test="!#resourceVar.deleteMethod.active" ><s:property value="#icon_off" escapeHtml="false" /></s:if>
-												<s:elseif test="#resourceVar.deleteMethod.requiredPermission != null" ><s:if test="#resourceVar.deleteMethod.hidden" ><s:property value="#icon_lock_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_lock" escapeHtml="false" /></s:else></s:elseif>
-												<s:elseif test="#resourceVar.deleteMethod.requiredAuth" ><s:if test="#resourceVar.deleteMethod.hidden" ><s:property value="#icon_auth_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_auth" escapeHtml="false" /></s:else></s:elseif>
-												<s:else><s:if test="#resourceVar.deleteMethod.hidden" ><s:property value="#icon_free_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_free" escapeHtml="false" /></s:else></s:else>
-											</a>
-										</s:if>
-										<s:else><s:property value="#icon_na" escapeHtml="false" /></s:else>
-									</td>
+									<th><s:text name="name.api.resource" /></th>
+									<th><s:text name="label.description" /></th>
+									<th class="text-center"><abbr title="GET">G</abbr></th>
+									<th class="text-center"><abbr title="POST">P</abbr></th>
+									<th class="text-center"><abbr title="PUT">P</abbr></th>
+									<th class="text-center"><abbr title="DELETE">D</abbr></th>
 								</tr>
-							</s:iterator>
-						</table>
-					</div>
+							</s:if>
+							<tr>
+								<%-- CODE and link to edit --%>
+								<td class="text-nowrap">
+									<s:url var="detailActionURL" action="detail" namespace="/do/Api/Resource"><s:param name="resourceName" value="#resourceVar.resourceName" /><s:param name="namespace" value="#resourceVar.namespace" /></s:url>
+									<a title="<s:text name="label.edit" />: <s:property value="%{#resourceVar.namespace.length()>0?#resourceVar.namespace+'/':''}" /><s:property value="#resourceVar.resourceName" />" href="<s:url action="detail" namespace="/do/Api/Resource"><s:param name="resourceName" value="#resourceVar.resourceName" /><s:param name="namespace" value="#resourceVar.namespace" /></s:url>"><span class="icon fa fa-cog"></span>&nbsp;<s:property value="#resourceVar.resourceName" /></a><s:if test="#resourceVar.getMethod != null"><s:if test="#resourceVar.getMethod.canSpawnOthers">&emsp;<a class="btn btn-default btn-xs" href="<s:url action="newService" namespace="/do/Api/Service"><s:param name="resourceName" value="#resourceVar.resourceName" /><s:param name="namespace" value="#resourceVar.namespace" /></s:url>" title="<s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#resourceVar.resourceName" />"><span class="icon fa fa-code-fork"></span><span class="sr-only"><s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#resourceVar.resourceName" /></span></a></s:if>
+									</s:if>
+								</td>
+								<%-- DESCRIPTION --%>
+								<td><s:property value="#resourceVar.description" /></td>
+								<%-- GET --%>
+								<td class="text-center">	
+									<s:if test="#resourceVar.getMethod != null" >
+										<a href="<s:property value="#detailActionURL" escapeHtml="false" />#GET_tab">
+											<s:if test="!#resourceVar.getMethod.active" ><s:property value="#icon_off" escapeHtml="false" /></s:if>
+											<s:elseif test="#resourceVar.getMethod.requiredPermission != null" ><s:if test="#resourceVar.getMethod.hidden" ><s:property value="#icon_lock_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_lock" escapeHtml="false" /></s:else></s:elseif>
+											<s:elseif test="#resourceVar.getMethod.requiredAuth" ><s:if test="#resourceVar.getMethod.hidden" ><s:property value="#icon_auth_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_auth" escapeHtml="false" /></s:else></s:elseif>
+											<s:else><s:if test="#resourceVar.getMethod.hidden" ><s:property value="#icon_free_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_free" escapeHtml="false" /></s:else></s:else>
+										</a>
+									</s:if>
+									<s:else>
+										<s:property value="#icon_na" escapeHtml="false" />
+									</s:else>
+								</td>
+								<%-- POST --%>
+								<td class="text-center">
+									<s:if test="#resourceVar.postMethod != null" >
+										<a href="<s:property value="#detailActionURL" escapeHtml="false" />#POST_tab">
+											<s:if test="!#resourceVar.postMethod.active" ><s:property value="#icon_off" escapeHtml="false" /></s:if>
+											<s:elseif test="#resourceVar.postMethod.requiredPermission != null" ><s:if test="#resourceVar.postMethod.hidden" ><s:property value="#icon_lock_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_lock" escapeHtml="false" /></s:else></s:elseif>
+											<s:elseif test="#resourceVar.postMethod.requiredAuth" ><s:if test="#resourceVar.postMethod.hidden" ><s:property value="#icon_auth_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_auth" escapeHtml="false" /></s:else></s:elseif>
+											<s:else><s:if test="#resourceVar.postMethod.hidden" ><s:property value="#icon_free_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_free" escapeHtml="false" /></s:else></s:else>
+										</a>
+									</s:if>
+									<s:else><s:property value="#icon_na" escapeHtml="false" /></s:else>
+								</td>
+								<%-- PUT --%>
+								<td class="text-center">
+									<s:if test="#resourceVar.putMethod != null" >
+										<a href="<s:property value="#detailActionURL" escapeHtml="false" />#PUT_tab">
+											<s:if test="!#resourceVar.putMethod.active" ><s:property value="#icon_off" escapeHtml="false" /></s:if>
+											<s:elseif test="#resourceVar.putMethod.requiredPermission != null" ><s:if test="#resourceVar.putMethod.hidden" ><s:property value="#icon_lock_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_lock" escapeHtml="false" /></s:else></s:elseif>
+											<s:elseif test="#resourceVar.putMethod.requiredAuth" ><s:if test="#resourceVar.putMethod.hidden" ><s:property value="#icon_auth_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_auth" escapeHtml="false" /></s:else></s:elseif>
+											<s:else><s:if test="#resourceVar.putMethod.hidden" ><s:property value="#icon_free_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_free" escapeHtml="false" /></s:else></s:else>
+										</a>
+									</s:if>
+									<s:else><s:property value="#icon_na" escapeHtml="false" /></s:else>
+								</td>
+								<%-- DELETE --%>
+								<td class="text-center">
+									<s:if test="#resourceVar.deleteMethod != null" >
+										<a href="<s:property value="#detailActionURL" escapeHtml="false" />#DELETE_tab">
+											<s:if test="!#resourceVar.deleteMethod.active" ><s:property value="#icon_off" escapeHtml="false" /></s:if>
+											<s:elseif test="#resourceVar.deleteMethod.requiredPermission != null" ><s:if test="#resourceVar.deleteMethod.hidden" ><s:property value="#icon_lock_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_lock" escapeHtml="false" /></s:else></s:elseif>
+											<s:elseif test="#resourceVar.deleteMethod.requiredAuth" ><s:if test="#resourceVar.deleteMethod.hidden" ><s:property value="#icon_auth_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_auth" escapeHtml="false" /></s:else></s:elseif>
+											<s:else><s:if test="#resourceVar.deleteMethod.hidden" ><s:property value="#icon_free_hidden" escapeHtml="false" /></s:if><s:else><s:property value="#icon_free" escapeHtml="false" /></s:else></s:else>
+										</a>
+									</s:if>
+									<s:else><s:property value="#icon_na" escapeHtml="false" /></s:else>
+								</td>
+							</tr>
+						</s:iterator>
+					</table>
 			</div>
 		</s:iterator>
 	</s:if>
