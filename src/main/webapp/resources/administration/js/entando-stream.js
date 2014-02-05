@@ -228,6 +228,12 @@ jQuery(function(){ //dom is ready...
 			}, ANIMATION_DURATION);
 		}
 	};
+	STREAM_ROOT.delegate('.insert-comment textarea', 'keydown', function(ev){
+		if(ev.shiftKey===false && ev.keyCode==13){
+			ev.preventDefault();
+			return false;
+		}
+	});
 	STREAM_ROOT.delegate('.insert-comment form', 'submit', function(ev){
 		ev.preventDefault();
 		var textarea = $('textarea', ev.target);
