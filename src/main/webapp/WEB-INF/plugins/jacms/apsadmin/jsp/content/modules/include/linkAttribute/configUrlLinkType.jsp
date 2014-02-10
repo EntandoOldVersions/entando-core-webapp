@@ -8,7 +8,7 @@
 <s:include value="linkAttributeConfigIntro.jsp" />
 <s:include value="linkAttributeConfigReminder.jsp" />
 
-<s:form cssClass="action-form" cssClass="form-horizontal">
+<s:form cssClass="action-form form-horizontal">
 	<p class="sr-only"><wpsf:hidden name="contentOnSessionMarker" /></p>
 	<s:if test="hasFieldErrors()">
 		<div class="alert alert-danger alert-dismissable fade in">
