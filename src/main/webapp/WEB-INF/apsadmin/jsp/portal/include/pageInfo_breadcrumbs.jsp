@@ -19,7 +19,7 @@
 		</a>
 		<wpsa:page key="%{#target.code}" property="void" var="isVoid" />
 		<s:if test="!#isVoid">
-			<a href="<wp:info key="systemParam" paramName="applicationBaseURL" /><s:property value="currentLang.code"/>/<s:property value="#target.code" />.wp"
+			<a href="<wp:info key="systemParam" paramName="applicationBaseURL" /><s:property value="currentLang.code"/>/<s:property value="#target.code" />.page"
 				title="<s:text name="note.goToPortal" />: <s:property value="getTitle(#target.code, #target.titles)" />">
 				<span class="icon fa fa-globe"></span>
 			</a>
