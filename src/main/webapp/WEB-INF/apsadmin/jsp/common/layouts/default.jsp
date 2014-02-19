@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="<wp:resourceURL />administration/bootstrap/css/bootstrap.min.css" media="screen" />
 		<link rel="stylesheet" href="<wp:resourceURL />administration/css/bootstrap-theme-entando-ce/css/bootstrap.min.css" media="screen" />
 	<link rel="stylesheet" href="<wp:resourceURL />administration/css/bootstrap-override.css" media="screen" />
-	<link rel="stylesheet" href="<wp:resourceURL />administration/css/bootstrap-offcanvas.css" media="screen" />
+	<%-- <link rel="stylesheet" href="<wp:resourceURL />administration/css/bootstrap-offcanvas.css" media="screen" /> --%>
 	<link rel="stylesheet" href="<wp:resourceURL />administration/css/bootstrap-addendum.css" media="screen" />
 	<c:catch>
 		<tiles:insertAttribute name="cssSpecial" ignore="true" />
@@ -43,6 +43,19 @@
 	</c:if>
 
 	<tiles:insertAttribute name="extraResources"/>
+	<style>
+				.sc-t .tt {
+					display: none;
+				}
+				.sc-t:hover .tt {
+					display: block;
+				}
+				.btn-none {
+					border: 1px solid rgba(0,0,0,0); !important
+					background-color: transparent;
+					cursor: default;
+				}
+			</style>
 </head>
 <body>
 
@@ -101,6 +114,7 @@
 					<a href="#fagiano_start" id="fagiano_mainContent"><s:text name="note.backToStart" /></a>
 				</p>
 			</nav>
+			<%-- <s:include value="sc.jsp" /> --%>
 			<c:if test="${firstTimeMessagesVar}">
 				<div class="alert alert-info margin-none margin-base-top fade in" id="first-time-messages">
 					<button class="close" data-dismiss="alert" data-first-time-messages="dismiss"><span class="icon fa fa-times"></span></button>
@@ -143,6 +157,5 @@
 		</div>
 
 	</div>
-
 </body>
 </html>

@@ -20,7 +20,7 @@
 	</c:if>
 
 	<wp:info key="systemParam" paramName="categoriesOnDemand" var="categoriesOnDemandVar" />
-	<c:if test="${categoriesOnDemandVar}" >
+	<c:if test="${categoriesOnDemandVar}">
 	<wp:ifauthorized permission="manageCategories">
 		<li role="presentation"><a role="menuitem" href="<s:url action="viewTree" namespace="/do/Category" />"><s:text name="menu.categoryAdmin" /></a></li>
 	</wp:ifauthorized>
