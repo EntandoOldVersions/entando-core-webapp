@@ -2,7 +2,7 @@
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <s:include value="/WEB-INF/apsadmin/jsp/common/layouts/assets-common.jsp" />
 <script>
-	Entando = Entando || {};
+	var Entando = Entando || {};
 	Entando.backoffice = Entando.backoffice || {};
 	Entando.backoffice.stream = {};
 	Entando.backoffice.stream.list = {};
