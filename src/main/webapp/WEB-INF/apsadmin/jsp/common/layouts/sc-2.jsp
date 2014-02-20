@@ -5,22 +5,34 @@
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
-<div id="entando-menu-shortcuts" class="margin-base-bottom">
+<wpsa:userShortcutsConfig var="userConfigVar" />
+<s:set var="userConfigVar" value="#userConfigVar.config" />
+
+<%--
+<s:set var="userConfigVar" value="userConfig" />
+<br /><br />userConfigVar: <c:out value="${userConfigVar}" />
+<br /><br />userConfigVar.config: <c:out value="${userConfigVar.config}" />
+--%>
+<div id="entando-menu-shortcuts-2" class="margin-base-bottom">
 	<s:set var="emptyShortcutConfigVar" value="%{true}" />
-	<s:set var="userConfigVar" value="userConfig" />
+	<s:set var="fullShortcutConfigVar" value="%{0}" />
 	<s:iterator value="#userConfigVar" var="userShortcutCode" status="rowstatus">
-		<s:set var="userShortcut" value="%{getShortcut(#userShortcutCode)}" />
+		<wpsa:shortcut key="%{#userShortcutCode}" var="userShortcut" />
 		<s:if test="null != #userShortcut">
 				<s:set var="emptyShortcutConfigVar" value="%{false}" />
 		</s:if>
+		<s:else>
+			<s:set var="fullShortcutConfigVar" value="%{#fullShortcutConfigVar+1}" />
+		</s:else>
+		<s:set var="userShortcut" value="%{null}" />
 	</s:iterator>
 
 	<div class="text-muted small display-block">
-		Shortcuts v1
+		Shortcuts v2
 		<s:if test="!#emptyShortcutConfigVar">
 				<a
-					href="#entando-menu-shortcuts-container"
-					class="pull-right" id="edit">
+					href="#entando-menu-shortcuts-2-container"
+					class="pull-right" id="edit-2">
 						edit&#32;<span class="icon fa fa-cog"></span>
 				</a>
 		</s:if>
@@ -36,10 +48,9 @@
 			</a>
 		</s:else>
 	</div>
-
-	<div class="shortcuts-container" id="entando-menu-shortcuts-container">
+	<div class="shortcuts-container row" id="entando-menu-shortcuts-2-container">
 		<s:iterator value="#userConfigVar" var="userShortcutCode" status="rowstatus">
-			<s:set var="userShortcut" value="%{getShortcut(#userShortcutCode)}" />
+			<wpsa:shortcut key="%{#userShortcutCode}" var="userShortcut" />
 			<s:if test="null != #userShortcut">
 				<s:set var="emptyShortcutConfigVar" value="%{false}" />
 				<s:set var="userShortcutSectionShortDescr" value="%{ null != #userShortcut.menuSection.descriptionKey ? getText(#userShortcut.menuSection.descriptionKey) : #userShortcut.menuSection.description }" />
@@ -48,9 +59,12 @@
 				<s:set var="userShortcutLongDescr" value="%{ null != #userShortcut.longDescriptionKey ? getText(#userShortcut.longDescriptionKey) : #userShortcut.longDescription }" />
 			</s:if>
 
-			<div role="toolbar" data-entando-position="<s:property value="#rowstatus.index" />" class="<s:if test="null != #userShortcut"> full margin-small-bottom </s:if><s:else> empty </s:else> btn-toolbar  <s:property value="#userShortcut.menuSectionCode" />">
+			<div role="toolbar" data-entando-position="<s:property value="#rowstatus.index" />" class="
+				col-lg-6
+				<s:if test="null != #userShortcut"> full margin-small-bottom </s:if>
+				<s:else> empty sc-hidden </s:else> btn-toolbar  <s:property value="#userShortcut.menuSectionCode" />">
 				<s:if test="null != #userShortcut">
-					<div class="btn-group btn-block">
+					<div class="btn-group btn-group-justified">
 						<a
 							class="btn btn-block btn-default btn-xs"
 							href="<s:url action="%{#userShortcut.actionName}" namespace="%{#userShortcut.namespace}"><wpsa:paramMap map="#userShortcut.parameters" /></s:url>"
@@ -63,7 +77,7 @@
 				<s:else>
 					<a
 						data-toggle="modal" data-target="#shortcut-configure-modal2"
-						class="btn-group btn-block sc-hidden"
+						class="btn-group btn-group-justified sc-hidden"
 						data-entando-action="shortcut-add"
 						class="btn btn-default btn-xs"
 						href="<s:url action="configPosition" namespace="/do/MyShortcut" anchor="shortcut-configure-modal"><s:param name="position" value="%{#rowstatus.index}" /><s:param name="strutsAction" value="1" /></s:url>"
@@ -76,12 +90,12 @@
 					</a>
 				</s:else>
 
-				<div class="btn-group pull-right shortcuts-configure-item-toolbar sc-hidden">
+				<div class="shortcuts-configure-item-toolbar text-center sc-hidden">
 					<s:if test="null != #userShortcut">
 						<%-- clear --%>
 						<a
 							data-entando-action="remove"
-							class="btn btn-default btn-xs btn-warning"
+							class=""
 							title="<s:text name="label.clear" />&#32;<s:text name="name.position" />&#32;<s:property value="%{#rowstatus.index + 1}" />"
 							href="<s:url action="removeMyShortcut" namespace="/do/MyShortcut"><s:param name="position" value="%{#rowstatus.index}" /><s:param name="strutsAction" value="4" /></s:url>">
 								<span class="icon fa fa-eraser"><span class="sr-only"><s:text name="label.clear" /></span></span>
@@ -105,30 +119,30 @@
 								<span class="icon fa fa-arrows"><span class="sr-only"><s:text name="label.move" /></span></span>
 						</a>
 						--%>
+					</s:if>
 						<%-- move down --%>
 						<a
 							data-entando-action="shortcut-move-down"
-							class="btn btn-default btn-xs btn-primary"
+							class=""
 							href="<s:url namespace="/do/MyShortcut" action="swapMyShortcut">
 								<s:param name="positionTarget" value="%{#rowstatus.index}" />
 								<s:param name="strutsAction" value="2" />
 								<s:param name="positionDest" value="%{#rowstatus.index+1}" /></s:url>">
-								<span class="icon fa fa-long-arrow-down"></span>
+								&ensp;<span class="icon fa fa-long-arrow-down"></span>&ensp;
 						</a>
 						<%-- move up --%>
 						<a
 							data-entando-action="shortcut-move-up"
-							class="btn btn-default btn-xs btn-primary"
+							class=""
 							href="<s:url namespace="/do/MyShortcut" action="swapMyShortcut">
 								<s:param name="positionTarget" value="%{#rowstatus.index}" />
 								<s:param name="strutsAction" value="2" />
 								<s:param name="positionDest" value="%{#rowstatus.index-1}" /></s:url>">
-								<span class="icon fa fa-long-arrow-up"></span>
+								&ensp;<span class="icon fa fa-long-arrow-up"></span>&ensp;
 						</a>
-					</s:if>
 				</div>
 			</div>
-
+			<s:set var="userShortcut" value="%{null}" />
 		</s:iterator>
 	</div>
 	<%--
@@ -150,7 +164,7 @@
 
 <script>
 jQuery(function(){
-	$('#edit').on('click', function(ev){
+	$('#edit-2').on('click', function(ev){
 		ev.preventDefault();
 		$('.shortcuts-container').toggleClass('edit-mode');
 		$('.shortcuts-container .empty').toggleClass('margin-small-bottom');
@@ -181,7 +195,7 @@ jQuery(function(){
 		$('[data-entando-role="empty"]', el).text(newv+1);
 		var as = $('a[href]', el);
 		$.each(as, function(index, a){
-			//////console.log(a);
+			////console.log(a);
 			var a = $(a);
 			var href = a.attr('href');
 			href = href.replace(/position=\d+/gi, 'position='+ newv +'');

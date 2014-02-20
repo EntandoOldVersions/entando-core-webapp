@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="<wp:resourceURL />administration/bootstrap/css/bootstrap.min.css" media="screen" />
 		<link rel="stylesheet" href="<wp:resourceURL />administration/css/bootstrap-theme-entando-ce/css/bootstrap.min.css" media="screen" />
 	<link rel="stylesheet" href="<wp:resourceURL />administration/css/bootstrap-override.css" media="screen" />
-	<%-- <link rel="stylesheet" href="<wp:resourceURL />administration/css/bootstrap-offcanvas.css" media="screen" /> --%>
+	<link rel="stylesheet" href="<wp:resourceURL />administration/css/bootstrap-offcanvas.css" media="screen" />
 	<link rel="stylesheet" href="<wp:resourceURL />administration/css/bootstrap-addendum.css" media="screen" />
 	<c:catch>
 		<tiles:insertAttribute name="cssSpecial" ignore="true" />
@@ -44,16 +44,14 @@
 
 	<tiles:insertAttribute name="extraResources"/>
 	<style>
-				.sc-t .tt {
+				.shortcuts-container .sc-hidden {
 					display: none;
 				}
-				.sc-t:hover .tt {
-					display: block;
+				.shortcuts-container.edit-mode .sc-hidden {
+					display: inherit;
 				}
-				.btn-none {
-					border: 1px solid rgba(0,0,0,0); !important
-					background-color: transparent;
-					cursor: default;
+				.shortcuts-container [data-entando] {
+					text-overflow:ellipsis;
 				}
 			</style>
 </head>
@@ -108,14 +106,17 @@
 					</div>
 				</div>
 			</div>
+
+			<s:include value="sc-2.jsp" />
+<%--
+			<s:include value="sc.jsp" />
+--%>
 			<nav role="navigation">
 				<tiles:insertAttribute name="menu"/>
 				<p class="sr-only">
 					<a href="#fagiano_start" id="fagiano_mainContent"><s:text name="note.backToStart" /></a>
 				</p>
 			</nav>
-			
-			<%-- <s:include value="sc.jsp" />--%>
 
 			<c:if test="${firstTimeMessagesVar}">
 				<div class="alert alert-info margin-none margin-base-top fade in" id="first-time-messages">
