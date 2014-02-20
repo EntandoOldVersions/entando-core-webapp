@@ -114,7 +114,9 @@
 					<a href="#fagiano_start" id="fagiano_mainContent"><s:text name="note.backToStart" /></a>
 				</p>
 			</nav>
-			<%-- <s:include value="sc.jsp" /> --%>
+			
+			<%-- <s:include value="sc.jsp" />--%>
+
 			<c:if test="${firstTimeMessagesVar}">
 				<div class="alert alert-info margin-none margin-base-top fade in" id="first-time-messages">
 					<button class="close" data-dismiss="alert" data-first-time-messages="dismiss"><span class="icon fa fa-times"></span></button>
