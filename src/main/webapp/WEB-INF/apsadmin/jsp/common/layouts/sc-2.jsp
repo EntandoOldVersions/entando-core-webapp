@@ -7,12 +7,6 @@
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <wpsa:userShortcutsConfig var="userConfigVar" />
 <s:set var="userConfigVar" value="#userConfigVar.config" />
-
-<%--
-<s:set var="userConfigVar" value="userConfig" />
-<br /><br />userConfigVar: <c:out value="${userConfigVar}" />
-<br /><br />userConfigVar.config: <c:out value="${userConfigVar.config}" />
---%>
 <div id="entando-menu-shortcuts-2" class="margin-base-bottom">
 	<s:set var="emptyShortcutConfigVar" value="%{true}" />
 	<s:set var="fullShortcutConfigVar" value="%{0}" />
@@ -28,7 +22,7 @@
 	</s:iterator>
 
 	<div class="text-muted small display-block">
-		Shortcuts v2
+		Shortcuts
 		<s:if test="!#emptyShortcutConfigVar">
 				<a
 					href="#entando-menu-shortcuts-2-container"
@@ -161,7 +155,6 @@
 		</a>
 	</s:if>
 	--%>
-
 <script>
 jQuery(function(){
 	$('#edit-2').on('click', function(ev){
@@ -250,84 +243,6 @@ jQuery(function(){
 })
 </script>
 
-<%-- shortucs available for the current user --%>
-<%--
-<s:set var="allowedShortcutsVar" value="allowedShortcuts" />
-<s:if test="((null != #allowedShortcutsVar) && (#allowedShortcutsVar.size() > 0) && (null != position)) || #myClient=='advanced'">
-	<div class="subsection-light clear" id="shortcut-configure-container">
-		<h2 class="margin-bit-bottom" id="shortcut-configure"><s:text name="label.configure" />&#32;<s:text name="name.position" />&#32;<span class="position-name"><s:property value="%{position + 1}" /></span></h2>
-		<s:form namespace="/do/MyShortcut" action="joinMyShortcut">
-			<p class="noscreen">
-				<wpsf:hidden name="position" />
-				<wpsf:hidden name="strutsAction" value="1" />
-			</p>
-			<p>
-				<label for="shortcutCode" class="basic-mint-label"><s:text name="label.choose" />:</label>
-
-				<select name="shortcutCode" id="shortcutCode" tabindex="<wpsa:counter />" >
-				<s:set var="tmpShortcutGroup" value="null" />
-				<s:iterator value="allowedShortcutSelectItems" var="allowedShortcutItem">
-					<s:if test="null != #tmpShortcutGroup && !#allowedShortcutItem.optgroup.equals(#tmpShortcutGroup)">
-					</optgroup>
-					</s:if>
-					<s:if test="null == #tmpShortcutGroup || !#allowedShortcutItem.optgroup.equals(#tmpShortcutGroup)">
-					<optgroup label="<s:property value="#allowedShortcutItem.optgroup" />">
-					</s:if>
-						<option value="<s:property value="#allowedShortcutItem.key" />"><s:property value="#allowedShortcutItem.value" /></option>
-					<s:set var="tmpShortcutGroup"><s:property value="#allowedShortcutItem.optgroup" /></wpsa:set>
-				</s:iterator>
-				</optgroup>
-				</select>
-
-				<wpsf:submit value="%{getText('label.set')}" cssClass="btn btn-default" />
-			</p>
-		</s:form>
-	</div>
-</s:if>
---%>
-
-<%-- else show the swap form 
-<s:elseif test="null != positionTarget">
-	<div class="subsection-light clear" id="shortcut-swap-container">
-	<h2 class="margin-bit-bottom" id="shortcut-swap"><s:text name="label.swap" />&#32;<s:text name="name.position" />: <s:property value="%{positionTarget + 1}" /> &ndash;
-	<s:set var="userShortcutToMove" value="%{getShortcut(#userConfigVar[positionTarget])}" />
-	<s:if test="null != #userShortcutToMove">
-		<s:if test="null != #userShortcutToMove.descriptionKey"><s:text name="%{#userShortcutToMove.descriptionKey}" /></s:if><s:else><s:property value="%{#userShortcutToMove.description}" /></s:else>
-	</s:if>
-	<s:else><s:text name="label.empty.f" /></s:else>
-	</h2>
-	<s:form namespace="/do/MyShortcut" action="swapMyShortcut">
-	<p class="noscreen">
-		<wpsf:hidden name="positionTarget" />
-		<wpsf:hidden name="strutsAction" value="2" />
-	</p>
-
-	<p>
-	<label for="positionDest" class="basic-mint-label"><s:text name="label.choose" />:</label>
-	<select name="positionDest" id="positionDest" tabindex="<wpsa:counter />" >
-	<s:iterator var="userShortcutCodeDestVar" value="#userConfigVar" status="rowstatus">
-		<s:set var="userShortcut" value="%{getShortcut(#userShortcutCodeDestVar)}"></s:set>
-		<s:if test="null != #userShortcut">
-			<s:set var="userShortcutShortDestDescr"><s:if test="null != #userShortcut.descriptionKey" ><s:text name="%{#userShortcut.descriptionKey}" /></s:if><s:else><s:property value="%{#userShortcut.description}" /></s:else></s:set>
-		</s:if>
-		<s:else>
-			<s:set var="userShortcutShortDestDescr"><s:text name="label.empty.f" /></s:set>
-		</s:else>
-		<option value="<s:property value="#rowstatus.index" />"><s:property value="%{#rowstatus.index + 1}" /> &ndash; <s:property value="%{#userShortcutShortDestDescr}" /></option>
-	</s:iterator>
-	</select>
-
-	<wpsf:submit value="%{getText('label.set')}" cssClass="btn btn-default" />
-	</p>
-	</s:form>
-	</div>
-</s:elseif>
---%>
-<%--
-<button class="btn btn-default" data-toggle="modal" data-target="#shortcut-configure-modal2" data-entando-action="shortcut-add">
-	modal test
-</button>
---%>
 	<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="shortcut-configure-modal2" aria-labelledby="shortcut-configure-modal" aria-hidden="true">
 		<div class="modal-dialog modal-sm">
 			<div class="modal-content">

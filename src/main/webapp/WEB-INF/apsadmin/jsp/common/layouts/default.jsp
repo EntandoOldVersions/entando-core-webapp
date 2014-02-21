@@ -44,16 +44,16 @@
 
 	<tiles:insertAttribute name="extraResources"/>
 	<style>
-				.shortcuts-container .sc-hidden {
-					display: none;
-				}
-				.shortcuts-container.edit-mode .sc-hidden {
-					display: inherit;
-				}
-				.shortcuts-container [data-entando] {
-					text-overflow:ellipsis;
-				}
-			</style>
+			.shortcuts-container .sc-hidden {
+				display: none;
+			}
+			.shortcuts-container.edit-mode .sc-hidden {
+				display: inherit;
+			}
+			.shortcuts-container [data-entando] {
+				text-overflow:ellipsis;
+			}
+		</style>
 </head>
 <body>
 
@@ -107,10 +107,8 @@
 				</div>
 			</div>
 
-			<s:include value="sc-2.jsp" />
-<%--
 			<s:include value="sc.jsp" />
---%>
+
 			<nav role="navigation">
 				<tiles:insertAttribute name="menu"/>
 				<p class="sr-only">
