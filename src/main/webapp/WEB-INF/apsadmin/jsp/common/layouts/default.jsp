@@ -53,6 +53,11 @@
 			.shortcuts-container [data-entando] {
 				text-overflow:ellipsis;
 			}
+			.shortcuts-container .shortcut-text {
+				text-overflow: ellipsis;
+				overflow: hidden;
+				display: block;
+			}
 		</style>
 </head>
 <body>
