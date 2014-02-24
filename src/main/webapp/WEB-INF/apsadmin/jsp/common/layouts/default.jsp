@@ -31,6 +31,7 @@
 	<script src="<wp:resourceURL />administration/js/jquery-1.9.1.min.js"></script>
 	<script src="<wp:resourceURL />administration/bootstrap/js/bootstrap.js"></script>
 	<script src="<wp:resourceURL />administration/js/bootstrap-offcanvas.js"></script>
+	<script src="<wp:resourceURL />administration/js/shortcuts.js"></script>
 
 	<wp:info key="systemParam" paramName="firstTimeMessages" var="firstTimeMessagesVar" />
 	<c:if test="${firstTimeMessagesVar eq true}">
@@ -43,22 +44,6 @@
 	</c:if>
 
 	<tiles:insertAttribute name="extraResources"/>
-	<style>
-			.shortcuts-container .sc-hidden {
-				display: none;
-			}
-			.shortcuts-container.edit-mode .sc-hidden {
-				display: inherit;
-			}
-			.shortcuts-container [data-entando] {
-				text-overflow:ellipsis;
-			}
-			.shortcuts-container .shortcut-text {
-				text-overflow: ellipsis;
-				overflow: hidden;
-				display: block;
-			}
-		</style>
 </head>
 <body>
 
@@ -112,7 +97,8 @@
 				</div>
 			</div>
 
-			<s:include value="sc.jsp" />
+			<%-- shortcuts --%>
+			<s:include value="/WEB-INF/apsadmin/jsp/common/inc/menu-shortcuts.jsp" />
 
 			<nav role="navigation">
 				<tiles:insertAttribute name="menu"/>
