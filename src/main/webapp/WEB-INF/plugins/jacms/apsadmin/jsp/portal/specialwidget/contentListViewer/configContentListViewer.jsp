@@ -175,26 +175,32 @@
 
 					</s:iterator>
 
-					<div class="clearfix"></div>
-
-					<s:if test="categoryCodes.size() > 1">
-						<s:set var="clauseOrIsActiveVar" value="%{getShowlet().getConfig().get('orClauseCategoryFilter')}" />
-						<div class="margin-base-top margin-large-bottom display-block clearfix">
-							<span data-toggle="buttons">
-								<label for="category-filter-type-clause" class="btn btn-default <s:property value="%{#clauseOrIsActiveVar ? ' active ' : ' ' }" />">
-									<wpsf:checkbox
-										name="orClauseCategoryFilter"
-										value="true"
-										checked="%{#clauseOrIsActiveVar}"
-										id="category-filter-type-clause"
-										/>
-										<s:text name="label.orClauseCategoryFilter" />
-								</label>
-							</span>
-							<span class="help-block"><s:text name="note.orClauseCategoryFilter" /></span>
-						</div>
-					</s:if>
 				</s:if>
+				<div class="clearfix"></div>
+					<s:set var="clauseOrIsActiveVar" value="%{getShowlet().getConfig().get('orClauseCategoryFilter')}" />
+					<s:set var="showClauseOrVar" value="%{null != categoryCodes && categoryCodes.size() > 1}" />
+					<%--|<s:property value="#clauseOrIsActiveVar" />|
+					|<s:property value="#showClauseOrVar" />|
+					|<s:property value="#showClauseOrVar&&#clauseOrIsActiveVar" />|
+					--%>
+					<div class="margin-base-top margin-large-bottom display-block clearfix">
+						<span data-toggle="buttons">
+							<label for="category-filter-type-clause" class="btn btn-default
+								<s:if test="#showClauseOrVar">
+									<s:if test="#clauseOrIsActiveVar"> active </s:if>
+								</s:if>
+								<s:else> disabled </s:else>">
+								<wpsf:checkbox
+									name="orClauseCategoryFilter"
+									fieldValue="true"
+									value="%{#clauseOrIsActiveVar && #showClauseOrVar}"
+									id="category-filter-type-clause"
+									/>
+									<s:text name="label.orClauseCategoryFilter" />
+							</label>
+						</span>
+						<span class="help-block"><s:text name="note.orClauseCategoryFilter" /></span>
+					</div>
 				<%--
 				<s:else>
 					<p><s:text name="note.categories.none" /></p>
