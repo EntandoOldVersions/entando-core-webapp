@@ -3,7 +3,6 @@
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="jacmswpsa" uri="/jacms-apsadmin-core" %>
-we?
 
 <p id="manage" class="sr-only"><s:text name="note.userbar.intro" />:</p>
 

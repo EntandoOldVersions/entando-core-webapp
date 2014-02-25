@@ -96,3 +96,17 @@
 	overflow: hidden;
 	display: block;
 }
+.shortcuts-container .shortcut-item {
+	-webkit-transition: all 250ms ease-out;
+	-moz-transition: all 250ms ease-out;
+	-ms-transition: all 250ms ease-out;
+	-o-transition: all 250ms ease-out;
+	transition: all 250ms ease-out;
+	opacity: 1;
+}
+.shortcuts-container .shortcut-item.fadeIn {
+	opacity: 1;
+}
+.shortcuts-container .shortcut-item.fadeOut {
+	opacity: 0;
+}

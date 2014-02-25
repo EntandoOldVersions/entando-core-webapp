@@ -80,6 +80,7 @@ shortcuts.label.position=Position
 			</s:if>
 
 			<div role="toolbar" data-entando-position="<s:property value="#rowstatus.index" />" class="
+				shortcut-item
 				col-lg-6
 				<s:if test="null != #userShortcut"> full margin-small-bottom </s:if>
 				<s:else> empty sc-hidden </s:else> btn-toolbar  <s:property value="#userShortcut.menuSectionCode" />">
@@ -117,7 +118,7 @@ shortcuts.label.position=Position
 						<%-- clear --%>
 						<a
 							data-entando-action="remove"
-							class=""
+							class="btn btn-link btn-xs"
 							title="<s:text name="shortcuts.label.clear" />&#32;<s:property value="%{null != #userShortcut ? #userShortcutShortDescr : #rowstatus.count}" />"
 							href="<s:url action="removeMyShortcut" namespace="/do/MyShortcut"><s:param name="position" value="%{#rowstatus.index}" /><s:param name="strutsAction" value="4" /></s:url>">
 								<span class="sr-only"><s:text name="shortcuts.label.clear" /></span>
@@ -146,7 +147,7 @@ shortcuts.label.position=Position
 						<%-- move down --%>
 						<a
 							data-entando-action="shortcut-move-down"
-							class=""
+							class="btn btn-link btn-xs"
 							title="<s:text name="shortcuts.label.movedown" />&#32;<s:property value="%{null != #userShortcut ? #userShortcutShortDescr : #rowstatus.count}" />"
 							href="<s:url namespace="/do/MyShortcut" action="swapMyShortcut">
 								<s:param name="positionTarget" value="%{#rowstatus.index}" />
@@ -158,7 +159,7 @@ shortcuts.label.position=Position
 						<%-- move up --%>
 						<a
 							data-entando-action="shortcut-move-up"
-							class=""
+							class="btn btn-link btn-xs"
 							title="<s:text name="shortcuts.label.moveup" />&#32;<s:property value="%{null != #userShortcut ? #userShortcutShortDescr : #rowstatus.count}" />"
 							href="<s:url namespace="/do/MyShortcut" action="swapMyShortcut">
 								<s:param name="positionTarget" value="%{#rowstatus.index}" />
@@ -213,7 +214,7 @@ shortcuts.label.position=Position
 								<s:text name="shortcuts.modal.button.close" />
 							</button>
 							<button type="submit" class="btn btn-primary">
-								<s:property value="shortcuts.modal.label.set" />
+								<s:text name="shortcuts.modal.label.set" />
 							</button>
 						</div>
 				</s:form>

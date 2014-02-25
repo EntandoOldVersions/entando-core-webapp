@@ -7,22 +7,24 @@ jQuery(function(){
 
 	var animationDuration = 250;
 
-	fadeOut = function (els, callback) {
-		for(var i = 0; i<els.length;i++) {
-			var el = els[i];
-			el.fadeOut(animationDuration);
-		}
-		if(callback) callback()
-	}
-	fadeIn = function (els, callback) {
+	var fadeOut = function (els, callback) {
+		$(els[0]).addClass('fadeOut');
+		$(els[0]).removeClass('fadeIn');
+		$(els[1]).addClass('fadeOut');
+		$(els[1]).removeClass('fadeIn');
+		if(callback) callback();
+	};
+
+	var fadeIn = function (els, callback) {
 		window.setTimeout(function(){
-			for(var i = 0; i<els.length;i++) {
-				var el = els[i];
-				el.fadeIn(animationDuration);
-			}
+			$(els[0]).addClass('fadeIn');
+			$(els[0]).removeClass('fadeOut');
+			$(els[1]).addClass('fadeIn');
+			$(els[1]).removeClass('fadeOut');
 			if(callback) callback()
-		}, 150);
+		}, animationDuration);
 	}
+
 	var scAjax = function(url) {
 		$.ajax({url: url});
 	};
@@ -48,7 +50,6 @@ jQuery(function(){
 		$('[data-entando-role="empty"]', el).text(newv+1);
 		var as = $('a[href]', el);
 		$.each(as, function(index, a){
-			////console.log(a);
 			var a = $(a);
 			var href = a.attr('href');
 			href = href.replace(/position=\d+/gi, 'position='+ newv +'');
