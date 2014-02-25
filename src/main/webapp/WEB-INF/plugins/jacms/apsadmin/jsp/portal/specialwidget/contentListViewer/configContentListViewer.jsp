@@ -178,12 +178,20 @@
 					<div class="clearfix"></div>
 
 					<s:if test="categoryCodes.size() > 1">
-						<div class="btn-group" data-toggle="buttons">
-							<label for="orClauseCategoryFilter" class="btn btn-default">
-								<wpsf:checkbox name="orClauseCategoryFilter"
-									value="%{getShowlet().getConfig().get('orClauseCategoryFilter')}" id="orClauseCategoryFilter" />
-								<s:text name="label.orClauseCategoryFilter" />
-							</label>
+						<s:set var="clauseOrIsActiveVar" value="%{getShowlet().getConfig().get('orClauseCategoryFilter')}" />
+						<div class="margin-base-top margin-large-bottom display-block clearfix">
+							<span data-toggle="buttons">
+								<label for="category-filter-type-clause" class="btn btn-default <s:property value="%{#clauseOrIsActiveVar ? ' active ' : ' ' }" />">
+									<wpsf:checkbox
+										name="orClauseCategoryFilter"
+										value="true"
+										checked="%{#clauseOrIsActiveVar}"
+										id="category-filter-type-clause"
+										/>
+										<s:text name="label.orClauseCategoryFilter" />
+								</label>
+							</span>
+							<span class="help-block"><s:text name="note.orClauseCategoryFilter" /></span>
 						</div>
 					</s:if>
 				</s:if>
@@ -303,9 +311,8 @@
 							</div>
 							<span class="clearfix"></span>
 						</li>
-					</ol>
-
-				</s:iterator>
+					</s:iterator>
+				</ol>
 				</s:if>
 				<%--
 				<s:else>
