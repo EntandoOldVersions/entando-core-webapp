@@ -114,6 +114,30 @@ shortcuts.label.position=Position
 				</s:else>
 
 				<div class="shortcuts-configure-item-toolbar text-center sc-hidden">
+					<%-- move up --%>
+						<a
+							data-entando-action="shortcut-move-up"
+							class="btn btn-link btn-xs"
+							title="<s:text name="shortcuts.label.moveup" />&#32;<s:property value="%{null != #userShortcut ? #userShortcutShortDescr : #rowstatus.count}" />"
+							href="<s:url namespace="/do/MyShortcut" action="swapMyShortcut">
+								<s:param name="positionTarget" value="%{#rowstatus.index}" />
+								<s:param name="strutsAction" value="2" />
+								<s:param name="positionDest" value="%{#rowstatus.index-1}" /></s:url>">
+								<span class="sr-only"><s:text name="shortcuts.label.moveup" /></span>
+								&ensp;<span class="icon fa fa-sort-desc"></span>&ensp;
+						</a>
+					<%-- move down --%>
+						<a
+							data-entando-action="shortcut-move-down"
+							class="btn btn-link btn-xs"
+							title="<s:text name="shortcuts.label.movedown" />&#32;<s:property value="%{null != #userShortcut ? #userShortcutShortDescr : #rowstatus.count}" />"
+							href="<s:url namespace="/do/MyShortcut" action="swapMyShortcut">
+								<s:param name="positionTarget" value="%{#rowstatus.index}" />
+								<s:param name="strutsAction" value="2" />
+								<s:param name="positionDest" value="%{#rowstatus.index+1}" /></s:url>">
+								<span class="sr-only"><s:text name="shortcuts.label.movedown" /></span>
+								&ensp;<span class="icon fa fa-sort-asc"></span>&ensp;
+						</a>
 					<s:if test="null != #userShortcut">
 						<%-- clear --%>
 						<a
@@ -124,50 +148,26 @@ shortcuts.label.position=Position
 								<span class="sr-only"><s:text name="shortcuts.label.clear" /></span>
 								<span class="icon fa fa-eraser"></span>
 						</a>
-						<%-- configure
-						<a
-							data-entando-action="configure"
-							class="btn btn-default btn-xs"
-							rel="shortcut-configure-modal"
-							title="<s:text name="label.configure" />&#32;<s:text name="name.position" />&#32;<s:property value="%{#rowstatus.index + 1}" />"
-							href="<s:url action="configPosition" namespace="/do/MyShortcut" anchor="shortcut-configure-modal"><s:param name="position" value="%{#rowstatus.index}" /><s:param name="strutsAction" value="1" /></s:url>">
-								<span class="icon fa fa-cog"><span class="sr-only"><s:text name="label.set" /></span></span>
-						</a>
-						--%>
-						<%-- move
-						<a
-							data-entando-action="move"
-							class="btn btn-default btn-xs"
-							title="<s:text name="label.move" />&#32;<s:text name="name.position" />&#32;<s:property value="%{#rowstatus.index + 1}" />"
-							href="<s:url action="configPosition" namespace="/do/MyShortcut"><s:param name="positionTarget" value="%{#rowstatus.index}" /><s:param name="strutsAction" value="2" /></s:url>">
-								<span class="icon fa fa-arrows"><span class="sr-only"><s:text name="label.move" /></span></span>
-						</a>
-						--%>
+						<%-- configure --%>
+							<%-- <a
+								data-entando-action="configure"
+								class="btn btn-default btn-xs"
+								rel="shortcut-configure-modal"
+								title="<s:text name="label.configure" />&#32;<s:text name="name.position" />&#32;<s:property value="%{#rowstatus.index + 1}" />"
+								href="<s:url action="configPosition" namespace="/do/MyShortcut" anchor="shortcut-configure-modal"><s:param name="position" value="%{#rowstatus.index}" /><s:param name="strutsAction" value="1" /></s:url>">
+									<span class="icon fa fa-cog"><span class="sr-only"><s:text name="label.set" /></span></span>
+							</a>
+							--%>
+						<%-- move --%>
+							<%-- <a
+								data-entando-action="move"
+								class="btn btn-default btn-xs"
+								title="<s:text name="label.move" />&#32;<s:text name="name.position" />&#32;<s:property value="%{#rowstatus.index + 1}" />"
+								href="<s:url action="configPosition" namespace="/do/MyShortcut"><s:param name="positionTarget" value="%{#rowstatus.index}" /><s:param name="strutsAction" value="2" /></s:url>">
+									<span class="icon fa fa-arrows"><span class="sr-only"><s:text name="label.move" /></span></span>
+							</a>
+							--%>
 					</s:if>
-						<%-- move down --%>
-						<a
-							data-entando-action="shortcut-move-down"
-							class="btn btn-link btn-xs"
-							title="<s:text name="shortcuts.label.movedown" />&#32;<s:property value="%{null != #userShortcut ? #userShortcutShortDescr : #rowstatus.count}" />"
-							href="<s:url namespace="/do/MyShortcut" action="swapMyShortcut">
-								<s:param name="positionTarget" value="%{#rowstatus.index}" />
-								<s:param name="strutsAction" value="2" />
-								<s:param name="positionDest" value="%{#rowstatus.index+1}" /></s:url>">
-								<span class="sr-only"><s:text name="shortcuts.label.movedown" /></span>
-								&ensp;<span class="icon fa fa-long-arrow-down"></span>&ensp;
-						</a>
-						<%-- move up --%>
-						<a
-							data-entando-action="shortcut-move-up"
-							class="btn btn-link btn-xs"
-							title="<s:text name="shortcuts.label.moveup" />&#32;<s:property value="%{null != #userShortcut ? #userShortcutShortDescr : #rowstatus.count}" />"
-							href="<s:url namespace="/do/MyShortcut" action="swapMyShortcut">
-								<s:param name="positionTarget" value="%{#rowstatus.index}" />
-								<s:param name="strutsAction" value="2" />
-								<s:param name="positionDest" value="%{#rowstatus.index-1}" /></s:url>">
-								<span class="sr-only"><s:text name="shortcuts.label.moveup" /></span>
-								&ensp;<span class="icon fa fa-long-arrow-up"></span>&ensp;
-						</a>
 				</div>
 			</div>
 			<s:set var="userShortcut" value="%{null}" />
