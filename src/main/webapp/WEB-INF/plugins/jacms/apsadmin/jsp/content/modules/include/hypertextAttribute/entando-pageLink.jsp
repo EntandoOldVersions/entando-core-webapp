@@ -23,6 +23,8 @@
 						<s:set name="currentRoot" value="showableTree" />
 						<s:set var="treeNodeExtraParamName" value="'activeTab'" />
 						<s:set var="treeNodeExtraParamValue" value="1" />
+						<s:set name="closeTreeActionName" value="'entandoInternalLink'" />
+						<s:set name="openTreeActionName" value="'entandoInternalLink'" />
 						<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder-request-links.jsp" />
 					</s:elseif>
 				</ul>
