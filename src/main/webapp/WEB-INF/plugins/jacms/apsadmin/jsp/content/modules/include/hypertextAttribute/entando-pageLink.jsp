@@ -20,6 +20,7 @@
 						<s:include value="/WEB-INF/apsadmin/jsp/common/treeBuilder.jsp" />
 					</s:if>
 					<s:elseif test="#pageTreeStyleVar == 'request'">
+						<s:set var="treeNodeExtraParamsMap" value="#{'contentOnSessionMarker': contentOnSessionMarker}" />
 						<s:set name="currentRoot" value="showableTree" />
 						<s:set var="treeNodeExtraParamName" value="'activeTab'" />
 						<s:set var="treeNodeExtraParamValue" value="1" />

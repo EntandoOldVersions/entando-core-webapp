@@ -15,6 +15,7 @@
 	<s:if test="!#currentRoot.open && !#currentRoot.empty">
 		<a
 			href="<s:url action="%{#openTreeActionName}">
+			<wpsa:paramMap map="#treeNodeExtraParamsMap" />
 			<s:param name="%{#treeNodeExtraParamName}" value="%{#treeNodeExtraParamValue}" />
 			<s:param name="treeNodeActionMarkerCode" value="'open'" /><s:param name="targetNode" value="#currentRoot.code" /><s:param name="treeNodesToOpen" value="treeNodesToOpen" /></s:url>">
 			<span class="icon fa fa-plus" title="<s:text name="label.open" />"></span>
@@ -23,6 +24,7 @@
 	</s:if>
 	<s:elseif test="#currentRoot.open && !#currentRoot.empty">
 		<a class="noborder" href="<s:url action="%{#closeTreeActionName}">
+		<wpsa:paramMap map="#treeNodeExtraParamsMap" />
 		<s:param name="%{#treeNodeExtraParamName}" value="%{#treeNodeExtraParamValue}" />
 		<s:param name="treeNodeActionMarkerCode" value="'close'" /><s:param name="targetNode" value="#currentRoot.code" /><s:param name="treeNodesToOpen" value="treeNodesToOpen" /></s:url>">
 			<span class="icon fa fa-minus" title="<s:text name="label.close" />"></span>
