@@ -192,9 +192,10 @@ shortcuts.label.position=Position
 							</p>
 							<div class="form-group">
 								<label for="shortcutCode" class="control-label sr-only"><s:text name="shortcuts.label.choose" /></label>
+								<wpsa:shortcutList type="list_items" var="allowedShortcutSelectItems"/>
 								<select name="shortcutCode" id="shortcutCode" class="form-control">
 									<s:set var="tmpShortcutGroup" value="%{null}" />
-									<s:iterator value="allowedShortcutSelectItems" var="allowedShortcutItem">
+									<s:iterator value="#allowedShortcutSelectItems" var="allowedShortcutItem">
 										<s:if test="null != #tmpShortcutGroup && !#allowedShortcutItem.optgroup.equals(#tmpShortcutGroup)">
 											</optgroup>
 										</s:if>
