@@ -35,7 +35,7 @@
 							data-entando="shortcut-element"
 							>
 								<span class="shortcut-text margin-small-left">
-								<span class=" <s:property value="#shortcutsIconsVar.get(#userShortcut.menuSectionCode)" />" data-entando="shortcut-icon"></span>
+								<span class="text-info <s:property value="#shortcutsIconsVar.get(#userShortcut.menuSectionCode)" />" data-entando="shortcut-icon"></span>
 									<span data-entando="shortcut-description"><s:property value="%{#userShortcutShortDescr}" /></span>
 								</span>
 						</a>
