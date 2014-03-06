@@ -29,7 +29,7 @@ shortcuts.label.position=Position
 }" />
 <wpsa:userShortcutsConfig var="userConfigVar" />
 <s:set var="userConfigVar" value="#userConfigVar.config" />
-<div id="entando-menu-shortcuts-2" class="margin-base-bottom">
+<div id="entando-menu-shortcuts" class="margin-base-bottom">
 	<s:set var="emptyShortcutConfigVar" value="%{true}" />
 	<s:set var="fullShortcutConfigVar" value="%{0}" />
 	<s:iterator value="#userConfigVar" var="userShortcutCode" status="rowstatus">
@@ -42,140 +42,36 @@ shortcuts.label.position=Position
 		</s:else>
 		<s:set var="userShortcut" value="%{null}" />
 	</s:iterator>
-
 	<div class="text-muted small display-block">
 		<s:text name="shortcuts.label.title" />
-		<s:if test="!#emptyShortcutConfigVar">
-				<a
-					href="#entando-menu-shortcuts-container"
-					class="pull-right" id="edit-shortcuts"
-					title="<s:text name="shortcuts.label.edit" />"
-					>
-						<span class="sr-only"><s:text name="shortcuts.label.edit" />&#32;</span>
-						<span class="icon fa fa-cog"></span>
-				</a>
-		</s:if>
-		<s:else>
-			<a
-				data-toggle="modal" data-target="#shortcut-configure-modal2" data-entando-action="shortcut-add"
-				data-entando-position="0"
-				class="btn-toolbar pull-right"
-				href="<s:url action="configPosition" namespace="/do/MyShortcut" anchor="shortcut-configure-modal"><s:param name="position" value="0" /><s:param name="strutsAction" value="1" /></s:url>"
-				title="add shortcut" >
-						<span class="icon fa fa-plus-square"></span>
-						<span class="sr-only"><s:text name="shortcuts.label.add" /></span>
-			</a>
-		</s:else>
+		<a
+			href="#entando-menu-shortcuts-container"
+			class="pull-right <s:if test="#emptyShortcutConfigVar"> hidden </s:if>" id="edit-shortcuts"
+			title="<s:text name="shortcuts.label.edit" />"
+			data-entando="config-switch-edit"
+			>
+				<span class="sr-only"><s:text name="shortcuts.label.edit" />&#32;</span>
+				<span class="icon fa fa-cog"></span>
+		</a>
+		<a
+			data-entando="config-switch-add"
+			data-toggle="modal" data-target="#shortcut-configure-modal" data-entando-action="shortcut-add"
+			data-entando-position="0"
+			class="btn-toolbar pull-right <s:if test="!#emptyShortcutConfigVar"> hidden </s:if>"
+			href="<s:url action="configPosition" namespace="/do/MyShortcut" anchor="shortcut-configure-modal"><s:param name="position" value="0" /><s:param name="strutsAction" value="1" /></s:url>"
+			title="add shortcut" >
+					<span class="icon fa fa-plus-square"></span>
+					<span class="sr-only"><s:text name="shortcuts.label.add" /></span>
+		</a>
 	</div>
 	<div class="shortcuts-container row" id="entando-menu-shortcuts-container">
 		<s:iterator value="#userConfigVar" var="userShortcutCode" status="rowstatus">
-		<%-- single shortcut start --%>
-			<wpsa:shortcut key="%{#userShortcutCode}" var="userShortcut" />
-			<s:if test="null != #userShortcut">
-				<s:set var="emptyShortcutConfigVar" value="%{false}" />
-				<s:set var="userShortcutSectionShortDescr" value="%{ null != #userShortcut.menuSection.descriptionKey ? getText(#userShortcut.menuSection.descriptionKey) : #userShortcut.menuSection.description }" />
-				<s:set var="userShortcutSectionLongDescr" value="%{ null != #userShortcut.menuSection.longDescriptionKey ? getText(#userShortcut.menuSection.longDescriptionKey) : #userShortcut.menuSection.longDescription }" />
-				<s:set var="userShortcutShortDescr" value="%{ null != #userShortcut.descriptionKey ? getText(#userShortcut.descriptionKey) : #userShortcut.description }" />
-				<s:set var="userShortcutLongDescr" value="%{ null != #userShortcut.longDescriptionKey ? getText(#userShortcut.longDescriptionKey) : #userShortcut.longDescription }" />
-			</s:if>
-
-			<div role="toolbar" data-entando-position="<s:property value="#rowstatus.index" />" class="
-				shortcut-item
-				col-lg-6
-				<s:if test="null != #userShortcut"> full margin-small-bottom </s:if>
-				<s:else> empty sc-hidden </s:else> btn-toolbar  <s:property value="#userShortcut.menuSectionCode" />">
-				<s:if test="null != #userShortcut">
-					<div class="btn-group btn-group-justified">
-						<a
-							class="btn btn-block btn-default btn-xs"
-							href="<s:url action="%{#userShortcut.actionName}" namespace="%{#userShortcut.namespace}"><wpsa:paramMap map="#userShortcut.parameters" /></s:url>"
-							lang="en"
-							title="[<s:property value="%{#userShortcutSectionShortDescr}" />] <s:property value="%{#userShortcutLongDescr}" />">
-								<span class="shortcut-text">
-								<span class="text-info <s:property value="#shortcutsIconsVar.get(#userShortcut.menuSectionCode)" />"></span>
-								<s:property value="%{#userShortcutShortDescr}" /></span>
-						</a>
-					</div>
-				</s:if>
-				<s:else>
-					<a
-						data-toggle="modal" data-target="#shortcut-configure-modal2"
-						class="btn-group btn-group-justified sc-hidden"
-						data-entando-action="shortcut-add"
-						class="btn btn-default btn-xs"
-						href="<s:url action="configPosition" namespace="/do/MyShortcut" anchor="shortcut-configure-modal"><s:param name="position" value="%{#rowstatus.index}" /><s:param name="strutsAction" value="1" /></s:url>"
-						title="<s:text name="shortcuts.label.configure" />&#32;<s:text name="shortcuts.label.position" />&#32;<s:property value="%{#rowstatus.index + 1}" />"
-						>
-						 <span class="btn btn-default btn-xs btn-block">
-						 	<span class="icon fa fa-plus-square"></span>
-						 	<span data-entando-role="empty"><s:property value="#rowstatus.count" /></span>
-					 	</span>
-					</a>
-				</s:else>
-
-				<div class="shortcuts-configure-item-toolbar text-center sc-hidden">
-					<%-- move up --%>
-						<a
-							data-entando-action="shortcut-move-up"
-							class="btn btn-link btn-xs"
-							title="<s:text name="shortcuts.label.moveup" />&#32;<s:property value="%{null != #userShortcut ? #userShortcutShortDescr : #rowstatus.count}" />"
-							href="<s:url namespace="/do/MyShortcut" action="swapMyShortcut">
-								<s:param name="positionTarget" value="%{#rowstatus.index}" />
-								<s:param name="strutsAction" value="2" />
-								<s:param name="positionDest" value="%{#rowstatus.index-1}" /></s:url>">
-								<span class="sr-only"><s:text name="shortcuts.label.moveup" /></span>
-								&ensp;<span class="icon fa fa-sort-desc"></span>&ensp;
-						</a>
-					<%-- move down --%>
-						<a
-							data-entando-action="shortcut-move-down"
-							class="btn btn-link btn-xs"
-							title="<s:text name="shortcuts.label.movedown" />&#32;<s:property value="%{null != #userShortcut ? #userShortcutShortDescr : #rowstatus.count}" />"
-							href="<s:url namespace="/do/MyShortcut" action="swapMyShortcut">
-								<s:param name="positionTarget" value="%{#rowstatus.index}" />
-								<s:param name="strutsAction" value="2" />
-								<s:param name="positionDest" value="%{#rowstatus.index+1}" /></s:url>">
-								<span class="sr-only"><s:text name="shortcuts.label.movedown" /></span>
-								&ensp;<span class="icon fa fa-sort-asc"></span>&ensp;
-						</a>
-					<s:if test="null != #userShortcut">
-						<%-- clear --%>
-						<a
-							data-entando-action="remove"
-							class="btn btn-link btn-xs"
-							title="<s:text name="shortcuts.label.clear" />&#32;<s:property value="%{null != #userShortcut ? #userShortcutShortDescr : #rowstatus.count}" />"
-							href="<s:url action="removeMyShortcut" namespace="/do/MyShortcut"><s:param name="position" value="%{#rowstatus.index}" /><s:param name="strutsAction" value="4" /></s:url>">
-								<span class="sr-only"><s:text name="shortcuts.label.clear" /></span>
-								<span class="icon fa fa-eraser"></span>
-						</a>
-						<%-- configure --%>
-							<%-- <a
-								data-entando-action="configure"
-								class="btn btn-default btn-xs"
-								rel="shortcut-configure-modal"
-								title="<s:text name="label.configure" />&#32;<s:text name="name.position" />&#32;<s:property value="%{#rowstatus.index + 1}" />"
-								href="<s:url action="configPosition" namespace="/do/MyShortcut" anchor="shortcut-configure-modal"><s:param name="position" value="%{#rowstatus.index}" /><s:param name="strutsAction" value="1" /></s:url>">
-									<span class="icon fa fa-cog"><span class="sr-only"><s:text name="label.set" /></span></span>
-							</a>
-							--%>
-						<%-- move --%>
-							<%-- <a
-								data-entando-action="move"
-								class="btn btn-default btn-xs"
-								title="<s:text name="label.move" />&#32;<s:text name="name.position" />&#32;<s:property value="%{#rowstatus.index + 1}" />"
-								href="<s:url action="configPosition" namespace="/do/MyShortcut"><s:param name="positionTarget" value="%{#rowstatus.index}" /><s:param name="strutsAction" value="2" /></s:url>">
-									<span class="icon fa fa-arrows"><span class="sr-only"><s:text name="label.move" /></span></span>
-							</a>
-							--%>
-					</s:if>
-				</div>
-			</div>
-			<s:set var="userShortcut" value="%{null}" />
-		<%-- single shortcut end --%>
+			<s:set var="position" value="#rowstatus.index" />
+			<s:include value="/WEB-INF/apsadmin/jsp/common/shortcut/inc/shortcut-item.jsp" />
 		</s:iterator>
 	</div>
 
-	<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="shortcut-configure-modal2" aria-labelledby="shortcut-configure-modal" aria-hidden="true">
+	<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="shortcut-configure-modal" aria-labelledby="shortcut-configure-modal" aria-hidden="true">
 		<div class="modal-dialog modal-sm">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -185,7 +81,8 @@ shortcuts.label.position=Position
 				<s:form
 					namespace="/do/MyShortcut"
 					action="joinMyShortcut"
-					cssClass="modal-body">
+					cssClass="modal-body"
+					id="form-shortcut-add">
 							<p class="noscreen">
 								<wpsf:hidden name="position" />
 								<wpsf:hidden name="strutsAction" value="1" />

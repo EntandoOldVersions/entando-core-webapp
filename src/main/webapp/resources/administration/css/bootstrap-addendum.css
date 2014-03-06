@@ -95,6 +95,7 @@
 	text-overflow: ellipsis;
 	overflow: hidden;
 	display: block;
+	text-align: left;
 }
 .shortcuts-container .shortcut-item {
 	-webkit-transition: all 250ms ease-out;
