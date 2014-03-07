@@ -46,7 +46,6 @@
 						data-toggle="modal" data-target="#shortcut-configure-modal"
 						class="btn-group btn-group-justified sc-hidden"
 						data-entando-action="shortcut-add"
-						class="btn btn-default btn-xs"
 						href="<s:url action="configPosition" namespace="/do/MyShortcut" anchor="shortcut-configure-modal"><s:param name="position" value="%{#position}" /><s:param name="strutsAction" value="1" /></s:url>"
 						title="<s:text name="shortcuts.label.configure" />&#32;<s:text name="shortcuts.label.position" />&#32;<s:property value="%{#position + 1}" />"
 						>
