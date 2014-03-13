@@ -16,6 +16,7 @@
 		<a
 			href="<s:url action="%{#openTreeActionName}">
 			<s:param name="%{#treeNodeExtraParamName}" value="%{#treeNodeExtraParamValue}" />
+			<s:param name="copyingPageCode" value="copyingPageCode" />
 			<s:param name="treeNodeActionMarkerCode" value="'open'" /><s:param name="targetNode" value="#currentRoot.code" /><s:param name="treeNodesToOpen" value="treeNodesToOpen" /></s:url>">
 			<span class="icon fa fa-plus" title="<s:text name="label.open" />"></span>
 			<span class="sr-only"><s:text name="label.open" /></span>
@@ -24,6 +25,7 @@
 	<s:elseif test="#currentRoot.open && !#currentRoot.empty">
 		<a class="noborder" href="<s:url action="%{#closeTreeActionName}">
 		<s:param name="%{#treeNodeExtraParamName}" value="%{#treeNodeExtraParamValue}" />
+		<s:param name="copyingPageCode" value="copyingPageCode" />
 		<s:param name="treeNodeActionMarkerCode" value="'close'" /><s:param name="targetNode" value="#currentRoot.code" /><s:param name="treeNodesToOpen" value="treeNodesToOpen" /></s:url>">
 			<span class="icon fa fa-minus" title="<s:text name="label.close" />"></span>
 			<span class="sr-only"><s:text name="label.close" /></span>
