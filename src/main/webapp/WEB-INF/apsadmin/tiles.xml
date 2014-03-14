@@ -265,12 +265,22 @@
         <put-attribute name="title" value="title.widgetManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/showlet-delete-confirm.jsp" />
     </definition>
-
+	
     <definition extends="layout.default" name="admin.Portal.showletType.entry">
         <put-attribute name="title" value="title.widgetManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/showlet-entry.jsp" />
     </definition>
-
+	
+    <definition extends="layout.default" name="admin.PageModel.list">
+        <put-attribute name="title" value="title.pageModelManagement" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/model/pageModel-list.jsp" />
+    </definition>
+	
+	<definition extends="layout.default" name="admin.PageModel.references">
+        <put-attribute name="title" value="title.pageModelManagement" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/model/pageModel-references.jsp" />
+    </definition>
+	
     <!-- ********* FINE Area Gestione Servizi Portale ********* -->
 
     <!-- ********* INIZIO Area Gestione Categorie ********* -->
