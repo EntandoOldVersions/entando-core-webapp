@@ -305,7 +305,7 @@
 		</s:if>
 
 		<s:set var="contentIdsVar" value="contents" />
-		
+
 		<wpsa:subset source="#contentIdsVar" count="10" objectName="groupContent" advanced="true" offset="5">
 		<s:set var="group" value="#groupContent" />
 
@@ -385,13 +385,13 @@
 						</li>
 						<li>
 							<a title="<s:text name="label.inspect" />: [<s:text name="name.work" />] <s:property value="#content.id" /> - <s:property value="#content.descr" />" href="<s:url action="inspect" namespace="/do/jacms/Content"><s:param name="contentId" value="#content.id" /><s:param name="currentPublicVersion" value="'false'" /></s:url>">
-								<span class="icon fa fa-fw icon-info"></span>
+								<span class="icon fa fa-fw fa-info"></span>
 								<s:text name="label.inspect" />&#32;<s:text name="name.work" />
 							</a>
 						</li>
 						<li>
 							<a title="<s:text name="label.inspect" />: [<s:text name="name.onLine" />] <s:property value="#content.id" /> - <s:property value="#content.descr" />" href="<s:url action="inspect" namespace="/do/jacms/Content"><s:param name="contentId" value="#content.id" /><s:param name="currentPublicVersion" value="'true'" /></s:url>">
-								<span class="icon fa fa-fw icon-info"></span>
+								<span class="icon fa fa-fw fa-info-circle"></span>
 								<s:text name="label.inspect" />&#32;<s:text name="name.onLine" />
 							</a>
 						</li>
