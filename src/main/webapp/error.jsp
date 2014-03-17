@@ -25,43 +25,45 @@
 			<table class="table table-responsive table-striped">
 				<tr>
 					<th scope="row">Status Code</th>
-					<td><code><%= statusCode %></code></td>
+					<td>
+						<c:set var="statusCodeVar"><%= statusCode %></c:set>
+						<code><c:out value="${statusCodeVar}" /></code>
+					</td>
 				</tr>
 				<wp:ifauthorized permission="superuser">
 					<tr>
 						<th scope="row">Exception Type</th>
-						<td><code><%= exceptionType %></code></td>
+						<td>
+							<c:set var="exceptionTypeVar"><%= exceptionType %></c:set>
+							<code><c:out value="${exceptionTypeVar}" /></code>
+						</td>
 					</tr>
 					<tr>
 						<th scope="row">Message</th>
-						<td><code><%= message %></code></td>
+						<td>
+							<c:set var="messageVar"><%= message %></c:set>
+							<c:out value="${messageVar}" />
+						</td>
 					</tr>
 					<tr>
 						<th scope="row">Exception</th>
 						<td>
-								<%
-									if( exception != null )
-									{
-											out.print("<pre>");
-											exception.printStackTrace(new PrintWriter(out));
-											out.print("</pre>");
-									}
-								%>
+								<% if( exception != null ) { %>
+									<c:set var="exceptionStackTrace"><% exception.printStackTrace(new PrintWriter(out));%></c:set>
+									<pre><c:out value="${exceptionStackTrace}" /></pre>
+								<% } %>
 						</td>
 					</tr>
 					<tr>
 						<th scope="row">Root Cause</th>
 						<td>
-								<%
-									if( (exception != null) && (exception instanceof ServletException) ) {
-											Throwable cause = ((ServletException)exception).getRootCause();
-											if( cause != null ) {
-												out.print("<pre>");
-												cause.printStackTrace(new PrintWriter(out));
-												out.print("</pre>");
-											}
-									}
-								%>
+								<% if( (exception != null) && (exception instanceof ServletException) ) {
+										Throwable cause = ((ServletException)exception).getRootCause();
+										if( cause != null ) { %>
+										<c:set var="causeStackTrace"><% cause.printStackTrace(new PrintWriter(out)); %></c:set>
+										<pre><c:out value="${causeStackTrace}" /></pre>
+										<% } %>
+								<% } %>
 						</td>
 					</tr>
 				</wp:ifauthorized>
@@ -86,17 +88,17 @@
 						 pageContext.setAttribute("value", value);
 					%>
 							<tr>
-							 <td><c:out value="${name}" /></td>
+							 <td class="text-info"><c:out value="${name}" /></td>
 							 <td>
-							 	<c:choose>
-							 		<c:when test="${name=='Cookie'}">
-							 			<pre style="max-width: 100%;"><c:out value="${value}" /></pre>
-							 		</c:when>
-							 		<c:otherwise>
-							 			<code><c:out value="${value}" /></code>
-							 		</c:otherwise>
-							 	</c:choose>
-							 	</td>
+								<c:choose>
+									<c:when test="${name=='Cookie'}">
+										<pre style="max-width: 100%;"><c:out value="${value}" /></pre>
+									</c:when>
+									<c:otherwise>
+										<c:out value="${value}" />
+									</c:otherwise>
+								</c:choose>
+								</td>
 							</tr>
 					<%
 						}
@@ -104,33 +106,43 @@
 				</table>
 				<h2 class="margin-large-top">Attribute List</h2>
 				<%-- "javax.servlet.jsp.jspException" for getting an Exception --%>
-				<table class="table table-responsive table-striped">
-					<tr>
-					 <th>Name</th>
-					 <th>Value</th>
-					</tr>
-					<%
-						java.util.Enumeration attributes = request.getAttributeNames();
-						while(attributes.hasMoreElements())
-						{
-						 name  = (String) attributes.nextElement();
-						 if (request.getAttribute(name) == null)
-						 {
-							value = "null";
-						 }
-						 else
-						 {
-							value = request.getAttribute(name).toString();
-						 }
-					%>
+				<div class="responsive">
+					<table class="table table-striped">
 						<tr>
-						 <td><%=name%></td>
-						 <td><code><%=value%></code></td>
+						 <th>Name</th>
+						 <th>Value</th>
 						</tr>
-					<%
-						}
-					%>
-				</table>
+						<%
+							java.util.Enumeration attributes = request.getAttributeNames();
+							while(attributes.hasMoreElements())
+							{
+							 name  = (String) attributes.nextElement();
+							 if (request.getAttribute(name) == null)
+							 {
+								value = "null";
+							 }
+							 else
+							 {
+								value = request.getAttribute(name).toString();
+							 }
+						%>
+							<tr>
+								<td class="text-info">
+									<c:set var="nameVar"><%=name%></c:set>
+									<c:out value="${nameVar}" />
+									<c:remove var="nameVar" />
+								</td>
+								<td>
+									<c:set var="valueVar"><%=value%></c:set>
+									<c:out value="${valueVar}" />
+									<c:remove var="valueVar" />
+								</td>
+							</tr>
+						<%
+							}
+						%>
+					</table>
+				</div>
 			</wp:ifauthorized>
 		</div>
 	</body>
