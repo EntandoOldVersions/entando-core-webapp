@@ -5,7 +5,7 @@
 
 
 <a
-	href="<s:url namespace="/do/FileBrowser" action="fileUpload" >
+	href="<s:url namespace="/do/FileBrowser" action="uploadFile" >
 		<s:param name="currentPath"><s:property escape="true" value="%{currentPath}"/><s:property escape="true" value="%{#file.name}"/></s:param>
 	</s:url>">UPLOAD NEW FILE
 </a>
