@@ -61,6 +61,11 @@
 
 <wp:ifauthorized permission="managePages">
 	<li role="presentation"><a role="menuitem" href="<s:url action="viewTree" namespace="/do/Page" />"><s:text name="menu.pageAdmin" /></a></li>
+	
+	<c:if test="${isSuperuser}">
+		<li role="presentation"><a role="menuitem" href="<s:url action="list" namespace="/do/PageModel" />">**** <s:text name="menu.pageModelAdmin" /> ****</a></li>
+	</c:if>
+		
 	<li role="presentation"><a role="menuitem" href="<s:url action="viewWidgets" namespace="/do/Portal/WidgetType" />"><s:text name="menu.widgetAdmin" /></a></li>
 </wp:ifauthorized>
 

@@ -1,16 +1,12 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-
-TODO
-
-<%--
 <h1 class="panel panel-default title-page">
 	<span class="panel-body display-block">
-		<a href="<s:url action="list" namespace="/do/Group"></s:url>" 
-		title="<s:text name="note.goToSomewhere" />: <s:text name="title.groupManagement" />">
-		<s:text name="title.groupManagement" />
+		<a href="<s:url action="list" namespace="/do/PageModel"></s:url>" 
+		title="<s:text name="note.goToSomewhere" />: <s:text name="title.pageModelManagement" />">
+		<s:text name="title.pageModelManagement" />
 		</a>
 		&#32;/&#32;
-		<s:text name="title.groupManagement.groupTrash" />
+		<s:text name="title.pageModelManagement.pageModelTrash" />
 	</span>
 </h1>
 
@@ -22,7 +18,6 @@ TODO
 
 </div>
 
-<s:include value="/WEB-INF/apsadmin/jsp/user/group/include/groupInfo-references.jsp" />
+<s:include value="/WEB-INF/apsadmin/jsp/portal/model/include/pageModel-references.jsp" />
 
 </div>
---%>

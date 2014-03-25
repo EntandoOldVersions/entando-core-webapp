@@ -43,7 +43,7 @@
 				<div class="btn-group btn-group-xs">
 					<a 
 						class="btn btn-default" 
-						href="<s:url action="detail"><s:param name="code" value="#pageModelVar.code"/></s:url>" 
+						href="<s:url action="details"><s:param name="code" value="#pageModelVar.code"/></s:url>" 
 						title="<s:text name="note.detailsFor" />: <s:property value="#pageModelVar.code" />" >
 							<span class="icon fa fa-info"></span>
 							<span class="sr-only"><s:text name="note.detailsFor" />: <s:property value="#pageModelVar.code" /></span>

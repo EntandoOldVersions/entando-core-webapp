@@ -276,6 +276,21 @@
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/model/pageModel-list.jsp" />
     </definition>
 	
+    <definition extends="layout.default" name="admin.PageModel.entry">
+        <put-attribute name="title" value="title.pageModelManagement" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/model/pageModel-entry.jsp" />
+    </definition>
+	
+    <definition extends="layout.default" name="admin.PageModel.details">
+        <put-attribute name="title" value="title.pageModelManagement" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/model/pageModel-details.jsp" />
+    </definition>
+	
+	<definition extends="layout.default" name="admin.PageModel.trash">
+        <put-attribute name="title" value="title.pageModelManagement" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/model/pageModel-trash.jsp" />
+    </definition>
+	
 	<definition extends="layout.default" name="admin.PageModel.references">
         <put-attribute name="title" value="title.pageModelManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/model/pageModel-references.jsp" />
