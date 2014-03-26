@@ -252,7 +252,7 @@ jQuery(function(){ //dom is ready...
 				success: function() {
 					var textarea = $('textarea', ev.target);
 					textarea.val("");
-					restoreSizeCommentTextarea(textarea);
+					restoreTextareaOverflow(textarea);
 					askForUpdate();
 				},
 				complete: function(jqXHR, textStatus, we) {
@@ -284,13 +284,44 @@ jQuery(function(){ //dom is ready...
 			}
 		})
 	});
-	var restoreSizeCommentTextarea = function(el) {
+	var checkOverflow = function(el) {
+		var curOverflow = el.style.overflow;
+		if ( !curOverflow || curOverflow === "visible" )
+			el.style.overflow = "hidden";
+
+		var isOverflowing = el.clientWidth < el.scrollWidth
+			|| el.clientHeight < el.scrollHeight;
+
+		el.style.overflow = curOverflow;
+		return isOverflowing;
+	};
+	var expandTextareaOverflow = function(el) {
 		var textarea = $(el);
-		var lines = textarea.val().split('\n').length;
-		textarea.attr('rows', lines > 10 ? 10 : lines);
+		var rows = parseInt(textarea.attr('rows')||0);
+		var t = textarea.get(0);
+		while(checkOverflow( t ) && rows < 10) {
+			rows = rows+1;
+			textarea.attr('rows', rows);
+		}
+	}
+	var restoreTextareaOverflow = function(el) {
+		var textarea = $(el);
+		var rows = parseInt(textarea.attr('rows')||0);
+		var t = textarea.get(0);
+		rows = rows+1;
+		textarea.attr('rows', rows);
+		var done = false;
+		while(!checkOverflow( t ) && rows > 1) {
+			rows = rows-1;
+			textarea.attr('rows', rows);
+			done = true;
+		}
+		if (done) {
+			textarea.attr('rows', rows+1);
+		}
 	};
 	$('#activity-stream').delegate('.insert-comment textarea', 'keydown', function(ev) {
-		restoreSizeCommentTextarea(this);
+		expandTextareaOverflow(this);
 		if (ev.shiftKey===false && ev.keyCode==13) {
 			var form = $(this).parents('form');
 			form.submit();
@@ -298,9 +329,15 @@ jQuery(function(){ //dom is ready...
 	});
 	$('#activity-stream').delegate('.insert-comment textarea', 'cut paste', function(ev) {
 		var el = this;
-		setInterval(function(){
-			restoreSizeCommentTextarea(el);
+		setTimeout(function(){
+			expandTextareaOverflow(el);
 		},200);
+	});
+	$('#activity-stream').delegate('.insert-comment textarea', 'blur', function(ev) {
+			restoreTextareaOverflow(this);
+	});
+	$('#activity-stream').delegate('.insert-comment textarea', 'focus', function(ev) {
+		expandTextareaOverflow(this);
 	});
 
 
