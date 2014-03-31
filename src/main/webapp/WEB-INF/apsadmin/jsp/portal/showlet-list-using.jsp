@@ -86,7 +86,7 @@
 								<s:if test="null != #showlet.type.typeParameters && #showlet.type.typeParameters.size() > 0">
 									<li>
 										<a href="<s:url namespace="/do/Portal/WidgetType" action="copy"><s:param name="pageCode" value="#singlePage.code" /><s:param name="framePos" value="#rowstatus.index" /></s:url>">
-											<s:text name="label.userShowlet.new" />
+											<s:text name="label.userWidget.new" />
 										</a>
 									</li>
 								</s:if>
@@ -181,7 +181,7 @@
 		<s:if test="#showlet != null && #showlet.type != null && #showlet.type.code.equals(widgetTypeCode)">
 			<li>
 			<s:if test="null != #showlet.type.typeParameters && #showlet.type.typeParameters.size() > 0">
-				<a href="<s:url namespace="/do/Portal/WidgetType" action="copy" ><s:param name="pageCode" value="#singlePage.code" /><s:param name="framePos" value="#rowstatus.index" /></s:url>" title="<s:text name="label.userShowlet.new" />" class="noborder"><img src="<wp:resourceURL/>administration/common/img/icons/16x16/showlet-user-new.png" alt="<s:text name="label.userShowlet.new" />" /></a>
+				<a href="<s:url namespace="/do/Portal/WidgetType" action="copy" ><s:param name="pageCode" value="#singlePage.code" /><s:param name="framePos" value="#rowstatus.index" /></s:url>" title="<s:text name="label.userWidget.new" />" class="noborder"><img src="<wp:resourceURL/>administration/common/img/icons/16x16/showlet-user-new.png" alt="<s:text name="label.userWidget.new" />" /></a>
 			</s:if>
 			<s:if test="%{isUserAllowed(#singlePage)}">
 				<s:if test="null != #relatedApiMethodVar && !#showletTypeVar.isLogic()">
@@ -195,12 +195,12 @@
 				</wp:ifauthorized>
 				</s:if>
 				<s:if test="null != #relatedApiMethodVar && #showletTypeVar.isLogic()">
-				<wp:ifauthorized permission="superuser">				
+				<wp:ifauthorized permission="superuser">
 				<a class="noborder" href="<s:url action="newService" namespace="/do/Api/Service">
 						<s:param name="widgetTypeCode" value="widgetTypeCode" />
 						<s:param name="resourceName" value="#relatedApiMethodVar.resourceName" />
 						<s:param name="namespace" value="#relatedApiMethodVar.namespace" />
-				</s:url>" title="<s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#relatedApiMethodVar.methodName" />"><img src="<wp:resourceURL />administration/common/img/icons/16x16/api-service-new.png" alt="<s:text name="label.new" />" /></a>				
+				</s:url>" title="<s:text name="note.api.apiMethodList.createServiceFromMethod" />: <s:property value="#relatedApiMethodVar.methodName" />"><img src="<wp:resourceURL />administration/common/img/icons/16x16/api-service-new.png" alt="<s:text name="label.new" />" /></a>
 				</wp:ifauthorized>
 				</s:if>
 				<a class="noborder" href="<s:url action="trashWidgetFromPage" namespace="/do/Portal/WidgetType">
@@ -208,7 +208,7 @@
 					<s:param name="frame"><s:property value="#rowstatus.index"/></s:param>
 					<s:param name="widgetTypeCode"><s:property value="#showletTypeVar.code"/></s:param>
 				</s:url>
-				" title="<s:text name="label.clear" />: <s:property value="#rowstatus.index"/> &ndash; <s:property value="#singlePage.model.getFrames()[#rowstatus.index]"/>"><img src="<wp:resourceURL/>administration/common/img/icons/16x16/clear.png" alt="<s:text name="label.alt.clear" />" /></a>			
+				" title="<s:text name="label.clear" />: <s:property value="#rowstatus.index"/> &ndash; <s:property value="#singlePage.model.getFrames()[#rowstatus.index]"/>"><img src="<wp:resourceURL/>administration/common/img/icons/16x16/clear.png" alt="<s:text name="label.alt.clear" />" /></a>
 				&#32;<a href="<s:url action="editFrame" namespace="/do/Page"><s:param name="pageCode"><s:property value="#singlePage.code"/></s:param><s:param name="frame"><s:property value="#rowstatus.index"/></s:param></s:url>" title="<s:text name="title.editFrame" />: <s:property value="#rowstatus.index"/> &ndash; <s:property value="#singlePage.model.getFrames()[#rowstatus.index]"/>"><s:property value="#rowstatus.index"/> &ndash; <s:property value="#singlePage.model.getFrames()[#rowstatus.index]"/></a>
 			</s:if>
 			<s:else><s:property value="#rowstatus.index"/> &ndash; <s:property value="#singlePage.model.getFrames()[#rowstatus.index]"/></s:else>
