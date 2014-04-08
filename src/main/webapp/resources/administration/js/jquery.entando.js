@@ -1,5 +1,6 @@
 /*
 	2013-09-17: touchstart events, few translations
+	2014-04-08: prevent jquery expressions when selecting ids
 */
 
 //taboo start
@@ -18,7 +19,7 @@
 		tabTogglers: 'a.tab-toggle', //togglers selector
 		togglerTabRetriever: function(toggler) { //tab retriever function
 			var tabId = toggler.attr('href');
-			return $(tabId);
+			return $(document.getElementById(tabId));
 		},
 		tabTogglerRetriever: function(tab, root) { //toggler retriever function
 			var id = tab.attr('id');
@@ -82,7 +83,7 @@
 			var startTabRef = opt.startTab;
 			var tab;
 			if ($.type(startTabRef) == 'string') {
-				tab = $('#'+startTabRef);
+				tab = $(document.getElementById(startTabRef));
 			}
 			else if ($.type(startTabRef) == 'object') {
 				tab = $(startTabRef);
@@ -95,8 +96,8 @@
 		}
 		else if (document.location.hash.length > 0) {
 			//a hash??
-			var testString = document.location.hash;
-			var tab = $(testString);
+			var testString = document.location.hash.substring(1);
+			var tab = $(document.getElementById(testString));
 			if (tab.length==1) {
 				tabToActivate = tab;
 				togglerToActivate = opt.tabTogglerRetriever(tab, TabooTogglerRoot);
@@ -238,7 +239,7 @@
 		}
 
 		if (opt.startIndex!==undefined) {
-			openAllWoodFromRootTo($('#'+opt.startIndex, this.WoodRoot));
+			openAllWoodFromRootTo($(document.getElementById(opt.startIndex), this.WoodRoot));
 		}
 		return this;
 	};
