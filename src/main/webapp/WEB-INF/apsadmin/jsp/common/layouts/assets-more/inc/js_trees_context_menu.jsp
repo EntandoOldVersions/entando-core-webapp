@@ -30,7 +30,7 @@ jQuery.each($('form.action-form'), function(index, currentForm){
 	//for each label if checked just show the menu
 	jQuery.each(labels, function(index, myLabel){
 		var myLabel = $(myLabel);
-		var myInput = $('#'+myLabel.attr('for'));
+		var myInput = $(document.getElementById(myLabel.attr('for')));
 		if (myInput.attr('checked') == 'checked') {
 			$(myLabel).addClass('text-info');
 
