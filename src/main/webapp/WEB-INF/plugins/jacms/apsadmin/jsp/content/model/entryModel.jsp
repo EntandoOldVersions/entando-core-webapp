@@ -13,11 +13,11 @@
 		</s:if>
 		<s:if test="strutsAction == 2">
 			<s:text name="title.contentModels.edit" />
-		</s:if> 
+		</s:if>
 	</span>
 </h1>
 
-<div id="main" role="main">        
+<div id="main" role="main">
 
 <s:form action="save" namespace="/do/jacms/ContentModel" cssClass="form-horizontal" >
 <s:if test="hasFieldErrors()">
@@ -29,7 +29,7 @@
 <p class="sr-only">
 	<wpsf:hidden name="strutsAction" />
 	<s:if test="strutsAction == 2">
-		<wpsf:hidden name="modelId" />  
+		<wpsf:hidden name="modelId" />
 	</s:if>
 </p>
 
@@ -39,14 +39,14 @@
 		<div class="col-xs-12">
 			<label for="contentType" class="control-label"><s:text name="contentModel.type" /></label>
 			<div class="input-group">
-			<wpsf:select id="contentType" list="smallContentTypes" name="contentType" 
+			<wpsf:select id="contentType" list="smallContentTypes" name="contentType"
 				listKey="code" listValue="descr" cssClass="form-control" />
 				<span class="input-group-btn">
 				<s:if test="strutsAction == 1 && null == contentType">
 					<wpsf:submit type="button" action="lockContentType" cssClass="btn btn-warning" value="%{getText('label.set')}"/>
 				</s:if>
 				<s:else>
-					<wpsf:submit type="button" action="lockContentType" cssClass="btn btn-info" value="%{getText('label.change')}"/>						
+					<wpsf:submit type="button" action="lockContentType" cssClass="btn btn-info" value="%{getText('label.change')}"/>
 				</s:else>
 				</span>
 			</div>
@@ -67,7 +67,7 @@
 		<s:if test="#modelIdHasFieldErrorVar">
 		  <p class="text-danger padding-small-vertical"><s:iterator value="#modelIdFieldErrorsVar"><s:property /> </s:iterator></p>
 		</s:if>
-	</div>	
+	</div>
 </div>
 <div class="form-group<s:property value="controlGroupErrorClassVar" />">
 	<div class="col-xs-12">
@@ -115,10 +115,6 @@
 		</wpsf:submit>
 	</div>
 </div>
-
-<s:if test="#myClient == 'advanced'">
-<p class="centerText"><s:text name="label.or" />&#32;<a href="#jacms-content-model-detail-shortcut" id="jacms-content-model-detail-shortcut"><s:text name="note.contentModel.detailsdownload" /></a></p>
-</s:if>	
 
 </s:form>
 </div>
