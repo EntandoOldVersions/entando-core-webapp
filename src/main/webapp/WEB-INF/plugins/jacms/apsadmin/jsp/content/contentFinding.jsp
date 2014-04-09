@@ -4,6 +4,7 @@
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 <%-- radios + checkboxes only --%>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
+<%@ taglib prefix="jacmswpsa" uri="/jacms-apsadmin-core" %>
 
 <s:set var="targetNS" value="%{'/do/jacms/Content'}" />
 <h1 class="panel panel-default title-page"><span class="panel-body display-block"><s:text name="jacms.menu.contentAdmin" />&#32;/&#32;<s:text name="title.contentList" /></span></h1>
@@ -272,9 +273,12 @@
 		  </button>
 		  <ul class="dropdown-menu" role="menu">
 			<s:iterator var="contentTypeVar" value="#contentTypesVar">
-				<li><a href="<s:url action="createNew" namespace="/do/jacms/Content" >
+				<jacmswpsa:contentType typeCode="%{#contentTypeVar.typeCode}" property="isAuthToEdit" var="isAuthToEditVar" />
+				<s:if test="%{#isAuthToEditVar}">
+					<li><a href="<s:url action="createNew" namespace="/do/jacms/Content" >
 						   <s:param name="contentTypeCode" value="%{#contentTypeVar.typeCode}" />
 					   </s:url>" ><s:text name="label.new" />&#32;<s:property value="%{#contentTypeVar.typeDescr}" /></a></li>
+				</s:if>
 			</s:iterator>
 		  </ul>
 		</div>
@@ -305,7 +309,7 @@
 		</s:if>
 
 		<s:set var="contentIdsVar" value="contents" />
-
+		
 		<wpsa:subset source="#contentIdsVar" count="10" objectName="groupContent" advanced="true" offset="5">
 		<s:set var="group" value="#groupContent" />
 
