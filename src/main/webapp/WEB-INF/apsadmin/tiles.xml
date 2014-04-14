@@ -271,6 +271,23 @@
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/showlet-entry.jsp" />
     </definition>
 	
+	
+    <definition extends="layout.default" name="admin.Portal.GuiFragment.list">
+		<put-attribute name="title" value="title.guiFragmentManagement" />
+		<put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/guifragment/guiFragment-list.jsp" />
+	</definition>
+	
+    <definition extends="layout.default" name="admin.Portal.GuiFragment.entry">
+		<put-attribute name="title" value="title.guiFragmentManagement" />
+		<put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/guifragment/guiFragment-entry.jsp" />
+	</definition>
+	
+    <definition extends="layout.default" name="admin.Portal.GuiFragment.trash">
+		<put-attribute name="title" value="title.guiFragmentManagement" />
+		<put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/jsp/guifragment/guiFragment-trash.jsp" />
+	</definition>
+	
+	
     <definition extends="layout.default" name="admin.PageModel.list">
         <put-attribute name="title" value="title.pageModelManagement" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/model/pageModel-list.jsp" />

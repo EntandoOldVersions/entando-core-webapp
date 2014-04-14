@@ -12,10 +12,6 @@
 
 <ul class="nav nav-pills nav-stacked" id="backoffice-menu-main" role="menubar">
 	
-	<wp:ifauthorized permission="superuser">
-		<li role="presentation"><a role="menuitem" href="<s:url action="list" namespace="/do/FileBrowser" />"><s:text name="menu.accountAdmin.filebrowser" /></a></li>
-	</wp:ifauthorized>
-
 	<wp:info key="systemParam" paramName="groupsOnDemand" var="groupsOnDemandVar" />
 	<c:if test="${groupsOnDemandVar}" >
 	<wp:ifauthorized permission="superuser">
@@ -63,10 +59,18 @@
 	<li role="presentation"><a role="menuitem" href="<s:url action="viewTree" namespace="/do/Page" />"><s:text name="menu.pageAdmin" /></a></li>
 	
 	<c:if test="${isSuperuser}">
-		<li role="presentation"><a role="menuitem" href="<s:url action="list" namespace="/do/PageModel" />">**** <s:text name="menu.pageModelAdmin" /> ****</a></li>
+	<li role="presentation"><a role="menuitem" href="<s:url action="list" namespace="/do/PageModel" />">**** <s:text name="menu.pageModelAdmin" /> ****</a></li>
 	</c:if>
 		
 	<li role="presentation"><a role="menuitem" href="<s:url action="viewWidgets" namespace="/do/Portal/WidgetType" />"><s:text name="menu.widgetAdmin" /></a></li>
+	<c:if test="${isSuperuser}">
+	<li><a href="<s:url namespace="/do/Portal/GuiFragment" action="list" />" >**** <s:text name="menu.guiFragmentAdmin" /> ****</a></li>
+	</c:if>
+	
+	<c:if test="${isSuperuser}">
+	<li role="presentation"><a role="menuitem" href="<s:url action="list" namespace="/do/FileBrowser" />">**** <s:text name="menu.accountAdmin.filebrowser" /> ****</a></li>
+	</c:if>
+	
 </wp:ifauthorized>
 
 <wp:info key="systemParam" paramName="apisOnDemand" var="apisOnDemandVar" />
