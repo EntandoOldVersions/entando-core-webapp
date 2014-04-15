@@ -88,7 +88,7 @@
 		<div class="form-group<s:property value="#controlGroupErrorClassVar" />">
 			<div class="col-xs-12">
 				<label for="guiFragment_gui"><s:text name="label.gui" /></label>
-				<wpsf:textfield name="gui" id="guiFragment_gui" cssClass="form-control" />
+				<wpsf:textarea name="gui" id="guiFragment_gui" cssClass="form-control" rows="8" cols="50" />
 				<s:if test="#fieldHasFieldErrorVar">
 					<p class="text-danger padding-small-vertical"><s:iterator value="%{#fieldFieldErrorsVar}"><s:property />&#32;</s:iterator></p>
 				</s:if>
