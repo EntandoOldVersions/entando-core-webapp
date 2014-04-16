@@ -10,8 +10,8 @@
 		<s:text name="title.widgetManagement" /></a>
 		<s:if test="strutsAction == 2">
 		&#32;/&#32;<s:text name="title.widgetManagement.edit" />
-		&#32;/&#32;<wpsa:widgetType key="%{widgetTypeCode}" var="showletTypeVar" />
-			<s:property value="#showletTypeVar.titles[currentLang.code]" />
+		&#32;/&#32;<wpsa:widgetType key="%{widgetTypeCode}" var="widgetTypeVar" />
+			<s:property value="#widgetTypeVar.titles[currentLang.code]" />
 		</s:if>
 		<s:else>&#32;/&#32;
 			<s:text name="title.newWidgetType" />
@@ -24,8 +24,8 @@
 <s:if test="strutsAction != 2">
 	<s:text name="title.newWidgetType.from" />:&#32;
 	<s:if test="strutsAction == 1">
-		<wpsa:widgetType var="parentShowletTypeVar" key="%{parentWidgetTypeCode}" />
-		<em><s:property value="%{getTitle(#parentShowletTypeVar.code, #parentShowletTypeVar.titles)}" /></em>
+		<wpsa:widgetType var="parentWidgetTypeVar" key="%{parentWidgetTypeCode}" />
+		<em><s:property value="%{getTitle(#parentWidgetTypeVar.code, #parentWidgetTypeVar.titles)}" /></em>
 	</s:if>
 	<s:elseif test="strutsAction == 3">
 	<s:property value="%{getTitle(showletToCopy.type.code, showletToCopy.type.titles)}" />	<wpsa:page var="pageVar" key="%{pageCode}" />
@@ -117,16 +117,16 @@
 		</s:if>
 	</div>
 
-	<s:if test="#showletTypeVar.logic && strutsAction == 2">
+	<s:if test="#widgetTypeVar.logic && strutsAction == 2">
 	<div class="form-group">
 		<label class="control-label"><s:text name="label.widgetType.parentType" /></label>
-		<p class="form-control-static"><s:property value="#showletTypeVar.parentType.titles[currentLang.code]" /></p>
+		<p class="form-control-static"><s:property value="#widgetTypeVar.parentType.titles[currentLang.code]" /></p>
 	</div>
 	</s:if>
 
 </fieldset>
 
-<s:if test="strutsAction != 2 || #showletTypeVar.logic">
+<s:if test="strutsAction != 2 || #widgetTypeVar.logic">
 <fieldset class="col-xs-12"><legend><s:text name="title.widgetType.settings" /></legend>
 	<s:if test="strutsAction == 1">
 		<s:set var="parentShowletType" value="%{getShowletType(parentShowletTypeCode)}" />
@@ -143,15 +143,15 @@
 		</s:iterator>
 	</s:if>
 	<s:elseif test="strutsAction == 2">
-		<s:iterator value="#showletTypeVar.parentType.typeParameters" var="showletParam" >
+		<s:iterator value="#widgetTypeVar.parentType.typeParameters" var="showletParam" >
 			<div class="form-group">
-				<s:if test="#isSuperuserVar && #showletTypeVar.userType">
+				<s:if test="#isSuperuserVar && #widgetTypeVar.userType">
 				<label for="<s:property value="#showletParam.name" />" class="control-label"><s:property value="#showletParam.name" /></label>
-				<wpsf:textfield id="%{#showletParam.name}" name="%{#showletParam.name}" value="%{#showletTypeVar.config[#showletParam.name]}" cssClass="form-control" />
+				<wpsf:textfield id="%{#showletParam.name}" name="%{#showletParam.name}" value="%{#widgetTypeVar.config[#showletParam.name]}" cssClass="form-control" />
 				</s:if>
 				<s:else>
 				<span class="text-important"><s:property value="#showletParam.name" /></span>&#32;
-				<s:property value="%{#showletTypeVar.config[#showletParam.name]}" />
+				<s:property value="%{#widgetTypeVar.config[#showletParam.name]}" />
 				</s:else>
 				<s:if test="#showletParam.descr != ''">
 					<span class="help-block"><span class="icon fa fa-info-circle"></span>&#32;<s:property value="#showletParam.descr" /></span>
@@ -176,6 +176,18 @@
 		</s:iterator>
 	</s:elseif>
 </fieldset>
+</s:if>
+
+<s:if test="%{!#widgetTypeVar.logic}">
+<br />
+**************************
+<br />
+<fieldset class="col-xs-12"><legend>*** GUI ***</legend>
+	<wpsf:textarea name="gui" id="widget_gui" cssClass="form-control" rows="8" cols="50" />
+</fieldset>
+<br />
+*********************
+<br />
 </s:if>
 
 <wpsa:hookPoint key="core.showletType.entry" objectName="hookPointElements_core_showlet_entry">
