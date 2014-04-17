@@ -21,9 +21,12 @@
 
 <div id="main" role="main">
 <p>
-<s:if test="strutsAction != 2">
+<s:if test="strutsAction == 1">
+	<s:text name="title.newWidgetType" />
+</s:if>
+<s:elseif test="strutsAction != 2">
 	<s:text name="title.newWidgetType.from" />:&#32;
-	<s:if test="strutsAction == 1">
+	<s:if test="strutsAction == 5">
 		<wpsa:widgetType var="parentWidgetTypeVar" key="%{parentWidgetTypeCode}" />
 		<em><s:property value="%{getTitle(#parentWidgetTypeVar.code, #parentWidgetTypeVar.titles)}" /></em>
 	</s:if>
@@ -31,7 +34,7 @@
 	<s:property value="%{getTitle(showletToCopy.type.code, showletToCopy.type.titles)}" />	<wpsa:page var="pageVar" key="%{pageCode}" />
 	<s:text name="note.widgetType.page"/>:&#32;<em class="important"><s:property value="%{getTitle(#pageVar.code, #pageVar.titles)}" /></em>,&#32;<s:text name="note.widgetType.position" />:&#32;<em class="important"><s:property value="framePos" /></em>
 	</s:elseif>
-</s:if>
+</s:elseif>
 </p>
 <s:form action="save" namespace="/do/Portal/WidgetType" >
 
@@ -57,7 +60,7 @@
 
 <p class="sr-only">
 	<wpsf:hidden name="strutsAction" />
-	<s:if test="strutsAction == 1">
+	<s:if test="strutsAction == 5">
 		<wpsf:hidden name="parentWidgetTypeCode" />
 	</s:if>
 	<s:elseif test="strutsAction == 2">
@@ -117,7 +120,7 @@
 		</s:if>
 	</div>
 
-	<s:if test="#widgetTypeVar.logic && strutsAction == 2">
+	<s:if test="null != #widgetTypeVar && #widgetTypeVar.logic && strutsAction == 2">
 	<div class="form-group">
 		<label class="control-label"><s:text name="label.widgetType.parentType" /></label>
 		<p class="form-control-static"><s:property value="#widgetTypeVar.parentType.titles[currentLang.code]" /></p>
@@ -126,6 +129,7 @@
 
 </fieldset>
 
+<s:if test="null != #widgetTypeVar">
 <s:if test="strutsAction != 2 || #widgetTypeVar.logic">
 <fieldset class="col-xs-12"><legend><s:text name="title.widgetType.settings" /></legend>
 	<s:if test="strutsAction == 1">
@@ -161,24 +165,25 @@
 		<s:set var="isSuperuserVar" value="%{false}" />
 	</s:elseif>
 	<s:elseif test="strutsAction == 3">
-		<s:iterator value="showletToCopy.type.typeParameters" var="showletParam" >
+		<s:iterator value="showletToCopy.type.typeParameters" var="showletParamVar" >
 			<div class="form-group">
-				<s:if test="#showletParam.descr != ''">
-					<label class="label-control"><s:property value="#showletParam.descr" /></label>
+				<s:if test="#showletParamVar.descr != ''">
+					<label class="label-control"><s:property value="#showletParamVar.descr" /></label>
 				</s:if>
 				<p class="form-control-static">
 				<span class="text-strong">
-				<s:property value="#showletParam.name" />:&#32;
+				<s:property value="#showletParamVar.name" />:&#32;
 				</span>
-				<s:property value="%{showletToCopy.config[#showletParam.name]}" />
+				<s:property value="%{showletToCopy.config[#showletParamVar.name]}" />
 				</p>
 			</div>
 		</s:iterator>
 	</s:elseif>
 </fieldset>
 </s:if>
+</s:if>
 
-<s:if test="%{!#widgetTypeVar.logic}">
+<s:if test="%{null == #widgetTypeVar || !#widgetTypeVar.logic}">
 <br />
 **************************
 <br />
@@ -190,6 +195,13 @@
 <br />
 </s:if>
 
+<wpsa:hookPoint key="core.widgetType.entry" objectName="hookPointElements_core_widget_entry">
+<s:iterator value="#hookPointElements_core_widget_entry" var="hookPointElement">
+	<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>
+</s:iterator>
+</wpsa:hookPoint>
+
+<%-- deprecated --%>
 <wpsa:hookPoint key="core.showletType.entry" objectName="hookPointElements_core_showlet_entry">
 <s:iterator value="#hookPointElements_core_showlet_entry" var="hookPointElement">
 	<wpsa:include value="%{#hookPointElement.filePath}"></wpsa:include>

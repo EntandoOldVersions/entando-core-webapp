@@ -5,6 +5,17 @@
 
 <h1 class="panel panel-default title-page"><span class="panel-body display-block"><s:text name="title.widgetManagement" /></span></h1>
 
+<br />
+XXXXXXXXXXXXXXXXXXXXXXXXXX
+<br />
+<a class="btn btn-default" href="<s:url namespace="/do/Portal/WidgetType" action="newWidget" />">
+	<span class="icon fa fa-plus-circle" />
+	&#32;<s:text name="label.new" />
+</a>
+<br />
+XXXXXXXXXXXXXXXXXXXXXXXXXX
+<br />
+
 <div id="main" role="main">
 
 <s:if test="hasFieldErrors()">
@@ -109,7 +120,7 @@
 			<s:set var="relatedApiMethodVar" value="null" />
 		
 			<s:if test="null != #concreteShowletTypeVar.typeParameters && #concreteShowletTypeVar.typeParameters.size() > 0">
-				<a href="<s:url namespace="/do/Portal/WidgetType" action="new"><s:param name="parentShowletTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.userWidget.new.from" />: <s:property value="#showletType.value" />" class="btn btn-default"><span class="icon fa fa-puzzle-piece"></span></a>
+				<a href="<s:url namespace="/do/Portal/WidgetType" action="newUserWidget"><s:param name="parentShowletTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.userWidget.new.from" />: <s:property value="#showletType.value" />" class="btn btn-default"><span class="icon fa fa-puzzle-piece"></span></a>
 			</s:if>
 			<s:if test="#firstType.optgroup == 'userShowletCode' && !#concreteShowletTypeVar.isLocked() && (#showletUtilizers == null || #showletUtilizers.size() == 0)">
 				<a href="<s:url namespace="/do/Portal/WidgetType" action="trash"><s:param name="widgetTypeCode" value="#showletType.key" /></s:url>" title="<s:text name="label.remove" />: <s:property value="#showletType.value" />" class="btn btn-warning" ><span class="icon fa fa-times-circle-o"></span></a>
