@@ -58,13 +58,13 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2 text-right" for="guiFragment_widgetCode">
-						<s:text name="label.widgetCode"/>
+					<label class="control-label col-sm-2 text-right" for="guiFragment_widgetTypeCode">
+						<s:text name="label.widgetTypeCode"/>
 					</label>
 					<div class="col-sm-5">
 						<wpsf:textfield
-							id="guiFragment_widgetCode"
-							name="widgetCode"
+							id="guiFragment_widgetTypeCode"
+							name="widgetTypeCode"
 							cssClass="form-control" />
 					</div>
 				</div>
@@ -110,12 +110,11 @@
 	&#32;<s:text name="guiFragment.label.new" />
 </a>
 
-
 <s:form action="search">	
 	<p class="sr-only">
 		<wpsf:hidden name="id" />
 		<wpsf:hidden name="code" />
-		<wpsf:hidden name="widgetCode" />
+		<wpsf:hidden name="widgetTypeCode" />
 		<wpsf:hidden name="pluginCode" />
 		<%-- <wpsf:hidden name="gui" /> --%>
 	</p>
@@ -136,9 +135,9 @@
 						<th class="text-center padding-large-left padding-large-right col-xs-4 col-sm-3 col-md-2 col-lg-2"><abbr title="<s:text name="label.actions" />">&ndash;</abbr></th>
 						<th class="text-right"><s:text name="label.id" /></th>
 						<th><s:text name="label.code" /></th>
-						<th><s:text name="label.widgetCode" /></th>
+						<th><s:text name="label.widgetTypeCode" /></th>
 						<th><s:text name="label.pluginCode" /></th>
-							<%-- <th><s:text name="label.gui" /></th> --%>
+						<%-- <th><s:text name="label.gui" /></th> --%>
 					</tr>
 					<s:iterator var="id">
 						<s:set name="guiFragment_var" value="%{getGuiFragment(#id)}" />
@@ -167,7 +166,7 @@
 							</td>
 							<td class="text-right"><code><s:property value="#guiFragment_var.id"/></code></td>
 							<td><s:property value="#guiFragment_var.code"/></td>
-							<td><s:property value="#guiFragment_var.widgetCode"/></td>
+							<td><s:property value="#guiFragment_var.widgetTypeCode"/></td>
 							<td><s:property value="#guiFragment_var.pluginCode"/></td>
 							<%-- <td><s:property value="#guiFragment_var.gui"/></td> --%>
 						</tr>

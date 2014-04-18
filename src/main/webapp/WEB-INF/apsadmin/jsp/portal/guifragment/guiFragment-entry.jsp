@@ -54,15 +54,46 @@
 					<p class="text-danger padding-small-vertical"><s:iterator value="%{#fieldFieldErrorsVar}"><s:property />&#32;</s:iterator></p>
 				</s:if>
 			</div>
-		</div> 
-	<%-- widgetCode --%>
-		<s:set var="fieldFieldErrorsVar" value="%{fieldErrors['widgetCode']}" />
+		</div>
+	
+	<%-- widgetTypeCode --%>
+		<s:set var="fieldFieldErrorsVar" value="%{fieldErrors['widgetTypeCode']}" />
 		<s:set var="fieldHasFieldErrorVar" value="#fieldFieldErrorsVar != null && !#fieldFieldErrorsVar.isEmpty()" />
 		<s:set var="controlGroupErrorClassVar" value="%{#fieldHasFieldErrorVar ? ' has-error' : ''}" />
 		<div class="form-group<s:property value="#controlGroupErrorClassVar" />">
 			<div class="col-xs-12">
-				<label for="guiFragment_widgetCode"><s:text name="label.widgetCode" /></label>
+				<label for="guiFragment_widgetTypeCode"><s:text name="label.widgetTypeCode" /></label>
+				<select name="widgetTypeCode" id="guiFragment_widgetTypeCode" cssClass="form-control" />
+				<option value=""></option>
+				<s:iterator var="widgetFlavourVar" value="widgetFlavours">
+					<wpsa:set var="tmpShowletType">tmpShowletTypeValue</wpsa:set>
+					<s:iterator var="widgetTypeVar" value="#widgetFlavourVar" >
+						<s:if test="#widgetTypeVar.optgroup != #tmpShowletType">
+							<s:if test="#widgetTypeVar.optgroup == 'stockShowletCode'">
+								<wpsa:set var="optgroupLabel"><s:text name="title.widgetManagement.widgets.stock" /></wpsa:set>
+							</s:if>
+							<s:elseif test="#widgetTypeVar.optgroup == 'customShowletCode'">
+								<wpsa:set var="optgroupLabel"><s:text name="title.widgetManagement.widgets.custom" /></wpsa:set>
+							</s:elseif>
+							<s:elseif test="#widgetTypeVar.optgroup == 'userShowletCode'">
+								<wpsa:set var="optgroupLabel"><s:text name="title.widgetManagement.widgets.user" /></wpsa:set>
+							</s:elseif>
+							<s:else>
+								<wpsa:set var="pluginPropertyName" value="%{getText(#widgetTypeVar.optgroup + '.name')}" />
+								<wpsa:set var="pluginPropertyCode" value="%{getText(#widgetTypeVar.optgroup + '.code')}" />
+								<wpsa:set var="optgroupLabel"><s:text name="#pluginPropertyName" /></wpsa:set>
+							</s:else>
+						<optgroup label="<s:property value="#optgroupLabel" />">
+						</s:if>
+							<option <s:if test="%{#widgetTypeVar.key.equals(widgetTypeCode)}"> selected="selected" </s:if> value="<s:property value="#widgetTypeVar.key" />"><s:property value="#widgetTypeVar.value" /></option>
+						<wpsa:set var="tmpShowletType"><s:property value="#widgetTypeVar.optgroup" /></wpsa:set>
+					</s:iterator>
+						</optgroup>
+				</s:iterator>
+				</select>
+				<%--
 				<wpsf:textfield name="widgetCode" id="guiFragment_widgetCode" cssClass="form-control" />
+				--%>
 				<s:if test="#fieldHasFieldErrorVar">
 					<p class="text-danger padding-small-vertical"><s:iterator value="%{#fieldFieldErrorsVar}"><s:property />&#32;</s:iterator></p>
 				</s:if>
