@@ -15,12 +15,12 @@
 <s:form action="delete" cssClass="form-horizontal">
 	<p class="sr-only">
 		<wpsf:hidden name="strutsAction" />
-		<wpsf:hidden name="id" />
+		<wpsf:hidden name="code" />
 	</p>
 	<div class="alert alert-warning">
 		<p>
 			<s:text name="note.deleteGuiFragment.areYouSure" />&#32;
-			<code><s:property value="id"/></code>?
+			<code><s:property value="code"/></code>?
 		</p>
 		<%-- save button --%>
 		<div class="text-center margin-large-top">

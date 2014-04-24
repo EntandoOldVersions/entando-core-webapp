@@ -22,7 +22,9 @@
 		</div>
 	</s:if>
 	<div class="form-group">
+		
 		<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<%--
 			<span class="input-group-addon">
 				<span class="icon fa fa-file-text-o fa-lg" title="<s:text name="label.search.by"/>&#32;<s:text name="label.id"/>"></span>
 			</span>
@@ -43,9 +45,32 @@
 					<span class="caret"></span>
 				</button>
 			</div>
+			--%>
+			<span class="input-group-addon">
+				<span class="icon fa fa-file-text-o fa-lg" title="<s:text name="label.search.by"/>&#32;<s:text name="label.code"/>"></span>
+			</span>
+			<label for="search-code" class="sr-only"><s:text name="label.search.by"/>&#32;<s:text name="label.code"/></label>
+			<wpsf:textfield
+				id="guiFragment_code"
+				name="code"
+				cssClass="form-control input-lg"
+				title="%{getText('label.search.by')+' '+getText('label.code')}"
+				placeholder="%{getText('label.code')}" />
+			<div class="input-group-btn">
+				<wpsf:submit type="button" name="search-code" id="search-code" cssClass="btn btn-primary btn-lg" title="%{getText('label.search')}">
+					<span class="sr-only"><s:text name="label.search" /></span>
+					<span class="icon fa fa-search" title="<s:text name="label.search" />"></span>
+				</wpsf:submit>
+				<button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="collapse" data-target="#search-advanced" title="<s:text name="title.searchFilters" />">
+					<span class="sr-only"><s:text name="title.searchFilters" /></span>
+					<span class="caret"></span>
+				</button>
+			</div>
 		</div>
+		
 		<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div id="search-advanced" class="collapse well collapse-input-group">
+				<%--
 				<div class="form-group">
 					<label class="control-label col-sm-2 text-right" for="guiFragment_code">
 						<s:text name="label.code"/>
@@ -57,6 +82,7 @@
 							cssClass="form-control" />
 					</div>
 				</div>
+				--%>
 				<div class="form-group">
 					<label class="control-label col-sm-2 text-right" for="guiFragment_widgetTypeCode">
 						<s:text name="label.widgetTypeCode"/>
@@ -112,43 +138,41 @@
 
 <s:form action="search">	
 	<p class="sr-only">
-		<wpsf:hidden name="id" />
+		<%-- <wpsf:hidden name="id" /> --%>
 		<wpsf:hidden name="code" />
 		<wpsf:hidden name="widgetTypeCode" />
 		<wpsf:hidden name="pluginCode" />
 		<%-- <wpsf:hidden name="gui" /> --%>
 	</p>
-
-	<s:set var="guiFragmentsId_list" value="guiFragmentsId" />
-	<s:if test="#guiFragmentsId_list.size > 0">
-		<wpsa:subset source="#guiFragmentsId_list" count="10" objectName="groupGuiFragments" advanced="true" offset="5">
+	
+	<s:set var="guiFragmentsCodes_list" value="guiFragmentsCodes" />
+	<s:if test="#guiFragmentsCodes_list.size > 0">
+		<wpsa:subset source="#guiFragmentsCodes_list" count="10" objectName="groupGuiFragments" advanced="true" offset="5">
 			<s:set name="group" value="#groupGuiFragments" />
-
 			<div class="text-center">
 				<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pagerInfo.jsp" />
 				<s:include value="/WEB-INF/apsadmin/jsp/common/inc/pager_formBlock.jsp" />
 			</div>
-
 			<div class="table-responsive">
 				<table class="table table-bordered">
 					<tr>
 						<th class="text-center padding-large-left padding-large-right col-xs-4 col-sm-3 col-md-2 col-lg-2"><abbr title="<s:text name="label.actions" />">&ndash;</abbr></th>
-						<th class="text-right"><s:text name="label.id" /></th>
-						<th><s:text name="label.code" /></th>
+						<%-- <th class="text-right"><s:text name="label.id" /></th> --%>
+						<th class="text-right"><s:text name="label.code" /></th>
 						<th><s:text name="label.widgetTypeCode" /></th>
 						<th><s:text name="label.pluginCode" /></th>
 						<%-- <th><s:text name="label.gui" /></th> --%>
 					</tr>
-					<s:iterator var="id">
-						<s:set name="guiFragment_var" value="%{getGuiFragment(#id)}" />
-						<s:url action="edit" var="editGuiFragmentActionVar"><s:param name="id" value="#guiFragment_var.id"/></s:url>
-						<s:url action="trash" var="trashGuiFragmentActionVar"><s:param name="id" value="#guiFragment_var.id"/></s:url>
+					<s:iterator var="codeVar">
+						<s:set name="guiFragment_var" value="%{getGuiFragment(#codeVar)}" />
+						<s:url action="edit" var="editGuiFragmentActionVar"><s:param name="code" value="#codeVar"/></s:url>
+						<s:url action="trash" var="trashGuiFragmentActionVar"><s:param name="code" value="#codeVar"/></s:url>
 							<tr>
 								<td class="text-center text-nowrap">
 									<div class="btn-group btn-group-xs">
 									<%-- edit --%>
-									<a class="btn btn-default" title="<s:text name="label.edit" />&#32;<s:property value="#guiFragment_var.id" />" href="<s:property value="#editGuiFragmentActionVar" escapeHtml="false" />">
-										<span class="sr-only"><s:text name="label.edit" />&#32;<s:property value="#guiFragment_var.id" /></span>
+									<a class="btn btn-default" title="<s:text name="label.edit" />&#32;<s:property value="#codeVar" />" href="<s:property value="#editGuiFragmentActionVar" escapeHtml="false" />">
+										<span class="sr-only"><s:text name="label.edit" />&#32;<s:property value="#codeVar" /></span>
 										<span class="icon fa fa-pencil-square-o"></span>
 									</a>
 								</div>
@@ -157,15 +181,15 @@
 									<a
 										class="btn btn-warning"
 										href="<s:property value="#trashGuiFragmentActionVar" escapeHtml="false" />"
-										title="<s:text name="label.remove" />: <s:property value="#guiFragment_var.id" />"
+										title="<s:text name="label.remove" />: <s:property value="#codeVar" />"
 										>
 										<span class="sr-only"><s:text name="label.alt.clear" /></span>
 										<span class="icon fa fa-times-circle-o"></span>&#32;
 									</a>
 								</div>				
 							</td>
-							<td class="text-right"><code><s:property value="#guiFragment_var.id"/></code></td>
-							<td><s:property value="#guiFragment_var.code"/></td>
+							<%-- <td class="text-right"><code><s:property value="#guiFragment_var.id"/></code></td> --%>
+							<td class="text-right"><s:property value="#codeVar"/></td>
 							<td><s:property value="#guiFragment_var.widgetTypeCode"/></td>
 							<td><s:property value="#guiFragment_var.pluginCode"/></td>
 							<%-- <td><s:property value="#guiFragment_var.gui"/></td> --%>
