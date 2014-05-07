@@ -31,73 +31,45 @@
 <br />
 <br />
 
-
-
-<s:iterator value="fileList" var="fileVar" status="fileStatus">
+<s:iterator value="filesAttributes" var="fileAttributesVar" status="fileStatus">
 	
-	<s:if test="#fileVar.directory">DIRECTORY</s:if><s:else>FILE</s:else>
+	<s:if test="#fileAttributesVar.directory">DIRECTORY</s:if><s:else>FILE</s:else>
 	
-	<s:if test="#fileVar.directory">
+	<s:if test="#fileAttributesVar.directory">
 	<!-- THIS IS A DIRECTORY -->
 	<a href="<s:url namespace="/do/FileBrowser" action="list" >
-			<s:param name="currentPath"><s:property escape="true" value="currentPath"/><s:property escape="true" value="#fileVar.name"/></s:param>
-		</s:url>"><s:property escape="false" value="#fileVar.name"/>
+			<s:param name="currentPath"><s:property escape="true" value="currentPath"/><s:property escape="true" value="#fileAttributesVar.name"/></s:param>
+		</s:url>"><s:property escape="false" value="#fileAttributesVar.name"/>
 	</a>
 	<br />
 	</s:if>
 	
 	<s:else>
 	<!-- THIS IS A FILE -->
-	<s:property escape="false" value="#fileVar.name"/>
+	<s:property escape="false" value="#fileAttributesVar.name"/>
 	<br />
-	last modify date:<s:date name="%{new java.util.Date(#fileVar.lastModified())}" format="EEEE dd/MMM/yyyy, HH:mm:ss" />
+	last modify date:<s:date name="%{#fileAttributesVar.lastModifiedTime}" format="EEEE dd/MMM/yyyy, HH:mm:ss" />
 	<br />
-	last modify (long):<s:property escape="false" value="#fileVar.lastModified()"/>
-	<br />
-	size: <s:property escape="false" value="#fileVar.length()"/>
+	size: <s:property escape="false" value="#fileAttributesVar.length()"/>
 	<br />
 	</s:else>
 	
-	<%--
-	parent: <s:property escape="false" value="#fileVar.parent"/>
-	<br />
-	Absolute Path: <s:property escape="false" value="#fileVar.absolutePath"/>
-	<br />
-	path: <s:property escape="false" value="#fileVar.path"/>
-	<br />
-	--%>
-	
-	<%--
-	directory:<s:property escape="false" value="#fileVar.directory"/>
-	<br />
-	hidden:<s:property escape="false" value="#fileVar.hidden"/>
-	<br />
-	--%>
-	<%--
-	nomefile: <s:property escape="false" value="#fileVar.name"/>
-	<br />
-	--%>
-	
-	<s:if test="!#fileVar.directory">
+	<s:if test="!#fileAttributesVar.directory">
 	<%--download:--%>
-	<a href="<wp:resourceURL/><s:property escape="false" value="currentPath"/><s:property escape="false" value="#fileVar.name"/>">DOWNLOAD<%--<s:property escape="false" value="#fileVar.name"/>--%></a>
+	<a href="<wp:resourceURL/><s:property escape="false" value="currentPath"/><s:property escape="false" value="#fileAttributesVar.name"/>">DOWNLOAD</a>
 	&nbsp;&ndash;&nbsp;
 	<a href="<s:url namespace="/do/FileBrowser" action="edit" >
 			<s:param name="currentPath"><s:property escape="true" value="%{currentPath}"/></s:param>
-			<s:param name="filename"> <s:property escape="false" value="#fileVar.name"/></s:param>
-		</s:url>">EDIT<%-- : <s:property escape="false" value="#fileVar.name"/>--%></a>
+			<s:param name="filename"> <s:property escape="false" value="#fileAttributesVar.name"/></s:param>
+		</s:url>">EDIT</a>
 	&nbsp;&ndash;&nbsp;
-	<%--
-	currentPath + filename <s:property escape="true" value="%{currentPath + File.separator +  #fileVar.name}"/>
-	<br />
-	--%>
 	</s:if>
 	
 	<a href="<s:url namespace="/do/FileBrowser" action="deleteEntry" >
 			<s:param name="currentPath"><s:property escape="true" value="%{currentPath}"/></s:param>
-			<s:param name="filename"><s:property escape="false" value="#fileVar.name"/></s:param>
-			<s:param name="deleteFile" value="%{!#fileVar.directory}" />
-		</s:url>">DELETE<%-- : <s:property escape="false" value="#fileVar.name"/>--%></a>
+			<s:param name="filename"><s:property escape="false" value="#fileAttributesVar.name"/></s:param>
+			<s:param name="deleteFile" value="%{!#fileAttributesVar.directory}" />
+		</s:url>">DELETE</a>
 	<br />
 	<br />
 	
