@@ -37,6 +37,7 @@
 		<wpsf:hidden name="strutsAction" />
 		<s:if test="getStrutsAction() == 2">
 			<wpsf:hidden name="code" />
+			<wpsf:hidden name="defaultGui" />
 		</s:if>
 	</p>
 	
@@ -125,6 +126,13 @@
 			</s:if>
 		</div>
 	</div>
+	
+	<s:if test="null != defaultGui">
+	<%-- defaultGui --%>
+	<br />
+	**DEFAULT GUI**
+	<pre><s:property value="defaultGui" /></pre>
+	</s:if>
 			
 	<%-- save button --%>
 	<div class="form-group">
