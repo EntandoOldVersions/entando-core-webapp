@@ -37,6 +37,8 @@
 		<wpsf:hidden name="strutsAction" />
 		<s:if test="getStrutsAction() == 2">
 			<wpsf:hidden name="code" />
+			<wpsf:hidden name="widgetTypeCode" />
+			<wpsf:hidden name="pluginCode" />
 			<wpsf:hidden name="defaultGui" />
 		</s:if>
 	</p>
@@ -56,60 +58,19 @@
 	</div>
 	
 	<%-- widgetTypeCode --%>
-	<s:set var="fieldFieldErrorsVar" value="%{fieldErrors['widgetTypeCode']}" />
-	<s:set var="fieldHasFieldErrorVar" value="#fieldFieldErrorsVar != null && !#fieldFieldErrorsVar.isEmpty()" />
-	<s:set var="controlGroupErrorClassVar" value="%{#fieldHasFieldErrorVar ? ' has-error' : ''}" />
 	<div class="form-group<s:property value="#controlGroupErrorClassVar" />">
 		<div class="col-xs-12">
-			<label for="guiFragment_widgetTypeCode"><s:text name="label.widgetTypeCode" /></label>
-			<select name="widgetTypeCode" id="guiFragment_widgetTypeCode" cssClass="form-control" />
-			<option value=""></option>
-			<s:iterator var="widgetFlavourVar" value="widgetFlavours">
-				<wpsa:set var="tmpShowletType">tmpShowletTypeValue</wpsa:set>
-				<s:iterator var="widgetTypeVar" value="#widgetFlavourVar" >
-					<s:if test="#widgetTypeVar.optgroup != #tmpShowletType">
-						<s:if test="#widgetTypeVar.optgroup == 'stockShowletCode'">
-							<wpsa:set var="optgroupLabel"><s:text name="title.widgetManagement.widgets.stock" /></wpsa:set>
-						</s:if>
-						<s:elseif test="#widgetTypeVar.optgroup == 'customShowletCode'">
-							<wpsa:set var="optgroupLabel"><s:text name="title.widgetManagement.widgets.custom" /></wpsa:set>
-						</s:elseif>
-						<s:elseif test="#widgetTypeVar.optgroup == 'userShowletCode'">
-							<wpsa:set var="optgroupLabel"><s:text name="title.widgetManagement.widgets.user" /></wpsa:set>
-						</s:elseif>
-						<s:else>
-							<wpsa:set var="pluginPropertyName" value="%{getText(#widgetTypeVar.optgroup + '.name')}" />
-							<wpsa:set var="pluginPropertyCode" value="%{getText(#widgetTypeVar.optgroup + '.code')}" />
-							<wpsa:set var="optgroupLabel"><s:text name="#pluginPropertyName" /></wpsa:set>
-						</s:else>
-					<optgroup label="<s:property value="#optgroupLabel" />">
-					</s:if>
-						<option <s:if test="%{#widgetTypeVar.key.equals(widgetTypeCode)}"> selected="selected" </s:if> value="<s:property value="#widgetTypeVar.key" />"><s:property value="#widgetTypeVar.value" /></option>
-					<wpsa:set var="tmpShowletType"><s:property value="#widgetTypeVar.optgroup" /></wpsa:set>
-				</s:iterator>
-					</optgroup>
-			</s:iterator>
-			</select>
-			<%--
-			<wpsf:textfield name="widgetCode" id="guiFragment_widgetCode" cssClass="form-control" />
-			--%>
-			<s:if test="#fieldHasFieldErrorVar">
-				<p class="text-danger padding-small-vertical"><s:iterator value="%{#fieldFieldErrorsVar}"><s:property />&#32;</s:iterator></p>
-			</s:if>
+			<label for="guiFragment_widgetTypeCode"><s:text name="label.widgetType" /></label>
+			<s:set value="%{getWidgetType(widgetTypeCode)}" var="widgetTypeVar" />
+			<s:property value="getTitle(#widgetTypeVar.code, #widgetTypeVar.titles)" />
 		</div>
 	</div>
 	
 	<%-- pluginCode --%>
-	<s:set var="fieldFieldErrorsVar" value="%{fieldErrors['pluginCode']}" />
-	<s:set var="fieldHasFieldErrorVar" value="#fieldFieldErrorsVar != null && !#fieldFieldErrorsVar.isEmpty()" />
-	<s:set var="controlGroupErrorClassVar" value="%{#fieldHasFieldErrorVar ? ' has-error' : ''}" />
 	<div class="form-group<s:property value="#controlGroupErrorClassVar" />">
 		<div class="col-xs-12">
 			<label for="guiFragment_pluginCode"><s:text name="label.pluginCode" /></label>
-			<wpsf:textfield name="pluginCode" id="guiFragment_pluginCode" cssClass="form-control" />
-			<s:if test="#fieldHasFieldErrorVar">
-				<p class="text-danger padding-small-vertical"><s:iterator value="%{#fieldFieldErrorsVar}"><s:property />&#32;</s:iterator></p>
-			</s:if>
+			<s:property value="pluginCode" />
 		</div>
 	</div> 
 	

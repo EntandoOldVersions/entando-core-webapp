@@ -85,13 +85,37 @@
 				--%>
 				<div class="form-group">
 					<label class="control-label col-sm-2 text-right" for="guiFragment_widgetTypeCode">
-						<s:text name="label.widgetTypeCode"/>
+						<s:text name="label.widgetType"/>
 					</label>
 					<div class="col-sm-5">
-						<wpsf:textfield
-							id="guiFragment_widgetTypeCode"
-							name="widgetTypeCode"
-							cssClass="form-control" />
+						<select name="widgetTypeCode" id="guiFragment_widgetTypeCode" cssClass="form-control" />
+						<option value=""></option>
+						<s:iterator var="widgetFlavourVar" value="widgetFlavours">
+							<wpsa:set var="tmpShowletType">tmpShowletTypeValue</wpsa:set>
+							<s:iterator var="widgetTypeVar" value="#widgetFlavourVar" >
+								<s:if test="#widgetTypeVar.optgroup != #tmpShowletType">
+									<s:if test="#widgetTypeVar.optgroup == 'stockShowletCode'">
+										<wpsa:set var="optgroupLabel"><s:text name="title.widgetManagement.widgets.stock" /></wpsa:set>
+									</s:if>
+									<s:elseif test="#widgetTypeVar.optgroup == 'customShowletCode'">
+										<wpsa:set var="optgroupLabel"><s:text name="title.widgetManagement.widgets.custom" /></wpsa:set>
+									</s:elseif>
+									<s:elseif test="#widgetTypeVar.optgroup == 'userShowletCode'">
+										<wpsa:set var="optgroupLabel"><s:text name="title.widgetManagement.widgets.user" /></wpsa:set>
+									</s:elseif>
+									<s:else>
+										<wpsa:set var="pluginPropertyName" value="%{getText(#widgetTypeVar.optgroup + '.name')}" />
+										<wpsa:set var="pluginPropertyCode" value="%{getText(#widgetTypeVar.optgroup + '.code')}" />
+										<wpsa:set var="optgroupLabel"><s:text name="#pluginPropertyName" /></wpsa:set>
+									</s:else>
+								<optgroup label="<s:property value="#optgroupLabel" />">
+								</s:if>
+									<option <s:if test="%{#widgetTypeVar.key.equals(widgetTypeCode)}"> selected="selected" </s:if> value="<s:property value="#widgetTypeVar.key" />"><s:property value="#widgetTypeVar.value" /></option>
+								<wpsa:set var="tmpShowletType"><s:property value="#widgetTypeVar.optgroup" /></wpsa:set>
+							</s:iterator>
+								</optgroup>
+						</s:iterator>
+						</select>
 					</div>
 				</div>
 				<div class="form-group">
@@ -159,7 +183,7 @@
 						<th class="text-center padding-large-left padding-large-right col-xs-4 col-sm-3 col-md-2 col-lg-2"><abbr title="<s:text name="label.actions" />">&ndash;</abbr></th>
 						<%-- <th class="text-right"><s:text name="label.id" /></th> --%>
 						<th class="text-right"><s:text name="label.code" /></th>
-						<th><s:text name="label.widgetTypeCode" /></th>
+						<th><s:text name="label.widgetType" /></th>
 						<th><s:text name="label.pluginCode" /></th>
 						<%-- <th><s:text name="label.gui" /></th> --%>
 					</tr>
@@ -190,7 +214,11 @@
 							</td>
 							<%-- <td class="text-right"><code><s:property value="#guiFragment_var.id"/></code></td> --%>
 							<td class="text-right"><s:property value="#codeVar"/></td>
-							<td><s:property value="#guiFragment_var.widgetTypeCode"/></td>
+							<td>
+								<s:set value="%{getWidgetType(#guiFragment_var.widgetTypeCode)}" var="widgetTypeVar" />
+								<s:property value="getTitle(#widgetTypeVar.code, #widgetTypeVar.titles)" />
+								<%-- <s:property value="#guiFragment_var.widgetTypeCode"/> --%>
+							</td>
 							<td><s:property value="#guiFragment_var.pluginCode"/></td>
 							<%-- <td><s:property value="#guiFragment_var.gui"/></td> --%>
 						</tr>
