@@ -46,7 +46,7 @@
 					</wpsa:subset>
 				</s:if>
 				<s:else>
-					<p class="margin-none"><s:text name="note.group.referencedPages.empty" /></p>
+					<p class="margin-none"><s:text name="note.group.referencedFragments.empty" /></p>
 				</s:else>
 			</div>
 		</div>
@@ -99,7 +99,7 @@
 						</wpsa:subset>
 					</s:if>
 					<s:else>
-						<p class="margin-none"><s:text name="note.group.referencedUsers.empty" /></p>
+						<p class="margin-none"><s:text name="note.group.referencedPageModels.empty" /></p>
 					</s:else>
 				</div>
 		</div>
