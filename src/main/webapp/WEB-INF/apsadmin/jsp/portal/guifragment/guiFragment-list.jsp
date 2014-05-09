@@ -194,6 +194,15 @@
 							<tr>
 								<td class="text-center text-nowrap">
 									<div class="btn-group btn-group-xs">
+									
+									<%-- detail --%>
+									<a class="btn btn-default"
+										href="<s:url action="detail"><s:param name="code" value="#codeVar"/></s:url>" 
+										title="<s:text name="note.detailsFor" />: <s:property value="#codeVar" />">
+											<span class="icon fa fa-info"></span>
+											<span class="sr-only"><s:text name="note.detailsFor" />: <s:property value="#codeVar" /></span>
+									</a>
+									
 									<%-- edit --%>
 									<a class="btn btn-default" title="<s:text name="label.edit" />&#32;<s:property value="#codeVar" />" href="<s:property value="#editGuiFragmentActionVar" escapeHtml="false" />">
 										<span class="sr-only"><s:text name="label.edit" />&#32;<s:property value="#codeVar" /></span>
