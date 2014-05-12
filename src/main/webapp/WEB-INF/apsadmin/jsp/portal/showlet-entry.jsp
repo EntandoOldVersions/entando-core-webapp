@@ -183,17 +183,44 @@
 </s:if>
 </s:if>
 
-<s:if test="%{null == #widgetTypeVar || !#widgetTypeVar.logic}">
+<s:if test="%{null == #widgetTypeVar || (!#widgetTypeVar.logic && !isInternalServletWidget(#widgetTypeVar.code))}">
 <br />
 **************************
 <br />
 <fieldset class="col-xs-12"><legend>*** GUI ***</legend>
 	<wpsf:textarea name="gui" id="widget_gui" cssClass="form-control" rows="8" cols="50" />
 </fieldset>
-<br />
+<s:if test="strutsAction == 2">
+	<s:set var="uniqueGuiFragmentVar" value="%{extractUniqueGuiFragment(widgetTypeCode)}" />
+	<s:if test="%{null != #uniqueGuiFragmentVar}">
+	<br />
+	**DEFAULT GUI ** <s:property value="#uniqueGuiFragmentVar.code" /> **
+	<pre><s:property value="#uniqueGuiFragmentVar.defaultGui" /></pre>
+	<br />
+	</s:if>
+</s:if>
 *********************
 <br />
 </s:if>
+<s:elseif test="%{null != #widgetTypeVar && #widgetTypeVar.logic}"> <%-- excluded clause <<&& isInternalServletWidget(#widgetTypeVar.parentType.code)>> --%>
+	<s:set var="guiFragmentCodesVar" value="%{extractGuiFragmentCodes(#widgetTypeVar.code)}" />
+	<s:if test="%{null != #guiFragmentCodesVar && !#guiFragmentCodesVar.isEmpty()}">
+		*** LOGIC WIDGET GUIS ***
+		<s:iterator value="guiFragmentCodesVar" var="guiFragmentCodeVar" >
+			<s:set var="guiFragmentVar" value="getGuiFragment(#guiFragmentCodeVar)" />
+			<br /><br />
+			CODE <s:property value="#guiFragmentCodeVar" />
+			<br />
+			FIELD
+			<s:set var="guiFieldNameVar" value="%{#widgetTypeVar.code + '_' + #guiFragmentCodeVar}" />
+			<wpsf:textarea name="%{#guiFieldNameVar}" id="%{#guiFieldNameVar}" value="%{guis.getProperty(#guiFieldNameVar)}" cssClass="form-control" rows="8" cols="50" />
+			<br />
+			**DEFAULT GUI ** <s:property value="#guiFragmentCodeVar" /> **
+			<pre><s:property value="#guiFragmentVar.defaultGui" /></pre>
+			<br /><br />
+		</s:iterator>
+	</s:if>
+</s:elseif>
 
 <wpsa:hookPoint key="core.widgetType.entry" objectName="hookPointElements_core_widget_entry">
 <s:iterator value="#hookPointElements_core_widget_entry" var="hookPointElement">
