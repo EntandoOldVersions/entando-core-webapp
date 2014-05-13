@@ -38,4 +38,4 @@
 	</wpsa:hookPoint>
 	 -->
 </div>
-<s:include value="/WEB-INF/apsadmin/jsp/portal/guifragment/include/guiFragment-references.jsp" />
+<s:include value="/WEB-INF/apsadmin/jsp/portal/guifragment/include/guiFragmentInfo-references.jsp" />
