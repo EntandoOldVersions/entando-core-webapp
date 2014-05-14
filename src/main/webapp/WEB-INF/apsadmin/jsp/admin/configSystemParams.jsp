@@ -12,9 +12,9 @@
 			<button class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 			<h2 class="h4 margin-none"><s:text name="messages.confirm" /></h2>
 			<ul class="margin-base-top">
-					<s:iterator value="actionMessages">
-						<li><s:property escape="false" /></li>
-					</s:iterator>
+				<s:iterator value="actionMessages">
+					<li><s:property escape="false" /></li>
+				</s:iterator>
 			</ul>
 		</div>
 	</s:if>
@@ -92,7 +92,38 @@
 			<s:set name="paramName" value="'loginPageCode'" />
 			<s:include value="/WEB-INF/apsadmin/jsp/admin/selectPageParamBlock.jsp" />
 		</div>
-
+		
+		<div class="form-group">
+			<s:set name="paramName" value="'baseUrl'" />
+			<label class="display-block"><s:text name="sysconfig.baseURL" /></label>
+			<div class="btn-group" data-toggle="buttons">
+				<label class="btn btn-default <s:if test="systemParams['baseUrl'] == 'relative'"> active</s:if>">
+					<input type="radio" class="radiocheck" id="admin-settings-area-urlStyle-classic" name="baseUrl" value="relative" <s:if test="systemParams['baseUrl'] == 'relative'">checked="checked"</s:if> />
+					<s:text name="baseURL.relative" />
+				</label>
+				<label class="btn btn-default <s:if test="%{systemParams['baseUrl'] == null || systemParams['baseUrl'] == 'request'}"> active</s:if>">
+					<input type="radio" class="radiocheck" id="admin-settings-area-urlStyle-breadcrumbs" name="baseUrl" value="request" <s:if test="%{systemParams['baseUrl'] == null || systemParams['baseUrl'] == 'request'}">checked="checked"</s:if> />
+					<s:text name="baseURL.request" />
+				</label>
+				<label class="btn btn-default <s:if test="systemParams['baseUrl'] == 'static'"> active</s:if>">
+					<input type="radio" class="radiocheck" id="admin-settings-area-urlStyle-breadcrumbs" name="baseUrl" value="static" <s:if test="systemParams['baseUrl'] == 'static'">checked="checked"</s:if> />
+					<s:text name="baseURL.static" />
+				</label>
+				<%-- hidden parameter to delete --%>
+				<wpsf:hidden name="%{#paramName + externalParamMarker}" value="true"/>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="display-block"><s:text name="sysconfig.baseURL.contextName" /></label>
+			<div class="btn-group" data-toggle="buttons">
+				<s:set name="paramName" value="'baseUrlContext'" />
+				<s:include value="/WEB-INF/apsadmin/jsp/admin/booleanParamBlock.jsp" />
+				<%-- hidden parameter to delete --%>
+				<wpsf:hidden name="%{#paramName + externalParamMarker}" value="true"/>
+			</div>
+		</div>
+		
 		<div class="form-group">
 			<s:set name="paramName" value="'urlStyle'" />
 			<label class="display-block"><s:text name="sysconfig.URLstyle" /></label>
