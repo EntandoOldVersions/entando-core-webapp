@@ -50,12 +50,8 @@
 				<span class="icon fa fa-file-text-o fa-lg" title="<s:text name="label.search.by"/>&#32;<s:text name="label.code"/>"></span>
 			</span>
 			<label for="search-code" class="sr-only"><s:text name="label.search.by"/>&#32;<s:text name="label.code"/></label>
-			<wpsf:textfield
-				id="guiFragment_code"
-				name="code"
-				cssClass="form-control input-lg"
-				title="%{getText('label.search.by')+' '+getText('label.code')}"
-				placeholder="%{getText('label.code')}" />
+			<wpsf:textfield id="guiFragment_code" name="code" cssClass="form-control input-lg"
+				title="%{getText('label.search.by')+' '+getText('label.code')}" placeholder="%{getText('label.code')}" />
 			<div class="input-group-btn">
 				<wpsf:submit type="button" name="search-code" id="search-code" cssClass="btn btn-primary btn-lg" title="%{getText('label.search')}">
 					<span class="sr-only"><s:text name="label.search" /></span>
@@ -188,12 +184,11 @@
 						<%-- <th><s:text name="label.gui" /></th> --%>
 					</tr>
 					<s:iterator var="codeVar">
-						<s:set name="guiFragment_var" value="%{getGuiFragment(#codeVar)}" />
+						<s:set name="guiFragmentVar" value="%{getGuiFragment(#codeVar)}" />
 						<s:url action="edit" var="editGuiFragmentActionVar"><s:param name="code" value="#codeVar"/></s:url>
-						<s:url action="trash" var="trashGuiFragmentActionVar"><s:param name="code" value="#codeVar"/></s:url>
-							<tr>
-								<td class="text-center text-nowrap">
-									<div class="btn-group btn-group-xs">
+						<tr>
+							<td class="text-center text-nowrap">
+								<div class="btn-group btn-group-xs">
 									
 									<%-- detail --%>
 									<a class="btn btn-default"
@@ -209,7 +204,9 @@
 										<span class="icon fa fa-pencil-square-o"></span>
 									</a>
 								</div>
+								<s:if test="%{!#guiFragmentVar.locked}" >
 								<%-- remove --%>
+								<s:url action="trash" var="trashGuiFragmentActionVar"><s:param name="code" value="#codeVar"/></s:url>
 								<div class="btn-group btn-group-xs">
 									<a
 										class="btn btn-warning"
@@ -219,17 +216,18 @@
 										<span class="sr-only"><s:text name="label.alt.clear" /></span>
 										<span class="icon fa fa-times-circle-o"></span>&#32;
 									</a>
-								</div>				
+								</div>	
+								</s:if>
 							</td>
-							<%-- <td class="text-right"><code><s:property value="#guiFragment_var.id"/></code></td> --%>
+							<%-- <td class="text-right"><code><s:property value="#guiFragmentVar.id"/></code></td> --%>
 							<td class="text-right"><s:property value="#codeVar"/></td>
 							<td>
-								<s:set value="%{getWidgetType(#guiFragment_var.widgetTypeCode)}" var="widgetTypeVar" />
+								<s:set value="%{getWidgetType(#guiFragmentVar.widgetTypeCode)}" var="widgetTypeVar" />
 								<s:property value="getTitle(#widgetTypeVar.code, #widgetTypeVar.titles)" />
-								<%-- <s:property value="#guiFragment_var.widgetTypeCode"/> --%>
+								<%-- <s:property value="#guiFragmentVar.widgetTypeCode"/> --%>
 							</td>
-							<td><s:property value="#guiFragment_var.pluginCode"/></td>
-							<%-- <td><s:property value="#guiFragment_var.gui"/></td> --%>
+							<td><s:property value="#guiFragmentVar.pluginCode"/></td>
+							<%-- <td><s:property value="#guiFragmentVar.gui"/></td> --%>
 						</tr>
 					</s:iterator>
 				</table>
