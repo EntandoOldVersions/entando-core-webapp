@@ -56,7 +56,14 @@
 	
 	<s:if test="!#fileAttributesVar.directory">
 	<%--download:--%>
+	<a href="<s:url namespace="/do/FileBrowser" action="download" >
+			<s:param name="currentPath"><s:property escape="true" value="%{currentPath}"/></s:param>
+			<s:param name="filename"> <s:property escape="false" value="#fileAttributesVar.name"/></s:param>
+		</s:url>">DOWNLOAD
+	</a>
+	<%--
 	<a href="<wp:resourceURL/><s:property escape="false" value="currentPath"/><s:property escape="false" value="#fileAttributesVar.name"/>">DOWNLOAD</a>
+	--%>
 	&nbsp;&ndash;&nbsp;
 	<a href="<s:url namespace="/do/FileBrowser" action="edit" >
 			<s:param name="currentPath"><s:property escape="true" value="%{currentPath}"/></s:param>
