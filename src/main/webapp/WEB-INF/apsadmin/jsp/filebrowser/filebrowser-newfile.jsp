@@ -7,8 +7,9 @@ NEW FILE
 
 <s:form action="save" namespace="/do/FileBrowser" method="post" >
 	<s:hidden name="currentPath" />
-	filename <s:textfield name="filename"/> 
-	
+	<s:hidden name="strutsAction" />
+	filename <s:textfield name="filename"/>.<s:select list="textFileTypes" name="textFileExtension" /> 
+	<br />
 	<wpsf:textarea name="fileText" rows="15" cols="50" value="%{fileText}"/>
 	<br />
 	

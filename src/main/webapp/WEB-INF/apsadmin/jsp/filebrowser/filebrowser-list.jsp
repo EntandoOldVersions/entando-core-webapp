@@ -64,11 +64,13 @@
 	<%--
 	<a href="<wp:resourceURL/><s:property escape="false" value="currentPath"/><s:property escape="false" value="#fileAttributesVar.name"/>">DOWNLOAD</a>
 	--%>
+	<s:if test="%{isTextFile(#fileAttributesVar.name)}" >
 	&nbsp;&ndash;&nbsp;
 	<a href="<s:url namespace="/do/FileBrowser" action="edit" >
 			<s:param name="currentPath"><s:property escape="true" value="%{currentPath}"/></s:param>
 			<s:param name="filename"> <s:property escape="false" value="#fileAttributesVar.name"/></s:param>
 		</s:url>">EDIT</a>
+	</s:if>
 	&nbsp;&ndash;&nbsp;
 	</s:if>
 	

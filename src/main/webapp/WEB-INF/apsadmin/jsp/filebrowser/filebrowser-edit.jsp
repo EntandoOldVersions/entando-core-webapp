@@ -6,9 +6,10 @@
 <s:form action="save" namespace="/do/FileBrowser">
 	<s:hidden name="currentPath" />
 	<s:hidden name="filename" />
+	<s:hidden name="strutsAction" />
 	currentPath:<s:property value="currentPath" />
 	<br />
-	fileText:<s:property value="fileText" />
+	file:<s:property value="filename" />
 	<br />
 	<wpsf:textarea name="fileText" rows="15" cols="50" value="%{fileText}"/>
 	<br />
