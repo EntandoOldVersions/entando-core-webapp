@@ -6,7 +6,7 @@
 		<s:text name="title.guiFragmentManagement" />
 		</a>
 		&#32;/&#32;
-		<s:text name="title.guiFragmentManagement.guiFragmentTrash" />
+		<s:text name="guiFragment.label.delete" />
 	</span>
 </h1>
 

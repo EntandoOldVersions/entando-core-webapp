@@ -5,7 +5,7 @@
 
 <h1 class="panel panel-default title-page">
 	<span class="panel-body display-block">
-		<s:text name="title.Portal.guiFragmentManagement" />
+		<s:text name="title.guiFragmentManagement" />
 	</span>
 </h1>
 
@@ -102,7 +102,7 @@
 									<s:else>
 										<wpsa:set var="pluginPropertyName" value="%{getText(#widgetTypeVar.optgroup + '.name')}" />
 										<wpsa:set var="pluginPropertyCode" value="%{getText(#widgetTypeVar.optgroup + '.code')}" />
-										<wpsa:set var="optgroupLabel"><s:text name="#pluginPropertyName" /></wpsa:set>
+										<wpsa:set var="optgroupLabel"><s:text name="%{#pluginPropertyName}" /></wpsa:set>
 									</s:else>
 								<optgroup label="<s:property value="#optgroupLabel" />">
 								</s:if>

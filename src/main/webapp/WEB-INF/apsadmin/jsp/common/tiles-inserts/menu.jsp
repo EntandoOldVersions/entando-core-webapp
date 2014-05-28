@@ -68,7 +68,7 @@
 	</c:if>
 	
 	<c:if test="${isSuperuser}">
-	<li role="presentation"><a role="menuitem" href="<s:url action="list" namespace="/do/FileBrowser" />">**** <s:text name="menu.accountAdmin.filebrowser" /> ****</a></li>
+	<li role="presentation"><a role="menuitem" href="<s:url action="list" namespace="/do/FileBrowser" />">**** <s:text name="menu.filebrowserAdmin" /> ****</a></li>
 	</c:if>
 	
 </wp:ifauthorized>

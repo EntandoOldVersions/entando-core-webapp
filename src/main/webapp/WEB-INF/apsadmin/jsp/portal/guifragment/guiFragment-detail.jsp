@@ -3,7 +3,7 @@
 <h1 class="panel panel-default title-page">
 	<span class="panel-body display-block">
 		<a href="<s:url action="list" namespace="/do/Portal/GuiFragment"></s:url>"
-		title="<s:text name="note.goToSomewhere" />: <s:text name="title.Portal.guiFragmentManagement" />">
+		title="<s:text name="note.goToSomewhere" />: <s:text name="title.guiFragmentManagement" />">
 		<s:text name="title.guiFragmentManagement" /></a>
 		&#32;/&#32;
 		<s:text name="title.guiFragmentDetail" />

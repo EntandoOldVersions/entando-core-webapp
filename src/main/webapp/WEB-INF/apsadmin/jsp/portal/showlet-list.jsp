@@ -5,17 +5,6 @@
 
 <h1 class="panel panel-default title-page"><span class="panel-body display-block"><s:text name="title.widgetManagement" /></span></h1>
 
-<br />
-XXXXXXXXXXXXXXXXXXXXXXXXXX
-<br />
-<a class="btn btn-default" href="<s:url namespace="/do/Portal/WidgetType" action="newWidget" />">
-	<span class="icon fa fa-plus-circle" />
-	&#32;<s:text name="label.new" />
-</a>
-<br />
-XXXXXXXXXXXXXXXXXXXXXXXXXX
-<br />
-
 <div id="main" role="main">
 
 <s:if test="hasFieldErrors()">
@@ -34,6 +23,11 @@ XXXXXXXXXXXXXXXXXXXXXXXXXX
 		</ul>
 	</div>
 </s:if>
+
+<a class="btn btn-default margin-base-bottom" href="<s:url namespace="/do/Portal/WidgetType" action="newWidget" />">
+	<span class="icon fa fa-plus-circle" />
+	&#32;<s:text name="label.new" />
+</a>
 
 <s:set var="pluginTitleCheck" value="'false'" />
 <s:set var="showletFlavours" value="showletFlavours" />
