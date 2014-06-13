@@ -421,6 +421,54 @@
 
     <!-- ********* FINE Area Gestione Entità ********* -->
 
+	<!-- ********* Inizio Area Gestione Key ********* -->
+	<definition extends="layout.default" name="admin.LicenseKey.intro">
+	    <put-attribute name="title" value="title.licenseKeyManagement" />
+	    <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/licensekey/key-intro.jsp" />
+	</definition>
+	<!-- ********* FINE Area Gestione Key ********* -->
+	
+	<!-- ********* START Filebrowser ********* -->
+	
+	<!-- list -->
+	<definition extends="layout.default" name="admin.Filebrowser.list">
+	    <put-attribute name="title" value="title.fileManagement" />
+	    <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/filebrowser/filebrowser-list.jsp" />
+	</definition>
+	
+	<!-- upload -->
+	<definition extends="layout.default" name="admin.Filebrowser.upload">
+	    <put-attribute name="title" value="title.fileManagement" />
+	    <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/filebrowser/filebrowser-upload.jsp" />
+	</definition>
+	
+	<!-- delete confirmation -->
+	<definition extends="layout.default" name="admin.Filebrowser.delete">
+	    <put-attribute name="title" value="title.fileManagement" />
+	    <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/filebrowser/filebrowser-delete.jsp" />
+	</definition>
+	
+	<!-- edit -->
+	<definition extends="layout.default" name="admin.Filebrowser.edit">
+	    <put-attribute name="title" value="title.fileManagement" />
+	    <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/filebrowser/filebrowser-edit.jsp" />
+	</definition>
+	
+	<!-- new Dir -->
+	<definition extends="layout.default" name="admin.Filebrowser.newDir">
+	    <put-attribute name="title" value="title.fileManagement" />
+	    <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/filebrowser/filebrowser-newdir.jsp" />
+	</definition>
+	
+	<!-- new File -->
+	<definition extends="layout.default" name="admin.Filebrowser.newFile">
+	    <put-attribute name="title" value="title.fileManagement" />
+	    <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/filebrowser/filebrowser-newfile.jsp" />
+	</definition>
+	
+	<!-- ********* END Filebrowser ********* -->
+	
+
     <definition extends="layout.default" name="admin.userNotAllowedMessage">
         <put-attribute name="title" value="document.title.main" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/common/userNotAllowedMessage.jsp" />

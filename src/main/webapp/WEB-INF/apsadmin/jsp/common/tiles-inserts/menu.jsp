@@ -11,6 +11,10 @@
 </p>
 
 <ul class="nav nav-pills nav-stacked" id="backoffice-menu-main" role="menubar">
+	
+	<wp:ifauthorized permission="superuser">
+		<li role="presentation"><a role="menuitem" href="<s:url action="list" namespace="/do/FileBrowser" />"><s:text name="menu.accountAdmin.filebrowser" /></a></li>
+	</wp:ifauthorized>
 
 	<wp:info key="systemParam" paramName="groupsOnDemand" var="groupsOnDemandVar" />
 	<c:if test="${groupsOnDemandVar}" >
@@ -18,7 +22,7 @@
 		<li role="presentation"><a role="menuitem" href="<s:url action="list" namespace="/do/Group" />"><s:text name="menu.accountAdmin.groups" /></a></li>
 	</wp:ifauthorized>
 	</c:if>
-
+		
 	<wp:info key="systemParam" paramName="categoriesOnDemand" var="categoriesOnDemandVar" />
 	<c:if test="${categoriesOnDemandVar}">
 	<wp:ifauthorized permission="manageCategories">
