@@ -112,24 +112,26 @@
 								<s:else>
 									<span class="sr-only">File</span>
 										<s:if test="%{isTextFile(#fileAttributesVar.name)}" >
-											&emsp;
 											<a
+												class="display-block"
 												title="Edit: <s:property value="#fileAttributesVar.name"/>"
 												href="<s:url namespace="/do/FileBrowser" action="edit" >
 													<s:param name="currentPath"><s:property escape="true" value="%{currentPath}"/></s:param>
 													<s:param name="filename"> <s:property escape="false" value="#fileAttributesVar.name"/></s:param>
 												</s:url>">
+													<span class="icon fa fa-file-text"></span>
 													<s:property value="#fileAttributesVar.name"/>
 											</a>
 										</s:if>
 										<s:else>
-												&emsp;
 												<a
+												class="display-block"
 												title="Download: <s:property value="#fileAttributesVar.name"/>"
 												href="<s:url namespace="/do/FileBrowser" action="download" >
 													<s:param name="currentPath"><s:property escape="true" value="%{currentPath}"/></s:param>
 													<s:param name="filename"> <s:property escape="false" value="#fileAttributesVar.name"/></s:param>
 												</s:url>">
+													<span class="icon fa fa-file-archive"></span>
 													<s:property value="#fileAttributesVar.name"/>
 											</a>
 										</s:else>
