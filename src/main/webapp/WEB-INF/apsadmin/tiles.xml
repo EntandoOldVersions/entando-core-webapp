@@ -251,25 +251,33 @@
 
     <!-- ********* FINE Area Gestione Pagine ********* -->
 
-    <definition extends="layout.default" name="admin.Portal.viewShowlets">
+    <definition extends="layout.default" name="admin.Portal.viewWidgets">
         <put-attribute name="title" value="title.widgetManagement" />
-        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/showlet-list.jsp" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/widget-list.jsp" />
     </definition>
-
-    <definition extends="layout.default" name="admin.Portal.viewShowletUtilizers">
-        <put-attribute name="title" value="title.widgetManagement" />
-        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/showlet-list-using.jsp" />
-    </definition>
-
-    <definition extends="layout.default" name="admin.Portal.showletType.trash">
-        <put-attribute name="title" value="title.widgetManagement" />
-        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/showlet-delete-confirm.jsp" />
-    </definition>
+	<!-- admin.Portal.viewShowlets - deprecated -->
+	<definition extends="admin.Portal.viewWidgets" name="admin.Portal.viewShowlets" />
 	
-    <definition extends="layout.default" name="admin.Portal.showletType.entry">
+    <definition extends="layout.default" name="admin.Portal.viewWidgetUtilizers">
         <put-attribute name="title" value="title.widgetManagement" />
-        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/showlet-entry.jsp" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/widget-list-using.jsp" />
     </definition>
+	<!-- admin.Portal.viewShowletUtilizers - deprecated -->
+	<definition extends="admin.Portal.viewWidgetUtilizers" name="admin.Portal.viewShowletUtilizers" />
+	
+    <definition extends="layout.default" name="admin.Portal.widgetType.trash">
+        <put-attribute name="title" value="title.widgetManagement" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/widget-delete-confirm.jsp" />
+    </definition>
+	<!-- admin.Portal.showletType.trash - deprecated -->
+	<definition extends="admin.Portal.widgetType.trash" name="admin.Portal.showletType.trash" />
+	
+    <definition extends="layout.default" name="admin.Portal.widgetType.entry">
+        <put-attribute name="title" value="title.widgetManagement" />
+        <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/widget-entry.jsp" />
+    </definition>
+	<!-- admin.Portal.showletType.entry - deprecated -->
+	<definition extends="admin.Portal.widgetType.entry" name="admin.Portal.showletType.entry" />
 	
 	
     <definition extends="layout.default" name="admin.Portal.GuiFragment.list">
