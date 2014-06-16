@@ -22,7 +22,7 @@
 		</div>
 	</s:if>
 	<div class="form-group">
-		
+
 		<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<%--
 			<span class="input-group-addon">
@@ -63,7 +63,7 @@
 				</button>
 			</div>
 		</div>
-		
+
 		<div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div id="search-advanced" class="collapse well collapse-input-group">
 				<%--
@@ -84,8 +84,8 @@
 						<s:text name="label.widgetType"/>
 					</label>
 					<div class="col-sm-5">
-						<select name="widgetTypeCode" id="guiFragment_widgetTypeCode" cssClass="form-control" />
-						<option value=""></option>
+						<select name="widgetTypeCode" id="guiFragment_widgetTypeCode" class="form-control" />
+						<option value=""><s:text name="label.all" /></option>
 						<s:iterator var="widgetFlavourVar" value="widgetFlavours">
 							<wpsa:set var="tmpShowletType">tmpShowletTypeValue</wpsa:set>
 							<s:iterator var="widgetTypeVar" value="#widgetFlavourVar" >
@@ -151,12 +151,13 @@
 	</div>
 </s:form>
 
-<a class="btn btn-default" href="<s:url action="new" />">
-	<span class="icon fa fa-plus-circle" />
-	&#32;<s:text name="guiFragment.label.new" />
-</a>
-
-<s:form action="search">	
+<p>
+	<a class="btn btn-default" href="<s:url action="new" />">
+		<span class="icon fa fa-plus-circle" />
+		&#32;<s:text name="guiFragment.label.new" />
+	</a>
+</p>
+<s:form action="search">
 	<p class="sr-only">
 		<%-- <wpsf:hidden name="id" /> --%>
 		<wpsf:hidden name="code" />
@@ -164,7 +165,7 @@
 		<wpsf:hidden name="pluginCode" />
 		<%-- <wpsf:hidden name="gui" /> --%>
 	</p>
-	
+
 	<s:set var="guiFragmentsCodes_list" value="guiFragmentsCodes" />
 	<s:if test="#guiFragmentsCodes_list.size > 0">
 		<wpsa:subset source="#guiFragmentsCodes_list" count="10" objectName="groupGuiFragments" advanced="true" offset="5">
@@ -178,7 +179,7 @@
 					<tr>
 						<th class="text-center padding-large-left padding-large-right col-xs-4 col-sm-3 col-md-2 col-lg-2"><abbr title="<s:text name="label.actions" />">&ndash;</abbr></th>
 						<%-- <th class="text-right"><s:text name="label.id" /></th> --%>
-						<th class="text-right"><s:text name="label.code" /></th>
+						<th><s:text name="label.code" /></th>
 						<th><s:text name="label.widgetType" /></th>
 						<th><s:text name="label.pluginCode" /></th>
 						<%-- <th><s:text name="label.gui" /></th> --%>
@@ -189,38 +190,36 @@
 						<tr>
 							<td class="text-center text-nowrap">
 								<div class="btn-group btn-group-xs">
-									
-									<%-- detail --%>
-									<a class="btn btn-default"
-										href="<s:url action="detail"><s:param name="code" value="#codeVar"/></s:url>" 
-										title="<s:text name="note.detailsFor" />: <s:property value="#codeVar" />">
-											<span class="icon fa fa-info"></span>
-											<span class="sr-only"><s:text name="note.detailsFor" />: <s:property value="#codeVar" /></span>
-									</a>
-									
 									<%-- edit --%>
-									<a class="btn btn-default" title="<s:text name="label.edit" />&#32;<s:property value="#codeVar" />" href="<s:property value="#editGuiFragmentActionVar" escapeHtml="false" />">
-										<span class="sr-only"><s:text name="label.edit" />&#32;<s:property value="#codeVar" /></span>
-										<span class="icon fa fa-pencil-square-o"></span>
-									</a>
+										<a class="btn btn-default" title="<s:text name="label.edit" />&#32;<s:property value="#codeVar" />" href="<s:property value="#editGuiFragmentActionVar" escapeHtml="false" />">
+											<span class="sr-only"><s:text name="label.edit" />&#32;<s:property value="#codeVar" /></span>
+											<span class="icon fa fa-pencil-square-o"></span>
+										</a>
+									<%-- detail --%>
+										<a class="btn btn-default"
+											href="<s:url action="detail"><s:param name="code" value="#codeVar"/></s:url>"
+											title="<s:text name="note.detailsFor" />: <s:property value="#codeVar" />">
+												<span class="icon fa fa-info"></span>
+												<span class="sr-only"><s:text name="note.detailsFor" />: <s:property value="#codeVar" /></span>
+										</a>
 								</div>
 								<s:if test="%{!#guiFragmentVar.locked}" >
-								<%-- remove --%>
-								<s:url action="trash" var="trashGuiFragmentActionVar"><s:param name="code" value="#codeVar"/></s:url>
-								<div class="btn-group btn-group-xs">
-									<a
-										class="btn btn-warning"
-										href="<s:property value="#trashGuiFragmentActionVar" escapeHtml="false" />"
-										title="<s:text name="label.remove" />: <s:property value="#codeVar" />"
-										>
-										<span class="sr-only"><s:text name="label.alt.clear" /></span>
-										<span class="icon fa fa-times-circle-o"></span>&#32;
-									</a>
-								</div>	
+									<%-- remove --%>
+										<s:url action="trash" var="trashGuiFragmentActionVar"><s:param name="code" value="#codeVar"/></s:url>
+										<div class="btn-group btn-group-xs">
+											<a
+												class="btn btn-warning"
+												href="<s:property value="#trashGuiFragmentActionVar" escapeHtml="false" />"
+												title="<s:text name="label.remove" />: <s:property value="#codeVar" />"
+												>
+												<span class="sr-only"><s:text name="label.alt.clear" /></span>
+												<span class="icon fa fa-times-circle-o"></span>&#32;
+											</a>
+										</div>
 								</s:if>
 							</td>
 							<%-- <td class="text-right"><code><s:property value="#guiFragmentVar.id"/></code></td> --%>
-							<td class="text-right"><s:property value="#codeVar"/></td>
+							<td><code><s:property value="#codeVar"/></code></td>
 							<td>
 								<s:set value="%{getWidgetType(#guiFragmentVar.widgetTypeCode)}" var="widgetTypeVar" />
 								<s:property value="getTitle(#widgetTypeVar.code, #widgetTypeVar.titles)" />
