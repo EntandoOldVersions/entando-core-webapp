@@ -1,8 +1,8 @@
-<%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
-<%@ taglib prefix="wp" uri="/aps-core" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="jacmswpsa" uri="/jacms-apsadmin-core" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="wp" uri="/aps-core" %>
+<%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 
 <p id="manage" class="sr-only"><s:text name="note.userbar.intro" />:</p>
 
@@ -11,14 +11,14 @@
 </p>
 
 <ul class="nav nav-pills nav-stacked" id="backoffice-menu-main" role="menubar">
-	
+
 	<wp:info key="systemParam" paramName="groupsOnDemand" var="groupsOnDemandVar" />
 	<c:if test="${groupsOnDemandVar}" >
 	<wp:ifauthorized permission="superuser">
 		<li role="presentation"><a role="menuitem" href="<s:url action="list" namespace="/do/Group" />"><s:text name="menu.accountAdmin.groups" /></a></li>
 	</wp:ifauthorized>
 	</c:if>
-		
+
 	<wp:info key="systemParam" paramName="categoriesOnDemand" var="categoriesOnDemandVar" />
 	<c:if test="${categoriesOnDemandVar}">
 	<wp:ifauthorized permission="manageCategories">
@@ -57,20 +57,7 @@
 
 <wp:ifauthorized permission="managePages">
 	<li role="presentation"><a role="menuitem" href="<s:url action="viewTree" namespace="/do/Page" />"><s:text name="menu.pageAdmin" /></a></li>
-	
-	<c:if test="${isSuperuser}">
-	<li role="presentation"><a role="menuitem" href="<s:url action="list" namespace="/do/PageModel" />">**** <s:text name="menu.pageModelAdmin" /> ****</a></li>
-	</c:if>
-		
 	<li role="presentation"><a role="menuitem" href="<s:url action="viewWidgets" namespace="/do/Portal/WidgetType" />"><s:text name="menu.widgetAdmin" /></a></li>
-	<c:if test="${isSuperuser}">
-	<li><a href="<s:url namespace="/do/Portal/GuiFragment" action="list" />" >**** <s:text name="menu.guiFragmentAdmin" /> ****</a></li>
-	</c:if>
-	
-	<c:if test="${isSuperuser}">
-	<li role="presentation"><a role="menuitem" href="<s:url action="list" namespace="/do/FileBrowser" />">**** <s:text name="menu.filebrowserAdmin" /> ****</a></li>
-	</c:if>
-	
 </wp:ifauthorized>
 
 <wp:info key="systemParam" paramName="apisOnDemand" var="apisOnDemandVar" />
@@ -141,14 +128,14 @@
 						</s:iterator>
 						<li role="presentation" class="divider visible-xs visible-sm hidden-md hidden-lg"><hr role="presentation" class="margin-none" />
 						<wp:ifauthorized permission="superuser">
-						<wp:info key="systemParam" paramName="contentModelsOnDemand" var="contentModelsOnDemandVar" />
-						<c:if test="${contentModelsOnDemandVar}" >
-						<li role="presentation"><a role="menuitem" href="<s:url action="list" namespace="/do/jacms/ContentModel" />"><s:text name="jacms.menu.contentModelAdmin" /></a></li>
-						</c:if>
-						<wp:info key="systemParam" paramName="contentTypesOnDemand" var="contentTypesOnDemandVar" />
-						<c:if test="${contentTypesOnDemandVar}" >
-						<li role="presentation"><a role="menuitem" href="<s:url action="initViewEntityTypes" namespace="/do/Entity"><s:param name="entityManagerName">jacmsContentManager</s:param></s:url>"><s:text name="jacms.menu.contentTypeAdmin" /></a></li>
-						</c:if>
+							<wp:info key="systemParam" paramName="contentModelsOnDemand" var="contentModelsOnDemandVar" />
+							<c:if test="${contentModelsOnDemandVar}" >
+							<li role="presentation"><a role="menuitem" href="<s:url action="list" namespace="/do/jacms/ContentModel" />"><s:text name="jacms.menu.contentModelAdmin" /></a></li>
+							</c:if>
+							<wp:info key="systemParam" paramName="contentTypesOnDemand" var="contentTypesOnDemandVar" />
+							<c:if test="${contentTypesOnDemandVar}" >
+							<li role="presentation"><a role="menuitem" href="<s:url action="initViewEntityTypes" namespace="/do/Entity"><s:param name="entityManagerName">jacmsContentManager</s:param></s:url>"><s:text name="jacms.menu.contentTypeAdmin" /></a></li>
+							</c:if>
 						</wp:ifauthorized>
 					</ul>
 				</div>
@@ -180,4 +167,27 @@
 	</c:if>
 
 </c:if>
+
+<c:if test="${isSuperuser}">
+	<li class="panel-group" role="presentation">
+		<div class="panel panel-default" role="presentation">
+			<div class="panel-heading" role="presentation">
+				<a data-toggle="collapse" href="#submenu-template" class="display-block" id="aria-menu-template" aria-haspopup="true" role="menuitem">
+					Template
+					<span class="icon fa fa-chevron-down pull-right"></span>
+				</a>
+			</div>
+			<div id="submenu-template" class="panel-collapse collapse" role="presentation">
+				<ul class="panel-body nav nav-pills nav-stacked" role="menubar" aria-labelledby="aria-menu-template">
+					<li role="presentation"><a role="menuitem" href="<s:url action="list" namespace="/do/PageModel" />"><s:text name="menu.pageModelAdmin" /></a></li>
+
+					<li><a href="<s:url namespace="/do/Portal/GuiFragment" action="list" />" ><s:text name="menu.guiFragmentAdmin" /></a></li>
+
+					<li role="presentation"><a role="menuitem" href="<s:url action="list" namespace="/do/FileBrowser" />"><s:text name="menu.filebrowserAdmin" /></a></li>
+				</ul>
+			</div>
+		</div>
+	</li>
+</c:if>
+
 </ul>
