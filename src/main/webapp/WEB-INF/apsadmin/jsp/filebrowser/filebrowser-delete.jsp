@@ -1,22 +1,44 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="wp" uri="/aps-core" %>
+<%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
 <%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 
-DELETE
+<h1 class="panel panel-default title-page">
+	<span class="panel-body display-block">
+		<a href="<s:url action="list" />">File Browser</a>
+		&#32;/&#32;
+		Delete
+	</span>
+</h1>
+<div id="main">
 
-<s:form action="delete" namespace="/do/FileBrowser" method="post" >
-	<s:hidden name="deleteFile" />
-	<s:hidden name="currentPath" />
-	<s:hidden name="filename" />
-	file:
-	currentPath:<s:property value="%{currentPath}" />
-	<br />
-	<s:if test="deleteFile">FILE</s:if><s:else>DIRECTORY</s:else>:
-	<s:property value="%{filename}" />
-	<br />
-	<br />
-	REMOVE?
-	<br />
-	<br />
-	<wpsf:submit useTabindexAutoIncrement="true" value="%{getText('label.delete')}" />
-	<wpsf:submit useTabindexAutoIncrement="true" action="list" value="%{getText('label.cancel')}" />
-</s:form>
+	<s:include value="/WEB-INF/apsadmin/jsp/filebrowser/include/breadcrumbs.jsp" />
+
+	<s:form
+		action="delete"
+		namespace="/do/FileBrowser"
+		method="post"
+		cssClass="margin-base-top">
+			<div class="alert alert-warning">
+					<s:hidden name="deleteFile" />
+					<s:hidden name="currentPath" />
+					<s:hidden name="filename" />
+					<p>
+						Do you really want to delete
+						<code><s:property value="%{filename}" /></code>?
+					</p>
+					<div class="text-center margin-large-top">
+						<wpsf:submit type="button" cssClass="btn btn-warning btn-lg">
+							<span class="icon fa fa-times-circle"></span>
+							<s:text name="label.confirm" />
+						</wpsf:submit>
+						<wpsf:submit
+							type="button"
+							action="list"
+							cssClass="btn btn-link">
+								<s:text name="label.cancel" />
+						</wpsf:submit>
+					</div>
+				</div>
+	</s:form>
+</div>

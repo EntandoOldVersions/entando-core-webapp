@@ -1,14 +1,47 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib uri="/aps-core" prefix="wp" %>
-<%@ taglib uri="/apsadmin-core" prefix="wpsa" %>
-<%@ taglib uri="/apsadmin-form" prefix="wpsf" %>
+<%@ taglib prefix="wp" uri="/aps-core" %>
+<%@ taglib prefix="wpsa" uri="/apsadmin-core" %>
+<%@ taglib prefix="wpsf" uri="/apsadmin-form" %>
 
-NEW DIR
+<h1 class="panel panel-default title-page">
+	<span class="panel-body display-block">
+		<a href="<s:url action="list" />">File Browser</a>
+		&#32;/&#32;
+		Folder
+	</span>
+</h1>
+<div id="main">
 
-<s:form action="createDir" namespace="/do/FileBrowser" method="post" >
-	<s:hidden name="currentPath" />
-	<s:hidden name="strutsAction" />
-	dir <s:textfield name="dirname"/> 
-	<wpsf:submit useTabindexAutoIncrement="true" value="%{getText('label.new')}" />
-	<wpsf:submit useTabindexAutoIncrement="true" action="list" value="%{getText('label.cancel')}" />
-</s:form>
+	<s:include value="/WEB-INF/apsadmin/jsp/filebrowser/include/breadcrumbs.jsp" />
+
+	<s:form
+		cssClass="margin-base-top form-horizontal"
+		action="createDir"
+		namespace="/do/FileBrowser"
+		method="post"
+		>
+		<div class="form-group">
+			<div class="col-xs-12">
+				<s:hidden name="currentPath" />
+				<s:hidden name="strutsAction" />
+				<label for="new-folder-name display-block">New Folder Name</label>
+				<s:textfield id="new-folder-name" name="dirname" cssClass="form-control" />
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+				<wpsf:submit type="button" cssClass="btn btn-primary btn-block">
+					<span class="icon fa fa-save"></span>&#32;
+					<s:text name="label.save" />
+				</wpsf:submit>
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+				<wpsf:submit
+					action="list"
+					value="%{getText('label.cancel')}"
+					cssClass="btn btn-link" />
+			</div>
+		</div>
+	</s:form>
+</div>
