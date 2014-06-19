@@ -129,12 +129,11 @@
 
 </fieldset>
 
-<s:if test="null != #widgetTypeVar">
-<s:if test="strutsAction != 2 || #widgetTypeVar.logic">
+<s:if test="strutsAction != 1 && (strutsAction != 2 || #widgetTypeVar.logic)">
 <fieldset class="col-xs-12"><legend><s:text name="title.widgetType.settings" /></legend>
-	<s:if test="strutsAction == 1">
-		<s:set var="parentShowletType" value="%{getShowletType(parentShowletTypeCode)}" />
-		<s:iterator value="#parentShowletType.typeParameters" var="showletParam" >
+	<s:if test="strutsAction == 5">
+		<s:set var="parentWidgetTypeVar" value="%{getWidgetType(parentShowletTypeCode)}" />
+		<s:iterator value="#parentWidgetTypeVar.typeParameters" var="showletParam" >
 			<div class="form-group">
 				<label for="<s:property value="#showletParam.name" />" class="control-label"><s:property value="#showletParam.name" /></label>
 				<wpsf:textfield id="%{#showletParam.name}" name="%{#showletParam.name}" value="%{#request.parameters[#showletParam.name]}" cssClass="form-control" />
@@ -181,8 +180,8 @@
 	</s:elseif>
 </fieldset>
 </s:if>
-</s:if>
 
+<s:if test="strutsAction != 5">
 <s:if test="%{null == #widgetTypeVar || (!#widgetTypeVar.logic && !isInternalServletWidget(#widgetTypeVar.code))}">
 <br />
 **************************
@@ -221,6 +220,7 @@
 		</s:iterator>
 	</s:if>
 </s:elseif>
+</s:if>
 
 <wpsa:hookPoint key="core.widgetType.entry" objectName="hookPointElements_core_widget_entry">
 <s:iterator value="#hookPointElements_core_widget_entry" var="hookPointElement">
