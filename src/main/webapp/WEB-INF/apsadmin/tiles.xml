@@ -236,7 +236,7 @@
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/editFrame.jsp" />
     </definition>
 
-    <!-- INIZIO Area Gestione Configurazione Showlet Speciali -->
+    <!-- INIZIO Area Gestione Configurazione Widget Speciali -->
 
     <definition extends="layout.default" name="admin.Page.Showlet.configSimpleParameter">
         <put-attribute name="title" value="title.pageManagement" />
@@ -247,7 +247,7 @@
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/portal/specialwidget/navigatorConfig.jsp" />
     </definition>
 
-    <!-- FINE Area Gestione Configurazione Showlet Speciali -->
+    <!-- FINE Area Gestione Configurazione Widget Speciali -->
 
     <!-- ********* FINE Area Gestione Pagine ********* -->
 
@@ -490,45 +490,33 @@
 	
 	<!-- ********* START Filebrowser ********* -->
 	
-	<!-- list -->
 	<definition extends="layout.default" name="admin.Filebrowser.list">
 	    <put-attribute name="title" value="title.fileManagement" />
 	    <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/filebrowser/filebrowser-list.jsp" />
 	</definition>
 	
-	<!-- upload -->
 	<definition extends="layout.default" name="admin.Filebrowser.upload">
 	    <put-attribute name="title" value="title.fileManagement" />
 	    <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/filebrowser/filebrowser-upload.jsp" />
 	</definition>
 	
-	<!-- delete confirmation -->
 	<definition extends="layout.default" name="admin.Filebrowser.delete">
 	    <put-attribute name="title" value="title.fileManagement" />
 	    <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/filebrowser/filebrowser-delete.jsp" />
 	</definition>
 	
-	<!-- edit -->
-	<definition extends="layout.default" name="admin.Filebrowser.edit">
+	<definition extends="layout.default" name="admin.Filebrowser.entryFile">
 	    <put-attribute name="title" value="title.fileManagement" />
-	    <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/filebrowser/filebrowser-edit.jsp" />
+	    <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/filebrowser/filebrowser-entryFile.jsp" />
 	</definition>
 	
-	<!-- new Dir -->
 	<definition extends="layout.default" name="admin.Filebrowser.newDir">
 	    <put-attribute name="title" value="title.fileManagement" />
 	    <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/filebrowser/filebrowser-newdir.jsp" />
 	</definition>
 	
-	<!-- new File -->
-	<definition extends="layout.default" name="admin.Filebrowser.newFile">
-	    <put-attribute name="title" value="title.fileManagement" />
-	    <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/filebrowser/filebrowser-newfile.jsp" />
-	</definition>
-	
 	<!-- ********* END Filebrowser ********* -->
 	
-
     <definition extends="layout.default" name="admin.userNotAllowedMessage">
         <put-attribute name="title" value="document.title.main" />
         <put-attribute name="body" value="/WEB-INF/apsadmin/jsp/common/userNotAllowedMessage.jsp" />
