@@ -44,11 +44,11 @@
 		<div class="alert alert-danger alert-dismissable">
 			<button type="button" class="close" data-dismiss="alert"><span class="icon fa fa-times"></span></button>
 			<p><s:text name="message.title.ActionErrors" /></p>
-		    <ul>
-            	<s:iterator value="actionErrors">
-                    <li><s:property escape="false" /></li>
-            	</s:iterator>
-            </ul>
+				<ul>
+							<s:iterator value="actionErrors">
+										<li><s:property escape="false" /></li>
+							</s:iterator>
+						</ul>
 		</div>
 	</s:if>
 	<s:if test="hasFieldErrors()">
@@ -75,7 +75,7 @@
 <fieldset class="col-xs-12"><legend><s:text name="label.info" /></legend>
 	<s:set var="controlGroupErrorClassVar" value="''" />
 	<s:if test="#pageCodeHasFieldErrorVar">
-	  <s:set var="controlGroupErrorClassVar" value="' has-error'" />
+		<s:set var="controlGroupErrorClassVar" value="' has-error'" />
 	</s:if>
 
 	<s:if test="strutsAction != 2">
@@ -85,7 +85,7 @@
 			<label for="showletTypeCode" class="control-label"><s:text name="label.code" /></label>
 			<wpsf:textfield id="showletTypeCode" name="showletTypeCode" cssClass="form-control" />
 			<s:if test="#pageCodeHasFieldErrorVar">
-			  <p class="text-danger padding-small-vertical"><s:iterator value="#pageCodeFieldErrorsVar"><s:property /> </s:iterator></p>
+				<p class="text-danger padding-small-vertical"><s:iterator value="#pageCodeFieldErrorsVar"><s:property /> </s:iterator></p>
 			</s:if>
 		</div>
 	</s:if>
@@ -96,7 +96,7 @@
 		<label for="englishTitle" class="control-label"><code class="label label-info">en</code>&#32;<s:text name="label.title" /></label>
 		<wpsf:textfield id="englishTitle" name="englishTitle" cssClass="form-control" />
 		<s:if test="#pageCodeHasFieldErrorVar">
-		  <p class="text-danger padding-small-vertical"><s:iterator value="#pageCodeFieldErrorsVar"><s:property /> </s:iterator></p>
+			<p class="text-danger padding-small-vertical"><s:iterator value="#pageCodeFieldErrorsVar"><s:property /> </s:iterator></p>
 		</s:if>
 	</div>
 
@@ -106,7 +106,7 @@
 		<label for="italianTitle" class="control-label"><code class="label label-info">it</code>&#32;<s:text name="label.title" /></label>
 		<wpsf:textfield id="italianTitle" name="italianTitle" cssClass="form-control" />
 		<s:if test="#pageCodeHasFieldErrorVar">
-		  <p class="text-danger padding-small-vertical"><s:iterator value="#pageCodeFieldErrorsVar"><s:property /> </s:iterator></p>
+			<p class="text-danger padding-small-vertical"><s:iterator value="#pageCodeFieldErrorsVar"><s:property /> </s:iterator></p>
 		</s:if>
 	</div>
 
@@ -116,7 +116,7 @@
 		<label for="mainGroup" class="control-label"><s:text name="label.group" /></label>
 		<wpsf:select name="mainGroup" id="mainGroup" list="groups" listKey="name" listValue="descr" cssClass="form-control" disabled="%{!#isSuperuserVar}" />
 		<s:if test="#pageCodeHasFieldErrorVar">
-		  <p class="text-danger padding-small-vertical"><s:iterator value="#pageCodeFieldErrorsVar"><s:property /> </s:iterator></p>
+			<p class="text-danger padding-small-vertical"><s:iterator value="#pageCodeFieldErrorsVar"><s:property /> </s:iterator></p>
 		</s:if>
 	</div>
 
@@ -182,24 +182,35 @@
 </s:if>
 
 <s:if test="strutsAction != 5">
-<s:if test="%{null == #widgetTypeVar || (!#widgetTypeVar.logic && !isInternalServletWidget(#widgetTypeVar.code))}">
-<br />
-**************************
-<br />
-<fieldset class="col-xs-12"><legend>*** GUI ***</legend>
-	<wpsf:textarea name="gui" id="widget_gui" cssClass="form-control" rows="8" cols="50" />
-</fieldset>
-<s:if test="strutsAction == 2">
-	<s:set var="uniqueGuiFragmentVar" value="%{extractUniqueGuiFragment(widgetTypeCode)}" />
-	<s:if test="%{null != #uniqueGuiFragmentVar}">
-	<br />
-	**DEFAULT GUI ** <s:property value="#uniqueGuiFragmentVar.code" /> **
-	<pre><s:property value="#uniqueGuiFragmentVar.defaultGui" /></pre>
-	<br />
-	</s:if>
-</s:if>
-*********************
-<br />
+	<s:if test="%{null == #widgetTypeVar || (!#widgetTypeVar.logic && !isInternalServletWidget(#widgetTypeVar.code))}">
+
+		<ul id="" class="nav nav-tabs">
+			<li class="active"><a href="#widget-gui" data-toggle="tab">Gui</a></li>
+			<s:if test="strutsAction == 2">
+				<s:set var="uniqueGuiFragmentVar" value="%{extractUniqueGuiFragment(widgetTypeCode)}" />
+				<s:if test="%{null != #uniqueGuiFragmentVar}">
+					<li><a href="#widget-default-gui" data-toggle="tab">Default Gui</a></li>
+				</s:if>
+			</s:if>
+		</ul>
+		<div class="tab-content margin-large-bottom">
+			<div class="tab-pane fade in active" id="widget-gui">
+				<wpsf:textarea name="gui" id="widget_gui" cssClass="form-control" rows="8" cols="50" />
+			</div>
+			<div class="tab-pane fade" id="widget-default-gui">
+				<s:if test="strutsAction == 2">
+					<s:set var="uniqueGuiFragmentVar" value="%{extractUniqueGuiFragment(widgetTypeCode)}" />
+					<s:if test="%{null != #uniqueGuiFragmentVar}">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<pre><s:property value="#uniqueGuiFragmentVar.defaultGui" /></pre>
+							</div>
+						</div>
+					</s:if>
+				</s:if>
+			</div>
+		</div>
+
 </s:if>
 <s:elseif test="%{null != #widgetTypeVar && #widgetTypeVar.logic}"> <%-- excluded clause <<&& isInternalServletWidget(#widgetTypeVar.parentType.code)>> --%>
 	<s:set var="guiFragmentCodesVar" value="%{extractGuiFragmentCodes(#widgetTypeVar.code)}" />
@@ -237,12 +248,12 @@
 
 <div class="row">
 	<div class="form-group">
-	 	<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
-	    <wpsf:submit type="button" cssClass="btn btn-primary btn-block">
-	      <span class="icon fa fa-floppy-o"></span>&#32;
-	      <s:text name="label.save" />
-	    </wpsf:submit>
-	    </div>
+		<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
+			<wpsf:submit type="button" cssClass="btn btn-primary btn-block">
+				<span class="icon fa fa-floppy-o"></span>&#32;
+				<s:text name="label.save" />
+			</wpsf:submit>
+			</div>
 
 		<s:if test="strutsAction == 3">
 			<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
@@ -250,9 +261,9 @@
 					<wpsa:actionSubParam name="replaceOnPage" value="true" />
 				</wpsa:actionParam>
 				<wpsf:submit type="button" action="%{#actionName}" cssClass="btn btn-default btn-block">
-			      <span class="icon fa fa-exchange"></span>&#32;
-			      <s:text name="label.save.replace" />
-			    </wpsf:submit>
+						<span class="icon fa fa-exchange"></span>&#32;
+						<s:text name="label.save.replace" />
+					</wpsf:submit>
 			</div>
 		</s:if>
 
