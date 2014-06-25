@@ -184,7 +184,7 @@
 <s:if test="strutsAction != 5">
 	<s:if test="%{null == #widgetTypeVar || (!#widgetTypeVar.logic && !isInternalServletWidget(#widgetTypeVar.code))}">
 
-		<ul id="" class="nav nav-tabs">
+		<ul class="nav nav-tabs">
 			<li class="active"><a href="#widget-gui" data-toggle="tab">Gui</a></li>
 			<s:if test="strutsAction == 2">
 				<s:set var="uniqueGuiFragmentVar" value="%{extractUniqueGuiFragment(widgetTypeCode)}" />
@@ -210,25 +210,51 @@
 				</s:if>
 			</div>
 		</div>
-
 </s:if>
 <s:elseif test="%{null != #widgetTypeVar && #widgetTypeVar.logic}"> <%-- excluded clause <<&& isInternalServletWidget(#widgetTypeVar.parentType.code)>> --%>
+
 	<s:set var="guiFragmentCodesVar" value="%{extractGuiFragmentCodes(#widgetTypeVar.code)}" />
 	<s:if test="%{null != #guiFragmentCodesVar && !#guiFragmentCodesVar.isEmpty()}">
-		*** LOGIC WIDGET GUIS ***
-		<s:iterator value="guiFragmentCodesVar" var="guiFragmentCodeVar" >
-			<s:set var="guiFragmentVar" value="getGuiFragment(#guiFragmentCodeVar)" />
-			<br /><br />
-			CODE <s:property value="#guiFragmentCodeVar" />
-			<br />
-			FIELD
-			<s:set var="guiFieldNameVar" value="%{#widgetTypeVar.code + '_' + #guiFragmentCodeVar}" />
-			<wpsf:textarea name="%{#guiFieldNameVar}" id="%{#guiFieldNameVar}" value="%{guis.getProperty(#guiFieldNameVar)}" cssClass="form-control" rows="8" cols="50" />
-			<br />
-			**DEFAULT GUI ** <s:property value="#guiFragmentCodeVar" /> **
-			<pre><s:property value="#guiFragmentVar.defaultGui" /></pre>
-			<br /><br />
-		</s:iterator>
+		<fieldset class="margin-large-bottom">
+			<legend><abbr title="Graphical User Interface">Gui</abbr></legend>
+			<div class="panel-group" id="accordion">
+				<s:iterator value="guiFragmentCodesVar" var="guiFragmentCodeVar" status="status">
+					<s:set var="guiFragmentVar" value="getGuiFragment(#guiFragmentCodeVar)" />
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a class="display-block" data-toggle="collapse" data-parent="#accordion" href="#collapse-<s:property value="#status.count" />">
+									<s:property value="#guiFragmentCodeVar" />
+								</a>
+							</h4>
+						</div>
+						<div id="collapse-<s:property value="#status.count" />" class="panel-collapse collapse in">
+							<div class="panel-body">
+
+								<ul class="nav nav-tabs">
+									<li class="active"><a href="#widget-gui-<s:property value="#status.count" />" data-toggle="tab">Gui</a></li>
+									<li><a href="#widget-default-gui-<s:property value="#status.count" />" data-toggle="tab">Default Gui</a></li>
+								</ul>
+								<div class="tab-content margin-large-bottom">
+									<div class="tab-pane fade in active" id="widget-gui-<s:property value="#status.count" />">
+										<s:set var="guiFieldNameVar" value="%{#widgetTypeVar.code + '_' + #guiFragmentCodeVar}" />
+										<wpsf:textarea name="%{#guiFieldNameVar}" id="%{#guiFieldNameVar}" value="%{guis.getProperty(#guiFieldNameVar)}" cssClass="form-control" rows="8" cols="50" />
+									</div>
+									<div class="tab-pane fade" id="widget-default-gui-<s:property value="#status.count" />">
+										<div class="panel panel-default">
+											<div class="panel-body">
+												<pre><s:property value="#guiFragmentVar.defaultGui" /></pre>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</s:iterator>
+			</div>
+		</fieldset>
 	</s:if>
 </s:elseif>
 </s:if>
