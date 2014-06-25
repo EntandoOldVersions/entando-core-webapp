@@ -24,6 +24,7 @@
 			<div class="col-xs-12">
 				<s:hidden name="currentPath" />
 				<s:hidden name="strutsAction" />
+				<s:hidden name="protectedFolder" />
 				<label for="new-folder-name display-block">New Folder Name</label>
 				<s:textfield id="new-folder-name" name="dirname" cssClass="form-control" />
 			</div>

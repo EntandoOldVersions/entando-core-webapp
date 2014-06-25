@@ -9,14 +9,6 @@
 	</span>
 </h1>
 <div id="main">
-	<%-- what is this?
-	<s:form action="edit" namespace="/do/FileBrowser">
-		<s:hidden name="currentPath" />
-		filename:<s:textfield name="filename" />
-		<s:submit name="createByName" value="createByName" />
-	</s:form>
-	--%>
-
 	<s:include value="/WEB-INF/apsadmin/jsp/filebrowser/include/breadcrumbs.jsp" />
 	<s:set var="currentPath" value="%{currentPath}" />
 	<s:set var="filesAttributes" value="filesAttributes" />
@@ -30,42 +22,52 @@
 						<th class="col-lg-1">Size</th>
 						<th class="col-lg-1">Last edit</th>
 					</tr>
-					<s:if test="currentPath!=''">
-						<tr>
-							<th></th>
-							<th colspan="3">
-								<a href="<s:url namespace="/do/FileBrowser" action="list" >
-									   <s:param name="currentPath"><s:property escape="true" value="breadCrumbsTargets.get(breadCrumbsTargets.size()-2).key"/></s:param>
-								   </s:url>">
-									<span class="icon fa fa-share fa-rotate-270"></span>
-									&#32;
-									up ..
-								</a>
-							</th>
-						</tr>
+					<s:if test="%{null != getProtectedFolder()}">
+					<tr>
+						<th></th>
+						<th colspan="3">
+							<s:if test="currentPath!=''"><s:set var="isUpProtectedFileVar" value="protectedFolder" /></s:if>
+							<a href="<s:url namespace="/do/FileBrowser" action="list" >
+								   <s:param name="protectedFolder" value="#isUpProtectedFileVar" />
+								   <s:param name="currentPath"><s:property escape="true" value="breadCrumbsTargets.get(breadCrumbsTargets.size()-2).key"/></s:param>
+							   </s:url>">
+								<span class="icon fa fa-share fa-rotate-270"></span>
+								&#32;
+								up ..
+							</a>
+						</th>
+					</tr>
 					</s:if>
 				</thead>
 			</s:if>
 			<s:iterator value="#filesAttributes" var="fileVar" status="fileStatus">
+				<s:if test="%{null == getProtectedFolder()}">
+					<s:set var="isProtectedFileVar" value="%{#fileVar.isProtectedFolder()}" />
+					<s:set var="filenameVar" value="''" />
+				</s:if>
+				<s:else>
+					<s:set var="isProtectedFileVar" value="protectedFolder" />
+					<s:set var="filenameVar" value="#fileVar.name" />
+				</s:else>
 				<tr>
 					<td class="text-right text-nowrap col-xs-1 col-sm-1 col-md-1 col-lg-1 ">
 						<s:if test="!#fileVar.directory">
 							<div class="btn-group btn-group-xs">
 								<%-- edit
-									<s:if test="%{isTextFile(#fileVar.name)}" >
-										<a
-											class="btn btn-default"
-											title="Edit: <s:property value="#fileVar.name"/>"
-											href="<s:url namespace="/do/FileBrowser" action="edit" >
-												<s:param name="currentPath"><s:property escape="true" value="%{#currentPath}"/></s:param>
-												<s:param name="filename"> <s:property escape="false" value="#fileVar.name"/></s:param>
-											</s:url>">
-												<span class="icon fa fa-pencil-square-o"></span>
-												<span class="sr-only">
-													Edit: <s:property value="#fileVar.name"/>
-												</span>
-										</a>
-									</s:if>
+								<s:if test="%{isTextFile(#fileVar.name)}" >
+									<a
+										class="btn btn-default"
+										title="Edit: <s:property value="#fileVar.name"/>"
+										href="<s:url namespace="/do/FileBrowser" action="edit" >
+											<s:param name="currentPath"><s:property escape="true" value="%{#currentPath}"/></s:param>
+											<s:param name="filename"> <s:property escape="false" value="#fileVar.name"/></s:param>
+										</s:url>">
+											<span class="icon fa fa-pencil-square-o"></span>
+											<span class="sr-only">
+												Edit: <s:property value="#fileVar.name"/>
+											</span>
+									</a>
+								</s:if>
 								--%>
 								<%--download:--%>
 								<a
@@ -73,7 +75,8 @@
 									title="Download: <s:property value="#fileVar.name"/>"
 									href="<s:url namespace="/do/FileBrowser" action="download" >
 										<s:param name="currentPath"><s:property escape="true" value="%{#currentPath}"/></s:param>
-										<s:param name="filename"> <s:property escape="false" value="#fileVar.name"/></s:param>
+										<s:param name="filename"><s:property escape="false" value="#filenameVar"/></s:param>
+										<s:param name="protectedFolder"><s:property value="#isProtectedFileVar"/></s:param>
 									</s:url>">
 									<span class="icon fa fa-download"></span>
 									<span class="sr-only">
@@ -83,19 +86,22 @@
 							</div>
 						</s:if>
 						<div class="btn-group btn-group-xs">
+							<s:if test="%{null != getProtectedFolder()}">
 							<a
 								class="btn btn-warning"
 								title="Delete: <s:property value="#fileVar.name"/>"
 								href="<s:url namespace="/do/FileBrowser" action="trash" >
 									<s:param name="currentPath"><s:property escape="true" value="%{#currentPath}"/></s:param>
-									<s:param name="filename"><s:property escape="false" value="#fileVar.name"/></s:param>
+									<s:param name="filename"><s:property escape="false" value="#filenameVar"/></s:param>
 									<s:param name="deleteFile" value="%{!#fileVar.directory}" />
+									<s:param name="protectedFolder"><s:property value="#isProtectedFileVar"/></s:param>
 								</s:url>">
 								<span class="icon fa fa-times-circle-o"></span>
 								<span class="sr-only">
 									Delete: <s:property value="#fileVar.name"/>
 								</span>
 							</a>
+							</s:if>
 						</div>
 					</td>
 
@@ -103,7 +109,8 @@
 					<td class="text-nowrap">
 						<s:if test="#fileVar.directory">
 							<a class="display-block" href="<s:url namespace="/do/FileBrowser" action="list" >
-								   <s:param name="currentPath"><s:property escape="true" value="currentPath"/><s:property escape="true" value="#fileVar.name"/></s:param>
+								   <s:param name="currentPath"><s:property escape="true" value="currentPath"/><s:property escape="true" value="#filenameVar"/></s:param>
+								   <s:param name="protectedFolder"><s:property value="#isProtectedFileVar"/></s:param>
 							   </s:url>">
 								<span class="icon fa fa-folder"></span>
 								<span class="sr-only">Folder</span>
@@ -118,7 +125,8 @@
 									title="Edit: <s:property value="#fileVar.name"/>"
 									href="<s:url namespace="/do/FileBrowser" action="edit" >
 										<s:param name="currentPath"><s:property escape="true" value="%{#currentPath}"/></s:param>
-										<s:param name="filename"> <s:property escape="false" value="#fileVar.name"/></s:param>
+										<s:param name="filename"> <s:property escape="false" value="#filenameVar"/></s:param>
+										<s:param name="protectedFolder"><s:property value="#isProtectedFileVar"/></s:param>
 									</s:url>">
 									<span class="icon fa fa-file-text"></span>
 									<s:property value="#fileVar.name"/>
@@ -130,7 +138,8 @@
 									title="Download: <s:property value="#fileVar.name"/>"
 									href="<s:url namespace="/do/FileBrowser" action="download" >
 										<s:param name="currentPath"><s:property escape="true" value="%{#currentPath}"/></s:param>
-										<s:param name="filename"> <s:property escape="false" value="#fileVar.name"/></s:param>
+										<s:param name="filename"> <s:property escape="false" value="#filenameVar"/></s:param>
+										<s:param name="protectedFolder"><s:property value="#isProtectedFileVar"/></s:param>
 									</s:url>">
 									<span class="icon fa fa-file-archive"></span>
 									<s:property value="#fileVar.name"/>
@@ -164,13 +173,15 @@
 			</table>
 		</div>
 	</s:if>
-
+	
+	<s:if test="%{null != getProtectedFolder()}">
 	<div class="">
 		<p class="margin-large-top btn-group btn-group-sm">
 			<a
 				class="btn btn-default"
 				href="<s:url namespace="/do/FileBrowser" action="uploadNewFileEntry" >
-					<s:param name="currentPath"><s:property escape="true" value="%{#currentPath}"/><s:property escape="true" value="%{#file.name}"/></s:param>
+					<s:param name="currentPath"><s:property escape="true" value="%{#currentPath}"/></s:param>
+					<s:param name="protectedFolder"><s:property value="#isProtectedFileVar"/></s:param>
 				</s:url>">
 				<span class="icon fa fa-upload"></span>&#32;
 				Upload a file
@@ -179,6 +190,7 @@
 				class="btn btn-default"
 				href="<s:url namespace="/do/FileBrowser" action="newFileEntry" >
 					<s:param name="currentPath"><s:property escape="true" value="%{#currentPath}"/></s:param>
+					<s:param name="protectedFolder"><s:property value="#isProtectedFileVar"/></s:param>
 				</s:url>">
 				<span class="icon fa fa-file-text"></span>&#32;
 				New Text File
@@ -187,10 +199,12 @@
 				class="btn btn-default"
 				href="<s:url namespace="/do/FileBrowser" action="newDirEntry" >
 					<s:param name="currentPath"><s:property escape="true" value="%{#currentPath}"/></s:param>
+					<s:param name="protectedFolder"><s:property value="#isProtectedFileVar"/></s:param>
 				</s:url>">
 				<span class="icon fa fa-folder"></span>&#32;
 				New Dir
 			</a>
 		</p>
 	</div>
+	</s:if>
 </div>

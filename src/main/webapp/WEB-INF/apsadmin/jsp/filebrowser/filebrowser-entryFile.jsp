@@ -33,6 +33,7 @@
 		<div class="form-group">
 			<div class="col-xs-12">
 				<s:hidden name="currentPath" />
+				<s:hidden name="protectedFolder" />
 				<s:if test="strutsAction == 2">
 				<s:hidden name="filename" />
 				</s:if>

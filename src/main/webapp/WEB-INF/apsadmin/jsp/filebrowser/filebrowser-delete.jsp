@@ -19,6 +19,7 @@
 			<s:hidden name="deleteFile" />
 			<s:hidden name="currentPath" />
 			<s:hidden name="filename" />
+			<s:hidden name="protectedFolder" />
 			<s:hidden name="strutsAction" />
 			<p>
 				Do you really want to delete

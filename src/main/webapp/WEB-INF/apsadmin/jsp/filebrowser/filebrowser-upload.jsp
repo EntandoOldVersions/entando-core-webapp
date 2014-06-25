@@ -34,6 +34,7 @@
 			<div class="col-xs-12">
 				<s:hidden name="currentPath" />
 				<s:hidden name="strutsAction" />
+				<s:hidden name="protectedFolder" />
 				<label for="file-upload">New File</label>
 				<s:file name="upload" id="file-upload" cssClass="form-control" />
 			</div>
