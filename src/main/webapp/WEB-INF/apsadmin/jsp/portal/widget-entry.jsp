@@ -232,8 +232,8 @@
 							<div class="panel-body">
 
 								<ul class="nav nav-tabs">
-									<li class="active"><a href="#widget-gui-<s:property value="#status.count" />" data-toggle="tab">Gui</a></li>
-									<li><a href="#widget-default-gui-<s:property value="#status.count" />" data-toggle="tab">Default Gui</a></li>
+									<li class="active"><a href="#widget-gui-<s:property value="#status.count" />" data-toggle="tab">Custom <abbr title="User Interface">UI</abbr></a></li>
+									<li><a href="#widget-default-gui-<s:property value="#status.count" />" data-toggle="tab">Default <abbr title="User Interface">UI</abbr></a></li>
 								</ul>
 								<div class="tab-content margin-large-bottom">
 									<div class="tab-pane fade in active" id="widget-gui-<s:property value="#status.count" />">
