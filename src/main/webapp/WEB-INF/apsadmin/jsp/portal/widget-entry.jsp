@@ -185,11 +185,11 @@
 	<s:if test="%{null == #widgetTypeVar || (!#widgetTypeVar.logic && !isInternalServletWidget(#widgetTypeVar.code))}">
 
 		<ul class="nav nav-tabs">
-			<li class="active"><a href="#widget-gui" data-toggle="tab">Gui</a></li>
+			<li class="active"><a href="#widget-gui" data-toggle="tab">Custom <abbr title="User Interface">UI</abbr></a></li>
 			<s:if test="strutsAction == 2">
 				<s:set var="uniqueGuiFragmentVar" value="%{extractUniqueGuiFragment(widgetTypeCode)}" />
 				<s:if test="%{null != #uniqueGuiFragmentVar}">
-					<li><a href="#widget-default-gui" data-toggle="tab">Default Gui</a></li>
+					<li><a href="#widget-default-gui" data-toggle="tab">Default <abbr title="User Interface">UI</abbr></a></li>
 				</s:if>
 			</s:if>
 		</ul>
@@ -216,7 +216,7 @@
 	<s:set var="guiFragmentCodesVar" value="%{extractGuiFragmentCodes(#widgetTypeVar.code)}" />
 	<s:if test="%{null != #guiFragmentCodesVar && !#guiFragmentCodesVar.isEmpty()}">
 		<fieldset class="margin-large-bottom">
-			<legend><abbr title="Graphical User Interface">Gui</abbr></legend>
+			<legend><abbr title="User Interfaces">UIs</abbr></legend>
 			<div class="panel-group" id="accordion">
 				<s:iterator value="guiFragmentCodesVar" var="guiFragmentCodeVar" status="status">
 					<s:set var="guiFragmentVar" value="getGuiFragment(#guiFragmentCodeVar)" />
