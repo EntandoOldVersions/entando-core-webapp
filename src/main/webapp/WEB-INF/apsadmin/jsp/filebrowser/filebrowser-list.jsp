@@ -92,7 +92,7 @@
 								title="Delete: <s:property value="#fileVar.name"/>"
 								href="<s:url namespace="/do/FileBrowser" action="trash" >
 									<s:param name="currentPath"><s:property escape="true" value="%{#currentPath}"/></s:param>
-									<s:param name="filename"><s:property escape="false" value="#filenameVar"/></s:param>
+									<s:param name="filename"><s:property value="#fileVar.name"/></s:param>
 									<s:param name="deleteFile" value="%{!#fileVar.directory}" />
 									<s:param name="protectedFolder"><s:property value="#isProtectedFileVar"/></s:param>
 								</s:url>">

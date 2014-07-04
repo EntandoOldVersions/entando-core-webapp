@@ -29,7 +29,18 @@
 				</ul>
 			</div>
 		</s:if>
-		
+		<s:if test="hasActionErrors()">
+			<div class="alert alert-danger alert-dismissable fade in">
+				<button class="close" data-dismiss="alert"><span class="icon icon-remove"></span></button>
+				<h2 class="h4 margin-none"><s:text name="message.title.ActionErrors" /></h2>
+				<ul class="margin-base-top">
+					<s:iterator value="actionErrors">
+						<li><s:property escape="false" /></li>
+					</s:iterator>
+				</ul>
+			</div>
+		</s:if>
+
 		<div class="form-group">
 			<div class="col-xs-12">
 				<s:hidden name="currentPath" />
