@@ -133,47 +133,47 @@
 <fieldset class="col-xs-12"><legend><s:text name="title.widgetType.settings" /></legend>
 	<s:if test="strutsAction == 5">
 		<s:set var="parentWidgetTypeVar" value="%{getWidgetType(parentShowletTypeCode)}" />
-		<s:iterator value="#parentWidgetTypeVar.typeParameters" var="showletParam" >
+		<s:iterator value="#parentWidgetTypeVar.typeParameters" var="widgetParamVar" >
 			<div class="form-group">
-				<label for="<s:property value="#showletParam.name" />" class="control-label"><s:property value="#showletParam.name" /></label>
-				<wpsf:textfield id="%{#showletParam.name}" name="%{#showletParam.name}" value="%{#request.parameters[#showletParam.name]}" cssClass="form-control" />
-				<s:if test="#showletParam.descr != ''">
+				<label for="<s:property value="#widgetParamVar.name" />" class="control-label"><s:property value="#widgetParamVar.name" /></label>
+				<wpsf:textfield id="%{#widgetParamVar.name}" name="%{#widgetParamVar.name}" value="%{#request.parameters[#widgetParamVar.name]}" cssClass="form-control" />
+				<s:if test="#widgetParamVar.descr != ''">
 					<span class="help-block"><span class="icon fa fa-info-circle"></span>&#32;
-					<s:property value="#showletParam.descr" />
+					<s:property value="#widgetParamVar.descr" />
 					</span>
 				</s:if>
 			</div>
 		</s:iterator>
 	</s:if>
 	<s:elseif test="strutsAction == 2">
-		<s:iterator value="#widgetTypeVar.parentType.typeParameters" var="showletParam" >
+		<s:iterator value="#widgetTypeVar.parentType.typeParameters" var="widgetParamVar" >
 			<div class="form-group">
 				<s:if test="#isSuperuserVar && #widgetTypeVar.userType">
-				<label for="<s:property value="#showletParam.name" />" class="control-label"><s:property value="#showletParam.name" /></label>
-				<wpsf:textfield id="%{#showletParam.name}" name="%{#showletParam.name}" value="%{#widgetTypeVar.config[#showletParam.name]}" cssClass="form-control" />
+				<label for="<s:property value="#widgetParamVar.name" />" class="control-label"><s:property value="#widgetParamVar.name" /></label>
+				<wpsf:textfield id="%{#widgetParamVar.name}" name="%{#widgetParamVar.name}" value="%{#widgetTypeVar.config[#widgetParamVar.name]}" cssClass="form-control" />
 				</s:if>
 				<s:else>
-				<span class="text-important"><s:property value="#showletParam.name" /></span>&#32;
-				<s:property value="%{#widgetTypeVar.config[#showletParam.name]}" />
+				<span class="text-important"><s:property value="#widgetParamVar.name" /></span>&#32;
+				<s:property value="%{#widgetTypeVar.config[#widgetParamVar.name]}" />
 				</s:else>
-				<s:if test="#showletParam.descr != ''">
-					<span class="help-block"><span class="icon fa fa-info-circle"></span>&#32;<s:property value="#showletParam.descr" /></span>
+				<s:if test="#widgetParamVar.descr != ''">
+					<span class="help-block"><span class="icon fa fa-info-circle"></span>&#32;<s:property value="#widgetParamVar.descr" /></span>
 				</s:if>
 			</div>
 		</s:iterator>
 		<s:set var="isSuperuserVar" value="%{false}" />
 	</s:elseif>
 	<s:elseif test="strutsAction == 3">
-		<s:iterator value="showletToCopy.type.typeParameters" var="showletParamVar" >
+		<s:iterator value="showletToCopy.type.typeParameters" var="widgetParamVar" >
 			<div class="form-group">
-				<s:if test="#showletParamVar.descr != ''">
-					<label class="label-control"><s:property value="#showletParamVar.descr" /></label>
+				<s:if test="#widgetParamVar.descr != ''">
+					<label class="label-control"><s:property value="#widgetParamVar.descr" /></label>
 				</s:if>
 				<p class="form-control-static">
 				<span class="text-strong">
-				<s:property value="#showletParamVar.name" />:&#32;
+				<s:property value="#widgetParamVar.name" />:&#32;
 				</span>
-				<s:property value="%{showletToCopy.config[#showletParamVar.name]}" />
+				<s:property value="%{showletToCopy.config[#widgetParamVar.name]}" />
 				</p>
 			</div>
 		</s:iterator>
@@ -181,9 +181,8 @@
 </fieldset>
 </s:if>
 
-<s:if test="strutsAction != 5">
+<s:if test="strutsAction != 3 && strutsAction != 5">
 	<s:if test="%{null == #widgetTypeVar || (!#widgetTypeVar.logic && !isInternalServletWidget(#widgetTypeVar.code))}">
-
 		<ul class="nav nav-tabs">
 			<li class="active"><a href="#widget-gui" data-toggle="tab">Custom <abbr title="User Interface">UI</abbr></a></li>
 			<s:if test="strutsAction == 2">
@@ -200,63 +199,65 @@
 			<div class="tab-pane fade" id="widget-default-gui">
 				<s:if test="strutsAction == 2">
 					<s:set var="uniqueGuiFragmentVar" value="%{extractUniqueGuiFragment(widgetTypeCode)}" />
-					<s:if test="%{null != #uniqueGuiFragmentVar}">
+					<s:if test="%{null != #uniqueGuiFragmentVar && null != #uniqueGuiFragmentVar.defaultGui}">
 						<div class="panel panel-default">
 							<div class="panel-body">
 								<pre><s:property value="#uniqueGuiFragmentVar.defaultGui" /></pre>
 							</div>
 						</div>
 					</s:if>
+					<s:else>
+						<div class="margin-none alert alert-info">
+							Not available.
+						</div>
+					</s:else>
 				</s:if>
 			</div>
 		</div>
-</s:if>
-<s:elseif test="%{null != #widgetTypeVar && #widgetTypeVar.logic}"> <%-- excluded clause <<&& isInternalServletWidget(#widgetTypeVar.parentType.code)>> --%>
-
-	<s:set var="guiFragmentCodesVar" value="%{extractGuiFragmentCodes(#widgetTypeVar.code)}" />
-	<s:if test="%{null != #guiFragmentCodesVar && !#guiFragmentCodesVar.isEmpty()}">
-		<fieldset class="margin-large-bottom">
-			<legend><abbr title="User Interfaces">UIs</abbr></legend>
-			<div class="panel-group" id="accordion">
-				<s:iterator value="guiFragmentCodesVar" var="guiFragmentCodeVar" status="status">
-					<s:set var="guiFragmentVar" value="getGuiFragment(#guiFragmentCodeVar)" />
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a class="display-block" data-toggle="collapse" data-parent="#accordion" href="#collapse-<s:property value="#status.count" />">
-									<s:property value="#guiFragmentCodeVar" />
-								</a>
-							</h4>
-						</div>
-						<div id="collapse-<s:property value="#status.count" />" class="panel-collapse collapse in">
-							<div class="panel-body">
-
-								<ul class="nav nav-tabs">
-									<li class="active"><a href="#widget-gui-<s:property value="#status.count" />" data-toggle="tab">Custom <abbr title="User Interface">UI</abbr></a></li>
-									<li><a href="#widget-default-gui-<s:property value="#status.count" />" data-toggle="tab">Default <abbr title="User Interface">UI</abbr></a></li>
-								</ul>
-								<div class="tab-content margin-large-bottom">
-									<div class="tab-pane fade in active" id="widget-gui-<s:property value="#status.count" />">
-										<s:set var="guiFieldNameVar" value="%{#widgetTypeVar.code + '_' + #guiFragmentCodeVar}" />
-										<wpsf:textarea name="%{#guiFieldNameVar}" id="%{#guiFieldNameVar}" value="%{guis.getProperty(#guiFieldNameVar)}" cssClass="form-control" rows="8" cols="50" />
-									</div>
-									<div class="tab-pane fade" id="widget-default-gui-<s:property value="#status.count" />">
-										<div class="panel panel-default">
-											<div class="panel-body">
-												<pre><s:property value="#guiFragmentVar.defaultGui" /></pre>
+	</s:if>
+	<s:elseif test="%{null != #widgetTypeVar && #widgetTypeVar.logic}"> <%-- excluded clause <<&& isInternalServletWidget(#widgetTypeVar.parentType.code)>> --%>
+		<s:set var="guiFragmentCodesVar" value="%{extractGuiFragmentCodes(#widgetTypeVar.code)}" />
+		<s:if test="%{null != #guiFragmentCodesVar && !#guiFragmentCodesVar.isEmpty()}">
+			<fieldset class="margin-large-bottom">
+				<legend><abbr title="User Interfaces">UIs</abbr></legend>
+				<div class="panel-group" id="accordion">
+					<s:iterator value="guiFragmentCodesVar" var="guiFragmentCodeVar" status="status">
+						<s:set var="guiFragmentVar" value="getGuiFragment(#guiFragmentCodeVar)" />
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a class="display-block" data-toggle="collapse" data-parent="#accordion" href="#collapse-<s:property value="#status.count" />">
+										<s:property value="#guiFragmentCodeVar" />
+									</a>
+								</h4>
+							</div>
+							<div id="collapse-<s:property value="#status.count" />" class="panel-collapse collapse in">
+								<div class="panel-body">
+									<ul class="nav nav-tabs">
+										<li class="active"><a href="#widget-gui-<s:property value="#status.count" />" data-toggle="tab">Custom <abbr title="User Interface">UI</abbr></a></li>
+										<li><a href="#widget-default-gui-<s:property value="#status.count" />" data-toggle="tab">Default <abbr title="User Interface">UI</abbr></a></li>
+									</ul>
+									<div class="tab-content margin-large-bottom">
+										<div class="tab-pane fade in active" id="widget-gui-<s:property value="#status.count" />">
+											<s:set var="guiFieldNameVar" value="%{#widgetTypeVar.code + '_' + #guiFragmentCodeVar}" />
+											<wpsf:textarea name="%{#guiFieldNameVar}" id="%{#guiFieldNameVar}" value="%{guis.getProperty(#guiFieldNameVar)}" cssClass="form-control" rows="8" cols="50" />
+										</div>
+										<div class="tab-pane fade" id="widget-default-gui-<s:property value="#status.count" />">
+											<div class="panel panel-default">
+												<div class="panel-body">
+													<pre><s:property value="#guiFragmentVar.defaultGui" /></pre>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-
 							</div>
 						</div>
-					</div>
-				</s:iterator>
-			</div>
-		</fieldset>
-	</s:if>
-</s:elseif>
+					</s:iterator>
+				</div>
+			</fieldset>
+		</s:if>
+	</s:elseif>
 </s:if>
 
 <wpsa:hookPoint key="core.widgetType.entry" objectName="hookPointElements_core_widget_entry">
@@ -279,20 +280,18 @@
 				<span class="icon fa fa-floppy-o"></span>&#32;
 				<s:text name="label.save" />
 			</wpsf:submit>
-			</div>
-
+		</div>
 		<s:if test="strutsAction == 3">
 			<div class="col-xs-12 col-sm-4 col-md-3 margin-small-vertical">
 				<wpsa:actionParam action="save" var="actionName" >
 					<wpsa:actionSubParam name="replaceOnPage" value="true" />
 				</wpsa:actionParam>
 				<wpsf:submit type="button" action="%{#actionName}" cssClass="btn btn-default btn-block">
-						<span class="icon fa fa-exchange"></span>&#32;
-						<s:text name="label.save.replace" />
-					</wpsf:submit>
+					<span class="icon fa fa-exchange"></span>&#32;
+					<s:text name="label.save.replace" />
+				</wpsf:submit>
 			</div>
 		</s:if>
-
 	</div>
 </div>
 
