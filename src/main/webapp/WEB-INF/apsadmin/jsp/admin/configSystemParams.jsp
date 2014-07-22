@@ -125,6 +125,16 @@
 		</div>
 		
 		<div class="form-group">
+			<label class="display-block"><s:text name="sysconfig.useJsessionId" /></label>
+			<div class="btn-group" data-toggle="buttons">
+				<s:set name="paramName" value="'useJsessionId'" />
+				<s:include value="/WEB-INF/apsadmin/jsp/admin/booleanParamBlock.jsp" />
+				<%-- hidden parameter to delete --%>
+				<wpsf:hidden name="%{#paramName + externalParamMarker}" value="true"/>
+			</div>
+		</div>
+		
+		<div class="form-group">
 			<s:set name="paramName" value="'urlStyle'" />
 			<label class="display-block"><s:text name="sysconfig.URLstyle" /></label>
 			<div class="btn-group" data-toggle="buttons">
